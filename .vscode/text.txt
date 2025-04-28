@@ -1,0 +1,18 @@
+pip install --upgrade pip
+pip install mkdocs-material # Đã có theme
+pip install pymdown-extensions # RẤT QUAN TRỌNG cho markdown_extensions
+pip install mkdocs-glightbox
+pip install mkdocs-git-revision-date-localized-plugin
+# Show the version of pip
+pip --version
+# Show the version of mkdocs
+mkdocs --version
+# Serve the documentation locally
+cd my-website && mkdocs serve
+# Build the documentation site
+mkdocs build
+
+# Optional: Install additional plugins or themes if needed
+# Example: pip install mkdocs-awesome-pages-plugin
+# theme:
+#   name: material
