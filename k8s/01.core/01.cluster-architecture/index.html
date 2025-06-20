@@ -8,26 +8,26 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/01.cluster-architecture/">
+      
+      
+        <link rel="prev" href="../../roadmap/">
       
       
       
-        <link rel="next" href="k8s/roadmap/">
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>DraDoc</title>
+        <title>01.cluster architecture - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,14 +46,14 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -62,7 +62,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-dradoc" class="md-skip">
+        <a href="#kien-truc-kubernetes-qua-phep-so-sanh-tau-thuyen" class="md-skip">
           Bỏ qua
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to DraDoc
+              01.cluster architecture
             
           </span>
         </div>
@@ -220,11 +220,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -241,11 +239,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="k8s/roadmap/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
           
   
   
@@ -287,7 +287,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -314,19 +314,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -337,7 +328,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -346,37 +336,40 @@
       
   
   
-  
-  
     
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
   
-    <a href="k8s/roadmap/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -385,12 +378,293 @@
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            K8s
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    01.core
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            01.core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    01.cluster architecture
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.cluster architecture
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kien-truc-kubernetes-qua-phep-so-sanh-tau-thuyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kiến trúc Kubernetes qua phép so sánh Tàu Thuyền
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mot-cum-kubernetes-kubernetes-cluster-bao-gom-mot-hoac-nhieu-master-node-va-nhieu-worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Một cụm Kubernetes (Kubernetes cluster) bao gồm một hoặc nhiều Master Node và nhiều Worker Node.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ben-trong-tau-chi-huy-master-node-control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bên trong "Tàu Chỉ Huy" (Master Node Control Plane)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bên trong &#34;Tàu Chỉ Huy&#34; (Master Node Control Plane)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etcd-kho-du-lieu-cua-ham-oi" class="md-nav__link">
+    <span class="md-ellipsis">
+      etcd - Kho Dữ liệu của Hạm đội
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-scheduler-nguoi-ieu-phoi-xep-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-scheduler - Người Điều Phối Xếp Dỡ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-controller-manager-ban-quan-ly-cac-phong-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-controller-manager - Ban Quản lý các Phòng ban
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-api-server-tong-ai-giao-tiep-trung-tam" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-api-server - "Tổng Đài" Giao tiếp Trung tâm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tren-tau-hang-worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trên "Tàu Hàng" (Worker Node)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trên &#34;Tàu Hàng&#34; (Worker Node)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-runtime-engine-vi-du-docker-ong-co-chay-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Runtime Engine (ví dụ: Docker) - Động cơ Chạy Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubelet-thuyen-truong-cua-tau-hang" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubelet - Thuyền trưởng của Tàu Hàng
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-proxy-nguoi-dan-loi-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-proxy - Người Dẫn Lối Mạng
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tom-tat-kien-truc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tóm tắt Kiến trúc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-ha-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Chốt hạ" cho Kỳ thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -413,8 +687,143 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kien-truc-kubernetes-qua-phep-so-sanh-tau-thuyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kiến trúc Kubernetes qua phép so sánh Tàu Thuyền
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mot-cum-kubernetes-kubernetes-cluster-bao-gom-mot-hoac-nhieu-master-node-va-nhieu-worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Một cụm Kubernetes (Kubernetes cluster) bao gồm một hoặc nhiều Master Node và nhiều Worker Node.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ben-trong-tau-chi-huy-master-node-control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bên trong "Tàu Chỉ Huy" (Master Node Control Plane)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bên trong &#34;Tàu Chỉ Huy&#34; (Master Node Control Plane)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etcd-kho-du-lieu-cua-ham-oi" class="md-nav__link">
+    <span class="md-ellipsis">
+      etcd - Kho Dữ liệu của Hạm đội
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-scheduler-nguoi-ieu-phoi-xep-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-scheduler - Người Điều Phối Xếp Dỡ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-controller-manager-ban-quan-ly-cac-phong-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-controller-manager - Ban Quản lý các Phòng ban
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-api-server-tong-ai-giao-tiep-trung-tam" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-api-server - "Tổng Đài" Giao tiếp Trung tâm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tren-tau-hang-worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trên "Tàu Hàng" (Worker Node)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trên &#34;Tàu Hàng&#34; (Worker Node)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-runtime-engine-vi-du-docker-ong-co-chay-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Runtime Engine (ví dụ: Docker) - Động cơ Chạy Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubelet-thuyen-truong-cua-tau-hang" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubelet - Thuyền trưởng của Tàu Hàng
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-proxy-nguoi-dan-loi-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-proxy - Người Dẫn Lối Mạng
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tom-tat-kien-truc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tóm tắt Kiến trúc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-ha-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Chốt hạ" cho Kỳ thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -430,7 +839,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/index.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/01.cluster-architecture.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -438,11 +847,80 @@
   
 
 
-<h1 id="welcome-to-dradoc">Welcome to DraDoc<a class="headerlink" href="#welcome-to-dradoc" title="Permanent link">&para;</a></h1>
-<p>các file liên quan devops ,aws tùm lum , chứa các file chủ yếu do copilot tạo ra theo roadmap phía dưới 
-mục đích để bản thân học , mọi người có thể tham khảo 
-https://roadmap.sh/r/devsecops-88a05https://roadmap.sh/r/devsecops-88a05
-  ## Lưu ý tên tải extension office viewer hoặc vô web để xem theo mục lục định dạng md cho đẹp mắt , vì file rất dài </p>
+  <h1>01.cluster architecture</h1>
+
+<h2 id="kien-truc-kubernetes-qua-phep-so-sanh-tau-thuyen">Kiến trúc Kubernetes qua phép so sánh Tàu Thuyền<a class="headerlink" href="#kien-truc-kubernetes-qua-phep-so-sanh-tau-thuyen" title="Permanent link">&para;</a></h2>
+<p>Mục đích của Kubernetes là tự động hóa việc triển khai và quản lý các ứng dụng của bạn dưới dạng <strong>container</strong>. Hãy tưởng tượng bạn đang quản lý một hạm đội tàu biển khổng lồ:</p>
+<ul>
+<li><strong>Tàu Hàng (Cargo Ships) 🚢:</strong> Đây là những con tàu làm công việc thực tế - chuyên chở các container (ứng dụng của bạn). Trong Kubernetes, chúng chính là các <strong>Worker Node</strong>.</li>
+<li><strong>Tàu Chỉ Huy (Control Ships)</strong> Đây là những con tàu đầu não, không chở hàng mà làm nhiệm vụ quản lý, giám sát, và điều phối toàn bộ hạm đội tàu hàng. Trong Kubernetes, đây chính là <strong>Master Node</strong>.</li>
+</ul>
+<h2 id="mot-cum-kubernetes-kubernetes-cluster-bao-gom-mot-hoac-nhieu-master-node-va-nhieu-worker-node">Một cụm Kubernetes (Kubernetes cluster) bao gồm một hoặc nhiều Master Node và nhiều Worker Node.<a class="headerlink" href="#mot-cum-kubernetes-kubernetes-cluster-bao-gom-mot-hoac-nhieu-master-node-va-nhieu-worker-node" title="Permanent link">&para;</a></h2>
+<h2 id="ben-trong-tau-chi-huy-master-node-control-plane">Bên trong "Tàu Chỉ Huy" (Master Node Control Plane)<a class="headerlink" href="#ben-trong-tau-chi-huy-master-node-control-plane" title="Permanent link">&para;</a></h2>
+<p>Master Node là bộ não của cả cụm, nó điều hành mọi thứ thông qua một bộ các thành phần gọi là <strong>Control Plane</strong>.</p>
+<h3 id="etcd-kho-du-lieu-cua-ham-oi"><code>etcd</code> - Kho Dữ liệu của Hạm đội<a class="headerlink" href="#etcd-kho-du-lieu-cua-ham-oi" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Giống như cuốn sổ nhật ký khổng lồ của hạm đội, lưu trữ mọi thông tin: có bao nhiêu con tàu, tàu nào đang chở container gì, container được xếp lên lúc nào, v.v.</li>
+<li><strong>Thực tế:</strong> <strong><code>etcd</code></strong> là một cơ sở dữ liệu dạng key-value có tính sẵn sàng cao (highly available). Nó lưu trữ <strong>toàn bộ trạng thái và cấu hình</strong> của cụm Kubernetes. Mọi thông tin về nodes, pods (containers), services,... đều nằm trong <code>etcd</code>.</li>
+</ul>
+<h3 id="kube-scheduler-nguoi-ieu-phoi-xep-do"><code>kube-scheduler</code> - Người Điều Phối Xếp Dỡ<a class="headerlink" href="#kube-scheduler-nguoi-ieu-phoi-xep-do" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Giống như những chiếc cần cẩu thông minh ở bến cảng. Khi có một container cần xếp lên tàu, cần cẩu sẽ xác định con tàu nào là phù hợp nhất dựa trên kích thước, sức chứa còn lại, loại hàng được phép chở, v.v.</li>
+<li><strong>Thực tế:</strong> <strong><code>kube-scheduler</code></strong> có nhiệm vụ tìm một <strong>Worker Node</strong> phù hợp nhất để chạy một Pod (một hoặc nhiều container) mới được yêu cầu. Nó xem xét các yếu tố như tài nguyên yêu cầu của Pod (CPU, memory) và tài nguyên còn trống của các Node.</li>
+</ul>
+<h3 id="kube-controller-manager-ban-quan-ly-cac-phong-ban"><code>kube-controller-manager</code> - Ban Quản lý các Phòng ban<a class="headerlink" href="#kube-controller-manager-ban-quan-ly-cac-phong-ban" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Tàu chỉ huy có nhiều phòng ban chuyên trách: phòng điều hành lo việc vận tải, phòng hàng hóa lo các container, phòng IT lo việc liên lạc.</li>
+<li><strong>Thực tế:</strong> <strong><code>kube-controller-manager</code></strong> quản lý nhiều "bộ điều khiển" (controllers) khác nhau, mỗi controller là một vòng lặp theo dõi trạng thái của cụm và cố gắng đưa nó về trạng thái mong muốn.</li>
+<li><strong>Node Controller:</strong> Chăm sóc các Node. Nó chịu trách nhiệm khi một Node mới tham gia vào cụm, hoặc khi một Node "chết" hoặc không thể truy cập.</li>
+<li><strong>Replication Controller:</strong> Đảm bảo số lượng bản sao (replicas) của một ứng dụng luôn đúng như bạn đã khai báo.</li>
+</ul>
+<h3 id="kube-api-server-tong-ai-giao-tiep-trung-tam"><code>kube-api-server</code> - "Tổng Đài" Giao tiếp Trung tâm<a class="headerlink" href="#kube-api-server-tong-ai-giao-tiep-trung-tam" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Đây là trung tâm chỉ huy, nơi tất cả các phòng ban, các tàu hàng, và cả người quản lý từ bên ngoài liên lạc với nhau. Mọi mệnh lệnh đều đi qua đây.</li>
+<li><strong>Thực tế:</strong> <strong><code>kube-api-server</code></strong> là thành phần trung tâm và quan trọng nhất. Nó phơi bày ra <strong>Kubernetes API</strong>. Mọi tương tác với cụm Kubernetes đều phải thông qua API Server.</li>
+<li>Người dùng (dùng <code>kubectl</code>), các controller, và cả các worker node đều nói chuyện với nhau thông qua <code>kube-api-server</code>.</li>
+</ul>
+<hr />
+<h2 id="tren-tau-hang-worker-node">Trên "Tàu Hàng" (Worker Node)<a class="headerlink" href="#tren-tau-hang-worker-node" title="Permanent link">&para;</a></h2>
+<p>Đây là nơi các container ứng dụng của bạn thực sự chạy. Mỗi Worker Node cũng có các thành phần quan trọng riêng.</p>
+<h3 id="container-runtime-engine-vi-du-docker-ong-co-chay-container">Container Runtime Engine (ví dụ: Docker) - Động cơ Chạy Container<a class="headerlink" href="#container-runtime-engine-vi-du-docker-ong-co-chay-container" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Để chở được container, con tàu phải được thiết kế để tương thích với container.</li>
+<li><strong>Thực tế:</strong> Đây là phần mềm chịu trách nhiệm <strong>chạy các container</strong>. <strong>Docker</strong> là một lựa chọn phổ biến, nhưng Kubernetes cũng hỗ trợ các runtime khác như <strong>ContainerD</strong>, <strong>Rocket (rkt)</strong>. Nó phải được cài đặt trên tất cả các node trong cụm.</li>
+</ul>
+<h3 id="kubelet-thuyen-truong-cua-tau-hang"><code>kubelet</code> - Thuyền trưởng của Tàu Hàng<a class="headerlink" href="#kubelet-thuyen-truong-cua-tau-hang" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Mỗi tàu hàng có một thuyền trưởng, chịu trách nhiệm quản lý mọi hoạt động trên tàu mình. Thuyền trưởng nhận lệnh từ tàu chỉ huy, xếp dỡ container theo yêu cầu, và báo cáo tình trạng của tàu và hàng hóa về trung tâm.</li>
+<li><strong>Thực tế:</strong> <strong><code>kubelet</code></strong> là một agent chạy trên mỗi Worker Node. Nó lắng nghe chỉ thị từ <code>kube-api-server</code> và đảm bảo rằng các container được mô tả trong các Pod đang chạy và khỏe mạnh trên node của nó. Nó cũng gửi báo cáo trạng thái của node và các container về cho Master Node.</li>
+</ul>
+<h3 id="kube-proxy-nguoi-dan-loi-mang"><code>kube-proxy</code> - Người Dẫn Lối Mạng<a class="headerlink" href="#kube-proxy-nguoi-dan-loi-mang" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>So sánh:</strong> Các ứng dụng trên các tàu hàng khác nhau cần nói chuyện được với nhau (ví dụ: web server trên tàu A cần gọi đến database trên tàu B). <code>kube-proxy</code> tạo ra các tuyến đường liên lạc đó.</li>
+<li><strong>Thực tế:</strong> <strong><code>kube-proxy</code></strong> là một network proxy chạy trên mỗi node. Nó duy trì các quy tắc mạng (network rules) trên các node, cho phép giao tiếp mạng đến các Pod từ bên trong hoặc bên ngoài cụm. Nó là thành phần chính giúp thực hiện cơ chế <strong>Service Discovery</strong> trong Kubernetes.</li>
+</ul>
+<hr />
+<h2 id="tom-tat-kien-truc">Tóm tắt Kiến trúc<a class="headerlink" href="#tom-tat-kien-truc" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Master Node (Control Plane):</strong></li>
+<li><code>etcd</code> (Lưu trữ trạng thái)</li>
+<li><code>kube-scheduler</code> (Chọn Node cho Pod)</li>
+<li><code>kube-controller-manager</code> (Quản lý các controller)</li>
+<li><code>kube-api-server</code> (Cổng giao tiếp chính)</li>
+<li><strong>Worker Node:</strong></li>
+<li><code>kubelet</code> (Agent quản lý container trên Node)</li>
+<li><code>kube-proxy</code> (Quản lý mạng cho Node)</li>
+<li><code>Container Runtime</code> (Phần mềm chạy container)</li>
+</ul>
+<hr />
+<h2 id="chot-ha-cho-ky-thi">"Chốt hạ" cho Kỳ thi 📝<a class="headerlink" href="#chot-ha-cho-ky-thi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nắm vững sự khác biệt giữa <strong>Master Node</strong> và <strong>Worker Node</strong>.</li>
+<li>Hiểu rõ <strong>vai trò và trách nhiệm</strong> của từng thành phần cốt lõi: <code>etcd</code>, <code>api-server</code>, <code>scheduler</code>, <code>controller-manager</code>, <code>kubelet</code>, <code>kube-proxy</code>.</li>
+<li>Hãy nhớ rằng mọi giao tiếp đều đi qua <strong><code>kube-api-server</code></strong>.</li>
+<li><strong><code>kubelet</code></strong> là "tay chân" của Master trên mỗi Worker Node.</li>
+</ul>
+<p>Hy vọng phần giải thích chi tiết này giúp bạn hiểu rõ hơn về kiến trúc của Kubernetes. Chúc bạn một cuối tuần vui vẻ và học tập hiệu quả!</p>
 
 
 
@@ -548,22 +1026,22 @@ https://roadmap.sh/r/devsecops-88a05https://roadmap.sh/r/devsecops-88a05
       
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
-        
           
-          <a href="k8s/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Roadmap">
+          <a href="../../roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Roadmap">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Sau
+                Trước
               </span>
               <div class="md-ellipsis">
                 Roadmap
               </div>
             </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
           </a>
+        
         
       </nav>
     
@@ -617,10 +1095,10 @@ https://roadmap.sh/r/devsecops-88a05https://roadmap.sh/r/devsecops-88a05
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

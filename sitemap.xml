@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lelongc.github.io/devops/</loc>
-         <lastmod>2025-06-05</lastmod>
+         <lastmod>2025-06-20</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/roadmap/</loc>
+         <lastmod>2025-06-20</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/01.core/01.cluster-architecture/</loc>
+         <lastmod>2025-06-20</lastmod>
     </url>
 </urlset>
