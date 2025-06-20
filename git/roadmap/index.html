@@ -1,0 +1,3031 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/git/roadmap/">
+      
+      
+        <link rel="prev" href="../../docker/roadmap/">
+      
+      
+        <link rel="next" href="../../iac/roadmap/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Git Complete Learning Roadmap - Chi tiết từng topic - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-complete-learning-roadmap-chi-tiet-tung-topic" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git Complete Learning Roadmap - Chi tiết từng topic
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../docker/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../iac/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Iac
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../k8s/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../network/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to DraDoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Cicd
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../docker/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Docker
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Git Complete Learning Roadmap - Chi tiết từng topic
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Complete Learning Roadmap - Chi tiết từng topic
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-tieu-master-git-tu-a-z-trong-6-8-thang" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Mục tiêu: Master Git từ A-Z trong 6-8 tháng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-1-git-foundation-thang-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔰 GIAI ĐOẠN 1: GIT FOUNDATION (Tháng 1-2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔰 GIAI ĐOẠN 1: GIT FOUNDATION (Tháng 1-2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-1-git-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 1: Git Fundamentals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-2-basic-git-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 2: Basic Git Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-3-working-with-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 3: Working with Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-4-commit-history-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 4: Commit History &amp; Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-2-branching-merging-thang-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌿 GIAI ĐOẠN 2: BRANCHING &amp; MERGING (Tháng 3)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌿 GIAI ĐOẠN 2: BRANCHING &amp; MERGING (Tháng 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-5-git-branching-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 5: Git Branching Basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-6-merging-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 6: Merging Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-7-rebasing-mastery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 7: Rebasing Mastery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8-advanced-history-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 8: Advanced History Manipulation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-3-remote-repositories-thang-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 GIAI ĐOẠN 3: REMOTE REPOSITORIES (Tháng 4)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 GIAI ĐOẠN 3: REMOTE REPOSITORIES (Tháng 4)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-9-remote-repositories-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 9: Remote Repositories Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-10-push-pull-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 10: Push &amp; Pull Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-11-collaboration-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 11: Collaboration Workflows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-12-conflict-resolution-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 12: Conflict Resolution &amp; Collaboration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-4-advanced-git-techniques-thang-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 GIAI ĐOẠN 4: ADVANCED GIT TECHNIQUES (Tháng 5-6)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 GIAI ĐOẠN 4: ADVANCED GIT TECHNIQUES (Tháng 5-6)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-13-git-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 13: Git Internals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-14-git-hooks-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 14: Git Hooks &amp; Automation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-15-git-workflows-for-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 15: Git Workflows for Teams
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-16-git-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 16: Git Performance &amp; Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-5-git-expertise-thang-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 GIAI ĐOẠN 5: GIT EXPERTISE (Tháng 7-8)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 GIAI ĐOẠN 5: GIT EXPERTISE (Tháng 7-8)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-17-advanced-git-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 17: Advanced Git Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-18-git-integration-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 18: Git Integration &amp; Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-19-git-security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 19: Git Security &amp; Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-20-git-mastery-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 20: Git Mastery Projects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-resources-by-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 LEARNING RESOURCES BY CATEGORY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 LEARNING RESOURCES BY CATEGORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video-courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 Video Courses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#books-to-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Books to Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practice-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Practice Platforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-certifications-assessments" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏅 Git Certifications &amp; Assessments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-practice-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ DAILY PRACTICE CHECKLIST
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ DAILY PRACTICE CHECKLIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morning-warm-up-15-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Morning Warm-up (15 mins)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-practice-30-45-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Practice (30-45 mins)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evening-review-15-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evening Review (15 mins)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-mastery-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 GIT MASTERY MILESTONES
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 GIT MASTERY MILESTONES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#month-1-2-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 1-2: Foundation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-3-4-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 3-4: Intermediate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-5-6-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 5-6: Advanced
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-7-8-expert" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 7-8: Expert
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-action-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Quick Start Action Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Quick Start Action Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#day-1-setup-first-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Day 1: Setup &amp; First Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-1-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 1 Goals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-1-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 1 Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../iac/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Iac
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../k8s/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    K8s
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../linux/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../network/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-tieu-master-git-tu-a-z-trong-6-8-thang" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Mục tiêu: Master Git từ A-Z trong 6-8 tháng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-1-git-foundation-thang-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔰 GIAI ĐOẠN 1: GIT FOUNDATION (Tháng 1-2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔰 GIAI ĐOẠN 1: GIT FOUNDATION (Tháng 1-2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-1-git-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 1: Git Fundamentals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-2-basic-git-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 2: Basic Git Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-3-working-with-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 3: Working with Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-4-commit-history-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 4: Commit History &amp; Navigation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-2-branching-merging-thang-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌿 GIAI ĐOẠN 2: BRANCHING &amp; MERGING (Tháng 3)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌿 GIAI ĐOẠN 2: BRANCHING &amp; MERGING (Tháng 3)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-5-git-branching-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 5: Git Branching Basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-6-merging-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 6: Merging Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-7-rebasing-mastery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 7: Rebasing Mastery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8-advanced-history-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 8: Advanced History Manipulation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-3-remote-repositories-thang-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 GIAI ĐOẠN 3: REMOTE REPOSITORIES (Tháng 4)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 GIAI ĐOẠN 3: REMOTE REPOSITORIES (Tháng 4)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-9-remote-repositories-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 9: Remote Repositories Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-10-push-pull-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 10: Push &amp; Pull Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-11-collaboration-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 11: Collaboration Workflows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-12-conflict-resolution-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 12: Conflict Resolution &amp; Collaboration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-4-advanced-git-techniques-thang-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 GIAI ĐOẠN 4: ADVANCED GIT TECHNIQUES (Tháng 5-6)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 GIAI ĐOẠN 4: ADVANCED GIT TECHNIQUES (Tháng 5-6)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-13-git-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 13: Git Internals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-14-git-hooks-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 14: Git Hooks &amp; Automation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-15-git-workflows-for-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 15: Git Workflows for Teams
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-16-git-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 16: Git Performance &amp; Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-oan-5-git-expertise-thang-7-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 GIAI ĐOẠN 5: GIT EXPERTISE (Tháng 7-8)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 GIAI ĐOẠN 5: GIT EXPERTISE (Tháng 7-8)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-17-advanced-git-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 17: Advanced Git Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-18-git-integration-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 18: Git Integration &amp; Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-19-git-security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 19: Git Security &amp; Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-20-git-mastery-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 20: Git Mastery Projects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-resources-by-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 LEARNING RESOURCES BY CATEGORY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 LEARNING RESOURCES BY CATEGORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video-courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 Video Courses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#books-to-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Books to Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practice-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Practice Platforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-certifications-assessments" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏅 Git Certifications &amp; Assessments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-practice-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ DAILY PRACTICE CHECKLIST
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ DAILY PRACTICE CHECKLIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morning-warm-up-15-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Morning Warm-up (15 mins)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-practice-30-45-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Active Practice (30-45 mins)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evening-review-15-mins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evening Review (15 mins)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-mastery-milestones" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 GIT MASTERY MILESTONES
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 GIT MASTERY MILESTONES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#month-1-2-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 1-2: Foundation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-3-4-intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 3-4: Intermediate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-5-6-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 5-6: Advanced
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-7-8-expert" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 7-8: Expert
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-action-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Quick Start Action Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Quick Start Action Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#day-1-setup-first-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Day 1: Setup &amp; First Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-1-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Week 1 Goals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#month-1-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Month 1 Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/git/roadmap.md" title="Chỉnh sửa" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="git-complete-learning-roadmap-chi-tiet-tung-topic">Git Complete Learning Roadmap - Chi tiết từng topic<a class="headerlink" href="#git-complete-learning-roadmap-chi-tiet-tung-topic" title="Permanent link">&para;</a></h1>
+<h2 id="muc-tieu-master-git-tu-a-z-trong-6-8-thang">🎯 Mục tiêu: Master Git từ A-Z trong 6-8 tháng<a class="headerlink" href="#muc-tieu-master-git-tu-a-z-trong-6-8-thang" title="Permanent link">&para;</a></h2>
+<h2 id="giai-oan-1-git-foundation-thang-1-2">🔰 GIAI ĐOẠN 1: GIT FOUNDATION (Tháng 1-2)<a class="headerlink" href="#giai-oan-1-git-foundation-thang-1-2" title="Permanent link">&para;</a></h2>
+<h3 id="week-1-git-fundamentals">Week 1: Git Fundamentals<a class="headerlink" href="#week-1-git-fundamentals" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "What is Git version control system"</li>
+<li>[ ] "Git vs SVN vs Mercurial comparison"</li>
+<li>[ ] "Distributed version control vs centralized"</li>
+<li>[ ] "Git history and Linus Torvalds"</li>
+<li>[ ] "Why use version control system"</li>
+<li>[ ] "Git installation Windows MacOS Linux"</li>
+<li>[ ] "Git configuration first time setup"</li>
+<li>[ ] "Git working directory staging area repository"</li>
+</ul>
+<p><strong>Practical Setup:</strong></p>
+<ul>
+<li>[ ] Install Git on your system</li>
+<li>[ ] Configure Git username and email</li>
+<li>[ ] Understand Git three-tree architecture</li>
+<li>[ ] Create first Git repository</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Installation verification</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>--version
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>which<span class="w"> </span>git
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># First-time configuration</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;your.email@example.com&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>git<span class="w"> </span>config<span class="w"> </span>--list
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--edit
+</code></pre></div>
+<h3 id="week-2-basic-git-operations">Week 2: Basic Git Operations<a class="headerlink" href="#week-2-basic-git-operations" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git init create new repository"</li>
+<li>[ ] "Git add staging area tutorial"</li>
+<li>[ ] "Git commit message best practices"</li>
+<li>[ ] "Git status check repository state"</li>
+<li>[ ] "Git log view commit history"</li>
+<li>[ ] "Git diff compare changes"</li>
+<li>[ ] "Git repository states working staging committed"</li>
+<li>[ ] "Git file lifecycle untracked modified staged"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Repository creation</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>init
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>init<span class="w"> </span>--bare
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;url&gt;
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Basic workflow</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>git<span class="w"> </span>status
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>git<span class="w"> </span>add<span class="w"> </span>filename
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>git<span class="w"> </span>add<span class="w"> </span>-A
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>git<span class="w"> </span>add<span class="w"> </span>-u
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;commit message&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;add and commit&quot;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1"># Viewing changes</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>git<span class="w"> </span>diff
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>git<span class="w"> </span>diff<span class="w"> </span>--staged
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>git<span class="w"> </span>diff<span class="w"> </span>HEAD
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>git<span class="w"> </span>log
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>git<span class="w"> </span>log<span class="w"> </span>--graph
+</code></pre></div>
+<h3 id="week-3-working-with-files">Week 3: Working with Files<a class="headerlink" href="#week-3-working-with-files" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git add remove files from repository"</li>
+<li>[ ] "Git rm delete files from Git"</li>
+<li>[ ] "Git mv rename move files"</li>
+<li>[ ] "Git reset unstage files"</li>
+<li>[ ] "Git checkout discard changes"</li>
+<li>[ ] "Git restore new way to discard changes"</li>
+<li>[ ] "Gitignore file patterns tutorial"</li>
+<li>[ ] "Git clean remove untracked files"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># File operations</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>rm<span class="w"> </span>filename
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>filename
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>git<span class="w"> </span>mv<span class="w"> </span>old_name<span class="w"> </span>new_name
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Undoing changes</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>filename
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>filename
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>git<span class="w"> </span>restore<span class="w"> </span>filename
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>git<span class="w"> </span>restore<span class="w"> </span>--staged<span class="w"> </span>filename
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Cleaning</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>git<span class="w"> </span>clean<span class="w"> </span>-n
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>git<span class="w"> </span>clean<span class="w"> </span>-f
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>git<span class="w"> </span>clean<span class="w"> </span>-fd
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1"># Gitignore</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;*.log&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;node_modules/&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>git<span class="w"> </span>add<span class="w"> </span>.gitignore
+</code></pre></div>
+<h3 id="week-4-commit-history-navigation">Week 4: Commit History &amp; Navigation<a class="headerlink" href="#week-4-commit-history-navigation" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git log advanced options formatting"</li>
+<li>[ ] "Git show display commit details"</li>
+<li>[ ] "Git reflog reference logs"</li>
+<li>[ ] "Git checkout navigate commit history"</li>
+<li>[ ] "Git HEAD pointer explanation"</li>
+<li>[ ] "Git detached HEAD state"</li>
+<li>[ ] "Git commit SHA hash explained"</li>
+<li>[ ] "Git relative commit references HEAD~1 HEAD^"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Viewing history</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>log<span class="w"> </span>--pretty<span class="o">=</span>format:<span class="s2">&quot;%h %s&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--all
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>git<span class="w"> </span>log<span class="w"> </span>--author<span class="o">=</span><span class="s2">&quot;name&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>git<span class="w"> </span>log<span class="w"> </span>--since<span class="o">=</span><span class="s2">&quot;2 weeks ago&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>git<span class="w"> </span>log<span class="w"> </span>--grep<span class="o">=</span><span class="s2">&quot;bug&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>git<span class="w"> </span>log<span class="w"> </span>filename
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># Navigation</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>git<span class="w"> </span>show<span class="w"> </span>HEAD
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>git<span class="w"> </span>show<span class="w"> </span>commit_hash
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>git<span class="w"> </span>checkout<span class="w"> </span>commit_hash
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>git<span class="w"> </span>checkout<span class="w"> </span>HEAD~1
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>git<span class="w"> </span>checkout<span class="w"> </span>HEAD^
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>git<span class="w"> </span>reflog
+</code></pre></div>
+<h2 id="giai-oan-2-branching-merging-thang-3">🌿 GIAI ĐOẠN 2: BRANCHING &amp; MERGING (Tháng 3)<a class="headerlink" href="#giai-oan-2-branching-merging-thang-3" title="Permanent link">&para;</a></h2>
+<h3 id="week-5-git-branching-basics">Week 5: Git Branching Basics<a class="headerlink" href="#week-5-git-branching-basics" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git branch create switch delete"</li>
+<li>[ ] "Git branching model workflow"</li>
+<li>[ ] "Git branch vs tag difference"</li>
+<li>[ ] "Git checkout vs switch command"</li>
+<li>[ ] "Git branch naming conventions"</li>
+<li>[ ] "Git local vs remote branches"</li>
+<li>[ ] "Git tracking branches upstream"</li>
+<li>[ ] "Git branch strategies GitFlow GitHub Flow"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Branch creation and switching</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>branch
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>branch<span class="w"> </span>new_branch
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>git<span class="w"> </span>checkout<span class="w"> </span>new_branch
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>git<span class="w"> </span>switch<span class="w"> </span>new_branch
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature_branch
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feature_branch
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Branch management</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>git<span class="w"> </span>branch<span class="w"> </span>-v
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>git<span class="w"> </span>branch<span class="w"> </span>-a
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>git<span class="w"> </span>branch<span class="w"> </span>-r
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>branch_name
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>branch_name
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>git<span class="w"> </span>branch<span class="w"> </span>-m<span class="w"> </span>old_name<span class="w"> </span>new_name
+</code></pre></div>
+<h3 id="week-6-merging-strategies">Week 6: Merging Strategies<a class="headerlink" href="#week-6-merging-strategies" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git merge fast-forward vs three-way"</li>
+<li>[ ] "Git merge commit vs squash merge"</li>
+<li>[ ] "Git merge conflicts resolution"</li>
+<li>[ ] "Git rebase vs merge difference"</li>
+<li>[ ] "Git merge strategies recursive octopus"</li>
+<li>[ ] "Git merge tools configuration"</li>
+<li>[ ] "Git cherry-pick specific commits"</li>
+<li>[ ] "Git merge --no-ff preserve history"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Merging</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>merge<span class="w"> </span>branch_name
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>branch_name
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>git<span class="w"> </span>merge<span class="w"> </span>--squash<span class="w"> </span>branch_name
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Conflict resolution</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>git<span class="w"> </span>status<span class="w"> </span><span class="o">(</span>during<span class="w"> </span>conflict<span class="o">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>git<span class="w"> </span>add<span class="w"> </span>resolved_file
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>git<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span><span class="nb">complete</span><span class="w"> </span>merge<span class="o">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>git<span class="w"> </span>merge<span class="w"> </span>--abort
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Cherry-picking</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>git<span class="w"> </span>cherry-pick<span class="w"> </span>commit_hash
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>git<span class="w"> </span>cherry-pick<span class="w"> </span>-n<span class="w"> </span>commit_hash
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># Merge tools</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>git<span class="w"> </span>mergetool
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>merge.tool<span class="w"> </span>vimdiff
+</code></pre></div>
+<h3 id="week-7-rebasing-mastery">Week 7: Rebasing Mastery<a class="headerlink" href="#week-7-rebasing-mastery" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git rebase interactive tutorial"</li>
+<li>[ ] "Git rebase vs merge when to use"</li>
+<li>[ ] "Git rebase --onto advanced usage"</li>
+<li>[ ] "Git rebase conflicts resolution"</li>
+<li>[ ] "Git rebase --continue --skip --abort"</li>
+<li>[ ] "Git interactive rebase squash fixup"</li>
+<li>[ ] "Git rebase rewrite commit history"</li>
+<li>[ ] "Golden rule of rebasing public commits"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Basic rebase</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>master
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>rebase<span class="w"> </span>--onto<span class="w"> </span>master<span class="w"> </span>server<span class="w"> </span>client
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># Interactive rebase</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>HEAD~3
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>commit_hash
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Rebase operations</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>git<span class="w"> </span>rebase<span class="w"> </span>--skip
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>git<span class="w"> </span>rebase<span class="w"> </span>--abort
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># Rebase options in interactive mode</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># pick, reword, edit, squash, fixup, drop</span>
+</code></pre></div>
+<h3 id="week-8-advanced-history-manipulation">Week 8: Advanced History Manipulation<a class="headerlink" href="#week-8-advanced-history-manipulation" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git reset soft mixed hard difference"</li>
+<li>[ ] "Git revert vs reset vs checkout"</li>
+<li>[ ] "Git reflog recover lost commits"</li>
+<li>[ ] "Git filter-branch rewrite history"</li>
+<li>[ ] "Git BFG repo cleaner tool"</li>
+<li>[ ] "Git commit --amend modify last commit"</li>
+<li>[ ] "Git stash save work in progress"</li>
+<li>[ ] "Git bisect find bug-introducing commit"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Reset variations</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD~1
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>git<span class="w"> </span>reset<span class="w"> </span>--mixed<span class="w"> </span>HEAD~1
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Reverting</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>git<span class="w"> </span>revert<span class="w"> </span>commit_hash
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>git<span class="w"> </span>revert<span class="w"> </span>-n<span class="w"> </span>commit_hash
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Stashing</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>git<span class="w"> </span>stash
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>git<span class="w"> </span>stash<span class="w"> </span>push<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>git<span class="w"> </span>stash<span class="w"> </span>list
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>git<span class="w"> </span>stash<span class="w"> </span>apply
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>git<span class="w"> </span>stash<span class="w"> </span>pop
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>git<span class="w"> </span>stash<span class="w"> </span>drop
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="c1"># History rewriting</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--no-edit
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>git<span class="w"> </span>filter-branch<span class="w"> </span>--tree-filter<span class="w"> </span><span class="s1">&#39;rm -f password.txt&#39;</span><span class="w"> </span>HEAD
+</code></pre></div>
+<h2 id="giai-oan-3-remote-repositories-thang-4">🌐 GIAI ĐOẠN 3: REMOTE REPOSITORIES (Tháng 4)<a class="headerlink" href="#giai-oan-3-remote-repositories-thang-4" title="Permanent link">&para;</a></h2>
+<h3 id="week-9-remote-repositories-setup">Week 9: Remote Repositories Setup<a class="headerlink" href="#week-9-remote-repositories-setup" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git remote add origin push pull"</li>
+<li>[ ] "Git clone vs fork difference"</li>
+<li>[ ] "Git remote upstream downstream"</li>
+<li>[ ] "SSH keys for Git authentication"</li>
+<li>[ ] "HTTPS vs SSH Git authentication"</li>
+<li>[ ] "Git credential manager setup"</li>
+<li>[ ] "Git remote URL change update"</li>
+<li>[ ] "Multiple Git remotes management"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Remote management</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>remote
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;url&gt;
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>&lt;url&gt;
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>&lt;new_url&gt;
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>git<span class="w"> </span>remote<span class="w"> </span>remove<span class="w"> </span>origin
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># SSH setup</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;email@example.com&quot;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>ssh-add<span class="w"> </span>~/.ssh/id_rsa
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Credential setup</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>cache
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>store
+</code></pre></div>
+<h3 id="week-10-push-pull-operations">Week 10: Push &amp; Pull Operations<a class="headerlink" href="#week-10-push-pull-operations" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git push pull fetch difference"</li>
+<li>[ ] "Git push force vs force-with-lease"</li>
+<li>[ ] "Git pull vs fetch and merge"</li>
+<li>[ ] "Git tracking branches setup"</li>
+<li>[ ] "Git push upstream set-upstream"</li>
+<li>[ ] "Git pull request workflow"</li>
+<li>[ ] "Git fetch all branches from remote"</li>
+<li>[ ] "Git push tags to remote repository"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Pushing</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature_branch
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>git<span class="w"> </span>push<span class="w"> </span>--all<span class="w"> </span>origin
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>git<span class="w"> </span>push<span class="w"> </span>--tags
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>git<span class="w"> </span>push<span class="w"> </span>--force-with-lease
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># Pulling and fetching</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>git<span class="w"> </span>fetch<span class="w"> </span>--all
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>git<span class="w"> </span>pull<span class="w"> </span>--rebase<span class="w"> </span>origin<span class="w"> </span>main
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="c1"># Tracking branches</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>git<span class="w"> </span>branch<span class="w"> </span>-u<span class="w"> </span>origin/main
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>feature_branch
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>git<span class="w"> </span>branch<span class="w"> </span>-vv
+</code></pre></div>
+<h3 id="week-11-collaboration-workflows">Week 11: Collaboration Workflows<a class="headerlink" href="#week-11-collaboration-workflows" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git workflow patterns comparison"</li>
+<li>[ ] "Centralized workflow Git"</li>
+<li>[ ] "Feature branch workflow"</li>
+<li>[ ] "Gitflow workflow branching model"</li>
+<li>[ ] "Forking workflow open source"</li>
+<li>[ ] "GitHub flow vs Git flow"</li>
+<li>[ ] "Git collaboration best practices"</li>
+<li>[ ] "Code review process with Git"</li>
+</ul>
+<p><strong>Workflow Patterns:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Feature Branch Workflow</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/new-feature
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># ... make changes ...</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature/new-feature
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># ... create pull request ...</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Gitflow commands (with git-flow extension)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>git<span class="w"> </span>flow<span class="w"> </span>init
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>git<span class="w"> </span>flow<span class="w"> </span>feature<span class="w"> </span>start<span class="w"> </span>new-feature
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>git<span class="w"> </span>flow<span class="w"> </span>feature<span class="w"> </span>finish<span class="w"> </span>new-feature
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>git<span class="w"> </span>flow<span class="w"> </span>release<span class="w"> </span>start<span class="w"> </span><span class="m">1</span>.0.0
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>git<span class="w"> </span>flow<span class="w"> </span>hotfix<span class="w"> </span>start<span class="w"> </span>critical-bug
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># Forking Workflow</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;your-fork&gt;
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>&lt;original-repo&gt;
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature-branch<span class="w"> </span>upstream/main
+</code></pre></div>
+<h3 id="week-12-conflict-resolution-collaboration">Week 12: Conflict Resolution &amp; Collaboration<a class="headerlink" href="#week-12-conflict-resolution-collaboration" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git merge conflicts advanced resolution"</li>
+<li>[ ] "Git rebase conflicts during collaboration"</li>
+<li>[ ] "Git conflict resolution tools comparison"</li>
+<li>[ ] "Git merge vs rebase in team environment"</li>
+<li>[ ] "Git hooks for team collaboration"</li>
+<li>[ ] "Git attributes configuration"</li>
+<li>[ ] "Large file handling Git LFS"</li>
+<li>[ ] "Git submodules vs subtrees"</li>
+</ul>
+<p><strong>Advanced Conflict Resolution:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Merge conflict tools</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>merge.tool<span class="w"> </span>kdiff3
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>merge.tool<span class="w"> </span>vscode
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>git<span class="w"> </span>mergetool<span class="w"> </span>--tool<span class="o">=</span>vimdiff
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="c1"># During conflicts</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>git<span class="w"> </span>status
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>git<span class="w"> </span>diff<span class="w"> </span>--ours<span class="w"> </span>filename
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>git<span class="w"> </span>diff<span class="w"> </span>--theirs<span class="w"> </span>filename
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>git<span class="w"> </span>checkout<span class="w"> </span>--ours<span class="w"> </span>filename
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>git<span class="w"> </span>checkout<span class="w"> </span>--theirs<span class="w"> </span>filename
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1"># Git LFS</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>git<span class="w"> </span>lfs<span class="w"> </span>install
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>git<span class="w"> </span>lfs<span class="w"> </span>track<span class="w"> </span><span class="s2">&quot;*.psd&quot;</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>git<span class="w"> </span>add<span class="w"> </span>.gitattributes
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>git<span class="w"> </span>add<span class="w"> </span>large_file.psd
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add large file&quot;</span>
+</code></pre></div>
+<h2 id="giai-oan-4-advanced-git-techniques-thang-5-6">🔧 GIAI ĐOẠN 4: ADVANCED GIT TECHNIQUES (Tháng 5-6)<a class="headerlink" href="#giai-oan-4-advanced-git-techniques-thang-5-6" title="Permanent link">&para;</a></h2>
+<h3 id="week-13-git-internals">Week 13: Git Internals<a class="headerlink" href="#week-13-git-internals" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git objects blob tree commit tag"</li>
+<li>[ ] "Git SHA-1 hash algorithm"</li>
+<li>[ ] "Git plumbing vs porcelain commands"</li>
+<li>[ ] "Git refs heads tags remotes"</li>
+<li>[ ] "Git packed objects and delta compression"</li>
+<li>[ ] "Git garbage collection and optimization"</li>
+<li>[ ] "Git repository structure .git folder"</li>
+<li>[ ] "Git index file format"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Plumbing commands</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>git<span class="w"> </span>cat-file<span class="w"> </span>-t<span class="w"> </span>&lt;hash&gt;
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>git<span class="w"> </span>cat-file<span class="w"> </span>-p<span class="w"> </span>&lt;hash&gt;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>git<span class="w"> </span>ls-tree<span class="w"> </span>HEAD
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>git<span class="w"> </span>symbolic-ref<span class="w"> </span>HEAD
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># Repository inspection</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>find<span class="w"> </span>.git/objects<span class="w"> </span>-type<span class="w"> </span>f
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>git<span class="w"> </span>count-objects<span class="w"> </span>-v
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>git<span class="w"> </span>fsck
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>git<span class="w"> </span>gc<span class="w"> </span>--aggressive
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1"># Low-level operations</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>git<span class="w"> </span>hash-object<span class="w"> </span>filename
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>git<span class="w"> </span>update-index<span class="w"> </span>--add<span class="w"> </span>filename
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>git<span class="w"> </span>write-tree
+</code></pre></div>
+<h3 id="week-14-git-hooks-automation">Week 14: Git Hooks &amp; Automation<a class="headerlink" href="#week-14-git-hooks-automation" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git hooks tutorial pre-commit post-commit"</li>
+<li>[ ] "Client-side vs server-side Git hooks"</li>
+<li>[ ] "Git pre-push hook prevent bad commits"</li>
+<li>[ ] "Git commit-msg hook enforce standards"</li>
+<li>[ ] "Husky Git hooks for JavaScript projects"</li>
+<li>[ ] "Git hooks continuous integration"</li>
+<li>[ ] "Git hook scripts bash Python"</li>
+<li>[ ] "Git hooks security and validation"</li>
+</ul>
+<p><strong>Hook Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Hook locations</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ls<span class="w"> </span>.git/hooks/
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Pre-commit hook example</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1">#!/bin/sh</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># .git/hooks/pre-commit</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>npm<span class="w"> </span><span class="nb">test</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tests must pass before commit!&quot;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="k">fi</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1"># Commit-msg hook</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="c1">#!/bin/sh</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="c1"># .git/hooks/commit-msg</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;^(feat|fix|docs|style|refactor|test|chore):&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Commit message must follow conventional commits format!&quot;</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="k">fi</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="c1"># Make hooks executable</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>chmod<span class="w"> </span>+x<span class="w"> </span>.git/hooks/pre-commit
+</code></pre></div>
+<h3 id="week-15-git-workflows-for-teams">Week 15: Git Workflows for Teams<a class="headerlink" href="#week-15-git-workflows-for-teams" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git team workflows comparison"</li>
+<li>[ ] "Trunk-based development with Git"</li>
+<li>[ ] "Release management with Git tags"</li>
+<li>[ ] "Semantic versioning with Git"</li>
+<li>[ ] "Git monorepo vs multiple repositories"</li>
+<li>[ ] "Git strategies for microservices"</li>
+<li>[ ] "Git branching policies enforcement"</li>
+<li>[ ] "Code review best practices Git"</li>
+</ul>
+<p><strong>Team Workflow Commands:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Release management</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release version 1.0.0&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>git<span class="w"> </span>tag<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;v*&quot;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>git<span class="w"> </span>checkout<span class="w"> </span>v1.0.0
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Semantic versioning</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>git<span class="w"> </span>describe<span class="w"> </span>--tags
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>git<span class="w"> </span>describe<span class="w"> </span>--tags<span class="w"> </span>--abbrev<span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1"># Protected branch workflow</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/JIRA-123
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature/JIRA-123
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1"># ... create pull request with required reviews ...</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="c1"># Squash merge workflow</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>git<span class="w"> </span>merge<span class="w"> </span>--squash<span class="w"> </span>feature/JIRA-123
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: add new feature (JIRA-123)&quot;</span>
+</code></pre></div>
+<h3 id="week-16-git-performance-optimization">Week 16: Git Performance &amp; Optimization<a class="headerlink" href="#week-16-git-performance-optimization" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git large repository optimization"</li>
+<li>[ ] "Git shallow clone for CI/CD"</li>
+<li>[ ] "Git partial clone and sparse checkout"</li>
+<li>[ ] "Git LFS large file storage"</li>
+<li>[ ] "Git bundle for offline transfer"</li>
+<li>[ ] "Git maintenance and housekeeping"</li>
+<li>[ ] "Git alternates share objects"</li>
+<li>[ ] "Git worktree multiple working directories"</li>
+</ul>
+<p><strong>Performance Commands:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Shallow clones</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;url&gt;
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>git<span class="w"> </span>clone<span class="w"> </span>--shallow-since<span class="o">=</span><span class="s2">&quot;2 years ago&quot;</span><span class="w"> </span>&lt;url&gt;
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># Sparse checkout</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>git<span class="w"> </span>config<span class="w"> </span>core.sparseCheckout<span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;src/&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>.git/info/sparse-checkout
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>git<span class="w"> </span>read-tree<span class="w"> </span>-m<span class="w"> </span>-u<span class="w"> </span>HEAD
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># Worktrees</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>git<span class="w"> </span>worktree<span class="w"> </span>add<span class="w"> </span>../feature-branch<span class="w"> </span>feature-branch
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>git<span class="w"> </span>worktree<span class="w"> </span>list
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>git<span class="w"> </span>worktree<span class="w"> </span>remove<span class="w"> </span>../feature-branch
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1"># Bundle operations</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>git<span class="w"> </span>bundle<span class="w"> </span>create<span class="w"> </span>repo.bundle<span class="w"> </span>HEAD<span class="w"> </span>main
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>git<span class="w"> </span>clone<span class="w"> </span>repo.bundle<span class="w"> </span>repo-copy
+</code></pre></div>
+<h2 id="giai-oan-5-git-expertise-thang-7-8">🚀 GIAI ĐOẠN 5: GIT EXPERTISE (Tháng 7-8)<a class="headerlink" href="#giai-oan-5-git-expertise-thang-7-8" title="Permanent link">&para;</a></h2>
+<h3 id="week-17-advanced-git-commands">Week 17: Advanced Git Commands<a class="headerlink" href="#week-17-advanced-git-commands" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git blame annotate code changes"</li>
+<li>[ ] "Git grep search in repository history"</li>
+<li>[ ] "Git log advanced filtering options"</li>
+<li>[ ] "Git shortlog contributor statistics"</li>
+<li>[ ] "Git notes add metadata to commits"</li>
+<li>[ ] "Git archive create project snapshots"</li>
+<li>[ ] "Git describe version from tags"</li>
+<li>[ ] "Git bisect automated bug hunting"</li>
+</ul>
+<p><strong>Commands để practice:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Code investigation</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>git<span class="w"> </span>blame<span class="w"> </span>filename
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>git<span class="w"> </span>blame<span class="w"> </span>-L<span class="w"> </span><span class="m">10</span>,20<span class="w"> </span>filename
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>git<span class="w"> </span>annotate<span class="w"> </span>filename
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># Searching</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>git<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;function_name&quot;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>git<span class="w"> </span>grep<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;TODO&quot;</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>git<span class="w"> </span>log<span class="w"> </span>-S<span class="w"> </span><span class="s2">&quot;search_term&quot;</span><span class="w"> </span>--oneline
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>git<span class="w"> </span>log<span class="w"> </span>--grep<span class="o">=</span><span class="s2">&quot;bug&quot;</span><span class="w"> </span>--author<span class="o">=</span><span class="s2">&quot;john&quot;</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1"># Statistics</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>git<span class="w"> </span>shortlog<span class="w"> </span>-s<span class="w"> </span>-n
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>git<span class="w"> </span>log<span class="w"> </span>--pretty<span class="o">=</span>format:<span class="s2">&quot;%an&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1"># Automated debugging</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>git<span class="w"> </span>bisect<span class="w"> </span>start
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>git<span class="w"> </span>bisect<span class="w"> </span>bad<span class="w"> </span>HEAD
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>git<span class="w"> </span>bisect<span class="w"> </span>good<span class="w"> </span>v1.0
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>git<span class="w"> </span>bisect<span class="w"> </span>run<span class="w"> </span>test_script.sh
+</code></pre></div>
+<h3 id="week-18-git-integration-tools">Week 18: Git Integration &amp; Tools<a class="headerlink" href="#week-18-git-integration-tools" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git IDE integration VSCode IntelliJ"</li>
+<li>[ ] "Git GUI tools comparison"</li>
+<li>[ ] "Git aliases and shortcuts"</li>
+<li>[ ] "Git and continuous integration"</li>
+<li>[ ] "Git with Docker containers"</li>
+<li>[ ] "Git server setup GitLab Gitea"</li>
+<li>[ ] "Git migration from SVN Perforce"</li>
+<li>[ ] "Git backup and disaster recovery"</li>
+</ul>
+<p><strong>Integration Setup:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Git aliases</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.st<span class="w"> </span>status
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.co<span class="w"> </span>checkout
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.br<span class="w"> </span>branch
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.ci<span class="w"> </span>commit
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.unstage<span class="w"> </span><span class="s1">&#39;reset HEAD --&#39;</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.last<span class="w"> </span><span class="s1">&#39;log -1 HEAD&#39;</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.visual<span class="w"> </span><span class="s1">&#39;!gitk&#39;</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1"># Advanced aliases</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.lg<span class="w"> </span><span class="s2">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="c1"># Git in CI/CD</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="c1"># .github/workflows/main.yml</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>git<span class="w"> </span>fetch<span class="w"> </span>--prune<span class="w"> </span>--unshallow
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>git<span class="w"> </span>describe<span class="w"> </span>--tags<span class="w"> </span>--exact-match<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span>git<span class="w"> </span>symbolic-ref<span class="w"> </span>-q<span class="w"> </span>--short<span class="w"> </span>HEAD
+</code></pre></div>
+<h3 id="week-19-git-security-best-practices">Week 19: Git Security &amp; Best Practices<a class="headerlink" href="#week-19-git-security-best-practices" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git security best practices"</li>
+<li>[ ] "Git commit signing GPG keys"</li>
+<li>[ ] "Git credential security management"</li>
+<li>[ ] "Git secrets detection prevention"</li>
+<li>[ ] "Git repository audit and compliance"</li>
+<li>[ ] "Git access control and permissions"</li>
+<li>[ ] "Git vulnerability assessment"</li>
+<li>[ ] "Git forensics and investigation"</li>
+</ul>
+<p><strong>Security Commands:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># GPG signing</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>gpg<span class="w"> </span>--gen-key
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.signingkey<span class="w"> </span>&lt;key-id&gt;
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>commit.gpgsign<span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-S<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;signed commit&quot;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>git<span class="w"> </span>log<span class="w"> </span>--show-signature
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># Credential security</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>manager
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>git<span class="w"> </span>credential-manager-core<span class="w"> </span>configure
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>git-secrets<span class="w"> </span>--install
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>git-secrets<span class="w"> </span>--register-aws
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="c1"># Repository audit</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span>fuller
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>git<span class="w"> </span>log<span class="w"> </span>--all<span class="w"> </span>--full-history<span class="w"> </span>--<span class="w"> </span>sensitive-file
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--index-filter<span class="w"> </span><span class="s1">&#39;git rm --cached --ignore-unmatch sensitive-file&#39;</span><span class="w"> </span>--prune-empty<span class="w"> </span>--tag-name-filter<span class="w"> </span>cat<span class="w"> </span>--<span class="w"> </span>--all
+</code></pre></div>
+<h3 id="week-20-git-mastery-projects">Week 20: Git Mastery Projects<a class="headerlink" href="#week-20-git-mastery-projects" title="Permanent link">&para;</a></h3>
+<p><strong>Search Keywords để học:</strong></p>
+<ul>
+<li>[ ] "Git workflow automation scripts"</li>
+<li>[ ] "Git repository analysis tools"</li>
+<li>[ ] "Custom Git commands development"</li>
+<li>[ ] "Git extension development"</li>
+<li>[ ] "Git server administration"</li>
+<li>[ ] "Git migration strategies"</li>
+<li>[ ] "Git training and mentoring"</li>
+<li>[ ] "Git troubleshooting complex issues"</li>
+</ul>
+<p><strong>Master-level Projects:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Custom Git commands</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># Create script: git-feature</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1">#!/bin/bash</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/<span class="nv">$1</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feature/<span class="nv">$1</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Make executable and add to PATH</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>chmod<span class="w"> </span>+x<span class="w"> </span>git-feature
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1"># Now can use: git feature new-awesome-feature</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="c1"># Repository statistics script</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1">#!/bin/bash</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Repository Statistics:&quot;</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Total commits: </span><span class="k">$(</span>git<span class="w"> </span>rev-list<span class="w"> </span>--all<span class="w"> </span>--count<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Contributors: </span><span class="k">$(</span>git<span class="w"> </span>shortlog<span class="w"> </span>-s<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Total files: </span><span class="k">$(</span>git<span class="w"> </span>ls-files<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Repository size: </span><span class="k">$(</span>du<span class="w"> </span>-sh<span class="w"> </span>.git<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h2 id="learning-resources-by-category">📚 LEARNING RESOURCES BY CATEGORY<a class="headerlink" href="#learning-resources-by-category" title="Permanent link">&para;</a></h2>
+<h3 id="video-courses">🎥 Video Courses<a class="headerlink" href="#video-courses" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"Git Complete: The Definitive Guide" - Udemy</li>
+<li>"Git Going Fast: One Hour Git Crash Course" - Udemy</li>
+<li>"Git and GitHub for Beginners - Crash Course" - freeCodeCamp</li>
+<li>"Advanced Git Tutorials" - Atlassian</li>
+<li>"Pro Git Concepts" - Pluralsight</li>
+</ul>
+<h3 id="books-to-read">📖 Books to Read<a class="headerlink" href="#books-to-read" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"Pro Git" - Scott Chacon (Free online)</li>
+<li>"Git Pocket Guide" - Richard E. Silverman</li>
+<li>"Version Control with Git" - Jon Loeliger</li>
+<li>"Git Internals" - Scott Chacon</li>
+<li>"Learn Version Control with Git" - Tower</li>
+</ul>
+<h3 id="practice-platforms">🛠️ Practice Platforms<a class="headerlink" href="#practice-platforms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"Learn Git Branching" - Interactive visual tutorial</li>
+<li>"Git-it Desktop App" - Hands-on Git tutorial</li>
+<li>"Katacoda Git Scenarios" - Browser-based practice</li>
+<li>"GitHub Learning Lab" - Interactive courses</li>
+<li>"Oh My Git!" - Game to learn Git</li>
+</ul>
+<h3 id="git-certifications-assessments">🏅 Git Certifications &amp; Assessments<a class="headerlink" href="#git-certifications-assessments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>GitHub Certified Developer</li>
+<li>Atlassian Git Skills Assessment</li>
+<li>GitLab Certified Git Associate</li>
+<li>Stack Overflow Developer Survey Git Section</li>
+</ul>
+<h2 id="daily-practice-checklist">✅ DAILY PRACTICE CHECKLIST<a class="headerlink" href="#daily-practice-checklist" title="Permanent link">&para;</a></h2>
+<h3 id="morning-warm-up-15-mins">Morning Warm-up (15 mins)<a class="headerlink" href="#morning-warm-up-15-mins" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Practice 5 Git commands from memory</li>
+<li>[ ] Review Git status of current projects</li>
+<li>[ ] Read 1 Git tip or best practice</li>
+<li>[ ] Check Git configuration settings</li>
+</ul>
+<h3 id="active-practice-30-45-mins">Active Practice (30-45 mins)<a class="headerlink" href="#active-practice-30-45-mins" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Work on Git exercises from tutorial sites</li>
+<li>[ ] Practice advanced Git scenarios</li>
+<li>[ ] Experiment with new Git commands</li>
+<li>[ ] Contribute to open source projects</li>
+</ul>
+<h3 id="evening-review-15-mins">Evening Review (15 mins)<a class="headerlink" href="#evening-review-15-mins" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Document new Git commands learned</li>
+<li>[ ] Review Git aliases and shortcuts</li>
+<li>[ ] Plan next day's Git learning topics</li>
+<li>[ ] Update personal Git cheat sheet</li>
+</ul>
+<h2 id="git-mastery-milestones">🎯 GIT MASTERY MILESTONES<a class="headerlink" href="#git-mastery-milestones" title="Permanent link">&para;</a></h2>
+<h3 id="month-1-2-foundation">Month 1-2: Foundation<a class="headerlink" href="#month-1-2-foundation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Understand Git fundamentals</li>
+<li>[ ] Master basic Git workflow</li>
+<li>[ ] Comfortable with branching and merging</li>
+<li>[ ] Can resolve simple conflicts</li>
+</ul>
+<h3 id="month-3-4-intermediate">Month 3-4: Intermediate<a class="headerlink" href="#month-3-4-intermediate" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Proficient with rebasing</li>
+<li>[ ] Understand remote repositories</li>
+<li>[ ] Can collaborate effectively</li>
+<li>[ ] Know multiple Git workflows</li>
+</ul>
+<h3 id="month-5-6-advanced">Month 5-6: Advanced<a class="headerlink" href="#month-5-6-advanced" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Understand Git internals</li>
+<li>[ ] Can write Git hooks</li>
+<li>[ ] Optimize Git performance</li>
+<li>[ ] Handle complex scenarios</li>
+</ul>
+<h3 id="month-7-8-expert">Month 7-8: Expert<a class="headerlink" href="#month-7-8-expert" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Master all Git commands</li>
+<li>[ ] Can teach Git to others</li>
+<li>[ ] Automate Git workflows</li>
+<li>[ ] Contribute to Git ecosystem</li>
+</ul>
+<p><strong>Git Mastery Philosophy</strong>: "Version control is not just about code, it's about understanding the evolution of your project!"</p>
+<h2 id="quick-start-action-plan">🚀 Quick Start Action Plan<a class="headerlink" href="#quick-start-action-plan" title="Permanent link">&para;</a></h2>
+<h3 id="day-1-setup-first-steps">Day 1: Setup &amp; First Steps<a class="headerlink" href="#day-1-setup-first-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Install Git and configure basic settings</li>
+<li>Create your first repository</li>
+<li>Make your first commits</li>
+<li>Connect to GitHub/GitLab</li>
+</ol>
+<h3 id="week-1-goals">Week 1 Goals<a class="headerlink" href="#week-1-goals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Complete basic Git tutorial</li>
+<li>[ ] Set up Git aliases for efficiency</li>
+<li>[ ] Join Git community forums</li>
+<li>[ ] Start using Git for personal projects</li>
+</ul>
+<h3 id="month-1-targets">Month 1 Targets<a class="headerlink" href="#month-1-targets" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Master fundamental Git commands</li>
+<li>[ ] Complete first collaborative project</li>
+<li>[ ] Resolve first merge conflict</li>
+<li>[ ] Write first Git hook</li>
+</ul>
+<p><strong>Remember</strong>: Git mastery comes from daily practice and real-world application. Break things in a safe environment to learn how to fix them!</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 6, 2025 10:09:57 UTC">20 tháng 6, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="lelongc/devops"
+        data-repo-id="R_kgDOOg304w"
+        data-category="Q&A"
+        data-category-id="DIC_kwDOOg30484Cpie6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark"
+        data-lang="vi"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
+        
+          
+          <a href="../../docker/roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Docker Mastery Roadmap - Chỉ tập trung Docker">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Docker Mastery Roadmap - Chỉ tập trung Docker
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../iac/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Infrastructure as Code Complete Learning Roadmap">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Infrastructure as Code Complete Learning Roadmap
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
