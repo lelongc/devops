@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lelongc.github.io/devops/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/cicd/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/git/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/iac/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/01.cluster-architecture/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/02-03.docker-containerd/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/01.core/04.etcd/</loc>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/linux/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/network/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/observability/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/security/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/testing/roadmap/</loc>
-         <lastmod>2025-06-20</lastmod>
+         <lastmod>2025-06-23</lastmod>
     </url>
 </urlset>
