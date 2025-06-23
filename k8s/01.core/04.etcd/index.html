@@ -14,7 +14,7 @@
         <link rel="prev" href="../02-03.docker-containerd/">
       
       
-        <link rel="next" href="../../../linux/roadmap/">
+        <link rel="next" href="../05.kube-api-server/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -836,6 +836,8 @@
       
         
       
+        
+      
     
     
     
@@ -1020,10 +1022,147 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Vai trò của etcd trong Kubernetes - "Bộ não" của Cụm 🧠
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cach-etcd-uoc-trien-khai-trong-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Cách etcd được triển khai trong Kubernetes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cách etcd được triển khai trong Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-trien-khai-thu-cong-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Triển khai "Thủ công" (From Scratch)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-trien-khai-bang-kubeadm-cach-de-hon" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Triển khai bằng kubeadm (Cách dễ hơn)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-du-lieu-uoc-luu-tru-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dữ liệu được lưu trữ như thế nào? 📂
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-etcd-trong-moi-truong-high-availability-ha" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. etcd trong môi trường High Availability (HA) 🏰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-chot-ha-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. "Chốt hạ" cho Kỳ thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-etcdctl-vu-khi-tuong-tac-voi-etcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. etcdctl - "Vũ khí" tương tác với etcd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hai-the-gioi-api-version-2-vs-version-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Hai "Thế giới" API: Version 2 vs. Version 3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-giay-thong-hanh-xac-thuc-bang-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Giấy thông hành" - Xác thực bằng Certificate 🔑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cu-phap-full-option-lenh-etcdctl-hoan-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cú pháp "Full Option" - Lệnh etcdctl hoàn chỉnh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.kube-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.kube api server
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1373,6 +1512,120 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Vai trò của etcd trong Kubernetes - "Bộ não" của Cụm 🧠
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cach-etcd-uoc-trien-khai-trong-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Cách etcd được triển khai trong Kubernetes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cách etcd được triển khai trong Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-trien-khai-thu-cong-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Triển khai "Thủ công" (From Scratch)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-trien-khai-bang-kubeadm-cach-de-hon" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Triển khai bằng kubeadm (Cách dễ hơn)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-du-lieu-uoc-luu-tru-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dữ liệu được lưu trữ như thế nào? 📂
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-etcd-trong-moi-truong-high-availability-ha" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. etcd trong môi trường High Availability (HA) 🏰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-chot-ha-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. "Chốt hạ" cho Kỳ thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-etcdctl-vu-khi-tuong-tac-voi-etcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. etcdctl - "Vũ khí" tương tác với etcd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hai-the-gioi-api-version-2-vs-version-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Hai "Thế giới" API: Version 2 vs. Version 3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-giay-thong-hanh-xac-thuc-bang-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Giấy thông hành" - Xác thực bằng Certificate 🔑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cu-phap-full-option-lenh-etcdctl-hoan-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cú pháp "Full Option" - Lệnh etcdctl hoàn chỉnh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1435,10 +1688,8 @@
 <ol>
 <li><strong>Tải về (Download):</strong> Lấy file nhị phân (binary) phù hợp với hệ điều hành của bạn từ trang GitHub của <code>etcd</code>.</li>
 <li><strong>Giải nén (Unzip):</strong> Giải nén file vừa tải.</li>
-<li><strong>Chạy (Run):</strong> Chạy file thực thi <code>etcd</code>.<ul>
+<li><strong>Chạy (Run):</strong> Chạy file thực thi <code>etcd</code>.</li>
 <li>Mặc định, <code>etcd</code> sẽ khởi động một dịch vụ và lắng nghe trên cổng <strong><code>2379</code></strong>.</li>
-</ul>
-</li>
 </ol>
 <p>Sau khi chạy, bạn có thể dùng một "client" để giao tiếp với nó. Client mặc định đi kèm là <strong><code>etcdctl</code></strong>.</p>
 <hr />
@@ -1504,6 +1755,131 @@
 <li>Việc cài đặt và chạy nó khá đơn giản, mặc định ở cổng <strong>2379</strong>.</li>
 <li>Khi sử dụng <code>etcdctl</code>, hãy luôn chắc chắn rằng bạn đang làm việc với <strong>API v3</strong> bằng cách kiểm tra (<code>etcdctl version</code>) và thiết lập biến môi trường (<code>export ETCDCTL_API=3</code>). Đây là mẹo thực tế quan trọng nhất để tránh lỗi không đáng có.</li>
 </ul>
+<h2 id="1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum">1. Vai trò của <code>etcd</code> trong Kubernetes - "Bộ não" của Cụm 🧠<a class="headerlink" href="#1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum" title="Permanent link">&para;</a></h2>
+<p>Trong một cụm Kubernetes, <strong><code>etcd</code> chính là nguồn chân lý duy nhất (single source of truth)</strong> .</p>
+<ul>
+<li>Nó lưu trữ <strong>TOÀN BỘ thông tin</strong> về cụm, bao gồm:</li>
+<li>Nodes, Pods, Configs, Secrets, Accounts, Roles, Role Bindings, và nhiều thứ khác.</li>
+<li>Mọi thông tin bạn thấy khi chạy lệnh <code>kubectl get ...</code> đều được lấy từ <code>etcd</code>.</li>
+<li>Mọi thay đổi bạn thực hiện với cụm (thêm node, triển khai pod,...) chỉ được coi là <strong>hoàn tất</strong> khi nó đã được cập nhật thành công vào <code>etcd</code>.</li>
+</ul>
+<hr />
+<h2 id="2-cach-etcd-uoc-trien-khai-trong-kubernetes">2. Cách <code>etcd</code> được triển khai trong Kubernetes<a class="headerlink" href="#2-cach-etcd-uoc-trien-khai-trong-kubernetes" title="Permanent link">&para;</a></h2>
+<p><code>etcd</code> được cài đặt như thế nào còn phụ thuộc vào cách bạn dựng cụm Kubernetes của mình. Có hai cách chính:</p>
+<h3 id="a-trien-khai-thu-cong-from-scratch">a. Triển khai "Thủ công" (From Scratch)<a class="headerlink" href="#a-trien-khai-thu-cong-from-scratch" title="Permanent link">&para;</a></h3>
+<p>Đây là cách bạn tự tay làm mọi thứ.</p>
+<ul>
+<li>Bạn sẽ phải tự tải file nhị phân (binary) của <code>etcd</code> về.</li>
+<li>Tự cài đặt và cấu hình <code>etcd</code> như một service chạy trên Master Node.</li>
+<li>Khi cấu hình, có một tham số rất quan trọng cần lưu ý:</li>
+<li><strong><code>--advertise-client-urls</code></strong> : Đây là địa chỉ mà <code>etcd</code> sẽ lắng nghe các kết nối từ client (ví dụ: <code>https://&lt;IP-của-master-node&gt;:2379</code>).</li>
+<li><code>kube-api-server</code> (thành phần trung tâm của Kubernetes) phải được cấu hình để trỏ đến đúng URL này thì mới có thể nói chuyện được với <code>etcd</code>.</li>
+</ul>
+<h3 id="b-trien-khai-bang-kubeadm-cach-de-hon">b. Triển khai bằng <code>kubeadm</code> (Cách dễ hơn)<a class="headerlink" href="#b-trien-khai-bang-kubeadm-cach-de-hon" title="Permanent link">&para;</a></h3>
+<p><code>kubeadm</code> là một công cụ giúp tự động hóa việc cài đặt cụm Kubernetes.</p>
+<ul>
+<li>Khi bạn dùng <code>kubeadm</code>, nó sẽ <strong>tự động triển khai <code>etcd</code> cho bạn</strong> .</li>
+<li>Điều đặc biệt là <code>etcd</code> sẽ được triển khai dưới dạng một <strong>Pod</strong> chạy trong namespace <strong><code>kube-system</code></strong> .</li>
+<li>Nếu muốn tương tác với <code>etcd</code> bằng <code>etcdctl</code>, bạn sẽ cần phải thực hiện lệnh <em>bên trong</em> Pod <code>etcd</code> đó.</li>
+</ul>
+<hr />
+<h2 id="3-du-lieu-uoc-luu-tru-nhu-the-nao">3. Dữ liệu được lưu trữ như thế nào? 📂<a class="headerlink" href="#3-du-lieu-uoc-luu-tru-nhu-the-nao" title="Permanent link">&para;</a></h2>
+<p>Kubernetes không lưu dữ liệu một cách lộn xộn trong <code>etcd</code>. Nó tổ chức theo một cấu trúc thư mục cụ thể:</p>
+<ul>
+<li>Thư mục gốc là <code>/registry</code>.</li>
+<li>Bên dưới là các thư mục con cho từng loại tài nguyên, ví dụ:</li>
+<li><code>/registry/nodes</code></li>
+<li><code>/registry/pods</code></li>
+<li><code>/registry/deployments</code></li>
+<li>...</li>
+</ul>
+<hr />
+<h2 id="4-etcd-trong-moi-truong-high-availability-ha">4. <code>etcd</code> trong môi trường High Availability (HA) 🏰<a class="headerlink" href="#4-etcd-trong-moi-truong-high-availability-ha" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Trong một môi trường HA, bạn sẽ có nhiều Master Node để dự phòng cho nhau.</li>
+<li>Tương ứng, bạn cũng sẽ có nhiều instance <code>etcd</code> chạy trên các Master Node này, tạo thành một cụm <code>etcd</code> (etcd cluster).</li>
+<li>Để các instance <code>etcd</code> này biết về nhau và hoạt động như một cụm, bạn cần cấu hình tham số <strong><code>--initial-cluster</code></strong> . Tham số này sẽ liệt kê địa chỉ của tất cả các thành viên trong cụm <code>etcd</code>.</li>
+</ul>
+<hr />
+<h2 id="5-chot-ha-cho-ky-thi">5. "Chốt hạ" cho Kỳ thi 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>etcd</code> là cơ sở dữ liệu, là trái tim, là bộ não của Kubernetes</strong> , lưu trữ mọi trạng thái của cụm.</li>
+<li>Hiểu rõ hai phương pháp triển khai chính:</li>
+<li><strong>Thủ công (From Scratch):</strong> Bạn tự cài, nhớ tham số <code>--advertise-client-urls</code>.</li>
+<li><strong>Dùng <code>kubeadm</code>:</strong> <code>etcd</code> được triển khai như một <strong>Pod</strong> trong namespace <code>kube-system</code>.</li>
+<li>Trong môi trường HA, <code>etcd</code> chạy dưới dạng một cụm (cluster) và được cấu hình qua tham số <code>--initial-cluster</code>.</li>
+</ul>
+<hr />
+<h2 id="1-etcdctl-vu-khi-tuong-tac-voi-etcd">1. <code>etcdctl</code> - "Vũ khí" tương tác với <code>etcd</code><a class="headerlink" href="#1-etcdctl-vu-khi-tuong-tac-voi-etcd" title="Permanent link">&para;</a></h2>
+<p>Như chúng ta đã biết, <strong><code>etcdctl</code></strong> là công cụ dòng lệnh (CLI) để "nói chuyện" với cơ sở dữ liệu <code>etcd</code>. Tuy nhiên, để "nói chuyện" thành công, bạn cần biết hai điều quan trọng: "ngôn ngữ" và "giấy thông hành".</p>
+<hr />
+<h2 id="2-hai-the-gioi-api-version-2-vs-version-3">2. Hai "Thế giới" API: Version 2 vs. Version 3<a class="headerlink" href="#2-hai-the-gioi-api-version-2-vs-version-3" title="Permanent link">&para;</a></h2>
+<p><code>etcdctl</code> có thể giao tiếp với <code>etcd</code> server bằng 2 phiên bản API: v2 và v3. Điều quan trọng là <strong>bộ lệnh của hai phiên bản này khác nhau</strong> .</p>
+<table>
+<thead>
+<tr>
+<th><strong>Tác vụ</strong></th>
+<th><strong>Lệnh API v2</strong></th>
+<th><strong>Lệnh API v3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lưu giá trị</strong></td>
+<td><code>etcdctl set</code></td>
+<td><code>etcdctl put</code></td>
+</tr>
+<tr>
+<td><strong>Backup</strong></td>
+<td><code>etcdctl backup</code></td>
+<td><code>etcdctl snapshot save</code></td>
+</tr>
+<tr>
+<td><strong>Kiểm tra "sức khỏe"</strong></td>
+<td><code>etcdctl cluster-health</code></td>
+<td><code>etcdctl endpoint health</code></td>
+</tr>
+</tbody>
+</table>
+<p>Mặc định, <code>etcdctl</code> có thể được cấu hình để dùng API v2. Khi đó, nếu bạn gõ lệnh của v3 (ví dụ: <code>put</code>), nó sẽ báo lỗi và ngược lại.</p>
+<p>👉 Làm thế nào để chắc chắn dùng API v3?</p>
+<p>Cách tốt nhất là đặt biến môi trường sau cho phiên làm việc của bạn:</p>
+<p><strong>Bash</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>export ETCDCTL_API=3
+</code></pre></div>
+<hr />
+<h2 id="3-giay-thong-hanh-xac-thuc-bang-certificate">3. "Giấy thông hành" - Xác thực bằng Certificate 🔑<a class="headerlink" href="#3-giay-thong-hanh-xac-thuc-bang-certificate" title="Permanent link">&para;</a></h2>
+<p>Trong một cụm Kubernetes được cài đặt đúng cách, <code>etcd</code> server sẽ yêu cầu xác thực an toàn. Bạn không thể "tay không" vào nói chuyện được mà cần có "giấy thông hành" là các file certificate.</p>
+<p><code>etcdctl</code> cần bạn chỉ định đường dẫn đến 3 file certificate quan trọng:</p>
+<ul>
+<li><code>--cacert</code>: Đường dẫn đến file CA certificate của <code>etcd</code> (ví dụ: <code>/etc/kubernetes/pki/etcd/ca.crt</code>). Dùng để xác thực <code>etcd</code> server.</li>
+<li><code>--cert</code>: Đường dẫn đến file certificate của client (ví dụ: <code>/etc/kubernetes/pki/etcd/server.crt</code>). Dùng để <code>etcd</code> server xác thực bạn.</li>
+<li><code>--key</code>: Đường dẫn đến file key riêng của client (ví dụ: <code>/etc/kubernetes/pki/etcd/server.key</code>).</li>
+</ul>
+<p><em>Lưu ý: Trong một cụm <code>kubeadm</code>, các file này thường nằm ở đường dẫn <code>/etc/kubernetes/pki/etcd/</code> trên master node.</em></p>
+<hr />
+<h2 id="4-cu-phap-full-option-lenh-etcdctl-hoan-chinh">4. Cú pháp "Full Option" - Lệnh <code>etcdctl</code> hoàn chỉnh<a class="headerlink" href="#4-cu-phap-full-option-lenh-etcdctl-hoan-chinh" title="Permanent link">&para;</a></h2>
+<p>Kết hợp tất cả những điều trên, một lệnh <code>etcdctl</code> hoàn chỉnh để tương tác với <code>etcd</code> (đang chạy dưới dạng Pod trong một cụm <code>kubeadm</code>) sẽ trông như thế này:</p>
+<p><strong>Bash</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl exec etcd-master -n kube-system -- sh -c &quot;ETCDCTL_API=3 etcdctl get / --prefix --keys-only --limit=10 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key&quot;
+</code></pre></div>
+<p>Hãy "mổ xẻ" nó:</p>
+<ul>
+<li><code>kubectl exec etcd-master -n kube-system --</code>: Chạy một lệnh bên trong Pod tên là <code>etcd-master</code> thuộc namespace <code>kube-system</code>.</li>
+<li><code>sh -c "..."</code>: Thực thi chuỗi lệnh bên trong dấu ngoặc kép.</li>
+<li><code>ETCDCTL_API=3</code>: Đảm bảo chúng ta đang dùng API v3.</li>
+<li><code>etcdctl get / --prefix --keys-only --limit=10</code>: Lệnh <code>etcdctl</code> thực tế để lấy 10 key đầu tiên từ thư mục gốc.</li>
+<li><code>--cacert ... --cert ... --key ...</code>: Cung cấp 3 "giấy thông hành" cần thiết để xác thực.</li>
+</ul>
+<hr />
+<h2 id="5-chot-ha-cho-ky-thi-cka">5. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h2>
+<p>Khi làm bài thi CKA, nếu bạn cần tương tác trực tiếp với <code>etcd</code> bằng <code>etcdctl</code>, hãy luôn nhớ "thần chú" 3 điều sau:</p>
+<ol>
+<li><strong>Phiên bản API:</strong> Luôn đặt <code>ETCDCTL_API=3</code>.</li>
+<li><strong>Certificate:</strong> Luôn cung cấp đủ 3 tham số <code>--cacert</code>, <code>--cert</code>, và <code>--key</code> với đường dẫn chính xác.</li>
+<li><strong>Thực thi trong Pod:</strong> Nếu <code>etcd</code> chạy như một Pod, bạn phải dùng <code>kubectl exec</code> để vào trong Pod đó và thực thi lệnh.</li>
+</ol>
+<p>Quên một trong những điều này gần như chắc chắn sẽ khiến lệnh của bạn thất bại. Hy vọng phần giải thích chi tiết này sẽ giúp bạn tự tin hơn khi làm việc với <code>etcd</code>! Chúc bạn buổi chiều học tập hiệu quả!</p>
 
 
 
@@ -1524,7 +1900,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 tháng 6, 2025 09:15:25 UTC">23 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 tháng 6, 2025 10:08:53 UTC">23 tháng 6, 2025</span>
   </span>
 
     
@@ -1627,13 +2003,13 @@
         
         
           
-          <a href="../../../linux/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux Complete Learning Roadmap - Chi tiết từng topic">
+          <a href="../05.kube-api-server/" class="md-footer__link md-footer__link--next" aria-label="Sau: 05.kube api server">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Linux Complete Learning Roadmap - Chi tiết từng topic
+                05.kube api server
               </div>
             </div>
             <div class="md-footer__button md-icon">
