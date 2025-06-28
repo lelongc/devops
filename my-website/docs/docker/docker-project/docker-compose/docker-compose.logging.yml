@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Elasticsearch
+  elasticsearch:
+    build:
+      context: ../logging/elasticsearch
+      dockerfile: Dockerfile
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+      - xpack.security.enabled=false
+      - xpack.monitoring.collection.enabled=true
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+      - ../logging/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    networks:
+      - logging
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+
+  # Logstash
+  logstash:
+    build:
+      context: ../logging/logstash
+      dockerfile: Dockerfile
+    ports:
+      - "5044:5044"
+      - "5045:5045"
+      - "9600:9600"
+    environment:
+      - "LS_JAVA_OPTS=-Xms1g -Xmx1g"
+    volumes:
+      - ../logging/logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ../logging/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    depends_on:
+      - elasticsearch
+    networks:
+      - logging
+    restart: unless-stopped
+
+  # Kibana
+  kibana:
+    build:
+      context: ../logging/kibana
+      dockerfile: Dockerfile
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    volumes:
+      - ../logging/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+    depends_on:
+      - elasticsearch
+    networks:
+      - logging
+    restart: unless-stopped
+
+  # Filebeat
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.8.0
+    user: root
+    volumes:
+      - ../logging/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: filebeat -e -strict.perms=false
+    depends_on:
+      - logstash
+    networks:
+      - logging
+    restart: unless-stopped
+
+volumes:
+  elasticsearch_data:
+
+networks:
+  logging:
+    driver: bridge

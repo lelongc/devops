@@ -1,0 +1,28 @@
+FROM node:18-alpine
+
+# Install testing dependencies
+RUN apk add --no-cache curl
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including dev)
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Install global testing tools
+RUN npm install -g jest supertest
+
+# Expose port for test server
+EXPOSE 5000
+
+# Health check for tests
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5000/health || exit 1
+
+# Default command for tests
+CMD ["npm", "test"]

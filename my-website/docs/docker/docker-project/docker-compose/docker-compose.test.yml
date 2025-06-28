@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  # Test Database
+  postgres-test:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=test_db
+      - POSTGRES_USER=test_user
+      - POSTGRES_PASSWORD=test_pass
+    tmpfs:
+      - /var/lib/postgresql/data
+    networks:
+      - test-network
+
+  # Test Redis
+  redis-test:
+    image: redis:7-alpine
+    tmpfs:
+      - /data
+    networks:
+      - test-network
+
+  # Backend Tests
+  backend-test:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.test
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgresql://test_user:test_pass@postgres-test:5432/test_db
+      - REDIS_URL=redis://redis-test:6379
+    depends_on:
+      - postgres-test
+      - redis-test
+    networks:
+      - test-network
+    command: npm test
+    volumes:
+      - ../backend:/app
+      - /app/node_modules
+
+  # Frontend Tests
+  frontend-test:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile.test
+    environment:
+      - CI=true
+      - REACT_APP_API_URL=http://backend-test:5000
+    networks:
+      - test-network
+    command: npm test -- --coverage --watchAll=false
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+
+  # E2E Tests
+  e2e-test:
+    build:
+      context: ../e2e-tests
+      dockerfile: Dockerfile
+    environment:
+      - BASE_URL=http://frontend:3000
+    depends_on:
+      - frontend-test
+      - backend-test
+    networks:
+      - test-network
+    command: npm run test:e2e
+
+  # Security Tests
+  security-test:
+    image: owasp/zap2docker-stable
+    command: >
+      sh -c "
+        zap-baseline.py -t http://frontend:3000 -r zap-report.html;
+        zap-api-scan.py -t http://backend:5000/api -f openapi -r api-report.html
+      "
+    volumes:
+      - ../reports:/zap/wrk
+    depends_on:
+      - frontend-test
+      - backend-test
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge

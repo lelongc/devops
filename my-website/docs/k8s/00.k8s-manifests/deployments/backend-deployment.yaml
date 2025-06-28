@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: production
+  labels:
+    app: backend
+    version: v1.0.0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: v1.0.0
+    spec:
+      initContainers:
+      - name: migration
+        image: myapp/backend:v1.0.0
+        command: [ 'sh', '-c', 'python manage.py migrate' ]
+        envFrom:
+        - configMapRef:
+            name: backend-config
+        - secretRef:
+            name: database-secret
+        - secretRef:
+            name: app-secret
+      containers:
+      - name: backend
+        image: myapp/backend:v1.0.0
+        ports:
+        - containerPort: 8080
+          name: http
+        envFrom:
+        - configMapRef:
+            name: backend-config
+        - secretRef:
+            name: database-secret
+        - secretRef:
+            name: app-secret
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        volumeMounts:
+        - name: app-logs
+          mountPath: /var/log/app
+      volumes:
+      - name: app-logs
+        emptyDir: {}
+      imagePullSecrets:
+      - name: registry-secret
