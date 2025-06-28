@@ -1,0 +1,260 @@
+# Microservices architecture with Docker Compose
+version: '3.8'
+
+services:
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVICE_DISCOVERY_URL=http://consul:8500
+      - AUTH_SERVICE_URL=http://auth-service:3000
+    depends_on:
+      - consul
+      - auth-service
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Authentication Service
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://auth_user:auth_pass@auth-db:5432/auth_db
+      - JWT_SECRET=${JWT_SECRET}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - auth-db
+      - redis
+    networks:
+      - microservices
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+
+  # User Service
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://user_user:user_pass@user-db:5432/user_db
+      - MESSAGE_BROKER_URL=amqp://rabbitmq:5672
+    depends_on:
+      - user-db
+      - rabbitmq
+    networks:
+      - microservices
+    restart: unless-stopped
+    deploy:
+      replicas: 3
+
+  # Order Service
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://order_user:order_pass@order-db:5432/order_db
+      - MESSAGE_BROKER_URL=amqp://rabbitmq:5672
+      - PAYMENT_SERVICE_URL=http://payment-service:3000
+    depends_on:
+      - order-db
+      - rabbitmq
+      - payment-service
+    networks:
+      - microservices
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+
+  # Payment Service
+  payment-service:
+    build:
+      context: ./payment-service
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://payment_user:payment_pass@payment-db:5432/payment_db
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - MESSAGE_BROKER_URL=amqp://rabbitmq:5672
+    depends_on:
+      - payment-db
+      - rabbitmq
+    networks:
+      - microservices
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+
+  # Notification Service
+  notification-service:
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    environment:
+      - EMAIL_SERVICE_URL=${EMAIL_SERVICE_URL}
+      - SMS_SERVICE_URL=${SMS_SERVICE_URL}
+      - MESSAGE_BROKER_URL=amqp://rabbitmq:5672
+    depends_on:
+      - rabbitmq
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Databases
+  auth-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=auth_db
+      - POSTGRES_USER=auth_user
+      - POSTGRES_PASSWORD=auth_pass
+    volumes:
+      - auth_db_data:/var/lib/postgresql/data
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  user-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=user_db
+      - POSTGRES_USER=user_user
+      - POSTGRES_PASSWORD=user_pass
+    volumes:
+      - user_db_data:/var/lib/postgresql/data
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  order-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=order_db
+      - POSTGRES_USER=order_user
+      - POSTGRES_PASSWORD=order_pass
+    volumes:
+      - order_db_data:/var/lib/postgresql/data
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  payment-db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=payment_db
+      - POSTGRES_USER=payment_user
+      - POSTGRES_PASSWORD=payment_pass
+    volumes:
+      - payment_db_data:/var/lib/postgresql/data
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Infrastructure Services
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123
+    ports:
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Service Discovery
+  consul:
+    image: consul:latest
+    command: consul agent -server -bootstrap -ui -node=server-1 -bind=0.0.0.0 -client=0.0.0.0
+    ports:
+      - "8500:8500"
+    volumes:
+      - consul_data:/consul/data
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Load Balancer
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api-gateway
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - microservices
+    restart: unless-stopped
+
+  # Distributed Tracing
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "14268:14268"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    networks:
+      - microservices
+    restart: unless-stopped
+
+volumes:
+  auth_db_data:
+  user_db_data:
+  order_db_data:
+  payment_db_data:
+  redis_data:
+  rabbitmq_data:
+  consul_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  microservices:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
