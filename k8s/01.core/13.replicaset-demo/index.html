@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/13.replicaset/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/13.replicaset-demo/">
       
       
         <link rel="prev" href="../11-12.pods-yml-demo/">
@@ -22,7 +22,7 @@
     
     
       
-        <title>13.replicaset - DraDoc</title>
+        <title>13.replicaset demo - DraDoc</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              13.replicaset
+              13.replicaset demo
             
           </span>
         </div>
@@ -1246,7 +1246,7 @@
   
   
   <span class="md-ellipsis">
-    13.replicaset
+    13.replicaset demo
     
   </span>
   
@@ -1259,7 +1259,7 @@
   
   
   <span class="md-ellipsis">
-    13.replicaset
+    13.replicaset demo
     
   </span>
   
@@ -1330,6 +1330,300 @@
       6. "Chốt hạ" cho Kỳ thi CKA 📝
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replicaset-demo-detailed-commands-and-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaSet Demo - Detailed Commands and Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ReplicaSet Demo - Detailed Commands and Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-view-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. View ReplicaSets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. View ReplicaSets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-all-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      List all ReplicaSets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-with-more-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      View with more details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-describe-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Describe ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-edit-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Edit ReplicaSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Edit ReplicaSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-interactively" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edit interactively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-changes-from-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apply changes from file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-scale-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Scale ReplicaSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Scale ReplicaSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scale-using-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scale using file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-using-resource-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scale using resource name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-delete-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Delete ReplicaSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Delete ReplicaSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete-replicaset-and-its-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete ReplicaSet and its pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-replicaset-but-keep-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete ReplicaSet but keep pods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-complete-demo-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Complete Demo Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Complete Demo Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-monitor-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Monitor ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-scale-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Scale Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-test-self-healing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Test Self-Healing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-useful-additional-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Useful Additional Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Useful Additional Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-replicaset-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      View ReplicaSet YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-replicaset-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      View ReplicaSet JSON
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-by-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter by labels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-events-related-to-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      View events related to ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-resource-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitor resource usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-points-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points to Remember
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1755,6 +2049,300 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#replicaset-demo-detailed-commands-and-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaSet Demo - Detailed Commands and Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ReplicaSet Demo - Detailed Commands and Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-view-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. View ReplicaSets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. View ReplicaSets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-all-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      List all ReplicaSets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-with-more-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      View with more details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-describe-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Describe ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-edit-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Edit ReplicaSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Edit ReplicaSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-interactively" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edit interactively
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply-changes-from-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apply changes from file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-scale-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Scale ReplicaSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Scale ReplicaSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scale-using-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scale using file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-using-resource-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scale using resource name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-delete-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Delete ReplicaSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Delete ReplicaSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete-replicaset-and-its-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete ReplicaSet and its pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-replicaset-but-keep-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete ReplicaSet but keep pods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-complete-demo-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Complete Demo Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Complete Demo Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-monitor-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Monitor ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-scale-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Scale Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-test-self-healing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Test Self-Healing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-useful-additional-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Useful Additional Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Useful Additional Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-replicaset-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      View ReplicaSet YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-replicaset-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      View ReplicaSet JSON
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-by-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter by labels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-events-related-to-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      View events related to ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-resource-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitor resource usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-points-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points to Remember
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1771,15 +2359,13 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/13.replicaset.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/13.replicaset-demo.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
   
   
 
-
-  <h1>13.replicaset</h1>
 
 <p>"người hùng" thầm lặng của Kubernetes, giúp ứng dụng của bạn luôn sẵn sàng và có thể mở rộng. Đó chính là <strong>Replication Controller</strong> và "hậu duệ" của nó, <strong>ReplicaSet</strong>.</p>
 <hr />
@@ -1881,6 +2467,7 @@
 <li>
 <p><strong>Lưu ý:</strong> Cách này chỉ thay đổi trạng thái hiện tại của ReplicaSet trên cụm, nó <strong>không</strong> cập nhật lại file YAML gốc của bạn.</p>
 </li>
+<li>nếu update image qua edit hay qua file . Muốn cập nhật, bạn phải <strong>xóa Pod cũ</strong> để nó tạo Pod mới với image mới. qua deployment sẽ xịn hơn</li>
 </ol>
 <hr />
 <h3 id="6-chot-ha-cho-ky-thi-cka">6. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#6-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
@@ -1889,6 +2476,154 @@
 <li>Cơ chế cốt lõi là sự kết hợp giữa <strong><code>labels</code></strong> (trên Pod) và <strong><code>selector</code></strong> (trong ReplicaSet).</li>
 <li>Nắm vững các trường bắt buộc trong file YAML của ReplicaSet: <code>apiVersion: apps/v1</code>, <code>kind: ReplicaSet</code>, <code>metadata</code>, và một <code>spec</code> chứa <strong><code>replicas</code></strong>, <strong><code>selector</code></strong>, và <strong><code>pod template</code></strong>.</li>
 <li>Biết cách scale một ReplicaSet bằng cả <code>kubectl replace</code> và <code>kubectl scale</code>.</li>
+</ul>
+<hr />
+<h1 id="replicaset-demo-detailed-commands-and-examples">ReplicaSet Demo - Detailed Commands and Examples<a class="headerlink" href="#replicaset-demo-detailed-commands-and-examples" title="Permanent link">&para;</a></h1>
+<h2 id="1-view-replicasets">1. View ReplicaSets<a class="headerlink" href="#1-view-replicasets" title="Permanent link">&para;</a></h2>
+<h3 id="list-all-replicasets">List all ReplicaSets<a class="headerlink" href="#list-all-replicasets" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>replicaset
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># or short form</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs
+</code></pre></div>
+<p><strong>Output example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>NAME              DESIRED   CURRENT   READY   AGE
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>new-replica-set   3         3         3       5m
+</code></pre></div>
+<h3 id="view-with-more-details">View with more details<a class="headerlink" href="#view-with-more-details" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div>
+<p><strong>Output example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>NAME              DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES         SELECTOR
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>new-replica-set   3         3         3       5m    nginx        nginx:1.20     app=nginx
+</code></pre></div>
+<h2 id="2-describe-replicaset">2. Describe ReplicaSet<a class="headerlink" href="#2-describe-replicaset" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<p><strong>Output example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Name:         new-replica-set
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Namespace:    default
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Selector:     app=nginx
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Labels:       &lt;none&gt;
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Annotations:  &lt;none&gt;
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Replicas:     3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>Pod Template:
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  Labels:  app=nginx
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  Containers:
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>   nginx:
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    Image:        nginx:1.20
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    Port:         80/TCP
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    Host Port:    0/TCP
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>Events:
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  Type    Reason            Age   From                   Message
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>  ----    ------            ----  ----                   -------
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>  Normal  SuccessfulCreate  5m    replicaset-controller  Created pod: new-replica-set-abc123
+</code></pre></div>
+<h2 id="3-edit-replicaset">3. Edit ReplicaSet<a class="headerlink" href="#3-edit-replicaset" title="Permanent link">&para;</a></h2>
+<h3 id="edit-interactively">Edit interactively<a class="headerlink" href="#edit-interactively" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>edit<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<p><em>This opens the ReplicaSet configuration in your default editor (vi/nano)</em></p>
+<h3 id="apply-changes-from-file">Apply changes from file<a class="headerlink" href="#apply-changes-from-file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>new-replica-set.yml
+</code></pre></div>
+<h2 id="4-scale-replicaset">4. Scale ReplicaSet<a class="headerlink" href="#4-scale-replicaset" title="Permanent link">&para;</a></h2>
+<h3 id="scale-using-file">Scale using file<a class="headerlink" href="#scale-using-file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>--replicas<span class="o">=</span><span class="m">5</span><span class="w"> </span>-f<span class="w"> </span>new-replica-set.yml
+</code></pre></div>
+<h3 id="scale-using-resource-name">Scale using resource name<a class="headerlink" href="#scale-using-resource-name" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>--replicas<span class="o">=</span><span class="m">5</span><span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<h3 id="verify-scaling">Verify scaling<a class="headerlink" href="#verify-scaling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+</code></pre></div>
+<h2 id="5-delete-replicaset">5. Delete ReplicaSet<a class="headerlink" href="#5-delete-replicaset" title="Permanent link">&para;</a></h2>
+<h3 id="delete-replicaset-and-its-pods">Delete ReplicaSet and its pods<a class="headerlink" href="#delete-replicaset-and-its-pods" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<h3 id="delete-replicaset-but-keep-pods">Delete ReplicaSet but keep pods<a class="headerlink" href="#delete-replicaset-but-keep-pods" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>rs<span class="w"> </span>new-replica-set<span class="w"> </span>--cascade<span class="o">=</span>orphan
+</code></pre></div>
+<h2 id="6-complete-demo-workflow">6. Complete Demo Workflow<a class="headerlink" href="#6-complete-demo-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-create-replicaset">Step 1: Create ReplicaSet<a class="headerlink" href="#step-1-create-replicaset" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReplicaSet</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">new-replica-set</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.20</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>new-replica-set.yml
+</code></pre></div>
+<h3 id="step-2-monitor-replicaset">Step 2: Monitor ReplicaSet<a class="headerlink" href="#step-2-monitor-replicaset" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Watch ReplicaSet status</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>-w
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Check pods created by ReplicaSet</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># View detailed information</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<h3 id="step-3-scale-operations">Step 3: Scale Operations<a class="headerlink" href="#step-3-scale-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Scale up to 5 replicas</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>--replicas<span class="o">=</span><span class="m">5</span><span class="w"> </span>rs<span class="w"> </span>new-replica-set
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Verify scaling</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># Scale down to 2 replicas</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>--replicas<span class="o">=</span><span class="m">2</span><span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<h3 id="step-4-test-self-healing">Step 4: Test Self-Healing<a class="headerlink" href="#step-4-test-self-healing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Delete a pod to test self-healing</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;pod-name&gt;
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Watch ReplicaSet recreate the pod</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx<span class="w"> </span>-w
+</code></pre></div>
+<h3 id="step-5-cleanup">Step 5: Cleanup<a class="headerlink" href="#step-5-cleanup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>rs<span class="w"> </span>new-replica-set
+</code></pre></div>
+<h2 id="7-useful-additional-commands">7. Useful Additional Commands<a class="headerlink" href="#7-useful-additional-commands" title="Permanent link">&para;</a></h2>
+<h3 id="view-replicaset-yaml">View ReplicaSet YAML<a class="headerlink" href="#view-replicaset-yaml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>new-replica-set<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div>
+<h3 id="view-replicaset-json">View ReplicaSet JSON<a class="headerlink" href="#view-replicaset-json" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>new-replica-set<span class="w"> </span>-o<span class="w"> </span>json
+</code></pre></div>
+<h3 id="filter-by-labels">Filter by labels<a class="headerlink" href="#filter-by-labels" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>rs<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+</code></pre></div>
+<h3 id="view-events-related-to-replicaset">View events related to ReplicaSet<a class="headerlink" href="#view-events-related-to-replicaset" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>--field-selector<span class="w"> </span>involvedObject.name<span class="o">=</span>new-replica-set
+</code></pre></div>
+<h3 id="monitor-resource-usage">Monitor resource usage<a class="headerlink" href="#monitor-resource-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>kubectl<span class="w"> </span>top<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx
+</code></pre></div>
+<h2 id="key-points-to-remember">Key Points to Remember<a class="headerlink" href="#key-points-to-remember" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>ReplicaSet ensures desired number of pods are running</strong></li>
+<li><strong>Pods are recreated automatically if deleted</strong></li>
+<li><strong>Scaling can be done via file or direct command</strong></li>
+<li><strong>Use labels to identify and group related resources</strong></li>
+<li><strong>Always verify operations with <code>kubectl get</code> commands</strong></li>
 </ul>
 
 
@@ -1910,7 +2645,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 tháng 6, 2025 14:17:07 UTC">30 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="30 tháng 6, 2025 15:11:50 UTC">30 tháng 6, 2025</span>
   </span>
 
     
