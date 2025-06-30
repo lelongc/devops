@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/13.replicaset/">
       
       
+        <link rel="prev" href="../11-12.pods-yml-demo/">
       
-        <link rel="next" href="cicd/roadmap/">
+      
+        <link rel="next" href="../../../linux/roadmap/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>DraDoc</title>
+        <title>13.replicaset - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -62,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -81,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-dradoc" class="md-skip">
+        <a href="#1-tai-sao-can-nhan-ban-replication" class="md-skip">
           Bỏ qua
         </a>
       
@@ -97,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -117,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to DraDoc
+              13.replicaset
             
           </span>
         </div>
@@ -220,11 +222,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -245,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -267,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="docker/learn/" class="md-tabs__link">
+        <a href="../../../docker/learn/" class="md-tabs__link">
           
   
   
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="git/roadmap/" class="md-tabs__link">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="iac/roadmap/" class="md-tabs__link">
+        <a href="../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -329,11 +329,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="k8s/roadmap/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
           
   
   
@@ -355,7 +357,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="linux/roadmap/" class="md-tabs__link">
+        <a href="../../../linux/roadmap/" class="md-tabs__link">
           
   
   
@@ -377,7 +379,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="network/roadmap/" class="md-tabs__link">
+        <a href="../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -399,7 +401,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="observability/roadmap/" class="md-tabs__link">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -428,7 +430,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -453,7 +455,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="security/roadmap/" class="md-tabs__link">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -475,7 +477,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="testing/roadmap/" class="md-tabs__link">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -517,7 +519,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -544,19 +546,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -567,7 +560,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -603,7 +595,7 @@
   
   
   
-    <a href="cicd/roadmap/" class="md-nav__link">
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -659,7 +651,7 @@
   
   
   
-    <a href="docker/learn/" class="md-nav__link">
+    <a href="../../../docker/learn/" class="md-nav__link">
       
   
   
@@ -711,7 +703,7 @@
   
   
   
-    <a href="git/roadmap/" class="md-nav__link">
+    <a href="../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -763,7 +755,7 @@
   
   
   
-    <a href="iac/roadmap/" class="md-nav__link">
+    <a href="../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -788,39 +780,42 @@
       
   
   
-  
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
   
-    <a href="k8s/roadmap/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -829,12 +824,534 @@
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            K8s
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../00.k8s-manifests/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    00.k8s manifests
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            00.k8s manifests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    01.core
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            01.core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.cluster-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.cluster architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-03.docker-containerd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 03.docker containerd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.etcd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.etcd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.kube-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.kube api server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.kube-controller-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.kube controller manager
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.KubeScheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07.KubeScheduler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.kubelet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08.kubelet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.kube-proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09.kube proxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.pods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10.pods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-12.pods-yml-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 12.pods yml demo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    13.replicaset
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    13.replicaset
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tai-sao-can-nhan-ban-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tại sao cần "Nhân bản" (Replication)? 🤔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-replication-controller-vs-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Replication Controller vs. ReplicaSet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-giai-phau-mot-file-yaml-cua-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Giải phẫu" một file YAML của ReplicaSet 🧬
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-co-che-ky-dieu-cua-labels-va-selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cơ chế "Kỳ diệu" của Labels và Selectors 🏷️🔎
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mo-rong-quy-mo-scaling-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Mở rộng quy mô (Scaling) ReplicaSet 📈
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -873,7 +1390,7 @@
   
   
   
-    <a href="linux/roadmap/" class="md-nav__link">
+    <a href="../../../linux/roadmap/" class="md-nav__link">
       
   
   
@@ -925,7 +1442,7 @@
   
   
   
-    <a href="network/roadmap/" class="md-nav__link">
+    <a href="../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -977,7 +1494,7 @@
   
   
   
-    <a href="observability/roadmap/" class="md-nav__link">
+    <a href="../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -1033,7 +1550,7 @@
   
   
   
-    <a href="prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -1087,7 +1604,7 @@
   
   
   
-    <a href="security/roadmap/" class="md-nav__link">
+    <a href="../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -1139,7 +1656,7 @@
   
   
   
-    <a href="testing/roadmap/" class="md-nav__link">
+    <a href="../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -1177,8 +1694,68 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tai-sao-can-nhan-ban-replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tại sao cần "Nhân bản" (Replication)? 🤔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-replication-controller-vs-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Replication Controller vs. ReplicaSet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-giai-phau-mot-file-yaml-cua-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Giải phẫu" một file YAML của ReplicaSet 🧬
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-co-che-ky-dieu-cua-labels-va-selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cơ chế "Kỳ diệu" của Labels và Selectors 🏷️🔎
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mo-rong-quy-mo-scaling-replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Mở rộng quy mô (Scaling) ReplicaSet 📈
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1194,7 +1771,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/index.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/13.replicaset.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1202,11 +1779,115 @@
   
 
 
-<h1 id="welcome-to-dradoc">Welcome to DraDoc<a class="headerlink" href="#welcome-to-dradoc" title="Permanent link">&para;</a></h1>
-<p>các file liên quan devops ,aws tùm lum , chứa các file chủ yếu do copilot tạo ra theo roadmap phía dưới 
-mục đích để bản thân học , mọi người có thể tham khảo 
-https://roadmap.sh/r/devsecops-88a05https://roadmap.sh/r/devsecops-88a05
-  ## Lưu ý tên tải extension office viewer hoặc vô web để xem theo mục lục định dạng md cho đẹp mắt , vì file rất dài </p>
+  <h1>13.replicaset</h1>
+
+<p>"người hùng" thầm lặng của Kubernetes, giúp ứng dụng của bạn luôn sẵn sàng và có thể mở rộng. Đó chính là <strong>Replication Controller</strong> và "hậu duệ" của nó, <strong>ReplicaSet</strong>.</p>
+<hr />
+<h3 id="1-tai-sao-can-nhan-ban-replication">1. Tại sao cần "Nhân bản" (Replication)? 🤔<a class="headerlink" href="#1-tai-sao-can-nhan-ban-replication" title="Permanent link">&para;</a></h3>
+<p>Trong thực tế, việc chỉ chạy một Pod duy nhất cho ứng dụng của bạn rất rủi ro. Chúng ta cần "nhân bản" vì hai lý do chính:</p>
+<ol>
+<li>
+<p><strong>Tính Sẵn sàng cao (High Availability):</strong></p>
+</li>
+<li>
+<p>Nếu một Pod bị lỗi hoặc "chết", ứng dụng của bạn sẽ ngừng hoạt động.</p>
+</li>
+<li>
+<p>Bằng cách chạy nhiều bản sao (replicas) của Pod, nếu một Pod gặp sự cố, những Pod còn lại vẫn tiếp tục phục vụ người dùng. Controller sẽ tự động tạo một Pod mới để thay thế Pod đã hỏng.</p>
+</li>
+<li>
+<p><strong>Cân bằng tải &amp; Mở rộng quy mô (Load Balancing &amp; Scaling):</strong></p>
+</li>
+<li>
+<p>Khi lượng người dùng tăng lên, một Pod có thể bị quá tải.</p>
+</li>
+<li>Bằng cách tạo thêm nhiều Pod, bạn có thể phân bổ (load balance) lượng truy cập trên nhiều Pod, giúp ứng dụng chạy mượt mà hơn và có thể xử lý nhiều yêu cầu hơn.</li>
+</ol>
+<hr />
+<h3 id="2-replication-controller-vs-replicaset">2. Replication Controller vs. ReplicaSet<a class="headerlink" href="#2-replication-controller-vs-replicaset" title="Permanent link">&para;</a></h3>
+<p>Cả hai đều có cùng mục đích: <strong>đảm bảo một số lượng Pod nhất định luôn chạy</strong>. Tuy nhiên:</p>
+<ul>
+<li><strong>Replication Controller:</strong> Là công nghệ cũ hơn.</li>
+<li><strong>ReplicaSet:</strong> Là công nghệ mới hơn và được <strong>khuyến khích sử dụng</strong>.</li>
+</ul>
+<p>Trong bài này và về sau, chúng ta sẽ tập trung vào <strong>ReplicaSet</strong>.</p>
+<hr />
+<h3 id="3-giai-phau-mot-file-yaml-cua-replicaset">3. "Giải phẫu" một file YAML của ReplicaSet 🧬<a class="headerlink" href="#3-giai-phau-mot-file-yaml-cua-replicaset" title="Permanent link">&para;</a></h3>
+<p>Để tạo một ReplicaSet, chúng ta sẽ định nghĩa nó trong một file YAML. Cấu trúc của nó rất giống với Pod, nhưng có thêm vài phần quan trọng:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"> </span><span class="c1"># Khác với Pod (v1)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReplicaSet</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp-replicaset</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"> </span><span class="c1"># 1. Số lượng bản sao mong muốn</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># 2. &quot;Bộ lọc&quot; để tìm Pod, BẮT BUỘC</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="c1"># 3. &quot;Khuôn mẫu&quot; để tạo Pod mới</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-container</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</code></pre></div>
+<p>Hãy "mổ xẻ" phần <code>spec</code>:</p>
+<ol>
+<li><strong><code>replicas</code></strong>: Bạn muốn có bao nhiêu bản sao của Pod đang chạy. Trong ví dụ này là <code>3</code>.</li>
+<li><strong><code>selector</code></strong>: Đây là phần <strong>cực kỳ quan trọng và bắt buộc</strong> trong ReplicaSet. Nó giúp ReplicaSet biết được "những Pod nào thuộc về mình".</li>
+<li><code>matchLabels</code>: ReplicaSet sẽ tìm tất cả các Pod có nhãn (label) khớp với những gì được định nghĩa match ở chỗ template , phần tạo ra pod ấy (trong ví dụ là <code>app: myapp</code>). (lưu ý <strong>label gắn cho chính bản thân ReplicaSet</strong> , giống như "tag" để: Nhận diện ReplicaSet dễ hơn thôi)</li>
+<li><strong><code>template</code></strong>: Đây chính là "khuôn mẫu" định nghĩa Pod. Nếu ReplicaSet thấy số lượng Pod hiện tại ít hơn <code>replicas</code>, nó sẽ dùng "khuôn" này để tạo ra Pod mới. Về cơ bản, bạn có thể sao chép phần <code>metadata</code> và <code>spec</code> của một file định nghĩa Pod vào đây.</li>
+</ol>
+<hr />
+<h3 id="4-co-che-ky-dieu-cua-labels-va-selectors">4. Cơ chế "Kỳ diệu" của Labels và Selectors 🏷️🔎<a class="headerlink" href="#4-co-che-ky-dieu-cua-labels-va-selectors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Labels (Nhãn):</strong> Là các cặp key-value bạn gắn vào các đối tượng (như Pod) để phân loại chúng.</li>
+<li><strong>Selectors (Bộ chọn):</strong> Là cách các đối tượng khác (như ReplicaSet, Service) tìm và làm việc với các đối tượng có nhãn tương ứng.</li>
+</ul>
+<p>Mối quan hệ này là "xương sống" của Kubernetes. ReplicaSet dùng <code>selector</code> để "quản lý" các Pod có <code>labels</code> phù hợp.</p>
+<blockquote>
+<p><strong>Câu hỏi hay:</strong> Nếu Pod đã tồn tại sẵn, ReplicaSet có cần <code>template</code> không? <strong>CÓ!</strong> Vì nếu một trong các Pod đó bị lỗi trong tương lai, ReplicaSet cần <code>template</code> để biết cách tạo ra một Pod mới thay thế.</p>
+</blockquote>
+<hr />
+<h3 id="5-mo-rong-quy-mo-scaling-replicaset">5. Mở rộng quy mô (Scaling) ReplicaSet 📈<a class="headerlink" href="#5-mo-rong-quy-mo-scaling-replicaset" title="Permanent link">&para;</a></h3>
+<p>Khi bạn muốn thay đổi số lượng replicas (ví dụ từ 3 lên 6), có hai cách chính:</p>
+<ol>
+<li>
+<p><strong>Cách 1 (Declarative - Khai báo):</strong></p>
+</li>
+<li>
+<p>Sửa giá trị <code>replicas</code> trong file YAML (ví dụ: <code>replicas: 6</code>).</p>
+</li>
+<li>
+<p>Chạy lệnh: <code>kubectl replace -f &lt;tên-file.yaml&gt;</code></p>
+</li>
+<li>
+<p><strong>Cách 2 (Imperative - Mệnh lệnh):</strong></p>
+</li>
+<li>
+<p>Dùng lệnh <code>kubectl scale</code> trực tiếp:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Cách 1: Dùng tên của ReplicaSet</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>--replicas<span class="o">=</span><span class="m">6</span><span class="w"> </span>replicaset<span class="w"> </span>myapp-replicaset
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Cách 2: Dùng file định nghĩa</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>--replicas<span class="o">=</span><span class="m">6</span><span class="w"> </span>-f<span class="w"> </span>&lt;tên-file.yaml&gt;
+</code></pre></div>
+</li>
+<li>
+<p><strong>Lưu ý:</strong> Cách này chỉ thay đổi trạng thái hiện tại của ReplicaSet trên cụm, nó <strong>không</strong> cập nhật lại file YAML gốc của bạn.</p>
+</li>
+</ol>
+<hr />
+<h3 id="6-chot-ha-cho-ky-thi-cka">6. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#6-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ReplicaSet</strong> có nhiệm vụ duy trì một số lượng Pod ổn định.</li>
+<li>Cơ chế cốt lõi là sự kết hợp giữa <strong><code>labels</code></strong> (trên Pod) và <strong><code>selector</code></strong> (trong ReplicaSet).</li>
+<li>Nắm vững các trường bắt buộc trong file YAML của ReplicaSet: <code>apiVersion: apps/v1</code>, <code>kind: ReplicaSet</code>, <code>metadata</code>, và một <code>spec</code> chứa <strong><code>replicas</code></strong>, <strong><code>selector</code></strong>, và <strong><code>pod template</code></strong>.</li>
+<li>Biết cách scale một ReplicaSet bằng cả <code>kubectl replace</code> và <code>kubectl scale</code>.</li>
+</ul>
 
 
 
@@ -1312,15 +1993,31 @@ https://roadmap.sh/r/devsecops-88a05https://roadmap.sh/r/devsecops-88a05
       
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
+          
+          <a href="../11-12.pods-yml-demo/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 11 12.pods yml demo">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                11 12.pods yml demo
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="cicd/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: CI/CD Complete Learning Roadmap - GitHub Actions, GitLab CI, Jenkins">
+          <a href="../../../linux/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux Complete Learning Roadmap - Chi tiết từng topic">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                CI/CD Complete Learning Roadmap - GitHub Actions, GitLab CI, Jenkins
+                Linux Complete Learning Roadmap - Chi tiết từng topic
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1381,10 +2078,10 @@ https://roadmap.sh/r/devsecops-88a05https://roadmap.sh/r/devsecops-88a05
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
