@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/06.kube-controller-manager/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/14.deployment/">
       
       
-        <link rel="prev" href="../05.kube-api-server/">
+        <link rel="prev" href="../13.replicaset-demo/">
       
       
-        <link rel="next" href="../07.KubeScheduler/">
+        <link rel="next" href="../../../linux/roadmap/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>06.kube controller manager - DraDoc</title>
+        <title>14.deployment - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-kube-controller-manager-bo-nao-ieu-hanh-cua-kubernetes" class="md-skip">
+        <a href="#1-bai-toan-quan-ly-ung-dung-trong-the-gioi-thuc" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              06.kube controller manager
+              14.deployment
             
           </span>
         </div>
@@ -1095,30 +1095,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    06.kube controller manager
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../06.kube-controller-manager/" class="md-nav__link">
         
   
   
@@ -1129,93 +1109,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-kube-controller-manager-bo-nao-ieu-hanh-cua-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. kube-controller-manager - "Bộ não" Điều hành của Kubernetes 🧠
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-controller-la-gi-vong-lap-oi-chieu" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Controller là gì? (Vòng lặp Đối chiếu) 🔄
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cac-phong-ban-tieu-bieu-vi-du-ve-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Các "Phòng ban" tiêu biểu (Ví dụ về Controller)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Các &#34;Phòng ban&#34; tiêu biểu (Ví dụ về Controller)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-node-controller-phong-quan-ly-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. Node Controller - "Phòng Quản lý Node"
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-replication-controller-phong-am-bao-so-luong" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. Replication Controller - "Phòng Đảm bảo Số lượng"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cai-at-va-xem-cau-hinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cài đặt và Xem Cấu hình
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1363,10 +1256,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../14.deployment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    14.deployment
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1377,6 +1290,78 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-bai-toan-quan-ly-ung-dung-trong-the-gioi-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Bài toán Quản lý Ứng dụng trong "Thế giới Thực" 🌍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-deployment-vi-tuong-chi-huy-toi-cao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Deployment - "Vị tướng" Chỉ huy Tối cao 🎖️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-giai-phau-mot-file-yaml-cua-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Giải phẫu" một file YAML của Deployment 🧬
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ieu-gi-xay-ra-khi-ban-tao-mot-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Điều gì xảy ra khi bạn tạo một Deployment? 🚀
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cac-lenh-kiem-tra-huu-ich" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Các Lệnh Kiểm tra Hữu ích ✅
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1742,69 +1727,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-kube-controller-manager-bo-nao-ieu-hanh-cua-kubernetes" class="md-nav__link">
+  <a href="#1-bai-toan-quan-ly-ung-dung-trong-the-gioi-thuc" class="md-nav__link">
     <span class="md-ellipsis">
-      1. kube-controller-manager - "Bộ não" Điều hành của Kubernetes 🧠
+      1. Bài toán Quản lý Ứng dụng trong "Thế giới Thực" 🌍
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-controller-la-gi-vong-lap-oi-chieu" class="md-nav__link">
+  <a href="#2-deployment-vi-tuong-chi-huy-toi-cao" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Controller là gì? (Vòng lặp Đối chiếu) 🔄
+      2. Deployment - "Vị tướng" Chỉ huy Tối cao 🎖️
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-cac-phong-ban-tieu-bieu-vi-du-ve-controller" class="md-nav__link">
+  <a href="#3-giai-phau-mot-file-yaml-cua-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Các "Phòng ban" tiêu biểu (Ví dụ về Controller)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Các &#34;Phòng ban&#34; tiêu biểu (Ví dụ về Controller)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-node-controller-phong-quan-ly-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. Node Controller - "Phòng Quản lý Node"
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-replication-controller-phong-am-bao-so-luong" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. Replication Controller - "Phòng Đảm bảo Số lượng"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cai-at-va-xem-cau-hinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cài đặt và Xem Cấu hình
+      3. "Giải phẫu" một file YAML của Deployment 🧬
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+  <a href="#4-ieu-gi-xay-ra-khi-ban-tao-mot-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
+      4. Điều gì xảy ra khi bạn tạo một Deployment? 🚀
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cac-lenh-kiem-tra-huu-ich" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Các Lệnh Kiểm tra Hữu ích ✅
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. "Chốt hạ" cho Kỳ thi CKA 📝
     </span>
   </a>
   
@@ -1826,7 +1796,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/06.kube-controller-manager.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/14.deployment.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1834,58 +1804,79 @@
   
 
 
-  <h1>06.kube controller manager</h1>
+  <h1>14.deployment</h1>
 
-<h2 id="1-kube-controller-manager-bo-nao-ieu-hanh-cua-kubernetes">1. <code>kube-controller-manager</code> - "Bộ não" Điều hành của Kubernetes 🧠<a class="headerlink" href="#1-kube-controller-manager-bo-nao-ieu-hanh-cua-kubernetes" title="Permanent link">&para;</a></h2>
-<p>Hãy tiếp tục với phép so sánh về hạm đội tàu. Nếu <code>kube-api-server</code> là "tổng đài" trung tâm, thì <strong><code>kube-controller-manager</code></strong> giống như là <strong>tập hợp các phòng ban chuyên trách</strong> trên tàu chỉ huy. Mỗi phòng ban (mỗi "controller") có một nhiệm vụ riêng và làm việc không ngừng nghỉ.</p>
-<p>Về cơ bản, <code>kube-controller-manager</code> là một tiến trình (process) duy nhất, nhưng bên trong nó lại chứa và quản lý rất nhiều controller khác nhau.</p>
+<p>đối tượng mạnh mẽ và được sử dụng nhiều nhất để quản lý ứng dụng, đó là <strong>Kubernetes Deployment</strong>.</p>
 <hr />
-<h2 id="2-controller-la-gi-vong-lap-oi-chieu">2. Controller là gì? (Vòng lặp Đối chiếu) 🔄<a class="headerlink" href="#2-controller-la-gi-vong-lap-oi-chieu" title="Permanent link">&para;</a></h2>
-<p>Đây là khái niệm cốt lõi bạn cần nắm:</p>
-<p>Một <strong>controller</strong> trong Kubernetes là một tiến trình liên tục thực hiện một <strong>vòng lặp điều khiển (control loop)</strong>:</p>
+<h3 id="1-bai-toan-quan-ly-ung-dung-trong-the-gioi-thuc">1. Bài toán Quản lý Ứng dụng trong "Thế giới Thực" 🌍<a class="headerlink" href="#1-bai-toan-quan-ly-ung-dung-trong-the-gioi-thuc" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/14.deployment/1751353602022.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751353602022" src="../image/14.deployment/1751353602022.png" /></a>
+Khi triển khai ứng dụng trong môi trường thực tế (production), chúng ta thường đối mặt với các yêu cầu sau:</p>
+<ul>
+<li><strong>Nhiều bản sao:</strong> Cần chạy nhiều instance của ứng dụng để đảm bảo tính sẵn sàng cao và cân bằng tải.</li>
+<li><strong>Cập nhật liền mạch:</strong> Khi có phiên bản mới, cần nâng cấp ứng dụng mà không gây gián đoạn dịch vụ. Đây gọi là <strong>Rolling Updates</strong>.</li>
+<li><strong>Quay lui (Rollback):</strong> Nếu phiên bản mới bị lỗi, cần có khả năng quay trở lại phiên bản cũ một cách nhanh chóng.</li>
+<li><strong>Tạm dừng &amp; Tiếp tục:</strong> Đôi khi cần tạm dừng quá trình thay đổi, thực hiện nhiều cấu hình cùng lúc, rồi mới tiếp tục để tất cả được áp dụng một lần.</li>
+</ul>
+<hr />
+<h3 id="2-deployment-vi-tuong-chi-huy-toi-cao">2. <code>Deployment</code> - "Vị tướng" Chỉ huy Tối cao 🎖️<a class="headerlink" href="#2-deployment-vi-tuong-chi-huy-toi-cao" title="Permanent link">&para;</a></h3>
+<p><strong>Deployment</strong> chính là đối tượng Kubernetes được sinh ra để giải quyết tất cả các bài toán trên. Nó là một đối tượng quản lý cấp cao hơn, đứng trên cả ReplicaSet và Pod.</p>
+<p>Đây là hệ thống phân cấp bạn cần nhớ:</p>
+<p><strong>Deployment</strong> ➡️ quản lý ➡️ <strong>ReplicaSet</strong> ➡️ quản lý ➡️ <strong>Pods</strong></p>
+<blockquote>
+<p><strong>Điểm mấu chốt:</strong> Một Deployment không quản lý trực tiếp các Pod. Thay vào đó, nó quản lý các ReplicaSet. Khi bạn tạo hoặc cập nhật một Deployment, nó sẽ tạo ra một ReplicaSet mới, và chính ReplicaSet đó sẽ chịu trách nhiệm tạo ra các Pod.</p>
+</blockquote>
+<hr />
+<h3 id="3-giai-phau-mot-file-yaml-cua-deployment">3. "Giải phẫu" một file YAML của Deployment 🧬<a class="headerlink" href="#3-giai-phau-mot-file-yaml-cua-deployment" title="Permanent link">&para;</a></h3>
+<p>Tin vui là file định nghĩa của Deployment <strong>gần như y hệt</strong> file định nghĩa của ReplicaSet!</p>
+<ul>
+<li>Sự khác biệt chính và duy nhất bạn cần thay đổi là <code>kind</code>.</li>
+<li><strong><code>kind: Deployment</code></strong></li>
+</ul>
+<p>Mọi thứ khác như <code>apiVersion: apps/v1</code>, <code>metadata</code>, và <code>spec</code> (với <code>replicas</code>, <code>selector</code>, <code>template</code>) đều giữ nguyên.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># &lt;-- Chỉ thay đổi ở đây</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp-deployment</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-container</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</code></pre></div>
+<hr />
+<h3 id="4-ieu-gi-xay-ra-khi-ban-tao-mot-deployment">4. Điều gì xảy ra khi bạn tạo một Deployment? 🚀<a class="headerlink" href="#4-ieu-gi-xay-ra-khi-ban-tao-mot-deployment" title="Permanent link">&para;</a></h3>
+<p>Khi bạn chạy lệnh <code>kubectl create -f deployment-definition.yaml</code>, một chuỗi phản ứng sẽ xảy ra:</p>
 <ol>
-<li><strong>Theo dõi (Watch):</strong> Nó liên tục theo dõi trạng thái của một loại tài nguyên nào đó trong cụm (thông qua <code>kube-api-server</code>).</li>
-<li><strong>Đối chiếu (Reconcile):</strong> Nó so sánh <strong>trạng thái hiện tại (current state)</strong> với <strong>trạng thái mong muốn (desired state)</strong> mà bạn đã khai báo.</li>
-<li><strong>Hành động (Act):</strong> Nếu hai trạng thái này không khớp nhau, controller sẽ thực hiện các hành động cần thiết để đưa trạng thái hiện tại về gần với trạng thái mong muốn.</li>
+<li>Một đối tượng <strong>Deployment</strong> được tạo.</li>
+<li>Deployment controller ngay lập tức tạo ra một đối tượng <strong>ReplicaSet</strong> mới dựa trên <code>template</code> của Deployment.</li>
+<li>ReplicaSet controller tiếp quản và tạo ra đủ số lượng <strong>Pods</strong> theo yêu cầu (<code>replicas: 3</code>).</li>
 </ol>
-<p>Tất cả "trí thông minh" của các đối tượng Kubernetes như Deployment, Service, Namespace... đều được hiện thực hóa thông qua các controller này.</p>
 <hr />
-<h2 id="3-cac-phong-ban-tieu-bieu-vi-du-ve-controller">3. Các "Phòng ban" tiêu biểu (Ví dụ về Controller)<a class="headerlink" href="#3-cac-phong-ban-tieu-bieu-vi-du-ve-controller" title="Permanent link">&para;</a></h2>
-<p><code>kube-controller-manager</code> quản lý rất nhiều controller. Dưới đây là hai ví dụ điển hình:</p>
-<h3 id="a-node-controller-phong-quan-ly-node">a. Node Controller - "Phòng Quản lý Node"<a class="headerlink" href="#a-node-controller-phong-quan-ly-node" title="Permanent link">&para;</a></h3>
+<h3 id="5-cac-lenh-kiem-tra-huu-ich">5. Các Lệnh Kiểm tra Hữu ích ✅<a class="headerlink" href="#5-cac-lenh-kiem-tra-huu-ich" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Nhiệm vụ:</strong> Theo dõi "sức khỏe" của tất cả các Worker Node trong cụm.</li>
-<li><strong>Cách hoạt động:</strong></li>
-<li>Cứ mỗi <strong>5 giây</strong>, nó kiểm tra trạng thái của các node.</li>
-<li>Nếu một node không gửi "tín hiệu sự sống" (heartbeat) về, controller sẽ đợi <strong>40 giây</strong> rồi đánh dấu node đó là <code>Unreachable</code>.</li>
-<li>Sau khi đánh dấu <code>Unreachable</code>, nó cho node đó thêm <strong>5 phút</strong> để "hồi sinh".</li>
-<li>Nếu sau 5 phút mà node vẫn không quay lại, Node Controller sẽ tiến hành <strong>"trục xuất" (evict)</strong> các Pod đang chạy trên node hỏng đó và yêu cầu <code>kube-scheduler</code> tìm nhà mới cho chúng trên các node khỏe mạnh khác (với điều kiện các Pod đó được quản lý bởi một ReplicaSet hoặc Deployment).</li>
-</ul>
-<h3 id="b-replication-controller-phong-am-bao-so-luong">b. Replication Controller - "Phòng Đảm bảo Số lượng"<a class="headerlink" href="#b-replication-controller-phong-am-bao-so-luong" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Nhiệm vụ:</strong> Đảm bảo số lượng bản sao (replicas) của một Pod luôn đúng như bạn đã khai báo trong đối tượng ReplicaSet.</li>
-<li><strong>Cách hoạt động:</strong></li>
-<li>Nếu nó thấy số lượng Pod hiện tại ít hơn số lượng mong muốn (ví dụ: một Pod bị chết), nó sẽ ngay lập tức tạo ra một Pod mới để bù vào.</li>
+<li><strong>Xem Deployment:</strong> <code>kubectl get deployment</code></li>
+<li><strong>Xem ReplicaSet:</strong> <code>kubectl get replicaset</code> (Bạn sẽ thấy một ReplicaSet mới được tạo bởi Deployment , có prefix của Deployment).</li>
+<li><strong>Xem Pods:</strong> <code>kubectl get pods</code> (Tên các Pod sẽ có prefix của Deployment và ReplicaSet).</li>
+<li><strong>Xem tất cả:</strong> Một lệnh rất tiện lợi là <code>kubectl get all</code>. Nó sẽ liệt kê tất cả các đối tượng liên quan (Deployment, ReplicaSet, Pods, và cả Service nếu có).</li>
 </ul>
 <hr />
-<h2 id="4-cai-at-va-xem-cau-hinh">4. Cài đặt và Xem Cấu hình<a class="headerlink" href="#4-cai-at-va-xem-cau-hinh" title="Permanent link">&para;</a></h2>
+<h3 id="6-chot-ha-cho-ky-thi-cka">6. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#6-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>kube-controller-manager</code> là một file thực thi (binary) duy nhất, chứa tất cả các controller bên trong nó.</li>
-<li><strong>Cách xem các tùy chọn cấu hình đang chạy:</strong></li>
-<li><strong>Với cụm <code>kubeadm</code>:</strong> Nó được triển khai như một <strong>static Pod</strong> trong namespace <code>kube-system</code>. Bạn có thể xem cấu hình trong file manifest của Pod tại <code>/etc/kubernetes/manifests/</code>.</li>
-<li><strong>Với cụm cài thủ công:</strong> Xem trong file service tại <code>/etc/systemd/system/</code>.</li>
-<li><strong>Cách chung:</strong> Dùng lệnh <code>ps aux | grep kube-controller-manager</code> trên Master Node để xem tiến trình đang chạy và các tham số của nó.</li>
-<li><strong>Tùy chọn cấu hình:</strong> Bạn có thể tùy chỉnh hoạt động của các controller. Ví dụ, với Node Controller, bạn có thể thay đổi các tham số thời gian như <code>--pod-eviction-timeout</code>. Bạn cũng có thể dùng cờ <code>--controllers</code> để bật/tắt một số controller cụ thể (mặc định là bật tất cả).</li>
+<li><strong>Deployment</strong> là đối tượng được <strong>khuyến khích sử dụng</strong> để quản lý các ứng dụng không trạng thái (stateless applications).</li>
+<li>Nó cung cấp các tính năng quản lý vòng đời ứng dụng nâng cao như <strong>rolling updates</strong> và <strong>rollbacks</strong> (sẽ tìm hiểu chi tiết sau).</li>
+<li>Hãy nhớ kỹ hệ thống phân cấp: <strong>Deployment quản lý ReplicaSet, ReplicaSet quản lý Pods.</strong></li>
+<li>Cấu trúc file YAML của Deployment gần như giống hệt ReplicaSet, chỉ cần đổi <code>kind</code> thành <code>Deployment</code>.</li>
 </ul>
-<hr />
-<h2 id="5-chot-ha-cho-ky-thi-cka">5. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>kube-controller-manager</code> là một <strong>tập hợp của nhiều vòng lặp điều khiển (control loops)</strong>.</li>
-<li>Nhiệm vụ chính của nó là <strong>theo dõi trạng thái của cụm</strong> thông qua API Server và <strong>thực hiện các hành động cần thiết</strong> để đưa trạng thái hiện tại về trạng thái mong muốn.</li>
-<li>Hiểu rõ hoạt động của các controller tiêu biểu như <strong>Node Controller</strong> (và các mốc thời gian của nó) và <strong>Replication Controller</strong>.</li>
-<li>Biết cách tìm file cấu hình của nó trong một cụm <code>kubeadm</code> (nó là một <strong>static Pod</strong>).</li>
-</ul>
-<p><code>kube-controller-manager</code> chính là người hùng thầm lặng, đảm bảo cho cụm Kubernetes của bạn luôn hoạt động đúng như những gì bạn kỳ vọng. Chúc bạn một buổi chiều học tập hiệu quả!</p>
 
 
 
@@ -1992,7 +1983,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../05.kube-api-server/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 05.kube api server">
+          <a href="../13.replicaset-demo/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 13.replicaset demo">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2002,20 +1993,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                05.kube api server
+                13.replicaset demo
               </div>
             </div>
           </a>
         
         
           
-          <a href="../07.KubeScheduler/" class="md-footer__link md-footer__link--next" aria-label="Sau: 07.KubeScheduler">
+          <a href="../../../linux/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux Complete Learning Roadmap - Chi tiết từng topic">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                07.KubeScheduler
+                Linux Complete Learning Roadmap - Chi tiết từng topic
               </div>
             </div>
             <div class="md-footer__button md-icon">
