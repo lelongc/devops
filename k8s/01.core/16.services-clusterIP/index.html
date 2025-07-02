@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/15.services-nodeport/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/16.services-clusterIP/">
       
       
-        <link rel="prev" href="../14.deployment/">
+        <link rel="prev" href="../15.services-nodeport/">
       
       
-        <link rel="next" href="../16.services-clusterIP/">
+        <link rel="next" href="../../../linux/roadmap/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>15.services nodeport - DraDoc</title>
+        <title>16.services clusterIP - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" class="md-skip">
+        <a href="#1-bai-toan-giao-tiep-noi-bo-trong-kien-truc-microservices" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15.services nodeport
+              16.services clusterIP
             
           </span>
         </div>
@@ -1308,6 +1308,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.services-nodeport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15.services nodeport
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1323,7 +1346,7 @@
   
   
   <span class="md-ellipsis">
-    15.services nodeport
+    16.services clusterIP
     
   </span>
   
@@ -1336,7 +1359,7 @@
   
   
   <span class="md-ellipsis">
-    15.services nodeport
+    16.services clusterIP
     
   </span>
   
@@ -1357,63 +1380,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" class="md-nav__link">
+  <a href="#1-bai-toan-giao-tiep-noi-bo-trong-kien-truc-microservices" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Bài toán: Làm sao để "Thế giới bên ngoài" nói chuyện với Pod? 🌐
+      1. Bài toán: Giao tiếp "Nội bộ" trong Kiến trúc Microservices 🗣️
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-gioi-thieu-cac-loai-dich-vu-services" class="md-nav__link">
+  <a href="#2-clusterip-service-tong-ai-noi-bo-cua-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Giới thiệu các loại "Dịch vụ" (Services)
+      2. ClusterIP Service - "Tổng đài nội bộ" của Kubernetes ☎️
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-mo-xe-nodeport-service" class="md-nav__link">
+  <a href="#3-giai-phau-mot-file-yaml-cua-clusterip-service" class="md-nav__link">
     <span class="md-ellipsis">
-      3. "Mổ xẻ" NodePort Service 🔍
+      3. "Giải phẫu" một file YAML của ClusterIP Service 🧬
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-tao-nodeport-service-bang-yaml" class="md-nav__link">
+  <a href="#4-cach-su-dung" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Tạo NodePort Service bằng YAML
+      4. Cách sử dụng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-service-va-sieu-nang-luc-load-balancing" class="md-nav__link">
+  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Service và "Siêu năng lực" Load Balancing ⚖️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-service-tren-nhieu-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Service trên nhiều Node
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. "Chốt hạ" cho Kỳ thi CKA 📝
+      5. "Chốt hạ" cho Kỳ thi CKA 📝
     </span>
   </a>
   
@@ -1423,29 +1428,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16.services-clusterIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    16.services clusterIP
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1811,63 +1793,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" class="md-nav__link">
+  <a href="#1-bai-toan-giao-tiep-noi-bo-trong-kien-truc-microservices" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Bài toán: Làm sao để "Thế giới bên ngoài" nói chuyện với Pod? 🌐
+      1. Bài toán: Giao tiếp "Nội bộ" trong Kiến trúc Microservices 🗣️
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-gioi-thieu-cac-loai-dich-vu-services" class="md-nav__link">
+  <a href="#2-clusterip-service-tong-ai-noi-bo-cua-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Giới thiệu các loại "Dịch vụ" (Services)
+      2. ClusterIP Service - "Tổng đài nội bộ" của Kubernetes ☎️
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-mo-xe-nodeport-service" class="md-nav__link">
+  <a href="#3-giai-phau-mot-file-yaml-cua-clusterip-service" class="md-nav__link">
     <span class="md-ellipsis">
-      3. "Mổ xẻ" NodePort Service 🔍
+      3. "Giải phẫu" một file YAML của ClusterIP Service 🧬
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-tao-nodeport-service-bang-yaml" class="md-nav__link">
+  <a href="#4-cach-su-dung" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Tạo NodePort Service bằng YAML
+      4. Cách sử dụng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-service-va-sieu-nang-luc-load-balancing" class="md-nav__link">
+  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Service và "Siêu năng lực" Load Balancing ⚖️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-service-tren-nhieu-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Service trên nhiều Node
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. "Chốt hạ" cho Kỳ thi CKA 📝
+      5. "Chốt hạ" cho Kỳ thi CKA 📝
     </span>
   </a>
   
@@ -1889,7 +1853,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/15.services-nodeport.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/16.services-clusterIP.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1897,86 +1861,63 @@
   
 
 
-  <h1>15.services nodeport</h1>
+  <h1>16.services clusterIP</h1>
 
-<h3 id="1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod">1. Bài toán: Làm sao để "Thế giới bên ngoài" nói chuyện với Pod? 🌐<a class="headerlink" href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" title="Permanent link">&para;</a></h3>
-<p>Chúng ta đã biết Pod là nơi chạy ứng dụng, nhưng Pod có những vấn đề:</p>
+<h3 id="1-bai-toan-giao-tiep-noi-bo-trong-kien-truc-microservices">1. Bài toán: Giao tiếp "Nội bộ" trong Kiến trúc Microservices 🗣️<a class="headerlink" href="#1-bai-toan-giao-tiep-noi-bo-trong-kien-truc-microservices" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/16.services-clusterIP/1751439352659.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751439352659" src="../image/16.services-clusterIP/1751439352659.png" /></a></p>
+<p>Hãy tưởng tượng một ứng dụng web hoàn chỉnh thường có nhiều tầng (tiers):</p>
 <ul>
-<li>Nó có địa chỉ IP nội bộ, không thể truy cập trực tiếp từ bên ngoài cụm.</li>
-<li>IP của Pod không ổn định, nó sẽ thay đổi nếu Pod được tạo lại.</li>
+<li>Một nhóm Pod chạy <strong>frontend</strong> (giao diện người dùng).</li>
+<li>Một nhóm Pod chạy <strong>backend</strong> (xử lý logic).</li>
+<li>Một nhóm Pod chạy cơ sở dữ liệu (ví dụ: <strong>database</strong>, Redis).</li>
 </ul>
-<p>Vậy làm sao để người dùng bên ngoài có thể truy cập vào ứng dụng đang chạy trong Pod? Hoặc làm sao để các Pod frontend có thể nói chuyện ổn định với các Pod backend? <strong>Service</strong> chính là câu trả lời.</p>
-<p><a class="glightbox" href="../image/15.services-nodeport/1751438212406.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438212406" src="../image/15.services-nodeport/1751438212406.png" /></a></p>
+<p><strong>Câu hỏi đặt ra là:</strong> Làm thế nào để các Pod frontend có thể nói chuyện một cách ổn định và đáng tin cậy với các Pod backend, khi mà địa chỉ IP của các Pod backend có thể thay đổi liên tục?</p>
 <hr />
-<h3 id="2-gioi-thieu-cac-loai-dich-vu-services">2. Giới thiệu các loại "Dịch vụ" (Services)<a class="headerlink" href="#2-gioi-thieu-cac-loai-dich-vu-services" title="Permanent link">&para;</a></h3>
-<p>Kubernetes cung cấp một vài loại Service chính:</p>
-<p><a class="glightbox" href="../image/15.services-nodeport/1751438354643.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438354643" src="../image/15.services-nodeport/1751438354643.png" /></a></p>
-<ol>
-<li><strong><code>NodePort</code></strong>: "Mở một cổng" trên mỗi Node trong cụm để thế giới bên ngoài có thể truy cập vào ứng dụng. (Chúng ta sẽ tập trung vào loại này trong bài hôm nay).</li>
-</ol>
-<p><a class="glightbox" href="../image/15.services-nodeport/1751438252766.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438252766" src="../image/15.services-nodeport/1751438252766.png" /></a></p>
-<ol>
-<li><strong><code>ClusterIP</code></strong>: Tạo ra một IP "ảo" chỉ có thể truy cập được từ bên trong cụm. Dùng cho việc giao tiếp giữa các Pod với nhau (ví dụ: frontend gọi backend).</li>
-<li><strong><code>LoadBalancer</code></strong>: Tạo ra một bộ cân bằng tải (Load Balancer) của nhà cung cấp dịch vụ đám mây (như AWS, Google Cloud) để phân phối traffic từ internet vào ứng dụng của bạn.</li>
-</ol>
-<hr />
-<h3 id="3-mo-xe-nodeport-service">3. "Mổ xẻ" <code>NodePort</code> Service 🔍<a class="headerlink" href="#3-mo-xe-nodeport-service" title="Permanent link">&para;</a></h3>
-<p>Khi làm việc với <code>NodePort</code>, có 3 loại port bạn cần phân biệt rõ:</p>
-<p><a class="glightbox" href="../image/15.services-nodeport/1751438381920.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438381920" src="../image/15.services-nodeport/1751438381920.png" /></a></p>
+<h3 id="2-clusterip-service-tong-ai-noi-bo-cua-kubernetes">2. <code>ClusterIP</code> Service - "Tổng đài nội bộ" của Kubernetes ☎️<a class="headerlink" href="#2-clusterip-service-tong-ai-noi-bo-cua-kubernetes" title="Permanent link">&para;</a></h3>
+<p><strong><code>ClusterIP</code></strong> chính là giải pháp cho vấn đề này.</p>
 <ul>
-<li><strong><code>targetPort</code></strong>: Đây là port mà container của bạn đang thực sự lắng nghe bên trong <strong>Pod</strong>. Ví dụ: web server của bạn chạy ở port <code>80</code>.</li>
-<li><strong><code>port</code></strong>: Đây là port được mở trên chính cái <strong>Service</strong> (trên địa chỉ IP ảo ClusterIP của nó).</li>
-<li><strong><code>nodePort</code></strong>: Đây là port được mở trên <strong>mỗi Worker Node</strong>. Người dùng bên ngoài sẽ truy cập ứng dụng của bạn qua địa chỉ <code>&lt;IP-của-Node&gt;:&lt;nodePort&gt;</code>.</li>
-<li><em>Lưu ý:</em> <code>nodePort</code> chỉ có thể nằm trong một dải nhất định, mặc định là <strong>30000 - 32767</strong>.</li>
+<li><strong>Nó là gì?</strong> Đây là loại Service <strong>mặc định</strong> trong Kubernetes. Khi bạn tạo một Service mà không chỉ định <code>type</code>, nó sẽ tự động là <code>ClusterIP</code>.</li>
+<li><strong>Nó làm gì?</strong> Nó sẽ tạo ra một <strong>địa chỉ IP ảo (gọi là ClusterIP)</strong> và một <strong>tên DNS ổn định</strong>, chỉ có thể được truy cập từ <strong>bên trong cụm Kubernetes</strong>.</li>
+<li><strong>Lợi ích:</strong></li>
+<li>Các Pod khác (ví dụ: frontend) có thể giao tiếp với một nhóm Pod (ví dụ: backend) thông qua một "địa chỉ" duy nhất và không đổi này.</li>
+<li>Nó hoạt động như một bộ cân bằng tải nội bộ, tự động phân phối các yêu cầu đến một trong các Pod backend một cách ngẫu nhiên.</li>
+<li>Giúp tạo ra các kiến trúc microservices découple (ít phụ thuộc) và linh hoạt.</li>
 </ul>
 <hr />
-<h3 id="4-tao-nodeport-service-bang-yaml">4. Tạo <code>NodePort</code> Service bằng YAML<a class="headerlink" href="#4-tao-nodeport-service-bang-yaml" title="Permanent link">&para;</a></h3>
-<p>Để tạo một Service, chúng ta cũng dùng file YAML. Cấu trúc của nó như sau:</p>
+<h3 id="3-giai-phau-mot-file-yaml-cua-clusterip-service">3. "Giải phẫu" một file YAML của <code>ClusterIP</code> Service 🧬<a class="headerlink" href="#3-giai-phau-mot-file-yaml-cua-clusterip-service" title="Permanent link">&para;</a></h3>
+<p>Việc tạo một <code>ClusterIP</code> Service rất đơn giản.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp-service</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend-service</span><span class="w"> </span><span class="c1"># Tên của Service</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"> </span><span class="c1"># 1. Khai báo loại Service là NodePort</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># 2. Port trên chính Service</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># 3. Port trên Pod mà Service sẽ trỏ tới</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30008</span><span class="w"> </span><span class="c1"># 4. Port trên Node để bên ngoài truy cập</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># 5. Mấu chốt: Kết nối Service với Pod!</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="c1"># type: ClusterIP     # Đây là loại mặc định, nên có thể bỏ qua</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># Port mà Service sẽ lắng nghe</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># Port trên các Pod đích</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-backend</span><span class="w"> </span><span class="c1"># Tìm tất cả các Pod có label này</span>
 </code></pre></div>
 <p><strong>Giải thích các phần trong <code>spec</code>:</strong></p>
-<ol>
-<li><strong><code>type: NodePort</code></strong>: Chỉ định rõ đây là một NodePort Service.</li>
-<li><strong><code>port</code></strong>: Port trên Service. Đây là trường bắt buộc.</li>
-<li><strong><code>targetPort</code></strong>: Port trên Pod đích. Nếu không khai báo, nó sẽ mặc định bằng giá trị của <code>port</code>.</li>
-<li><strong><code>nodePort</code></strong>: Port trên Node. Nếu không khai báo, Kubernetes sẽ tự chọn một port trống trong dải cho phép.</li>
-<li><strong><code>selector</code></strong>: Đây là phần <strong>QUAN TRỌNG NHẤT</strong>. Nó nói cho Service biết: "Hãy tìm tất cả các Pod nào có nhãn (label) là <code>app: myapp</code> và chuyển traffic đến cho chúng". Cơ chế <strong>labels và selectors</strong> này chính là cầu nối giữa Service và Pods.</li>
-</ol>
-<hr />
-<h3 id="5-service-va-sieu-nang-luc-load-balancing">5. Service và "Siêu năng lực" Load Balancing ⚖️<a class="headerlink" href="#5-service-va-sieu-nang-luc-load-balancing" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Nếu <code>selector</code> của Service khớp với <strong>nhiều Pod</strong> (ví dụ: bạn có 3 Pod frontend cùng có label <code>app: myapp</code>), Service sẽ tự động hoạt động như một bộ cân bằng tải.</li>
-<li>Nó sẽ phân phối traffic đến các Pod này một cách ngẫu nhiên (random algorithm). Bạn không cần phải làm gì thêm!</li>
-</ul>
-<p><a class="glightbox" href="../image/15.services-nodeport/1751438481742.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438481742" src="../image/15.services-nodeport/1751438481742.png" /></a></p>
-<hr />
-<h3 id="6-service-tren-nhieu-node">6. Service trên nhiều Node<a class="headerlink" href="#6-service-tren-nhieu-node" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/15.services-nodeport/1751438544446.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438544446" src="../image/15.services-nodeport/1751438544446.png" /></a></p>
-<ul>
-<li>Khi bạn tạo một <code>NodePort</code> Service, Kubernetes sẽ tự động mở cùng một <code>nodePort</code> đó <strong>trên TẤT CẢ các Node</strong> trong cụm.</li>
-<li>Điều này có nghĩa là bạn có thể truy cập ứng dụng của mình bằng cách dùng IP của <strong>bất kỳ Node nào</strong> trong cụm, kết hợp với <code>nodePort</code> đó.</li>
+<li><strong><code>type: ClusterIP</code></strong>: Bạn có thể ghi tường minh, nhưng nếu bỏ trống trường <code>type</code>, Kubernetes sẽ tự hiểu đây là <code>ClusterIP</code>.</li>
+<li><strong><code>ports</code></strong>:</li>
+<li><code>port</code>: Port mà Service này sẽ mở trên địa chỉ ClusterIP của nó.</li>
+<li><code>targetPort</code>: Port mà các container trong Pod đích đang lắng nghe.</li>
+<li><strong><code>selector</code></strong>: Mấu chốt của vấn đề! Nó nói cho Service biết: "Hãy tìm và chuyển traffic đến tất cả các Pod có nhãn là <code>app: my-backend</code>".</li>
 </ul>
 <hr />
-<h3 id="7-chot-ha-cho-ky-thi-cka">7. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#7-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
+<h3 id="4-cach-su-dung">4. Cách sử dụng<a class="headerlink" href="#4-cach-su-dung" title="Permanent link">&para;</a></h3>
+<p>Sau khi Service <code>backend-service</code> được tạo, các Pod frontend trong cùng cụm có thể dễ dàng truy cập vào các Pod backend bằng cách sử dụng tên DNS của Service:</p>
+<p><code>http://backend-service</code></p>
+<p>Kubernetes sẽ tự động phân giải tên này thành địa chỉ ClusterIP tương ứng và chuyển yêu cầu đến một trong các Pod backend khỏe mạnh.</p>
+<hr />
+<h3 id="5-chot-ha-cho-ky-thi-cka">5. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Service</strong> là đối tượng dùng để tạo ra một điểm truy cập (endpoint) ổn định cho các Pod.</li>
-<li><strong><code>NodePort</code></strong> là loại Service dùng để "mở cổng" trên Node, cho phép truy cập từ bên ngoài.</li>
-<li>Sự kết nối giữa Service và Pod được thực hiện thông qua <strong>labels và selectors</strong>. Đây là cơ chế nền tảng của Kubernetes.</li>
-<li>Một Service có thể tự động <strong>cân bằng tải</strong> cho nhiều Pod.</li>
-<li>Một <code>NodePort</code> Service sẽ có hiệu lực trên <strong>tất cả các Node</strong> trong cụm.</li>
+<li><code>ClusterIP</code> là loại Service <strong>mặc định</strong> trong Kubernetes.</li>
+<li>Nó được sử dụng cho việc <strong>giao tiếp bên trong cụm (internal communication)</strong>, ví dụ: giữa frontend và backend.</li>
+<li>Nó <strong>KHÔNG</strong> thể được truy cập từ bên ngoài cụm.</li>
+<li>Nó sử dụng <strong><code>selector</code></strong> để tìm các Pod mà nó sẽ quản lý và chuyển traffic đến.</li>
 </ul>
 
 
@@ -2084,7 +2025,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../14.deployment/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 14.deployment">
+          <a href="../15.services-nodeport/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 15.services nodeport">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2094,20 +2035,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                14.deployment
+                15.services nodeport
               </div>
             </div>
           </a>
         
         
           
-          <a href="../16.services-clusterIP/" class="md-footer__link md-footer__link--next" aria-label="Sau: 16.services clusterIP">
+          <a href="../../../linux/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux Complete Learning Roadmap - Chi tiết từng topic">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                16.services clusterIP
+                Linux Complete Learning Roadmap - Chi tiết từng topic
               </div>
             </div>
             <div class="md-footer__button md-icon">
