@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/08.kubelet/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/17.services-loadbalancer/">
       
       
-        <link rel="prev" href="../07.KubeScheduler/">
+        <link rel="prev" href="../16.services-clusterIP/">
       
       
-        <link rel="next" href="../09.kube-proxy/">
+        <link rel="next" href="../../../linux/roadmap/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>08.kubelet - DraDoc</title>
+        <title>17.services loadbalancer - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-kubelet-thuyen-truong-tren-moi-worker-node" class="md-skip">
+        <a href="#1-bai-toan-tu-nodeport-en-mot-url-than-thien-voi-nguoi-dung" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08.kubelet
+              17.services loadbalancer
             
           </span>
         </div>
@@ -1172,30 +1172,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    08.kubelet
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../08.kubelet/" class="md-nav__link">
         
   
   
@@ -1206,69 +1186,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-kubelet-thuyen-truong-tren-moi-worker-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. kubelet - "Thuyền trưởng" trên mỗi Worker Node 👨‍✈️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Các Nhiệm vụ chính của "Thuyền trưởng" kubelet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cai-at-kubelet-mot-iem-ac-biet" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Cài đặt kubelet - Một điểm "Đặc biệt" ⚠️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-xem-tien-trinh-kubelet-ang-chay" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Xem tiến trình kubelet đang chạy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1439,10 +1356,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../17.services-loadbalancer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    17.services loadbalancer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1453,6 +1390,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-bai-toan-tu-nodeport-en-mot-url-than-thien-voi-nguoi-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Bài toán: Từ NodePort đến một URL thân thiện với người dùng 🤔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-loadbalancer-service-cau-noi-ra-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. LoadBalancer Service - "Cầu nối" ra Internet 🌉
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-phep-mau-ang-sau-type-loadbalancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Phép màu" đằng sau type: LoadBalancer ✨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-iem-chi-mang-can-nho-phu-thuoc-vao-nha-cung-cap-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Điểm "Chí mạng" cần nhớ: Phụ thuộc vào Nhà cung cấp Cloud ☁️⚠️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1818,36 +1818,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-kubelet-thuyen-truong-tren-moi-worker-node" class="md-nav__link">
+  <a href="#1-bai-toan-tu-nodeport-en-mot-url-than-thien-voi-nguoi-dung" class="md-nav__link">
     <span class="md-ellipsis">
-      1. kubelet - "Thuyền trưởng" trên mỗi Worker Node 👨‍✈️
+      1. Bài toán: Từ NodePort đến một URL thân thiện với người dùng 🤔
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet" class="md-nav__link">
+  <a href="#2-loadbalancer-service-cau-noi-ra-internet" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Các Nhiệm vụ chính của "Thuyền trưởng" kubelet
+      2. LoadBalancer Service - "Cầu nối" ra Internet 🌉
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-cai-at-kubelet-mot-iem-ac-biet" class="md-nav__link">
+  <a href="#3-phep-mau-ang-sau-type-loadbalancer" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Cài đặt kubelet - Một điểm "Đặc biệt" ⚠️
+      3. "Phép màu" đằng sau type: LoadBalancer ✨
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-xem-tien-trinh-kubelet-ang-chay" class="md-nav__link">
+  <a href="#4-iem-chi-mang-can-nho-phu-thuoc-vao-nha-cung-cap-cloud" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Xem tiến trình kubelet đang chạy
+      4. Điểm "Chí mạng" cần nhớ: Phụ thuộc vào Nhà cung cấp Cloud ☁️⚠️
     </span>
   </a>
   
@@ -1878,7 +1878,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/08.kubelet.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/17.services-loadbalancer.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1886,61 +1886,49 @@
   
 
 
-  <h1>08.kubelet</h1>
+  <h1>17.services loadbalancer</h1>
 
-<h3 id="1-kubelet-thuyen-truong-tren-moi-worker-node">1. <code>kubelet</code> - "Thuyền trưởng" trên mỗi Worker Node 👨‍✈️<a class="headerlink" href="#1-kubelet-thuyen-truong-tren-moi-worker-node" title="Permanent link">&para;</a></h3>
-<p>Nếu <code>Master Node</code> là "Tàu Chỉ Huy", thì mỗi <code>Worker Node</code> là một "Tàu Hàng", và <strong><code>kubelet</code> chính là thuyền trưởng</strong> của con tàu đó. Nó là agent chính, chịu trách nhiệm cho mọi hoạt động diễn ra trên node của mình.</p>
-<p><code>kubelet</code> là <strong>điểm liên lạc duy nhất</strong> của Master Node trên mỗi Worker Node. Mọi mệnh lệnh từ <code>kube-api-server</code> xuống Worker Node đều do <code>kubelet</code> tiếp nhận và thực thi.</p>
-<hr />
-<h3 id="2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet">2. Các Nhiệm vụ chính của "Thuyền trưởng" <code>kubelet</code><a class="headerlink" href="#2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet" title="Permanent link">&para;</a></h3>
-<p><code>kubelet</code> có 3 nhiệm vụ cốt lõi:</p>
-<ol>
-<li>
-<p><strong>Đăng ký Node (Node Registration):</strong></p>
-</li>
-<li>
-<p>Khi một Worker Node mới khởi động, <code>kubelet</code> sẽ làm "thủ tục giấy tờ" cần thiết để đăng ký Node này với cụm Kubernetes, báo cáo rằng: "Thuyền trưởng xin báo, tàu hàng số hiệu X đã sẵn sàng nhận nhiệm vụ!".</p>
-</li>
-<li>
-<p><strong>Tạo và Quản lý Vòng đời Pod (Pod Lifecycle):</strong></p>
-</li>
-<li>
-<p>Sau khi <code>kube-scheduler</code> đã quyết định một Pod sẽ chạy trên Node này, <code>kube-api-server</code> sẽ gửi chỉ thị đến <code>kubelet</code>.</p>
-</li>
-<li><code>kubelet</code> nhận lệnh và <strong>ra chỉ thị cho Container Runtime Engine</strong> (ví dụ: Docker, ContainerD) để kéo image cần thiết và khởi chạy các container bên trong Pod.</li>
-<li>
-<p>Nó cũng chịu trách nhiệm hủy Pod khi có lệnh.</p>
-</li>
-<li>
-<p><strong>Báo cáo Trạng thái (Status Reporting):</strong></p>
-</li>
-<li>
-<p><code>kubelet</code> liên tục <strong>theo dõi "sức khỏe"</strong> của các Pod và container đang chạy trên node của mình.</p>
-</li>
-<li>Nó đều đặn gửi các báo cáo trạng thái này về cho <code>kube-api-server</code>, thông báo tình hình của "con tàu" và các "thùng hàng" trên đó.</li>
-</ol>
-<hr />
-<h3 id="3-cai-at-kubelet-mot-iem-ac-biet">3. Cài đặt <code>kubelet</code> - Một điểm "Đặc biệt" ⚠️<a class="headerlink" href="#3-cai-at-kubelet-mot-iem-ac-biet" title="Permanent link">&para;</a></h3>
-<p>Đây là một điểm rất quan trọng bạn cần nhớ, khác biệt so với các thành phần Master Node khác:</p>
+<h3 id="1-bai-toan-tu-nodeport-en-mot-url-than-thien-voi-nguoi-dung">1. Bài toán: Từ <code>NodePort</code> đến một URL thân thiện với người dùng 🤔<a class="headerlink" href="#1-bai-toan-tu-nodeport-en-mot-url-than-thien-voi-nguoi-dung" title="Permanent link">&para;</a></h3>
+<p>Ở bài trước, chúng ta đã dùng <code>NodePort</code> để truy cập ứng dụng. Tuy nhiên, nó có một vấn đề lớn:</p>
 <ul>
-<li>Ngay cả khi bạn sử dụng công cụ <code>kubeadm</code> để dựng cụm, <code>kubeadm</code> <strong>KHÔNG</strong> tự động cài đặt <code>kubelet</code> cho bạn.</li>
-<li>Bạn phải <strong>luôn luôn cài đặt <code>kubelet</code> một cách thủ công</strong> trên tất cả các Worker Node (và cả Master Node).</li>
-<li>Quá trình cài đặt thường bao gồm việc tải file cài đặt, giải nén và cấu hình nó chạy như một service hệ thống.</li>
+<li>Để truy cập, bạn phải dùng địa chỉ <code>&lt;IP-của-Node&gt;:&lt;nodePort&gt;</code>.</li>
+<li>Nếu cụm của bạn có 4 node, bạn sẽ có tới 4 địa chỉ IP khác nhau để truy cập cùng một ứng dụng.</li>
+<li>Bạn không thể đưa cho người dùng cuối một danh sách các IP như vậy. Cái họ cần là một <strong>URL duy nhất</strong>, thân thiện, ví dụ: <code>votingapp.com</code>.</li>
+</ul>
+<p><strong>Giải pháp truyền thống là gì?</strong> Bạn có thể tự dựng một máy chủ VM riêng, cài đặt một bộ cân bằng tải như Nginx hoặc HAProxy, rồi cấu hình nó để trỏ đến các node trong cụm Kubernetes. Nhưng cách này rất thủ công, tốn công sức cài đặt và bảo trì.</p>
+<hr />
+<h3 id="2-loadbalancer-service-cau-noi-ra-internet">2. <code>LoadBalancer</code> Service - "Cầu nối" ra Internet 🌉<a class="headerlink" href="#2-loadbalancer-service-cau-noi-ra-internet" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/17.services-loadbalancer/1751442203242.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751442203242" src="../image/17.services-loadbalancer/1751442203242.png" /></a></p>
+<p>Kubernetes cung cấp một giải pháp "xịn" hơn nhiều, đó là Service loại <code>LoadBalancer</code>.</p>
+<ul>
+<li><strong>Nó là gì?</strong> Đây là loại Service được thiết kế để tự động tích hợp với các bộ cân bằng tải của những nhà cung cấp dịch vụ đám mây (cloud provider).</li>
+<li><strong>Bạn cần làm gì?</strong> Rất đơn giản, bạn chỉ cần khai báo <code>type: LoadBalancer</code> trong file YAML của Service.</li>
 </ul>
 <hr />
-<h3 id="4-xem-tien-trinh-kubelet-ang-chay">4. Xem tiến trình <code>kubelet</code> đang chạy<a class="headerlink" href="#4-xem-tien-trinh-kubelet-ang-chay" title="Permanent link">&para;</a></h3>
-<p>Để xem <code>kubelet</code> có đang chạy trên một node hay không và với các tùy chọn nào, bạn có thể dùng lệnh sau trên node đó:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ps<span class="w"> </span>-aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kubelet
-</code></pre></div>
+<h3 id="3-phep-mau-ang-sau-type-loadbalancer">3. "Phép màu" đằng sau <code>type: LoadBalancer</code> ✨<a class="headerlink" href="#3-phep-mau-ang-sau-type-loadbalancer" title="Permanent link">&para;</a></h3>
+<p>Khi bạn tạo một Service với <code>type: LoadBalancer</code> trên một nền tảng cloud được hỗ trợ, một chuỗi hành động tự động sẽ xảy ra:</p>
+<ol>
+<li>Kubernetes vẫn sẽ tạo ra một <strong><code>ClusterIP</code></strong> Service để giao tiếp nội bộ.</li>
+<li>Nó cũng sẽ tạo ra một <strong><code>NodePort</code></strong> Service để mở một cổng trên mỗi node.</li>
+<li><strong>Điều quan trọng nhất:</strong> Kubernetes sẽ gửi một yêu cầu API đến nhà cung cấp cloud (ví dụ: AWS, Google Cloud, Azure).</li>
+<li>Nhà cung cấp cloud sẽ tự động tạo ra một <strong>Bộ cân bằng tải mạng bên ngoài (External Network Load Balancer)</strong>.</li>
+<li>Load Balancer này sẽ có một địa chỉ IP public, cố định và được cấu hình để tự động chuyển tiếp tất cả traffic từ Internet vào cái <code>NodePort</code> đã được mở trên các node của bạn.</li>
+</ol>
+<p>Kết quả là người dùng chỉ cần truy cập vào địa chỉ IP public của Load Balancer này là có thể vào được ứng dụng của bạn.</p>
+<hr />
+<h3 id="4-iem-chi-mang-can-nho-phu-thuoc-vao-nha-cung-cap-cloud">4. Điểm "Chí mạng" cần nhớ: Phụ thuộc vào Nhà cung cấp Cloud ☁️⚠️<a class="headerlink" href="#4-iem-chi-mang-can-nho-phu-thuoc-vao-nha-cung-cap-cloud" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Tính năng này <strong>CHỈ HOẠT ĐỘNG</strong> trên các nền tảng cloud được Kubernetes hỗ trợ (GCP, AWS, Azure là các ví dụ điển hình).</li>
+<li>Nếu bạn khai báo <code>type: LoadBalancer</code> trong một môi trường không được hỗ trợ (ví dụ: một cụm Kubernetes bạn tự dựng trên máy ảo VirtualBox ở nhà), nó sẽ <strong>chỉ hoạt động như một <code>NodePort</code> Service</strong>. Sẽ không có external load balancer nào được tạo ra cả.</li>
+</ul>
 <hr />
 <h3 id="5-chot-ha-cho-ky-thi-cka">5. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>kubelet</code> là agent chính, chạy trên <strong>mỗi Worker Node</strong> (và cả Master Node).</li>
-<li>Nó là <strong>người thực thi</strong> - nhận lệnh từ <code>api-server</code> và ra lệnh cho Container Runtime để chạy/dừng container.</li>
-<li>Nó là <strong>người báo cáo</strong> - liên tục gửi trạng thái của Node và các Pod về cho Master.</li>
-<li>Quan trọng: <strong><code>kubeadm</code> không tự cài <code>kubelet</code></strong>. Bạn phải luôn cài đặt nó thủ công.</li>
+<li>Sử dụng <code>type: LoadBalancer</code> là cách tiêu chuẩn để "đưa" một ứng dụng trong Kubernetes ra Internet với một <strong>địa chỉ IP duy nhất và ổn định</strong>.</li>
+<li>Tính năng này phụ thuộc vào sự <strong>tích hợp với một nhà cung cấp cloud được hỗ trợ</strong>.</li>
+<li>Trong môi trường không được hỗ trợ, <code>LoadBalancer</code> sẽ hoạt động giống hệt như <code>NodePort</code>.</li>
+<li>Về bản chất, khi bạn tạo một <code>LoadBalancer</code> Service, nó cũng đồng thời tạo ra cả <code>NodePort</code> và <code>ClusterIP</code> Service bên dưới.</li>
 </ul>
-<p>Hiểu rõ vai trò của <code>kubelet</code> là bạn đã hiểu được "cánh tay nối dài" của Master Node hoạt động như thế nào trên từng Worker Node rồi đó. Chúc bạn buổi chiều học tập hiệu quả!</p>
 
 
 
@@ -2047,7 +2035,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../07.KubeScheduler/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 07.KubeScheduler">
+          <a href="../16.services-clusterIP/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 16.services clusterIP">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2057,20 +2045,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                07.KubeScheduler
+                16.services clusterIP
               </div>
             </div>
           </a>
         
         
           
-          <a href="../09.kube-proxy/" class="md-footer__link md-footer__link--next" aria-label="Sau: 09.kube proxy">
+          <a href="../../../linux/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux Complete Learning Roadmap - Chi tiết từng topic">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                09.kube proxy
+                Linux Complete Learning Roadmap - Chi tiết từng topic
               </div>
             </div>
             <div class="md-footer__button md-icon">
