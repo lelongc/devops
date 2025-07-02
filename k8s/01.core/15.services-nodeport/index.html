@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/04.etcd/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/15.services-nodeport/">
       
       
-        <link rel="prev" href="../02-03.docker-containerd/">
+        <link rel="prev" href="../14.deployment/">
       
       
-        <link rel="next" href="../05.kube-api-server/">
+        <link rel="next" href="../../../linux/roadmap/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>04.etcd - DraDoc</title>
+        <title>15.services nodeport - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-etcd-la-gi" class="md-skip">
+        <a href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              04.etcd
+              15.services nodeport
             
           </span>
         </div>
@@ -1076,30 +1076,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    04.etcd
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../04.etcd/" class="md-nav__link">
         
   
   
@@ -1110,183 +1090,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-etcd-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. etcd là gì?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-key-value-store-khac-gi-co-so-du-lieu-truyen-thong-sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Key-Value Store khác gì Cơ sở dữ liệu truyền thống (SQL)? 🤔
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-bat-au-voi-etcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Bắt đầu với etcd
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cu-lua-ve-phien-ban-etcdctl-v2-vs-v3" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. "Cú lừa" về phiên bản: etcdctl v2 vs. v3 ⚠️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-nguoi-moi-bat-au" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho người mới bắt đầu 📝
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Vai trò của etcd trong Kubernetes - "Bộ não" của Cụm 🧠
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cach-etcd-uoc-trien-khai-trong-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Cách etcd được triển khai trong Kubernetes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Cách etcd được triển khai trong Kubernetes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-trien-khai-thu-cong-from-scratch" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. Triển khai "Thủ công" (From Scratch)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-trien-khai-bang-kubeadm-cach-de-hon" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. Triển khai bằng kubeadm (Cách dễ hơn)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-du-lieu-uoc-luu-tru-nhu-the-nao" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Dữ liệu được lưu trữ như thế nào? 📂
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-etcd-trong-moi-truong-high-availability-ha" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. etcd trong môi trường High Availability (HA) 🏰
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi 📝
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-etcdctl-vu-khi-tuong-tac-voi-etcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. etcdctl - "Vũ khí" tương tác với etcd
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-hai-the-gioi-api-version-2-vs-version-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Hai "Thế giới" API: Version 2 vs. Version 3
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-giay-thong-hanh-xac-thuc-bang-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. "Giấy thông hành" - Xác thực bằng Certificate 🔑
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cu-phap-full-option-lenh-etcdctl-hoan-chinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cú pháp "Full Option" - Lệnh etcdctl hoàn chỉnh
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1503,10 +1306,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../15.services-nodeport/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    15.services nodeport
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1517,6 +1340,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Bài toán: Làm sao để "Thế giới bên ngoài" nói chuyện với Pod? 🌐
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gioi-thieu-cac-loai-dich-vu-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Giới thiệu các loại "Dịch vụ" (Services)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mo-xe-nodeport-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Mổ xẻ" NodePort Service 🔍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tao-nodeport-service-bang-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tạo NodePort Service bằng YAML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-service-va-sieu-nang-luc-load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Service và "Siêu năng lực" Load Balancing ⚖️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-service-tren-nhieu-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Service trên nhiều Node
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. "Chốt hạ" cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1882,159 +1786,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-etcd-la-gi" class="md-nav__link">
+  <a href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" class="md-nav__link">
     <span class="md-ellipsis">
-      1. etcd là gì?
+      1. Bài toán: Làm sao để "Thế giới bên ngoài" nói chuyện với Pod? 🌐
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-key-value-store-khac-gi-co-so-du-lieu-truyen-thong-sql" class="md-nav__link">
+  <a href="#2-gioi-thieu-cac-loai-dich-vu-services" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Key-Value Store khác gì Cơ sở dữ liệu truyền thống (SQL)? 🤔
+      2. Giới thiệu các loại "Dịch vụ" (Services)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bat-au-voi-etcd" class="md-nav__link">
+  <a href="#3-mo-xe-nodeport-service" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Bắt đầu với etcd
+      3. "Mổ xẻ" NodePort Service 🔍
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-cu-lua-ve-phien-ban-etcdctl-v2-vs-v3" class="md-nav__link">
+  <a href="#4-tao-nodeport-service-bang-yaml" class="md-nav__link">
     <span class="md-ellipsis">
-      4. "Cú lừa" về phiên bản: etcdctl v2 vs. v3 ⚠️
+      4. Tạo NodePort Service bằng YAML
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-nguoi-moi-bat-au" class="md-nav__link">
+  <a href="#5-service-va-sieu-nang-luc-load-balancing" class="md-nav__link">
     <span class="md-ellipsis">
-      5. "Chốt hạ" cho người mới bắt đầu 📝
+      5. Service và "Siêu năng lực" Load Balancing ⚖️
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum" class="md-nav__link">
+  <a href="#6-service-tren-nhieu-node" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Vai trò của etcd trong Kubernetes - "Bộ não" của Cụm 🧠
+      6. Service trên nhiều Node
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-cach-etcd-uoc-trien-khai-trong-kubernetes" class="md-nav__link">
+  <a href="#7-chot-ha-cho-ky-thi-cka" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Cách etcd được triển khai trong Kubernetes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Cách etcd được triển khai trong Kubernetes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-trien-khai-thu-cong-from-scratch" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. Triển khai "Thủ công" (From Scratch)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-trien-khai-bang-kubeadm-cach-de-hon" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. Triển khai bằng kubeadm (Cách dễ hơn)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-du-lieu-uoc-luu-tru-nhu-the-nao" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Dữ liệu được lưu trữ như thế nào? 📂
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-etcd-trong-moi-truong-high-availability-ha" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. etcd trong môi trường High Availability (HA) 🏰
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi 📝
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-etcdctl-vu-khi-tuong-tac-voi-etcd" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. etcdctl - "Vũ khí" tương tác với etcd
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-hai-the-gioi-api-version-2-vs-version-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Hai "Thế giới" API: Version 2 vs. Version 3
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-giay-thong-hanh-xac-thuc-bang-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. "Giấy thông hành" - Xác thực bằng Certificate 🔑
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cu-phap-full-option-lenh-etcdctl-hoan-chinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cú pháp "Full Option" - Lệnh etcdctl hoàn chỉnh
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
+      7. "Chốt hạ" cho Kỳ thi CKA 📝
     </span>
   </a>
   
@@ -2056,7 +1864,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/04.etcd.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/15.services-nodeport.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2064,236 +1872,87 @@
   
 
 
-  <h1>04.etcd</h1>
+  <h1>15.services nodeport</h1>
 
-<h2 id="1-etcd-la-gi">1. <code>etcd</code> là gì?<a class="headerlink" href="#1-etcd-la-gi" title="Permanent link">&para;</a></h2>
-<p>Bạn có thể nghĩ về <strong><code>etcd</code></strong> như một cơ sở dữ liệu đặc biệt. Theo định nghĩa, nó là một <strong>kho lưu trữ khóa-giá trị (key-value store)</strong> có các đặc tính sau:</p>
+<h3 id="1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod">1. Bài toán: Làm sao để "Thế giới bên ngoài" nói chuyện với Pod? 🌐<a class="headerlink" href="#1-bai-toan-lam-sao-e-the-gioi-ben-ngoai-noi-chuyen-voi-pod" title="Permanent link">&para;</a></h3>
+<p>Chúng ta đã biết Pod là nơi chạy ứng dụng, nhưng Pod có những vấn đề:</p>
 <ul>
-<li><strong>Phân tán (Distributed):</strong> Dữ liệu được trải rộng trên nhiều máy chủ.</li>
-<li><strong>Đáng tin cậy (Reliable):</strong> Đảm bảo dữ liệu không bị mất mát.</li>
-<li><strong>Đơn giản, an toàn và nhanh chóng.</strong></li>
+<li>Nó có địa chỉ IP nội bộ, không thể truy cập trực tiếp từ bên ngoài cụm.</li>
+<li>IP của Pod không ổn định, nó sẽ thay đổi nếu Pod được tạo lại.</li>
 </ul>
-<p>Trong Kubernetes, <code>etcd</code> chính là "bộ não" lưu trữ toàn bộ trạng thái và cấu hình của cả cụm.</p>
+<p>Vậy làm sao để người dùng bên ngoài có thể truy cập vào ứng dụng đang chạy trong Pod? Hoặc làm sao để các Pod frontend có thể nói chuyện ổn định với các Pod backend? <strong>Service</strong> chính là câu trả lời.</p>
+<p><a class="glightbox" href="../image/15.services-nodeport/1751438212406.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438212406" src="../image/15.services-nodeport/1751438212406.png" /></a></p>
 <hr />
-<h2 id="2-key-value-store-khac-gi-co-so-du-lieu-truyen-thong-sql">2. Key-Value Store khác gì Cơ sở dữ liệu truyền thống (SQL)? 🤔<a class="headerlink" href="#2-key-value-store-khac-gi-co-so-du-lieu-truyen-thong-sql" title="Permanent link">&para;</a></h2>
-<p>Đây là điểm khác biệt cốt lõi bạn cần nắm:</p>
-<ul>
-<li>
-<p><strong>Cơ sở dữ liệu truyền thống (SQL):</strong></p>
-</li>
-<li>
-<p>Lưu dữ liệu dưới dạng <strong>bảng (table)</strong> với các <strong>hàng (row)</strong> và <strong>cột (column)</strong> được định nghĩa nghiêm ngặt.</p>
-</li>
-<li>
-<p><em>Ví dụ:</em> Một bảng thông tin nhân viên. Nếu bạn muốn thêm một loại thông tin mới (ví dụ: <code>lương</code>), bạn phải thêm một cột mới cho <strong>toàn bộ bảng</strong>, ảnh hưởng đến tất cả các hàng, kể cả những người không có thông tin lương (dẫn đến nhiều ô trống).</p>
-</li>
-<li>
-<p><strong>Kho lưu trữ Key-Value (như <code>etcd</code>):</strong></p>
-</li>
-<li>
-<p>Lưu thông tin dưới dạng các cặp <strong>Khóa (Key) = Giá trị (Value)</strong>, giống như các <strong>tài liệu (document)</strong> riêng lẻ.</p>
-</li>
-<li><em>Ví dụ:</em> Mỗi người có một "tài liệu" riêng. Người đi làm thì có trường <code>lương</code> trong tài liệu của họ. Học sinh thì có trường <code>điểm</code> trong tài liệu của họ.</li>
-<li><strong>Lợi ích:</strong> Cấu trúc rất <strong>linh hoạt</strong>. Bạn có thể thêm một trường mới vào một tài liệu mà không ảnh hưởng gì đến các tài liệu khác. Dữ liệu phức tạp thường được lưu dưới dạng JSON hoặc YAML.</li>
-</ul>
-<hr />
-<h2 id="3-bat-au-voi-etcd">3. Bắt đầu với <code>etcd</code><a class="headerlink" href="#3-bat-au-voi-etcd" title="Permanent link">&para;</a></h2>
-<p>Việc cài đặt và chạy <code>etcd</code> rất đơn giản:</p>
+<h3 id="2-gioi-thieu-cac-loai-dich-vu-services">2. Giới thiệu các loại "Dịch vụ" (Services)<a class="headerlink" href="#2-gioi-thieu-cac-loai-dich-vu-services" title="Permanent link">&para;</a></h3>
+<p>Kubernetes cung cấp một vài loại Service chính:</p>
+<p><a class="glightbox" href="../image/15.services-nodeport/1751438354643.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438354643" src="../image/15.services-nodeport/1751438354643.png" /></a></p>
 <ol>
-<li><strong>Tải về (Download):</strong> Lấy file nhị phân (binary) phù hợp với hệ điều hành của bạn từ trang GitHub của <code>etcd</code>.</li>
-<li><strong>Giải nén (Unzip):</strong> Giải nén file vừa tải.</li>
-<li><strong>Chạy (Run):</strong> Chạy file thực thi <code>etcd</code>.</li>
-<li>Mặc định, <code>etcd</code> sẽ khởi động một dịch vụ và lắng nghe trên cổng <strong><code>2379</code></strong>.</li>
+<li><strong><code>NodePort</code></strong>: "Mở một cổng" trên mỗi Node trong cụm để thế giới bên ngoài có thể truy cập vào ứng dụng. (Chúng ta sẽ tập trung vào loại này trong bài hôm nay).</li>
 </ol>
-<p>Sau khi chạy, bạn có thể dùng một "client" để giao tiếp với nó. Client mặc định đi kèm là <strong><code>etcdctl</code></strong>.</p>
-<hr />
-<h2 id="4-cu-lua-ve-phien-ban-etcdctl-v2-vs-v3">4. "Cú lừa" về phiên bản: <code>etcdctl</code> v2 vs. v3 ⚠️<a class="headerlink" href="#4-cu-lua-ve-phien-ban-etcdctl-v2-vs-v3" title="Permanent link">&para;</a></h2>
-<p>Đây là phần <strong>quan trọng nhất và dễ gây nhầm lẫn nhất</strong> cho người mới bắt đầu!</p>
-<p>Giữa phiên bản <code>etcd</code> v2 và v3 có sự thay đổi lớn về API, dẫn đến các lệnh <code>etcdctl</code> cũng thay đổi theo.</p>
-<ul>
-<li>
-<p><strong>Làm sao để biết <code>etcdctl</code> đang dùng API phiên bản nào?</strong></p>
-</li>
-<li>
-<p>Chạy lệnh: <code>etcdctl version</code></p>
-</li>
-<li>
-<p>Lệnh này sẽ hiển thị phiên bản của công cụ <code>etcdctl</code> và quan trọng hơn là <strong>phiên bản API</strong> mà nó đang được cấu hình để sử dụng (là <code>2</code> hoặc <code>3</code>).</p>
-</li>
-<li>
-<p><strong>Làm sao để chuyển sang dùng API v3?</strong></p>
-</li>
-<li>
-<p>Các phiên bản <code>etcdctl</code> mới hơn thường mặc định dùng API v3. Nhưng nếu bạn gặp phiên bản cũ hơn, bạn cần ra lệnh cho nó dùng API v3.</p>
-</li>
-<li>
-<p>Cách tốt nhất là đặt biến môi trường cho toàn bộ phiên làm việc của bạn bằng lệnh:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>So sánh lệnh giữa v2 và v3:</strong></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Tác vụ</th>
-<th style="text-align: left;">Lệnh API v2</th>
-<th style="text-align: left;">Lệnh API v3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Lưu giá trị</strong></td>
-<td style="text-align: left;"><code>etcdctl set key1 value1</code></td>
-<td style="text-align: left;"><code>etcdctl put key1 value1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Lấy giá trị</strong></td>
-<td style="text-align: left;"><code>etcdctl get key1</code></td>
-<td style="text-align: left;"><code>etcdctl get key1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Xem phiên bản</strong></td>
-<td style="text-align: left;"><code>etcdctl --version</code> (là một tùy chọn)</td>
-<td style="text-align: left;"><code>etcdctl version</code> (là một lệnh)</td>
-</tr>
-</tbody>
-</table>
-<p>Việc <code>set</code> đổi thành <code>put</code> là thay đổi dễ nhận thấy nhất.</p>
-<hr />
-<h2 id="5-chot-ha-cho-nguoi-moi-bat-au">5. "Chốt hạ" cho người mới bắt đầu 📝<a class="headerlink" href="#5-chot-ha-cho-nguoi-moi-bat-au" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><code>etcd</code></strong> là một kho lưu trữ <strong>key-value</strong> linh hoạt, là "bộ não" của Kubernetes.</li>
-<li>Việc cài đặt và chạy nó khá đơn giản, mặc định ở cổng <strong>2379</strong>.</li>
-<li>Khi sử dụng <code>etcdctl</code>, hãy luôn chắc chắn rằng bạn đang làm việc với <strong>API v3</strong> bằng cách kiểm tra (<code>etcdctl version</code>) và thiết lập biến môi trường (<code>export ETCDCTL_API=3</code>). Đây là mẹo thực tế quan trọng nhất để tránh lỗi không đáng có.</li>
-</ul>
-<h2 id="1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum">1. Vai trò của <code>etcd</code> trong Kubernetes - "Bộ não" của Cụm 🧠<a class="headerlink" href="#1-vai-tro-cua-etcd-trong-kubernetes-bo-nao-cua-cum" title="Permanent link">&para;</a></h2>
-<p>Trong một cụm Kubernetes, <strong><code>etcd</code> chính là nguồn chân lý duy nhất (single source of truth)</strong> .</p>
-<ul>
-<li>Nó lưu trữ <strong>TOÀN BỘ thông tin</strong> về cụm, bao gồm:</li>
-<li>Nodes, Pods, Configs, Secrets, Accounts, Roles, Role Bindings, và nhiều thứ khác.</li>
-<li>Mọi thông tin bạn thấy khi chạy lệnh <code>kubectl get ...</code> đều được lấy từ <code>etcd</code>.</li>
-<li>Mọi thay đổi bạn thực hiện với cụm (thêm node, triển khai pod,...) chỉ được coi là <strong>hoàn tất</strong> khi nó đã được cập nhật thành công vào <code>etcd</code>.</li>
-</ul>
-<hr />
-<h2 id="2-cach-etcd-uoc-trien-khai-trong-kubernetes">2. Cách <code>etcd</code> được triển khai trong Kubernetes<a class="headerlink" href="#2-cach-etcd-uoc-trien-khai-trong-kubernetes" title="Permanent link">&para;</a></h2>
-<p><code>etcd</code> được cài đặt như thế nào còn phụ thuộc vào cách bạn dựng cụm Kubernetes của mình. Có hai cách chính:</p>
-<h3 id="a-trien-khai-thu-cong-from-scratch">a. Triển khai "Thủ công" (From Scratch)<a class="headerlink" href="#a-trien-khai-thu-cong-from-scratch" title="Permanent link">&para;</a></h3>
-<p>Đây là cách bạn tự tay làm mọi thứ.</p>
-<ul>
-<li>Bạn sẽ phải tự tải file nhị phân (binary) của <code>etcd</code> về.</li>
-<li>Tự cài đặt và cấu hình <code>etcd</code> như một service chạy trên Master Node.</li>
-<li>Khi cấu hình, có một tham số rất quan trọng cần lưu ý:</li>
-<li><strong><code>--advertise-client-urls</code></strong> : Đây là địa chỉ mà <code>etcd</code> sẽ lắng nghe các kết nối từ client (ví dụ: <code>https://&lt;IP-của-master-node&gt;:2379</code>).</li>
-<li><code>kube-api-server</code> (thành phần trung tâm của Kubernetes) phải được cấu hình để trỏ đến đúng URL này thì mới có thể nói chuyện được với <code>etcd</code>.</li>
-</ul>
-<h3 id="b-trien-khai-bang-kubeadm-cach-de-hon">b. Triển khai bằng <code>kubeadm</code> (Cách dễ hơn)<a class="headerlink" href="#b-trien-khai-bang-kubeadm-cach-de-hon" title="Permanent link">&para;</a></h3>
-<p><code>kubeadm</code> là một công cụ giúp tự động hóa việc cài đặt cụm Kubernetes.</p>
-<ul>
-<li>Khi bạn dùng <code>kubeadm</code>, nó sẽ <strong>tự động triển khai <code>etcd</code> cho bạn</strong> .</li>
-<li>Điều đặc biệt là <code>etcd</code> sẽ được triển khai dưới dạng một <strong>Pod</strong> chạy trong namespace <strong><code>kube-system</code></strong> .</li>
-<li>Nếu muốn tương tác với <code>etcd</code> bằng <code>etcdctl</code>, bạn sẽ cần phải thực hiện lệnh <em>bên trong</em> Pod <code>etcd</code> đó.</li>
-</ul>
-<hr />
-<h2 id="3-du-lieu-uoc-luu-tru-nhu-the-nao">3. Dữ liệu được lưu trữ như thế nào? 📂<a class="headerlink" href="#3-du-lieu-uoc-luu-tru-nhu-the-nao" title="Permanent link">&para;</a></h2>
-<p>Kubernetes không lưu dữ liệu một cách lộn xộn trong <code>etcd</code>. Nó tổ chức theo một cấu trúc thư mục cụ thể:</p>
-<ul>
-<li>Thư mục gốc là <code>/registry</code>.</li>
-<li>Bên dưới là các thư mục con cho từng loại tài nguyên, ví dụ:</li>
-<li><code>/registry/nodes</code></li>
-<li><code>/registry/pods</code></li>
-<li><code>/registry/deployments</code></li>
-<li>...</li>
-</ul>
-<hr />
-<h2 id="4-etcd-trong-moi-truong-high-availability-ha">4. <code>etcd</code> trong môi trường High Availability (HA) 🏰<a class="headerlink" href="#4-etcd-trong-moi-truong-high-availability-ha" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Trong một môi trường HA, bạn sẽ có nhiều Master Node để dự phòng cho nhau.</li>
-<li>Tương ứng, bạn cũng sẽ có nhiều instance <code>etcd</code> chạy trên các Master Node này, tạo thành một cụm <code>etcd</code> (etcd cluster).</li>
-<li>Để các instance <code>etcd</code> này biết về nhau và hoạt động như một cụm, bạn cần cấu hình tham số <strong><code>--initial-cluster</code></strong> . Tham số này sẽ liệt kê địa chỉ của tất cả các thành viên trong cụm <code>etcd</code>.</li>
-</ul>
-<hr />
-<h2 id="5-chot-ha-cho-ky-thi">5. "Chốt hạ" cho Kỳ thi 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><code>etcd</code> là cơ sở dữ liệu, là trái tim, là bộ não của Kubernetes</strong> , lưu trữ mọi trạng thái của cụm.</li>
-<li>Hiểu rõ hai phương pháp triển khai chính:</li>
-<li><strong>Thủ công (From Scratch):</strong> Bạn tự cài, nhớ tham số <code>--advertise-client-urls</code>.</li>
-<li><strong>Dùng <code>kubeadm</code>:</strong> <code>etcd</code> được triển khai như một <strong>Pod</strong> trong namespace <code>kube-system</code>.</li>
-<li>Trong môi trường HA, <code>etcd</code> chạy dưới dạng một cụm (cluster) và được cấu hình qua tham số <code>--initial-cluster</code>.</li>
-</ul>
-<hr />
-<h2 id="1-etcdctl-vu-khi-tuong-tac-voi-etcd">1. <code>etcdctl</code> - "Vũ khí" tương tác với <code>etcd</code><a class="headerlink" href="#1-etcdctl-vu-khi-tuong-tac-voi-etcd" title="Permanent link">&para;</a></h2>
-<p>Như chúng ta đã biết, <strong><code>etcdctl</code></strong> là công cụ dòng lệnh (CLI) để "nói chuyện" với cơ sở dữ liệu <code>etcd</code>. Tuy nhiên, để "nói chuyện" thành công, bạn cần biết hai điều quan trọng: "ngôn ngữ" và "giấy thông hành".</p>
-<hr />
-<h2 id="2-hai-the-gioi-api-version-2-vs-version-3">2. Hai "Thế giới" API: Version 2 vs. Version 3<a class="headerlink" href="#2-hai-the-gioi-api-version-2-vs-version-3" title="Permanent link">&para;</a></h2>
-<p><code>etcdctl</code> có thể giao tiếp với <code>etcd</code> server bằng 2 phiên bản API: v2 và v3. Điều quan trọng là <strong>bộ lệnh của hai phiên bản này khác nhau</strong> .</p>
-<table>
-<thead>
-<tr>
-<th><strong>Tác vụ</strong></th>
-<th><strong>Lệnh API v2</strong></th>
-<th><strong>Lệnh API v3</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Lưu giá trị</strong></td>
-<td><code>etcdctl set</code></td>
-<td><code>etcdctl put</code></td>
-</tr>
-<tr>
-<td><strong>Backup</strong></td>
-<td><code>etcdctl backup</code></td>
-<td><code>etcdctl snapshot save</code></td>
-</tr>
-<tr>
-<td><strong>Kiểm tra "sức khỏe"</strong></td>
-<td><code>etcdctl cluster-health</code></td>
-<td><code>etcdctl endpoint health</code></td>
-</tr>
-</tbody>
-</table>
-<p>Mặc định, <code>etcdctl</code> có thể được cấu hình để dùng API v2. Khi đó, nếu bạn gõ lệnh của v3 (ví dụ: <code>put</code>), nó sẽ báo lỗi và ngược lại.</p>
-<p>👉 Làm thế nào để chắc chắn dùng API v3?</p>
-<p>Cách tốt nhất là đặt biến môi trường sau cho phiên làm việc của bạn:</p>
-<p><strong>Bash</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>export ETCDCTL_API=3
-</code></pre></div>
-<hr />
-<h2 id="3-giay-thong-hanh-xac-thuc-bang-certificate">3. "Giấy thông hành" - Xác thực bằng Certificate 🔑<a class="headerlink" href="#3-giay-thong-hanh-xac-thuc-bang-certificate" title="Permanent link">&para;</a></h2>
-<p>Trong một cụm Kubernetes được cài đặt đúng cách, <code>etcd</code> server sẽ yêu cầu xác thực an toàn. Bạn không thể "tay không" vào nói chuyện được mà cần có "giấy thông hành" là các file certificate.</p>
-<p><code>etcdctl</code> cần bạn chỉ định đường dẫn đến 3 file certificate quan trọng:</p>
-<ul>
-<li><code>--cacert</code>: Đường dẫn đến file CA certificate của <code>etcd</code> (ví dụ: <code>/etc/kubernetes/pki/etcd/ca.crt</code>). Dùng để xác thực <code>etcd</code> server.</li>
-<li><code>--cert</code>: Đường dẫn đến file certificate của client (ví dụ: <code>/etc/kubernetes/pki/etcd/server.crt</code>). Dùng để <code>etcd</code> server xác thực bạn.</li>
-<li><code>--key</code>: Đường dẫn đến file key riêng của client (ví dụ: <code>/etc/kubernetes/pki/etcd/server.key</code>).</li>
-</ul>
-<p><em>Lưu ý: Trong một cụm <code>kubeadm</code>, các file này thường nằm ở đường dẫn <code>/etc/kubernetes/pki/etcd/</code> trên master node.</em></p>
-<hr />
-<h2 id="4-cu-phap-full-option-lenh-etcdctl-hoan-chinh">4. Cú pháp "Full Option" - Lệnh <code>etcdctl</code> hoàn chỉnh<a class="headerlink" href="#4-cu-phap-full-option-lenh-etcdctl-hoan-chinh" title="Permanent link">&para;</a></h2>
-<p>Kết hợp tất cả những điều trên, một lệnh <code>etcdctl</code> hoàn chỉnh để tương tác với <code>etcd</code> (đang chạy dưới dạng Pod trong một cụm <code>kubeadm</code>) sẽ trông như thế này:</p>
-<p><strong>Bash</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl exec etcd-master -n kube-system -- sh -c &quot;ETCDCTL_API=3 etcdctl get / --prefix --keys-only --limit=10 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key&quot;
-</code></pre></div>
-<p>Hãy "mổ xẻ" nó:</p>
-<ul>
-<li><code>kubectl exec etcd-master -n kube-system --</code>: Chạy một lệnh bên trong Pod tên là <code>etcd-master</code> thuộc namespace <code>kube-system</code>.</li>
-<li><code>sh -c "..."</code>: Thực thi chuỗi lệnh bên trong dấu ngoặc kép.</li>
-<li><code>ETCDCTL_API=3</code>: Đảm bảo chúng ta đang dùng API v3.</li>
-<li><code>etcdctl get / --prefix --keys-only --limit=10</code>: Lệnh <code>etcdctl</code> thực tế để lấy 10 key đầu tiên từ thư mục gốc.</li>
-<li><code>--cacert ... --cert ... --key ...</code>: Cung cấp 3 "giấy thông hành" cần thiết để xác thực.</li>
-</ul>
-<hr />
-<h2 id="5-chot-ha-cho-ky-thi-cka">5. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h2>
-<p>Khi làm bài thi CKA, nếu bạn cần tương tác trực tiếp với <code>etcd</code> bằng <code>etcdctl</code>, hãy luôn nhớ "thần chú" 3 điều sau:</p>
+<p><a class="glightbox" href="../image/15.services-nodeport/1751438252766.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438252766" src="../image/15.services-nodeport/1751438252766.png" /></a></p>
 <ol>
-<li><strong>Phiên bản API:</strong> Luôn đặt <code>ETCDCTL_API=3</code>.</li>
-<li><strong>Certificate:</strong> Luôn cung cấp đủ 3 tham số <code>--cacert</code>, <code>--cert</code>, và <code>--key</code> với đường dẫn chính xác.</li>
-<li><strong>Thực thi trong Pod:</strong> Nếu <code>etcd</code> chạy như một Pod, bạn phải dùng <code>kubectl exec</code> để vào trong Pod đó và thực thi lệnh.</li>
+<li><strong><code>ClusterIP</code></strong>: Tạo ra một IP "ảo" chỉ có thể truy cập được từ bên trong cụm. Dùng cho việc giao tiếp giữa các Pod với nhau (ví dụ: frontend gọi backend).</li>
+<li><strong><code>LoadBalancer</code></strong>: Tạo ra một bộ cân bằng tải (Load Balancer) của nhà cung cấp dịch vụ đám mây (như AWS, Google Cloud) để phân phối traffic từ internet vào ứng dụng của bạn.</li>
 </ol>
-<p>Quên một trong những điều này gần như chắc chắn sẽ khiến lệnh của bạn thất bại. Hy vọng phần giải thích chi tiết này sẽ giúp bạn tự tin hơn khi làm việc với <code>etcd</code>! Chúc bạn buổi chiều học tập hiệu quả!</p>
+<hr />
+<h3 id="3-mo-xe-nodeport-service">3. "Mổ xẻ" <code>NodePort</code> Service 🔍<a class="headerlink" href="#3-mo-xe-nodeport-service" title="Permanent link">&para;</a></h3>
+<p>Khi làm việc với <code>NodePort</code>, có 3 loại port bạn cần phân biệt rõ:</p>
+<p><a class="glightbox" href="../image/15.services-nodeport/1751438381920.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438381920" src="../image/15.services-nodeport/1751438381920.png" /></a></p>
+<ul>
+<li><strong><code>targetPort</code></strong>: Đây là port mà container của bạn đang thực sự lắng nghe bên trong <strong>Pod</strong>. Ví dụ: web server của bạn chạy ở port <code>80</code>.</li>
+<li><strong><code>port</code></strong>: Đây là port được mở trên chính cái <strong>Service</strong> (trên địa chỉ IP ảo ClusterIP của nó).</li>
+<li><strong><code>nodePort</code></strong>: Đây là port được mở trên <strong>mỗi Worker Node</strong>. Người dùng bên ngoài sẽ truy cập ứng dụng của bạn qua địa chỉ <code>&lt;IP-của-Node&gt;:&lt;nodePort&gt;</code>.</li>
+<li><em>Lưu ý:</em> <code>nodePort</code> chỉ có thể nằm trong một dải nhất định, mặc định là <strong>30000 - 32767</strong>.</li>
+</ul>
+<hr />
+<h3 id="4-tao-nodeport-service-bang-yaml">4. Tạo <code>NodePort</code> Service bằng YAML<a class="headerlink" href="#4-tao-nodeport-service-bang-yaml" title="Permanent link">&para;</a></h3>
+<p>Để tạo một Service, chúng ta cũng dùng file YAML. Cấu trúc của nó như sau:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp-service</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"> </span><span class="c1"># 1. Khai báo loại Service là NodePort</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># 2. Port trên chính Service</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"> </span><span class="c1"># 3. Port trên Pod mà Service sẽ trỏ tới</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30008</span><span class="w"> </span><span class="c1"># 4. Port trên Node để bên ngoài truy cập</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># 5. Mấu chốt: Kết nối Service với Pod!</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myapp</span>
+</code></pre></div>
+<p><strong>Giải thích các phần trong <code>spec</code>:</strong></p>
+<ol>
+<li><strong><code>type: NodePort</code></strong>: Chỉ định rõ đây là một NodePort Service.</li>
+<li><strong><code>port</code></strong>: Port trên Service. Đây là trường bắt buộc.</li>
+<li><strong><code>targetPort</code></strong>: Port trên Pod đích. Nếu không khai báo, nó sẽ mặc định bằng giá trị của <code>port</code>.</li>
+<li><strong><code>nodePort</code></strong>: Port trên Node. Nếu không khai báo, Kubernetes sẽ tự chọn một port trống trong dải cho phép.</li>
+<li><strong><code>selector</code></strong>: Đây là phần <strong>QUAN TRỌNG NHẤT</strong>. Nó nói cho Service biết: "Hãy tìm tất cả các Pod nào có nhãn (label) là <code>app: myapp</code> và chuyển traffic đến cho chúng". Cơ chế <strong>labels và selectors</strong> này chính là cầu nối giữa Service và Pods.</li>
+</ol>
+<hr />
+<h3 id="5-service-va-sieu-nang-luc-load-balancing">5. Service và "Siêu năng lực" Load Balancing ⚖️<a class="headerlink" href="#5-service-va-sieu-nang-luc-load-balancing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Nếu <code>selector</code> của Service khớp với <strong>nhiều Pod</strong> (ví dụ: bạn có 3 Pod frontend cùng có label <code>app: myapp</code>), Service sẽ tự động hoạt động như một bộ cân bằng tải.</li>
+<li>Nó sẽ phân phối traffic đến các Pod này một cách ngẫu nhiên (random algorithm). Bạn không cần phải làm gì thêm!</li>
+</ul>
+<p><a class="glightbox" href="../image/15.services-nodeport/1751438481742.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438481742" src="../image/15.services-nodeport/1751438481742.png" /></a></p>
+<hr />
+<h3 id="6-service-tren-nhieu-node">6. Service trên nhiều Node<a class="headerlink" href="#6-service-tren-nhieu-node" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/15.services-nodeport/1751438544446.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1751438544446" src="../image/15.services-nodeport/1751438544446.png" /></a></p>
+<ul>
+<li>Khi bạn tạo một <code>NodePort</code> Service, Kubernetes sẽ tự động mở cùng một <code>nodePort</code> đó <strong>trên TẤT CẢ các Node</strong> trong cụm.</li>
+<li>Điều này có nghĩa là bạn có thể truy cập ứng dụng của mình bằng cách dùng IP của <strong>bất kỳ Node nào</strong> trong cụm, kết hợp với <code>nodePort</code> đó.</li>
+</ul>
+<hr />
+<h3 id="7-chot-ha-cho-ky-thi-cka">7. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#7-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Service</strong> là đối tượng dùng để tạo ra một điểm truy cập (endpoint) ổn định cho các Pod.</li>
+<li><strong><code>NodePort</code></strong> là loại Service dùng để "mở cổng" trên Node, cho phép truy cập từ bên ngoài.</li>
+<li>Sự kết nối giữa Service và Pod được thực hiện thông qua <strong>labels và selectors</strong>. Đây là cơ chế nền tảng của Kubernetes.</li>
+<li>Một Service có thể tự động <strong>cân bằng tải</strong> cho nhiều Pod.</li>
+<li>Một <code>NodePort</code> Service sẽ có hiệu lực trên <strong>tất cả các Node</strong> trong cụm.</li>
+</ul>
 
 
 
@@ -2400,7 +2059,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../02-03.docker-containerd/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 02 03.docker containerd">
+          <a href="../14.deployment/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 14.deployment">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2410,20 +2069,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                02 03.docker containerd
+                14.deployment
               </div>
             </div>
           </a>
         
         
           
-          <a href="../05.kube-api-server/" class="md-footer__link md-footer__link--next" aria-label="Sau: 05.kube api server">
+          <a href="../../../linux/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux Complete Learning Roadmap - Chi tiết từng topic">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                05.kube api server
+                Linux Complete Learning Roadmap - Chi tiết từng topic
               </div>
             </div>
             <div class="md-footer__button md-icon">
