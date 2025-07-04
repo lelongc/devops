@@ -2,154 +2,150 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lelongc.github.io/devops/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/cicd/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/learn/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/docker-project/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/docker-project/docs/deployment/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/docker-project/docs/troubleshooting/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/docker-project/templates/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/git/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/iac/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/00.k8s-manifests/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/00/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/01.cluster-architecture/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/02-03.docker-containerd/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/04.etcd/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/05.kube-api-server/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/06.kube-controller-manager/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/07.KubeScheduler/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/08.kubelet/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/09.kube-proxy/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/10.pods/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/11-12.pods-yml-demo/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/13.replicaset-demo/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/14.deployment/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/15.services-nodeport/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/16.services-clusterIP/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/k8s/01.core/17.services-loadbalancer/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/01.core/18.service-engpoint/</loc>
+         <lastmod>2025-07-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/01.core/19.namespace/</loc>
+         <lastmod>2025-07-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/linux/</loc>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/linux/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/linux/g1/w1/</loc>
-         <lastmod>2025-07-02</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/linux/g1/w2/</loc>
-         <lastmod>2025-07-02</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/linux/g1/w3/</loc>
-         <lastmod>2025-07-02</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/linux/g1/w4/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/network/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/observability/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/prog/python-automation/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/security/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/testing/roadmap/</loc>
-         <lastmod>2025-07-02</lastmod>
+         <lastmod>2025-07-04</lastmod>
     </url>
 </urlset>
