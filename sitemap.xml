@@ -9,7 +9,7 @@
          <lastmod>2025-07-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/docker/learn/</loc>
+         <loc>https://lelongc.github.io/devops/docker/</loc>
          <lastmod>2025-07-04</lastmod>
     </url>
     <url>
@@ -38,6 +38,10 @@
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/iac/roadmap/</loc>
+         <lastmod>2025-07-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/cheatsheet/</loc>
          <lastmod>2025-07-04</lastmod>
     </url>
     <url>
@@ -121,7 +125,7 @@
          <lastmod>2025-07-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/linux/</loc>
+         <loc>https://lelongc.github.io/devops/linux/cheatsheet/</loc>
          <lastmod>2025-07-04</lastmod>
     </url>
     <url>
