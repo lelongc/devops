@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/11-12.pods-yml-demo/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/20.ImperativeDeclarative/">
       
       
-        <link rel="prev" href="../10.pods/">
+        <link rel="prev" href="../19.namespace/">
       
       
-        <link rel="next" href="../13.replicaset-demo/">
+        <link rel="next" href="../../../linux/cheatsheet/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>11 12.pods yml demo - DraDoc</title>
+        <title>20.ImperativeDeclarative - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-bon-tru-cot-cua-mot-file-yaml-trong-kubernetes" class="md-skip">
+        <a href="#1-imperative-vs-declarative-hai-truong-phai-quan-ly" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11 12.pods yml demo
+              20.ImperativeDeclarative
             
           </span>
         </div>
@@ -1274,30 +1274,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    11 12.pods yml demo
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../11-12.pods-yml-demo/" class="md-nav__link">
         
   
   
@@ -1308,186 +1288,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-bon-tru-cot-cua-mot-file-yaml-trong-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Bốn "Trụ cột" của một file YAML trong Kubernetes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-mo-xe-phan-spec-cua-mot-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. "Mổ xẻ" phần spec của một Pod
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-vi-du-mot-file-pod-definitionyaml-hoan-chinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Ví dụ một file pod-definition.yaml hoàn chỉnh
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-thuc-thi-va-quan-ly-pod-trong-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Thực thi và Quản lý Pod trong Kubernetes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Thực thi và Quản lý Pod trong Kubernetes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-tao-pod-tu-file-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1. Tạo Pod từ file YAML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-kiem-tra-va-giam-sat-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2. Kiểm tra và Giám sát Pod
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-tuong-tac-voi-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3. Tương tác với Pod
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-xoa-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.4. Xóa Pod
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-tao-pod-nhanh-voi-kubectl-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Tạo Pod nhanh với kubectl run
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Tạo Pod nhanh với kubectl run">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-cac-lenh-co-ban" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.1. Các lệnh cơ bản
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-pod-voi-cau-hinh-nang-cao" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2. Pod với cấu hình nâng cao
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-troubleshooting-va-debug-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Troubleshooting và Debug Pod
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Troubleshooting và Debug Pod">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-kiem-tra-trang-thai" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.1. Kiểm tra trạng thái
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62-phan-tich-va-debug" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.2. Phân tích và Debug
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-lab-thuc-hanh-tong-hop" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Lab thực hành tổng hợp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-tom-tat-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Tóm tắt cho kỳ thi CKA 📝
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1658,10 +1458,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../20.ImperativeDeclarative/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    20.ImperativeDeclarative
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1672,6 +1492,150 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-imperative-vs-declarative-hai-truong-phai-quan-ly" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Imperative vs. Declarative - Hai "Trường phái" Quản lý
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ap-dung-vao-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Áp dụng vào Kubernetes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Áp dụng vào Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cach-tiep-can-menh-lenh-imperative-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Cách tiếp cận Mệnh lệnh (Imperative Approach)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-cach-tiep-can-khai-bao-declarative-approach-chan-ai-cua-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Cách tiếp cận Khai báo (Declarative Approach) - "Chân ái" của Kubernetes ❤️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-meo-cho-ky-thi-cka" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mẹo cho Kỳ thi CKA 📝
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mẹo cho Kỳ thi CKA 📝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-hai-bao-boi-can-nho-dry-run-va-o-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Hai "Bảo bối" Cần Nhớ: --dry-run và -o yaml
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cac-lenh-menh-lenh-imperative-commands-thong-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các Lệnh Mệnh lệnh (Imperative Commands) Thông dụng
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Các Lệnh Mệnh lệnh (Imperative Commands) Thông dụng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-voi-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Với Pod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-voi-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Với Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-voi-service-phan-can-luu-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Với Service (Phần cần lưu ý)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chot-ha-chien-luoc-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Chốt hạ" Chiến lược thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2037,73 +2001,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-bon-tru-cot-cua-mot-file-yaml-trong-kubernetes" class="md-nav__link">
+  <a href="#1-imperative-vs-declarative-hai-truong-phai-quan-ly" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Bốn "Trụ cột" của một file YAML trong Kubernetes
+      1. Imperative vs. Declarative - Hai "Trường phái" Quản lý
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-mo-xe-phan-spec-cua-mot-pod" class="md-nav__link">
+  <a href="#2-ap-dung-vao-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      2. "Mổ xẻ" phần spec của một Pod
+      2. Áp dụng vào Kubernetes
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-vi-du-mot-file-pod-definitionyaml-hoan-chinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Ví dụ một file pod-definition.yaml hoàn chỉnh
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-thuc-thi-va-quan-ly-pod-trong-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Thực thi và Quản lý Pod trong Kubernetes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Thực thi và Quản lý Pod trong Kubernetes">
+    <nav class="md-nav" aria-label="2. Áp dụng vào Kubernetes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-tao-pod-tu-file-yaml" class="md-nav__link">
+  <a href="#a-cach-tiep-can-menh-lenh-imperative-approach" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Tạo Pod từ file YAML
+      a. Cách tiếp cận Mệnh lệnh (Imperative Approach)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-kiem-tra-va-giam-sat-pod" class="md-nav__link">
+  <a href="#b-cach-tiep-can-khai-bao-declarative-approach-chan-ai-cua-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Kiểm tra và Giám sát Pod
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-tuong-tac-voi-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3. Tương tác với Pod
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-xoa-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.4. Xóa Pod
+      b. Cách tiếp cận Khai báo (Declarative Approach) - "Chân ái" của Kubernetes ❤️
     </span>
   </a>
   
@@ -2115,28 +2043,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-tao-pod-nhanh-voi-kubectl-run" class="md-nav__link">
+  <a href="#3-meo-cho-ky-thi-cka" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Tạo Pod nhanh với kubectl run
+      3. Mẹo cho Kỳ thi CKA 📝
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Tạo Pod nhanh với kubectl run">
+    <nav class="md-nav" aria-label="3. Mẹo cho Kỳ thi CKA 📝">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-cac-lenh-co-ban" class="md-nav__link">
+  <a href="#reference" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1. Các lệnh cơ bản
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-pod-voi-cau-hinh-nang-cao" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2. Pod với cấu hình nâng cao
+      Reference:
     </span>
   </a>
   
@@ -2148,28 +2067,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-troubleshooting-va-debug-pod" class="md-nav__link">
+  <a href="#1-hai-bao-boi-can-nho-dry-run-va-o-yaml" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Troubleshooting và Debug Pod
+      1. Hai "Bảo bối" Cần Nhớ: --dry-run và -o yaml
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Troubleshooting và Debug Pod">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cac-lenh-menh-lenh-imperative-commands-thong-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các Lệnh Mệnh lệnh (Imperative Commands) Thông dụng
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Các Lệnh Mệnh lệnh (Imperative Commands) Thông dụng">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-kiem-tra-trang-thai" class="md-nav__link">
+  <a href="#a-voi-pod" class="md-nav__link">
     <span class="md-ellipsis">
-      6.1. Kiểm tra trạng thái
+      a. Với Pod
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-phan-tich-va-debug" class="md-nav__link">
+  <a href="#b-voi-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      6.2. Phân tích và Debug
+      b. Với Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-voi-service-phan-can-luu-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Với Service (Phần cần lưu ý)
     </span>
   </a>
   
@@ -2181,18 +2118,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-lab-thuc-hanh-tong-hop" class="md-nav__link">
+  <a href="#3-chot-ha-chien-luoc-thi" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Lab thực hành tổng hợp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-tom-tat-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Tóm tắt cho kỳ thi CKA 📝
+      3. "Chốt hạ" Chiến lược thi 📝
     </span>
   </a>
   
@@ -2214,7 +2142,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/11-12.pods-yml-demo.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/20.ImperativeDeclarative.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2222,214 +2150,169 @@
   
 
 
-  <h1>11 12.pods yml demo</h1>
+  <h1>20.ImperativeDeclarative</h1>
 
-<h3 id="1-bon-tru-cot-cua-mot-file-yaml-trong-kubernetes">1. Bốn "Trụ cột" của một file YAML trong Kubernetes<a class="headerlink" href="#1-bon-tru-cot-cua-mot-file-yaml-trong-kubernetes" title="Permanent link">&para;</a></h3>
-<p>Mọi file định nghĩa đối tượng trong Kubernetes (dù là Pod, Service, hay Deployment,...) đều phải có <strong>4 trường (fields) ở cấp cao nhất</strong>. Đây là các trường bắt buộc:</p>
+<h3 id="1-imperative-vs-declarative-hai-truong-phai-quan-ly">1. Imperative vs. Declarative - Hai "Trường phái" Quản lý<a class="headerlink" href="#1-imperative-vs-declarative-hai-truong-phai-quan-ly" title="Permanent link">&para;</a></h3>
+<p>Hãy dùng một phép so sánh đơn giản để hiểu rõ hai trường phái này:</p>
+<ul>
+<li>
+<p><strong>Imperative (Mệnh lệnh) - Giống như bạn đi Taxi truyền thống 🚕:</strong></p>
+</li>
+<li>
+<p>Bạn phải chỉ đường từng bước cho tài xế: "Đi thẳng, đến ngã tư rẽ phải, đi thêm 200m rồi rẽ trái...".</p>
+</li>
+<li>
+<p>Bạn chỉ rõ <strong>CÁI GÌ</strong> cần làm và quan trọng hơn là <strong>LÀM THẾ NÀO</strong> để làm điều đó.</p>
+</li>
+<li>
+<p><strong>Declarative (Khai báo) - Giống như bạn đặt xe Uber/Grab 🚗:</strong></p>
+</li>
+<li>
+<p>Bạn chỉ cần nhập vào điểm đến cuối cùng: "Đưa tôi đến nhà hát lớn".</p>
+</li>
+<li>Hệ thống (tài xế và ứng dụng) sẽ tự tìm ra con đường tối ưu nhất để đưa bạn đến đó.</li>
+<li>Bạn chỉ nói <strong>CÁI GÌ</strong> bạn muốn (trạng thái cuối cùng), còn <strong>cách làm</strong> đã có hệ thống lo.</li>
+</ul>
+<hr />
+<h3 id="2-ap-dung-vao-kubernetes">2. Áp dụng vào Kubernetes<a class="headerlink" href="#2-ap-dung-vao-kubernetes" title="Permanent link">&para;</a></h3>
+<p>Trong Kubernetes, hai trường phái này được thể hiện qua cách bạn sử dụng lệnh <code>kubectl</code>.</p>
+<h4 id="a-cach-tiep-can-menh-lenh-imperative-approach">a. Cách tiếp cận Mệnh lệnh (Imperative Approach)<a class="headerlink" href="#a-cach-tiep-can-menh-lenh-imperative-approach" title="Permanent link">&para;</a></h4>
+<p>Đây là cách bạn ra lệnh trực tiếp cho Kubernetes phải làm gì. Nó có 2 dạng:</p>
 <ol>
 <li>
-<p><strong><code>apiVersion</code></strong>:</p>
+<p><strong>Dùng lệnh trực tiếp (Pure Imperative Commands):</strong></p>
 </li>
 <li>
-<p><strong>Là gì?</strong> Phiên bản của Kubernetes API mà bạn đang sử dụng để tạo đối tượng.</p>
+<p><strong>Tạo mới:</strong> <code>kubectl run</code>, <code>kubectl create deployment</code>, <code>kubectl expose</code>.</p>
+</li>
+<li><strong>Cập nhật:</strong> <code>kubectl edit</code>, <code>kubectl scale</code>, <code>kubectl set image</code>.</li>
+<li><strong>Ưu điểm:</strong> Rất nhanh và tiện lợi cho các tác vụ đơn giản, đặc biệt hữu ích khi làm bài thi CKA để tiết kiệm thời gian.</li>
+<li>
+<p><strong>Nhược điểm:</strong> Khó theo dõi (chỉ lưu trong lịch sử dòng lệnh), không phù hợp cho môi trường làm việc nhóm, giới hạn chức năng với các yêu cầu phức tạp.</p>
 </li>
 <li>
-<p><strong>Ví dụ (cho Pod):</strong> <code>v1</code></p>
+<p><strong>Dùng file cấu hình (nhưng với lệnh mệnh lệnh):</strong></p>
 </li>
 <li>
-<p><strong><code>kind</code></strong>:</p>
+<p><strong>Tạo mới:</strong> <code>kubectl create -f my-pod.yaml</code></p>
 </li>
-<li>
-<p><strong>Là gì?</strong> Loại đối tượng mà bạn đang muốn tạo.</p>
-</li>
-<li>
-<p><strong>Ví dụ (cho Pod):</strong> <code>Pod</code></p>
-</li>
-<li>
-<p><strong><code>metadata</code></strong>:</p>
-</li>
-<li>
-<p><strong>Là gì?</strong> "Dữ liệu về dữ liệu" - tức là các thông tin mô tả về đối tượng, như tên, nhãn,... Đây là một dictionary (đối tượng).</p>
-</li>
-<li><strong><code>name</code></strong>: Tên của Pod (ví dụ: <code>my-app-pod</code>).</li>
-<li>
-<p><strong><code>labels</code></strong>: Một dictionary chứa các cặp key-value (nhãn). Labels cực kỳ quan trọng, giúp bạn lọc và nhóm các đối tượng sau này (ví dụ: <code>app: my-app</code>, <code>env: production</code>).</p>
-</li>
-<li>
-<p><strong><code>spec</code></strong> (viết tắt của Specification):</p>
-</li>
-<li>
-<p><strong>Là gì?</strong> Đây là phần quan trọng nhất, nơi bạn định nghĩa <strong>trạng thái mong muốn</strong> của đối tượng.</p>
-</li>
-<li>Cấu trúc của <code>spec</code> sẽ <strong>khác nhau tùy thuộc vào <code>kind</code></strong> của đối tượng.</li>
+<li><strong>Cập nhật:</strong> <code>kubectl replace -f my-pod.yaml</code></li>
+<li><strong>Xóa:</strong> <code>kubectl delete -f my-pod.yaml</code></li>
+<li><strong>Vấn đề:</strong> Cách này vẫn là mệnh lệnh vì <strong>bạn</strong> phải biết trạng thái hiện tại của hệ thống để chọn đúng lệnh. Ví dụ, bạn không thể chạy <code>create</code> nếu object đã tồn tại (sẽ báo lỗi), và không thể chạy <code>replace</code> nếu object chưa tồn tại.</li>
 </ol>
+<h4 id="b-cach-tiep-can-khai-bao-declarative-approach-chan-ai-cua-kubernetes">b. Cách tiếp cận Khai báo (Declarative Approach) - "Chân ái" của Kubernetes ❤️<a class="headerlink" href="#b-cach-tiep-can-khai-bao-declarative-approach-chan-ai-cua-kubernetes" title="Permanent link">&para;</a></h4>
+<p>Đây là phương pháp được khuyến khích sử dụng trong thực tế.</p>
+<ul>
+<li><strong>Lệnh duy nhất:</strong> <strong><code>kubectl apply -f &lt;file.yaml hoặc thư mục&gt;</code></strong></li>
+<li><strong>Cách hoạt động:</strong></li>
+<li>Bạn định nghĩa <strong>trạng thái cuối cùng mong muốn</strong> cho toàn bộ ứng dụng của mình trong một hoặc nhiều file YAML.</li>
+<li>Bạn <strong>luôn luôn</strong> chạy lệnh <code>kubectl apply -f ...</code>.</li>
+<li><strong>Sự "thông minh" của <code>apply</code>:</strong></li>
+<li>Nó sẽ tự so sánh trạng thái bạn khai báo trong file với trạng thái hiện tại trên cụm.</li>
+<li>Nếu object chưa tồn tại, nó sẽ <strong>tạo mới</strong>.</li>
+<li>Nếu object đã tồn tại, nó sẽ tính toán sự khác biệt và <strong>chỉ cập nhật những thay đổi cần thiết</strong>.</li>
+<li>Nó không bao giờ báo lỗi "object đã tồn tại". Bạn chỉ cần "khai báo" và <code>apply</code>, Kubernetes sẽ lo phần còn lại.</li>
+</ul>
+<hr />
+<h3 id="3-meo-cho-ky-thi-cka">3. Mẹo cho Kỳ thi CKA 📝<a class="headerlink" href="#3-meo-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
+<p>Trong kỳ thi CKA, thời gian là vàng, vì vậy bạn cần linh hoạt:</p>
+<ul>
+<li><strong>Để tạo nhanh các object đơn giản</strong> (Pod, Deployment với một image duy nhất): Hãy dùng các lệnh mệnh lệnh như <strong><code>kubectl run</code></strong> hoặc <strong><code>kubectl create deployment</code></strong>.</li>
+<li><strong>Để sửa nhanh một thuộc tính</strong> của object đang có: <strong><code>kubectl edit</code></strong> là lựa chọn nhanh nhất.</li>
+<li><strong>Với các yêu cầu phức tạp</strong> (tạo Pod nhiều container, định nghĩa volumes, env-vars,...): Tốt nhất là nên <strong>tạo một file YAML</strong>. Cách này giúp bạn dễ dàng kiểm tra, sửa lỗi và áp dụng lại nếu cần. Khi đó, dùng <strong><code>kubectl apply -f</code></strong> là một lựa chọn rất tốt.</li>
+</ul>
+<h4 id="reference"><strong>Reference:</strong><a class="headerlink" href="#reference" title="Permanent link">&para;</a></h4>
+<p><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands</a></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/conventions/">https://kubernetes.io/docs/reference/kubectl/conventions/</a></p>
+<hr />
+<p>Mặc dù cách làm khai báo (dùng file YAML) là chuẩn trong thực tế, nhưng trong kỳ thi CKA, những lệnh này sẽ giúp bạn tiết kiệm cực kỳ nhiều thời gian quý báu!</p>
+<hr />
+<h3 id="1-hai-bao-boi-can-nho-dry-run-va-o-yaml">1. Hai "Bảo bối" Cần Nhớ: <code>--dry-run</code> và <code>-o yaml</code><a class="headerlink" href="#1-hai-bao-boi-can-nho-dry-run-va-o-yaml" title="Permanent link">&para;</a></h3>
+<p>Trước khi đi vào từng lệnh cụ thể, bạn cần nắm vững hai tùy chọn (options) "thần thánh" này:</p>
+<ul>
+<li>
+<p><strong><code>--dry-run=client</code></strong>:</p>
+</li>
+<li>
+<p><strong>Nghĩa là:</strong> "Chạy thử thôi, đừng tạo thật nhé!".</p>
+</li>
+<li>
+<p><code>kubectl</code> sẽ kiểm tra cú pháp lệnh của bạn và cho bạn biết liệu tài nguyên có thể được tạo hay không, nhưng nó <strong>sẽ không thực sự tạo ra bất kỳ tài nguyên nào</strong> trong cụm.</p>
+</li>
+<li>
+<p><strong><code>-o yaml</code></strong>:</p>
+</li>
+<li>
+<p><strong>Nghĩa là:</strong> "In kết quả ra màn hình dưới định dạng YAML nhé!".</p>
+</li>
+</ul>
 <blockquote>
-<p>⚠️ <strong>Lưu ý về thụt đầu dòng (indentation) trong YAML:</strong> YAML rất nhạy cảm với khoảng trắng. Các thuộc tính con phải được thụt vào so với thuộc tính cha, và các thuộc tính ngang hàng phải có cùng mức thụt lề.</p>
+<p><strong>🚀 Combo Thần thánh:</strong> Kết hợp hai tùy chọn này, bạn có thể <strong>tạo ra một file template YAML một cách siêu tốc</strong> mà không cần phải viết từ đầu.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Cú pháp</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>kubectl<span class="w"> </span>&lt;lệnh-tạo-tài-nguyên&gt;<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>ten-file.yaml
+</code></pre></div>
+<p>Sau đó, bạn chỉ cần mở file <code>ten-file.yaml</code> ra và chỉnh sửa thêm cho các yêu cầu phức tạp.</p>
 </blockquote>
 <hr />
-<h3 id="2-mo-xe-phan-spec-cua-mot-pod">2. "Mổ xẻ" phần <code>spec</code> của một Pod<a class="headerlink" href="#2-mo-xe-phan-spec-cua-mot-pod" title="Permanent link">&para;</a></h3>
-<p>Đối với một đối tượng có <code>kind: Pod</code>, phần <code>spec</code> sẽ mô tả các container sẽ chạy bên trong Pod đó.</p>
+<h3 id="2-cac-lenh-menh-lenh-imperative-commands-thong-dung">2. Các Lệnh Mệnh lệnh (Imperative Commands) Thông dụng<a class="headerlink" href="#2-cac-lenh-menh-lenh-imperative-commands-thong-dung" title="Permanent link">&para;</a></h3>
+<h4 id="a-voi-pod">a. Với <code>Pod</code><a class="headerlink" href="#a-voi-pod" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>spec</code> chứa một thuộc tính quan trọng là <strong><code>containers</code></strong>.</li>
-<li><strong><code>containers</code></strong> là một <strong>danh sách (list/array)</strong>. Lý do nó là một danh sách vì một Pod có thể chứa nhiều container.</li>
-<li>Mỗi mục trong danh sách <code>containers</code> là một dictionary mô tả một container, với hai thuộc tính bắt buộc:</li>
-<li><strong><code>name</code></strong>: Tên bạn đặt cho container (ví dụ: <code>nginx-container</code>).</li>
-<li><strong><code>image</code></strong>: Tên của Docker image sẽ được sử dụng để chạy container (ví dụ: <code>nginx</code>).</li>
+<li><strong>Tạo nhanh một NGINX Pod:</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx
+</code></pre></div></li>
+<li><strong>Tạo file YAML cho Pod mà không tạo Pod thật:</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div></li>
 </ul>
-<hr />
-<h3 id="3-vi-du-mot-file-pod-definitionyaml-hoan-chinh">3. Ví dụ một file <code>pod-definition.yaml</code> hoàn chỉnh<a class="headerlink" href="#3-vi-du-mot-file-pod-definitionyaml-hoan-chinh" title="Permanent link">&para;</a></h3>
-<p>Đây là một file YAML đầy đủ để tạo một Pod đơn giản chạy NGINX:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-pod</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-container</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-</code></pre></div>
-<hr />
-<h3 id="4-thuc-thi-va-quan-ly-pod-trong-kubernetes">4. Thực thi và Quản lý Pod trong Kubernetes<a class="headerlink" href="#4-thuc-thi-va-quan-ly-pod-trong-kubernetes" title="Permanent link">&para;</a></h3>
-<h4 id="41-tao-pod-tu-file-yaml">4.1. Tạo Pod từ file YAML<a class="headerlink" href="#41-tao-pod-tu-file-yaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Tạo Pod (báo lỗi nếu đã tồn tại)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>pod-definition.yaml
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Tạo hoặc cập nhật Pod (khuyến nghị)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>pod-definition.yaml
-</code></pre></div>
-<h4 id="42-kiem-tra-va-giam-sat-pod">4.2. Kiểm tra và Giám sát Pod<a class="headerlink" href="#42-kiem-tra-va-giam-sat-pod" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Xem danh sách Pod</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">                    </span><span class="c1"># Thông tin chi tiết</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>my-app<span class="w">             </span><span class="c1"># Lọc theo label</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A<span class="w">                        </span><span class="c1"># Tất cả namespace</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Xem thông tin chi tiết</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>my-app-pod
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Theo dõi logs</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>my-app-pod
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>my-app-pod<span class="w">                 </span><span class="c1"># Theo thời gian thực</span>
-</code></pre></div>
-<h4 id="43-tuong-tac-voi-pod">4.3. Tương tác với Pod<a class="headerlink" href="#43-tuong-tac-voi-pod" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Truy cập vào container</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>my-app-pod<span class="w"> </span>--<span class="w"> </span>/bin/bash
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Chạy lệnh trong container</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>my-app-pod<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>-la
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Port forwarding</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>my-app-pod<span class="w"> </span><span class="m">8080</span>:80
-</code></pre></div>
-<h4 id="44-xoa-pod">4.4. Xóa Pod<a class="headerlink" href="#44-xoa-pod" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>my-app-pod
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>pod-definition.yaml
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>my-app<span class="w">          </span><span class="c1"># Xóa theo label</span>
-</code></pre></div>
-<hr />
-<h3 id="5-tao-pod-nhanh-voi-kubectl-run">5. Tạo Pod nhanh với kubectl run<a class="headerlink" href="#5-tao-pod-nhanh-voi-kubectl-run" title="Permanent link">&para;</a></h3>
-<h4 id="51-cac-lenh-co-ban">5.1. Các lệnh cơ bản<a class="headerlink" href="#51-cac-lenh-co-ban" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Tạo Pod đơn giản</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>nginx-pod<span class="w"> </span>--image<span class="o">=</span>nginx
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Tạo Pod với labels và port</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>kubectl<span class="w"> </span>run<span class="w"> </span>webapp<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span><span class="w"> </span>--labels<span class="o">=</span><span class="s2">&quot;app=web,env=prod&quot;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Tạo file YAML (không tạo Pod thực tế)</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>kubectl<span class="w"> </span>run<span class="w"> </span>redis-pod<span class="w"> </span>--image<span class="o">=</span>redis<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>redis-pod.yaml
-</code></pre></div>
-<h4 id="52-pod-voi-cau-hinh-nang-cao">5.2. Pod với cấu hình nâng cao<a class="headerlink" href="#52-pod-voi-cau-hinh-nang-cao" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># nginx-advanced.yaml</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-advanced</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nt">tier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-container</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.21</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;64Mi&quot;</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;250m&quot;</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;128Mi&quot;</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;500m&quot;</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">      </span><span class="nt">env</span><span class="p">:</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NGINX_PORT</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;80&quot;</span>
-</code></pre></div>
-<hr />
-<h3 id="6-troubleshooting-va-debug-pod">6. Troubleshooting và Debug Pod<a class="headerlink" href="#6-troubleshooting-va-debug-pod" title="Permanent link">&para;</a></h3>
-<h4 id="61-kiem-tra-trang-thai">6.1. Kiểm tra trạng thái<a class="headerlink" href="#61-kiem-tra-trang-thai" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Xem Pod có vấn đề</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--field-selector<span class="o">=</span>status.phase!<span class="o">=</span>Running
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Xem events hệ thống</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>--sort-by<span class="o">=</span>.metadata.creationTimestamp
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Theo dõi trạng thái realtime</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-w
-</code></pre></div>
-<h4 id="62-phan-tich-va-debug">6.2. Phân tích và Debug<a class="headerlink" href="#62-phan-tich-va-debug" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Xem resource usage</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>top<span class="w"> </span>pods
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Xem cấu hình Pod ở dạng YAML</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>nginx-pod<span class="w"> </span>-o<span class="w"> </span>yaml
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Xem logs container trước đó</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>nginx-pod<span class="w"> </span>--previous
-</code></pre></div>
-<hr />
-<h3 id="7-lab-thuc-hanh-tong-hop">7. Lab thực hành tổng hợp<a class="headerlink" href="#7-lab-thuc-hanh-tong-hop" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Tạo Pod với labels</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>webapp<span class="w"> </span>--image<span class="o">=</span>nginx:1.21<span class="w"> </span>--port<span class="o">=</span><span class="m">80</span><span class="w"> </span>--labels<span class="o">=</span><span class="s2">&quot;app=webapp,env=prod&quot;</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 2. Kiểm tra và theo dõi</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>webapp
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>webapp
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>webapp
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># 3. Test kết nối</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>webapp<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span><span class="p">&amp;</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>curl<span class="w"> </span>localhost:8080
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1"># 4. Backup và cleanup</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>webapp<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>webapp-backup.yaml
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>webapp
-</code></pre></div>
-<hr />
-<h3 id="8-tom-tat-cho-ky-thi-cka">8. Tóm tắt cho kỳ thi CKA 📝<a class="headerlink" href="#8-tom-tat-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
-<p><strong>4 trường bắt buộc của YAML:</strong></p>
+<h4 id="b-voi-deployment">b. Với <code>Deployment</code><a class="headerlink" href="#b-voi-deployment" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>apiVersion: v1</code> (cho Pod)</li>
-<li><code>kind: Pod</code></li>
-<li><code>metadata</code>: name, labels</li>
-<li><code>spec</code>: containers (name, image)</li>
+<li><strong>Tạo một Deployment:</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx
+</code></pre></div></li>
+<li><strong>Tạo Deployment với 4 bản sao (replicas):</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--replicas<span class="o">=</span><span class="m">4</span>
+</code></pre></div></li>
+<li><strong>Scale một Deployment đang có:</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--replicas<span class="o">=</span><span class="m">4</span>
+</code></pre></div></li>
+<li><strong>Tạo file YAML cho Deployment:</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="o">=</span>nginx<span class="w"> </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div></li>
 </ul>
-<p><strong>Lệnh quan trọng:</strong></p>
+<h4 id="c-voi-service-phan-can-luu-y">c. Với <code>Service</code> (Phần cần lưu ý)<a class="headerlink" href="#c-voi-service-phan-can-luu-y" title="Permanent link">&para;</a></h4>
+<p>Tạo Service bằng lệnh có hơi phức tạp hơn một chút vì có hai lệnh chính với những ưu và nhược điểm riêng:</p>
 <ul>
-<li><code>kubectl apply -f file.yaml</code> - Tạo/cập nhật</li>
-<li><code>kubectl get pods -o wide</code> - Xem danh sách</li>
-<li><code>kubectl describe pod &lt;name&gt;</code> - Debug</li>
-<li><code>kubectl logs &lt;pod&gt;</code> - Xem logs</li>
-<li><code>kubectl exec -it &lt;pod&gt; -- /bin/bash</code> - Truy cập container</li>
+<li>
+<p><strong>Cách 1: <code>kubectl expose</code> (Khuyến khích dùng làm điểm khởi đầu)</strong></p>
+</li>
+<li>
+<p><strong>Lệnh:</strong> <code>kubectl expose pod redis --port=6379 --name redis-service</code></p>
+</li>
+<li>✅ <strong>Ưu điểm:</strong> Nó sẽ <strong>tự động sử dụng <code>labels</code> của Pod làm <code>selector</code></strong> cho Service. Đây thường là điều bạn muốn.</li>
+<li>
+<p>❌ <strong>Nhược điểm:</strong> Bạn <strong>không thể chỉ định <code>nodePort</code></strong> trực tiếp bằng lệnh này.</p>
+</li>
+<li>
+<p><strong>Cách 2: <code>kubectl create service</code></strong></p>
+</li>
+<li>
+<p><strong>Lệnh:</strong> <code>kubectl create service nodeport nginx --tcp=80:80 --node-port=30080</code></p>
+</li>
+<li>✅ <strong>Ưu điểm:</strong> Bạn có thể chỉ định các thông số chi tiết như <code>node-port</code>.</li>
+<li>❌ <strong>Nhược điểm:</strong> Nó <strong>không tự động lấy <code>selector</code> từ <code>labels</code> của Pod</strong>. Thay vào đó, nó sẽ giả định một selector mặc định (ví dụ: <code>app=nginx</code>). Nếu Pod của bạn có label khác, Service sẽ không hoạt động.</li>
 </ul>
-<p><strong>Tips:</strong></p>
+<blockquote>
+<p><strong>💡 Chiến lược đề xuất:</strong></p>
+<p>Hãy bắt đầu với lệnh <strong><code>kubectl expose</code></strong>. Nếu bạn cần chỉ định các trường nâng cao như <code>nodePort</code>, hãy dùng <code>expose</code> với combo <code>--dry-run=client -o yaml</code> để tạo ra một file YAML cơ bản (đã có sẵn <code>selector</code> đúng). Sau đó, bạn chỉ cần mở file đó ra và thêm dòng <code>nodePort</code> vào rồi mới tạo Service.</p>
+</blockquote>
+<hr />
+<h3 id="3-chot-ha-chien-luoc-thi">3. "Chốt hạ" Chiến lược thi 📝<a class="headerlink" href="#3-chot-ha-chien-luoc-thi" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Luôn sử dụng <code>apply</code> thay vì <code>create</code></li>
-<li>Labels quan trọng cho việc quản lý</li>
-<li>Sử dụng <code>describe</code> để troubleshoot</li>
-<li><code>dry-run</code> để tạo YAML template nhanh</li>
+<li>Đối với các yêu cầu <strong>tạo tài nguyên đơn giản</strong>, hãy dùng các lệnh mệnh lệnh như <code>kubectl run</code>, <code>kubectl create deployment</code> để tiết kiệm thời gian.</li>
+<li>Hãy thành thạo "combo thần thánh" <strong><code>--dry-run=client -o yaml</code></strong> để tạo nhanh các file template YAML khi cần giải quyết các yêu cầu phức tạp hơn.</li>
+<li>Khi tạo <strong>Service</strong>, hãy ưu tiên dùng <code>kubectl expose</code> để đảm bảo <code>selector</code> được thiết lập chính xác.</li>
 </ul>
+<p>Nắm vững các lệnh này sẽ là một lợi thế cực lớn, giúp bạn hoàn thành các bài thực hành trong kỳ thi CKA một cách nhanh chóng và chính xác. Chúc bạn một buổi chiều học tập hiệu quả!</p>
 
 
 
@@ -2536,7 +2419,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../10.pods/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 10.pods">
+          <a href="../19.namespace/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 19.namespace">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2546,20 +2429,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                10.pods
+                19.namespace
               </div>
             </div>
           </a>
         
         
           
-          <a href="../13.replicaset-demo/" class="md-footer__link md-footer__link--next" aria-label="Sau: 13.replicaset demo">
+          <a href="../../../linux/cheatsheet/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux System Administration - Complete Knowledge Base">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                13.replicaset demo
+                Linux System Administration - Complete Knowledge Base
               </div>
             </div>
             <div class="md-footer__button md-icon">
