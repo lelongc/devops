@@ -1789,96 +1789,145 @@
 <h2 id="physical-topology-vs-logical-topology">Physical Topology vs Logical Topology<a class="headerlink" href="#physical-topology-vs-logical-topology" title="Permanent link">&para;</a></h2>
 <p>Trước khi tìm hiểu về 6 loại topology chính, chúng ta cần hiểu cách chúng được tài liệu hóa trong các sơ đồ mạng.</p>
 <h3 id="physical-topology">Physical Topology<a class="headerlink" href="#physical-topology" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/05.network-topology/1752572877462.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752572877462" src="../image/05.network-topology/1752572877462.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Cho thấy cách các thiết bị và thành phần mạng được kết nối vật lý thông qua các loại cáp đồng hoặc quang.</li>
 <li><strong>Ví dụ</strong>: Sơ đồ mặt bằng tòa nhà hiển thị vị trí thực tế của máy tính, router, switch và đường cáp.</li>
 </ul>
 <h3 id="logical-topology">Logical Topology<a class="headerlink" href="#logical-topology" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/05.network-topology/1752572943379.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752572943379" src="../image/05.network-topology/1752572943379.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Mô tả cách dữ liệu thực sự di chuyển qua mạng.</li>
 <li><strong>Đặc điểm</strong>: Hiển thị workstation, router, switch và cách chúng kết nối nhưng không thể hiện vị trí vật lý thực tế.</li>
 </ul>
 <h2 id="6-loai-network-topology-chinh">6 Loại Network Topology Chính<a class="headerlink" href="#6-loai-network-topology-chinh" title="Permanent link">&para;</a></h2>
 <h3 id="1-point-to-point-topology">1. Point-to-Point Topology<a class="headerlink" href="#1-point-to-point-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong>
-- Hình thức đơn giản nhất của topology mạng
-- Kết nối trực tiếp giữa hai thiết bị
-- Thường dùng để kết nối máy tính với thiết bị ngoại vi (máy in, scanner)</p>
-<p><strong>Ưu điểm:</strong>
-- Đơn giản và đáng tin cậy
-- Phù hợp cho kết nối quy mô nhỏ</p>
-<p><strong>Nhược điểm:</strong>
-- Không thể mở rộng cho mạng lớn
-- <strong>Ngoại lệ</strong>: Sử dụng trong WAN connections để kết nối các văn phòng từ xa</p>
+<p><a class="glightbox" href="../image/05.network-topology/1752572976286.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752572976286" src="../image/05.network-topology/1752572976286.png" /></a></p>
+<p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Hình thức đơn giản nhất của topology mạng</li>
+<li>Kết nối trực tiếp giữa hai thiết bị</li>
+<li>Thường dùng để kết nối máy tính với thiết bị ngoại vi (máy in, scanner)</li>
+</ul>
+<p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Đơn giản và đáng tin cậy</li>
+<li>Phù hợp cho kết nối quy mô nhỏ</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Không thể mở rộng cho mạng lớn</li>
+<li><strong>Ngoại lệ</strong>: Sử dụng trong WAN connections để kết nối các văn phòng từ xa</li>
+</ul>
 <h3 id="2-ring-topology">2. Ring Topology<a class="headerlink" href="#2-ring-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong>
-- Mỗi thiết bị kết nối với hai thiết bị khác, tạo thành đường dẫn dữ liệu hình tròn
-- Dữ liệu di chuyển theo một hướng (clockwise hoặc counterclockwise)</p>
-<p><strong>Ưu điểm:</strong>
-- Ngăn chặn collision do luồng dữ liệu một chiều
-- Thích hợp cho FDDI (Fiber Distributed Data Interface)</p>
-<p><strong>Nhược điểm:</strong>
-- Một node lỗi có thể làm gián đoạn toàn bộ mạng
-- Công nghệ cũ, ít được sử dụng hiện tại</p>
-<p><strong>FDDI Ring:</strong>
-- Hoạt động với cấu trúc dual ring (primary và secondary)
-- Băng thông cao, phạm vi đến 200km
-- Phù hợp cho campus networks và data centers</p>
+<p><a class="glightbox" href="../image/05.network-topology/1752573000604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573000604" src="../image/05.network-topology/1752573000604.png" /></a></p>
+<p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Mỗi thiết bị kết nối với hai thiết bị khác, tạo thành đường dẫn dữ liệu hình tròn</li>
+<li>Dữ liệu di chuyển theo một hướng (clockwise hoặc counterclockwise)</li>
+</ul>
+<p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Ngăn chặn collision do luồng dữ liệu một chiều</li>
+<li>Thích hợp cho FDDI (Fiber Distributed Data Interface)</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Một node lỗi có thể làm gián đoạn toàn bộ mạng</li>
+<li>Công nghệ cũ, ít được sử dụng hiện tại</li>
+</ul>
+<p><strong>FDDI Ring:</strong></p>
+<ul>
+<li>Hoạt động với cấu trúc dual ring (primary và secondary)</li>
+<li>Băng thông cao, phạm vi đến 200km</li>
+<li>Phù hợp cho campus networks và data centers</li>
+</ul>
 <h3 id="3-bus-topology">3. Bus Topology<a class="headerlink" href="#3-bus-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong>
-- Tất cả thiết bị kết nối với một cáp trung tâm (backbone/bus)
-- Dữ liệu có sẵn cho mọi thiết bị nhưng chỉ recipient được xác định mới xử lý</p>
-<p><strong>Ưu điểm:</strong>
-- Dễ cài đặt
-- Yêu cầu ít cáp hơn các layout khác</p>
-<p><strong>Nhược điểm:</strong>
-- Toàn bộ mạng ngừng hoạt động khi cáp chính lỗi
-- Hiệu suất giảm khi thêm thiết bị (do data collision)
-- Công nghệ cũ, ít sử dụng</p>
+<p><a class="glightbox" href="../image/05.network-topology/1752573046179.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573046179" src="../image/05.network-topology/1752573046179.png" /></a></p>
+<p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Tất cả thiết bị kết nối với một cáp trung tâm (backbone/bus)</li>
+<li>Dữ liệu có sẵn cho mọi thiết bị nhưng chỉ recipient được xác định mới xử lý</li>
+</ul>
+<p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Dễ cài đặt</li>
+<li>Yêu cầu ít cáp hơn các layout khác</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Toàn bộ mạng ngừng hoạt động khi cáp chính lỗi</li>
+<li>Hiệu suất giảm khi thêm thiết bị (do data collision)</li>
+<li>Công nghệ cũ, ít sử dụng</li>
+</ul>
 <h3 id="4-star-topology">4. Star Topology<a class="headerlink" href="#4-star-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong>
-- Mỗi node kết nối với một điểm trung tâm (thường là network switch)
-- Switch hoạt động như repeater cho luồng dữ liệu
-- <strong>Topology phổ biến nhất hiện tại</strong></p>
-<p><strong>Ưu điểm:</strong>
-- Rất robust - lỗi một link không ảnh hưởng các link khác
-- Dễ quản lý và troubleshoot
-- Mạng gia đình thường sử dụng topology này</p>
-<p><strong>Nhược điểm:</strong>
-- Phụ thuộc hoàn toàn vào switch trung tâm
-- Switch lỗi = toàn bộ mạng ngừng hoạt động</p>
+<p><a class="glightbox" href="../image/05.network-topology/1752573067570.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573067570" src="../image/05.network-topology/1752573067570.png" /></a></p>
+<p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Mỗi node kết nối với một điểm trung tâm (thường là network switch)</li>
+<li>Switch hoạt động như repeater cho luồng dữ liệu</li>
+<li><strong>Topology phổ biến nhất hiện tại</strong></li>
+</ul>
+<p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Rất robust - lỗi một link không ảnh hưởng các link khác</li>
+<li>Dễ quản lý và troubleshoot</li>
+<li>Mạng gia đình thường sử dụng topology này</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Phụ thuộc hoàn toàn vào switch trung tâm</li>
+<li>Switch lỗi = toàn bộ mạng ngừng hoạt động</li>
+</ul>
 <h3 id="5-hub-and-spoke-topology">5. Hub-and-Spoke Topology<a class="headerlink" href="#5-hub-and-spoke-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong>
-- Biến thể của star topology
-- Node trung tâm (hub) kết nối với nhiều nodes (spokes)
-- Spokes không kết nối trực tiếp với nhau</p>
-<p><strong>Ứng dụng thực tế:</strong>
-- <strong>Hàng không</strong>: Orlando → Atlanta → Los Angeles → Hawaii
-- <strong>Mạng viễn thông</strong>: Consolidate các văn phòng khu vực về hub trung tâm</p>
-<p><strong>Ưu điểm:</strong>
-- Tiết kiệm chi phí kết nối đường dài
-- Tập trung băng thông cao giữa các hub chính</p>
-<p><strong>Nhược điểm:</strong>
-- Phụ thuộc vào hub trung tâm
-- Latency cao do phải đi qua hub</p>
+<p><a class="glightbox" href="../image/05.network-topology/1752573100565.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573100565" src="../image/05.network-topology/1752573100565.png" /></a></p>
+<p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Biến thể của star topology</li>
+<li>Node trung tâm (hub) kết nối với nhiều nodes (spokes)</li>
+<li>Spokes không kết nối trực tiếp với nhau</li>
+</ul>
+<p><strong>Ứng dụng thực tế:</strong></p>
+<ul>
+<li><strong>Hàng không</strong>: Orlando → Atlanta → Los Angeles → Hawaii</li>
+<li><strong>Mạng viễn thông</strong>: Consolidate các văn phòng khu vực về hub trung tâm</li>
+</ul>
+<p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Tiết kiệm chi phí kết nối đường dài</li>
+<li>Tập trung băng thông cao giữa các hub chính</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Phụ thuộc vào hub trung tâm</li>
+<li>Latency cao do phải đi qua hub</li>
+</ul>
 <h3 id="6-mesh-topology">6. Mesh Topology<a class="headerlink" href="#6-mesh-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong>
-- Kết nối point-to-point giữa mọi thiết bị
-- Tạo mạng robust và redundant</p>
+<p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Kết nối point-to-point giữa mọi thiết bị</li>
+<li>Tạo mạng robust và redundant</li>
+</ul>
 <h4 id="full-mesh-topology">Full-Mesh Topology<a class="headerlink" href="#full-mesh-topology" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../image/05.network-topology/1752573160818.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573160818" src="../image/05.network-topology/1752573160818.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Mọi node kết nối với mọi node khác</li>
 <li><strong>Công thức số kết nối</strong>: n × (n-1) ÷ 2</li>
 <li>3 nodes = 3 kết nối</li>
 <li>6 nodes = 15 kết nối</li>
 </ul>
-<p><strong>Ưu điểm:</strong>
-- Redundancy cao
-- Nhiều đường backup</p>
-<p><strong>Nhược điểm:</strong>
-- Rất đắt và phức tạp
-- Số kết nối tăng theo cấp số nhân</p>
+<p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Redundancy cao</li>
+<li>Nhiều đường backup</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Rất đắt và phức tạp</li>
+<li>Số kết nối tăng theo cấp số nhân</li>
+</ul>
 <h4 id="partial-mesh-topology">Partial-Mesh Topology<a class="headerlink" href="#partial-mesh-topology" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../image/05.network-topology/1752573195100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573195100" src="../image/05.network-topology/1752573195100.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Một số nodes được kết nối full-mesh, các nodes khác chỉ kết nối với 1-2 thiết bị</li>
 <li><strong>Ứng dụng</strong>: Cân bằng giữa redundancy và cost</li>
@@ -1943,7 +1992,6 @@
 </ul>
 <p>Việc lựa chọn topology phù hợp phụ thuộc vào yêu cầu cụ thể về performance, redundancy, cost và scalability của tổ chức.</p>
 <hr />
-<p><em>Bài viết này cung cấp kiến thức cơ bản về Network Topologies theo chuẩn CompTIA Network+. Để hiểu sâu hơn, bạn nên thực hành với các scenario thực tế và tìm hiểu thêm về implementation details của từng topology.</em></p>
 
 
 
@@ -1964,7 +2012,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 tháng 7, 2025 09:11:19 UTC">15 tháng 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="15 tháng 7, 2025 09:53:35 UTC">15 tháng 7, 2025</span>
   </span>
 
     
