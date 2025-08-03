@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/roadmap/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/system-design/00.sys0-pre.md/00.api-web/00.Short-longPolling-SSE-WebSocket/">
       
       
-        <link rel="prev" href="../cheatsheet/">
+        <link rel="prev" href="../../../">
       
       
-        <link rel="next" href="../00.k8s-manifests/">
+        <link rel="next" href="../01.loadbalancer/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Roadmap - DraDoc</title>
+        <title>00.Short longPolling SSE WebSocket - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" class="md-skip">
+          Bỏ qua
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Roadmap
+              00.Short longPolling SSE WebSocket
             
           </span>
         </div>
@@ -219,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -240,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -262,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../docker/" class="md-tabs__link">
+        <a href="../../../../docker/" class="md-tabs__link">
           
   
   
@@ -284,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../git/roadmap/" class="md-tabs__link">
+        <a href="../../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -306,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../iac/roadmap/" class="md-tabs__link">
+        <a href="../../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -324,13 +329,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../k8s/" class="md-tabs__link">
           
   
   
@@ -352,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../linux/" class="md-tabs__link">
+        <a href="../../../../linux/" class="md-tabs__link">
           
   
   
@@ -374,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../network/roadmap/" class="md-tabs__link">
+        <a href="../../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -396,7 +399,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -418,7 +421,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../observability/roadmap/" class="md-tabs__link">
+        <a href="../../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -447,7 +450,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -472,7 +475,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../python/" class="md-tabs__link">
+        <a href="../../../../python/" class="md-tabs__link">
           
   
   
@@ -494,7 +497,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../security/roadmap/" class="md-tabs__link">
+        <a href="../../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -512,11 +515,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../system-design/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -538,7 +543,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../testing/roadmap/" class="md-tabs__link">
+        <a href="../../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -580,7 +585,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -610,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -656,7 +661,7 @@
   
   
   
-    <a href="../../cicd/roadmap/" class="md-nav__link">
+    <a href="../../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -714,7 +719,7 @@
   
   
   
-    <a href="../../docker/" class="md-nav__link">
+    <a href="../../../../docker/" class="md-nav__link">
       
   
   
@@ -766,7 +771,7 @@
   
   
   
-    <a href="../../git/roadmap/" class="md-nav__link">
+    <a href="../../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -818,7 +823,7 @@
   
   
   
-    <a href="../../iac/roadmap/" class="md-nav__link">
+    <a href="../../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -843,8 +848,6 @@
       
   
   
-    
-  
   
   
     
@@ -868,26 +871,24 @@
     
     
       
-        
-        
-      
       
         
       
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../../../k8s/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -896,812 +897,12 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            K8s
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cheatsheet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Kubernetes Complete Knowledge Base
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Roadmap
-    
-  </span>
+    </a>
   
 
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../00.k8s-manifests/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    00.k8s manifests
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4">
-            <span class="md-nav__icon md-icon"></span>
-            00.k8s manifests
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    01.core
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5">
-            <span class="md-nav__icon md-icon"></span>
-            01.core
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/00/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    00
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/01.cluster-architecture/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    01.cluster architecture
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/02-03.docker-containerd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02 03.docker containerd
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/04.etcd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.etcd
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/05.kube-api-server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.kube api server
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/06.kube-controller-manager/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.kube controller manager
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/07.KubeScheduler/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.KubeScheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/08.kubelet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.kubelet
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/09.kube-proxy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.kube proxy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/10.pods/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.pods
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/11-12.pods-yml-demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    11 12.pods yml demo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/13.replicaset-demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.replicaset demo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/14.deployment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.deployment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/15.services-nodeport/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.services nodeport
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/16.services-clusterIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    16.services clusterIP
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/17.services-loadbalancer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    17.services loadbalancer
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/18.service-engpoint/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    18.service engpoint
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/19.namespace/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19.namespace
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/20.ImperativeDeclarative/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    20.ImperativeDeclarative
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.core/21.kubectlAppy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    21.kubectlAppy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    02.Scheduling
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_6">
-            <span class="md-nav__icon md-icon"></span>
-            02.Scheduling
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.Scheduling/01.manualScheduling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hướng Dẫn Chi Tiết: Cách Tự Động Lập Lịch Pod Trong Kubernetes Khi Không Có Scheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.Scheduling/02.LabelsAndSelectors/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Labels và Selectors trong Kubernetes: Cách Phân Loại và Quản Lý Đối Tượng Hiệu Quả
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1746,7 +947,7 @@
   
   
   
-    <a href="../../linux/" class="md-nav__link">
+    <a href="../../../../linux/" class="md-nav__link">
       
   
   
@@ -1798,7 +999,7 @@
   
   
   
-    <a href="../../network/roadmap/" class="md-nav__link">
+    <a href="../../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -1852,7 +1053,7 @@
   
   
   
-    <a href="../../network-comtia/roadmap/" class="md-nav__link">
+    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
       
   
   
@@ -1904,7 +1105,7 @@
   
   
   
-    <a href="../../observability/roadmap/" class="md-nav__link">
+    <a href="../../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -1960,7 +1161,7 @@
   
   
   
-    <a href="../../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -2016,7 +1217,7 @@
   
   
   
-    <a href="../../python/" class="md-nav__link">
+    <a href="../../../../python/" class="md-nav__link">
       
   
   
@@ -2068,7 +1269,7 @@
   
   
   
-    <a href="../../security/roadmap/" class="md-nav__link">
+    <a href="../../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -2093,6 +1294,8 @@
       
   
   
+    
+  
   
   
     
@@ -2110,24 +1313,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../system-design/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -2136,12 +1341,535 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            System design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_14_2" id="__nav_14_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.sys0 pre.md
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14_2">
+            <span class="md-nav__icon md-icon"></span>
+            00.sys0 pre.md
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_14_2_1" id="__nav_14_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.api web
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_14_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            00.api web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    00.Short longPolling SSE WebSocket
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    00.Short longPolling SSE WebSocket
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 cơ chế real-time update trong web: Short Polling, Long Polling, SSE, và WebSocket,
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#van-e-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Vấn đề cốt lõi:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-phap-ky-thuat" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Giải pháp kỹ thuật:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Giải pháp kỹ thuật:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-short-polling-client-tu-hoi-lien-tuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔁 1. Short Polling – Client tự hỏi liên tục
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔁 1. Short Polling – Client tự hỏi liên tục">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-long-polling-keo-dai-request-cho-du-lieu-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sse-server-sent-events-server-push-on-huong" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 3. SSE (Server-Sent Events) – Server push đơn hướng
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📡 3. SSE (Server-Sent Events) – Server push đơn hướng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-websocket-ket-noi-2-chieu-thuc-su" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 4. WebSocket – Kết nối 2 chiều thực sự
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 4. WebSocket – Kết nối 2 chiều thực sự">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-tong-quat" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 So sánh tổng quát
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan-khi-tra-loi-phong-van" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟦 Kết luận khi trả lời phỏng vấn:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.loadbalancer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.loadbalancer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_3" id="__nav_14_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_3">
+            <span class="md-nav__icon md-icon"></span>
+            03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2178,7 +1906,7 @@
   
   
   
-    <a href="../../testing/roadmap/" class="md-nav__link">
+    <a href="../../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -2217,6 +1945,233 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 cơ chế real-time update trong web: Short Polling, Long Polling, SSE, và WebSocket,
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#van-e-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Vấn đề cốt lõi:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-phap-ky-thuat" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Giải pháp kỹ thuật:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Giải pháp kỹ thuật:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-short-polling-client-tu-hoi-lien-tuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔁 1. Short Polling – Client tự hỏi liên tục
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔁 1. Short Polling – Client tự hỏi liên tục">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-long-polling-keo-dai-request-cho-du-lieu-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sse-server-sent-events-server-push-on-huong" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 3. SSE (Server-Sent Events) – Server push đơn hướng
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📡 3. SSE (Server-Sent Events) – Server push đơn hướng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-websocket-ket-noi-2-chieu-thuc-su" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 4. WebSocket – Kết nối 2 chiều thực sự
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 4. WebSocket – Kết nối 2 chiều thực sự">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Cách hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-tong-quat" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 So sánh tổng quát
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan-khi-tra-loi-phong-van" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟦 Kết luận khi trả lời phỏng vấn:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2231,7 +2186,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/roadmap.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/system-design/00.sys0-pre.md/00.api-web/00.Short-longPolling-SSE-WebSocket.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2239,11 +2194,141 @@
   
 
 
-  <h1>Roadmap</h1>
+  <h1>00.Short longPolling SSE WebSocket</h1>
 
-<p>note cho khóa học trên udemy về k8s</p>
-<p>https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction</p>
-<p>https://github.com/kodekloudhub/certified-kubernetes-administrator-course\</p>
+<p><a class="glightbox" href="../image/00.Short-longPolling-SSE-WebSocket/1754212814740.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1754212814740" src="../image/00.Short-longPolling-SSE-WebSocket/1754212814740.png" /></a></p>
+<h2 id="3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket"><strong>3 cơ chế real-time update trong web</strong>: <strong>Short Polling, Long Polling, SSE, và WebSocket</strong>,<a class="headerlink" href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" title="Permanent link">&para;</a></h2>
+<h2 id="van-e-cot-loi">✅ <strong>Vấn đề cốt lõi:</strong><a class="headerlink" href="#van-e-cot-loi" title="Permanent link">&para;</a></h2>
+<p>HTTP là <strong>giao thức theo mô hình request-response một chiều</strong>, nghĩa là:</p>
+<blockquote>
+<p><strong>Trình duyệt (client)</strong> luôn là bên <strong>chủ động gửi request</strong> &gt; <strong>Server</strong> chỉ phản hồi khi có request → <strong>không thể tự gửi dữ liệu sang client</strong></p>
+</blockquote>
+<p>📌 Vì vậy, để <strong>cập nhật dữ liệu theo thời gian thực (real-time)</strong>, ta cần tìm <strong>cách để server có thể gửi dữ liệu mới về phía client ngay khi có thay đổi</strong>, thay vì phải đợi client hỏi lại.</p>
+<hr />
+<h2 id="giai-phap-ky-thuat">🧠 <strong>Giải pháp kỹ thuật:</strong><a class="headerlink" href="#giai-phap-ky-thuat" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="1-short-polling-client-tu-hoi-lien-tuc">🔁 <strong>1. Short Polling – Client tự hỏi liên tục</strong><a class="headerlink" href="#1-short-polling-client-tu-hoi-lien-tuc" title="Permanent link">&para;</a></h3>
+<h4 id="cach-hoat-ong">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Trình duyệt gửi request đến server mỗi vài giây (ví dụ: 3s/lần)</li>
+<li>Server luôn phản hồi ngay lập tức với dữ liệu hiện tại (dù có hay không có gì mới)</li>
+</ul>
+<h4 id="uu-iem">✅ Ưu điểm:<a class="headerlink" href="#uu-iem" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Dễ cài đặt (dùng <code>setInterval + fetch</code>)</li>
+<li>Tương thích mọi trình duyệt</li>
+</ul>
+<h4 id="nhuoc-iem">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Lãng phí tài nguyên</strong> (gửi liên tục dù không có thay đổi)</li>
+<li>Tăng tải server, độ trễ không tối ưu</li>
+</ul>
+<hr />
+<h3 id="2-long-polling-keo-dai-request-cho-du-lieu-moi">⏳ <strong>2. Long Polling – Kéo dài request chờ dữ liệu mới</strong><a class="headerlink" href="#2-long-polling-keo-dai-request-cho-du-lieu-moi" title="Permanent link">&para;</a></h3>
+<h4 id="cach-hoat-ong_1">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Client gửi request</li>
+<li><strong>Server giữ kết nối mở</strong> cho đến khi có dữ liệu mới thì mới phản hồi</li>
+<li>Sau đó, client <strong>lập tức gửi request mới</strong></li>
+</ul>
+<h4 id="uu-iem_1">✅ Ưu điểm:<a class="headerlink" href="#uu-iem_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Giảm số lượng request</strong>, phản hồi khi có thay đổi → <strong>thời gian thực hơn short polling</strong></li>
+</ul>
+<h4 id="nhuoc-iem_1">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cần server hỗ trợ giữ kết nối mở lâu</li>
+<li>Cần xử lý timeout, retry, lỗi kết nối</li>
+</ul>
+<hr />
+<h3 id="3-sse-server-sent-events-server-push-on-huong">📡 <strong>3. SSE (Server-Sent Events) – Server push đơn hướng</strong><a class="headerlink" href="#3-sse-server-sent-events-server-push-on-huong" title="Permanent link">&para;</a></h3>
+<h4 id="cach-hoat-ong_2">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Client mở kết nối bằng <code>EventSource</code> (một loại request đặc biệt)</li>
+<li>Server giữ kết nối mở, và <strong>stream dữ liệu dạng <code>text/event-stream</code></strong></li>
+<li>Client <strong>tự động nhận dữ liệu mỗi khi server gửi</strong></li>
+</ul>
+<h4 id="uu-iem_2">✅ Ưu điểm:<a class="headerlink" href="#uu-iem_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Giao tiếp real-time thật sự</strong> từ server → client</li>
+<li>Hỗ trợ reconnect tự động</li>
+<li>Dễ triển khai hơn WebSocket (vì vẫn dùng HTTP)</li>
+</ul>
+<h4 id="nhuoc-iem_2">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Chỉ hỗ trợ một chiều</strong> (server → client)</li>
+<li>Không tương thích với một số trình duyệt cũ (IE)</li>
+<li>Chỉ hỗ trợ giao thức HTTP (không dùng cho gRPC, WebSocket, v.v.)</li>
+</ul>
+<hr />
+<h3 id="4-websocket-ket-noi-2-chieu-thuc-su">🌐 <strong>4. WebSocket – Kết nối 2 chiều thực sự</strong><a class="headerlink" href="#4-websocket-ket-noi-2-chieu-thuc-su" title="Permanent link">&para;</a></h3>
+<h4 id="cach-hoat-ong_3">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Client gửi HTTP request với <code>Upgrade: websocket</code></li>
+<li>Nếu server đồng ý, hai bên thiết lập kết nối <strong>WebSocket</strong></li>
+<li>Từ đó, <strong>cả server và client đều có thể gửi/nhận dữ liệu bất kỳ lúc nào</strong></li>
+</ul>
+<h4 id="uu-iem_3">✅ Ưu điểm:<a class="headerlink" href="#uu-iem_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Full-duplex real-time</strong> (gửi/nhận hai chiều)</li>
+<li>Tối ưu cho ứng dụng như: chat, multiplayer game, trading, dashboard</li>
+</ul>
+<h4 id="nhuoc-iem_3">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Phức tạp hơn</strong> (cần server hỗ trợ WebSocket protocol)</li>
+<li>Có thể bị chặn bởi proxy hoặc firewall</li>
+<li>Không phải tất cả load balancer đều hỗ trợ tốt WebSocket (cần sticky session)</li>
+</ul>
+<hr />
+<h2 id="so-sanh-tong-quat">📊 <strong>So sánh tổng quát</strong><a class="headerlink" href="#so-sanh-tong-quat" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Kỹ thuật</th>
+<th>Hướng truyền</th>
+<th>Real-time</th>
+<th>Phức tạp</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short Polling</td>
+<td>1 chiều</td>
+<td>❌</td>
+<td>Thấp</td>
+<td>Dễ triển khai nhưng tốn tài nguyên</td>
+</tr>
+<tr>
+<td>Long Polling</td>
+<td>1 chiều</td>
+<td>✅ Tạm ổn</td>
+<td>Trung bình</td>
+<td>Giữ kết nối lâu, cần xử lý timeout</td>
+</tr>
+<tr>
+<td>SSE</td>
+<td>1 chiều</td>
+<td>✅ Tốt</td>
+<td>Trung bình</td>
+<td>Dễ dùng, nhưng không gửi lên server</td>
+</tr>
+<tr>
+<td>WebSocket</td>
+<td>2 chiều</td>
+<td>✅ Rất tốt</td>
+<td>Cao</td>
+<td>Real-time thật sự, cần cấu hình thêm</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ket-luan-khi-tra-loi-phong-van">🟦 <strong>Kết luận khi trả lời phỏng vấn:</strong><a class="headerlink" href="#ket-luan-khi-tra-loi-phong-van" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>“Vì HTTP không cho phép server tự gửi dữ liệu, nên để cập nhật real-time, em sử dụng các phương pháp như polling, SSE, hoặc WebSocket tùy theo use-case.
+Với các ứng dụng đơn giản như thông báo hoặc stream dữ liệu từ server, em chọn <strong>SSE</strong> vì nhẹ, đơn giản và hiệu quả.
+Nhưng với các ứng dụng cần giao tiếp 2 chiều như chat, dashboard realtime hay game, em chọn <strong>WebSocket</strong> để có kết nối full-duplex, giảm độ trễ, tăng trải nghiệm người dùng.”</p>
+</blockquote>
 
 
 
@@ -2350,7 +2435,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../cheatsheet/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Kubernetes Complete Knowledge Base">
+          <a href="../../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Index">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2360,20 +2445,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Kubernetes Complete Knowledge Base
+                Index
               </div>
             </div>
           </a>
         
         
           
-          <a href="../00.k8s-manifests/" class="md-footer__link md-footer__link--next" aria-label="Sau: Kubernetes Manifests - Complete Project Structure">
+          <a href="../01.loadbalancer/" class="md-footer__link md-footer__link--next" aria-label="Sau: 01.loadbalancer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Kubernetes Manifests - Complete Project Structure
+                01.loadbalancer
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2434,10 +2519,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
