@@ -5,3 +5,5 @@ sys1 sys2 là 2 cuốn sách system design của bên bytebytego
 các bạn có thể lên amazon mua hoặc ...
 [cuốn 1](sys1.pdf)
 [cuốn 2](sys2.pdf)
+
+[cuốn 0 , có vẻ như trên blog vậy thôi ](sys0.pdf)
