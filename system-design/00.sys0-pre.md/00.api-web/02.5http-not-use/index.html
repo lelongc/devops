@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/08.kubelet/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/system-design/00.sys0-pre.md/00.api-web/02.5http-not-use/">
       
       
-        <link rel="prev" href="../07.KubeScheduler/">
+        <link rel="prev" href="../01.loadbalancer/">
       
       
-        <link rel="next" href="../09.kube-proxy/">
+        <link rel="next" href="../03.gRPC-work/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>08.kubelet - DraDoc</title>
+        <title>02.5http not use - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-kubelet-thuyen-truong-tren-moi-worker-node" class="md-skip">
+        <a href="#http-status-codes-nhung-ma-it-pho-bien-hoac-vui-nhon" class="md-skip">
           Bỏ qua
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08.kubelet
+              02.5http not use
             
           </span>
         </div>
@@ -224,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -245,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -267,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/" class="md-tabs__link">
+        <a href="../../../../docker/" class="md-tabs__link">
           
   
   
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../git/roadmap/" class="md-tabs__link">
+        <a href="../../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../iac/roadmap/" class="md-tabs__link">
+        <a href="../../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -329,13 +329,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../k8s/" class="md-tabs__link">
           
   
   
@@ -357,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../linux/" class="md-tabs__link">
+        <a href="../../../../linux/" class="md-tabs__link">
           
   
   
@@ -379,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network/roadmap/" class="md-tabs__link">
+        <a href="../../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -401,7 +399,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -423,7 +421,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../observability/roadmap/" class="md-tabs__link">
+        <a href="../../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -452,7 +450,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -477,7 +475,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../python/" class="md-tabs__link">
+        <a href="../../../../python/" class="md-tabs__link">
           
   
   
@@ -499,7 +497,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../security/roadmap/" class="md-tabs__link">
+        <a href="../../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -517,11 +515,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../system-design/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -543,7 +543,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../testing/roadmap/" class="md-tabs__link">
+        <a href="../../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -585,7 +585,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -615,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -661,7 +661,7 @@
   
   
   
-    <a href="../../../cicd/roadmap/" class="md-nav__link">
+    <a href="../../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -719,7 +719,7 @@
   
   
   
-    <a href="../../../docker/" class="md-nav__link">
+    <a href="../../../../docker/" class="md-nav__link">
       
   
   
@@ -771,7 +771,7 @@
   
   
   
-    <a href="../../../git/roadmap/" class="md-nav__link">
+    <a href="../../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -823,7 +823,7 @@
   
   
   
-    <a href="../../../iac/roadmap/" class="md-nav__link">
+    <a href="../../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -848,8 +848,6 @@
       
   
   
-    
-  
   
   
     
@@ -873,26 +871,24 @@
     
     
       
-        
-        
-      
       
         
       
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../../../k8s/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -901,889 +897,12 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            K8s
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cheatsheet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Kubernetes Complete Knowledge Base
-    
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../roadmap/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Roadmap
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../00.k8s-manifests/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    00.k8s manifests
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4">
-            <span class="md-nav__icon md-icon"></span>
-            00.k8s manifests
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    01.core
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_5">
-            <span class="md-nav__icon md-icon"></span>
-            01.core
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    00
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.cluster-architecture/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    01.cluster architecture
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-03.docker-containerd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02 03.docker containerd
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.etcd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.etcd
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.kube-api-server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.kube api server
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.kube-controller-manager/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.kube controller manager
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.KubeScheduler/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.KubeScheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    08.kubelet
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.kubelet
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-kubelet-thuyen-truong-tren-moi-worker-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. kubelet - "Thuyền trưởng" trên mỗi Worker Node 👨‍✈️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Các Nhiệm vụ chính của "Thuyền trưởng" kubelet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cai-at-kubelet-mot-iem-ac-biet" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Cài đặt kubelet - Một điểm "Đặc biệt" ⚠️
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-xem-tien-trinh-kubelet-ang-chay" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Xem tiến trình kubelet đang chạy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09.kube-proxy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.kube proxy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10.pods/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.pods
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11-12.pods-yml-demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    11 12.pods yml demo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.replicaset-demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.replicaset demo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14.deployment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.deployment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15.services-nodeport/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.services nodeport
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16.services-clusterIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    16.services clusterIP
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17.services-loadbalancer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    17.services loadbalancer
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18.service-engpoint/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    18.service engpoint
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19.namespace/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19.namespace
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../20.ImperativeDeclarative/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    20.ImperativeDeclarative
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../21.kubectlAppy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    21.kubectlAppy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    02.Scheduling
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_6">
-            <span class="md-nav__icon md-icon"></span>
-            02.Scheduling
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02.Scheduling/01.manualScheduling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hướng Dẫn Chi Tiết: Cách Tự Động Lập Lịch Pod Trong Kubernetes Khi Không Có Scheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02.Scheduling/02.LabelsAndSelectors/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Labels và Selectors trong Kubernetes: Cách Phân Loại và Quản Lý Đối Tượng Hiệu Quả
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1828,7 +947,7 @@
   
   
   
-    <a href="../../../linux/" class="md-nav__link">
+    <a href="../../../../linux/" class="md-nav__link">
       
   
   
@@ -1880,7 +999,7 @@
   
   
   
-    <a href="../../../network/roadmap/" class="md-nav__link">
+    <a href="../../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -1934,7 +1053,7 @@
   
   
   
-    <a href="../../../network-comtia/roadmap/" class="md-nav__link">
+    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
       
   
   
@@ -1986,7 +1105,7 @@
   
   
   
-    <a href="../../../observability/roadmap/" class="md-nav__link">
+    <a href="../../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -2042,7 +1161,7 @@
   
   
   
-    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -2098,7 +1217,7 @@
   
   
   
-    <a href="../../../python/" class="md-nav__link">
+    <a href="../../../../python/" class="md-nav__link">
       
   
   
@@ -2150,7 +1269,7 @@
   
   
   
-    <a href="../../../security/roadmap/" class="md-nav__link">
+    <a href="../../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -2175,6 +1294,8 @@
       
   
   
+    
+  
   
   
     
@@ -2192,24 +1313,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../../system-design/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -2218,12 +1341,435 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            System design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_14_2" id="__nav_14_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.sys0 pre.md
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14_2">
+            <span class="md-nav__icon md-icon"></span>
+            00.sys0 pre.md
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_14_2_1" id="__nav_14_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.api web
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_14_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            00.api web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00.Short-longPolling-SSE-WebSocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00.Short longPolling SSE WebSocket
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.loadbalancer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.loadbalancer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    02.5http not use
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.5http not use
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#http-status-codes-nhung-ma-it-pho-bien-hoac-vui-nhon" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ HTTP Status Codes – Những mã ít phổ biến hoặc “vui nhộn”
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ HTTP Status Codes – Những mã ít phổ biến hoặc “vui nhộn”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-unavailable-for-legal-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 451 – Unavailable For Legal Reasons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218-this-is-fine" class="md-nav__link">
+    <span class="md-ellipsis">
+      😅 218 – This Is Fine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#420-enhance-your-calm" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧘 420 – Enhance Your Calm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#530-site-frozen" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❄️ 530 – Site Frozen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#418-im-a-teapot" class="md-nav__link">
+    <span class="md-ellipsis">
+      🫖 418 – I’m a Teapot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meo-tra-loi-phong-van-neu-uoc-hoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      🟦 Mẹo trả lời phỏng vấn (nếu được hỏi):
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.gRPC-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.gRPC work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_14_3" id="__nav_14_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14_3">
+            <span class="md-nav__icon md-icon"></span>
+            03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2260,7 +1806,7 @@
   
   
   
-    <a href="../../../testing/roadmap/" class="md-nav__link">
+    <a href="../../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -2306,45 +1852,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-kubelet-thuyen-truong-tren-moi-worker-node" class="md-nav__link">
+  <a href="#http-status-codes-nhung-ma-it-pho-bien-hoac-vui-nhon" class="md-nav__link">
     <span class="md-ellipsis">
-      1. kubelet - "Thuyền trưởng" trên mỗi Worker Node 👨‍✈️
+      ✅ HTTP Status Codes – Những mã ít phổ biến hoặc “vui nhộn”
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ HTTP Status Codes – Những mã ít phổ biến hoặc “vui nhộn”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-unavailable-for-legal-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 451 – Unavailable For Legal Reasons
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#218-this-is-fine" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Các Nhiệm vụ chính của "Thuyền trưởng" kubelet
+      😅 218 – This Is Fine
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-cai-at-kubelet-mot-iem-ac-biet" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#420-enhance-your-calm" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Cài đặt kubelet - Một điểm "Đặc biệt" ⚠️
+      🧘 420 – Enhance Your Calm
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-xem-tien-trinh-kubelet-ang-chay" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#530-site-frozen" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Xem tiến trình kubelet đang chạy
+      ❄️ 530 – Site Frozen
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#418-im-a-teapot" class="md-nav__link">
+    <span class="md-ellipsis">
+      🫖 418 – I’m a Teapot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#5-chot-ha-cho-ky-thi-cka" class="md-nav__link">
+  <a href="#meo-tra-loi-phong-van-neu-uoc-hoi" class="md-nav__link">
     <span class="md-ellipsis">
-      5. "Chốt hạ" cho Kỳ thi CKA 📝
+      🟦 Mẹo trả lời phỏng vấn (nếu được hỏi):
     </span>
   </a>
   
@@ -2366,7 +1936,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/08.kubelet.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/system-design/00.sys0-pre.md/00.api-web/02.5http-not-use.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2374,61 +1944,64 @@
   
 
 
-  <h1>08.kubelet</h1>
+  <h1>02.5http not use</h1>
 
-<h3 id="1-kubelet-thuyen-truong-tren-moi-worker-node">1. <code>kubelet</code> - "Thuyền trưởng" trên mỗi Worker Node 👨‍✈️<a class="headerlink" href="#1-kubelet-thuyen-truong-tren-moi-worker-node" title="Permanent link">&para;</a></h3>
-<p>Nếu <code>Master Node</code> là "Tàu Chỉ Huy", thì mỗi <code>Worker Node</code> là một "Tàu Hàng", và <strong><code>kubelet</code> chính là thuyền trưởng</strong> của con tàu đó. Nó là agent chính, chịu trách nhiệm cho mọi hoạt động diễn ra trên node của mình.</p>
-<p><code>kubelet</code> là <strong>điểm liên lạc duy nhất</strong> của Master Node trên mỗi Worker Node. Mọi mệnh lệnh từ <code>kube-api-server</code> xuống Worker Node đều do <code>kubelet</code> tiếp nhận và thực thi.</p>
+<h2 id="http-status-codes-nhung-ma-it-pho-bien-hoac-vui-nhon">✅ <strong>HTTP Status Codes – Những mã ít phổ biến hoặc “vui nhộn”</strong><a class="headerlink" href="#http-status-codes-nhung-ma-it-pho-bien-hoac-vui-nhon" title="Permanent link">&para;</a></h2>
 <hr />
-<h3 id="2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet">2. Các Nhiệm vụ chính của "Thuyền trưởng" <code>kubelet</code><a class="headerlink" href="#2-cac-nhiem-vu-chinh-cua-thuyen-truong-kubelet" title="Permanent link">&para;</a></h3>
-<p><code>kubelet</code> có 3 nhiệm vụ cốt lõi:</p>
-<ol>
-<li>
-<p><strong>Đăng ký Node (Node Registration):</strong></p>
-</li>
-<li>
-<p>Khi một Worker Node mới khởi động, <code>kubelet</code> sẽ làm "thủ tục giấy tờ" cần thiết để đăng ký Node này với cụm Kubernetes, báo cáo rằng: "Thuyền trưởng xin báo, tàu hàng số hiệu X đã sẵn sàng nhận nhiệm vụ!".</p>
-</li>
-<li>
-<p><strong>Tạo và Quản lý Vòng đời Pod (Pod Lifecycle):</strong></p>
-</li>
-<li>
-<p>Sau khi <code>kube-scheduler</code> đã quyết định một Pod sẽ chạy trên Node này, <code>kube-api-server</code> sẽ gửi chỉ thị đến <code>kubelet</code>.</p>
-</li>
-<li><code>kubelet</code> nhận lệnh và <strong>ra chỉ thị cho Container Runtime Engine</strong> (ví dụ: Docker, ContainerD) để kéo image cần thiết và khởi chạy các container bên trong Pod.</li>
-<li>
-<p>Nó cũng chịu trách nhiệm hủy Pod khi có lệnh.</p>
-</li>
-<li>
-<p><strong>Báo cáo Trạng thái (Status Reporting):</strong></p>
-</li>
-<li>
-<p><code>kubelet</code> liên tục <strong>theo dõi "sức khỏe"</strong> của các Pod và container đang chạy trên node của mình.</p>
-</li>
-<li>Nó đều đặn gửi các báo cáo trạng thái này về cho <code>kube-api-server</code>, thông báo tình hình của "con tàu" và các "thùng hàng" trên đó.</li>
-</ol>
-<hr />
-<h3 id="3-cai-at-kubelet-mot-iem-ac-biet">3. Cài đặt <code>kubelet</code> - Một điểm "Đặc biệt" ⚠️<a class="headerlink" href="#3-cai-at-kubelet-mot-iem-ac-biet" title="Permanent link">&para;</a></h3>
-<p>Đây là một điểm rất quan trọng bạn cần nhớ, khác biệt so với các thành phần Master Node khác:</p>
+<h3 id="451-unavailable-for-legal-reasons">🔒 <strong>451 – Unavailable For Legal Reasons</strong><a class="headerlink" href="#451-unavailable-for-legal-reasons" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Ngay cả khi bạn sử dụng công cụ <code>kubeadm</code> để dựng cụm, <code>kubeadm</code> <strong>KHÔNG</strong> tự động cài đặt <code>kubelet</code> cho bạn.</li>
-<li>Bạn phải <strong>luôn luôn cài đặt <code>kubelet</code> một cách thủ công</strong> trên tất cả các Worker Node (và cả Master Node).</li>
-<li>Quá trình cài đặt thường bao gồm việc tải file cài đặt, giải nén và cấu hình nó chạy như một service hệ thống.</li>
+<li><strong>Ý nghĩa</strong>: Truy cập bị chặn do yêu cầu pháp lý.</li>
+<li><strong>Tình huống sử dụng</strong>: Ví dụ, một trang web bị chính phủ chặn tại khu vực cụ thể.</li>
+<li>
+<p><strong>Ví dụ thực tế</strong>:</p>
+</li>
+<li>
+<p>Nội dung bị xóa theo DMCA hoặc luật pháp quốc gia (ví dụ: GDPR, luật kiểm duyệt).</p>
+</li>
+<li>
+<p>🔍 <strong>Nguồn gốc</strong>: Đề xuất bởi Tim Bray, lấy cảm hứng từ tiểu thuyết <em>Fahrenheit 451</em> (nói về kiểm duyệt sách).</p>
+</li>
 </ul>
 <hr />
-<h3 id="4-xem-tien-trinh-kubelet-ang-chay">4. Xem tiến trình <code>kubelet</code> đang chạy<a class="headerlink" href="#4-xem-tien-trinh-kubelet-ang-chay" title="Permanent link">&para;</a></h3>
-<p>Để xem <code>kubelet</code> có đang chạy trên một node hay không và với các tùy chọn nào, bạn có thể dùng lệnh sau trên node đó:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ps<span class="w"> </span>-aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kubelet
-</code></pre></div>
-<hr />
-<h3 id="5-chot-ha-cho-ky-thi-cka">5. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#5-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
+<h3 id="218-this-is-fine">😅 <strong>218 – This Is Fine</strong><a class="headerlink" href="#218-this-is-fine" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>kubelet</code> là agent chính, chạy trên <strong>mỗi Worker Node</strong> (và cả Master Node).</li>
-<li>Nó là <strong>người thực thi</strong> - nhận lệnh từ <code>api-server</code> và ra lệnh cho Container Runtime để chạy/dừng container.</li>
-<li>Nó là <strong>người báo cáo</strong> - liên tục gửi trạng thái của Node và các Pod về cho Master.</li>
-<li>Quan trọng: <strong><code>kubeadm</code> không tự cài <code>kubelet</code></strong>. Bạn phải luôn cài đặt nó thủ công.</li>
+<li><strong>Ý nghĩa</strong>: Một <strong>mã đùa</strong> lấy cảm hứng từ meme nổi tiếng “This is fine” (con chó ngồi trong nhà cháy).</li>
+<li><strong>Không chính thức</strong>: Không có trong chuẩn HTTP. Có thể dùng nội bộ trong dev environment.</li>
+<li>
+<p>🧪 <strong>Tình huống dùng cho vui</strong>:</p>
+</li>
+<li>
+<p>Dùng để <strong>trả về khi server gặp lỗi nhẹ nhưng không muốn hoảng loạn</strong>.</p>
+</li>
+<li>Ví dụ: <code>"status": 218, "message": "This is fine 🔥🐶"</code></li>
 </ul>
-<p>Hiểu rõ vai trò của <code>kubelet</code> là bạn đã hiểu được "cánh tay nối dài" của Master Node hoạt động như thế nào trên từng Worker Node rồi đó. Chúc bạn buổi chiều học tập hiệu quả!</p>
+<hr />
+<h3 id="420-enhance-your-calm">🧘 <strong>420 – Enhance Your Calm</strong><a class="headerlink" href="#420-enhance-your-calm" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ý nghĩa</strong>: Trả về khi client gửi quá nhiều request – như yêu cầu <strong>giảm nhịp độ lại</strong>.</li>
+<li>🐦 <strong>Nguồn gốc</strong>: Được <strong>Twitter sử dụng trước đây</strong> thay cho mã chính thức 429.</li>
+<li>✅ Hiện nay nên dùng <strong>429 Too Many Requests</strong> theo tiêu chuẩn HTTP.</li>
+</ul>
+<hr />
+<h3 id="530-site-frozen">❄️ <strong>530 – Site Frozen</strong><a class="headerlink" href="#530-site-frozen" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ý nghĩa</strong>: Trang web bị khóa, thường do vi phạm điều khoản hoặc <strong>chưa thanh toán</strong>.</li>
+<li>💡 <strong>Pantheon (nền tảng hosting)</strong> sử dụng mã này khi trang <strong>bị “đóng băng”</strong> vì lý do tài chính.</li>
+<li>⚠️ Không phải mã chính thức trong RFC, nhưng được dùng phổ biến trong một số nền tảng PaaS.</li>
+</ul>
+<hr />
+<h3 id="418-im-a-teapot">🫖 <strong>418 – I’m a Teapot</strong><a class="headerlink" href="#418-im-a-teapot" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ý nghĩa</strong>: “Tôi là cái ấm trà, không pha cà phê được.”</li>
+<li>🃏 <strong>Nguồn gốc</strong>: Là một <strong>trò đùa</strong> trong <a href="https://datatracker.ietf.org/doc/html/rfc2324">RFC 2324 – HTCPCP (Hyper Text Coffee Pot Control Protocol)</a>.</li>
+<li>👉 Mã này tồn tại <strong>để troll</strong> và thể hiện rằng server không hỗ trợ yêu cầu vô lý.</li>
+<li>🔍 Vẫn được các lập trình viên yêu thích vì tính giải trí.</li>
+</ul>
+<hr />
+<h2 id="meo-tra-loi-phong-van-neu-uoc-hoi">🟦 <strong>Mẹo trả lời phỏng vấn (nếu được hỏi):</strong><a class="headerlink" href="#meo-tra-loi-phong-van-neu-uoc-hoi" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>“Ngoài các mã HTTP chuẩn, em cũng biết một số mã vui hoặc đặc thù như <code>418 I'm a Teapot</code> – vốn là mã đùa trong RFC 2324, <code>451</code> dùng khi bị hạn chế bởi luật pháp, hay <code>420</code> – từng được Twitter dùng cho giới hạn tốc độ. Những mã này cho thấy cộng đồng dev cũng có khiếu hài hước, và đôi khi còn hữu ích cho logging hoặc testing nội bộ.”</p>
+</blockquote>
 
 
 
@@ -2535,7 +2108,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../07.KubeScheduler/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 07.KubeScheduler">
+          <a href="../01.loadbalancer/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 01.loadbalancer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2545,20 +2118,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                07.KubeScheduler
+                01.loadbalancer
               </div>
             </div>
           </a>
         
         
           
-          <a href="../09.kube-proxy/" class="md-footer__link md-footer__link--next" aria-label="Sau: 09.kube proxy">
+          <a href="../03.gRPC-work/" class="md-footer__link md-footer__link--next" aria-label="Sau: 03.gRPC work">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                09.kube proxy
+                03.gRPC work
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2619,10 +2192,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
