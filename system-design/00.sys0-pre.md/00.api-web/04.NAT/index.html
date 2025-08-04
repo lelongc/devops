@@ -1689,6 +1689,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#giong-nhau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giống nhau
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khac-nhau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khác nhau
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết luận
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1951,6 +1978,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#giong-nhau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giống nhau
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khac-nhau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khác nhau
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết luận
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2038,6 +2092,76 @@
 </ul>
 <h2 id="ket-luan">Kết luận<a class="headerlink" href="#ket-luan" title="Permanent link">&para;</a></h2>
 <p>NAT là một trong những công nghệ trọng yếu giúp Internet phát triển vượt bậc, tiết kiệm tài nguyên, tăng tính linh hoạt và bảo mật cho hệ thống mạng. Khi hiểu rõ NAT, bạn sẽ dễ dàng vận hành, mở rộng và bảo vệ mạng của mình hiệu quả hơn.</p>
+<p><strong>NAT truyền thống</strong> và <strong>NAT trong AWS (NAT Gateway/NAT Instance)</strong> không hoàn toàn là “cùng một thứ”, mặc dù chúng đều dựa trên nguyên lý dịch địa chỉ IP (Network Address Translation). Dưới đây là các điểm giống và khác biệt chính:</p>
+<hr />
+<h2 id="giong-nhau">Giống nhau<a class="headerlink" href="#giong-nhau" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Chức năng cơ bản giống nhau:</strong><br />
+  Cả hai đều cho phép nhiều thiết bị/nền tảng sử dụng địa chỉ IP riêng (private IP) truy cập Internet thông qua một địa chỉ IP công cộng (public IP).</li>
+<li><strong>Ẩn địa chỉ IP nội bộ:</strong><br />
+  Đều giúp bảo mật bằng cách che giấu IP thật của các thiết bị nội bộ với Internet bên ngoài.</li>
+<li><strong>Tiết kiệm địa chỉ IP công cộng:</strong><br />
+  Giúp nhiều máy có thể dùng chung một hoặc một số ít địa chỉ IP public.</li>
+</ul>
+<hr />
+<h2 id="khac-nhau">Khác nhau<a class="headerlink" href="#khac-nhau" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>NAT truyền thống (Router, Firewall...)</th>
+<th>NAT trong AWS (NAT Gateway/Instance)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vị trí triển khai</strong></td>
+<td>Thiết bị vật lý (router, firewall) tại nhà hoặc doanh nghiệp</td>
+<td>Dịch vụ ảo, triển khai trong hạ tầng đám mây AWS (VPC)</td>
+</tr>
+<tr>
+<td><strong>Quy mô</strong></td>
+<td>Phù hợp mạng nhỏ, vừa</td>
+<td>Phù hợp mạng lớn, tự động mở rộng</td>
+</tr>
+<tr>
+<td><strong>Quản lý</strong></td>
+<td>Tự cấu hình, bảo trì thủ công</td>
+<td>Được AWS quản lý, tự động hóa nhiều thao tác</td>
+</tr>
+<tr>
+<td><strong>Tích hợp</strong></td>
+<td>Không tích hợp sẵn với dịch vụ đám mây</td>
+<td>Tích hợp sâu với các dịch vụ AWS (EC2, S3, Lambda...)</td>
+</tr>
+<tr>
+<td><strong>Tính sẵn sàng</strong></td>
+<td>Phụ thuộc thiết bị vật lý, dễ bị single point of failure</td>
+<td>Có thể triển khai multi-AZ, high availability</td>
+</tr>
+<tr>
+<td><strong>Chi phí</strong></td>
+<td>Chi phí phần cứng + bảo trì</td>
+<td>Tính phí theo giờ và lưu lượng sử dụng</td>
+</tr>
+<tr>
+<td><strong>Mục đích chính</strong></td>
+<td>Chia sẻ Internet cho mạng LAN nội bộ</td>
+<td>Cho phép instance private subnet truy cập Internet outbound (cập nhật, tải gói, gửi log...)</td>
+</tr>
+<tr>
+<td><strong>Giới hạn</strong></td>
+<td>Giới hạn bởi phần cứng</td>
+<td>Khả năng mở rộng gần như không giới hạn</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ket-luan_1">Kết luận<a class="headerlink" href="#ket-luan_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Không phải là "cùng một thứ",</strong> nhưng NAT trong AWS là phiên bản dịch địa chỉ IP được xây dựng và tối ưu hóa cho môi trường cloud, tự động hóa, quy mô lớn.</li>
+<li>Về ý tưởng, nguyên lý là giống nhau (dịch địa chỉ IP), nhưng <strong>cách triển khai, quản lý, tích hợp và mục tiêu sử dụng khác biệt rõ rệt</strong>.</li>
+</ul>
 
 
 
@@ -2058,7 +2182,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2025 11:56:18 UTC">4 tháng 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2025 12:01:15 UTC">4 tháng 8, 2025</span>
   </span>
 
     
