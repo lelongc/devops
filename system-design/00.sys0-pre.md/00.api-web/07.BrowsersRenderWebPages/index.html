@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/k8s/01.core/10.pods/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/system-design/00.sys0-pre.md/00.api-web/07.BrowsersRenderWebPages/">
       
       
-        <link rel="prev" href="../09.kube-proxy/">
+        <link rel="prev" href="../06.InternetTrafficRoutingPolicies-DNSpolicies/">
       
       
-        <link rel="next" href="../11-12.pods-yml-demo/">
+        <link rel="next" href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>10.pods - DraDoc</title>
+        <title>Quy Trình Render Website: Từ HTML Đến Màn Hình - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-pod-la-gi-on-vi-co-ban-nhat-trong-kubernetes" class="md-skip">
+        <a href="#quy-trinh-render-website-tu-html-en-man-hinh" class="md-skip">
           Bỏ qua
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              10.pods
+              Quy Trình Render Website: Từ HTML Đến Màn Hình
             
           </span>
         </div>
@@ -224,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -245,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -267,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/" class="md-tabs__link">
+        <a href="../../../../docker/" class="md-tabs__link">
           
   
   
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../git/roadmap/" class="md-tabs__link">
+        <a href="../../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../iac/roadmap/" class="md-tabs__link">
+        <a href="../../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -329,13 +329,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../k8s/" class="md-tabs__link">
           
   
   
@@ -357,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../lab/" class="md-tabs__link">
+        <a href="../../../../lab/" class="md-tabs__link">
           
   
   
@@ -379,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../linux/" class="md-tabs__link">
+        <a href="../../../../linux/" class="md-tabs__link">
           
   
   
@@ -401,7 +399,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network/roadmap/" class="md-tabs__link">
+        <a href="../../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -423,7 +421,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -445,7 +443,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../observability/roadmap/" class="md-tabs__link">
+        <a href="../../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -474,7 +472,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -499,7 +497,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../python/" class="md-tabs__link">
+        <a href="../../../../python/" class="md-tabs__link">
           
   
   
@@ -521,7 +519,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../security/roadmap/" class="md-tabs__link">
+        <a href="../../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -539,11 +537,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../system-design/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -565,7 +565,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../testing/roadmap/" class="md-tabs__link">
+        <a href="../../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -607,7 +607,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -637,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -683,7 +683,7 @@
   
   
   
-    <a href="../../../cicd/roadmap/" class="md-nav__link">
+    <a href="../../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -741,7 +741,7 @@
   
   
   
-    <a href="../../../docker/" class="md-nav__link">
+    <a href="../../../../docker/" class="md-nav__link">
       
   
   
@@ -793,7 +793,7 @@
   
   
   
-    <a href="../../../git/roadmap/" class="md-nav__link">
+    <a href="../../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -845,7 +845,7 @@
   
   
   
-    <a href="../../../iac/roadmap/" class="md-nav__link">
+    <a href="../../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -870,8 +870,6 @@
       
   
   
-    
-  
   
   
     
@@ -895,26 +893,24 @@
     
     
       
-        
-        
-      
       
         
       
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../../../k8s/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -923,898 +919,12 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            K8s
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cheatsheet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Kubernetes Complete Knowledge Base
-    
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../roadmap/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Roadmap
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../00.k8s-manifests/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    00.k8s manifests
-    
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4">
-            <span class="md-nav__icon md-icon"></span>
-            00.k8s manifests
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    01.core
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_5">
-            <span class="md-nav__icon md-icon"></span>
-            01.core
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    00
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.cluster-architecture/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    01.cluster architecture
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-03.docker-containerd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02 03.docker containerd
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.etcd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.etcd
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.kube-api-server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.kube api server
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.kube-controller-manager/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.kube controller manager
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.KubeScheduler/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.KubeScheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08.kubelet/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.kubelet
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09.kube-proxy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.kube proxy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    10.pods
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.pods
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-pod-la-gi-on-vi-co-ban-nhat-trong-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Pod là gì? Đơn vị cơ bản nhất trong Kubernetes 🌱
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-mo-rong-quy-mo-scaling-ung-dung" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Mở rộng quy mô (Scaling) ứng dụng 📈
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-truong-hop-ac-biet-pod-a-container-multi-container-pods" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Trường hợp đặc biệt: Pod đa Container (Multi-Container Pods) 🤓
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cach-trien-khai-va-xem-pods-lenh-co-ban" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cách Triển khai và Xem Pods (Lệnh cơ bản) 💻
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-mot-luu-y-quan-trong-ve-mang" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Một lưu ý quan trọng về Mạng 🌐
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. "Chốt hạ" cho Kỳ thi CKA 📝
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11-12.pods-yml-demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    11 12.pods yml demo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.replicaset-demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.replicaset demo
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14.deployment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.deployment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15.services-nodeport/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.services nodeport
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16.services-clusterIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    16.services clusterIP
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../17.services-loadbalancer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    17.services loadbalancer
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../18.service-engpoint/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    18.service engpoint
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../19.namespace/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    19.namespace
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../20.ImperativeDeclarative/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    20.ImperativeDeclarative
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../21.kubectlAppy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    21.kubectlAppy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    02.Scheduling
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_6">
-            <span class="md-nav__icon md-icon"></span>
-            02.Scheduling
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02.Scheduling/01.manualScheduling/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hướng Dẫn Chi Tiết: Cách Tự Động Lập Lịch Pod Trong Kubernetes Khi Không Có Scheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02.Scheduling/02.LabelsAndSelectors/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Labels và Selectors trong Kubernetes: Cách Phân Loại và Quản Lý Đối Tượng Hiệu Quả
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1853,7 +963,7 @@
   
   
   
-    <a href="../../../lab/" class="md-nav__link">
+    <a href="../../../../lab/" class="md-nav__link">
       
   
   
@@ -1913,7 +1023,7 @@
   
   
   
-    <a href="../../../linux/" class="md-nav__link">
+    <a href="../../../../linux/" class="md-nav__link">
       
   
   
@@ -1965,7 +1075,7 @@
   
   
   
-    <a href="../../../network/roadmap/" class="md-nav__link">
+    <a href="../../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -2019,7 +1129,7 @@
   
   
   
-    <a href="../../../network-comtia/roadmap/" class="md-nav__link">
+    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
       
   
   
@@ -2071,7 +1181,7 @@
   
   
   
-    <a href="../../../observability/roadmap/" class="md-nav__link">
+    <a href="../../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -2127,7 +1237,7 @@
   
   
   
-    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -2183,7 +1293,7 @@
   
   
   
-    <a href="../../../python/" class="md-nav__link">
+    <a href="../../../../python/" class="md-nav__link">
       
   
   
@@ -2235,7 +1345,7 @@
   
   
   
-    <a href="../../../security/roadmap/" class="md-nav__link">
+    <a href="../../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -2260,6 +1370,8 @@
       
   
   
+    
+  
   
   
     
@@ -2277,24 +1389,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../../system-design/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -2303,12 +1417,557 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            System design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_2" id="__nav_15_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.sys0 pre.md
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_2">
+            <span class="md-nav__icon md-icon"></span>
+            00.sys0 pre.md
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_2_1" id="__nav_15_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.api web
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            00.api web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00.Short-longPolling-SSE-WebSocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00.Short longPolling SSE WebSocket
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.loadbalancer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.loadbalancer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.5http-not-use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.5http not use
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.gRPC-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.gRPC work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.NAT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NAT (Network Address Translation): Chìa khóa mở rộng Internet hiện đại
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.HTTP-Headers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.HTTP Headers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.InternetTrafficRoutingPolicies-DNSpolicies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chính Sách Định Tuyến DNS: Hướng Dẫn Chi Tiết Quản Lý Traffic Internet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Quy Trình Render Website: Từ HTML Đến Màn Hình
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quy Trình Render Website: Từ HTML Đến Màn Hình
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#6-buoc-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 Bước Chính
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 Bước Chính">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parse-html-dom-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parse HTML → DOM Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-parse-css-cssom-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Parse CSS → CSSOM Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-combine-render-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Combine → Render Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-layout-reflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Layout (Reflow)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Paint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-composite-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Composite &amp; Display
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-hoi-phong-van-hay-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Câu Hỏi Phỏng Vấn Hay Gặp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_15_3" id="__nav_15_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15_3">
+            <span class="md-nav__icon md-icon"></span>
+            03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2345,7 +2004,7 @@
   
   
   
-    <a href="../../../testing/roadmap/" class="md-nav__link">
+    <a href="../../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -2383,6 +2042,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2391,54 +2052,87 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-pod-la-gi-on-vi-co-ban-nhat-trong-kubernetes" class="md-nav__link">
+  <a href="#6-buoc-chinh" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Pod là gì? Đơn vị cơ bản nhất trong Kubernetes 🌱
+      6 Bước Chính
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 Bước Chính">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-parse-html-dom-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Parse HTML → DOM Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-parse-css-cssom-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Parse CSS → CSSOM Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-combine-render-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Combine → Render Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-layout-reflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Layout (Reflow)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Paint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-composite-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Composite &amp; Display
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-hoi-phong-van-hay-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Câu Hỏi Phỏng Vấn Hay Gặp
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-mo-rong-quy-mo-scaling-ung-dung" class="md-nav__link">
+  <a href="#performance-tips" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Mở rộng quy mô (Scaling) ứng dụng 📈
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-truong-hop-ac-biet-pod-a-container-multi-container-pods" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Trường hợp đặc biệt: Pod đa Container (Multi-Container Pods) 🤓
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-cach-trien-khai-va-xem-pods-lenh-co-ban" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Cách Triển khai và Xem Pods (Lệnh cơ bản) 💻
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-mot-luu-y-quan-trong-ve-mang" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Một lưu ý quan trọng về Mạng 🌐
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-chot-ha-cho-ky-thi-cka" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. "Chốt hạ" cho Kỳ thi CKA 📝
+      Performance Tips
     </span>
   </a>
   
@@ -2460,7 +2154,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/k8s/01.core/10.pods.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/system-design/00.sys0-pre.md/00.api-web/07.BrowsersRenderWebPages.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2468,73 +2162,61 @@
   
 
 
-  <h1>10.pods</h1>
-
-<h3 id="1-pod-la-gi-on-vi-co-ban-nhat-trong-kubernetes">1. Pod là gì? Đơn vị cơ bản nhất trong Kubernetes 🌱<a class="headerlink" href="#1-pod-la-gi-on-vi-co-ban-nhat-trong-kubernetes" title="Permanent link">&para;</a></h3>
-<p>Điểm đầu tiên và quan trọng nhất bạn cần nhớ: <strong>Kubernetes không triển khai container một cách trực tiếp</strong>. Thay vào đó, các container được "đóng gói" vào bên trong một đối tượng của Kubernetes gọi là <strong>Pod</strong>.</p>
+<h1 id="quy-trinh-render-website-tu-html-en-man-hinh">Quy Trình Render Website: Từ HTML Đến Màn Hình<a class="headerlink" href="#quy-trinh-render-website-tu-html-en-man-hinh" title="Permanent link">&para;</a></h1>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/bc8a30fb-1bea-466d-87f0-c17a3d3a7d53" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="1896" height="1332" alt="17544062762283169101411464819611" src="https://github.com/user-attachments/assets/bc8a30fb-1bea-466d-87f0-c17a3d3a7d53" /></a></p>
+<h2 id="6-buoc-chinh">6 Bước Chính<a class="headerlink" href="#6-buoc-chinh" title="Permanent link">&para;</a></h2>
+<h3 id="1-parse-html-dom-tree">1. Parse HTML → DOM Tree<a class="headerlink" href="#1-parse-html-dom-tree" title="Permanent link">&para;</a></h3>
+<p>Browser nhận HTML từ server và chuyển đổi thành cây DOM.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+→ Tạo cây DOM với các node tương ứng</p>
+<h3 id="2-parse-css-cssom-tree">2. Parse CSS → CSSOM Tree<a class="headerlink" href="#2-parse-css-cssom-tree" title="Permanent link">&para;</a></h3>
+<p>CSS được load và parse thành CSSOM (CSS Object Model).</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">blue</span><span class="p">;</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">div</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+→ Tạo cây CSSOM với style rules</p>
+<h3 id="3-combine-render-tree">3. Combine → Render Tree<a class="headerlink" href="#3-combine-render-tree" title="Permanent link">&para;</a></h3>
+<p>Kết hợp DOM + CSSOM = Render Tree
+- Loại bỏ invisible elements (<code>&lt;head&gt;</code>, <code>display: none</code>)
+- Chỉ giữ các elements hiển thị được</p>
+<h3 id="4-layout-reflow">4. Layout (Reflow)<a class="headerlink" href="#4-layout-reflow" title="Permanent link">&para;</a></h3>
+<p>Tính toán vị trí và kích thước của từng element:
+- Position (top, left)
+- Size (width, height)<br />
+- Box model (margin, padding, border)</p>
+<h3 id="5-paint">5. Paint<a class="headerlink" href="#5-paint" title="Permanent link">&para;</a></h3>
+<p>Chuyển render tree thành pixels thực tế:
+- Background colors
+- Text content
+- Borders, shadows
+- Images</p>
+<h3 id="6-composite-display">6. Composite &amp; Display<a class="headerlink" href="#6-composite-display" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Pod</strong> là một <strong>thực thể (instance) duy nhất</strong> của một ứng dụng.</li>
-<li>Pod là <strong>đối tượng nhỏ nhất</strong> bạn có thể tạo và quản lý trong Kubernetes.</li>
+<li>GPU nhận pixels</li>
+<li>Hiển thị lên màn hình</li>
+<li>Composite các layers</li>
 </ul>
-<p>Hãy coi Pod như một cái "vỏ bọc" cho container của bạn. Ngay cả khi bạn chỉ có một container, nó vẫn phải nằm bên trong một Pod.</p>
-<hr />
-<h3 id="2-mo-rong-quy-mo-scaling-ung-dung">2. Mở rộng quy mô (Scaling) ứng dụng 📈<a class="headerlink" href="#2-mo-rong-quy-mo-scaling-ung-dung" title="Permanent link">&para;</a></h3>
-<p>Khi ứng dụng của bạn cần xử lý nhiều người dùng hơn, bạn cần phải mở rộng (scale up) nó. Cách Kubernetes thực hiện điều này là:</p>
+<h2 id="cau-hoi-phong-van-hay-gap">Câu Hỏi Phỏng Vấn Hay Gặp<a class="headerlink" href="#cau-hoi-phong-van-hay-gap" title="Permanent link">&para;</a></h2>
+<p><strong>Q: Sự khác biệt <code>display: none</code> vs <code>visibility: hidden</code>?</strong>
+A: <code>display: none</code> loại khỏi render tree, <code>visibility: hidden</code> vẫn chiếm không gian</p>
+<p><strong>Q: CSS và JS block rendering như thế nào?</strong>
+A: CSS block render tree, JS block DOM parsing</p>
+<p><strong>Q: Reflow vs Repaint?</strong>
+A: Reflow = tính lại layout (đắt), Repaint = vẽ lại visual (rẻ hơn)</p>
+<h2 id="performance-tips">Performance Tips<a class="headerlink" href="#performance-tips" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Để <strong>scale up</strong>: Bạn <strong>tạo ra các Pod mới</strong>.</li>
-<li>Để <strong>scale down</strong>: Bạn <strong>xóa bớt các Pod hiện có</strong>.</li>
-</ul>
-<blockquote>
-<p><strong>Quy tắc vàng:</strong> Bạn <strong>KHÔNG</strong> thêm container mới vào một Pod đang có sẵn để scale ứng dụng. Thay vào đó, bạn tạo ra nhiều Pod hơn. Điều này dẫn đến một mối quan hệ phổ biến là <strong>1 Pod : 1 Container</strong> cho ứng dụng chính của bạn.</p>
-</blockquote>
-<hr />
-<h3 id="3-truong-hop-ac-biet-pod-a-container-multi-container-pods">3. Trường hợp đặc biệt: Pod đa Container (Multi-Container Pods) 🤓<a class="headerlink" href="#3-truong-hop-ac-biet-pod-a-container-multi-container-pods" title="Permanent link">&para;</a></h3>
-<p>Mặc dù 1 Pod thường chỉ chứa 1 container chính, nhưng một Pod <strong>có thể chứa nhiều container</strong>. Trường hợp này thường được sử dụng khi bạn có:</p>
-<ul>
-<li>Một container ứng dụng chính (main application container).</li>
-<li>Một hoặc nhiều container phụ trợ (helper/sidecar containers) làm các tác vụ hỗ trợ, ví dụ như xử lý file, thu thập log, hoặc làm proxy.</li>
-</ul>
-<p><strong>Lợi ích của việc đặt nhiều container trong cùng một Pod:</strong></p>
-<ol>
-<li><strong>Chung Vòng đời (Shared Lifecycle):</strong> Tất cả các container trong cùng một Pod sẽ được tạo ra cùng nhau và "chết" cùng nhau.</li>
-<li><strong>Chung Không gian Mạng (Shared Network Namespace):</strong> Chúng có thể giao tiếp với nhau qua <code>localhost</code> như thể chúng đang chạy trên cùng một máy.</li>
-<li><strong>Chung Không gian Lưu trữ (Shared Storage):</strong> Chúng có thể dễ dàng chia sẻ cùng một vùng lưu trữ (volume).</li>
-</ol>
-<blockquote>
-<p>Pod giúp tự động hóa tất cả những việc phức tạp này. Tuy nhiên, hãy nhớ rằng Pod đa container là một trường hợp sử dụng không quá phổ biến.</p>
-</blockquote>
-<hr />
-<h3 id="4-cach-trien-khai-va-xem-pods-lenh-co-ban">4. Cách Triển khai và Xem Pods (Lệnh cơ bản) 💻<a class="headerlink" href="#4-cach-trien-khai-va-xem-pods-lenh-co-ban" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><strong>Để tạo một Pod (một cách nhanh chóng):</strong></p>
-</li>
-<li>
-<p>Sử dụng lệnh <code>kubectl run</code>. Lệnh này thực chất sẽ tạo ra một Pod và sau đó triển khai container image bạn chỉ định vào bên trong nó.</p>
-</li>
-<li>Cú pháp: <code>kubectl run &lt;tên-pod&gt; --image=&lt;tên-image&gt;</code></li>
-<li>
-<p><em>Ví dụ:</em> <code>kubectl run my-nginx-pod --image=nginx</code></p>
-</li>
-<li>
-<p><strong>Để xem danh sách các Pod:</strong></p>
-</li>
-<li>Sử dụng lệnh <code>kubectl get pods</code>.</li>
-<li>Lệnh này sẽ hiển thị các Pod đang có trong cluster và trạng thái của chúng (ví dụ: <code>ContainerCreating</code>, <code>Running</code>, <code>Completed</code>, <code>Error</code>).</li>
+<li>Batch DOM changes</li>
+<li>Dùng <code>transform</code> cho animations  </li>
+<li>Minimize layout-triggering properties</li>
+<li>Optimize critical rendering path</li>
 </ul>
 <hr />
-<h3 id="5-mot-luu-y-quan-trong-ve-mang">5. Một lưu ý quan trọng về Mạng 🌐<a class="headerlink" href="#5-mot-luu-y-quan-trong-ve-mang" title="Permanent link">&para;</a></h3>
-<p>Việc tạo ra một Pod <strong>không</strong> tự động làm cho ứng dụng bên trong nó có thể được truy cập từ bên ngoài. Để làm được điều đó, chúng ta cần một đối tượng khác là <strong>Service</strong>, chúng ta sẽ tìm hiểu về nó sau. Hiện tại, Pod chỉ có thể được truy cập từ bên trong node mà nó đang chạy.</p>
-<hr />
-<h3 id="6-chot-ha-cho-ky-thi-cka">6. "Chốt hạ" cho Kỳ thi CKA 📝<a class="headerlink" href="#6-chot-ha-cho-ky-thi-cka" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Pod</strong> là đơn vị nhỏ nhất có thể triển khai trong Kubernetes. Nó là một "lớp bọc" cho một hoặc nhiều container.</li>
-<li><strong>Scaling</strong> được thực hiện bằng cách thay đổi số lượng Pod, không phải số lượng container trong một Pod.</li>
-<li>Mô hình <strong>1 Pod : 1 Container</strong> là phổ biến nhất.</li>
-<li><strong>Pod đa container</strong> rất hữu ích cho các mẫu thiết kế "sidecar", vì chúng chia sẻ chung mạng và lưu trữ.</li>
-<li>Biết các lệnh cơ bản: <code>kubectl run</code> để tạo Pod và <code>kubectl get pods</code> để liệt kê chúng.</li>
-</ul>
-<p>Hiểu rõ về Pod là nền tảng để bạn có thể làm chủ được các khái niệm phức tạp hơn trong Kubernetes. Chúc bạn buổi chiều học tập hiệu quả!</p>
+<p><em>Cập nhật: 2025-08-05 15:00:43 UTC | lelongc</em></p>
 
 
 
@@ -2641,7 +2323,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../09.kube-proxy/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 09.kube proxy">
+          <a href="../06.InternetTrafficRoutingPolicies-DNSpolicies/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Chính Sách Định Tuyến DNS: Hướng Dẫn Chi Tiết Quản Lý Traffic Internet">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2651,20 +2333,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                09.kube proxy
+                Chính Sách Định Tuyến DNS: Hướng Dẫn Chi Tiết Quản Lý Traffic Internet
               </div>
             </div>
           </a>
         
         
           
-          <a href="../11-12.pods-yml-demo/" class="md-footer__link md-footer__link--next" aria-label="Sau: 11 12.pods yml demo">
+          <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                11 12.pods yml demo
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2725,10 +2407,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
