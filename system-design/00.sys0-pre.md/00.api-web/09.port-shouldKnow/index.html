@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/system-design/00.sys0-pre.md/00.api-web/00.Short-longPolling-SSE-WebSocket/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/system-design/00.sys0-pre.md/00.api-web/09.port-shouldKnow/">
       
       
-        <link rel="prev" href="../../../">
+        <link rel="prev" href="../08.http2/">
       
       
-        <link rel="next" href="../01.loadbalancer/">
+        <link rel="next" href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>00.Short longPolling SSE WebSocket - DraDoc</title>
+        <title>09.port shouldKnow - DraDoc</title>
       
     
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" class="md-skip">
-          Bỏ qua
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -119,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              00.Short longPolling SSE WebSocket
+              09.port shouldKnow
             
           </span>
         </div>
@@ -1564,30 +1559,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    00.Short longPolling SSE WebSocket
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../00.Short-longPolling-SSE-WebSocket/" class="md-nav__link">
         
   
   
@@ -1598,243 +1573,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 cơ chế real-time update trong web: Short Polling, Long Polling, SSE, và WebSocket,
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#van-e-cot-loi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Vấn đề cốt lõi:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#giai-phap-ky-thuat" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧠 Giải pháp kỹ thuật:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🧠 Giải pháp kỹ thuật:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-short-polling-client-tu-hoi-lien-tuc" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔁 1. Short Polling – Client tự hỏi liên tục
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔁 1. Short Polling – Client tự hỏi liên tục">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-long-polling-keo-dai-request-cho-du-lieu-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-sse-server-sent-events-server-push-on-huong" class="md-nav__link">
-    <span class="md-ellipsis">
-      📡 3. SSE (Server-Sent Events) – Server push đơn hướng
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📡 3. SSE (Server-Sent Events) – Server push đơn hướng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-websocket-ket-noi-2-chieu-thuc-su" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌐 4. WebSocket – Kết nối 2 chiều thực sự
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🌐 4. WebSocket – Kết nối 2 chiều thực sự">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-sanh-tong-quat" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 So sánh tổng quát
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ket-luan-khi-tra-loi-phong-van" class="md-nav__link">
-    <span class="md-ellipsis">
-      🟦 Kết luận khi trả lời phỏng vấn:
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2028,10 +1766,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../09.port-shouldKnow/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2042,6 +1787,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2223,233 +1969,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 cơ chế real-time update trong web: Short Polling, Long Polling, SSE, và WebSocket,
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#van-e-cot-loi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Vấn đề cốt lõi:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#giai-phap-ky-thuat" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧠 Giải pháp kỹ thuật:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🧠 Giải pháp kỹ thuật:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-short-polling-client-tu-hoi-lien-tuc" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔁 1. Short Polling – Client tự hỏi liên tục
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔁 1. Short Polling – Client tự hỏi liên tục">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-long-polling-keo-dai-request-cho-du-lieu-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⏳ 2. Long Polling – Kéo dài request chờ dữ liệu mới">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-sse-server-sent-events-server-push-on-huong" class="md-nav__link">
-    <span class="md-ellipsis">
-      📡 3. SSE (Server-Sent Events) – Server push đơn hướng
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📡 3. SSE (Server-Sent Events) – Server push đơn hướng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-websocket-ket-noi-2-chieu-thuc-su" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌐 4. WebSocket – Kết nối 2 chiều thực sự
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🌐 4. WebSocket – Kết nối 2 chiều thực sự">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cach-hoat-ong_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Cách hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhuoc-iem_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ Nhược điểm:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-sanh-tong-quat" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 So sánh tổng quát
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ket-luan-khi-tra-loi-phong-van" class="md-nav__link">
-    <span class="md-ellipsis">
-      🟦 Kết luận khi trả lời phỏng vấn:
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2464,7 +1983,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/system-design/00.sys0-pre.md/00.api-web/00.Short-longPolling-SSE-WebSocket.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/system-design/00.sys0-pre.md/00.api-web/09.port-shouldKnow.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2472,141 +1991,128 @@
   
 
 
-  <h1>00.Short longPolling SSE WebSocket</h1>
+  <h1>09.port shouldKnow</h1>
 
-<p><a class="glightbox" href="../image/00.Short-longPolling-SSE-WebSocket/1754212814740.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1754212814740" src="../image/00.Short-longPolling-SSE-WebSocket/1754212814740.png" /></a></p>
-<h2 id="3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket"><strong>3 cơ chế real-time update trong web</strong>: <strong>Short Polling, Long Polling, SSE, và WebSocket</strong>,<a class="headerlink" href="#3-co-che-real-time-update-trong-web-short-polling-long-polling-sse-va-websocket" title="Permanent link">&para;</a></h2>
-<h2 id="van-e-cot-loi">✅ <strong>Vấn đề cốt lõi:</strong><a class="headerlink" href="#van-e-cot-loi" title="Permanent link">&para;</a></h2>
-<p>HTTP là <strong>giao thức theo mô hình request-response một chiều</strong>, nghĩa là:</p>
-<blockquote>
-<p><strong>Trình duyệt (client)</strong> luôn là bên <strong>chủ động gửi request</strong> &gt; <strong>Server</strong> chỉ phản hồi khi có request → <strong>không thể tự gửi dữ liệu sang client</strong></p>
-</blockquote>
-<p>📌 Vì vậy, để <strong>cập nhật dữ liệu theo thời gian thực (real-time)</strong>, ta cần tìm <strong>cách để server có thể gửi dữ liệu mới về phía client ngay khi có thay đổi</strong>, thay vì phải đợi client hỏi lại.</p>
-<hr />
-<h2 id="giai-phap-ky-thuat">🧠 <strong>Giải pháp kỹ thuật:</strong><a class="headerlink" href="#giai-phap-ky-thuat" title="Permanent link">&para;</a></h2>
-<hr />
-<h3 id="1-short-polling-client-tu-hoi-lien-tuc">🔁 <strong>1. Short Polling – Client tự hỏi liên tục</strong><a class="headerlink" href="#1-short-polling-client-tu-hoi-lien-tuc" title="Permanent link">&para;</a></h3>
-<h4 id="cach-hoat-ong">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Trình duyệt gửi request đến server mỗi vài giây (ví dụ: 3s/lần)</li>
-<li>Server luôn phản hồi ngay lập tức với dữ liệu hiện tại (dù có hay không có gì mới)</li>
-</ul>
-<h4 id="uu-iem">✅ Ưu điểm:<a class="headerlink" href="#uu-iem" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Dễ cài đặt (dùng <code>setInterval + fetch</code>)</li>
-<li>Tương thích mọi trình duyệt</li>
-</ul>
-<h4 id="nhuoc-iem">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Lãng phí tài nguyên</strong> (gửi liên tục dù không có thay đổi)</li>
-<li>Tăng tải server, độ trễ không tối ưu</li>
-</ul>
-<hr />
-<h3 id="2-long-polling-keo-dai-request-cho-du-lieu-moi">⏳ <strong>2. Long Polling – Kéo dài request chờ dữ liệu mới</strong><a class="headerlink" href="#2-long-polling-keo-dai-request-cho-du-lieu-moi" title="Permanent link">&para;</a></h3>
-<h4 id="cach-hoat-ong_1">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Client gửi request</li>
-<li><strong>Server giữ kết nối mở</strong> cho đến khi có dữ liệu mới thì mới phản hồi</li>
-<li>Sau đó, client <strong>lập tức gửi request mới</strong></li>
-</ul>
-<h4 id="uu-iem_1">✅ Ưu điểm:<a class="headerlink" href="#uu-iem_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Giảm số lượng request</strong>, phản hồi khi có thay đổi → <strong>thời gian thực hơn short polling</strong></li>
-</ul>
-<h4 id="nhuoc-iem_1">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Cần server hỗ trợ giữ kết nối mở lâu</li>
-<li>Cần xử lý timeout, retry, lỗi kết nối</li>
-</ul>
-<hr />
-<h3 id="3-sse-server-sent-events-server-push-on-huong">📡 <strong>3. SSE (Server-Sent Events) – Server push đơn hướng</strong><a class="headerlink" href="#3-sse-server-sent-events-server-push-on-huong" title="Permanent link">&para;</a></h3>
-<h4 id="cach-hoat-ong_2">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Client mở kết nối bằng <code>EventSource</code> (một loại request đặc biệt)</li>
-<li>Server giữ kết nối mở, và <strong>stream dữ liệu dạng <code>text/event-stream</code></strong></li>
-<li>Client <strong>tự động nhận dữ liệu mỗi khi server gửi</strong></li>
-</ul>
-<h4 id="uu-iem_2">✅ Ưu điểm:<a class="headerlink" href="#uu-iem_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Giao tiếp real-time thật sự</strong> từ server → client</li>
-<li>Hỗ trợ reconnect tự động</li>
-<li>Dễ triển khai hơn WebSocket (vì vẫn dùng HTTP)</li>
-</ul>
-<h4 id="nhuoc-iem_2">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Chỉ hỗ trợ một chiều</strong> (server → client)</li>
-<li>Không tương thích với một số trình duyệt cũ (IE)</li>
-<li>Chỉ hỗ trợ giao thức HTTP (không dùng cho gRPC, WebSocket, v.v.)</li>
-</ul>
-<hr />
-<h3 id="4-websocket-ket-noi-2-chieu-thuc-su">🌐 <strong>4. WebSocket – Kết nối 2 chiều thực sự</strong><a class="headerlink" href="#4-websocket-ket-noi-2-chieu-thuc-su" title="Permanent link">&para;</a></h3>
-<h4 id="cach-hoat-ong_3">📌 Cách hoạt động:<a class="headerlink" href="#cach-hoat-ong_3" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Client gửi HTTP request với <code>Upgrade: websocket</code></li>
-<li>Nếu server đồng ý, hai bên thiết lập kết nối <strong>WebSocket</strong></li>
-<li>Từ đó, <strong>cả server và client đều có thể gửi/nhận dữ liệu bất kỳ lúc nào</strong></li>
-</ul>
-<h4 id="uu-iem_3">✅ Ưu điểm:<a class="headerlink" href="#uu-iem_3" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Full-duplex real-time</strong> (gửi/nhận hai chiều)</li>
-<li>Tối ưu cho ứng dụng như: chat, multiplayer game, trading, dashboard</li>
-</ul>
-<h4 id="nhuoc-iem_3">❌ Nhược điểm:<a class="headerlink" href="#nhuoc-iem_3" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Phức tạp hơn</strong> (cần server hỗ trợ WebSocket protocol)</li>
-<li>Có thể bị chặn bởi proxy hoặc firewall</li>
-<li>Không phải tất cả load balancer đều hỗ trợ tốt WebSocket (cần sticky session)</li>
-</ul>
-<hr />
-<h2 id="so-sanh-tong-quat">📊 <strong>So sánh tổng quát</strong><a class="headerlink" href="#so-sanh-tong-quat" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Kỹ thuật</th>
-<th>Hướng truyền</th>
-<th>Real-time</th>
-<th>Phức tạp</th>
-<th>Ghi chú</th>
+<th>Giao thức / Ứng dụng</th>
+<th>Cổng (Port)</th>
+<th>Giao thức (TCP/UDP)</th>
+<th>Mô tả ngắn gọn</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Short Polling</td>
-<td>1 chiều</td>
-<td>❌</td>
-<td>Thấp</td>
-<td>Dễ triển khai nhưng tốn tài nguyên</td>
+<td><strong>FTP</strong> (File Transfer Protocol)</td>
+<td>21</td>
+<td>TCP</td>
+<td>Truyền tệp dữ liệu</td>
 </tr>
 <tr>
-<td>Long Polling</td>
-<td>1 chiều</td>
-<td>✅ Tạm ổn</td>
-<td>Trung bình</td>
-<td>Giữ kết nối lâu, cần xử lý timeout</td>
+<td><strong>SSH</strong> (Secure Shell)</td>
+<td>22</td>
+<td>TCP</td>
+<td>Đăng nhập từ xa an toàn</td>
 </tr>
 <tr>
-<td>SSE</td>
-<td>1 chiều</td>
-<td>✅ Tốt</td>
-<td>Trung bình</td>
-<td>Dễ dùng, nhưng không gửi lên server</td>
+<td><strong>Telnet</strong></td>
+<td>23</td>
+<td>TCP</td>
+<td>Đăng nhập từ xa (không mã hóa)</td>
 </tr>
 <tr>
-<td>WebSocket</td>
-<td>2 chiều</td>
-<td>✅ Rất tốt</td>
-<td>Cao</td>
-<td>Real-time thật sự, cần cấu hình thêm</td>
+<td><strong>SMTP</strong> (Simple Mail Transfer)</td>
+<td>25</td>
+<td>TCP</td>
+<td>Gửi email</td>
+</tr>
+<tr>
+<td><strong>DNS</strong> (Domain Name System)</td>
+<td>53</td>
+<td>UDP/TCP</td>
+<td>Phân giải tên miền thành IP</td>
+</tr>
+<tr>
+<td><strong>DHCP Server</strong></td>
+<td>67</td>
+<td>UDP</td>
+<td>Máy chủ cấp phát địa chỉ IP động</td>
+</tr>
+<tr>
+<td><strong>DHCP Client</strong></td>
+<td>68</td>
+<td>UDP</td>
+<td>Máy khách nhận địa chỉ IP động</td>
+</tr>
+<tr>
+<td><strong>HTTP</strong> (Hypertext Transfer Protocol)</td>
+<td>80</td>
+<td>TCP</td>
+<td>Truy cập website không mã hóa</td>
+</tr>
+<tr>
+<td><strong>POP3</strong> (Post Office Protocol v3)</td>
+<td>110</td>
+<td>TCP</td>
+<td>Nhận email (tải về máy khách)</td>
+</tr>
+<tr>
+<td><strong>NTP</strong> (Network Time Protocol)</td>
+<td>123</td>
+<td>UDP</td>
+<td>Đồng bộ thời gian mạng</td>
+</tr>
+<tr>
+<td><strong>NetBIOS</strong></td>
+<td>139</td>
+<td>TCP</td>
+<td>Chia sẻ tài nguyên qua mạng (Windows)</td>
+</tr>
+<tr>
+<td><strong>IMAP</strong> (Internet Message Access)</td>
+<td>143</td>
+<td>TCP</td>
+<td>Quản lý email trực tiếp trên server</td>
+</tr>
+<tr>
+<td><strong>HTTPS</strong> (Hypertext Transfer Protocol Secure)</td>
+<td>443</td>
+<td>TCP</td>
+<td>Truy cập website có mã hóa</td>
+</tr>
+<tr>
+<td><strong>SMB</strong> (Server Message Block)</td>
+<td>445</td>
+<td>TCP</td>
+<td>Chia sẻ file, máy in trong mạng (Windows)</td>
+</tr>
+<tr>
+<td><strong>Oracle DB</strong></td>
+<td>1521</td>
+<td>TCP</td>
+<td>Kết nối cơ sở dữ liệu Oracle</td>
+</tr>
+<tr>
+<td><strong>MySQL</strong></td>
+<td>3306</td>
+<td>TCP</td>
+<td>Kết nối cơ sở dữ liệu MySQL</td>
+</tr>
+<tr>
+<td><strong>RDP</strong> (Remote Desktop Protocol)</td>
+<td>3389</td>
+<td>TCP</td>
+<td>Kết nối máy tính từ xa (Windows)</td>
+</tr>
+<tr>
+<td><strong>PostgreSQL</strong></td>
+<td>5432</td>
+<td>TCP</td>
+<td>Kết nối cơ sở dữ liệu PostgreSQL</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="ket-luan-khi-tra-loi-phong-van">🟦 <strong>Kết luận khi trả lời phỏng vấn:</strong><a class="headerlink" href="#ket-luan-khi-tra-loi-phong-van" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>“Vì HTTP không cho phép server tự gửi dữ liệu, nên để cập nhật real-time, em sử dụng các phương pháp như polling, SSE, hoặc WebSocket tùy theo use-case.
-Với các ứng dụng đơn giản như thông báo hoặc stream dữ liệu từ server, em chọn <strong>SSE</strong> vì nhẹ, đơn giản và hiệu quả.
-Nhưng với các ứng dụng cần giao tiếp 2 chiều như chat, dashboard realtime hay game, em chọn <strong>WebSocket</strong> để có kết nối full-duplex, giảm độ trễ, tăng trải nghiệm người dùng.”</p>
-</blockquote>
 
 
 
@@ -2713,7 +2219,7 @@ Nhưng với các ứng dụng cần giao tiếp 2 chiều như chat, dashboard 
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Index">
+          <a href="../08.http2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 08.http2">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2723,20 +2229,20 @@ Nhưng với các ứng dụng cần giao tiếp 2 chiều như chat, dashboard 
                 Trước
               </span>
               <div class="md-ellipsis">
-                Index
+                08.http2
               </div>
             </div>
           </a>
         
         
           
-          <a href="../01.loadbalancer/" class="md-footer__link md-footer__link--next" aria-label="Sau: 01.loadbalancer">
+          <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                01.loadbalancer
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
