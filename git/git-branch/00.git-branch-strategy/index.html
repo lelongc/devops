@@ -1,0 +1,3256 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/git/git-branch/00.git-branch-strategy/">
+      
+      
+        <link rel="prev" href="../../roadmap/">
+      
+      
+        <link rel="next" href="../01.git-branch-enterprise/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>GIT BRANCH STRATEGY: CHIẾN LƯỢC QUẢN LÝ NHÁNH HIỆU QUẢ CHO DỰ ÁN PHẦN MỀM - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-branch-strategy-chien-luoc-quan-ly-nhanh-hieu-qua-cho-du-an-phan-mem" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GIT BRANCH STRATEGY: CHIẾN LƯỢC QUẢN LÝ NHÁNH HIỆU QUẢ CHO DỰ ÁN PHẦN MỀM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../iac/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Iac
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Prog
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to DraDoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Cicd
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Docker
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Complete Learning Roadmap - Chi tiết từng topic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Git branch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Git branch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    GIT BRANCH STRATEGY: CHIẾN LƯỢC QUẢN LÝ NHÁNH HIỆU QUẢ CHO DỰ ÁN PHẦN MỀM
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    GIT BRANCH STRATEGY: CHIẾN LƯỢC QUẢN LÝ NHÁNH HIỆU QUẢ CHO DỰ ÁN PHẦN MỀM
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-luc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mục lục
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gioi-thieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giới thiệu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tam-quan-trong-cua-chien-luoc-quan-ly-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tầm quan trọng của chiến lược quản lý nhánh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-chien-luoc-pho-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Các chiến lược phổ biến
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các chiến lược phổ biến">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-git-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Git Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Git Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-nhanh-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Các nhánh chính:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-github-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. GitHub Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. GitHub Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình cơ bản:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gitlab-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. GitLab Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. GitLab Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-cach-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Các cách triển khai:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-trunk-based-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Trunk Based Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trunk Based Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-one-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. One Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. One Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nguyen-tac-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nguyên tắc cơ bản:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-release-branching" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Release Branching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Release Branching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-forking-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Forking Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Forking Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-cac-chien-luoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      So sánh các chiến lược
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xu-huong-va-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xu hướng và DevOps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-chon-chien-luoc-phu-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách chọn chiến lược phù hợp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cách chọn chiến lược phù hợp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-quy-mo-va-phan-bo-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quy mô và phân bố team
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chu-ky-phat-hanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chu kỳ phát hành
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-loai-san-pham" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Loại sản phẩm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-muc-o-ap-dung-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mức độ áp dụng DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tổng kết
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.git-branch-enterprise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WORKFLOW THEO MÔI TRƯỜNG: DEV &gt; QA &gt; PPD &gt; PROD &gt; HOTFIX &gt; DR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../iac/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Iac
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    K8s
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../linux/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../network/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Network comtia
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prog
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    System design
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-luc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mục lục
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gioi-thieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giới thiệu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tam-quan-trong-cua-chien-luoc-quan-ly-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tầm quan trọng của chiến lược quản lý nhánh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-chien-luoc-pho-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Các chiến lược phổ biến
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các chiến lược phổ biến">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-git-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Git Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Git Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-nhanh-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Các nhánh chính:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-github-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. GitHub Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. GitHub Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình cơ bản:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gitlab-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. GitLab Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. GitLab Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-cach-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Các cách triển khai:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-trunk-based-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Trunk Based Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trunk Based Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-one-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. One Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. One Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nguyen-tac-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nguyên tắc cơ bản:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-release-branching" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Release Branching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Release Branching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-forking-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Forking Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Forking Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-lam-viec_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy trình làm việc:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep-su-dung_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-cac-chien-luoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      So sánh các chiến lược
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xu-huong-va-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Xu hướng và DevOps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-chon-chien-luoc-phu-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách chọn chiến lược phù hợp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cách chọn chiến lược phù hợp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-quy-mo-va-phan-bo-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quy mô và phân bố team
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chu-ky-phat-hanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chu kỳ phát hành
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-loai-san-pham" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Loại sản phẩm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-muc-o-ap-dung-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mức độ áp dụng DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tổng kết
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/git/git-branch/00.git-branch-strategy.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="git-branch-strategy-chien-luoc-quan-ly-nhanh-hieu-qua-cho-du-an-phan-mem">GIT BRANCH STRATEGY: CHIẾN LƯỢC QUẢN LÝ NHÁNH HIỆU QUẢ CHO DỰ ÁN PHẦN MỀM<a class="headerlink" href="#git-branch-strategy-chien-luoc-quan-ly-nhanh-hieu-qua-cho-du-an-phan-mem" title="Permanent link">&para;</a></h1>
+<h2 id="muc-luc">Mục lục<a class="headerlink" href="#muc-luc" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#giới-thiệu">Giới thiệu</a></li>
+<li><a href="#tầm-quan-trọng-của-chiến-lược-quản-lý-nhánh">Tầm quan trọng của chiến lược quản lý nhánh</a></li>
+<li><a href="#các-chiến-lược-phổ-biến">Các chiến lược phổ biến</a></li>
+<li><a href="#1-git-flow">Git Flow</a></li>
+<li><a href="#2-github-flow">GitHub Flow</a></li>
+<li><a href="#3-gitlab-flow">GitLab Flow</a></li>
+<li><a href="#4-trunk-based-development">Trunk Based Development</a></li>
+<li><a href="#5-one-flow">One Flow</a></li>
+<li><a href="#6-release-branching">Release Branching</a></li>
+<li><a href="#7-forking-workflow">Forking Workflow</a></li>
+<li><a href="#so-sánh-các-chiến-lược">So sánh các chiến lược</a></li>
+<li><a href="#xu-hướng-và-devops">Xu hướng và DevOps</a></li>
+<li><a href="#cách-chọn-chiến-lược-phù-hợp">Cách chọn chiến lược phù hợp</a></li>
+<li><a href="#tổng-kết">Tổng kết</a></li>
+</ol>
+<h2 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">&para;</a></h2>
+<p>Trong phát triển phần mềm hiện đại, Git đã trở thành hệ thống quản lý phiên bản phổ biến nhất. Tuy nhiên, việc quản lý các nhánh (branch) trong Git không chỉ đơn thuần là việc tạo và merge code. Một chiến lược quản lý nhánh (Git Branch Strategy) hợp lý là yếu tố quan trọng giúp đội ngũ phát triển làm việc hiệu quả, đảm bảo chất lượng code và tối ưu quy trình phát triển sản phẩm.</p>
+<p>Bài viết này sẽ phân tích chi tiết các chiến lược quản lý nhánh Git phổ biến, giúp bạn hiểu rõ nguyên lý hoạt động, ưu nhược điểm và trường hợp áp dụng phù hợp cho từng chiến lược.</p>
+<h2 id="tam-quan-trong-cua-chien-luoc-quan-ly-nhanh">Tầm quan trọng của chiến lược quản lý nhánh<a class="headerlink" href="#tam-quan-trong-cua-chien-luoc-quan-ly-nhanh" title="Permanent link">&para;</a></h2>
+<p>Một chiến lược quản lý nhánh hiệu quả sẽ mang lại nhiều lợi ích:</p>
+<ul>
+<li><strong>Quản lý phiên bản</strong>: Theo dõi lịch sử các thay đổi, dễ dàng quay trở lại các phiên bản trước đó</li>
+<li><strong>Làm việc song song</strong>: Cho phép nhiều người đồng thời phát triển các tính năng khác nhau</li>
+<li><strong>Quản lý releases</strong>: Kiểm soát quá trình phát hành phần mềm, đặc biệt với các hệ thống phức tạp</li>
+<li><strong>Quản lý chất lượng</strong>: Thông qua code review, testing trên các nhánh riêng biệt</li>
+<li><strong>Tích hợp với CI/CD</strong>: Nền tảng cho quy trình tự động hóa build, test và deploy</li>
+</ul>
+<h2 id="cac-chien-luoc-pho-bien">Các chiến lược phổ biến<a class="headerlink" href="#cac-chien-luoc-pho-bien" title="Permanent link">&para;</a></h2>
+<h3 id="1-git-flow">1. Git Flow<a class="headerlink" href="#1-git-flow" title="Permanent link">&para;</a></h3>
+<p><strong>Git Flow</strong> là mô hình quản lý nhánh được Vincent Driessen đề xuất năm 2010, với cấu trúc rõ ràng cho từng giai đoạn phát triển.</p>
+<h4 id="cac-nhanh-chinh">Các nhánh chính:<a class="headerlink" href="#cac-nhanh-chinh" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>master</code>/<code>main</code></strong>: Chứa code production, luôn ổn định</li>
+<li><strong><code>develop</code></strong>: Nhánh phát triển chính, tích hợp các tính năng mới</li>
+<li><strong><code>feature/*</code></strong>: Các nhánh tính năng, tách từ <code>develop</code></li>
+<li><strong><code>release/*</code></strong>: Nhánh chuẩn bị phát hành, từ <code>develop</code></li>
+<li><strong><code>hotfix/*</code></strong>: Nhánh sửa lỗi khẩn cấp, tách từ <code>master</code></li>
+</ul>
+<h4 id="quy-trinh-lam-viec">Quy trình làm việc:<a class="headerlink" href="#quy-trinh-lam-viec" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Phát triển tính năng mới trên nhánh <code>feature</code></li>
+<li>Merge nhánh <code>feature</code> vào <code>develop</code></li>
+<li>Khi đủ tính năng, tạo nhánh <code>release</code> từ <code>develop</code></li>
+<li>Testing và sửa lỗi trên nhánh <code>release</code></li>
+<li>Merge nhánh <code>release</code> vào cả <code>master</code> và <code>develop</code></li>
+<li>Nếu production có lỗi, tạo nhánh <code>hotfix</code>, sau đó merge vào cả <code>master</code> và <code>develop</code></li>
+</ol>
+<h4 id="uu-iem">Ưu điểm:<a class="headerlink" href="#uu-iem" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cấu trúc rõ ràng, dễ quản lý các giai đoạn phát triển</li>
+<li>Phù hợp với dự án cần phát hành theo lịch, có version rõ ràng</li>
+<li>Giúp quản lý nhiều team làm việc song song</li>
+</ul>
+<h4 id="nhuoc-iem">Nhược điểm:<a class="headerlink" href="#nhuoc-iem" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Phức tạp, nhiều nhánh, khó cho người mới</li>
+<li>Overhead khi tạo và merge nhiều nhánh</li>
+<li>Chậm hơn các phương pháp khác, không phù hợp với CI/CD</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Atlassian, SAP, IBM</li>
+<li>Các công ty outsource lớn tại Việt Nam</li>
+</ul>
+<h3 id="2-github-flow">2. GitHub Flow<a class="headerlink" href="#2-github-flow" title="Permanent link">&para;</a></h3>
+<p><strong>GitHub Flow</strong> là mô hình đơn giản hóa, tập trung vào deployment liên tục, phù hợp với phát triển web và các ứng dụng cần triển khai nhanh.</p>
+<h4 id="quy-trinh-co-ban">Quy trình cơ bản:<a class="headerlink" href="#quy-trinh-co-ban" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong><code>main</code>/<code>master</code></strong>: Luôn chứa code ổn định, có thể deploy bất kỳ lúc nào</li>
+<li>Tạo nhánh mới từ <code>main</code> cho mỗi thay đổi (tính năng/bug)</li>
+<li>Commit thường xuyên trên nhánh</li>
+<li>Tạo Pull Request khi cần feedback hoặc sẵn sàng merge</li>
+<li>Review code, thảo luận và sửa đổi</li>
+<li>Deploy và test nhánh trước khi merge (staging)</li>
+<li>Merge vào <code>main</code> khi đã sẵn sàng</li>
+</ol>
+<h4 id="uu-iem_1">Ưu điểm:<a class="headerlink" href="#uu-iem_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Đơn giản, dễ học, ít quy tắc</li>
+<li>Tích hợp tốt với CI/CD</li>
+<li>Thúc đẩy review code qua Pull Request</li>
+<li>Deploy thường xuyên</li>
+</ul>
+<h4 id="nhuoc-iem_1">Nhược điểm:<a class="headerlink" href="#nhuoc-iem_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Không phù hợp với nhiều phiên bản song song</li>
+<li>Khó quản lý các bản release lớn</li>
+<li>Yêu cầu automated testing mạnh</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung_1">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>GitHub</li>
+<li>Các startup công nghệ tại Việt Nam và thế giới</li>
+<li>Các công ty web/mobile: Shopify, Netflix</li>
+</ul>
+<h3 id="3-gitlab-flow">3. GitLab Flow<a class="headerlink" href="#3-gitlab-flow" title="Permanent link">&para;</a></h3>
+<p><strong>GitLab Flow</strong> là sự kết hợp giữa Git Flow và GitHub Flow, hỗ trợ nhiều môi trường và quy trình làm việc linh hoạt.</p>
+<h4 id="cac-cach-trien-khai">Các cách triển khai:<a class="headerlink" href="#cac-cach-trien-khai" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Environment Branches</strong>:</li>
+<li><strong><code>main</code>/<code>master</code></strong>: Code mới nhất đã review</li>
+<li><strong><code>pre-production</code></strong>: Môi trường staging/UAT</li>
+<li><strong><code>production</code></strong>: Code live</li>
+<li>
+<p>Quy tắc: Code chỉ di chuyển từ nhánh thấp lên cao</p>
+</li>
+<li>
+<p><strong>Release Branches</strong>:</p>
+</li>
+<li>Tạo nhánh release cho mỗi version</li>
+<li>Bug fixes đi trực tiếp vào nhánh release</li>
+<li>Merge lại vào <code>master</code> và <code>production</code></li>
+</ol>
+<h4 id="uu-iem_2">Ưu điểm:<a class="headerlink" href="#uu-iem_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Linh hoạt, thích ứng với nhiều kiểu dự án</li>
+<li>Quản lý nhiều môi trường dễ dàng</li>
+<li>Dễ kết hợp với CI/CD và feature flag</li>
+<li>Phù hợp với DevOps</li>
+</ul>
+<h4 id="nhuoc-iem_2">Nhược điểm:<a class="headerlink" href="#nhuoc-iem_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Phức tạp hơn GitHub Flow</li>
+<li>Yêu cầu team thống nhất và hiểu rõ workflow</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung_2">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>GitLab</li>
+<li>Các công ty fintech, ngân hàng</li>
+<li>Doanh nghiệp vừa và lớn với nhiều môi trường</li>
+</ul>
+<h3 id="4-trunk-based-development">4. Trunk Based Development<a class="headerlink" href="#4-trunk-based-development" title="Permanent link">&para;</a></h3>
+<p><strong>Trunk Based Development</strong> tập trung vào một nhánh chính (trunk/main), với các nhánh feature ngắn hạn và tích hợp liên tục.</p>
+<h4 id="quy-trinh-lam-viec_1">Quy trình làm việc:<a class="headerlink" href="#quy-trinh-lam-viec_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong><code>main</code>/<code>trunk</code></strong>: Nhánh chính duy nhất</li>
+<li>Phát triển nhánh feature ngắn (1-2 ngày), hoặc làm trực tiếp trên main</li>
+<li>Merge liên tục (ít nhất mỗi ngày) vào main</li>
+<li>Sử dụng feature flags để bật/tắt tính năng chưa hoàn thiện</li>
+<li>CI/CD tự động test và deploy mỗi commit</li>
+</ol>
+<h4 id="uu-iem_3">Ưu điểm:<a class="headerlink" href="#uu-iem_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Tích hợp liên tục, phát hiện conflict sớm</li>
+<li>Giảm "merge hell" và "integration debt"</li>
+<li>Release liên tục, nhanh chóng</li>
+<li>Code mới luôn được review sớm</li>
+<li>Tối ưu cho CI/CD</li>
+</ul>
+<h4 id="nhuoc-iem_3">Nhược điểm:<a class="headerlink" href="#nhuoc-iem_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Yêu cầu automated testing mạnh</li>
+<li>Cần kỷ luật cao trong team</li>
+<li>Khó quản lý nhiều phiên bản song song</li>
+<li>Cần hạ tầng CI/CD tốt</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung_3">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Google, Facebook, Netflix</li>
+<li>Các công ty công nghệ với tốc độ phát triển nhanh</li>
+<li>Các công ty áp dụng DevOps triệt để</li>
+</ul>
+<h3 id="5-one-flow">5. One Flow<a class="headerlink" href="#5-one-flow" title="Permanent link">&para;</a></h3>
+<p><strong>One Flow</strong> là sự đơn giản hóa của Git Flow, tập trung vào một nhánh chính với quản lý linh hoạt.</p>
+<h4 id="nguyen-tac-co-ban">Nguyên tắc cơ bản:<a class="headerlink" href="#nguyen-tac-co-ban" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong><code>main</code>/<code>master</code></strong>: Nhánh duy nhất đại diện trạng thái hiện tại</li>
+<li><strong>Feature branches</strong>: Tách từ main, phát triển tính năng, merge trở lại main</li>
+<li><strong>Release branches</strong>: Chỉ tạo khi cần (không bắt buộc)</li>
+<li><strong>Hotfix</strong>: Tách từ commit tag trên main, sau đó merge lại</li>
+</ol>
+<h4 id="uu-iem_4">Ưu điểm:<a class="headerlink" href="#uu-iem_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Đơn giản hơn Git Flow nhưng vẫn có cấu trúc rõ ràng</li>
+<li>Linh hoạt, dễ điều chỉnh theo nhu cầu</li>
+<li>Lịch sử commit sạch và dễ theo dõi</li>
+</ul>
+<h4 id="nhuoc-iem_4">Nhược điểm:<a class="headerlink" href="#nhuoc-iem_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Không phù hợp với dự án cần nhiều môi trường phức tạp</li>
+<li>Yêu cầu team thống nhất quy trình</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung_4">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Các công ty phần mềm vừa và nhỏ</li>
+<li>Công ty outsource với quy trình đơn giản</li>
+</ul>
+<h3 id="6-release-branching">6. Release Branching<a class="headerlink" href="#6-release-branching" title="Permanent link">&para;</a></h3>
+<p><strong>Release Branching</strong> tập trung vào việc duy trì nhiều phiên bản song song, mỗi version chính có một nhánh riêng được bảo trì độc lập.</p>
+<h4 id="quy-trinh-lam-viec_2">Quy trình làm việc:<a class="headerlink" href="#quy-trinh-lam-viec_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong><code>main</code>/<code>master</code></strong>: Phát triển mới nhất</li>
+<li><strong><code>release/1.x</code></strong>, <strong><code>release/2.x</code></strong>: Nhánh cho từng phiên bản lớn</li>
+<li><strong>Bugfix</strong>: Sửa lỗi trên nhánh release tương ứng</li>
+<li><strong>Cherry-pick</strong>: Áp dụng các sửa lỗi cho nhiều nhánh nếu cần</li>
+</ol>
+<h4 id="uu-iem_5">Ưu điểm:<a class="headerlink" href="#uu-iem_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Duy trì nhiều phiên bản song song hiệu quả</li>
+<li>Hỗ trợ tốt cho sản phẩm đã phát hành</li>
+<li>Khách hàng có thể chọn update version hoặc giữ nguyên</li>
+</ul>
+<h4 id="nhuoc-iem_5">Nhược điểm:<a class="headerlink" href="#nhuoc-iem_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Phức tạp khi quản lý nhiều nhánh</li>
+<li>Đồng bộ sửa lỗi giữa các nhánh release là thách thức</li>
+<li>Overhead khi bảo trì nhiều version</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung_5">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Microsoft, Oracle</li>
+<li>Các công ty phát triển phần mềm B2B</li>
+<li>Công ty làm phần mềm cho nhiều khách hàng với version riêng</li>
+</ul>
+<h3 id="7-forking-workflow">7. Forking Workflow<a class="headerlink" href="#7-forking-workflow" title="Permanent link">&para;</a></h3>
+<p><strong>Forking Workflow</strong> là phương pháp phù hợp với dự án mở, nhiều người đóng góp. Mỗi người tham gia sẽ fork toàn bộ repository về tài khoản riêng.</p>
+<h4 id="quy-trinh-lam-viec_3">Quy trình làm việc:<a class="headerlink" href="#quy-trinh-lam-viec_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Fork repository về tài khoản cá nhân</li>
+<li>Clone repo đã fork về máy local</li>
+<li>Tạo nhánh cho tính năng/sửa lỗi</li>
+<li>Push nhánh lên repo fork cá nhân</li>
+<li>Tạo Pull Request từ repo fork vào repo gốc</li>
+<li>Review, thảo luận, sửa đổi nếu cần</li>
+<li>Merge vào repo gốc</li>
+</ol>
+<h4 id="uu-iem_6">Ưu điểm:<a class="headerlink" href="#uu-iem_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>An toàn: Người đóng góp không có quyền push trực tiếp vào repo chính</li>
+<li>Phân quyền rõ ràng, dễ quản lý</li>
+<li>Phù hợp với dự án có nhiều người tham gia từ bên ngoài</li>
+<li>Thúc đẩy review code kỹ lưỡng</li>
+</ul>
+<h4 id="nhuoc-iem_6">Nhược điểm:<a class="headerlink" href="#nhuoc-iem_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Quy trình dài hơn cho team nội bộ</li>
+<li>Đồng bộ hóa giữa fork và repo gốc đòi hỏi thêm công việc</li>
+<li>Không phù hợp với team nhỏ làm việc thường xuyên</li>
+</ul>
+<h4 id="doanh-nghiep-su-dung_6">Doanh nghiệp sử dụng:<a class="headerlink" href="#doanh-nghiep-su-dung_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Dự án mã nguồn mở: Linux, React, TensorFlow</li>
+<li>Cộng đồng phát triển</li>
+<li>Các công ty với mô hình Inner Source</li>
+</ul>
+<h2 id="so-sanh-cac-chien-luoc">So sánh các chiến lược<a class="headerlink" href="#so-sanh-cac-chien-luoc" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Chiến lược</th>
+<th>Độ phức tạp</th>
+<th>Phù hợp với CI/CD</th>
+<th>Nhiều phiên bản</th>
+<th>Quy mô team</th>
+<th>Tốc độ phát hành</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git Flow</td>
+<td>Cao</td>
+<td>★★☆☆☆</td>
+<td>★★★★☆</td>
+<td>Vừa-Lớn</td>
+<td>Định kỳ</td>
+</tr>
+<tr>
+<td>GitHub Flow</td>
+<td>Thấp</td>
+<td>★★★★☆</td>
+<td>★☆☆☆☆</td>
+<td>Nhỏ-Vừa</td>
+<td>Liên tục</td>
+</tr>
+<tr>
+<td>GitLab Flow</td>
+<td>Trung bình</td>
+<td>★★★★☆</td>
+<td>★★★☆☆</td>
+<td>Vừa-Lớn</td>
+<td>Theo môi trường</td>
+</tr>
+<tr>
+<td>Trunk Based</td>
+<td>Thấp</td>
+<td>★★★★★</td>
+<td>★☆☆☆☆</td>
+<td>Bất kỳ</td>
+<td>Liên tục</td>
+</tr>
+<tr>
+<td>One Flow</td>
+<td>Trung bình</td>
+<td>★★★☆☆</td>
+<td>★★☆☆☆</td>
+<td>Vừa</td>
+<td>Linh hoạt</td>
+</tr>
+<tr>
+<td>Release Branching</td>
+<td>Cao</td>
+<td>★★☆☆☆</td>
+<td>★★★★★</td>
+<td>Lớn</td>
+<td>Theo phiên bản</td>
+</tr>
+<tr>
+<td>Forking Workflow</td>
+<td>Cao</td>
+<td>★★★☆☆</td>
+<td>★★★☆☆</td>
+<td>Cộng đồng</td>
+<td>Không thường xuyên</td>
+</tr>
+</tbody>
+</table>
+<h2 id="xu-huong-va-devops">Xu hướng và DevOps<a class="headerlink" href="#xu-huong-va-devops" title="Permanent link">&para;</a></h2>
+<p>Trong môi trường DevOps hiện đại, các chiến lược quản lý nhánh đang phát triển theo hướng:</p>
+<ol>
+<li><strong>Đơn giản hóa</strong>: Nhiều tổ chức đang chuyển từ Git Flow sang các mô hình đơn giản hơn</li>
+<li><strong>Tích hợp liên tục</strong>: Trunk Based Development ngày càng phổ biến</li>
+<li><strong>Feature flags</strong>: Tách biệt deployment và release tính năng</li>
+<li><strong>Automated testing</strong>: Test tự động trở thành yêu cầu bắt buộc</li>
+<li><strong>Deployment tự động</strong>: CD pipelines chạy cho mỗi commit trên nhánh chính</li>
+</ol>
+<p>Với DevOps, các chiến lược tối ưu nhất là:
+- <strong>Trunk Based Development</strong>: Tối ưu nhất cho CI/CD
+- <strong>GitHub Flow</strong>: Đơn giản, hiệu quả cho team nhỏ và vừa
+- <strong>GitLab Flow</strong>: Cân bằng giữa cấu trúc và tự động hóa</p>
+<h2 id="cach-chon-chien-luoc-phu-hop">Cách chọn chiến lược phù hợp<a class="headerlink" href="#cach-chon-chien-luoc-phu-hop" title="Permanent link">&para;</a></h2>
+<p>Để chọn chiến lược phù hợp, cần xem xét các yếu tố sau:</p>
+<h3 id="1-quy-mo-va-phan-bo-team">1. Quy mô và phân bố team<a class="headerlink" href="#1-quy-mo-va-phan-bo-team" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Team nhỏ, cùng vị trí</strong>: GitHub Flow, Trunk Based</li>
+<li><strong>Team lớn, phân tán</strong>: GitLab Flow, Git Flow</li>
+</ul>
+<h3 id="2-chu-ky-phat-hanh">2. Chu kỳ phát hành<a class="headerlink" href="#2-chu-ky-phat-hanh" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Liên tục (nhiều lần/ngày)</strong>: Trunk Based, GitHub Flow</li>
+<li><strong>Theo lịch (tuần/tháng)</strong>: Git Flow, GitLab Flow</li>
+<li><strong>Duy trì nhiều phiên bản</strong>: Release Branching</li>
+</ul>
+<h3 id="3-loai-san-pham">3. Loại sản phẩm<a class="headerlink" href="#3-loai-san-pham" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Web/Mobile app</strong>: GitHub Flow, Trunk Based</li>
+<li><strong>Phần mềm doanh nghiệp</strong>: Git Flow, GitLab Flow</li>
+<li><strong>Open source</strong>: Forking Workflow</li>
+</ul>
+<h3 id="4-muc-o-ap-dung-devops">4. Mức độ áp dụng DevOps<a class="headerlink" href="#4-muc-o-ap-dung-devops" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CI/CD hoàn chỉnh</strong>: Trunk Based</li>
+<li><strong>CI mạnh, CD một phần</strong>: GitHub Flow, GitLab Flow</li>
+<li><strong>Quy trình truyền thống</strong>: Git Flow</li>
+</ul>
+<h2 id="tong-ket">Tổng kết<a class="headerlink" href="#tong-ket" title="Permanent link">&para;</a></h2>
+<p>Không có chiến lược quản lý nhánh nào là hoàn hảo cho mọi dự án. Mỗi chiến lược đều có điểm mạnh và yếu, phù hợp với những bối cảnh khác nhau. Xu hướng hiện nay là đơn giản hóa quy trình, giảm thời gian code nằm trên nhánh riêng và tích hợp thường xuyên vào nhánh chính.</p>
+<p>Việc lựa chọn chiến lược phù hợp phụ thuộc vào:
+- Quy mô team và dự án
+- Yêu cầu về tần suất phát hành
+- Mức độ áp dụng CI/CD
+- Văn hóa và kỷ luật của team</p>
+<p><strong>Tham khảo:</strong>
+- Atlassian: <a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Git Workflow Options</a>
+- GitHub: <a href="https://guides.github.com/introduction/flow/">GitHub Flow</a>
+- GitLab: <a href="https://docs.gitlab.com/ee/topics/gitlab_flow.html">Introduction to GitLab Flow</a>
+- Trunk Based Development: <a href="https://trunkbaseddevelopment.com">trunkbaseddevelopment.com</a>
+- <a href="https://www.geeksforgeeks.org/git/branching-strategies-in-git/">GEEKFORGEEK</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 8, 2025 09:43:03 UTC">7 tháng 8, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="lelongc/devops"
+        data-repo-id="R_kgDOOg304w"
+        data-category="Q&A"
+        data-category-id="DIC_kwDOOg30484Cpie6"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark"
+        data-lang="vi"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
+        
+          
+          <a href="../../roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Git Complete Learning Roadmap - Chi tiết từng topic">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Git Complete Learning Roadmap - Chi tiết từng topic
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../01.git-branch-enterprise/" class="md-footer__link md-footer__link--next" aria-label="Sau: WORKFLOW THEO MÔI TRƯỜNG: DEV &amp;gt; QA &amp;gt; PPD &amp;gt; PROD &amp;gt; HOTFIX &amp;gt; DR">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                WORKFLOW THEO MÔI TRƯỜNG: DEV &gt; QA &gt; PPD &gt; PROD &gt; HOTFIX &gt; DR
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
