@@ -33,7 +33,6 @@
 - Accessing Linux system
 - Download and install Putty
 - Connect Linux VM via Putty
-- Important Things to Remember in Linux
 - Introduction to File System
 - File system structure description
 - File system navigation commands
@@ -275,6 +274,7 @@
   - Recovery procedures
   - System restoration
   - Business continuity
+
 
 
 
