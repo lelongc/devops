@@ -19,8 +19,8 @@
 - [Downloading and Installing Linux (CentOS)](https://www.centos.org/download/)
 - [Redhat Linux installation (Optional)](https://docs.oracle.com/cd/E19121-01/sf.x4440/820-2397-15/chap_rhel_new.html)
 - [Ubuntu Linux Installation (Optional)](https://helpcenter.mines.edu/TDClient/1946/Portal/KB/ArticleDet?ID=107466)
-- [Virtual Machine Management on vmware](https://youtu.be/2KrzgeB6qEI?si=lmvKQ_IBrcBCLrE1)
-- [Virtual Machine Management on virtual box](https://youtu.be/nvdnQX9UkMY?si=fpFzxnt5KVHwLH4i)
+- [Virtual Machine Management on vmware](https://youtu.be/2KrzgeB6qEI?si=lmvKQ_IBrcBCLrE1) - [link 2](https://techdocs.broadcom.com/us/en/vmware-cis/desktop-hypervisors/workstation-pro/17-0/using-vmware-workstation-pro.html)
+- [Virtual Machine Management on virtual box](https://youtu.be/nvdnQX9UkMY?si=fpFzxnt5KVHwLH4i) - [link 2](https://www.virtualbox.org/manual/ch01.html) 
 - [Take a snapshot of VM on virtual box](https://youtu.be/WpPDORmj3E4?si=wEJ_ikoEYM6xiHph)
 - [Take a snapshot of VM on vmware ws](https://youtu.be/QZi4Lbg6-2M?si=9htSXssRs4VoXESp) 
 - [Keyboard Keys Used in Linux](https://hostman.com/tutorials/linux-keyboard-shortcuts-top-combinations-for-users/)
@@ -274,6 +274,7 @@
   - Recovery procedures
   - System restoration
   - Business continuity
+
 
 
 
