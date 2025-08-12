@@ -29,6 +29,7 @@
 
 
 ## **Module 3 – System Access and File System**
+- Important Things to Remember in Linux
 - Accessing Linux system
 - Download and install Putty
 - Connect Linux VM via Putty
@@ -274,6 +275,7 @@
   - Recovery procedures
   - System restoration
   - Business continuity
+
 
 
 
