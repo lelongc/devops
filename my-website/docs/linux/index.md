@@ -12,15 +12,17 @@
 - What is Oracle Virtual Box?
 - Downloading and Installing Oracle Virtual Box
 - Creating virtual machine
-- Linux Distributions
+- Download and Install VMWare Player
+- CentOS vs. CentOS Stream
 - Different way to install Linux
 - Downloading and Installing Linux (CentOS)
 - Redhat Linux installation (Optional)
-- Linux Desktop (GUI)
+- Ubuntu Linux Installation (Optional)
 - Virtual Machine Management
-- Linux vs. Windows
-- Who Uses Linux?
-- Quiz, Homework and Handouts
+- Keyboard Keys Used in Linux
+- Linux Desktop (GUI)
+
+
 
 ## **Module 3 – System Access and File System**
 - Accessing Linux system
@@ -268,5 +270,6 @@
   - Recovery procedures
   - System restoration
   - Business continuity
+
 
 
