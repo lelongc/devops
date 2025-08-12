@@ -9,18 +9,19 @@
 - Linux vs. Windows
 
 ## **Module 2 – Download, Install and Configure**
-- What is Oracle Virtual Box?
-- Downloading and Installing Oracle Virtual Box
-- Creating virtual machine
-- Download and Install VMWare Player
-- CentOS vs. CentOS Stream
-- Different way to install Linux
-- Downloading and Installing Linux (CentOS)
-- Redhat Linux installation (Optional)
-- Ubuntu Linux Installation (Optional)
+- [What is Oracle Virtual Box?](https://www.oracle.com/virtualization/virtualbox/)
+- [Downloading and Installing Oracle Virtual Box](https://www.geeksforgeeks.org/installation-guide/how-to-install-virtualbox-on-windows/)
+- [Downloading and Installing Oracle Virtual Box](https://www.oracle.com/eg/virtualization/technologies/vm/downloads/virtualbox-downloads.html)
+- [Creating virtual machine](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/gui-createvm.html)
+- [Download and Install VMWare Player (workstation)](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
+- [CentOS vs. CentOS Stream](https://www.fosslinux.com/122411/centos-linux-and-centos-stream-whats-the-difference.htm)
+- [Different way to install Linux](https://learn.microsoft.com/en-us/linux/install)
+- [Downloading and Installing Linux (CentOS)](https://www.centos.org/download/)
+- [Redhat Linux installation (Optional)](https://docs.oracle.com/cd/E19121-01/sf.x4440/820-2397-15/chap_rhel_new.html)
+- [Ubuntu Linux Installation (Optional)](https://helpcenter.mines.edu/TDClient/1946/Portal/KB/ArticleDet?ID=107466)
 - Virtual Machine Management
-- Keyboard Keys Used in Linux
-- Linux Desktop (GUI)
+- [Keyboard Keys Used in Linux](https://hostman.com/tutorials/linux-keyboard-shortcuts-top-combinations-for-users/)
+- [Linux Desktop (GUI)](https://www.alibabacloud.com/help/en/ecs/use-cases/installing-a-graphical-desktop-environment-for-a-linux-instance)
 
 
 
@@ -270,6 +271,7 @@
   - Recovery procedures
   - System restoration
   - Business continuity
+
 
 
 
