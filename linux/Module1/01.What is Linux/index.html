@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/docker/docker-project/docs/deployment/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/linux/Module1/01.What%20is%20Linux/">
       
       
         <link rel="prev" href="../../">
       
       
-        <link rel="next" href="../troubleshooting/">
+        <link rel="next" href="../../../network/roadmap/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Deployment Guide - DraDoc</title>
+        <title>Linux là gì? - Giới thiệu cơ bản - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deployment-guide" class="md-skip">
+        <a href="#linux-la-gi-gioi-thieu-co-ban" class="md-skip">
           Bỏ qua
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deployment Guide
+              Linux là gì? - Giới thiệu cơ bản
             
           </span>
         </div>
@@ -224,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -245,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -263,13 +263,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
           
   
   
@@ -291,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../git/roadmap/" class="md-tabs__link">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -313,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../iac/roadmap/" class="md-tabs__link">
+        <a href="../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -335,7 +333,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../k8s/" class="md-tabs__link">
+        <a href="../../../k8s/" class="md-tabs__link">
           
   
   
@@ -357,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../lab/" class="md-tabs__link">
+        <a href="../../../lab/" class="md-tabs__link">
           
   
   
@@ -375,11 +373,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../linux/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -401,7 +401,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../network/roadmap/" class="md-tabs__link">
+        <a href="../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -423,7 +423,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -445,7 +445,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../observability/roadmap/" class="md-tabs__link">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -474,7 +474,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -499,7 +499,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../python/" class="md-tabs__link">
+        <a href="../../../python/" class="md-tabs__link">
           
   
   
@@ -521,7 +521,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../security/roadmap/" class="md-tabs__link">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -543,7 +543,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../system-design/" class="md-tabs__link">
+        <a href="../../../system-design/" class="md-tabs__link">
           
   
   
@@ -565,7 +565,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../testing/roadmap/" class="md-tabs__link">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -607,7 +607,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -637,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -683,7 +683,7 @@
   
   
   
-    <a href="../../../../cicd/roadmap/" class="md-nav__link">
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -708,100 +708,6 @@
       
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Docker
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Docker
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../roadmap/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Docker Complete Mastery Roadmap - Mọi Dự Án Thực Tế
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
   
   
     
@@ -813,314 +719,6 @@
       
         
       
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Docker project
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            Docker project
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Docs
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            Docs
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Deployment Guide
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Deployment Guide
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment Setup
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#development" class="md-nav__link">
-    <span class="md-ellipsis">
-      Development
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#staging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Staging
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#production" class="md-nav__link">
-    <span class="md-ellipsis">
-      Production
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logging
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      Backup &amp; Recovery
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Scaling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Troubleshooting Guide
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
         
       
     
@@ -1143,12 +741,12 @@
   
   
   
-    <a href="../../templates/" class="md-nav__link">
+    <a href="../../../docker/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    Templates
+    Docker
     
   </span>
   
@@ -1163,22 +761,6 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
@@ -1213,7 +795,7 @@
   
   
   
-    <a href="../../../../git/roadmap/" class="md-nav__link">
+    <a href="../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -1265,7 +847,7 @@
   
   
   
-    <a href="../../../../iac/roadmap/" class="md-nav__link">
+    <a href="../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -1329,7 +911,7 @@
   
   
   
-    <a href="../../../../k8s/" class="md-nav__link">
+    <a href="../../../k8s/" class="md-nav__link">
       
   
   
@@ -1383,7 +965,7 @@
   
   
   
-    <a href="../../../../lab/" class="md-nav__link">
+    <a href="../../../lab/" class="md-nav__link">
       
   
   
@@ -1408,6 +990,8 @@
       
   
   
+    
+  
   
   
     
@@ -1423,24 +1007,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../../../linux/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1449,12 +1035,327 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Module1
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Module1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Linux là gì? - Giới thiệu cơ bản
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux là gì? - Giới thiệu cơ bản
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux là gì?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux là gì?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia-on-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Định nghĩa đơn giản:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thanh-phan-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thành phần chính
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thành phần chính">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-linux-kernel-nhan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Linux Kernel (Nhân)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gnu-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. GNU Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ac-iem-noi-bat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm nổi bật
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Đặc điểm nổi bật">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-linux-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tại sao Linux quan trọng?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tại sao Linux quan trọng?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thong-tri-thi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thống trị thị trường:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng thực tế:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-su-dung-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ai sử dụng Linux?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ai sử dụng Linux?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ca-nhan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cá nhân:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết luận
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1491,7 +1392,7 @@
   
   
   
-    <a href="../../../../network/roadmap/" class="md-nav__link">
+    <a href="../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -1545,7 +1446,7 @@
   
   
   
-    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
+    <a href="../../../network-comtia/roadmap/" class="md-nav__link">
       
   
   
@@ -1597,7 +1498,7 @@
   
   
   
-    <a href="../../../../observability/roadmap/" class="md-nav__link">
+    <a href="../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -1653,7 +1554,7 @@
   
   
   
-    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -1709,7 +1610,7 @@
   
   
   
-    <a href="../../../../python/" class="md-nav__link">
+    <a href="../../../python/" class="md-nav__link">
       
   
   
@@ -1761,7 +1662,7 @@
   
   
   
-    <a href="../../../../security/roadmap/" class="md-nav__link">
+    <a href="../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -1819,7 +1720,7 @@
   
   
   
-    <a href="../../../../system-design/" class="md-nav__link">
+    <a href="../../../system-design/" class="md-nav__link">
       
   
   
@@ -1871,7 +1772,7 @@
   
   
   
-    <a href="../../../../testing/roadmap/" class="md-nav__link">
+    <a href="../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -1919,46 +1820,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#linux-la-gi" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Linux là gì?
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment Setup
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment Setup">
+    <nav class="md-nav" aria-label="Linux là gì?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#development" class="md-nav__link">
+  <a href="#inh-nghia-on-gian" class="md-nav__link">
     <span class="md-ellipsis">
-      Development
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#staging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Staging
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#production" class="md-nav__link">
-    <span class="md-ellipsis">
-      Production
+      Định nghĩa đơn giản:
     </span>
   </a>
   
@@ -1970,45 +1844,150 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitoring" class="md-nav__link">
+  <a href="#thanh-phan-chinh" class="md-nav__link">
     <span class="md-ellipsis">
-      Monitoring
+      Thành phần chính
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thành phần chính">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-linux-kernel-nhan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Linux Kernel (Nhân)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#logging" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-gnu-tools" class="md-nav__link">
     <span class="md-ellipsis">
-      Logging
+      2. GNU Tools
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-recovery" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#3-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      Backup &amp; Recovery
+      3. Applications
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Scaling
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#ac-iem-noi-bat" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
+      Đặc điểm nổi bật
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Đặc điểm nổi bật">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uu-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Ưu điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhuoc-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Nhược điểm:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-linux-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tại sao Linux quan trọng?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tại sao Linux quan trọng?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thong-tri-thi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thống trị thị trường:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng thực tế:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-su-dung-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ai sử dụng Linux?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ai sử dụng Linux?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ca-nhan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cá nhân:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doanh-nghiep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Doanh nghiệp:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết luận
     </span>
   </a>
   
@@ -2030,7 +2009,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/docker/docker-project/docs/deployment.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/Module1/01.What is Linux.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2038,70 +2017,95 @@
   
 
 
-<h1 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h1>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h1 id="linux-la-gi-gioi-thieu-co-ban">Linux là gì? - Giới thiệu cơ bản<a class="headerlink" href="#linux-la-gi-gioi-thieu-co-ban" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="linux-la-gi">Linux là gì?<a class="headerlink" href="#linux-la-gi" title="Permanent link">&para;</a></h2>
+<p><strong>Linux</strong> là một hệ điều hành (Operating System) mã nguồn mở và miễn phí, được phát triển dựa trên Unix. Linux được tạo ra bởi Linus Torvalds vào năm 1991.</p>
+<h3 id="inh-nghia-on-gian">Định nghĩa đơn giản:<a class="headerlink" href="#inh-nghia-on-gian" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Linux = Hệ điều hành quản lý máy tính của bạn
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>- Giống như Windows hay macOS
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- Nhưng mã nguồn mở và miễn phí
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- Mạnh mẽ, bảo mật và ổn định
+</code></pre></div>
+<hr />
+<h2 id="thanh-phan-chinh">Thành phần chính<a class="headerlink" href="#thanh-phan-chinh" title="Permanent link">&para;</a></h2>
+<h3 id="1-linux-kernel-nhan">1. <strong>Linux Kernel (Nhân)</strong><a class="headerlink" href="#1-linux-kernel-nhan" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Docker Engine 20.10+</li>
-<li>Docker Compose 2.0+</li>
-<li>Minimum 4GB RAM</li>
-<li>20GB disk space</li>
+<li>Phần cốt lõi của hệ điều hành</li>
+<li>Quản lý phần cứng: CPU, RAM, ổ cứng</li>
+<li>Điều phối các chương trình chạy</li>
 </ul>
-<h2 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h2>
-<h3 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Start development environment</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./scripts/deploy.sh<span class="w"> </span>development
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Access services</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Frontend:<span class="w"> </span>http://localhost:3000
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Backend:<span class="w"> </span>http://localhost:8080
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Database:<span class="w"> </span>localhost:5432
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Redis:<span class="w"> </span>localhost:6379
-</code></pre></div>
-<h3 id="staging">Staging<a class="headerlink" href="#staging" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Deploy to staging</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./scripts/build.sh<span class="w"> </span>v1.0.0
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>./scripts/deploy.sh<span class="w"> </span>staging
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Run tests</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>backend<span class="w"> </span>pytest
-</code></pre></div>
-<h3 id="production">Production<a class="headerlink" href="#production" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Build production images</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>./scripts/build.sh<span class="w"> </span>v1.0.0<span class="w"> </span>push
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Deploy to production</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>./scripts/deploy.sh<span class="w"> </span>production
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Verify deployment</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>./scripts/health-check.sh
-</code></pre></div>
-<h2 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h2>
+<h3 id="2-gnu-tools">2. <strong>GNU Tools</strong><a class="headerlink" href="#2-gnu-tools" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Grafana</strong>: http://localhost:3000 (admin/admin123)</li>
-<li><strong>Prometheus</strong>: http://localhost:9090</li>
-<li><strong>AlertManager</strong>: http://localhost:9093</li>
+<li>Bộ công cụ cần thiết: ls, cp, mv, rm</li>
+<li>Trình biên dịch, text editor</li>
+<li>Shell (command line)</li>
 </ul>
-<h2 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h2>
+<h3 id="3-applications">3. <strong>Applications</strong><a class="headerlink" href="#3-applications" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Kibana</strong>: http://localhost:5601</li>
-<li><strong>Elasticsearch</strong>: http://localhost:9200</li>
+<li>Trình duyệt web, office, games</li>
+<li>Development tools</li>
+<li>Server software</li>
 </ul>
-<h2 id="backup-recovery">Backup &amp; Recovery<a class="headerlink" href="#backup-recovery" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Database backup</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>postgres<span class="w"> </span>pg_dump<span class="w"> </span>-U<span class="w"> </span>appuser<span class="w"> </span>myapp<span class="w"> </span>&gt;<span class="w"> </span>backup.sql
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Volume backup</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>postgres_data:/data<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/backup<span class="w"> </span>alpine<span class="w"> </span>tar<span class="w"> </span>czf<span class="w"> </span>/backup/postgres_backup.tar.gz<span class="w"> </span>/data
+<hr />
+<h2 id="ac-iem-noi-bat">Đặc điểm nổi bật<a class="headerlink" href="#ac-iem-noi-bat" title="Permanent link">&para;</a></h2>
+<h3 id="uu-iem">✅ <strong>Ưu điểm:</strong><a class="headerlink" href="#uu-iem" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>✓<span class="w"> </span>Miễn<span class="w"> </span>phí<span class="w"> </span><span class="m">100</span>%
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>✓<span class="w"> </span>Mã<span class="w"> </span>nguồn<span class="w"> </span>mở
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>✓<span class="w"> </span>Bảo<span class="w"> </span>mật<span class="w"> </span>cao
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>✓<span class="w"> </span>Ổn<span class="w"> </span>định<span class="w"> </span><span class="o">(</span>uptime<span class="w"> </span>tính<span class="w"> </span>bằng<span class="w"> </span>năm<span class="o">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>✓<span class="w"> </span>Hiệu<span class="w"> </span>suất<span class="w"> </span>tốt
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>✓<span class="w"> </span>Tùy<span class="w"> </span>biến<span class="w"> </span>cao
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>✓<span class="w"> </span>Nhiều<span class="w"> </span>distro<span class="w"> </span>lựa<span class="w"> </span>chọn
 </code></pre></div>
-<h2 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Scale backend services</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--scale<span class="w"> </span><span class="nv">backend</span><span class="o">=</span><span class="m">5</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Monitor resource usage</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>docker<span class="w"> </span>stats
+<h3 id="nhuoc-iem">❌ <strong>Nhược điểm:</strong><a class="headerlink" href="#nhuoc-iem" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>✗<span class="w"> </span>Learning<span class="w"> </span>curve<span class="w"> </span>cao<span class="w"> </span>cho<span class="w"> </span>người<span class="w"> </span>mới
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>✗<span class="w"> </span>Ít<span class="w"> </span>game<span class="w"> </span>native
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>✗<span class="w"> </span>Một<span class="w"> </span>số<span class="w"> </span>software<span class="w"> </span>chuyên<span class="w"> </span>dụng<span class="w"> </span>không<span class="w"> </span>có
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>✗<span class="w"> </span>Hardware<span class="w"> </span>support<span class="w"> </span>đôi<span class="w"> </span>khi<span class="w"> </span>chậm
 </code></pre></div>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>See <a href="../troubleshooting/">troubleshooting.md</a> for common issues and solutions.</p>
+<hr />
+<h2 id="tai-sao-linux-quan-trong">Tại sao Linux quan trọng?<a class="headerlink" href="#tai-sao-linux-quan-trong" title="Permanent link">&para;</a></h2>
+<h3 id="thong-tri-thi-truong"><strong>Thống trị thị trường:</strong><a class="headerlink" href="#thong-tri-thi-truong" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>96%</strong> web servers chạy Linux</li>
+<li><strong>100%</strong> top 500 supercomputers</li>
+<li><strong>85%</strong> smartphones (Android)</li>
+<li><strong>75%</strong> cloud workloads</li>
+</ul>
+<h3 id="ung-dung-thuc-te"><strong>Ứng dụng thực tế:</strong><a class="headerlink" href="#ung-dung-thuc-te" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>🌐 Web Servers: Apache, Nginx
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>☁️  Cloud: AWS, Google Cloud, Azure  
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>📱 Mobile: Android phones
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>🏠 IoT: Smart devices, routers
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>🚗 Automotive: Car infotainment
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>🏢 Enterprise: Banks, governments
+</code></pre></div>
+<hr />
+<h2 id="ai-su-dung-linux">Ai sử dụng Linux?<a class="headerlink" href="#ai-su-dung-linux" title="Permanent link">&para;</a></h2>
+<h3 id="ca-nhan"><strong>Cá nhân:</strong><a class="headerlink" href="#ca-nhan" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Developers, system admins</li>
+<li>Security professionals</li>
+<li>Tech enthusiasts</li>
+<li>Students learning programming</li>
+</ul>
+<h3 id="doanh-nghiep"><strong>Doanh nghiệp:</strong><a class="headerlink" href="#doanh-nghiep" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Google, Facebook, Amazon</li>
+<li>Banks và financial institutions</li>
+<li>Government agencies</li>
+<li>Universities và research centers</li>
+</ul>
+<hr />
+<h2 id="ket-luan">Kết luận<a class="headerlink" href="#ket-luan" title="Permanent link">&para;</a></h2>
+<p>Linux là foundation của internet và cloud computing hiện đại. Học Linux = mở cửa career trong:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>• DevOps Engineering
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>• Cloud Architecture  
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>• System Administration
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>• Cybersecurity
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>• Software Development
+</code></pre></div>
 
 
 
@@ -2208,7 +2212,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Docker Complete Project Structure">
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Index">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2218,20 +2222,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Docker Complete Project Structure
+                Index
               </div>
             </div>
           </a>
         
         
           
-          <a href="../troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Sau: Troubleshooting Guide">
+          <a href="../../../network/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Roadmap">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Troubleshooting Guide
+                Roadmap
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2292,10 +2296,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
