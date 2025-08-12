@@ -1,10 +1,12 @@
 
 
 ## **Module 1 – Understanding Linux Concepts**
+- What is Operating System?
 - What is Linux?
 - Everyday use of Linux
 - Unix vs. Linux
-- Quiz, Homework and Handouts
+- Linux flavors
+- Linux vs. Windows
 
 ## **Module 2 – Download, Install and Configure**
 - What is Oracle Virtual Box?
@@ -266,4 +268,5 @@
   - Recovery procedures
   - System restoration
   - Business continuity
+
 
