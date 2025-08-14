@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/01.fundamental/05.network-topology/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/system-design/00.sys0-pre.md/00.api-web/10.pan-lan-man-wan/">
       
       
-        <link rel="prev" href="../04.NetworkGeography/">
+        <link rel="prev" href="../09.port-shouldKnow/">
       
       
-        <link rel="next" href="../../../observability/roadmap/">
+        <link rel="next" href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng - DraDoc</title>
+        <title>Các Loại Mạng Cơ Bản Trong Networking: PAN, LAN, MAN, WAN - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#network-topologies-huong-dan-chi-tiet-ve-cac-kieu-ket-noi-mang" class="md-skip">
+        <a href="#cac-loai-mang-co-ban-trong-networking-pan-lan-man-wan" class="md-skip">
           Bỏ qua
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+              Các Loại Mạng Cơ Bản Trong Networking: PAN, LAN, MAN, WAN
             
           </span>
         </div>
@@ -224,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -245,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -267,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/" class="md-tabs__link">
+        <a href="../../../../docker/" class="md-tabs__link">
           
   
   
@@ -289,7 +289,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../git/roadmap/" class="md-tabs__link">
+        <a href="../../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -311,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../iac/roadmap/" class="md-tabs__link">
+        <a href="../../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -333,7 +333,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../k8s/" class="md-tabs__link">
+        <a href="../../../../k8s/" class="md-tabs__link">
           
   
   
@@ -355,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../lab/" class="md-tabs__link">
+        <a href="../../../../lab/" class="md-tabs__link">
           
   
   
@@ -377,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../linux/" class="md-tabs__link">
+        <a href="../../../../linux/" class="md-tabs__link">
           
   
   
@@ -399,7 +399,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network/roadmap/" class="md-tabs__link">
+        <a href="../../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -417,13 +417,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../roadmap/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -445,7 +443,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../observability/roadmap/" class="md-tabs__link">
+        <a href="../../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -474,7 +472,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -499,7 +497,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../python/" class="md-tabs__link">
+        <a href="../../../../python/" class="md-tabs__link">
           
   
   
@@ -521,7 +519,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../security/roadmap/" class="md-tabs__link">
+        <a href="../../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -539,11 +537,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../system-design/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -565,7 +565,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../testing/roadmap/" class="md-tabs__link">
+        <a href="../../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -607,7 +607,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -637,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -683,7 +683,7 @@
   
   
   
-    <a href="../../../cicd/roadmap/" class="md-nav__link">
+    <a href="../../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -741,7 +741,7 @@
   
   
   
-    <a href="../../../docker/" class="md-nav__link">
+    <a href="../../../../docker/" class="md-nav__link">
       
   
   
@@ -795,7 +795,7 @@
   
   
   
-    <a href="../../../git/roadmap/" class="md-nav__link">
+    <a href="../../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -847,7 +847,7 @@
   
   
   
-    <a href="../../../iac/roadmap/" class="md-nav__link">
+    <a href="../../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -911,7 +911,7 @@
   
   
   
-    <a href="../../../k8s/" class="md-nav__link">
+    <a href="../../../../k8s/" class="md-nav__link">
       
   
   
@@ -965,7 +965,7 @@
   
   
   
-    <a href="../../../lab/" class="md-nav__link">
+    <a href="../../../../lab/" class="md-nav__link">
       
   
   
@@ -1025,7 +1025,7 @@
   
   
   
-    <a href="../../../linux/" class="md-nav__link">
+    <a href="../../../../linux/" class="md-nav__link">
       
   
   
@@ -1077,7 +1077,7 @@
   
   
   
-    <a href="../../../network/roadmap/" class="md-nav__link">
+    <a href="../../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -1102,40 +1102,37 @@
       
   
   
+  
+  
     
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
   
   
-    
-    
+    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
       
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
-            
   
   
   <span class="md-ellipsis">
@@ -1144,421 +1141,12 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            Network comtia
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../roadmap/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
-    
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    01.fundamental
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10_2">
-            <span class="md-nav__icon md-icon"></span>
-            01.fundamental
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.intro/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.net-component/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Các Thành Phần Cơ Bản Của Mạng Máy Tính
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03.network-resources/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.NetworkGeography/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gioi-thieu" class="md-nav__link">
-    <span class="md-ellipsis">
-      Giới Thiệu
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#physical-topology-vs-logical-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Physical Topology vs Logical Topology
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Physical Topology vs Logical Topology">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#physical-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Physical Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logical-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logical Topology
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-loai-network-topology-chinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      6 Loại Network Topology Chính
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6 Loại Network Topology Chính">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-point-to-point-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Point-to-Point Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-ring-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Ring Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-bus-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Bus Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-star-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Star Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-hub-and-spoke-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Hub-and-Spoke Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-mesh-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Mesh Topology
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Mesh Topology">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#full-mesh-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full-Mesh Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#partial-mesh-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Partial-Mesh Topology
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-sanh-tong-quan" class="md-nav__link">
-    <span class="md-ellipsis">
-      So Sánh Tổng Quan
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ket-luan" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kết Luận
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1595,7 +1183,7 @@
   
   
   
-    <a href="../../../observability/roadmap/" class="md-nav__link">
+    <a href="../../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -1651,7 +1239,7 @@
   
   
   
-    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -1707,7 +1295,7 @@
   
   
   
-    <a href="../../../python/" class="md-nav__link">
+    <a href="../../../../python/" class="md-nav__link">
       
   
   
@@ -1759,7 +1347,7 @@
   
   
   
-    <a href="../../../security/roadmap/" class="md-nav__link">
+    <a href="../../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -1784,6 +1372,8 @@
       
   
   
+    
+  
   
   
     
@@ -1801,24 +1391,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../../system-design/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -1827,12 +1419,695 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            System design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_2" id="__nav_15_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.sys0 pre.md
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_2">
+            <span class="md-nav__icon md-icon"></span>
+            00.sys0 pre.md
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_2_1" id="__nav_15_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.api web
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            00.api web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00.Short-longPolling-SSE-WebSocket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00.Short longPolling SSE WebSocket
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.loadbalancer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.loadbalancer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.5http-not-use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.5http not use
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.gRPC-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.gRPC work
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.NAT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NAT (Network Address Translation): Chìa khóa mở rộng Internet hiện đại
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.HTTP-Headers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.HTTP Headers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.InternetTrafficRoutingPolicies-DNSpolicies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chính Sách Định Tuyến DNS: Hướng Dẫn Chi Tiết Quản Lý Traffic Internet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.BrowsersRenderWebPages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quy Trình Render Website: Từ HTML Đến Màn Hình
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.http2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08.http2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.port-shouldKnow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09.port shouldKnow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Các Loại Mạng Cơ Bản Trong Networking: PAN, LAN, MAN, WAN
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Các Loại Mạng Cơ Bản Trong Networking: PAN, LAN, MAN, WAN
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-mang-ca-nhan-personal-area-network-pan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Mạng Cá Nhân (Personal Area Network - PAN)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Mạng Cá Nhân (Personal Area Network - PAN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac-iem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-mang-cuc-bo-local-area-network-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mạng Cục Bộ (Local Area Network - LAN)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Mạng Cục Bộ (Local Area Network - LAN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac-iem_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mang-o-thi-metropolitan-area-network-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mạng Đô Thị (Metropolitan Area Network - MAN)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mạng Đô Thị (Metropolitan Area Network - MAN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mang-dien-rong-wide-area-network-wan" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mạng Diện Rộng (Wide Area Network - WAN)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Mạng Diện Rộng (Wide Area Network - WAN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      So Sánh Nhanh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết luận
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_15_3" id="__nav_15_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15_3">
+            <span class="md-nav__icon md-icon"></span>
+            03.Educative.io   Deep Dive into System Design Interview Skill Path 2023 8
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1869,7 +2144,7 @@
   
   
   
-    <a href="../../../testing/roadmap/" class="md-nav__link">
+    <a href="../../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -1917,37 +2192,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#gioi-thieu" class="md-nav__link">
+  <a href="#1-mang-ca-nhan-personal-area-network-pan" class="md-nav__link">
     <span class="md-ellipsis">
-      Giới Thiệu
+      1. Mạng Cá Nhân (Personal Area Network - PAN)
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#physical-topology-vs-logical-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Physical Topology vs Logical Topology
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Physical Topology vs Logical Topology">
+    <nav class="md-nav" aria-label="1. Mạng Cá Nhân (Personal Area Network - PAN)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#physical-topology" class="md-nav__link">
+  <a href="#ac-iem" class="md-nav__link">
     <span class="md-ellipsis">
-      Physical Topology
+      Đặc điểm:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logical-topology" class="md-nav__link">
+  <a href="#ung-dung" class="md-nav__link">
     <span class="md-ellipsis">
-      Logical Topology
+      Ứng dụng:
     </span>
   </a>
   
@@ -1959,90 +2225,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-loai-network-topology-chinh" class="md-nav__link">
+  <a href="#2-mang-cuc-bo-local-area-network-lan" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Loại Network Topology Chính
+      2. Mạng Cục Bộ (Local Area Network - LAN)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6 Loại Network Topology Chính">
+    <nav class="md-nav" aria-label="2. Mạng Cục Bộ (Local Area Network - LAN)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-point-to-point-topology" class="md-nav__link">
+  <a href="#ac-iem_1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Point-to-Point Topology
+      Đặc điểm:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-ring-topology" class="md-nav__link">
+  <a href="#ung-dung_1" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Ring Topology
+      Ứng dụng:
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-bus-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Bus Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-star-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Star Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-hub-and-spoke-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Hub-and-Spoke Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-mesh-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Mesh Topology
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Mesh Topology">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#full-mesh-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full-Mesh Topology
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#partial-mesh-topology" class="md-nav__link">
-    <span class="md-ellipsis">
-      Partial-Mesh Topology
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2052,9 +2258,75 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#so-sanh-tong-quan" class="md-nav__link">
+  <a href="#3-mang-o-thi-metropolitan-area-network-man" class="md-nav__link">
     <span class="md-ellipsis">
-      So Sánh Tổng Quan
+      3. Mạng Đô Thị (Metropolitan Area Network - MAN)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mạng Đô Thị (Metropolitan Area Network - MAN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac-iem_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mang-dien-rong-wide-area-network-wan" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mạng Diện Rộng (Wide Area Network - WAN)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Mạng Diện Rộng (Wide Area Network - WAN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ac-iem_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặc điểm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ung-dung_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ứng dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      So Sánh Nhanh
     </span>
   </a>
   
@@ -2063,7 +2335,7 @@
         <li class="md-nav__item">
   <a href="#ket-luan" class="md-nav__link">
     <span class="md-ellipsis">
-      Kết Luận
+      Kết luận
     </span>
   </a>
   
@@ -2085,7 +2357,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/01.fundamental/05.network-topology.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/system-design/00.sys0-pre.md/00.api-web/10.pan-lan-man-wan.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2093,215 +2365,109 @@
   
 
 
-<h1 id="network-topologies-huong-dan-chi-tiet-ve-cac-kieu-ket-noi-mang">Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng<a class="headerlink" href="#network-topologies-huong-dan-chi-tiet-ve-cac-kieu-ket-noi-mang" title="Permanent link">&para;</a></h1>
-<h2 id="gioi-thieu">Giới Thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">&para;</a></h2>
-<p>Topology mạng là một khái niệm cơ bản trong networking, đề cập đến cách sắp xếp các thành phần khác nhau như liên kết, nodes, clients và servers tạo nên một mạng máy tính. Hiểu rõ các loại topology khác nhau là điều quan trọng khi thiết kế một hạ tầng mạng hiệu quả và ổn định.</p>
-<h2 id="physical-topology-vs-logical-topology">Physical Topology vs Logical Topology<a class="headerlink" href="#physical-topology-vs-logical-topology" title="Permanent link">&para;</a></h2>
-<p>Trước khi tìm hiểu về 6 loại topology chính, chúng ta cần hiểu cách chúng được tài liệu hóa trong các sơ đồ mạng.</p>
-<h3 id="physical-topology">Physical Topology<a class="headerlink" href="#physical-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752572877462.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752572877462" src="../image/05.network-topology/1752572877462.png" /></a></p>
+<h1 id="cac-loai-mang-co-ban-trong-networking-pan-lan-man-wan">Các Loại Mạng Cơ Bản Trong Networking: PAN, LAN, MAN, WAN<a class="headerlink" href="#cac-loai-mang-co-ban-trong-networking-pan-lan-man-wan" title="Permanent link">&para;</a></h1>
+<p>Trong lĩnh vực mạng máy tính (networking), các loại mạng được phân loại dựa trên kích thước, phạm vi, và mục đích sử dụng. Bốn loại mạng phổ biến nhất là:<br />
+- <strong>PAN (Personal Area Network)</strong>
+- <strong>LAN (Local Area Network)</strong>
+- <strong>MAN (Metropolitan Area Network)</strong>
+- <strong>WAN (Wide Area Network)</strong></p>
+<p>Hãy cùng tìm hiểu chi tiết về từng loại mạng này, đặc điểm cũng như các trường hợp ứng dụng thực tế.</p>
+<hr />
+<h2 id="1-mang-ca-nhan-personal-area-network-pan">1. Mạng Cá Nhân (Personal Area Network - PAN)<a class="headerlink" href="#1-mang-ca-nhan-personal-area-network-pan" title="Permanent link">&para;</a></h2>
+<p><strong>PAN</strong> là loại mạng nhỏ nhất, thường được sử dụng để kết nối các thiết bị cá nhân trong phạm vi rất gần (vài mét), phục vụ một người dùng.</p>
+<h3 id="ac-iem">Đặc điểm:<a class="headerlink" href="#ac-iem" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Định nghĩa</strong>: Cho thấy cách các thiết bị và thành phần mạng được kết nối vật lý thông qua các loại cáp đồng hoặc quang.</li>
-<li><strong>Ví dụ</strong>: Sơ đồ mặt bằng tòa nhà hiển thị vị trí thực tế của máy tính, router, switch và đường cáp.</li>
+<li>Phạm vi: Rất nhỏ, thường dưới 10 mét.</li>
+<li>Thiết bị: Smartphone, laptop, đồng hồ thông minh, tai nghe Bluetooth,...</li>
+<li>Công nghệ: Bluetooth, USB, ZigBee,…</li>
 </ul>
-<h3 id="logical-topology">Logical Topology<a class="headerlink" href="#logical-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752572943379.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752572943379" src="../image/05.network-topology/1752572943379.png" /></a></p>
+<h3 id="ung-dung">Ứng dụng:<a class="headerlink" href="#ung-dung" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Định nghĩa</strong>: Mô tả cách dữ liệu thực sự di chuyển qua mạng.</li>
-<li><strong>Đặc điểm</strong>: Hiển thị workstation, router, switch và cách chúng kết nối nhưng không thể hiện vị trí vật lý thực tế.</li>
+<li>Kết nối điện thoại với tai nghe Bluetooth để nghe nhạc hay đàm thoại rảnh tay.</li>
+<li>Chia sẻ dữ liệu giữa điện thoại và laptop qua Bluetooth hoặc cáp USB.</li>
+<li>Đồng bộ hóa dữ liệu giữa các thiết bị cá nhân như điện thoại, đồng hồ thông minh.</li>
 </ul>
-<h2 id="6-loai-network-topology-chinh">6 Loại Network Topology Chính<a class="headerlink" href="#6-loai-network-topology-chinh" title="Permanent link">&para;</a></h2>
-<h3 id="1-point-to-point-topology">1. Point-to-Point Topology<a class="headerlink" href="#1-point-to-point-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752572976286.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752572976286" src="../image/05.network-topology/1752572976286.png" /></a></p>
-<p><strong>Đặc điểm:</strong></p>
+<hr />
+<h2 id="2-mang-cuc-bo-local-area-network-lan">2. Mạng Cục Bộ (Local Area Network - LAN)<a class="headerlink" href="#2-mang-cuc-bo-local-area-network-lan" title="Permanent link">&para;</a></h2>
+<p><strong>LAN</strong> là mạng cục bộ, kết nối các thiết bị trong một khu vực hạn chế như nhà ở, văn phòng, phòng lab hoặc một tòa nhà.</p>
+<h3 id="ac-iem_1">Đặc điểm:<a class="headerlink" href="#ac-iem_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Hình thức đơn giản nhất của topology mạng</li>
-<li>Kết nối trực tiếp giữa hai thiết bị</li>
-<li>Thường dùng để kết nối máy tính với thiết bị ngoại vi (máy in, scanner)</li>
+<li>Phạm vi: Từ vài mét đến vài trăm mét (phòng, tầng, tòa nhà).</li>
+<li>Thiết bị: Máy tính để bàn, máy in, server, switch, router,...</li>
+<li>Công nghệ: Ethernet, Wi-Fi.</li>
 </ul>
-<p><strong>Ưu điểm:</strong></p>
+<h3 id="ung-dung_1">Ứng dụng:<a class="headerlink" href="#ung-dung_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Đơn giản và đáng tin cậy</li>
-<li>Phù hợp cho kết nối quy mô nhỏ</li>
+<li>Chia sẻ máy in, file server, hoặc các thiết bị ngoại vi trong văn phòng.</li>
+<li>Hỗ trợ truyền thông, họp nhóm và cộng tác nội bộ nhanh chóng.</li>
+<li>Cung cấp truy cập Internet cho toàn bộ thiết bị trong nhà hoặc công ty nhỏ.</li>
 </ul>
-<p><strong>Nhược điểm:</strong></p>
+<hr />
+<h2 id="3-mang-o-thi-metropolitan-area-network-man">3. Mạng Đô Thị (Metropolitan Area Network - MAN)<a class="headerlink" href="#3-mang-o-thi-metropolitan-area-network-man" title="Permanent link">&para;</a></h2>
+<p><strong>MAN</strong> là loại mạng có phạm vi rộng hơn LAN, thường bao phủ một thành phố hoặc một khuôn viên lớn như trường đại học.</p>
+<h3 id="ac-iem_2">Đặc điểm:<a class="headerlink" href="#ac-iem_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Không thể mở rộng cho mạng lớn</li>
-<li><strong>Ngoại lệ</strong>: Sử dụng trong WAN connections để kết nối các văn phòng từ xa</li>
+<li>Phạm vi: Vài km đến vài chục km (một thành phố hoặc khu vực đô thị).</li>
+<li>Thiết bị: Router, switch, hệ thống cáp quang, thiết bị truyền dẫn tốc độ cao.</li>
+<li>Công nghệ: Fiber, Wireless MAN, Ethernet MAN (Metro Ethernet).</li>
 </ul>
-<h3 id="2-ring-topology">2. Ring Topology<a class="headerlink" href="#2-ring-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752573000604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573000604" src="../image/05.network-topology/1752573000604.png" /></a></p>
-<p><strong>Đặc điểm:</strong></p>
+<h3 id="ung-dung_2">Ứng dụng:<a class="headerlink" href="#ung-dung_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Mỗi thiết bị kết nối với hai thiết bị khác, tạo thành đường dẫn dữ liệu hình tròn</li>
-<li>Dữ liệu di chuyển theo một hướng (clockwise hoặc counterclockwise)</li>
+<li>Kết nối các cơ sở, chi nhánh của trường đại học, bệnh viện, doanh nghiệp trong một thành phố.</li>
+<li>Cung cấp Internet tốc độ cao cho cư dân và doanh nghiệp trong đô thị.</li>
+<li>Liên kết các cơ quan chính phủ, văn phòng trong cùng một khu vực hành chính.</li>
 </ul>
-<p><strong>Ưu điểm:</strong></p>
+<hr />
+<h2 id="4-mang-dien-rong-wide-area-network-wan">4. Mạng Diện Rộng (Wide Area Network - WAN)<a class="headerlink" href="#4-mang-dien-rong-wide-area-network-wan" title="Permanent link">&para;</a></h2>
+<p><strong>WAN</strong> là mạng diện rộng, kết nối các khu vực địa lý rất lớn, có thể là quốc gia, châu lục hoặc toàn cầu. Internet chính là một ví dụ điển hình của WAN.</p>
+<h3 id="ac-iem_3">Đặc điểm:<a class="headerlink" href="#ac-iem_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Ngăn chặn collision do luồng dữ liệu một chiều</li>
-<li>Thích hợp cho FDDI (Fiber Distributed Data Interface)</li>
+<li>Phạm vi: Rộng lớn, có thể lên đến hàng ngàn km hoặc toàn cầu.</li>
+<li>Thiết bị: Router chuyên dụng, thiết bị truyền dẫn vệ tinh, cáp quang biển...</li>
+<li>Công nghệ: MPLS, ATM, Frame Relay, Internet, VPN,...</li>
 </ul>
-<p><strong>Nhược điểm:</strong></p>
+<h3 id="ung-dung_3">Ứng dụng:<a class="headerlink" href="#ung-dung_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Một node lỗi có thể làm gián đoạn toàn bộ mạng</li>
-<li>Công nghệ cũ, ít được sử dụng hiện tại</li>
+<li>Kết nối các chi nhánh, văn phòng của tập đoàn đa quốc gia ở nhiều quốc gia khác nhau.</li>
+<li>Hỗ trợ truyền thông, trao đổi dữ liệu toàn cầu.</li>
+<li>Cho phép truy cập từ xa vào tài nguyên chung (máy chủ, ứng dụng, dịch vụ đám mây…).</li>
 </ul>
-<p><strong>FDDI Ring:</strong></p>
-<ul>
-<li>Hoạt động với cấu trúc dual ring (primary và secondary)</li>
-<li>Băng thông cao, phạm vi đến 200km</li>
-<li>Phù hợp cho campus networks và data centers</li>
-</ul>
-<h3 id="3-bus-topology">3. Bus Topology<a class="headerlink" href="#3-bus-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752573046179.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573046179" src="../image/05.network-topology/1752573046179.png" /></a></p>
-<p><strong>Đặc điểm:</strong></p>
-<ul>
-<li>Tất cả thiết bị kết nối với một cáp trung tâm (backbone/bus)</li>
-<li>Dữ liệu có sẵn cho mọi thiết bị nhưng chỉ recipient được xác định mới xử lý</li>
-</ul>
-<p><strong>Ưu điểm:</strong></p>
-<ul>
-<li>Dễ cài đặt</li>
-<li>Yêu cầu ít cáp hơn các layout khác</li>
-</ul>
-<p><strong>Nhược điểm:</strong></p>
-<ul>
-<li>Toàn bộ mạng ngừng hoạt động khi cáp chính lỗi</li>
-<li>Hiệu suất giảm khi thêm thiết bị (do data collision)</li>
-<li>Công nghệ cũ, ít sử dụng</li>
-</ul>
-<h3 id="4-star-topology">4. Star Topology<a class="headerlink" href="#4-star-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752573067570.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573067570" src="../image/05.network-topology/1752573067570.png" /></a></p>
-<p><strong>Đặc điểm:</strong></p>
-<ul>
-<li>Mỗi node kết nối với một điểm trung tâm (thường là network switch)</li>
-<li>Switch hoạt động như repeater cho luồng dữ liệu</li>
-<li><strong>Topology phổ biến nhất hiện tại</strong></li>
-</ul>
-<p><strong>Ưu điểm:</strong></p>
-<ul>
-<li>Rất robust - lỗi một link không ảnh hưởng các link khác</li>
-<li>Dễ quản lý và troubleshoot</li>
-<li>Mạng gia đình thường sử dụng topology này</li>
-</ul>
-<p><strong>Nhược điểm:</strong></p>
-<ul>
-<li>Phụ thuộc hoàn toàn vào switch trung tâm</li>
-<li>Switch lỗi = toàn bộ mạng ngừng hoạt động</li>
-</ul>
-<h3 id="5-hub-and-spoke-topology">5. Hub-and-Spoke Topology<a class="headerlink" href="#5-hub-and-spoke-topology" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../image/05.network-topology/1752573100565.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573100565" src="../image/05.network-topology/1752573100565.png" /></a></p>
-<p><strong>Đặc điểm:</strong></p>
-<ul>
-<li>Biến thể của star topology</li>
-<li>Node trung tâm (hub) kết nối với nhiều nodes (spokes)</li>
-<li>Spokes không kết nối trực tiếp với nhau</li>
-</ul>
-<p><strong>Ứng dụng thực tế:</strong></p>
-<ul>
-<li><strong>Hàng không</strong>: Orlando → Atlanta → Los Angeles → Hawaii</li>
-<li><strong>Mạng viễn thông</strong>: Consolidate các văn phòng khu vực về hub trung tâm</li>
-</ul>
-<p><strong>Ưu điểm:</strong></p>
-<ul>
-<li>Tiết kiệm chi phí kết nối đường dài</li>
-<li>Tập trung băng thông cao giữa các hub chính</li>
-</ul>
-<p><strong>Nhược điểm:</strong></p>
-<ul>
-<li>Phụ thuộc vào hub trung tâm</li>
-<li>Latency cao do phải đi qua hub</li>
-</ul>
-<h3 id="6-mesh-topology">6. Mesh Topology<a class="headerlink" href="#6-mesh-topology" title="Permanent link">&para;</a></h3>
-<p><strong>Đặc điểm:</strong></p>
-<ul>
-<li>Kết nối point-to-point giữa mọi thiết bị</li>
-<li>Tạo mạng robust và redundant</li>
-</ul>
-<h4 id="full-mesh-topology">Full-Mesh Topology<a class="headerlink" href="#full-mesh-topology" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../image/05.network-topology/1752573160818.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573160818" src="../image/05.network-topology/1752573160818.png" /></a></p>
-<ul>
-<li><strong>Định nghĩa</strong>: Mọi node kết nối với mọi node khác</li>
-<li><strong>Công thức số kết nối</strong>: n × (n-1) ÷ 2</li>
-<li>3 nodes = 3 kết nối</li>
-<li>6 nodes = 15 kết nối</li>
-</ul>
-<p><strong>Ưu điểm:</strong></p>
-<ul>
-<li>Redundancy cao</li>
-<li>Nhiều đường backup</li>
-</ul>
-<p><strong>Nhược điểm:</strong></p>
-<ul>
-<li>Rất đắt và phức tạp</li>
-<li>Số kết nối tăng theo cấp số nhân</li>
-</ul>
-<h4 id="partial-mesh-topology">Partial-Mesh Topology<a class="headerlink" href="#partial-mesh-topology" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../image/05.network-topology/1752573195100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1752573195100" src="../image/05.network-topology/1752573195100.png" /></a></p>
-<ul>
-<li><strong>Định nghĩa</strong>: Một số nodes được kết nối full-mesh, các nodes khác chỉ kết nối với 1-2 thiết bị</li>
-<li><strong>Ứng dụng</strong>: Cân bằng giữa redundancy và cost</li>
-</ul>
-<h2 id="so-sanh-tong-quan">So Sánh Tổng Quan<a class="headerlink" href="#so-sanh-tong-quan" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="so-sanh-nhanh"><strong>So Sánh Nhanh</strong><a class="headerlink" href="#so-sanh-nhanh" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Topology</th>
-<th>Ưu điểm</th>
-<th>Nhược điểm</th>
-<th>Sử dụng</th>
+<th>Loại mạng</th>
+<th>Phạm vi</th>
+<th>Ví dụ ứng dụng</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Point-to-Point</td>
-<td>Đơn giản, đáng tin cậy</td>
-<td>Không scalable</td>
-<td>WAN connections</td>
+<td>PAN</td>
+<td>Vài mét</td>
+<td>Tai nghe Bluetooth, đồng bộ điện thoại</td>
 </tr>
 <tr>
-<td>Ring</td>
-<td>Không collision, FDDI support</td>
-<td>Single point of failure</td>
-<td>FDDI networks</td>
+<td>LAN</td>
+<td>Tòa nhà</td>
+<td>Văn phòng, nhà ở</td>
 </tr>
 <tr>
-<td>Bus</td>
-<td>Dễ cài đặt, ít cáp</td>
-<td>Performance giảm, cũ</td>
-<td>Legacy systems</td>
+<td>MAN</td>
+<td>Thành phố</td>
+<td>Khuôn viên trường đại học, kết nối công ty trong thành phố</td>
 </tr>
 <tr>
-<td>Star</td>
-<td>Robust, dễ quản lý</td>
-<td>Phụ thuộc switch</td>
-<td>Home/office networks</td>
-</tr>
-<tr>
-<td>Hub-and-Spoke</td>
-<td>Tiết kiệm, tập trung</td>
-<td>Phụ thuộc hub, latency</td>
-<td>Enterprise networks</td>
-</tr>
-<tr>
-<td>Mesh</td>
-<td>Redundancy cao</td>
-<td>Đắt, phức tạp</td>
-<td>Critical networks</td>
+<td>WAN</td>
+<td>Toàn cầu</td>
+<td>Internet, mạng doanh nghiệp đa quốc gia</td>
 </tr>
 </tbody>
 </table>
-<h2 id="ket-luan">Kết Luận<a class="headerlink" href="#ket-luan" title="Permanent link">&para;</a></h2>
-<p>Hiểu biết về các loại topology mạng là nền tảng quan trọng cho thiết kế và quản lý mạng. Mỗi topology có những ưu nhược điểm riêng, phù hợp với các scenario khác nhau:</p>
-<ul>
-<li><strong>Point-to-point</strong>: Ideal cho kết nối nhỏ và WAN links</li>
-<li><strong>Ring/Bus</strong>: Công nghệ legacy với vulnerability cao</li>
-<li><strong>Star</strong>: Phổ biến nhất, cân bằng tốt giữa reliability và cost</li>
-<li><strong>Hub-and-spoke</strong>: Tốt cho enterprise với centralized management</li>
-<li><strong>Mesh</strong>: Maximum redundancy nhưng cost cao</li>
-</ul>
-<p>Việc lựa chọn topology phù hợp phụ thuộc vào yêu cầu cụ thể về performance, redundancy, cost và scalability của tổ chức.</p>
 <hr />
+<h2 id="ket-luan"><strong>Kết luận</strong><a class="headerlink" href="#ket-luan" title="Permanent link">&para;</a></h2>
+<p>Việc hiểu rõ các loại mạng này giúp bạn lựa chọn giải pháp phù hợp cho nhu cầu cá nhân, doanh nghiệp hoặc tổ chức. Mỗi loại mạng đều có ưu và nhược điểm riêng, phù hợp với phạm vi và mục đích sử dụng nhất định. Trong thời đại số hóa, mạng máy tính ngày càng trở nên quan trọng, là nền tảng cho mọi hoạt động truyền thông, học tập, làm việc và giải trí.</p>
 
 
 
@@ -2408,7 +2574,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../04.NetworkGeography/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN">
+          <a href="../09.port-shouldKnow/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 09.port shouldKnow">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2418,20 +2584,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+                09.port shouldKnow
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../../observability/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Observability Complete Learning Roadmap - Metrics, Logging &amp;amp; Tracing">
+          <a href="../../../03.Educative.io%20-%20Deep%20Dive%20into%20System%20Design%20Interview%20Skill%20Path%202023-8/Readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Observability Complete Learning Roadmap - Metrics, Logging &amp; Tracing
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2492,10 +2658,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
