@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/Programming/DSA/Basic/00.RAM/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/Programming/DSA/Basic/27.Hash-implementation/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../26.hash-usage/">
       
       
-        <link rel="next" href="../01.static-Array/">
+        <link rel="next" href="../../../../cicd/roadmap/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng - DraDoc</title>
+        <title>Hiểu Sâu HashMap: Cách HashMap Hoạt Động Bên Trong (Hash Implementation) - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#giai-thich-chi-tiet-ve-dsa-tong-quan-ve-cau-truc-du-lieu-va-mang" class="md-skip">
+        <a href="#hieu-sau-hashmap-cach-hashmap-hoat-ong-ben-trong-hash-implementation" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng
+              Hiểu Sâu HashMap: Cách HashMap Hoạt Động Bên Trong (Hash Implementation)
             
           </span>
         </div>
@@ -870,32 +870,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../00.RAM/" class="md-nav__link">
         
   
   
@@ -906,167 +884,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-cau-truc-du-lieu-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Cấu trúc dữ liệu là gì?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Cấu trúc dữ liệu là gì?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-ram-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1 RAM là gì?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-bit-byte-va-ia-chi-bo-nho" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 Bit, Byte, và Địa chỉ bộ nhớ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-mang-array-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Mảng (Array) là gì?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Mảng (Array) là gì?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-khai-niem" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Khái niệm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-cach-mang-uoc-luu-trong-ram" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Cách mảng được lưu trong RAM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.2 Cách mảng được lưu trong RAM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#neu-la-mang-ky-tu-char" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nếu là mảng ký tự (char):
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-khai-niem-lien-tuc-contiguous" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Khái niệm "liên tục" (Contiguous)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-ia-chi-bo-nho-memory-address" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.4 Địa chỉ bộ nhớ (Memory Address)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-ac-iem-cua-mang" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.5 Đặc điểm của mảng
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-ung-dung-thuc-te-va-vi-du-ma-nguon" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Ứng dụng thực tế và ví dụ mã nguồn
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Ứng dụng thực tế và ví dụ mã nguồn">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-khai-bao-va-truy-xuat-mang-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Khai báo và truy xuất mảng (Python)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tong-ket" class="md-nav__link">
-    <span class="md-ellipsis">
-      . Tổng kết
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1145,10 +962,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../27.Hash-implementation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Hiểu Sâu HashMap: Cách HashMap Hoạt Động Bên Trong (Hash Implementation)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1159,6 +998,227 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-hashmap-la-gi-tai-sao-lai-than-thanh-en-vay" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. HashMap là gì &amp; tại sao lại "thần thánh" đến vậy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hashmap-hoat-ong-nhu-the-nao-tu-tu-duy-en-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. HashMap hoạt động như thế nào? (Từ tư duy đến thực tế)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. HashMap hoạt động như thế nào? (Từ tư duy đến thực tế)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-y-tuong-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Ý tưởng cốt lõi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-hash-function-ham-bam" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Hash Function (Hàm băm)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Hash Function (Hàm băm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-on-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ví dụ đơn giản:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-chen-insert-tim-kiem-get-xoa-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Chèn (insert), Tìm kiếm (get), Xóa (delete)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-va-cham-collision-tai-sao-va-xu-ly-ra-sao" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Va chạm (Collision): Tại sao và xử lý ra sao?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Va chạm (Collision): Tại sao và xử lý ra sao?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-collision-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Collision là gì?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cac-cach-xu-ly-va-cham" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Các cách xử lý va chạm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-khi-nao-can-mo-rong-mang-rehashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Khi nào cần mở rộng mảng (rehashing)?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Khi nào cần mở rộng mảng (rehashing)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-load-factor-tai-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Load factor (tải trọng)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-rehashing-tang-kich-thuoc-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Rehashing (tăng kích thước mảng)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-demo-code-hashmap-on-gian-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Demo code HashMap đơn giản (Python)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Demo code HashMap đơn giản (Python)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-rehashing-tang-kich-thuoc-hashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Rehashing (tăng kích thước HashMap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tong-ket-khi-nao-hashmap-nhanh-khi-nao-cham" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tổng kết: Khi nào HashMap nhanh, khi nào chậm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-meo-ghi-nho-va-tra-loi-phong-van" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Mẹo ghi nhớ và trả lời phỏng vấn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-so-sanh-nhanh-cac-khai-niem" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. So sánh nhanh các khái niệm:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Kết luận
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2040,28 +2100,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-cau-truc-du-lieu-la-gi" class="md-nav__link">
+  <a href="#1-hashmap-la-gi-tai-sao-lai-than-thanh-en-vay" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Cấu trúc dữ liệu là gì?
+      1. HashMap là gì &amp; tại sao lại "thần thánh" đến vậy?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Cấu trúc dữ liệu là gì?">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hashmap-hoat-ong-nhu-the-nao-tu-tu-duy-en-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. HashMap hoạt động như thế nào? (Từ tư duy đến thực tế)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. HashMap hoạt động như thế nào? (Từ tư duy đến thực tế)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-ram-la-gi" class="md-nav__link">
+  <a href="#21-y-tuong-cot-loi" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1 RAM là gì?
+      2.1. Ý tưởng cốt lõi
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-bit-byte-va-ia-chi-bo-nho" class="md-nav__link">
+  <a href="#22-hash-function-ham-bam" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 Bit, Byte, và Địa chỉ bộ nhớ
+      2.2. Hash Function (Hàm băm)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Hash Function (Hàm băm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-on-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ví dụ đơn giản:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-chen-insert-tim-kiem-get-xoa-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Chèn (insert), Tìm kiếm (get), Xóa (delete)
     </span>
   </a>
   
@@ -2073,70 +2166,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-mang-array-la-gi" class="md-nav__link">
+  <a href="#3-va-cham-collision-tai-sao-va-xu-ly-ra-sao" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Mảng (Array) là gì?
+      3. Va chạm (Collision): Tại sao và xử lý ra sao?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Mảng (Array) là gì?">
+    <nav class="md-nav" aria-label="3. Va chạm (Collision): Tại sao và xử lý ra sao?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-khai-niem" class="md-nav__link">
+  <a href="#31-collision-la-gi" class="md-nav__link">
     <span class="md-ellipsis">
-      2.1 Khái niệm
+      3.1. Collision là gì?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-cach-mang-uoc-luu-trong-ram" class="md-nav__link">
+  <a href="#32-cac-cach-xu-ly-va-cham" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2 Cách mảng được lưu trong RAM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.2 Cách mảng được lưu trong RAM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#neu-la-mang-ky-tu-char" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nếu là mảng ký tự (char):
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-khai-niem-lien-tuc-contiguous" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Khái niệm "liên tục" (Contiguous)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-ia-chi-bo-nho-memory-address" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.4 Địa chỉ bộ nhớ (Memory Address)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-ac-iem-cua-mang" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.5 Đặc điểm của mảng
+      3.2. Các cách xử lý va chạm
     </span>
   </a>
   
@@ -2148,19 +2199,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-ung-dung-thuc-te-va-vi-du-ma-nguon" class="md-nav__link">
+  <a href="#4-khi-nao-can-mo-rong-mang-rehashing" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Ứng dụng thực tế và ví dụ mã nguồn
+      4. Khi nào cần mở rộng mảng (rehashing)?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Ứng dụng thực tế và ví dụ mã nguồn">
+    <nav class="md-nav" aria-label="4. Khi nào cần mở rộng mảng (rehashing)?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-khai-bao-va-truy-xuat-mang-python" class="md-nav__link">
+  <a href="#41-load-factor-tai-trong" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Khai báo và truy xuất mảng (Python)
+      4.1. Load factor (tải trọng)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-rehashing-tang-kich-thuoc-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Rehashing (tăng kích thước mảng)
     </span>
   </a>
   
@@ -2172,9 +2232,69 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tong-ket" class="md-nav__link">
+  <a href="#5-demo-code-hashmap-on-gian-python" class="md-nav__link">
     <span class="md-ellipsis">
-      . Tổng kết
+      5. Demo code HashMap đơn giản (Python)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Demo code HashMap đơn giản (Python)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#su-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sử dụng:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-rehashing-tang-kich-thuoc-hashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Rehashing (tăng kích thước HashMap)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tong-ket-khi-nao-hashmap-nhanh-khi-nao-cham" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tổng kết: Khi nào HashMap nhanh, khi nào chậm?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-meo-ghi-nho-va-tra-loi-phong-van" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Mẹo ghi nhớ và trả lời phỏng vấn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-so-sanh-nhanh-cac-khai-niem" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. So sánh nhanh các khái niệm:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Kết luận
     </span>
   </a>
   
@@ -2196,7 +2316,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/Programming/DSA/Basic/00.RAM.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/Programming/DSA/Basic/27.Hash-implementation.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2204,124 +2324,206 @@
   
 
 
-<h1 id="giai-thich-chi-tiet-ve-dsa-tong-quan-ve-cau-truc-du-lieu-va-mang">Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng<a class="headerlink" href="#giai-thich-chi-tiet-ve-dsa-tong-quan-ve-cau-truc-du-lieu-va-mang" title="Permanent link">&para;</a></h1>
-<h2 id="1-cau-truc-du-lieu-la-gi">1. Cấu trúc dữ liệu là gì?<a class="headerlink" href="#1-cau-truc-du-lieu-la-gi" title="Permanent link">&para;</a></h2>
-<p>Trong khoa học máy tính, <strong>cấu trúc dữ liệu</strong> (Data Structure - DSA) là cách tổ chức và lưu trữ dữ liệu để có thể sử dụng hiệu quả. Nói một cách đơn giản, đó là cách mà dữ liệu được sắp xếp, truy xuất và thao tác bên trong máy tính, cụ thể là trong RAM (Bộ nhớ truy cập ngẫu nhiên).</p>
-<h3 id="11-ram-la-gi">1.1 RAM là gì?<a class="headerlink" href="#11-ram-la-gi" title="Permanent link">&para;</a></h3>
+<h1 id="hieu-sau-hashmap-cach-hashmap-hoat-ong-ben-trong-hash-implementation">Hiểu Sâu HashMap: Cách HashMap Hoạt Động Bên Trong (Hash Implementation)<a class="headerlink" href="#hieu-sau-hashmap-cach-hashmap-hoat-ong-ben-trong-hash-implementation" title="Permanent link">&para;</a></h1>
+<p>Bạn muốn tự tin phỏng vấn và làm bài về cấu trúc dữ liệu HashMap? Hãy đọc bài này – mình sẽ giúp bạn hiểu từ gốc đến ngọn, không chỉ biết dùng mà còn nắm rõ cách HashMap làm việc bên trong!</p>
+<hr />
+<h2 id="1-hashmap-la-gi-tai-sao-lai-than-thanh-en-vay">1. HashMap là gì &amp; tại sao lại "thần thánh" đến vậy?<a class="headerlink" href="#1-hashmap-la-gi-tai-sao-lai-than-thanh-en-vay" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>RAM</strong> là nơi lưu trữ tạm thời tất cả biến, dữ liệu, và chương trình đang chạy.</li>
-<li>RAM được đo bằng <strong>byte</strong> (B). Máy tính hiện đại thường có từ vài GB (gigabyte) RAM trở lên (1 GB ≈ 1 tỷ byte).</li>
+<li><strong>HashMap</strong> là một cấu trúc dữ liệu dùng để lưu trữ các cặp <strong>key-value</strong> (khóa-giá trị).</li>
+<li>Bạn có thể tra cứu, thêm, xóa một phần tử theo key một cách cực kỳ nhanh – trung bình chỉ mất O(1).</li>
+<li>Được sử dụng ở khắp mọi nơi: từ đếm tần suất, tra cứu dữ liệu, cache, đến các bài toán xử lý chuỗi, mảng...</li>
 </ul>
-<h3 id="12-bit-byte-va-ia-chi-bo-nho">1.2 Bit, Byte, và Địa chỉ bộ nhớ<a class="headerlink" href="#12-bit-byte-va-ia-chi-bo-nho" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="2-hashmap-hoat-ong-nhu-the-nao-tu-tu-duy-en-thuc-te">2. HashMap hoạt động như thế nào? (Từ tư duy đến thực tế)<a class="headerlink" href="#2-hashmap-hoat-ong-nhu-the-nao-tu-tu-duy-en-thuc-te" title="Permanent link">&para;</a></h2>
+<h3 id="21-y-tuong-cot-loi">2.1. Ý tưởng cốt lõi<a class="headerlink" href="#21-y-tuong-cot-loi" title="Permanent link">&para;</a></h3>
 <ul>
-<li>1 <strong>bit</strong> là đơn vị nhỏ nhất, chỉ nhận giá trị 0 hoặc 1.</li>
-<li>1 <strong>byte</strong> = 8 <strong>bit</strong>.</li>
-<li>RAM là một dãy liên tục các <strong>byte</strong>. Mỗi byte có một <strong>địa chỉ</strong> duy nhất (address) trong RAM, giúp máy tính biết chính xác nơi lưu trữ từng giá trị.</li>
+<li>Bạn hình dung HashMap <strong>bên trong là một cái mảng</strong> (<code>array</code>). Nhưng thay vì truy xuất theo số thứ tự (<code>array[0]</code>, <code>array[1]</code>...), bạn sẽ truy xuất theo key (ví dụ: "username", "email"...).</li>
+<li>Để chuyển từ key (có thể là chuỗi, số, tuple...) thành chỉ số trong mảng, <strong>cần một bước "băm" (hashing)</strong>.</li>
 </ul>
-<h2 id="2-mang-array-la-gi">2. Mảng (Array) là gì?<a class="headerlink" href="#2-mang-array-la-gi" title="Permanent link">&para;</a></h2>
-<h3 id="21-khai-niem">2.1 Khái niệm<a class="headerlink" href="#21-khai-niem" title="Permanent link">&para;</a></h3>
+<h3 id="22-hash-function-ham-bam">2.2. Hash Function (Hàm băm)<a class="headerlink" href="#22-hash-function-ham-bam" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Mảng</strong> là một cấu trúc dữ liệu lưu trữ nhiều giá trị cùng kiểu (ví dụ: số nguyên, ký tự), trong một khối bộ nhớ liên tục (contiguous block).</li>
-<li>Ví dụ, một mảng số nguyên: <code>[1, 3, 5]</code>.</li>
+<li><strong>Hash function</strong> là hàm nhận key và trả ra một số nguyên.</li>
+<li>Số nguyên này sẽ được dùng để xác định <strong>index</strong> trong mảng:<br />
+<code>index = hash(key) % capacity</code><br />
+  (capacity là kích thước mảng hiện tại)</li>
 </ul>
-<h3 id="22-cach-mang-uoc-luu-trong-ram">2.2 Cách mảng được lưu trong RAM<a class="headerlink" href="#22-cach-mang-uoc-luu-trong-ram" title="Permanent link">&para;</a></h3>
-<p>Giả sử bạn có mảng số nguyên:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[1, 3, 5]
+<h4 id="vi-du-on-gian">Ví dụ đơn giản:<a class="headerlink" href="#vi-du-on-gian" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Key: "lelongc"</li>
+<li>Hash: (giả sử) 123456</li>
+<li>Nếu capacity = 8 thì index = 123456 % 8 = 0</li>
+</ul>
+<h3 id="23-chen-insert-tim-kiem-get-xoa-delete">2.3. Chèn (insert), Tìm kiếm (get), Xóa (delete)<a class="headerlink" href="#23-chen-insert-tim-kiem-get-xoa-delete" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Chèn:</strong> Tính chỉ số bằng hash function → thêm cặp key-value vào đúng ô mảng đó.</li>
+<li><strong>Tìm kiếm:</strong> Hash key lấy chỉ số → kiểm tra ô mảng đó có key bạn cần hay không.</li>
+<li><strong>Xóa:</strong> Tương tự tìm kiếm, sau đó xóa cặp key-value nếu có.</li>
+</ul>
+<hr />
+<h2 id="3-va-cham-collision-tai-sao-va-xu-ly-ra-sao">3. Va chạm (Collision): Tại sao và xử lý ra sao?<a class="headerlink" href="#3-va-cham-collision-tai-sao-va-xu-ly-ra-sao" title="Permanent link">&para;</a></h2>
+<h3 id="31-collision-la-gi">3.1. Collision là gì?<a class="headerlink" href="#31-collision-la-gi" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Collision</strong> xảy ra khi 2 key khác nhau cho ra cùng index sau khi hash (vd: "abc" và "xyz" cùng ra index 0).</li>
+<li>Va chạm là điều không thể tránh khỏi vì số lượng key có thể rất lớn, nhưng mảng thì có giới hạn.</li>
+</ul>
+<h3 id="32-cac-cach-xu-ly-va-cham">3.2. Các cách xử lý va chạm<a class="headerlink" href="#32-cac-cach-xu-ly-va-cham" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Chaining (dùng linked list):</strong></li>
+<li>Mỗi ô trong mảng chứa một danh sách (list) các cặp key-value.</li>
+<li>Khi collision, chỉ cần thêm key-value mới vào danh sách này.</li>
+<li>
+<p>Khi tìm kiếm, duyệt trong danh sách để tìm đúng key.</p>
+</li>
+<li>
+<p><strong>Open Addressing (địa chỉ mở):</strong></p>
+</li>
+<li>Nếu index bị chiếm, tìm ô trống tiếp theo trong mảng (linear probing/quadratic probing/double hashing).</li>
+<li>Đa số các ngôn ngữ hiện đại dùng chaining vì dễ cài đặt &amp; ổn định.</li>
+</ul>
+<hr />
+<h2 id="4-khi-nao-can-mo-rong-mang-rehashing">4. Khi nào cần mở rộng mảng (rehashing)?<a class="headerlink" href="#4-khi-nao-can-mo-rong-mang-rehashing" title="Permanent link">&para;</a></h2>
+<h3 id="41-load-factor-tai-trong">4.1. Load factor (tải trọng)<a class="headerlink" href="#41-load-factor-tai-trong" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Load factor</strong> = số phần tử đã lưu / dung lượng mảng.</li>
+<li>Khi load factor quá cao (vd: 0.75), nguy cơ collision tăng mạnh → cần mở rộng mảng.</li>
+</ul>
+<h3 id="42-rehashing-tang-kich-thuoc-mang">4.2. Rehashing (tăng kích thước mảng)<a class="headerlink" href="#42-rehashing-tang-kich-thuoc-mang" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Tạo mảng mới lớn hơn (thường gấp đôi &amp; là số nguyên tố nếu tối ưu).</li>
+<li>Băm lại <strong>tất cả</strong> các key cũ theo capacity mới và chuyển sang mảng mới.</li>
+<li>Đây là thao tác tốn thời gian (O(n)), nhưng không diễn ra thường xuyên.</li>
+</ul>
+<hr />
+<h2 id="5-demo-code-hashmap-on-gian-python">5. Demo code HashMap đơn giản (Python)<a class="headerlink" href="#5-demo-code-hashmap-on-gian-python" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Pair</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">SimpleHashMap</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">capacity</span><span class="p">)]</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="c1"># Hash đơn giản (không tối ưu)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="n">bucket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="k">if</span> <span class="n">pair</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                <span class="n">pair</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>  <span class="c1"># cập nhật nếu đã tồn tại</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                <span class="k">return</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">bucket</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="n">bucket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="k">if</span> <span class="n">pair</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>                <span class="k">return</span> <span class="n">pair</span><span class="o">.</span><span class="n">value</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> không tồn tại&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="n">bucket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bucket</span><span class="p">):</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>            <span class="k">if</span> <span class="n">pair</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>                <span class="k">del</span> <span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>                <span class="k">return</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> không tồn tại&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="su-dung">Sử dụng:<a class="headerlink" href="#su-dung" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">hm</span> <span class="o">=</span> <span class="n">SimpleHashMap</span><span class="p">()</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">hm</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;lelongc&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">hm</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;abc@gmail.com&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">))</span>  <span class="c1"># lelongc</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">hm</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="6-rehashing-tang-kich-thuoc-hashmap">6. Rehashing (tăng kích thước HashMap)<a class="headerlink" href="#6-rehashing-tang-kich-thuoc-hashmap" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">_rehash</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">old_buckets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">*=</span> <span class="mi">2</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">buckets</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="p">)]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">old_buckets</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">bucket</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">pair</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">pair</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </code></pre></div>
 <ul>
-<li>Mỗi số nguyên (int) thường chiếm 4 <strong>byte</strong> (32 <strong>bit</strong>).</li>
-<li>Các giá trị được lưu liên tục trong RAM (ví dụ: tại các địa chỉ 0, 4, 8).</li>
-<li>Không có dữ liệu nào khác nằm xen giữa các phần tử của mảng.</li>
+<li>Sau khi số phần tử vượt quá ngưỡng (<code>load factor</code>), ta gọi <code>_rehash</code>.</li>
 </ul>
-<p><strong>Ví dụ minh họa:</strong></p>
+<hr />
+<h2 id="7-tong-ket-khi-nao-hashmap-nhanh-khi-nao-cham">7. Tổng kết: Khi nào HashMap nhanh, khi nào chậm?<a class="headerlink" href="#7-tong-ket-khi-nao-hashmap-nhanh-khi-nao-cham" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Nhanh (O(1))</strong>: Khi hash function phân phối tốt, load factor thấp, ít collision.</li>
+<li><strong>Chậm (O(n))</strong>: Khi nhiều collision (hash function tệ hoặc load factor cao), tất cả key cùng vào một bucket → phải duyệt hết list trong bucket.</li>
+<li><strong>Rehashing</strong> tốn O(n), nhưng không xảy ra thường xuyên nên không ảnh hưởng hiệu suất trung bình.</li>
+</ul>
+<hr />
+<h2 id="8-meo-ghi-nho-va-tra-loi-phong-van">8. Mẹo ghi nhớ và trả lời phỏng vấn<a class="headerlink" href="#8-meo-ghi-nho-va-tra-loi-phong-van" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Tôi sẽ triển khai HashMap bằng một mảng, dùng hash function để ánh xạ key thành index. Nếu collision, tôi dùng chaining để lưu nhiều cặp key-value trong cùng một bucket. Khi load factor cao, tôi sẽ rehash để tăng capacity.</strong></li>
+<li><strong>Độ phức tạp trung bình O(1), tệ nhất O(n), nhưng rehashing và collision được xử lý tốt thì luôn rất nhanh.</strong></li>
+</ul>
+<hr />
+<h2 id="9-so-sanh-nhanh-cac-khai-niem">9. So sánh nhanh các khái niệm:<a class="headerlink" href="#9-so-sanh-nhanh-cac-khai-niem" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Địa chỉ (Address)</th>
-<th>Giá trị (Value)</th>
+<th>Thuật ngữ</th>
+<th>Nghĩa là gì?</th>
+<th>Ví dụ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0</td>
-<td>1</td>
+<td>Hashing</td>
+<td>Băm key thành số nguyên</td>
+<td>hash("user") = 123456</td>
 </tr>
 <tr>
-<td>4</td>
-<td>3</td>
+<td>Collision</td>
+<td>2 key cho cùng index</td>
+<td>"abc", "xyz" cùng vào bucket 0</td>
 </tr>
 <tr>
-<td>8</td>
-<td>5</td>
+<td>Chaining</td>
+<td>Nhiều key-value trong một bucket</td>
+<td>bucket 2: [("apple", 5), ("cat", 8)]</td>
+</tr>
+<tr>
+<td>Open Addressing</td>
+<td>Tìm ô trống tiếp theo trong array</td>
+<td>Nếu bucket 3 trùng, thử bucket 4, 5...</td>
+</tr>
+<tr>
+<td>Load factor</td>
+<td>% lấp đầy của mảng</td>
+<td>6 phần tử, capacity 8, LF = 0.75</td>
+</tr>
+<tr>
+<td>Rehashing</td>
+<td>Tăng size mảng &amp; băm lại toàn bộ</td>
+<td>từ 8 lên 16, chuyển lại hết dữ liệu</td>
 </tr>
 </tbody>
 </table>
-<p>Tại sao lại là 0, 4, 8? Vì mỗi int chiếm 4 byte, nên địa chỉ tăng lên 4 đơn vị sau mỗi phần tử.</p>
-<h4 id="neu-la-mang-ky-tu-char">Nếu là mảng ký tự (char):<a class="headerlink" href="#neu-la-mang-ky-tu-char" title="Permanent link">&para;</a></h4>
+<hr />
+<h2 id="10-ket-luan">10. Kết luận<a class="headerlink" href="#10-ket-luan" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Một ký tự thường chiếm 1 <strong>byte</strong>.</li>
-<li>Mảng <code>['A', 'B', 'C']</code> sẽ nằm ở địa chỉ 0, 1, 2.</li>
+<li><strong>HashMap cực kỳ hiệu quả nhờ hashing, xử lý collision và rehashing hợp lý.</strong></li>
+<li><strong>Hiểu bản chất bên trong giúp bạn giải thích, debug, tối ưu và tự tin phỏng vấn.</strong></li>
+<li><strong>Muốn master? Hãy thử tự code lại 1 hashmap đơn giản!</strong></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Địa chỉ</th>
-<th>Giá trị</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>'A'</td>
-</tr>
-<tr>
-<td>1</td>
-<td>'B'</td>
-</tr>
-<tr>
-<td>2</td>
-<td>'C'</td>
-</tr>
-</tbody>
-</table>
-<h3 id="23-khai-niem-lien-tuc-contiguous">2.3 Khái niệm "liên tục" (Contiguous)<a class="headerlink" href="#23-khai-niem-lien-tuc-contiguous" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Liên tục</strong> có nghĩa là các phần tử của mảng nằm sát nhau trên bộ nhớ, không bị ngắt quãng bởi dữ liệu khác.</li>
-<li>Ưu điểm: Truy xuất phần tử cực nhanh (O(1)), chỉ cần biết vị trí đầu và kích thước phần tử.</li>
-</ul>
-<h3 id="24-ia-chi-bo-nho-memory-address">2.4 Địa chỉ bộ nhớ (Memory Address)<a class="headerlink" href="#24-ia-chi-bo-nho-memory-address" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Mỗi giá trị trong RAM được lưu tại một địa chỉ cụ thể.</li>
-<li>Địa chỉ này là số nguyên, bắt đầu từ 0, tăng dần.</li>
-<li>Truy xuất phần tử thứ <em>i</em> trong mảng: <code>địa_chỉ_đầu + i * kích_thước_phần_tử</code>.</li>
-</ul>
-<h3 id="25-ac-iem-cua-mang">2.5 Đặc điểm của mảng<a class="headerlink" href="#25-ac-iem-cua-mang" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Ưu điểm:</strong></li>
-<li>Truy xuất ngẫu nhiên nhanh (O(1)).</li>
-<li>Đơn giản, dễ sử dụng.</li>
-<li>
-<p>Lưu trữ dữ liệu cùng kiểu.</p>
-</li>
-<li>
-<p><strong>Nhược điểm:</strong></p>
-</li>
-<li>Kích thước cố định (không thêm/xóa phần tử dễ dàng).</li>
-<li>Phải biết trước số lượng phần tử.</li>
-<li>Việc chèn/xóa giữa mảng tốn thời gian (O(n)).</li>
-</ul>
-<h2 id="3-ung-dung-thuc-te-va-vi-du-ma-nguon">3. Ứng dụng thực tế và ví dụ mã nguồn<a class="headerlink" href="#3-ung-dung-thuc-te-va-vi-du-ma-nguon" title="Permanent link">&para;</a></h2>
-<h3 id="31-khai-bao-va-truy-xuat-mang-python">3.1 Khai báo và truy xuất mảng (Python)<a class="headerlink" href="#31-khai-bao-va-truy-xuat-mang-python" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Kết quả: 1</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># Kết quả: 5</span>
-</code></pre></div>
-<h2 id="tong-ket">. Tổng kết<a class="headerlink" href="#tong-ket" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Mảng</strong> là cấu trúc dữ liệu cơ bản, lưu trữ các phần tử cùng kiểu, liên tục trong RAM.</li>
-<li>Hiểu cách mảng hoạt động giúp ta tối ưu bộ nhớ và tăng hiệu quả chương trình.</li>
-<li>Các cấu trúc dữ liệu phức tạp hơn (Linked List, Stack, Queue, Tree, Hash Table, v.v.) đều xây dựng dựa trên nguyên lý lưu trữ dữ liệu trong bộ nhớ như thế này.</li>
-</ul>
+<hr />
+<p>Chúc bạn tự tin phỏng vấn, code và sử dụng HashMap như một pro!</p>
 
 
 
@@ -2428,7 +2630,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Index">
+          <a href="../26.hash-usage/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Hash Maps và Hash Sets: Cấu Trúc Dữ Liệu Quan Trọng Nhất Trong Lập Trình">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2438,20 +2640,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Index
+                Hash Maps và Hash Sets: Cấu Trúc Dữ Liệu Quan Trọng Nhất Trong Lập Trình
               </div>
             </div>
           </a>
         
         
           
-          <a href="../01.static-Array/" class="md-footer__link md-footer__link--next" aria-label="Sau: Hướng Dẫn Ghi Nhớ Lâu &amp;amp; Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python">
+          <a href="../../../../cicd/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: CI/CD Complete Learning Roadmap - GitHub Actions, GitLab CI, Jenkins">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Hướng Dẫn Ghi Nhớ Lâu &amp; Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python
+                CI/CD Complete Learning Roadmap - GitHub Actions, GitLab CI, Jenkins
               </div>
             </div>
             <div class="md-footer__button md-icon">
