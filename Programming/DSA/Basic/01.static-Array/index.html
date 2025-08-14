@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/linux/Module1/00.What%20is%20Operating%20System/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/Programming/DSA/Basic/01.static-Array/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../00.RAM/">
       
       
-        <link rel="next" href="../01.What%20is%20Linux/">
+        <link rel="next" href="../../../../cicd/roadmap/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>00.What is Operating System - DraDoc</title>
+        <title>Hướng Dẫn Ghi Nhớ Lâu & Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#inh-nghia" class="md-skip">
+        <a href="#huong-dan-ghi-nho-lau-hieu-sau-ve-ac-tinh-mang-arrays-vi-du-python" class="md-skip">
           Bỏ qua
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              00.What is Operating System
+              Hướng Dẫn Ghi Nhớ Lâu &amp; Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python
             
           </span>
         </div>
@@ -224,7 +224,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -241,6 +241,8 @@
   
   
   
+    
+  
   
     
     
@@ -248,6 +250,8 @@
   
   
   
+    
+  
   
     
     
@@ -255,11 +259,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../Programming/DSA/Basic/00.RAM/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../00.RAM/" class="md-tabs__link">
           
   
   
@@ -287,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -309,7 +315,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docker/" class="md-tabs__link">
+        <a href="../../../../docker/" class="md-tabs__link">
           
   
   
@@ -331,7 +337,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../git/roadmap/" class="md-tabs__link">
+        <a href="../../../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -353,7 +359,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../iac/roadmap/" class="md-tabs__link">
+        <a href="../../../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -375,7 +381,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../k8s/" class="md-tabs__link">
+        <a href="../../../../k8s/" class="md-tabs__link">
           
   
   
@@ -397,7 +403,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../lab/" class="md-tabs__link">
+        <a href="../../../../lab/" class="md-tabs__link">
           
   
   
@@ -415,13 +421,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../linux/" class="md-tabs__link">
           
   
   
@@ -443,7 +447,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network/roadmap/" class="md-tabs__link">
+        <a href="../../../../network/roadmap/" class="md-tabs__link">
           
   
   
@@ -465,7 +469,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -487,7 +491,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../observability/roadmap/" class="md-tabs__link">
+        <a href="../../../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -516,7 +520,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -541,7 +545,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../python/" class="md-tabs__link">
+        <a href="../../../../python/" class="md-tabs__link">
           
   
   
@@ -563,7 +567,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../security/roadmap/" class="md-tabs__link">
+        <a href="../../../../security/roadmap/" class="md-tabs__link">
           
   
   
@@ -585,7 +589,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../system-design/" class="md-tabs__link">
+        <a href="../../../../system-design/" class="md-tabs__link">
           
   
   
@@ -607,7 +611,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../testing/roadmap/" class="md-tabs__link">
+        <a href="../../../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -649,7 +653,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -679,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -698,6 +702,8 @@
       
   
   
+    
+  
   
   
     
@@ -706,35 +712,28 @@
         
       
     
-    
-    
-      
-      
-        
-      
     
     
       
         
         
       
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
-  
-  
-    
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../Programming/DSA/Basic/00.RAM/" class="md-nav__link">
       
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -743,16 +742,334 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    DSA
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            DSA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Basic
+    
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Basic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00.RAM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng
+    
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Hướng Dẫn Ghi Nhớ Lâu &amp; Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hướng Dẫn Ghi Nhớ Lâu &amp; Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-ket-nhanh-mang-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tổng Kết Nhanh: Mảng Là Gì?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cac-ac-tinh-can-nho-va-cach-nho-lau" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các Đặc Tính Cần Nhớ (và Cách Nhớ Lâu)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Các Đặc Tính Cần Nhớ (và Cách Nhớ Lâu)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-truy-xuat-oc-phan-tu-bat-ky-o1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Truy xuất (Đọc) phần tử bất kỳ: O(1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ghi-e-overwrite-phan-tu-o1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Ghi đè (Overwrite) phần tử: O(1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-themxoa-o-cuoi-mang-neu-con-cho-o1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Thêm/Xoá ở CUỐI mảng (nếu còn chỗ): O(1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-themxoa-o-giua-hoac-au-mang-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Thêm/Xoá ở GIỮA hoặc ĐẦU mảng: O(n)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-kich-thuoc-co-inh-static-array-vs-ong-dynamic-arraypython-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Kích thước cố định (Static array) vs. động (Dynamic array/Python list):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-meo-giup-nho-lau" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mẹo giúp NHỚ LÂU:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tong-hop-bang-ac-tinh-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tổng hợp Bảng Đặc Tính Array
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nho-lau-bang-cach-at-cau-hoi-code-ngay" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Nhớ lâu bằng cách ĐẶT CÂU HỎI &amp; CODE NGAY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-thuc-hanh-duyet-mang-thao-tac" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Thực hành: Duyệt mảng &amp; thao tác
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -789,7 +1106,7 @@
   
   
   
-    <a href="../../../cicd/roadmap/" class="md-nav__link">
+    <a href="../../../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -847,7 +1164,7 @@
   
   
   
-    <a href="../../../docker/" class="md-nav__link">
+    <a href="../../../../docker/" class="md-nav__link">
       
   
   
@@ -901,7 +1218,7 @@
   
   
   
-    <a href="../../../git/roadmap/" class="md-nav__link">
+    <a href="../../../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -953,7 +1270,7 @@
   
   
   
-    <a href="../../../iac/roadmap/" class="md-nav__link">
+    <a href="../../../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -1017,7 +1334,7 @@
   
   
   
-    <a href="../../../k8s/" class="md-nav__link">
+    <a href="../../../../k8s/" class="md-nav__link">
       
   
   
@@ -1071,7 +1388,7 @@
   
   
   
-    <a href="../../../lab/" class="md-nav__link">
+    <a href="../../../../lab/" class="md-nav__link">
       
   
   
@@ -1096,8 +1413,6 @@
       
   
   
-    
-  
   
   
     
@@ -1117,26 +1432,24 @@
     
     
       
-        
-        
-      
       
         
       
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../../../../linux/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -1145,700 +1458,12 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            Linux
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
       
-        
+        <span class="md-nav__icon md-icon"></span>
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Module1
-    
-  </span>
+    </a>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2">
-            <span class="md-nav__icon md-icon"></span>
-            Module1
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    00.What is Operating System
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    00.What is Operating System
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#inh-nghia" class="md-nav__link">
-    <span class="md-ellipsis">
-      Định nghĩa
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chuc-nang-chinh-cua-he-ieu-hanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chức năng chính của Hệ điều hành
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Chức năng chính của Hệ điều hành">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-quan-ly-tai-nguyen-phan-cung" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Quản lý tài nguyên phần cứng
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-giao-dien-nguoi-dung" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Giao diện người dùng
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-quan-ly-file-va-thu-muc" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Quản lý file và thư mục
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-quan-ly-tien-trinh-process-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Quản lý tiến trình (Process Management)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-bao-mat-va-kiem-soat-truy-cap" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Bảo mật và kiểm soát truy cập
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-thanh-phan-chinh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Các thành phần chính
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Các thành phần chính">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-kernel-nhan" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Kernel (Nhân)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-device-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Device Drivers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Shell
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-file-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. File System
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-loai-he-ieu-hanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Các loại Hệ điều hành
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Các loại Hệ điều hành">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-theo-cach-su-dung" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Theo cách sử dụng
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-theo-kien-truc" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Theo kiến trúc
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-theo-cach-xu-ly" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Theo cách xử lý
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vi-du-cac-he-ieu-hanh-pho-bien" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ví dụ các Hệ điều hành phổ biến
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ví dụ các Hệ điều hành phổ biến">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-microsoft-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Microsoft Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-macos-apple" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. macOS (Apple)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Linux
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-android-ios" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Android &amp; iOS
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tam-quan-trong" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tầm quan trọng
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.What%20is%20Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Linux là gì? - Giới thiệu cơ bản
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.Everyday%20use%20of%20Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Everyday use of Linux - Sử dụng Linux hàng ngày
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03.Unix%20vs.%20Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Unix vs. Linux - So sánh và phân biệt
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.Linux%20flavors/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Linux Flavors - Các "Hương vị" Linux
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.Linux%20vs.%20Windows/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Linux vs. Windows - So sánh nhanh
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../Module2/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Module2
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_9_3" id="__nav_9_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_3">
-            <span class="md-nav__icon md-icon"></span>
-            Module2
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Module2/01.What%20is%20Oracle%20Virtual%20Box/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    What is Oracle VirtualBox?
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Module3 System Access and File System
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_4">
-            <span class="md-nav__icon md-icon"></span>
-            Module3 System Access and File System
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Module3-System%20Access%20and%20File%20System/00.Important%20Things%20to%20Remember%20in%20Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🐧 Important Things to Remember in Linux
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Module3-System%20Access%20and%20File%20System/01-2-3.Accessing%20Linux%20system/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🔗 Accessing Linux System: SSH Clients &amp; Remote Access
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1875,7 +1500,7 @@
   
   
   
-    <a href="../../../network/roadmap/" class="md-nav__link">
+    <a href="../../../../network/roadmap/" class="md-nav__link">
       
   
   
@@ -1929,7 +1554,7 @@
   
   
   
-    <a href="../../../network-comtia/roadmap/" class="md-nav__link">
+    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
       
   
   
@@ -1981,7 +1606,7 @@
   
   
   
-    <a href="../../../observability/roadmap/" class="md-nav__link">
+    <a href="../../../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -2037,7 +1662,7 @@
   
   
   
-    <a href="../../../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -2093,7 +1718,7 @@
   
   
   
-    <a href="../../../python/" class="md-nav__link">
+    <a href="../../../../python/" class="md-nav__link">
       
   
   
@@ -2145,7 +1770,7 @@
   
   
   
-    <a href="../../../security/roadmap/" class="md-nav__link">
+    <a href="../../../../security/roadmap/" class="md-nav__link">
       
   
   
@@ -2203,7 +1828,7 @@
   
   
   
-    <a href="../../../system-design/" class="md-nav__link">
+    <a href="../../../../system-design/" class="md-nav__link">
       
   
   
@@ -2255,7 +1880,7 @@
   
   
   
-    <a href="../../../testing/roadmap/" class="md-nav__link">
+    <a href="../../../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -2293,6 +1918,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2301,64 +1928,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inh-nghia" class="md-nav__link">
+  <a href="#1-tong-ket-nhanh-mang-la-gi" class="md-nav__link">
     <span class="md-ellipsis">
-      Định nghĩa
+      1. Tổng Kết Nhanh: Mảng Là Gì?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chuc-nang-chinh-cua-he-ieu-hanh" class="md-nav__link">
+  <a href="#2-cac-ac-tinh-can-nho-va-cach-nho-lau" class="md-nav__link">
     <span class="md-ellipsis">
-      Chức năng chính của Hệ điều hành
+      2. Các Đặc Tính Cần Nhớ (và Cách Nhớ Lâu)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Chức năng chính của Hệ điều hành">
+    <nav class="md-nav" aria-label="2. Các Đặc Tính Cần Nhớ (và Cách Nhớ Lâu)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-quan-ly-tai-nguyen-phan-cung" class="md-nav__link">
+  <a href="#21-truy-xuat-oc-phan-tu-bat-ky-o1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Quản lý tài nguyên phần cứng
+      2.1. Truy xuất (Đọc) phần tử bất kỳ: O(1)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-giao-dien-nguoi-dung" class="md-nav__link">
+  <a href="#22-ghi-e-overwrite-phan-tu-o1" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Giao diện người dùng
+      2.2. Ghi đè (Overwrite) phần tử: O(1)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-quan-ly-file-va-thu-muc" class="md-nav__link">
+  <a href="#23-themxoa-o-cuoi-mang-neu-con-cho-o1" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Quản lý file và thư mục
+      2.3. Thêm/Xoá ở CUỐI mảng (nếu còn chỗ): O(1)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-quan-ly-tien-trinh-process-management" class="md-nav__link">
+  <a href="#24-themxoa-o-giua-hoac-au-mang-on" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Quản lý tiến trình (Process Management)
+      2.4. Thêm/Xoá ở GIỮA hoặc ĐẦU mảng: O(n)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-bao-mat-va-kiem-soat-truy-cap" class="md-nav__link">
+  <a href="#25-kich-thuoc-co-inh-static-array-vs-ong-dynamic-arraypython-list" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Bảo mật và kiểm soát truy cập
+      2.5. Kích thước cố định (Static array) vs. động (Dynamic array/Python list):
     </span>
   </a>
   
@@ -2370,153 +1997,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cac-thanh-phan-chinh" class="md-nav__link">
+  <a href="#3-meo-giup-nho-lau" class="md-nav__link">
     <span class="md-ellipsis">
-      Các thành phần chính
+      3. Mẹo giúp NHỚ LÂU:
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Các thành phần chính">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-kernel-nhan" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Kernel (Nhân)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-device-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Device Drivers
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Shell
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-file-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. File System
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cac-loai-he-ieu-hanh" class="md-nav__link">
+  <a href="#4-tong-hop-bang-ac-tinh-array" class="md-nav__link">
     <span class="md-ellipsis">
-      Các loại Hệ điều hành
+      4. Tổng hợp Bảng Đặc Tính Array
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Các loại Hệ điều hành">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-theo-cach-su-dung" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Theo cách sử dụng
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-theo-kien-truc" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Theo kiến trúc
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-theo-cach-xu-ly" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Theo cách xử lý
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-cac-he-ieu-hanh-pho-bien" class="md-nav__link">
+  <a href="#5-nho-lau-bang-cach-at-cau-hoi-code-ngay" class="md-nav__link">
     <span class="md-ellipsis">
-      Ví dụ các Hệ điều hành phổ biến
+      5. Nhớ lâu bằng cách ĐẶT CÂU HỎI &amp; CODE NGAY
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ví dụ các Hệ điều hành phổ biến">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-microsoft-windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Microsoft Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-macos-apple" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. macOS (Apple)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Linux
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-android-ios" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Android &amp; iOS
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tam-quan-trong" class="md-nav__link">
+  <a href="#6-thuc-hanh-duyet-mang-thao-tac" class="md-nav__link">
     <span class="md-ellipsis">
-      Tầm quan trọng
+      6. Thực hành: Duyệt mảng &amp; thao tác
     </span>
   </a>
   
@@ -2538,7 +2048,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/Module1/00.What is Operating System.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/Programming/DSA/Basic/01.static-Array.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2546,120 +2056,133 @@
   
 
 
-  <h1>00.What is Operating System</h1>
-
-<h2 id="inh-nghia">Định nghĩa<a class="headerlink" href="#inh-nghia" title="Permanent link">&para;</a></h2>
-<p><strong>Hệ điều hành (Operating System - OS)</strong> là một loại phần mềm hệ thống đóng vai trò như cầu nối giữa phần cứng máy tính và người dùng. Nó quản lý tài nguyên phần cứng và cung cấp các dịch vụ cần thiết cho các ứng dụng phần mềm, cho phép người dùng vận hành thiết bị của họ một cách mượt mà và hiệu quả.</p>
-<h2 id="chuc-nang-chinh-cua-he-ieu-hanh">Chức năng chính của Hệ điều hành<a class="headerlink" href="#chuc-nang-chinh-cua-he-ieu-hanh" title="Permanent link">&para;</a></h2>
-<h3 id="1-quan-ly-tai-nguyen-phan-cung">1. Quản lý tài nguyên phần cứng<a class="headerlink" href="#1-quan-ly-tai-nguyen-phan-cung" title="Permanent link">&para;</a></h3>
+<h1 id="huong-dan-ghi-nho-lau-hieu-sau-ve-ac-tinh-mang-arrays-vi-du-python">Hướng Dẫn Ghi Nhớ Lâu &amp; Hiểu Sâu Về Đặc Tính Mảng (Arrays) + Ví Dụ Python<a class="headerlink" href="#huong-dan-ghi-nho-lau-hieu-sau-ve-ac-tinh-mang-arrays-vi-du-python" title="Permanent link">&para;</a></h1>
+<h2 id="1-tong-ket-nhanh-mang-la-gi">1. Tổng Kết Nhanh: Mảng Là Gì?<a class="headerlink" href="#1-tong-ket-nhanh-mang-la-gi" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Quản lý CPU</strong>: Phân bổ thời gian xử lý cho các chương trình</li>
-<li><strong>Quản lý bộ nhớ</strong>: Điều phối việc sử dụng RAM và bộ nhớ ảo</li>
-<li><strong>Quản lý thiết bị lưu trữ</strong>: Kiểm soát ổ cứng, SSD và các thiết bị lưu trữ khác</li>
-<li><strong>Quản lý thiết bị ngoại vi</strong>: Điều khiển máy in, chuột, bàn phím, v.v.</li>
+<li><strong>Mảng</strong> = dãy giá trị cùng kiểu, lưu liền nhau trong RAM.</li>
+<li><strong>Chỉ số mảng (Index)</strong> luôn bắt đầu từ 0 (phần lớn ngôn ngữ, kể cả Python).</li>
 </ul>
-<h3 id="2-giao-dien-nguoi-dung">2. Giao diện người dùng<a class="headerlink" href="#2-giao-dien-nguoi-dung" title="Permanent link">&para;</a></h3>
+<h2 id="2-cac-ac-tinh-can-nho-va-cach-nho-lau">2. Các Đặc Tính Cần Nhớ (và Cách Nhớ Lâu)<a class="headerlink" href="#2-cac-ac-tinh-can-nho-va-cach-nho-lau" title="Permanent link">&para;</a></h2>
+<h3 id="21-truy-xuat-oc-phan-tu-bat-ky-o1">2.1. Truy xuất (Đọc) phần tử bất kỳ: O(1)<a class="headerlink" href="#21-truy-xuat-oc-phan-tu-bat-ky-o1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Cung cấp <strong>GUI</strong> (Graphical User Interface) hoặc <strong>CLI</strong> (Command Line Interface)</li>
-<li>Cho phép người dùng tương tác với máy tính dễ dàng</li>
-<li>Quản lý desktop, windows, icons, và menus</li>
+<li><strong>Ý nghĩa:</strong> Bạn muốn lấy phần tử thứ i, chỉ cần truy cập <code>array[i]</code> là xong, không cần duyệt từ đầu đến đó.</li>
+<li><strong>Cách nhớ:</strong>  </li>
+<li>RAM: Random Access Memory → Truy cập bất kỳ chỗ nào cũng NHANH như nhau.</li>
+<li>Tưởng tượng: Mảng như dãy ngăn kéo, biết số ngăn là mở ngay được!</li>
+<li><strong>Ví dụ Python:</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 10</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 30</span>
+</code></pre></div></li>
 </ul>
-<h3 id="3-quan-ly-file-va-thu-muc">3. Quản lý file và thư mục<a class="headerlink" href="#3-quan-ly-file-va-thu-muc" title="Permanent link">&para;</a></h3>
+<h3 id="22-ghi-e-overwrite-phan-tu-o1">2.2. Ghi đè (Overwrite) phần tử: O(1)<a class="headerlink" href="#22-ghi-e-overwrite-phan-tu-o1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Tổ chức và quản lý hệ thống file</li>
-<li>Cung cấp quyền truy cập và bảo mật file</li>
-<li>Hỗ trợ các thao tác copy, move, delete, rename</li>
+<li><strong>Ý nghĩa:</strong> Gắn giá trị mới vào vị trí nào cũng cực nhanh.</li>
+<li><strong>Ví dụ Python:</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>  <span class="c1"># arr giờ là [10, 99, 30, 40]</span>
+</code></pre></div></li>
 </ul>
-<h3 id="4-quan-ly-tien-trinh-process-management">4. Quản lý tiến trình (Process Management)<a class="headerlink" href="#4-quan-ly-tien-trinh-process-management" title="Permanent link">&para;</a></h3>
+<h3 id="23-themxoa-o-cuoi-mang-neu-con-cho-o1">2.3. Thêm/Xoá ở CUỐI mảng (nếu còn chỗ): O(1)<a class="headerlink" href="#23-themxoa-o-cuoi-mang-neu-con-cho-o1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Khởi tạo, thực thi và kết thúc các chương trình</li>
-<li><strong>Multitasking</strong>: Cho phép nhiều chương trình chạy đồng thời</li>
-<li><strong>Scheduling</strong>: Lên lịch thực thi các tiến trình</li>
+<li><strong>Ý nghĩa:</strong> Thêm hoặc xoá phần tử cuối cùng thì cũng như truy cập bình thường, rất nhanh.</li>
+<li><strong>Ví dụ Python:</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="c1"># Thêm 50 vào cuối: [10, 99, 30, 40, 50]</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">arr</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>       <span class="c1"># Xoá cuối: [10, 99, 30, 40]</span>
+</code></pre></div></li>
 </ul>
-<h3 id="5-bao-mat-va-kiem-soat-truy-cap">5. Bảo mật và kiểm soát truy cập<a class="headerlink" href="#5-bao-mat-va-kiem-soat-truy-cap" title="Permanent link">&para;</a></h3>
+<h3 id="24-themxoa-o-giua-hoac-au-mang-on">2.4. Thêm/Xoá ở GIỮA hoặc ĐẦU mảng: O(n)<a class="headerlink" href="#24-themxoa-o-giua-hoac-au-mang-on" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Xác thực người dùng (login/password)</li>
-<li>Phân quyền truy cập tài nguyên</li>
-<li>Bảo vệ dữ liệu khỏi truy cập trái phép</li>
+<li><strong>Ý nghĩa:</strong>  </li>
+<li>Nếu muốn chèn 1 giá trị vào giữa, phải DỜI các phần tử phía sau ra sau 1 vị trí.</li>
+<li>Nếu xoá 1 giá trị ở giữa, phải DỜI các phần tử phía sau lên trước 1 vị trí.</li>
+<li><strong>Cách nhớ:</strong>  </li>
+<li>Tưởng tượng mảng như đoàn tàu ghế liền nhau, muốn chèn/xoá ở giữa phải dịch chuyển cả đoàn ghế phía sau.</li>
+<li><strong>Ví dụ Python:</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">77</span><span class="p">)</span>  <span class="c1"># Chèn 77 vào index 1: [10, 77, 99, 30, 40]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">arr</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>         <span class="c1"># Xoá phần tử ở index 2: [10, 77, 30, 40]</span>
+</code></pre></div></li>
 </ul>
-<h2 id="cac-thanh-phan-chinh">Các thành phần chính<a class="headerlink" href="#cac-thanh-phan-chinh" title="Permanent link">&para;</a></h2>
-<h3 id="1-kernel-nhan">1. Kernel (Nhân)<a class="headerlink" href="#1-kernel-nhan" title="Permanent link">&para;</a></h3>
+<h3 id="25-kich-thuoc-co-inh-static-array-vs-ong-dynamic-arraypython-list">2.5. Kích thước cố định (Static array) vs. động (Dynamic array/Python list):<a class="headerlink" href="#25-kich-thuoc-co-inh-static-array-vs-ong-dynamic-arraypython-list" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Thành phần cốt lõi</strong> của hệ điều hành</li>
-<li>Quản lý trực tiếp phần cứng</li>
-<li>Cung cấp các dịch vụ cơ bản cho các ứng dụng</li>
+<li><strong>Static array:</strong> Kích thước cố định, muốn thêm vượt quá thì lỗi (C, Java).</li>
+<li><strong>Python list:</strong> Thực chất là dynamic array, có thể tự động mở rộng.</li>
+<li><strong>Cách nhớ:</strong>  </li>
+<li>Python rất "thoải mái", nên bạn không bị lỗi khi thêm quá số lượng ban đầu.</li>
 </ul>
-<h3 id="2-device-drivers">2. Device Drivers<a class="headerlink" href="#2-device-drivers" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="3-meo-giup-nho-lau">3. Mẹo giúp NHỚ LÂU:<a class="headerlink" href="#3-meo-giup-nho-lau" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Phần mềm điều khiển thiết bị phần cứng cụ thể</li>
-<li>Cho phép OS giao tiếp với các thiết bị khác nhau</li>
+<li><strong>Vẽ lại sơ đồ mảng &amp; địa chỉ:</strong> Tự vẽ các ô vuông, đánh số index, thử thêm/xoá/chèn và quan sát việc phải dịch chuyển phần tử nào.</li>
+<li><strong>Áp dụng ví dụ thực tế:</strong>  </li>
+<li>Nghĩ về dãy số ghế trong rạp chiếu phim: Muốn chèn thêm ghế ở giữa phải lùi hết các ghế sau ra.</li>
+<li><strong>Tự code lại các thao tác cơ bản của mảng:</strong>  </li>
+<li>Viết vòng lặp truy xuất, chèn, xoá để cảm giác được O(1) và O(n).</li>
+<li><strong>Ghi nhớ các phép toán với chú thích Big O:</strong>  </li>
+<li>Đọc/gán phần tử: O(1)</li>
+<li>Thêm/xoá cuối: O(1)</li>
+<li>Chèn/xoá giữa: O(n)</li>
 </ul>
-<h3 id="3-shell">3. Shell<a class="headerlink" href="#3-shell" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="4-tong-hop-bang-ac-tinh-array">4. Tổng hợp Bảng Đặc Tính Array<a class="headerlink" href="#4-tong-hop-bang-ac-tinh-array" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phép toán</th>
+<th>Độ phức tạp (Big O)</th>
+<th>Lý do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Truy xuất (arr[i])</td>
+<td>O(1)</td>
+<td>Trực tiếp</td>
+</tr>
+<tr>
+<td>Gán (arr[i] = x)</td>
+<td>O(1)</td>
+<td>Trực tiếp</td>
+</tr>
+<tr>
+<td>Thêm/Xoá ở cuối</td>
+<td>O(1)</td>
+<td>Nếu còn chỗ</td>
+</tr>
+<tr>
+<td>Chèn/Xoá ở đầu/giữa</td>
+<td>O(n)</td>
+<td>Phải dời phần tử</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-nho-lau-bang-cach-at-cau-hoi-code-ngay">5. Nhớ lâu bằng cách ĐẶT CÂU HỎI &amp; CODE NGAY<a class="headerlink" href="#5-nho-lau-bang-cach-at-cau-hoi-code-ngay" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Giao diện dòng lệnh</li>
-<li>Cho phép người dùng tương tác với hệ điều hành</li>
+<li><strong>Tại sao truy xuất phần tử bất kỳ lại nhanh?</strong></li>
+<li>Vì biết chính xác địa chỉ trong RAM dựa trên index.</li>
+<li><strong>Chèn/xoá ở giữa tại sao lại chậm?</strong></li>
+<li>Vì phải dịch chuyển nhiều phần tử phía sau.</li>
+<li><strong>Python list có khác gì array truyền thống?</strong></li>
+<li>Python list là dynamic array, tự động mở rộng &amp; co lại khi thêm/xoá phần tử.</li>
 </ul>
-<h3 id="4-file-system">4. File System<a class="headerlink" href="#4-file-system" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Quản lý cách dữ liệu được lưu trữ và truy xuất</li>
-<li>Ví dụ: NTFS, FAT32, ext4</li>
-</ul>
-<h2 id="cac-loai-he-ieu-hanh">Các loại Hệ điều hành<a class="headerlink" href="#cac-loai-he-ieu-hanh" title="Permanent link">&para;</a></h2>
-<h3 id="1-theo-cach-su-dung">1. Theo cách sử dụng<a class="headerlink" href="#1-theo-cach-su-dung" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Desktop OS</strong>: Windows, macOS, Linux distributions</li>
-<li><strong>Mobile OS</strong>: Android, iOS</li>
-<li><strong>Server OS</strong>: Windows Server, Linux Server</li>
-<li><strong>Embedded OS</strong>: Cho các thiết bị nhúng</li>
-</ul>
-<h3 id="2-theo-kien-truc">2. Theo kiến trúc<a class="headerlink" href="#2-theo-kien-truc" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Single-user</strong>: Chỉ một người dùng tại một thời điểm</li>
-<li><strong>Multi-user</strong>: Nhiều người dùng đồng thời</li>
-<li><strong>Single-tasking</strong>: Chỉ chạy một chương trình</li>
-<li><strong>Multi-tasking</strong>: Chạy nhiều chương trình đồng thời</li>
-</ul>
-<h3 id="3-theo-cach-xu-ly">3. Theo cách xử lý<a class="headerlink" href="#3-theo-cach-xu-ly" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Batch Processing</strong>: Xử lý theo lô</li>
-<li><strong>Real-time</strong>: Xử lý thời gian thực</li>
-<li><strong>Time-sharing</strong>: Chia sẻ thời gian</li>
-</ul>
-<h2 id="vi-du-cac-he-ieu-hanh-pho-bien">Ví dụ các Hệ điều hành phổ biến<a class="headerlink" href="#vi-du-cac-he-ieu-hanh-pho-bien" title="Permanent link">&para;</a></h2>
-<h3 id="1-microsoft-windows">1. Microsoft Windows<a class="headerlink" href="#1-microsoft-windows" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Hệ điều hành phổ biến nhất cho PC</li>
-<li>Giao diện đồ họa thân thiện</li>
-<li>Hỗ trợ nhiều phần mềm ứng dụng</li>
-</ul>
-<h3 id="2-macos-apple">2. macOS (Apple)<a class="headerlink" href="#2-macos-apple" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Dành cho máy tính Mac</li>
-<li>Thiết kế tinh tế, bảo mật cao</li>
-<li>Tích hợp tốt với hệ sinh thái Apple</li>
-</ul>
-<h3 id="3-linux">3. Linux<a class="headerlink" href="#3-linux" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Mã nguồn mở, miễn phí</li>
-<li>Nhiều bản phân phối (Ubuntu, CentOS, Debian)</li>
-<li>Phổ biến cho servers và developers</li>
-</ul>
-<h3 id="4-android-ios">4. Android &amp; iOS<a class="headerlink" href="#4-android-ios" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Hệ điều hành di động</li>
-<li>Android (Google) - mã nguồn mở</li>
-<li>iOS (Apple) - đóng, bảo mật cao</li>
-</ul>
-<h2 id="tam-quan-trong">Tầm quan trọng<a class="headerlink" href="#tam-quan-trong" title="Permanent link">&para;</a></h2>
-<p>Hệ điều hành là <strong>thành phần không thể thiếu</strong> của bất kỳ hệ thống máy tính nào vì:</p>
-<ol>
-<li><strong>Quản lý tài nguyên hiệu quả</strong>: Đảm bảo phần cứng được sử dụng tối ưu</li>
-<li><strong>Cung cấp nền tảng</strong>: Cho các ứng dụng chạy trên đó</li>
-<li><strong>Bảo mật</strong>: Bảo vệ dữ liệu và hệ thống</li>
-<li><strong>Giao diện người dùng</strong>: Giúp người dùng tương tác dễ dàng</li>
-<li><strong>Ổn định hệ thống</strong>: Đảm bảo máy tính hoạt động ổn định</li>
-</ol>
-<p>Tóm lại, hệ điều hành là "bộ não" của máy tính, điều phối mọi hoạt động và làm cho việc sử dụng máy tính trở nên đơn giản và hiệu quả.</p>
+<hr />
+<h2 id="6-thuc-hanh-duyet-mang-thao-tac">6. Thực hành: Duyệt mảng &amp; thao tác<a class="headerlink" href="#6-thuc-hanh-duyet-mang-thao-tac" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Đọc từng phần tử</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Index </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> value </span><span class="si">{</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Chèn 4 vào đầu mảng</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># [4, 5, 6, 7]</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Xoá phần tử cuối</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">arr</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>        <span class="c1"># [4, 5, 6]</span>
+</code></pre></div>
+<hr />
+<p><strong>Ghi nhớ:</strong>
+- Mảng = dãy giá trị liền nhau, truy xuất cực nhanh (O(1)), chèn/xoá giữa thì chậm (O(n)).
+- Biết chọn đúng cấu trúc dữ liệu sẽ giúp code vừa nhanh vừa tiết kiệm bộ nhớ.</p>
+<p><em>Bạn càng thực hành code, tự vẽ, tự đặt câu hỏi càng nhớ lâu!</em></p>
 
 
 
@@ -2766,7 +2289,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Index">
+          <a href="../00.RAM/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2776,20 +2299,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Index
+                Giải thích chi tiết về DSA: Tổng quan về Cấu trúc Dữ liệu và Mảng
               </div>
             </div>
           </a>
         
         
           
-          <a href="../01.What%20is%20Linux/" class="md-footer__link md-footer__link--next" aria-label="Sau: Linux là gì? - Giới thiệu cơ bản">
+          <a href="../../../../cicd/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: CI/CD Complete Learning Roadmap - GitHub Actions, GitLab CI, Jenkins">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Linux là gì? - Giới thiệu cơ bản
+                CI/CD Complete Learning Roadmap - GitHub Actions, GitLab CI, Jenkins
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2850,10 +2373,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
