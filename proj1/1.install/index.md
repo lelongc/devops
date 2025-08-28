@@ -3,3 +3,5 @@ install docker
 install kubectl
 install terraform
 resize the ec2to 30gb
+cofig aws config cli
+terraform create resource
