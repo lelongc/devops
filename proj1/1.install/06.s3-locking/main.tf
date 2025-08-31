@@ -23,6 +23,9 @@ provider "aws" {
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "terraform-eks-s3190110long"
+  lifecycle {
+    prevent_destroy = false
+  }
 }
 
 resource "aws_s3_bucket_versioning" "terraform_state" {
