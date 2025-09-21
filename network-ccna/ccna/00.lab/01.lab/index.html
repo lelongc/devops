@@ -1,0 +1,3794 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-ccna/ccna/00.lab/01.lab/">
+      
+      
+        <link rel="prev" href="../../01.network-devices/">
+      
+      
+        <link rel="next" href="../../../../network-comtia/roadmap/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Hướng Dẫn Cisco Packet Tracer - CCNA Lab - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#huong-dan-cisco-packet-tracer-ccna-lab" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hướng Dẫn Cisco Packet Tracer - CCNA Lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Programming/DSA/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../iac/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Iac
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../linux/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../prog/python-automation/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Prog
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to DraDoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../Programming/DSA/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Programming
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Cicd
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Docker
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../iac/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Iac
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    K8s
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../linux/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network ccna
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Network ccna
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Ccna
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_1" id="__nav_10_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            Ccna
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.network-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thiết Bị Mạng (Network Devices) - Kiến Thức Đầy Đủ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10_1_3" id="__nav_10_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.lab
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            00.lab
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Hướng Dẫn Cisco Packet Tracer - CCNA Lab
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hướng Dẫn Cisco Packet Tracer - CCNA Lab
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Là Gì?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Là Gì?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Định Nghĩa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lua-chon-lab-ccna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lựa Chọn Lab CCNA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cisco-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cisco Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cisco Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packet-tracer-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Tracer Là Gì?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinh-nang-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tính Năng Chính
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#han-che" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hạn Chế
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-va-cai-at-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tải Và Cài Đặt Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tải Và Cài Đặt Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Yêu Cầu Hệ Thống
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tao-tai-khoan-cisco" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tạo Tài Khoản Cisco
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tải Packet Tracer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-sao-dung-phien-ban-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tại Sao Dùng Phiên Bản Mới?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khoa-hoc-cisco-netacademy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khóa Học Cisco NetAcademy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Khóa Học Cisco NetAcademy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khoa-hoc-mien-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khóa Học Miễn Phí
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khi-nao-nen-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khi Nào Nên Học?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lab-files-khoa-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tải Lab Files Khóa Học
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tải Lab Files Khóa Học">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ia-chi-tai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Địa Chỉ Tải
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy Trình
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cấu Trúc Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lưu Ý
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giao-dien-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giao Diện Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Giao Diện Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ang-nhap-lan-au" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đăng Nhập Lần Đầu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mo-lab-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mở Lab File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-lab-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cấu Trúc Lab Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cai-at-preferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cài Đặt Preferences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cài Đặt Preferences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#truy-cap-preferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truy Cập Preferences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tab-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tab Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tab-font" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tab Font
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-command-line-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI (Command-Line Interface)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI (Command-Line Interface)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI Là Gì?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vai-tro-trong-khoa-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vai Trò Trong Khóa Học
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truy-cap-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truy Cập CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-tao-lai-network-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 1: Tạo Lại Network Topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 1: Tạo Lại Network Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#muc-tieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mục Tiêu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topology-can-tao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topology Cần Tạo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thiet-bi-can-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thiết Bị Cần Dùng
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuc-hanh-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thực Hành Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thực Hành Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-at-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 1: Đặt Thiết Bị
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 1: Đặt Thiết Bị">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#at-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt Routers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-switches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt Switches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt Firewalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-end-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt End Devices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-2-oi-ten-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 2: Đổi Tên Thiết Bị
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-3-ket-noi-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 3: Kết Nối Thiết Bị
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 3: Kết Nối Thiết Bị">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chon-cable-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chọn Cable Tool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thuc-hien-ket-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thực Hiện Kết Nối
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hoan-thanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hoàn Thành
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chien-luoc-hoc-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chiến Lược Học Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chiến Lược Học Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-ly-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy Trình Lý Tưởng
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neu-gap-kho-khan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nếu Gặp Khó Khăn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muc-tieu-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mục Tiêu Lab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loai-lab-trong-khoa-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loại Lab Trong Khóa Học
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loại Lab Trong Khóa Học">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Labs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Labs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-su-dung-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips Sử Dụng Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips Sử Dụng Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcuts-huu-ich" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shortcuts Hữu Ích
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quan-ly-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quản Lý Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#han-che-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hạn Chế Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hạn Chế Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#so-voi-hardware-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      So Với Hardware Thật
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khi-nao-can-hardware-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khi Nào Cần Hardware Thật?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết Luận
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kết Luận">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tam-quan-trong-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tầm Quan Trọng Labs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Network comtia
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../prog/python-automation/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prog
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    System design
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Là Gì?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Là Gì?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Định Nghĩa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lua-chon-lab-ccna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lựa Chọn Lab CCNA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cisco-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cisco Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cisco Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packet-tracer-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Tracer Là Gì?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinh-nang-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tính Năng Chính
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#han-che" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hạn Chế
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-va-cai-at-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tải Và Cài Đặt Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tải Và Cài Đặt Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Yêu Cầu Hệ Thống
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tao-tai-khoan-cisco" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tạo Tài Khoản Cisco
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tải Packet Tracer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-sao-dung-phien-ban-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tại Sao Dùng Phiên Bản Mới?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khoa-hoc-cisco-netacademy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khóa Học Cisco NetAcademy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Khóa Học Cisco NetAcademy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khoa-hoc-mien-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khóa Học Miễn Phí
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khi-nao-nen-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khi Nào Nên Học?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lab-files-khoa-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tải Lab Files Khóa Học
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tải Lab Files Khóa Học">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ia-chi-tai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Địa Chỉ Tải
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy Trình
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cấu Trúc Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lưu Ý
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giao-dien-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giao Diện Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Giao Diện Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ang-nhap-lan-au" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đăng Nhập Lần Đầu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mo-lab-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mở Lab File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-lab-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cấu Trúc Lab Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cai-at-preferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cài Đặt Preferences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cài Đặt Preferences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#truy-cap-preferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truy Cập Preferences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tab-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tab Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tab-font" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tab Font
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-command-line-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI (Command-Line Interface)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI (Command-Line Interface)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI Là Gì?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vai-tro-trong-khoa-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vai Trò Trong Khóa Học
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truy-cap-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Truy Cập CLI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-tao-lai-network-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 1: Tạo Lại Network Topology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 1: Tạo Lại Network Topology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#muc-tieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mục Tiêu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topology-can-tao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topology Cần Tạo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thiet-bi-can-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thiết Bị Cần Dùng
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuc-hanh-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thực Hành Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thực Hành Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-at-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 1: Đặt Thiết Bị
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 1: Đặt Thiết Bị">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#at-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt Routers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-switches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt Switches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-firewalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt Firewalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-end-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Đặt End Devices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-2-oi-ten-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 2: Đổi Tên Thiết Bị
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-3-ket-noi-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 3: Kết Nối Thiết Bị
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 3: Kết Nối Thiết Bị">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chon-cable-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chọn Cable Tool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thuc-hien-ket-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thực Hiện Kết Nối
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hoan-thanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hoàn Thành
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chien-luoc-hoc-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chiến Lược Học Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chiến Lược Học Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-ly-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quy Trình Lý Tưởng
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neu-gap-kho-khan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nếu Gặp Khó Khăn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muc-tieu-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mục Tiêu Lab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loai-lab-trong-khoa-hoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loại Lab Trong Khóa Học
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loại Lab Trong Khóa Học">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Labs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Labs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-su-dung-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips Sử Dụng Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips Sử Dụng Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcuts-huu-ich" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shortcuts Hữu Ích
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quan-ly-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quản Lý Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#han-che-packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hạn Chế Packet Tracer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hạn Chế Packet Tracer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#so-voi-hardware-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      So Với Hardware Thật
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khi-nao-can-hardware-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khi Nào Cần Hardware Thật?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kết Luận
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kết Luận">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tam-quan-trong-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tầm Quan Trọng Labs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-ccna/ccna/00.lab/01.lab.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="huong-dan-cisco-packet-tracer-ccna-lab">Hướng Dẫn Cisco Packet Tracer - CCNA Lab<a class="headerlink" href="#huong-dan-cisco-packet-tracer-ccna-lab" title="Permanent link">¶</a></h1>
+<h2 id="lab-la-gi">Lab Là Gì?<a class="headerlink" href="#lab-la-gi" title="Permanent link">¶</a></h2>
+<h3 id="inh-nghia">Định Nghĩa<a class="headerlink" href="#inh-nghia" title="Permanent link">¶</a></h3>
+<p><strong>Lab</strong> trong IT = thực hành hands-on với công nghệ đang học.</p>
+<p><strong>Labbing cho CCNA</strong> = thực hành cấu hình router và switch Cisco.</p>
+<h3 id="lua-chon-lab-ccna">Lựa Chọn Lab CCNA<a class="headerlink" href="#lua-chon-lab-ccna" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Phương pháp</th>
+<th>Ưu điểm</th>
+<th>Nhược điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hardware thật</strong></td>
+<td>Thực tế 100%</td>
+<td>Đắt, khó vận chuyển</td>
+</tr>
+<tr>
+<td><strong>Packet Tracer</strong></td>
+<td>Miễn phí, tiện lợi</td>
+<td>Mô phỏng</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cisco-packet-tracer">Cisco Packet Tracer<a class="headerlink" href="#cisco-packet-tracer" title="Permanent link">¶</a></h2>
+<h3 id="packet-tracer-la-gi">Packet Tracer Là Gì?<a class="headerlink" href="#packet-tracer-la-gi" title="Permanent link">¶</a></h3>
+<p><strong>Cisco Packet Tracer</strong> = công cụ mô phỏng mạng miễn phí của Cisco.</p>
+<h3 id="tinh-nang-chinh">Tính Năng Chính<a class="headerlink" href="#tinh-nang-chinh" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Mô phỏng</strong> thiết bị mạng Cisco</li>
+<li><strong>Thực hành</strong> cấu hình router/switch</li>
+<li><strong>Không cần</strong> hardware thật</li>
+<li><strong>Miễn phí</strong> và dễ sử dụng</li>
+</ul>
+<h3 id="han-che">Hạn Chế<a class="headerlink" href="#han-che" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Không phải</strong> thiết bị thật</li>
+<li><strong>Phần mềm mô phỏng</strong> có giới hạn</li>
+<li><strong>Một số tính năng</strong> không có</li>
+</ul>
+<h2 id="tai-va-cai-at-packet-tracer">Tải Và Cài Đặt Packet Tracer<a class="headerlink" href="#tai-va-cai-at-packet-tracer" title="Permanent link">¶</a></h2>
+<h3 id="yeu-cau-he-thong">Yêu Cầu Hệ Thống<a class="headerlink" href="#yeu-cau-he-thong" title="Permanent link">¶</a></h3>
+<p><strong>Nền tảng hỗ trợ:</strong></p>
+<ul>
+<li>Windows (64-bit, 32-bit)</li>
+<li>Ubuntu Linux</li>
+<li>macOS</li>
+</ul>
+<h3 id="tao-tai-khoan-cisco">Tạo Tài Khoản Cisco<a class="headerlink" href="#tao-tai-khoan-cisco" title="Permanent link">¶</a></h3>
+<p><strong>Bắt buộc:</strong> Cần tài khoản Cisco để tải Packet Tracer.</p>
+<p><strong>Cách tạo:</strong></p>
+<ol>
+<li>Truy cập trang đăng nhập Cisco</li>
+<li>Click <strong>"Sign Up"</strong></li>
+<li>Điền thông tin cá nhân</li>
+<li>Xác nhận email</li>
+<li>Đăng nhập</li>
+</ol>
+<h3 id="tai-packet-tracer">Tải Packet Tracer<a class="headerlink" href="#tai-packet-tracer" title="Permanent link">¶</a></h3>
+<p><strong>Quy trình:</strong></p>
+<ol>
+<li>Truy cập <a href="https://www.packettracernetwork.com/download-packet-tracer.html">Download Cisco Packet Tracer 9.0 &amp; GNS3 - Packet Tracer Network</a></li>
+<li>Đăng nhập tài khoản Cisco</li>
+<li>Chọn <strong>phiên bản phù hợp</strong> với hệ điều hành</li>
+<li><strong>Tải phiên bản mới nhất</strong> (8.2 tại thời điểm viết)</li>
+<li>Cài đặt như phần mềm thường</li>
+</ol>
+<h3 id="tai-sao-dung-phien-ban-moi">Tại Sao Dùng Phiên Bản Mới?<a class="headerlink" href="#tai-sao-dung-phien-ban-moi" title="Permanent link">¶</a></h3>
+<p><strong>Vấn đề tương thích:</strong></p>
+<ul>
+<li><strong>Phiên bản cũ</strong> KHÔNG mở được file lab từ phiên bản mới</li>
+<li><strong>Phiên bản mới</strong> MỞ ĐƯỢC file lab từ phiên bản cũ</li>
+</ul>
+<p><strong>Khuyến nghị:</strong> Luôn dùng phiên bản mới nhất.</p>
+<h2 id="khoa-hoc-cisco-netacademy">Khóa Học Cisco NetAcademy<a class="headerlink" href="#khoa-hoc-cisco-netacademy" title="Permanent link">¶</a></h2>
+<h3 id="khoa-hoc-mien-phi">Khóa Học Miễn Phí<a class="headerlink" href="#khoa-hoc-mien-phi" title="Permanent link">¶</a></h3>
+<p>Cisco cung cấp khóa học miễn phí về Packet Tracer:</p>
+<ol>
+<li><strong>"Getting Started with Cisco Packet Tracer"</strong> - 2 giờ</li>
+<li><strong>"Exploring Networking with Cisco Packet Tracer"</strong> - Chi tiết hơn</li>
+</ol>
+<h3 id="khi-nao-nen-hoc">Khi Nào Nên Học?<a class="headerlink" href="#khi-nao-nen-hoc" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Muốn master</strong> Packet Tracer hoàn toàn</li>
+<li><strong>Thời gian rảnh</strong> để học thêm</li>
+<li><strong>Không bắt buộc</strong> cho khóa CCNA này</li>
+</ul>
+<h2 id="tai-lab-files-khoa-hoc">Tải Lab Files Khóa Học<a class="headerlink" href="#tai-lab-files-khoa-hoc" title="Permanent link">¶</a></h2>
+<h3 id="ia-chi-tai">Địa Chỉ Tải<a class="headerlink" href="#ia-chi-tai" title="Permanent link">¶</a></h3>
+<p>my-website\docs\network-ccna\ccna\00.lab\CCNA 200-301 Course Files-20221107T182858Z-001.zip</p>
+<h3 id="quy-trinh">Quy Trình<a class="headerlink" href="#quy-trinh" title="Permanent link">¶</a></h3>
+<ol>
+<li>Nhập <strong>First Name</strong> và <strong>Email</strong></li>
+<li>Click <strong>"Join"</strong></li>
+<li>Kiểm tra email xác nhận</li>
+<li>Nhận <strong>Google Drive link</strong> chứa tất cả files</li>
+</ol>
+<h3 id="cau-truc-files">Cấu Trúc Files<a class="headerlink" href="#cau-truc-files" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Google Drive/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Day 1 flashcards
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── Day 1 lab          ← Lab files
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── Day 2 flashcards
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── Day 2 lab          ← Lab files
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└── ...
+</code></pre></div>
+<h3 id="luu-y">Lưu Ý<a class="headerlink" href="#luu-y" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Đợi 10 phút</strong> trước khi liên hệ support</li>
+<li><strong>Cùng Google Drive</strong> với Anki flashcards</li>
+<li><strong>Bookmark</strong> để truy cập dễ dàng</li>
+</ul>
+<h2 id="giao-dien-packet-tracer">Giao Diện Packet Tracer<a class="headerlink" href="#giao-dien-packet-tracer" title="Permanent link">¶</a></h2>
+<h3 id="ang-nhap-lan-au">Đăng Nhập Lần Đầu<a class="headerlink" href="#ang-nhap-lan-au" title="Permanent link">¶</a></h3>
+<p><strong>Sau khi cài đặt:</strong></p>
+<ol>
+<li>Mở Packet Tracer</li>
+<li><strong>Đăng nhập</strong> tài khoản Cisco (lần đầu)</li>
+<li>Giao diện chính hiển thị</li>
+</ol>
+<h3 id="mo-lab-file">Mở Lab File<a class="headerlink" href="#mo-lab-file" title="Permanent link">¶</a></h3>
+<p><strong>Cách 1:</strong> Double-click file <code>.pkt</code>
+<strong>Cách 2:</strong> File menu → Open → chọn file</p>
+<h3 id="cau-truc-lab-files">Cấu Trúc Lab Files<a class="headerlink" href="#cau-truc-lab-files" title="Permanent link">¶</a></h3>
+<p><strong>Layout tiêu chuẩn:</strong></p>
+<ul>
+<li><strong>Instructions:</strong> Bên trái hoặc dưới màn hình</li>
+<li><strong>Network topology:</strong> Giữa màn hình</li>
+<li><strong>Devices:</strong> Đã được đặt sẵn một số</li>
+</ul>
+<h2 id="cai-at-preferences">Cài Đặt Preferences<a class="headerlink" href="#cai-at-preferences" title="Permanent link">¶</a></h2>
+<h3 id="truy-cap-preferences">Truy Cập Preferences<a class="headerlink" href="#truy-cap-preferences" title="Permanent link">¶</a></h3>
+<p><strong>Menu:</strong> Options → Preferences</p>
+<h3 id="tab-interface">Tab Interface<a class="headerlink" href="#tab-interface" title="Permanent link">¶</a></h3>
+<p><strong>Device Model Labels:</strong></p>
+<ul>
+<li><strong>Bật:</strong> Hiển thị model thiết bị (VD: 2911)</li>
+<li><strong>Tắt:</strong> Chỉ hiển thị tên đặt</li>
+</ul>
+<p><strong>Device Name:</strong></p>
+<ul>
+<li><strong>Khuyến nghị:</strong> Để bật để dễ nhận biết</li>
+</ul>
+<h3 id="tab-font">Tab Font<a class="headerlink" href="#tab-font" title="Permanent link">¶</a></h3>
+<p><strong>Điều chỉnh:</strong></p>
+<ul>
+<li><strong>Menu font sizes:</strong> Kích thước menu</li>
+<li><strong>CLI font size:</strong> Kích thước trong command-line</li>
+<li><strong>Font colors:</strong> Màu chữ</li>
+</ul>
+<p><strong>Ví dụ Matrix Style:</strong></p>
+<ul>
+<li><strong>Router IOS Text:</strong> Green</li>
+<li><strong>Router IOS Background:</strong> Black</li>
+</ul>
+<h2 id="cli-command-line-interface">CLI (Command-Line Interface)<a class="headerlink" href="#cli-command-line-interface" title="Permanent link">¶</a></h2>
+<h3 id="cli-la-gi">CLI Là Gì?<a class="headerlink" href="#cli-la-gi" title="Permanent link">¶</a></h3>
+<p><strong>CLI</strong> = Command-Line Interface = giao diện dòng lệnh.</p>
+<h3 id="vai-tro-trong-khoa-hoc">Vai Trò Trong Khóa Học<a class="headerlink" href="#vai-tro-trong-khoa-hoc" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Phương pháp chính</strong> cấu hình router/switch</li>
+<li><strong>Giao diện text-based</strong></li>
+<li><strong>Commands</strong> để điều khiển thiết bị</li>
+</ul>
+<h3 id="truy-cap-cli">Truy Cập CLI<a class="headerlink" href="#truy-cap-cli" title="Permanent link">¶</a></h3>
+<ol>
+<li>Click vào router/switch</li>
+<li>Chọn tab <strong>"CLI"</strong></li>
+<li>Giao diện dòng lệnh hiển thị</li>
+</ol>
+<h2 id="lab-1-tao-lai-network-topology">Lab 1: Tạo Lại Network Topology<a class="headerlink" href="#lab-1-tao-lai-network-topology" title="Permanent link">¶</a></h2>
+<h3 id="muc-tieu">Mục Tiêu<a class="headerlink" href="#muc-tieu" title="Permanent link">¶</a></h3>
+<p>Tạo lại network từ <strong>Day 1 lecture video</strong> về network devices.</p>
+<h3 id="topology-can-tao">Topology Cần Tạo<a class="headerlink" href="#topology-can-tao" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/01.lab/1758444670026.png" data-desc-position="bottom"><img alt="1758444670026" src="../image/01.lab/1758444670026.png"></a></p>
+<h3 id="thiet-bi-can-dung">Thiết Bị Cần Dùng<a class="headerlink" href="#thiet-bi-can-dung" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Thiết bị</th>
+<th>Model</th>
+<th>Số lượng</th>
+<th>Vị trí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Router</td>
+<td>2911</td>
+<td>2</td>
+<td>R1, R2</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>2960</td>
+<td>2</td>
+<td>SW1, SW2</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>5505</td>
+<td>2</td>
+<td>FW1, FW2</td>
+</tr>
+<tr>
+<td>PC</td>
+<td>PC</td>
+<td>2</td>
+<td>New York</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Server</td>
+<td>2</td>
+<td>Tokyo</td>
+</tr>
+<tr>
+<td>Laptop</td>
+<td>Laptop</td>
+<td>1</td>
+<td>Attacker</td>
+</tr>
+</tbody>
+</table>
+<h2 id="thuc-hanh-lab">Thực Hành Lab<a class="headerlink" href="#thuc-hanh-lab" title="Permanent link">¶</a></h2>
+<h3 id="buoc-1-at-thiet-bi">Bước 1: Đặt Thiết Bị<a class="headerlink" href="#buoc-1-at-thiet-bi" title="Permanent link">¶</a></h3>
+<h4 id="at-routers">Đặt Routers<a class="headerlink" href="#at-routers" title="Permanent link">¶</a></h4>
+<ol>
+<li>Click <strong>network devices icon</strong> (bottom left)</li>
+<li>Chọn <strong>"Routers"</strong></li>
+<li>Chọn <strong>"2911"</strong></li>
+<li>Đặt 2 router vào topology</li>
+</ol>
+<p><strong>Cisco ISR 2911:</strong> ISR = Integrated Services Router</p>
+<h4 id="at-switches">Đặt Switches<a class="headerlink" href="#at-switches" title="Permanent link">¶</a></h4>
+<ol>
+<li>Chọn <strong>"Switches"</strong></li>
+<li>Chọ <strong>"2960"</strong></li>
+<li>Đặt 2 switch vào topology</li>
+</ol>
+<p><strong>Cisco Catalyst 2960:</strong> Catalyst = dòng switch của Cisco</p>
+<h4 id="at-firewalls">Đặt Firewalls<a class="headerlink" href="#at-firewalls" title="Permanent link">¶</a></h4>
+<ol>
+<li>Chọn <strong>"Security"</strong> → <strong>"Firewalls"</strong></li>
+<li>Chọn <strong>"5505"</strong></li>
+<li>Đặt 2 firewall vào topology</li>
+</ol>
+<p><strong>Cisco ASA 5505:</strong> ASA = Adaptive Security Appliance</p>
+<h4 id="at-end-devices">Đặt End Devices<a class="headerlink" href="#at-end-devices" title="Permanent link">¶</a></h4>
+<ol>
+<li>Chọn <strong>"End Devices"</strong></li>
+<li>Đặt <strong>2 PCs</strong> (New York)</li>
+<li>Đặt <strong>2 Servers</strong> (Tokyo)</li>
+<li>Đặt <strong>1 Laptop</strong> (Attacker)</li>
+</ol>
+<h3 id="buoc-2-oi-ten-thiet-bi">Bước 2: Đổi Tên Thiết Bị<a class="headerlink" href="#buoc-2-oi-ten-thiet-bi" title="Permanent link">¶</a></h3>
+<p><strong>Cách đổi tên:</strong></p>
+<ol>
+<li>Click vào <strong>tên thiết bị</strong></li>
+<li>Nhập tên mới</li>
+<li>Enter</li>
+</ol>
+<p><strong>Danh sách tên:</strong></p>
+<ul>
+<li>PC1, PC2 (New York)</li>
+<li>SW1, R1, FW1 (New York)</li>
+<li>R2, FW2, SW2 (Tokyo)</li>
+<li>SRV1, SRV2 (Tokyo)</li>
+<li>Attacker</li>
+</ul>
+<h3 id="buoc-3-ket-noi-thiet-bi">Bước 3: Kết Nối Thiết Bị<a class="headerlink" href="#buoc-3-ket-noi-thiet-bi" title="Permanent link">¶</a></h3>
+<h4 id="chon-cable-tool">Chọn Cable Tool<a class="headerlink" href="#chon-cable-tool" title="Permanent link">¶</a></h4>
+<ol>
+<li>Click <strong>lightning bolt icon</strong> (connection tool)</li>
+<li>Chọn <strong>"Automatically Choose Connection Type"</strong></li>
+</ol>
+<h4 id="thuc-hien-ket-noi">Thực Hiện Kết Nối<a class="headerlink" href="#thuc-hien-ket-noi" title="Permanent link">¶</a></h4>
+<p><strong>Tip tăng tốc:</strong> Giữ <strong>Ctrl + click</strong> lightning bolt để không phải chọn lại.</p>
+<p><strong>Thứ tự kết nối:</strong></p>
+<ol>
+<li>PC1 → SW1</li>
+<li>PC2 → SW1</li>
+<li>SW1 → R1</li>
+<li>R1 → FW1</li>
+<li>FW1 → The Internet</li>
+<li>The Internet → R2</li>
+<li>R2 → FW2</li>
+<li>FW2 → SW2</li>
+<li>SW2 → SRV1</li>
+<li>SW2 → SRV2</li>
+<li>Attacker → The Internet</li>
+</ol>
+<h4 id="hoan-thanh">Hoàn Thành<a class="headerlink" href="#hoan-thanh" title="Permanent link">¶</a></h4>
+<p>Click <strong>"Cancel"</strong> khi hoàn thành kết nối.</p>
+<h2 id="chien-luoc-hoc-lab">Chiến Lược Học Lab<a class="headerlink" href="#chien-luoc-hoc-lab" title="Permanent link">¶</a></h2>
+<h3 id="quy-trinh-ly-tuong">Quy Trình Lý Tưởng<a class="headerlink" href="#quy-trinh-ly-tuong" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Xem lecture video</strong> trước</li>
+<li><strong>Thử làm lab</strong> tự lực trong Packet Tracer</li>
+<li><strong>Xem lab video</strong> để kiểm tra đáp án</li>
+<li><strong>Sửa lỗi</strong> nếu có</li>
+</ol>
+<h3 id="neu-gap-kho-khan">Nếu Gặp Khó Khăn<a class="headerlink" href="#neu-gap-kho-khan" title="Permanent link">¶</a></h3>
+<p><strong>Có thể:</strong></p>
+<ol>
+<li>Xem lab video trước khi làm</li>
+<li>Làm theo hướng dẫn step-by-step</li>
+<li><strong>Quan trọng:</strong> Vẫn phải thực hành hands-on</li>
+</ol>
+<h3 id="muc-tieu-lab">Mục Tiêu Lab<a class="headerlink" href="#muc-tieu-lab" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Hands-on practice</strong> với router/switch Cisco</li>
+<li><strong>Hiểu sâu</strong> concepts từ lecture</li>
+<li><strong>Chuẩn bị</strong> cho exam thực tế</li>
+</ol>
+<h2 id="loai-lab-trong-khoa-hoc">Loại Lab Trong Khóa Học<a class="headerlink" href="#loai-lab-trong-khoa-hoc" title="Permanent link">¶</a></h2>
+<h3 id="configuration-labs">Configuration Labs<a class="headerlink" href="#configuration-labs" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Mục đích:</strong> Học cách cấu hình</li>
+<li><strong>Nội dung:</strong> Commands và settings</li>
+<li><strong>Approach:</strong> Follow instructions</li>
+</ul>
+<h3 id="troubleshooting-labs">Troubleshooting Labs<a class="headerlink" href="#troubleshooting-labs" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Mục đích:</strong> Tìm và sửa lỗi</li>
+<li><strong>Nội dung:</strong> Các lỗi cấu hình có sẵn</li>
+<li><strong>Approach:</strong> Debug và fix problems</li>
+</ul>
+<p><strong>Lưu ý:</strong> Troubleshooting labs cần dùng <strong>pre-made lab files</strong> vì đã có lỗi cố ý.</p>
+<h2 id="tips-su-dung-packet-tracer">Tips Sử Dụng Packet Tracer<a class="headerlink" href="#tips-su-dung-packet-tracer" title="Permanent link">¶</a></h2>
+<h3 id="shortcuts-huu-ich">Shortcuts Hữu Ích<a class="headerlink" href="#shortcuts-huu-ich" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Ctrl + click tool:</strong> Giữ tool được chọn</li>
+<li><strong>Space:</strong> Pan view</li>
+<li><strong>Mouse wheel:</strong> Zoom in/out</li>
+<li><strong>Ctrl + Z:</strong> Undo</li>
+<li><strong>Ctrl + S:</strong> Save</li>
+</ul>
+<h3 id="quan-ly-files">Quản Lý Files<a class="headerlink" href="#quan-ly-files" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Save thường xuyên:</strong> Tránh mất công việc</li>
+<li><strong>Đặt tên file:</strong> Rõ ràng theo lab</li>
+<li><strong>Backup:</strong> Lưu nhiều version</li>
+</ul>
+<h3 id="performance-tips">Performance Tips<a class="headerlink" href="#performance-tips" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Đóng unused tabs</strong></li>
+<li><strong>Không mở quá nhiều devices</strong> cùng lúc</li>
+<li><strong>Update Packet Tracer</strong> thường xuyên</li>
+</ul>
+<h2 id="han-che-packet-tracer">Hạn Chế Packet Tracer<a class="headerlink" href="#han-che-packet-tracer" title="Permanent link">¶</a></h2>
+<h3 id="so-voi-hardware-that">So Với Hardware Thật<a class="headerlink" href="#so-voi-hardware-that" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Không phải 100% giống</strong> hardware thật</li>
+<li><strong>Một số commands</strong> không có</li>
+<li><strong>Performance</strong> khác biệt</li>
+<li><strong>Bugs</strong> trong simulation</li>
+</ul>
+<h3 id="khi-nao-can-hardware-that">Khi Nào Cần Hardware Thật?<a class="headerlink" href="#khi-nao-can-hardware-that" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Advanced features</strong> không có trong PT</li>
+<li><strong>Real-world experience</strong></li>
+<li><strong>Performance testing</strong></li>
+<li><strong>Production environment</strong></li>
+</ul>
+<h2 id="ket-luan">Kết Luận<a class="headerlink" href="#ket-luan" title="Permanent link">¶</a></h2>
+<h3 id="tam-quan-trong-labs">Tầm Quan Trọng Labs<a class="headerlink" href="#tam-quan-trong-labs" title="Permanent link">¶</a></h3>
+<p><strong>Labs là then chốt</strong> để:</p>
+<ul>
+<li><strong>Hiểu sâu</strong> lý thuyết</li>
+<li><strong>Thực hành</strong> skills</li>
+<li><strong>Chuẩn bị</strong> exam</li>
+<li><strong>Experience</strong> thực tế</li>
+</ul>
+<h3 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Complete Day 1 lab</strong> theo hướng dẫn</li>
+<li><strong>Familiar</strong> với Packet Tracer interface</li>
+<li><strong>Chuẩ bị</strong> cho các labs tiếp theo</li>
+<li><strong>Practice regularly</strong> để nâng cao skills</li>
+</ol>
+<hr>
+<p><strong>Tóm tắt:</strong> Packet Tracer là công cụ quan trọng để thực hành CCNA. Hiểu cách sử dụng và làm labs đều đặn sẽ giúp học hiệu quả hơn.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="21 tháng 9, 2025 08:53:06 UTC">21 tháng 9, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async>
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../01.network-devices/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Thiết Bị Mạng (Network Devices) - Kiến Thức Đầy Đủ">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Thiết Bị Mạng (Network Devices) - Kiến Thức Đầy Đủ
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../network-comtia/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: 📡 Roadmap Học Networking &amp;amp; Security Toàn Diện (Zero → Hero)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
