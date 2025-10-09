@@ -5,28 +5,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/devops/python/">
+        <link rel="canonical" href="https://lelongc.github.io/devops/security/sec/">
       
       
-        <link rel="prev" href="../prog/python-automation/roadmap/">
+        <link rel="prev" href="../roadmap/">
       
       
-        <link rel="next" href="../security/roadmap/">
+        <link rel="next" href="../../system-design/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
     
     
       
-        <title>Index - DraDoc</title>
+        <title>Sec - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -45,14 +45,14 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lo-trinh-devops-voi-python-tu-ong-hoa-toan-dien" class="md-skip">
+        <a href="#1-nguyen-tac-bat-buoc-truoc-khi-bat-tay-lam" class="md-skip">
           Bỏ qua
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href=".." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Sec
             
           </span>
         </div>
@@ -222,7 +222,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -250,7 +250,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../Programming/DSA/" class="md-tabs__link">
+        <a href="../../Programming/DSA/" class="md-tabs__link">
           
   
   
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../cicd/roadmap/" class="md-tabs__link">
+        <a href="../../cicd/roadmap/" class="md-tabs__link">
           
   
   
@@ -297,7 +297,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../docker/" class="md-tabs__link">
+        <a href="../../docker/" class="md-tabs__link">
           
   
   
@@ -319,7 +319,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../git/roadmap/" class="md-tabs__link">
+        <a href="../../git/roadmap/" class="md-tabs__link">
           
   
   
@@ -341,7 +341,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../iac/roadmap/" class="md-tabs__link">
+        <a href="../../iac/roadmap/" class="md-tabs__link">
           
   
   
@@ -363,7 +363,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../k8s/" class="md-tabs__link">
+        <a href="../../k8s/" class="md-tabs__link">
           
   
   
@@ -385,7 +385,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../lab/" class="md-tabs__link">
+        <a href="../../lab/" class="md-tabs__link">
           
   
   
@@ -407,7 +407,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../linux/" class="md-tabs__link">
+        <a href="../../linux/" class="md-tabs__link">
           
   
   
@@ -436,7 +436,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../network-ccna/ccna/" class="md-tabs__link">
+        <a href="../../network-ccna/ccna/" class="md-tabs__link">
           
   
   
@@ -461,7 +461,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../network-comtia/roadmap/" class="md-tabs__link">
           
   
   
@@ -483,7 +483,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/roadmap/" class="md-tabs__link">
+        <a href="../../observability/roadmap/" class="md-tabs__link">
           
   
   
@@ -512,7 +512,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../prog/python-automation/roadmap/" class="md-tabs__link">
+        <a href="../../prog/python-automation/roadmap/" class="md-tabs__link">
           
   
   
@@ -533,13 +533,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../python/" class="md-tabs__link">
           
   
   
@@ -557,11 +555,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../security/roadmap/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../roadmap/" class="md-tabs__link">
           
   
   
@@ -583,7 +583,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../system-design/" class="md-tabs__link">
+        <a href="../../system-design/" class="md-tabs__link">
           
   
   
@@ -605,7 +605,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../testing/roadmap/" class="md-tabs__link">
+        <a href="../../testing/roadmap/" class="md-tabs__link">
           
   
   
@@ -647,7 +647,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
@@ -677,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -727,7 +727,7 @@
   
   
   
-    <a href="../Programming/DSA/" class="md-nav__link">
+    <a href="../../Programming/DSA/" class="md-nav__link">
       
   
   
@@ -781,7 +781,7 @@
   
   
   
-    <a href="../cicd/roadmap/" class="md-nav__link">
+    <a href="../../cicd/roadmap/" class="md-nav__link">
       
   
   
@@ -841,7 +841,7 @@
   
   
   
-    <a href="../docker/" class="md-nav__link">
+    <a href="../../docker/" class="md-nav__link">
       
   
   
@@ -895,7 +895,7 @@
   
   
   
-    <a href="../git/roadmap/" class="md-nav__link">
+    <a href="../../git/roadmap/" class="md-nav__link">
       
   
   
@@ -947,7 +947,7 @@
   
   
   
-    <a href="../iac/roadmap/" class="md-nav__link">
+    <a href="../../iac/roadmap/" class="md-nav__link">
       
   
   
@@ -1011,7 +1011,7 @@
   
   
   
-    <a href="../k8s/" class="md-nav__link">
+    <a href="../../k8s/" class="md-nav__link">
       
   
   
@@ -1065,7 +1065,7 @@
   
   
   
-    <a href="../lab/" class="md-nav__link">
+    <a href="../../lab/" class="md-nav__link">
       
   
   
@@ -1127,7 +1127,7 @@
   
   
   
-    <a href="../linux/" class="md-nav__link">
+    <a href="../../linux/" class="md-nav__link">
       
   
   
@@ -1183,7 +1183,7 @@
   
   
   
-    <a href="../network-ccna/ccna/" class="md-nav__link">
+    <a href="../../network-ccna/ccna/" class="md-nav__link">
       
   
   
@@ -1239,7 +1239,7 @@
   
   
   
-    <a href="../network-comtia/roadmap/" class="md-nav__link">
+    <a href="../../network-comtia/roadmap/" class="md-nav__link">
       
   
   
@@ -1291,7 +1291,7 @@
   
   
   
-    <a href="../observability/roadmap/" class="md-nav__link">
+    <a href="../../observability/roadmap/" class="md-nav__link">
       
   
   
@@ -1347,7 +1347,7 @@
   
   
   
-    <a href="../prog/python-automation/roadmap/" class="md-nav__link">
+    <a href="../../prog/python-automation/roadmap/" class="md-nav__link">
       
   
   
@@ -1374,6 +1374,60 @@
       
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -1382,7 +1436,7 @@
     
       
         
-          
+      
         
       
     
@@ -1403,31 +1457,83 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
-              
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
-    Python
+    Security
     
   </span>
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
-            Python
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Security
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Complete Learning Roadmap - Secret Management &amp; Scanning/Hardening
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sec
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
               
             
           </ul>
@@ -1447,60 +1553,6 @@
     
       
         
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../security/roadmap/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    Security
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
           
         
       
@@ -1528,7 +1580,7 @@
   
   
   
-    <a href="../system-design/" class="md-nav__link">
+    <a href="../../system-design/" class="md-nav__link">
       
   
   
@@ -1580,7 +1632,7 @@
   
   
   
-    <a href="../testing/roadmap/" class="md-nav__link">
+    <a href="../../testing/roadmap/" class="md-nav__link">
       
   
   
@@ -1621,95 +1673,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#phan-1-nen-tang-python-co-ban-e-viet-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔰 PHẦN 1: NỀN TẢNG PYTHON (cơ bản để viết script)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-2-tu-ong-hoa-he-thong-co-ban" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚙️ PHẦN 2: TỰ ĐỘNG HÓA HỆ THỐNG CƠ BẢN
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-quan-ly-cloud-awsgcpazure" class="md-nav__link">
-    <span class="md-ellipsis">
-      ☁️ PHẦN 3: QUẢN LÝ CLOUD (AWS/GCP/Azure)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-4-tu-ong-voi-docker-kubernetes" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐳 PHẦN 4: TỰ ĐỘNG VỚI DOCKER &amp; KUBERNETES
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-5-tu-ong-hoa-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔁 PHẦN 5: TỰ ĐỘNG HÓA CI/CD
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-6-monitoring-alerting" class="md-nav__link">
-    <span class="md-ellipsis">
-      📈 PHẦN 6: MONITORING &amp; ALERTING
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-7-bao-mat-secret-devops-tooling" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔐 PHẦN 7: BẢO MẬT, SECRET, DEVOPS TOOLING
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-8-cong-cu-toolkit-rieng" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✨ PHẦN 8: CÔNG CỤ &amp; TOOLKIT RIÊNG
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#goi-y-cach-hoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ GỢI Ý CÁCH HỌC:
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1724,7 +1687,7 @@
 
 
   
-    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/python/index.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/security/sec.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -1732,124 +1695,84 @@
   
 
 
-<p>Rất tốt! Dưới đây là <strong>danh sách các việc cần làm của một DevOps Engineer với Python để tự động hóa mọi thứ</strong>, được sắp xếp từ <strong>dễ → khó</strong>, <strong>cơ bản → nâng cao</strong>. Bạn có thể học theo thứ tự này.</p>
-<hr>
-<h1 id="lo-trinh-devops-voi-python-tu-ong-hoa-toan-dien">✅ <strong>LỘ TRÌNH DEVOPS VỚI PYTHON – TỰ ĐỘNG HÓA TOÀN DIỆN</strong><a class="headerlink" href="#lo-trinh-devops-voi-python-tu-ong-hoa-toan-dien" title="Permanent link">¶</a></h1>
-<hr>
-<h2 id="phan-1-nen-tang-python-co-ban-e-viet-script">🔰 <strong>PHẦN 1: NỀN TẢNG PYTHON (cơ bản để viết script)</strong><a class="headerlink" href="#phan-1-nen-tang-python-co-ban-e-viet-script" title="Permanent link">¶</a></h2>
-<ol>
-<li>[ ] Biến, hàm, vòng lặp, if-else trong Python</li>
-<li>[ ] Làm việc với <strong>file</strong>: đọc, ghi, xử lý file <code>.txt</code>, <code>.json</code>, <code>.yaml</code></li>
-<li>[ ] Dùng <code>argparse</code> để tạo <strong>CLI script</strong> có tham số dòng lệnh</li>
-<li>[ ] Dùng <code>os</code>, <code>shutil</code>, <code>pathlib</code> để xử lý file, thư mục</li>
-<li>[ ] Dùng <code>subprocess</code> để chạy <strong>lệnh shell/bash</strong> từ Python</li>
-<li>[ ] Hiểu &amp; dùng <strong>exception handling</strong> (<code>try-except</code>) để xử lý lỗi</li>
-</ol>
-<hr>
-<h2 id="phan-2-tu-ong-hoa-he-thong-co-ban">⚙️ <strong>PHẦN 2: TỰ ĐỘNG HÓA HỆ THỐNG CƠ BẢN</strong><a class="headerlink" href="#phan-2-tu-ong-hoa-he-thong-co-ban" title="Permanent link">¶</a></h2>
-<ol>
-<li>[ ] Tự động chạy lệnh trên máy local với <code>subprocess</code></li>
-<li>[ ] Tự động chạy lệnh <strong>qua SSH</strong> tới server với <code>paramiko</code></li>
-<li>[ ] Upload/download file qua SSH/SFTP</li>
-<li>[ ] Tự động cài đặt phần mềm trên máy chủ (Nginx, Docker...)</li>
-<li>[ ] Ghi log hoạt động vào file log (<code>logging</code>, <code>loguru</code>)</li>
-</ol>
-<hr>
-<h2 id="phan-3-quan-ly-cloud-awsgcpazure">☁️ <strong>PHẦN 3: QUẢN LÝ CLOUD (AWS/GCP/Azure)</strong><a class="headerlink" href="#phan-3-quan-ly-cloud-awsgcpazure" title="Permanent link">¶</a></h2>
-<ol>
-<li>[ ] Kết nối AWS bằng <code>boto3</code></li>
-<li>[ ] Tạo EC2 instance, gắn security group</li>
-<li>[ ] Quản lý S3 bucket: upload, download, xóa file</li>
-<li>[ ] Quản lý IAM: tạo user, phân quyền</li>
-<li>[ ] Tạo snapshot, gắn EBS volume tự động</li>
-<li>[ ] Quản lý AWS Lambda (tạo hàm, deploy code)</li>
-<li>[ ] Gửi email qua AWS SES hoặc SMTP</li>
-</ol>
-<hr>
-<h2 id="phan-4-tu-ong-voi-docker-kubernetes">🐳 <strong>PHẦN 4: TỰ ĐỘNG VỚI DOCKER &amp; KUBERNETES</strong><a class="headerlink" href="#phan-4-tu-ong-voi-docker-kubernetes" title="Permanent link">¶</a></h2>
-<ol>
-<li>
-<p>[ ] Dùng <code>docker-py</code> để:</p>
-</li>
-<li>
-<p>Build image</p>
-</li>
-<li>Start/stop container</li>
-<li>
-<p>Lấy log container</p>
-</li>
-<li>
-<p>[ ] Sinh file Dockerfile, docker-compose bằng Python (<code>jinja2</code>)</p>
-</li>
-<li>
-<p>[ ] Quản lý Kubernetes bằng <code>kubernetes</code> client SDK:</p>
-</li>
-<li>
-<p>Deploy Pod</p>
-</li>
-<li>Xem trạng thái Pod</li>
-<li>
-<p>Tự động xóa/restart pod lỗi</p>
-</li>
-<li>
-<p>[ ] Sinh file YAML cho K8s tự động (<code>pyyaml + jinja2</code>)</p>
-</li>
-</ol>
-<hr>
-<h2 id="phan-5-tu-ong-hoa-cicd">🔁 <strong>PHẦN 5: TỰ ĐỘNG HÓA CI/CD</strong><a class="headerlink" href="#phan-5-tu-ong-hoa-cicd" title="Permanent link">¶</a></h2>
-<ol>
-<li>
-<p>[ ] Viết script tự động:</p>
-</li>
-<li>
-<p>Lint code (pylint, black)</p>
-</li>
-<li>Run unit test (pytest)</li>
-<li>
-<p>Build docker image</p>
-</li>
-<li>
-<p>[ ] Đẩy image lên DockerHub</p>
-</li>
-<li>[ ] Trigger deploy lên server</li>
-<li>[ ] Tạo tool Python chạy từ CLI để điều khiển pipeline</li>
-<li>[ ] Gửi log/trạng thái build về Slack/Telegram</li>
-</ol>
-<hr>
-<h2 id="phan-6-monitoring-alerting">📈 <strong>PHẦN 6: MONITORING &amp; ALERTING</strong><a class="headerlink" href="#phan-6-monitoring-alerting" title="Permanent link">¶</a></h2>
-<ol>
-<li>[ ] Thu thập log file hệ thống/app</li>
-<li>[ ] Phân tích log để tìm lỗi (<code>re</code>, <code>loguru</code>)</li>
-<li>[ ] Gửi cảnh báo nếu log có lỗi nghiêm trọng</li>
-<li>[ ] Gửi cảnh báo qua email/Slack/Telegram API</li>
-<li>[ ] Push metrics về Prometheus bằng <code>prometheus_client</code></li>
-</ol>
-<hr>
-<h2 id="phan-7-bao-mat-secret-devops-tooling">🔐 <strong>PHẦN 7: BẢO MẬT, SECRET, DEVOPS TOOLING</strong><a class="headerlink" href="#phan-7-bao-mat-secret-devops-tooling" title="Permanent link">¶</a></h2>
-<ol>
-<li>[ ] Tự động đổi mật khẩu/server secret</li>
-<li>[ ] Tích hợp Vault API hoặc AWS Secrets Manager</li>
-<li>[ ] Tạo công cụ CLI dạng <code>mydevops tool --action restart --server 123</code></li>
-<li>[ ] Viết REST API bằng Flask/FastAPI cho quản lý hệ thống</li>
-<li>[ ] Làm dashboard nhỏ giám sát hệ thống bằng Flask + Bootstrap</li>
-</ol>
-<hr>
-<h2 id="phan-8-cong-cu-toolkit-rieng">✨ <strong>PHẦN 8: CÔNG CỤ &amp; TOOLKIT RIÊNG</strong><a class="headerlink" href="#phan-8-cong-cu-toolkit-rieng" title="Permanent link">¶</a></h2>
-<ol>
-<li>[ ] Viết script clone toàn bộ repo Git và cập nhật tự động</li>
-<li>[ ] Tự động backup database/filesystem</li>
-<li>[ ] Gửi báo cáo PDF/HTML hàng ngày (dùng <code>pdfkit</code>, <code>jinja2</code>)</li>
-<li>[ ] Viết bot Python gửi thông báo, ảnh, file</li>
-</ol>
-<hr>
-<h2 id="goi-y-cach-hoc">✅ GỢI Ý CÁCH HỌC:<a class="headerlink" href="#goi-y-cach-hoc" title="Permanent link">¶</a></h2>
+<p>Rất hay — bạn đã có nền tảng tốt (CompTIA Net+/Sec+, CCNA, AWS SAA). Mục tiêu của bạn là <strong>ethical hacking (đi thử nghiệm thâm nhập) trong tổ chức của chính mình</strong> để tăng cường an ninh — đó là hướng đúng nếu làm có phép, có quy trình. Dưới đây là lộ trình thực dụng, cân nhắc giữa <strong>chứng chỉ</strong>, <strong>kỹ năng thực hành</strong>, và <strong>quy trình pháp lý/đạo đức</strong> để sếp thấy yên tâm.</p>
+<h1 id="1-nguyen-tac-bat-buoc-truoc-khi-bat-tay-lam">1) Nguyên tắc bắt buộc trước khi bắt tay làm<a class="headerlink" href="#1-nguyen-tac-bat-buoc-truoc-khi-bat-tay-lam" title="Permanent link">¶</a></h1>
 <ul>
-<li>Học theo từng phần, làm mini-project nhỏ ứng với từng nhóm.</li>
-<li>Ghi chú lại thành script dùng được cho thực tế.</li>
-<li>Tạo 1 repo riêng: <code>devops-python-toolkit</code> để lưu script bạn viết.</li>
+<li><strong>Phải có ủy quyền viết (authorization)</strong>: scope, thời gian, IP/hosts được phép, rollback plan, contact khẩn cấp. Không làm gì nếu chưa có giấy này.</li>
+<li><strong>Quy tắc ứng xử / Rules of Engagement</strong> rõ ràng (cấm destructive tests ngoài thỏa thuận).</li>
+<li><strong>Báo cáo và remediations</strong>: kết quả phải kèm kịch bản vá/sửa lỗi và ưu tiên rủi ro cho đội vận hành / dev.</li>
+</ul>
+<h1 id="2-nen-hoc-chung-chi-hay-ky-nang-thuc-hanh-tom-tat">2) Nên học “chứng chỉ” hay “kỹ năng thực hành”? (tóm tắt)<a class="headerlink" href="#2-nen-hoc-chung-chi-hay-ky-nang-thuc-hanh-tom-tat" title="Permanent link">¶</a></h1>
+<ul>
+<li><strong>Ưu tiên KỸ NĂNG THỰC HÀNH</strong> (labs, CTFs, red‑team exercises). Việc xài công cụ và khai thác thực tế mới bảo vệ tốt được hệ thống.</li>
+<li><strong>Chứng chỉ</strong> là công cụ hỗ trợ: dùng để chứng minh năng lực với sếp/HR/khách hàng. Nhưng <strong>không thay thế</strong> thực hành.</li>
+<li>Nếu sếp bắt yêu cầu "đào tạo/đánh giá", đề xuất <strong>kết hợp</strong>: khóa hands‑on + một chứng chỉ uy tín.</li>
+</ul>
+<h1 id="3-chung-chi-e-xuat-uu-tien-theo-thu-tu-neu-phai-chon">3) Chứng chỉ đề xuất — ưu tiên theo thứ tự nếu phải chọn<a class="headerlink" href="#3-chung-chi-e-xuat-uu-tien-theo-thu-tu-neu-phai-chon" title="Permanent link">¶</a></h1>
+<ol>
+<li><strong>OSCP (Offensive Security Certified Professional)</strong> — <em>gold standard</em> cho pentest thực hành. Ưu: nhiều labs thực tế; chứng minh năng lực exploit &amp; report.</li>
+<li><strong>eJPT (eLearnSecurity Junior Pen Tester)</strong> hoặc <strong>CompTIA PenTest+</strong> — cho bước đầu thực hành nếu bạn mới bắt đầu pentest chuyên sâu.</li>
+<li><strong>GPEN (GIAC Penetration Tester)</strong> — thích hợp nếu cần chứng nhận công nghiệp, hợp pháp/tuân thủ.</li>
+<li><strong>OSEP / OSCE (OffSec nâng cao)</strong> hoặc các chứng chỉ Red Team nâng cao — nếu làm red‑team phức tạp.</li>
+<li><strong>AWS Certified Security – Specialty</strong> (nếu trọng tâm vào cloud security) + học thêm cloud pentesting (thực hành).</li>
+</ol>
+<p>Ghi chú: <strong>CEH</strong> được biết rộng rãi nhưng trên cộng đồng technical nó được coi là ít “hands‑on” hơn so với OSCP; nếu phải chọn 1 chứng chỉ thực sự dùng được trong pentest, OSCP &gt; CEH.</p>
+<h1 id="4-ky-nang-kien-thuc-can-hocpractise-chi-tiet">4) Kỹ năng &amp; kiến thức cần học/practise (chi tiết)<a class="headerlink" href="#4-ky-nang-kien-thuc-can-hocpractise-chi-tiet" title="Permanent link">¶</a></h1>
+<ul>
+<li><strong>Kỹ năng nền tảng</strong>: TCP/IP, subnetting, routing, DNS, AD/LDAP, Kerberos, Windows internals, Linux internals — bạn đã có CCNA/Net+ giúp nhiều.</li>
+<li><strong>Web app security (OWASP Top10)</strong>: SQLi, XSS, auth flaws, SSRF, insecure deserialization.</li>
+<li><strong>Network pentesting</strong>: port scanning, service enumeration, vuln scanning, exploitation (non-destructive), pivoting.</li>
+<li><strong>Active Directory / Windows Domain</strong>: Kerberos attacks, AD enumeration, privilege escalation, BloodHound knowledge.</li>
+<li><strong>Scripting &amp; automation</strong>: Python (pentest scripts), Bash, PowerShell (AD/Windows).</li>
+<li><strong>Cloud security &amp; pentest</strong>: IAM misconfigs, excessive permissions, S3 buckets, metadata access, lateral movement in cloud.</li>
+<li><strong>Red team / purple team</strong>: cách mô phỏng TTPs theo MITRE ATT&amp;CK, phối hợp với blue team.</li>
+<li><strong>Incident response &amp; forensics (DFIR)</strong>: để hiểu cách detection &amp; remediation hoạt động.</li>
+</ul>
+<h1 id="5-cong-cu-nen-biet-liet-ke-khong-huong-dan-dung">5) Công cụ nên biết (liệt kê, không hướng dẫn dùng)<a class="headerlink" href="#5-cong-cu-nen-biet-liet-ke-khong-huong-dan-dung" title="Permanent link">¶</a></h1>
+<ul>
+<li>Recon/Scanning: <strong>Nmap, Masscan</strong></li>
+<li>Web: <strong>Burp Suite (Pro nếu có)</strong>, sqlmap (cẩn trọng)</li>
+<li>Exploitation: <strong>Metasploit</strong> (hiểu, nhưng đừng lạm dụng trong môi trường live)</li>
+<li>AD &amp; Windows: <strong>BloodHound, Impacket, Mimikatz</strong> (chú ý an toàn/ủy quyền!)</li>
+<li>Post‑exploitation: <strong>Responder, CrackMapExec</strong></li>
+<li>Cloud: <strong>Prowler, ScoutSuite, awscli</strong>
+  Học công cụ trong môi trường lab — đừng chạy chúng lên môi trường production nếu chưa có phép.</li>
+</ul>
+<h1 id="6-noi-thuc-hanh-tai-nguyen">6) Nơi thực hành &amp; tài nguyên<a class="headerlink" href="#6-noi-thuc-hanh-tai-nguyen" title="Permanent link">¶</a></h1>
+<ul>
+<li><strong>TryHackMe, Hack The Box, Offensive Security PWK labs</strong> — ưu tiên.</li>
+<li><strong>CTF platforms, vulnhub VMs</strong> — để luyện skill cụ thể.</li>
+<li>Đọc <strong>MITRE ATT&amp;CK</strong>, <strong>OWASP</strong>, và blog của các red‑team/blue‑team uy tín.</li>
+</ul>
+<h1 id="7-lo-trinh-hoc-goi-y-612-thang-tuy-thoi-gian">7) Lộ trình học gợi ý (6–12 tháng, tùy thời gian)<a class="headerlink" href="#7-lo-trinh-hoc-goi-y-612-thang-tuy-thoi-gian" title="Permanent link">¶</a></h1>
+<ul>
+<li>Tháng 0–1: refresh Python/PowerShell + lab cơ bản (TryHackMe: Intro to Pentesting).</li>
+<li>Tháng 2–4: Web app pentest (OWASP) + network pentest labs. Làm CTF mini.</li>
+<li>Tháng 5–7: AD / Windows exploitation labs (BloodHound, AD pratice VMs).</li>
+<li>Tháng 8–10: Cloud pentest labs (AWS) + purple team exercises với đội IR.</li>
+<li>Tháng 10–12: Chuẩn bị &amp; thi <strong>OSCP</strong> (nếu muốn bằng chứng năng lực) hoặc eJPT nếu thời gian/ngân sách hạn chế.</li>
+</ul>
+<h1 id="8-goi-y-e-xuat-cho-sep-mau-ngan">8) Gợi ý đề xuất cho sếp (mẫu ngắn)<a class="headerlink" href="#8-goi-y-e-xuat-cho-sep-mau-ngan" title="Permanent link">¶</a></h1>
+<ul>
+<li>Mục tiêu: <strong>đánh giá lỗ hổng nội bộ &amp; cải thiện policy, detection, remediation.</strong></li>
+<li>Phương án: 1) Đào tạo nhân sự (1–2 người) — khóa <strong>OSCP</strong> / hands‑on labs OR 2) Thuê bên thứ ba audit (nếu cần độc lập).</li>
+<li>Deliverables: báo cáo chi tiết, PoC non‑destructive, plan vá lỗi, retest sau vá.</li>
+<li>Yêu cầu tài nguyên: lab sandbox nội bộ (isolated), budget cho labs + chứng chỉ (~tùy chứng chỉ), timeline 6–12 tháng.</li>
+<li>Yêu cầu pháp lý: ROE, change window, contact khẩn cấp.</li>
+</ul>
+<h1 id="9-luu-y-ao-uc-an-toan">9) Lưu ý đạo đức &amp; an toàn<a class="headerlink" href="#9-luu-y-ao-uc-an-toan" title="Permanent link">¶</a></h1>
+<ul>
+<li>Không thực hiện penetration test trên hệ thống production mà không có <strong>authorization</strong> rõ ràng.</li>
+<li>Khi thử nghiệm, luôn prioritize: <strong>an toàn dữ liệu, không làm ngưng hệ thống, không public thông tin nhạy cảm.</strong></li>
+</ul>
+<h1 id="10-ket-luan-ngan-gon-khuyen-nghi-cua-toi-cho-ban">10) Kết luận ngắn gọn — khuyến nghị của tôi cho bạn<a class="headerlink" href="#10-ket-luan-ngan-gon-khuyen-nghi-cua-toi-cho-ban" title="Permanent link">¶</a></h1>
+<ul>
+<li><strong>Tập trung vào hands‑on</strong> (TryHackMe / HTB / labs) + <strong>OSCP</strong> nếu muốn chứng nhận thực tế.</li>
+<li>Học thêm <strong>AD pentesting</strong> và <strong>cloud pentesting (AWS)</strong> vì bạn đã có background AWS.</li>
+<li>Luôn làm theo <strong>quy trình ủy quyền</strong> của tổ chức — đây là điểm sếp sẽ rất quan tâm.</li>
 </ul>
 <hr>
-<p>Bạn muốn mình tạo luôn <strong>bảng checklist (có file tải)</strong> cho lộ trình này không? Hoặc gợi ý <strong>dự án thực hành cho mỗi phần</strong>?</p>
+<p>Muốn mình soạn <strong>mẫu đề xuất trình sếp</strong> (có timeline, ngân sách, deliverables, và mẫu ROE) mà bạn có thể copy-paste gửi ngay không? Nếu có, mình làm luôn cho bạn — chỉ cần mình soạn tiếng Việt chuẩn, đủ chi tiết để trình lên sếp.</p>
 
 
 
@@ -1943,7 +1866,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../prog/python-automation/roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Python Automation &amp;amp; DevOps Automation Roadmap">
+          <a href="../roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Security Complete Learning Roadmap - Secret Management &amp;amp; Scanning/Hardening">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1953,20 +1876,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Python Automation &amp; DevOps Automation Roadmap
+                Security Complete Learning Roadmap - Secret Management &amp; Scanning/Hardening
               </div>
             </div>
           </a>
         
         
           
-          <a href="../security/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Security Complete Learning Roadmap - Secret Management &amp;amp; Scanning/Hardening">
+          <a href="../../system-design/" class="md-footer__link md-footer__link--next" aria-label="Sau: Index">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Security Complete Learning Roadmap - Secret Management &amp; Scanning/Hardening
+                Index
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2028,10 +1951,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   
