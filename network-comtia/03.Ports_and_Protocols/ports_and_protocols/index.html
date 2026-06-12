@@ -1,0 +1,3164 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/03.Ports_and_Protocols/ports_and_protocols/">
+      
+      
+        <link rel="prev" href="../../02.OSI_model/the_osi_physical_layer/">
+      
+      
+        <link rel="next" href="../../../observability/roadmap/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Ports and Protocols - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ports-and-protocols" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ports and Protocols
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/LPIC-1/01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../linux/LPIC-1/01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network comtia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.fundamental
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01.fundamental
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/01.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/02.net-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các Thành Phần Cơ Bản Của Mạng Máy Tính
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/03.network-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/04.NetworkGeography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/05.network-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/06.wireless_infrastructure_mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wireless Infrastructure Mode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/07.datacenter_topologies_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datacenter Topologies Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3">
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.OSI model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02.OSI model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/application_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/data_link_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/encapsulation_and_decapsulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encapsulation and Decapsulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/layer_4_transport_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/network_layer_routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Layer Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/network_packet_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Packet Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/osi_model_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI Model Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/presentation_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/session_layer_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Layer Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/the_osi_physical_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03.Ports and Protocols
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-sau-ve-cong-ports-va-giao-thuc-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích sâu về Cổng (Ports) và Giao thức (Protocols)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phân tích sâu về Cổng (Ports) và Giao thức (Protocols)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-cong-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của Cổng (Port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-inh-nghia-va-vai-tro-cua-giao-thuc-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Định nghĩa và Vai trò của Giao thức (Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-phan-loai-cac-dai-cong-port-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Phân loại các dải Cổng (Port Ranges)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cac-giao-thuc-quan-trong-trong-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Các Giao thức quan trọng trong mạng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-giao-thuc-truyen-tai-tep-tin-file-transfer-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Giao thức Truyền tải Tệp tin (File Transfer Protocols)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-giao-thuc-truy-cap-tu-xa-remote-access-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Giao thức Truy cập Từ xa (Remote Access Protocols)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dich-vu-mang-networking-service-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dịch vụ Mạng (Networking Service Ports)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cac-dich-vu-mang-khac-other-network-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Các dịch vụ mạng khác (Other Network Services)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cong-cu-va-anh-gia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Công cụ và Đánh giá
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-kip-on-thi-toc-o-ports-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Bí Kíp Ôn Thi Tốc Độ: Ports &amp; Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Bí Kíp Ôn Thi Tốc Độ: Ports &amp; Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-khai-niem-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Khái niệm cốt lõi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-phan-loai-dai-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Phân loại dải Port
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tong-hop-port-protocol-trong-tam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tổng hợp Port &amp; Protocol trọng tâm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tổng hợp Port &amp; Protocol trọng tâm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nhom-web-email" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhóm Web &amp; Email
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhom-truyen-file-truy-cap-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhóm Truyền file &amp; Truy cập từ xa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhom-dich-vu-mang-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhóm Dịch vụ mạng &amp; Hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cong-cu-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Công cụ cần nhớ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-giao-thuc-nen-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Giao thức nền tảng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-sau-ve-cong-ports-va-giao-thuc-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích sâu về Cổng (Ports) và Giao thức (Protocols)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phân tích sâu về Cổng (Ports) và Giao thức (Protocols)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-cong-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của Cổng (Port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-inh-nghia-va-vai-tro-cua-giao-thuc-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Định nghĩa và Vai trò của Giao thức (Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-phan-loai-cac-dai-cong-port-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Phân loại các dải Cổng (Port Ranges)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cac-giao-thuc-quan-trong-trong-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Các Giao thức quan trọng trong mạng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-giao-thuc-truyen-tai-tep-tin-file-transfer-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Giao thức Truyền tải Tệp tin (File Transfer Protocols)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-giao-thuc-truy-cap-tu-xa-remote-access-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Giao thức Truy cập Từ xa (Remote Access Protocols)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dich-vu-mang-networking-service-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dịch vụ Mạng (Networking Service Ports)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cac-dich-vu-mang-khac-other-network-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Các dịch vụ mạng khác (Other Network Services)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cong-cu-va-anh-gia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Công cụ và Đánh giá
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-kip-on-thi-toc-o-ports-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Bí Kíp Ôn Thi Tốc Độ: Ports &amp; Protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Bí Kíp Ôn Thi Tốc Độ: Ports &amp; Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-khai-niem-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Khái niệm cốt lõi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-phan-loai-dai-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Phân loại dải Port
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tong-hop-port-protocol-trong-tam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tổng hợp Port &amp; Protocol trọng tâm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tổng hợp Port &amp; Protocol trọng tâm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nhom-web-email" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhóm Web &amp; Email
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhom-truyen-file-truy-cap-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhóm Truyền file &amp; Truy cập từ xa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhom-dich-vu-mang-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhóm Dịch vụ mạng &amp; Hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cong-cu-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Công cụ cần nhớ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-giao-thuc-nen-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Giao thức nền tảng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/03.Ports_and_Protocols/ports_and_protocols.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="ports-and-protocols">Ports and Protocols<a class="headerlink" href="#ports-and-protocols" title="Permanent link">¶</a></h1>
+<h3 id="phan-tich-sau-ve-cong-ports-va-giao-thuc-protocols">Phân tích sâu về Cổng (Ports) và Giao thức (Protocols)<a class="headerlink" href="#phan-tich-sau-ve-cong-ports-va-giao-thuc-protocols" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_5.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_5.jpg"></a></p>
+<h4 id="1-ban-chat-cua-cong-port">1. Bản chất của Cổng (Port)<a class="headerlink" href="#1-ban-chat-cua-cong-port" title="Permanent link">¶</a></h4>
+<p>Trong mạng máy tính, <strong>Port (Cổng)</strong> không phải là một thiết bị vật lý mà là một "điểm kết nối ảo". Hãy tưởng tượng máy tính của bạn là một tòa nhà lớn với hàng ngàn cánh cửa. Mỗi cánh cửa được đánh số và dẫn đến một bộ phận cụ thể bên trong tòa nhà đó.
+*   <strong>Chức năng:</strong> Nó cho phép các phần mềm ứng dụng khác nhau trên cùng một máy tính có thể giao tiếp với mạng mà không bị chồng chéo dữ liệu. Khi dữ liệu đến máy tính, số hiệu cổng sẽ chỉ dẫn dữ liệu đó phải đi đến đâu (ví dụ: trình duyệt web, phần mềm email, hay ứng dụng tải file).</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_0.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_0.jpg"></a></p>
+<ul>
+<li><strong>Well-known Ports:</strong> Đây là các cổng tiêu chuẩn quốc tế được quy định sẵn (từ 0 đến 1023). Ví dụ, Port 443 là dành riêng cho lưu lượng web mã hóa (HTTPS). Việc sử dụng chuẩn này giúp các thiết bị trên toàn cầu hiểu được "ngôn ngữ" của nhau mà không cần cài đặt phức tạp.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy coi máy tính của bạn là một khách sạn. IP Address là địa chỉ của khách sạn đó, còn Port giống như số phòng. Nếu bạn là một nhân viên giao hàng (gói tin dữ liệu), bạn chỉ có thể đưa hàng vào đúng phòng (ứng dụng) nếu bạn biết số phòng đó. Nếu bạn mang đồ ăn (gói tin HTTP) đến phòng làm việc, nhưng nhân viên ở đó lại không nhận đồ ăn (không mở port 80/443), bạn sẽ bị từ chối ngay lập tức.</p>
+</blockquote>
+<h4 id="2-inh-nghia-va-vai-tro-cua-giao-thuc-protocol">2. Định nghĩa và Vai trò của Giao thức (Protocol)<a class="headerlink" href="#2-inh-nghia-va-vai-tro-cua-giao-thuc-protocol" title="Permanent link">¶</a></h4>
+<p>Nếu Port là "điểm đến", thì <strong>Protocol (Giao thức)</strong> chính là "ngôn ngữ và quy tắc ứng xử" trong cuộc giao tiếp đó. Một giao thức định nghĩa cách dữ liệu được gói gọn, truyền đi và xử lý.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_2.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_2.jpg"></a></p>
+<ul>
+<li><strong>TCP (Transmission Control Protocol):</strong> Được ví như một dịch vụ chuyển phát nhanh có đảm bảo. Nó thiết lập một kết nối tin cậy, kiểm tra xem dữ liệu có đến đủ không, có bị lỗi không. Nếu thiếu gói tin, nó sẽ yêu cầu gửi lại.</li>
+<li><strong>IP (Internet Protocol):</strong> Giống như hệ thống bản đồ và địa chỉ. Nó cung cấp cho mỗi thiết bị một địa chỉ (IP Address) để định vị. Nếu không có IP, gói tin sẽ giống như một lá thư không có địa chỉ người nhận – nó sẽ lạc lối giữa không gian mạng rộng lớn.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_3.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_3.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang chơi điện thoại với bạn mình. Giao thức là luật chơi: "Người nói phải đợi người nghe xong mới được nói", "Nếu không nghe rõ thì phải yêu cầu nhắc lại". Nếu hai người nói hai ngôn ngữ khác nhau hoặc không tuân theo luật chơi (ngắt lời nhau liên tục), cuộc hội thoại sẽ hoàn toàn đổ vỡ. TCP chính là việc bạn luôn hỏi lại "Cậu đã hiểu ý tớ chưa?" để chắc chắn thông tin được truyền đạt chính xác.</p>
+</blockquote>
+<h4 id="3-phan-loai-cac-dai-cong-port-ranges">3. Phân loại các dải Cổng (Port Ranges)<a class="headerlink" href="#3-phan-loai-cac-dai-cong-port-ranges" title="Permanent link">¶</a></h4>
+<p>Hệ thống mạng chia các cổng thành ba nhóm chính để quản lý tài nguyên hiệu quả:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_4.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_4.jpg"></a></p>
+<ol>
+<li><strong>Well-known Ports (0 - 1023):</strong> Các cổng "huyền thoại" dành cho các dịch vụ cốt lõi mà bất kỳ ai cũng cần dùng (Web, Email, FTP...).</li>
+<li><strong>Registered Ports (1024 - 49,151):</strong> Các cổng dành cho các phần mềm phổ biến của các nhà phát triển phần mềm (như cơ sở dữ liệu, các phần mềm quản trị hệ thống). Chúng được đăng ký để tránh xung đột.</li>
+<li><strong>Dynamic/Private Ports (49,152 - 65,535):</strong> Đây là các cổng "tự do". Khi máy tính của bạn khởi tạo một kết nối tạm thời ra bên ngoài, hệ điều hành sẽ chọn ngẫu nhiên một cổng trong dải này để làm cổng nguồn. Sau khi kết nối xong, cổng này sẽ được giải phóng.</li>
+</ol>
+<h4 id="4-cac-giao-thuc-quan-trong-trong-mang">4. Các Giao thức quan trọng trong mạng<a class="headerlink" href="#4-cac-giao-thuc-quan-trong-trong-mang" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>UDP (User Datagram Protocol):</strong> Một giao thức "tốc độ cao". Khác với TCP, nó không kiểm tra độ tin cậy. Nó gửi đi và không quan tâm người nhận có nhận được không. Thường dùng trong streaming video hoặc game online, nơi tốc độ quan trọng hơn việc mất một vài khung hình nhỏ.</li>
+<li><strong>ICMP (Internet Control Message Protocol):</strong> Đây là công cụ "chẩn đoán". Nó dùng để gửi thông báo lỗi hoặc kiểm tra xem một máy chủ có đang "sống" hay không (lệnh Ping chính là sử dụng giao thức này).</li>
+<li><strong>HTTP (Port 80) &amp; HTTPS (Port 443):</strong> Nền tảng của World Wide Web. HTTP là phiên bản thô, không bảo mật; còn HTTPS là phiên bản hiện đại, sử dụng mã hóa để bảo vệ dữ liệu người dùng khỏi sự đánh cắp trên đường truyền.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_1.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_1.jpg"></a></p>
+<ul>
+<li><strong>Email Protocols:</strong><ul>
+<li><strong>SMTP (Simple Mail Transfer Protocol - Port 25):</strong> Đây là "người đưa thư" chuyên dụng để gửi email đi từ máy bạn đến máy chủ thư điện tử.</li>
+<li><strong>POP3 &amp; IMAP:</strong> Đây là các giao thức dùng để nhận thư. Sự khác biệt nằm ở chỗ POP3 thường tải hết về máy cục bộ, còn IMAP đồng bộ trực tiếp trên máy chủ, giúp bạn xem email trên nhiều thiết bị cùng lúc. SMTPS (bản mã hóa của SMTP) là lớp bảo mật bắt buộc để ngăn chặn việc đọc trộm email trong quá trình vận chuyển.</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-giao-thuc-truyen-tai-tep-tin-file-transfer-protocols">1. Giao thức Truyền tải Tệp tin (File Transfer Protocols)<a class="headerlink" href="#1-giao-thuc-truyen-tai-tep-tin-file-transfer-protocols" title="Permanent link">¶</a></h3>
+<p><strong>FTP (File Transfer Protocol - Cổng 20 &amp; 21):</strong>
+Đây là giao thức cơ bản nhất để truyền tệp giữa client và server. FTP sử dụng hai kênh riêng biệt: Cổng 20 dành cho dữ liệu (Data) và Cổng 21 dành cho các lệnh điều khiển (Control). Cách tiếp cận này giúp việc truyền tải trở nên có tổ chức, nhưng điểm yếu chết người là dữ liệu được truyền đi dưới dạng văn bản thuần (plain text), dễ bị kẻ xấu "đánh hơi" (sniffing).</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng FTP giống như việc bạn gửi một bức thư quan trọng mà không bỏ vào phong bì kín. Người đưa thư hay bất kỳ ai đi ngang qua cũng có thể mở ra đọc nội dung bên trong mà không cần chìa khóa.</p>
+</blockquote>
+<p><strong>SFTP (Secure File Transfer Protocol - Cổng 22):</strong>
+Khác với FTP, SFTP chạy trên nền giao thức SSH, tạo ra một đường hầm bảo mật. Mọi dữ liệu trước khi truyền đi đều được mã hóa. Nếu FTP là gửi thư không phong bì, thì SFTP là gửi thư trong một két sắt thép được khóa chặt, chỉ người nhận có chìa khóa mới mở được.</p>
+<p><strong>TFTP (Trivial File Transfer Protocol - Cổng 69):</strong>
+Đúng như cái tên "Trivial" (tầm thường/đơn giản), giao thức này cực kỳ nhẹ, không yêu cầu xác thực người dùng và không có các tính năng bảo mật. Nó thường được dùng trong các môi trường nội bộ hạn chế, như nạp cấu hình cho thiết bị mạng (Router/Switch) khi khởi động.</p>
+<h3 id="2-giao-thuc-truy-cap-tu-xa-remote-access-protocols">2. Giao thức Truy cập Từ xa (Remote Access Protocols)<a class="headerlink" href="#2-giao-thuc-truy-cap-tu-xa-remote-access-protocols" title="Permanent link">¶</a></h3>
+<p><strong>SSH (Secure Shell - Cổng 22):</strong>
+Đây là chuẩn vàng để quản trị từ xa. Nó thay thế hoàn toàn các giao thức cũ không bảo mật. SSH cung cấp kênh giao tiếp an toàn, mã hóa toàn bộ phiên làm việc giữa máy trạm và server.</p>
+<p><strong>Telnet (Cổng 23):</strong>
+Là ông tổ của truy cập từ xa. Telnet cho phép bạn kết nối và điều khiển máy tính khác từ xa, nhưng nó truyền tải thông tin (kể cả mật khẩu) dưới dạng văn bản thô. Trong môi trường hiện đại, Telnet gần như đã bị "khai tử" vì nguy cơ bảo mật cực cao.</p>
+<p><strong>RDP (Remote Desktop Protocol - Cổng 3389):</strong>
+Do Microsoft phát triển, RDP không chỉ gửi các lệnh văn bản mà còn truyền tải giao diện đồ họa. Nó cho phép bạn nhìn thấy và thao tác trên màn hình máy tính từ xa y như đang ngồi trước máy.</p>
+<h3 id="3-dich-vu-mang-networking-service-ports">3. Dịch vụ Mạng (Networking Service Ports)<a class="headerlink" href="#3-dich-vu-mang-networking-service-ports" title="Permanent link">¶</a></h3>
+<p><strong>DNS (Domain Name System - Cổng 53):</strong>
+DNS giống như danh bạ điện thoại của Internet. Thay vì nhớ địa chỉ IP 142.250.190.46, bạn chỉ cần gõ "google.com". Cổng 53 là nơi tiếp nhận yêu cầu "dịch" tên miền sang địa chỉ IP để trình duyệt biết phải kết nối đến đâu.</p>
+<p><strong>DHCP (Dynamic Host Control Protocol - Cổng 67 &amp; 68):</strong>
+Đây là "người quản gia" tự động cấp phát địa chỉ IP cho thiết bị khi bạn vừa kết nối vào mạng. Cổng 67 dùng cho Server nhận yêu cầu, Cổng 68 dùng cho Client nhận phản hồi. Nhờ nó, bạn không cần phải cài đặt IP tĩnh thủ công cho hàng trăm thiết bị.</p>
+<p><strong>SQL (Structured Query Language - Cổng 1433):</strong>
+Cổng 1433 là cửa ngõ chuyên biệt để các ứng dụng gửi truy vấn tới cơ sở dữ liệu Microsoft SQL Server. Mọi thao tác lấy dữ liệu, xóa, cập nhật đều đi qua "cánh cửa" này.</p>
+<p><strong>SNMP (Simple Network Management Protocol - Cổng 161 &amp; 162):</strong>
+Công cụ để các quản trị viên mạng theo dõi sức khỏe của thiết bị (Router, Server, Máy in). Cổng 161 để truy vấn trạng thái, 162 để nhận thông báo cảnh báo (Traps).</p>
+<p><strong>Syslog (Cổng 514):</strong>
+Là hệ thống ghi nhật ký (log) tập trung. Mọi lỗi hoặc sự kiện xảy ra trên thiết bị mạng đều được đẩy về một máy chủ trung tâm qua cổng 514 để lưu trữ và phân tích.</p>
+<h3 id="4-cac-dich-vu-mang-khac-other-network-services">4. Các dịch vụ mạng khác (Other Network Services)<a class="headerlink" href="#4-cac-dich-vu-mang-khac-other-network-services" title="Permanent link">¶</a></h3>
+<p><strong>NTP (Network Time Protocol - Cổng 123):</strong>
+Giúp đồng bộ thời gian trên tất cả các thiết bị trong hệ thống. Trong bảo mật, đồng bộ thời gian cực kỳ quan trọng vì nếu đồng hồ sai lệch, các chứng chỉ bảo mật sẽ bị vô hiệu hóa hoặc việc đối chiếu log sẽ trở nên vô nghĩa.</p>
+<p><strong>SIP (Session Initiation Protocol - Cổng 5060 &amp; 5061):</strong>
+Nền tảng của công nghệ VoIP (thoại qua Internet). SIP chịu trách nhiệm thiết lập, duy trì và chấm dứt các cuộc gọi video hoặc âm thanh. Cổng 5060 là bản thường, 5061 là phiên bản được mã hóa (TLS).</p>
+<p><strong>LDAP (Lightweight Directory Access Protocol - Cổng 389 &amp; 636):</strong>
+LDAP là giao thức dùng để truy vấn cơ sở dữ liệu người dùng (ví dụ: Active Directory trong doanh nghiệp). Khi bạn đăng nhập vào máy tính công ty, hệ thống sẽ dùng LDAP để kiểm tra xem mật khẩu của bạn có đúng hay không. Cổng 389 là giao thức thường, còn 636 là LDAPS (LDAP over SSL) – phiên bản bảo mật hơn.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy coi LDAP giống như một "Lễ tân" của tòa nhà. Khi bạn (User) muốn vào, lễ tân sẽ tra cứu trong sổ danh bạ xem bạn có tên trong danh sách khách mời không. Cổng 636 giống như việc lễ tân đeo mặt nạ chống nhìn trộm để không ai khác biết bạn là ai hoặc bạn đang tìm kiếm thông tin gì.</p>
+</blockquote>
+<h3 id="5-cong-cu-va-anh-gia">5. Công cụ và Đánh giá<a class="headerlink" href="#5-cong-cu-va-anh-gia" title="Permanent link">¶</a></h3>
+<p>Sau khi đã hiểu các "cửa ngõ" này, công cụ <strong>Nmap</strong> (Network Mapper) đóng vai trò như một chiếc đèn pin soi đường. Nó sẽ quét các địa chỉ IP để tìm xem cổng nào đang mở (Open), cổng nào đang đóng (Closed). Việc nắm vững các thông số này không chỉ giúp bạn cấu hình hệ thống tối ưu mà còn là kỹ năng then chốt để phát hiện các lỗ hổng mà tin tặc có thể khai thác.</p>
+<hr>
+<h2 id="bi-kip-on-thi-toc-o-ports-protocols">🎯 Bí Kíp Ôn Thi Tốc Độ: Ports &amp; Protocols<a class="headerlink" href="#bi-kip-on-thi-toc-o-ports-protocols" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/ports_and_protocols_anh_6.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/ports_and_protocols_anh_6.jpg"></a></p>
+<h3 id="1-khai-niem-cot-loi">1. Khái niệm cốt lõi<a class="headerlink" href="#1-khai-niem-cot-loi" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Port (Cổng):</strong> Điểm vào/ra ảo cho dữ liệu ứng dụng.</li>
+<li><strong>Protocol (Giao thức):</strong> Bộ quy tắc truyền tải dữ liệu chuẩn hóa.</li>
+</ul>
+<h3 id="2-phan-loai-dai-port">2. Phân loại dải Port<a class="headerlink" href="#2-phan-loai-dai-port" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Well-known:</strong> 0 – 1023</li>
+<li><strong>Registered:</strong> 1024 – 49,151</li>
+<li><strong>Dynamic/Private:</strong> 49,152 – 65,535</li>
+</ul>
+<h3 id="3-tong-hop-port-protocol-trong-tam">3. Tổng hợp Port &amp; Protocol trọng tâm<a class="headerlink" href="#3-tong-hop-port-protocol-trong-tam" title="Permanent link">¶</a></h3>
+<h4 id="nhom-web-email">Nhóm Web &amp; Email<a class="headerlink" href="#nhom-web-email" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>HTTP:</strong> 80</li>
+<li><strong>HTTPS:</strong> 443 (Bảo mật)</li>
+<li><strong>SMTP:</strong> 25 (Gửi mail) | <strong>SMTPS:</strong> 587 (Gửi bảo mật)</li>
+<li><strong>POP3:</strong> 110 (Nhận mail)</li>
+<li><strong>IMAP:</strong> 143 (Nhận mail)</li>
+</ul>
+<h4 id="nhom-truyen-file-truy-cap-tu-xa">Nhóm Truyền file &amp; Truy cập từ xa<a class="headerlink" href="#nhom-truyen-file-truy-cap-tu-xa" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>FTP:</strong> 20, 21</li>
+<li><strong>SFTP:</strong> 22 (Bảo mật)</li>
+<li><strong>TFTP:</strong> 69 (Trivial - Không bảo mật)</li>
+<li><strong>SSH:</strong> 22 (Remote shell)</li>
+<li><strong>Telnet:</strong> 23 (Remote, không bảo mật)</li>
+<li><strong>RDP:</strong> 3389 (Remote Desktop)</li>
+</ul>
+<h4 id="nhom-dich-vu-mang-he-thong">Nhóm Dịch vụ mạng &amp; Hệ thống<a class="headerlink" href="#nhom-dich-vu-mang-he-thong" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>DNS:</strong> 53 (Phân giải tên miền)</li>
+<li><strong>DHCP:</strong> 67, 68 (Cấp IP tự động)</li>
+<li><strong>SQL:</strong> 1433 (Truy vấn CSDL)</li>
+<li><strong>SNMP:</strong> 161, 162 (Quản lý mạng)</li>
+<li><strong>Syslog:</strong> 514 (Ghi nhật ký)</li>
+<li><strong>NTP:</strong> 123 (Đồng bộ thời gian)</li>
+<li><strong>LDAP:</strong> 389 | <strong>LDAPS:</strong> 636 (Tra cứu thư mục)</li>
+<li><strong>SIP:</strong> 5060, 5061 (VoIP/Session)</li>
+</ul>
+<h3 id="4-cong-cu-can-nho">4. Công cụ cần nhớ<a class="headerlink" href="#4-cong-cu-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Nmap:</strong> Công cụ quét mạng để tìm các <strong>Open Ports</strong> và <strong>Protocols</strong>.</li>
+</ul>
+<h3 id="5-giao-thuc-nen-tang">5. Giao thức nền tảng<a class="headerlink" href="#5-giao-thuc-nen-tang" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>TCP:</strong> Đảm bảo kết nối tin cậy (Reliable).</li>
+<li><strong>IP:</strong> Cung cấp địa chỉ (Addressing) để định tuyến dữ liệu.</li>
+</ul>
+<hr>
+<p><em>Ghi chú: 7 hình ảnh minh họa (.jpg) đã được tải về và lưu tự động vào thư mục con <code>image/</code> cùng cấp với file này. Để ảnh hiển thị tự động, hãy đảm bảo bạn sao chép cả thư mục <code>image/</code> nếu bạn muốn di chuyển file markdown sang nơi khác!</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 tháng 6, 2026 14:33:04 UTC">12 tháng 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../02.OSI_model/the_osi_physical_layer/" class="md-footer__link md-footer__link--prev" aria-label="Trước: The OSI Physical Layer">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                The OSI Physical Layer
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../observability/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Observability Complete Learning Roadmap - Metrics, Logging &amp;amp; Tracing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Observability Complete Learning Roadmap - Metrics, Logging &amp; Tracing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
