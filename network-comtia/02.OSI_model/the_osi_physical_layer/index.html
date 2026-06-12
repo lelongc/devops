@@ -1,0 +1,3084 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/02.OSI_model/the_osi_physical_layer/">
+      
+      
+        <link rel="prev" href="../session_layer_essentials/">
+      
+      
+        <link rel="next" href="../../../observability/roadmap/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>The OSI Physical Layer - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-osi-physical-layer" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The OSI Physical Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/LPIC-1/01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../linux/LPIC-1/01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network comtia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.fundamental
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01.fundamental
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/01.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/02.net-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các Thành Phần Cơ Bản Của Mạng Máy Tính
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/03.network-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/04.NetworkGeography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/05.network-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.OSI model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02.OSI model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_link_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encapsulation_and_decapsulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encapsulation and Decapsulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layer_4_transport_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_layer_routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Layer Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_packet_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Packet Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osi_model_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI Model Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../presentation_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session_layer_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Layer Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-tang-vat-ly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của Tầng Vật lý
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-su-chuyen-oi-tin-hieu-transition-modulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sự chuyển đổi tín hiệu (Transition Modulation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-thanh-phan-vat-ly-cap-va-au-noi-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Thành phần vật lý: Cáp và Đầu nối (Connectors)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-tich-chuan-i-day-tiaeia-568a-va-568b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân tích chuẩn đi dây: TIA/EIA-568A và 568B
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-inh-nghia-topo-mang-tai-layer-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Định nghĩa Topo mạng tại Layer 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bai-toan-ong-bo-hoa-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bài toán đồng bộ hóa (Synchronization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-biet-truyen-tai-khong-ong-bo-asynchronous-va-ong-bo-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân biệt Truyền tải Không đồng bộ (Asynchronous) và Đồng bộ (Synchronous)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Phân biệt Truyền tải Không đồng bộ (Asynchronous) và Đồng bộ (Synchronous)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-truyen-tai-khong-ong-bo-asynchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Truyền tải không đồng bộ (Asynchronous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-truyen-tai-ong-bo-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Truyền tải đồng bộ (Synchronous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quan-ly-bang-thong-broadband-vs-baseband" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Quản lý băng thông: Broadband vs. Baseband
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Quản lý băng thông: Broadband vs. Baseband">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-broadband-bang-thong-rong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Broadband (Băng thông rộng)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-baseband-bang-thong-co-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Baseband (Băng thông cơ sở)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-khac-biet-giua-baseband-bang-co-so-va-broadband-bang-thong-rong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sự khác biệt giữa Baseband (Băng cơ sở) và Broadband (Băng thông rộng)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-phap-toi-uu-hoa-bang-thong-multiplexing-ghep-kenh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giải pháp tối ưu hóa băng thông: Multiplexing (Ghép kênh)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Giải pháp tối ưu hóa băng thông: Multiplexing (Ghép kênh)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-time-division-multiplexing-tdm-ghep-kenh-phan-chia-theo-thoi-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Time-Division Multiplexing (TDM - Ghép kênh phân chia theo thời gian)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-statistical-time-division-multiplexing-stattdm-tdm-thong-ke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Statistical Time-Division Multiplexing (StatTDM - TDM thống kê)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-tich-frequency-division-multiplexing-fdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân tích Frequency-Division Multiplexing (FDM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-y-nghia-thuc-dung-cho-ky-thi-va-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ý nghĩa thực dụng cho kỳ thi và thực tế
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-thiet-bi-lop-vat-ly-layer-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Thiết bị lớp Vật lý (Layer 1)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-truyen-dan-khong-day-va-thiet-bi-ha-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Truyền dẫn không dây và Thiết bị hạ tầng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinh-anh-minh-hoa-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hình ảnh minh họa thêm:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-tang-vat-ly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của Tầng Vật lý
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-su-chuyen-oi-tin-hieu-transition-modulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sự chuyển đổi tín hiệu (Transition Modulation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-thanh-phan-vat-ly-cap-va-au-noi-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Thành phần vật lý: Cáp và Đầu nối (Connectors)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-tich-chuan-i-day-tiaeia-568a-va-568b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân tích chuẩn đi dây: TIA/EIA-568A và 568B
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-inh-nghia-topo-mang-tai-layer-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Định nghĩa Topo mạng tại Layer 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bai-toan-ong-bo-hoa-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bài toán đồng bộ hóa (Synchronization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-biet-truyen-tai-khong-ong-bo-asynchronous-va-ong-bo-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân biệt Truyền tải Không đồng bộ (Asynchronous) và Đồng bộ (Synchronous)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Phân biệt Truyền tải Không đồng bộ (Asynchronous) và Đồng bộ (Synchronous)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-truyen-tai-khong-ong-bo-asynchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Truyền tải không đồng bộ (Asynchronous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-truyen-tai-ong-bo-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Truyền tải đồng bộ (Synchronous)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-quan-ly-bang-thong-broadband-vs-baseband" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Quản lý băng thông: Broadband vs. Baseband
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Quản lý băng thông: Broadband vs. Baseband">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-broadband-bang-thong-rong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Broadband (Băng thông rộng)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-baseband-bang-thong-co-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Baseband (Băng thông cơ sở)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-khac-biet-giua-baseband-bang-co-so-va-broadband-bang-thong-rong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sự khác biệt giữa Baseband (Băng cơ sở) và Broadband (Băng thông rộng)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giai-phap-toi-uu-hoa-bang-thong-multiplexing-ghep-kenh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giải pháp tối ưu hóa băng thông: Multiplexing (Ghép kênh)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Giải pháp tối ưu hóa băng thông: Multiplexing (Ghép kênh)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-time-division-multiplexing-tdm-ghep-kenh-phan-chia-theo-thoi-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Time-Division Multiplexing (TDM - Ghép kênh phân chia theo thời gian)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-statistical-time-division-multiplexing-stattdm-tdm-thong-ke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Statistical Time-Division Multiplexing (StatTDM - TDM thống kê)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-tich-frequency-division-multiplexing-fdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân tích Frequency-Division Multiplexing (FDM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-y-nghia-thuc-dung-cho-ky-thi-va-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ý nghĩa thực dụng cho kỳ thi và thực tế
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-thiet-bi-lop-vat-ly-layer-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Thiết bị lớp Vật lý (Layer 1)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-truyen-dan-khong-day-va-thiet-bi-ha-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Truyền dẫn không dây và Thiết bị hạ tầng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinh-anh-minh-hoa-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hình ảnh minh họa thêm:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/02.OSI_model/the_osi_physical_layer.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="the-osi-physical-layer">The OSI Physical Layer<a class="headerlink" href="#the-osi-physical-layer" title="Permanent link">¶</a></h1>
+<p>Mô hình OSI (Open Systems Interconnection) là nền tảng cốt lõi của mạng máy tính, và tầng đầu tiên mà chúng ta cần thấu hiểu chính là <strong>Tầng Vật lý (Physical Layer - Layer 1)</strong>. Đây là tầng thấp nhất, nơi mọi dữ liệu trừu tượng từ các ứng dụng cao cấp được "hạ cánh" xuống thế giới vật chất để truyền tải.</p>
+<h3 id="1-ban-chat-cua-tang-vat-ly">1. Bản chất của Tầng Vật lý<a class="headerlink" href="#1-ban-chat-cua-tang-vat-ly" title="Permanent link">¶</a></h3>
+<p>Tầng vật lý chịu trách nhiệm truyền tải "bits" (đơn vị nhị phân 0 và 1) qua các phương tiện truyền dẫn. Nó không quan tâm đến nội dung của dữ liệu (email, video hay văn bản), nó chỉ quan tâm đến việc: Làm sao để chuyển dòng điện, ánh sáng hoặc sóng vô tuyến từ điểm A sang điểm B một cách nguyên vẹn.</p>
+<p>Các đặc tính vật lý và điện bao gồm:
+*   <strong>Phương tiện truyền dẫn:</strong> Cáp đồng (Copper), cáp quang (Fiber optic), hoặc không gian tự do (sóng vô tuyến trong Wi-Fi).
+*   <strong>Tiêu chuẩn kỹ thuật:</strong> Các chuẩn cáp như Cat 5, Cat 6 xác định tốc độ và khoảng cách truyền dẫn.
+*   <strong>Hình dạng kết nối:</strong> Các đầu cắm vật lý như RJ45.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_0.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_0.jpg"></a></p>
+<h3 id="2-su-chuyen-oi-tin-hieu-transition-modulation">2. Sự chuyển đổi tín hiệu (Transition Modulation)<a class="headerlink" href="#2-su-chuyen-oi-tin-hieu-transition-modulation" title="Permanent link">¶</a></h3>
+<p>Dữ liệu trong máy tính là kỹ thuật số, nhưng khi truyền đi, chúng phải được chuyển đổi thành tín hiệu vật lý. Đây là cách các "0" và "1" được hiện thực hóa:</p>
+<ul>
+<li><strong>Đối với cáp đồng (Điện áp):</strong>
+    Chúng ta không gửi số "1" hay "0" qua dây điện mà gửi mức điện áp. Ví dụ, mức 0V có thể đại diện cho bit "0", và mức +5V hoặc -5V đại diện cho bit "1". Việc thay đổi giữa hai trạng thái điện áp này được gọi là <strong>Transition Modulation</strong>. Máy thu sẽ liên tục đo điện áp trên dây để suy luận ra chuỗi bit tương ứng.</li>
+<li><strong>Đối với cáp quang (Ánh sáng):</strong>
+    Cáp quang sử dụng xung ánh sáng để truyền dữ liệu. Đây là cơ chế đơn giản hơn về mặt logic: Ánh sáng BẬT đại diện cho bit "1", ánh sáng TẮT đại diện cho bit "0".</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang gửi tín hiệu cho bạn mình ở tòa nhà đối diện vào ban đêm bằng một chiếc đèn pin. Việc bạn bật đèn là bit "1", tắt đèn là bit "0". Tầng vật lý chính là chiếc đèn pin và khoảng không gian giữa hai tòa nhà. Nếu bạn che đèn bằng vải đỏ, đó là đặc tính vật lý (bước sóng ánh sáng). Nếu bạn dùng mã Morse, đó là cách bạn "điều biến" (modulate) dữ liệu. Dù bạn dùng mã gì, bản chất vẫn là việc kiểm soát trạng thái BẬT/TẮT.</p>
+</blockquote>
+<h3 id="3-thanh-phan-vat-ly-cap-va-au-noi-connectors">3. Thành phần vật lý: Cáp và Đầu nối (Connectors)<a class="headerlink" href="#3-thanh-phan-vat-ly-cap-va-au-noi-connectors" title="Permanent link">¶</a></h3>
+<p>Một phần không thể thiếu của Tầng 1 là cơ sở hạ tầng thực tế. Khi chúng ta sử dụng cáp xoắn đôi (Twisted Pair) như Cat 5 hoặc Cat 6, các sợi dây đồng bên trong phải được sắp xếp theo một thứ tự chính xác để đảm bảo tín hiệu không bị nhiễu.</p>
+<p>Đầu nối <strong>RJ45</strong> là một ví dụ điển hình của Tầng vật lý. Nó cung cấp một giao diện tiêu chuẩn hóa để kết nối thiết bị với mạng.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_1.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_1.jpg"></a></p>
+<p>Sự quan trọng của chuẩn hóa: Nếu bạn không sử dụng đúng chuẩn bấm dây (như T568A hay T568B), các chân (pins) bên trong đầu RJ45 sẽ không khớp với thiết bị nhận (switch hoặc máy tính), dẫn đến việc tín hiệu điện không thể truyền đi hoặc bị lỗi ngay lập tức. Đây là lý do tại sao ở Tầng 1, việc hiểu rõ các tiêu chuẩn về vật lý lại quyết định khả năng kết nối của toàn bộ hệ thống.</p>
+<p>Trong nội dung này, chúng ta tập trung vào hai trụ cột chính của lớp Vật lý (Layer 1) trong mô hình OSI: <strong>Chuẩn đi dây (Wiring Standards)</strong> và <strong>Topo mạng (Network Topology)</strong>, cùng với bài toán đồng bộ hóa dữ liệu.</p>
+<h3 id="1-phan-tich-chuan-i-day-tiaeia-568a-va-568b">1. Phân tích chuẩn đi dây: TIA/EIA-568A và 568B<a class="headerlink" href="#1-phan-tich-chuan-i-day-tiaeia-568a-va-568b" title="Permanent link">¶</a></h3>
+<p>Mạng Ethernet sử dụng cáp xoắn đôi (twisted pair) với 8 sợi đồng nhỏ bên trong. Để các thiết bị hiểu được nhau, cần có quy chuẩn về việc sợi nào nối vào chân (pin) nào trong đầu nối RJ-45. Hiệp hội Công nghiệp Viễn thông (TIA) và Liên minh Công nghiệp Điện tử (EIA) đã đưa ra hai chuẩn chính: 568A và 568B.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_2.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_2.jpg"></a></p>
+<ul>
+<li><strong>Cáp thẳng (Straight-through cable):</strong> Đây là loại cáp phổ biến nhất. Ở cả hai đầu sợi cáp, thứ tự màu sắc của các sợi đồng được bấm theo cùng một chuẩn (thường là chuẩn B ở cả hai đầu). Nó dùng để kết nối các thiết bị không cùng tầng (ví dụ: PC nối vào Switch).</li>
+<li><strong>Cáp chéo (Crossover cable):</strong> Đây là "phép thuật" thay đổi luồng dữ liệu. Bằng cách bấm một đầu theo chuẩn A và đầu kia theo chuẩn B, chúng ta thực hiện việc đảo chéo các chân truyền (Transmit - Tx) thành chân nhận (Receive - Rx) và ngược lại. Điều này cho phép hai thiết bị cùng loại (như hai Switch hoặc hai PC) có thể "nói chuyện" trực tiếp với nhau mà không cần thiết bị trung gian.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng cáp thẳng giống như việc bạn và bạn của bạn cùng nói tiếng Việt (cùng quy ước). Còn cáp chéo giống như một bộ chuyển đổi ngôn ngữ cực kỳ đặc biệt: nó tự động hoán đổi vị trí của "người nói" và "người nghe" ngay trong đường dây, để lời nói của người này chắc chắn lọt vào tai người kia mà không bị va chạm tín hiệu.</p>
+</blockquote>
+<p>Việc nắm vững kỹ thuật này không chỉ là kiến thức lý thuyết, mà là yêu cầu thực hành bắt buộc cho các kỳ thi chứng chỉ mạng. Bạn có thể sẽ phải thực hiện thao tác kéo-thả (drag-and-drop) để gán đúng màu cho đúng chân cắm trong các bài thi mô phỏng. Nếu sai màu, mạch sẽ không thông, tín hiệu sẽ mất.</p>
+<h3 id="2-inh-nghia-topo-mang-tai-layer-1">2. Định nghĩa Topo mạng tại Layer 1<a class="headerlink" href="#2-inh-nghia-topo-mang-tai-layer-1" title="Permanent link">¶</a></h3>
+<p>Topo mạng (Network Topology) đơn giản là "bản đồ kiến trúc" của hệ thống. Tại lớp vật lý, chúng ta không quan tâm đến phần mềm hay địa chỉ IP, chúng ta chỉ quan tâm đến: <strong>Dây chạy đi đâu và kết nối như thế nào?</strong></p>
+<ul>
+<li><strong>Bus:</strong> Tất cả các thiết bị cùng nằm trên một sợi cáp chính duy nhất (kiểu nối tiếp).</li>
+<li><strong>Ring:</strong> Dây cáp nối các thiết bị tạo thành một vòng tròn khép kín.</li>
+<li><strong>Star (Hình sao):</strong> Đây là kiến trúc phổ biến nhất hiện nay, nơi tất cả các máy trạm đều nối về một trung tâm (như Switch hoặc Hub).</li>
+<li><strong>Mesh (Lưới):</strong> Các thiết bị được kết nối chằng chịt với nhau, cung cấp khả năng dự phòng cực cao (Full mesh là mọi thiết bị nối với mọi thiết bị còn lại).</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_3.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_3.jpg"></a></p>
+<p>Cách xác định topo cực kỳ đơn giản: Nếu bạn vẽ sơ đồ kết nối cáp ra giấy, hình dáng của các đường kẻ đó chính là Topo vật lý của bạn. Việc hiểu rõ Topo giúp bạn chẩn đoán sự cố: Nếu cáp chính bị đứt trong topo Bus, toàn bộ mạng sẽ "chết", trong khi ở topo Star, chỉ có thiết bị nối vào sợi cáp đó bị ảnh hưởng.</p>
+<h3 id="3-bai-toan-ong-bo-hoa-synchronization">3. Bài toán đồng bộ hóa (Synchronization)<a class="headerlink" href="#3-bai-toan-ong-bo-hoa-synchronization" title="Permanent link">¶</a></h3>
+<p>Khi chúng ta đã có cáp, đã có chuẩn bấm dây, và đã có sơ đồ Topo, câu hỏi cuối cùng tại Layer 1 là: <strong>Làm sao để bên nhận biết khi nào dữ liệu bắt đầu đến?</strong></p>
+<p>Trong truyền thông máy tính, đây là một thách thức lớn về thời gian. Dữ liệu chạy qua dây dưới dạng các xung điện (ones và zeros). Nếu máy nhận không "lắng nghe" đúng lúc máy phát "nói", nó sẽ bỏ lỡ toàn bộ thông điệp hoặc hiểu sai hoàn toàn các bit dữ liệu. </p>
+<p>Máy tính cần một nhịp đập chung (clock signal) hoặc các kỹ thuật tiền đề (preamble) để báo hiệu cho bên nhận rằng: "Chuẩn bị nhé, dữ liệu bắt đầu truyền đây!". Nếu không có sự đồng bộ này, việc gửi 1 tỷ bit mỗi giây sẽ trở nên vô nghĩa vì máy nhận không thể phân biệt được đâu là bit dữ liệu, đâu là nhiễu điện từ. Đây chính là ranh giới giữa việc truyền tải thành công và một kết nối bị lỗi tín hiệu (signal corruption).</p>
+<p>Trong kỹ thuật mạng, việc hiểu cách dữ liệu di chuyển từ điểm A đến điểm B là nền tảng cốt lõi. Đoạn transcript này tập trung vào hai trục kiến thức chính: phương thức truyền tải (Asynchronous vs. Synchronous) và cách quản lý băng thông (Broadband vs. Baseband).</p>
+<h3 id="1-phan-biet-truyen-tai-khong-ong-bo-asynchronous-va-ong-bo-synchronous">1. Phân biệt Truyền tải Không đồng bộ (Asynchronous) và Đồng bộ (Synchronous)<a class="headerlink" href="#1-phan-biet-truyen-tai-khong-ong-bo-asynchronous-va-ong-bo-synchronous" title="Permanent link">¶</a></h3>
+<p>Đây là hai phương pháp cơ bản để thiết lập nhịp điệu cho việc trao đổi dữ liệu giữa các thiết bị.</p>
+<h4 id="a-truyen-tai-khong-ong-bo-asynchronous">A. Truyền tải không đồng bộ (Asynchronous)<a class="headerlink" href="#a-truyen-tai-khong-ong-bo-asynchronous" title="Permanent link">¶</a></h4>
+<p>Đặc trưng của phương pháp này là tính chất "rời rạc về thời gian". Dữ liệu không nhất thiết phải được gửi theo một khung thời gian cố định. Để đảm bảo phía nhận biết khi nào thông tin bắt đầu và khi nào kết thúc, hệ thống sử dụng các tín hiệu điều khiển.</p>
+<ul>
+<li><strong>Cơ chế:</strong> Sử dụng "Start bit" (bit bắt đầu) để báo hiệu cho máy thu rằng một gói tin sắp đến, và "Stop bit" (bit dừng) để xác nhận dữ liệu đã được truyền xong.</li>
+<li><strong>Tương tự thực tế:</strong> Hãy tưởng tượng việc gửi thư hoặc tin nhắn thoại. Bạn không cần người nhận phải ngồi chờ sẵn bên máy điện thoại. Bạn để lại tin nhắn, hệ thống lưu trữ nó, và người nhận sẽ truy cập vào thời điểm họ muốn.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy coi Asynchronous giống như việc bạn gửi một bức thư chuyển phát nhanh. Bạn dán tem (Start bit) để đánh dấu điểm bắt đầu hành trình, và ký tên xác nhận đã gửi xong. Người nhận không cần đứng đợi ở bưu điện; họ sẽ ra lấy thư khi nào họ tiện.</p>
+</blockquote>
+<h4 id="b-truyen-tai-ong-bo-synchronous">B. Truyền tải đồng bộ (Synchronous)<a class="headerlink" href="#b-truyen-tai-ong-bo-synchronous" title="Permanent link">¶</a></h4>
+<p>Phương pháp này đòi hỏi sự "kết nối thời gian thực". Cả bên gửi và bên nhận phải hoạt động trên cùng một nhịp đập.</p>
+<ul>
+<li><strong>Cơ chế:</strong> Thay vì dùng các bit báo hiệu đầu-cuối như trên, người ta sử dụng một nguồn đồng hồ chung (common time source). Hãy tưởng tượng như một dàn nhạc giao hưởng chơi theo nhịp của người chỉ huy; mỗi người chơi đều biết chính xác khi nào phải đánh nốt nhạc dựa trên nhịp đập.</li>
+<li><strong>Lợi ích:</strong> Tốc độ truyền tải nhanh hơn và hiệu quả hơn vì không cần các bit dư thừa (Start/Stop) đính kèm trong mỗi byte dữ liệu.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_4.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_4.jpg"></a> (Sơ đồ so sánh: Dòng dữ liệu rời rạc có Start/Stop bit của Asynchronous đặt cạnh dòng dữ liệu liên tục, nhịp nhàng theo xung nhịp của Synchronous).</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Nếu Asynchronous là tin nhắn thoại, thì Synchronous chính là cuộc gọi video trực tuyến (như Zoom hay Skype). Nếu một trong hai bên dừng lại hoặc mất kết nối về thời gian, cuộc hội thoại ngay lập tức bị gãy khúc vì cả hai không còn "nhịp nhàng" với nhau nữa.</p>
+</blockquote>
+<hr>
+<h3 id="2-quan-ly-bang-thong-broadband-vs-baseband">2. Quản lý băng thông: Broadband vs. Baseband<a class="headerlink" href="#2-quan-ly-bang-thong-broadband-vs-baseband" title="Permanent link">¶</a></h3>
+<p>Sau khi xác định cách truyền, chúng ta phải giải quyết bài toán: Làm thế nào để "nhồi" dữ liệu vào sợi cáp vật lý?</p>
+<h4 id="a-broadband-bang-thong-rong">A. Broadband (Băng thông rộng)<a class="headerlink" href="#a-broadband-bang-thong-rong" title="Permanent link">¶</a></h4>
+<p>Broadband hoạt động dựa trên nguyên lý <strong>phân chia tài nguyên</strong>. Băng thông của sợi cáp được chia nhỏ thành nhiều kênh (channel) riêng biệt bằng cách sử dụng các tần số khác nhau. </p>
+<ul>
+<li><strong>Đặc điểm:</strong> Cho phép nhiều tín hiệu (video, thoại, internet) cùng tồn tại trên một đường truyền vật lý nhưng ở các dải tần số khác nhau. Giống như việc bạn có một đường ống nước lớn, bên trong chia thành nhiều ống nhỏ để dẫn các loại nước khác nhau (nước nóng, nước lạnh, nước lọc).</li>
+<li><strong>Ứng dụng:</strong> Hệ thống truyền hình cáp tại gia. Sợi cáp đồng trục đi vào nhà bạn là một nhưng có thể truyền tải hàng trăm kênh truyền hình. TV của bạn đóng vai trò là bộ lọc (tuner) để chọn đúng tần số của kênh bạn muốn xem.</li>
+</ul>
+<h4 id="b-baseband-bang-thong-co-so">B. Baseband (Băng thông cơ sở)<a class="headerlink" href="#b-baseband-bang-thong-co-so" title="Permanent link">¶</a></h4>
+<p>Baseband ngược lại hoàn toàn với Broadband. Nó sử dụng toàn bộ băng thông của sợi cáp cho duy nhất một tín hiệu tại một thời điểm.</p>
+<ul>
+<li><strong>Đặc điểm:</strong> Không phân chia kênh. Nếu bạn đang truyền dữ liệu, toàn bộ tài nguyên của cáp đó bị chiếm dụng. Mọi thiết bị trên đường truyền phải đợi hoặc chia sẻ theo thời gian.</li>
+<li><strong>Ứng dụng:</strong> Điện thoại truyền thống hoặc mạng Ethernet đời đầu. Nó đơn giản, rẻ tiền nhưng giới hạn khả năng đa nhiệm trên cùng một hạ tầng dây dẫn.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_5.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_5.jpg"></a> (Biểu đồ cột: Bên trái là Broadband với nhiều dải màu sắc khác nhau đại diện cho các kênh trên một sợi cáp; bên phải là Baseband với một dải màu duy nhất chiếm trọn không gian cáp).</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Broadband giống như một tòa nhà chung cư có nhiều căn hộ (mỗi kênh là một căn hộ riêng biệt, dù chung tòa nhà). Baseband giống như một căn nhà cấp 4 – dù to hay nhỏ, bạn chỉ có thể ở một mình hoặc phải chia sẻ không gian chung với người khác cùng thời điểm mà không có vách ngăn.</p>
+</blockquote>
+<p>Để hiểu rõ cách thức truyền tải dữ liệu, chúng ta cần phân biệt rạch ròi giữa cách thức chiếm dụng băng thông (bandwidth) của tín hiệu điện thoại truyền thống và tín hiệu truyền hình cáp.</p>
+<h3 id="su-khac-biet-giua-baseband-bang-co-so-va-broadband-bang-thong-rong">Sự khác biệt giữa Baseband (Băng cơ sở) và Broadband (Băng thông rộng)<a class="headerlink" href="#su-khac-biet-giua-baseband-bang-co-so-va-broadband-bang-thong-rong" title="Permanent link">¶</a></h3>
+<p>Khi bạn nhấc điện thoại lên để thực hiện một cuộc gọi (theo kiểu hạ tầng cũ), toàn bộ băng thông được cấp phát cho đường dây đó đã bị "khóa". Đó là lý do tại sao bạn không thể thực hiện hai cuộc gọi cùng lúc trên một đường dây điện thoại đơn lẻ – nó là môi trường độc chiếm. Ngược lại, truyền hình cáp vận hành theo nguyên lý Broadband, nơi hàng trăm kênh cùng tồn tại trên một sợi cáp, nhưng mỗi kênh chỉ chiếm một phần nhỏ băng thông. Chúng ta chỉ "trích xuất" (tune) tín hiệu của kênh mình muốn xem ra khỏi dải tần số chung đó.</p>
+<p>Khái niệm <strong>Baseband</strong> mà văn bản đề cập hoạt động theo cách khác: nó sử dụng toàn bộ băng thông của cáp để truyền tín hiệu. Để đảm bảo phía gửi và phía nhận hiểu nhau, nó sử dụng một "reference clock" (xung nhịp tham chiếu). Đây là chìa khóa của <strong>giao tiếp đồng bộ (synchronous communication)</strong>. Hãy tưởng tượng như một dàn nhạc, tất cả các nhạc công phải nhìn vào tay chỉ huy (đồng hồ tham chiếu) để đảm bảo mọi nốt nhạc rơi đúng thời điểm. <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_6.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_6.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy coi Baseband giống như một con đường cao tốc chỉ có một làn xe duy nhất. Nếu có một chiếc xe tải khổng lồ đang chạy, nó chiếm toàn bộ mặt đường. Mọi phương tiện khác muốn đi qua đều phải đợi chiếc xe đó đi hết hoặc phải chia sẻ thời gian sử dụng làn đường đó một cách cực kỳ khéo léo. Ethernet trong nhà chính là ví dụ điển hình của Baseband: nó tận dụng tối đa tần số trên cáp để tối ưu hóa tốc độ truyền dữ liệu.</p>
+</blockquote>
+<h3 id="giai-phap-toi-uu-hoa-bang-thong-multiplexing-ghep-kenh">Giải pháp tối ưu hóa băng thông: Multiplexing (Ghép kênh)<a class="headerlink" href="#giai-phap-toi-uu-hoa-bang-thong-multiplexing-ghep-kenh" title="Permanent link">¶</a></h3>
+<p>Vì Baseband chiếm toàn bộ băng thông, chúng ta gặp bài toán: Làm sao để nhiều luồng dữ liệu cùng sử dụng một đường truyền đơn lẻ? Câu trả lời là kỹ thuật Multiplexing.</p>
+<h4 id="1-time-division-multiplexing-tdm-ghep-kenh-phan-chia-theo-thoi-gian">1. Time-Division Multiplexing (TDM - Ghép kênh phân chia theo thời gian)<a class="headerlink" href="#1-time-division-multiplexing-tdm-ghep-kenh-phan-chia-theo-thoi-gian" title="Permanent link">¶</a></h4>
+<p>Trong kỹ thuật này, mỗi phiên làm việc được cấp một "thời gian biểu" cố định. Giống như việc chia ca làm việc, mỗi người có 15 phút để sử dụng toàn bộ băng thông, bất kể họ có thực sự cần nó hay không. Nếu phiên của bạn đến mà bạn không có dữ liệu để truyền, "cửa sổ thời gian" đó sẽ bị bỏ phí.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng một gia đình có 4 người nhưng chỉ có 1 chiếc TV. Cha, mẹ, con trai, con gái mỗi người được chia "đặc quyền" 30 phút. Nếu đến lượt con trai nhưng cậu ấy không muốn xem, chiếc TV phải để trống hoặc chiếu màn hình đen. Đây là sự lãng phí tài nguyên điển hình của TDM.</p>
+</blockquote>
+<h4 id="2-statistical-time-division-multiplexing-stattdm-tdm-thong-ke">2. Statistical Time-Division Multiplexing (StatTDM - TDM thống kê)<a class="headerlink" href="#2-statistical-time-division-multiplexing-stattdm-tdm-thong-ke" title="Permanent link">¶</a></h4>
+<p>Đây là phiên bản nâng cấp và thông minh hơn của TDM. Thay vì chia thời gian cố định, StatTDM cấp phát băng thông dựa trên <strong>nhu cầu thực tế</strong>. Nó giống như một hệ thống đặt chỗ linh hoạt: ai cần thì dùng, không cần thì nhường cho người khác. Hệ thống này kiểm tra liên tục xem "khe cắm" nào đang trống và lấp đầy nó bằng dữ liệu đang chờ xử lý.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_7.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_7.jpg"></a></p>
+<p>Sự khác biệt cốt lõi nằm ở tính <strong>năng động (dynamically allocate)</strong>. Trong khi TDM cứng nhắc như một thời khóa biểu ở trường học, thì StatTDM lại giống như một quán ăn tự phục vụ: người nào vào trước, cần phục vụ trước thì được ngồi vào bàn, không quan trọng đó là giờ giấc nào. Điều này giúp tận dụng tối đa hiệu suất của băng thông, tránh tình trạng "rảnh rỗi" của các khe thời gian khi không có dữ liệu thực sự được truyền tải.</p>
+<p>Tiếp nối việc thảo luận về các kỹ thuật đa truy nhập (Multiplexing), diễn giả bắt đầu bằng việc làm rõ sự linh hoạt của các phương thức cấp phát tài nguyên, trước khi chuyển sang khái niệm cốt lõi về lớp Vật lý (Layer 1) trong mô hình OSI.</p>
+<h3 id="1-phan-tich-frequency-division-multiplexing-fdm">1. Phân tích Frequency-Division Multiplexing (FDM)<a class="headerlink" href="#1-phan-tich-frequency-division-multiplexing-fdm" title="Permanent link">¶</a></h3>
+<p>Trong đoạn trước, chúng ta đã thấy TDM (Time-Division Multiplexing) chia tài nguyên theo "thời gian". Ngược lại, <strong>FDM (Ghép kênh phân chia theo tần số)</strong> hoạt động bằng cách chia "dải tần số" của một môi trường truyền dẫn duy nhất thành nhiều kênh nhỏ hơn.</p>
+<p>Hãy tưởng tượng một sợi cáp vật lý như một con đường cao tốc. Nếu TDM là việc cho phép mỗi xe chạy theo các khung giờ khác nhau, thì FDM giống như chia con đường đó thành các làn đường riêng biệt. Mỗi "làn" (kênh tần số) này cho phép dữ liệu truyền đi đồng thời mà không bị chồng lấn lên nhau.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_8.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_8.jpg"></a> (Sơ đồ mô tả một dải tần rộng được cắt ra thành các dải nhỏ f1, f2, f3...)</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy nghĩ về trạm phát thanh. Dải tần số FM mà bạn thu sóng trên radio là một ví dụ hoàn hảo của FDM. Cùng một không gian (môi trường truyền dẫn là không khí), nhưng đài A phát ở 99.9 MHz, đài B phát ở 102.7 MHz. Bạn không cần phải đợi đài A nói xong mới được nghe đài B, vì họ đang truyền trên các "tần số làn đường" khác nhau cùng một lúc.</p>
+</blockquote>
+<h3 id="2-y-nghia-thuc-dung-cho-ky-thi-va-thuc-te">2. Ý nghĩa thực dụng cho kỳ thi và thực tế<a class="headerlink" href="#2-y-nghia-thuc-dung-cho-ky-thi-va-thuc-te" title="Permanent link">¶</a></h3>
+<p>Diễn giả đưa ra lời khuyên chiến lược cho người học: Đừng quá sa đà vào việc học thuộc lòng sự khác biệt kỹ thuật của TDM, StatTDM hay FDM cho kỳ thi Network+. Thay vào đó, hãy nắm vững "Triết lý của Multiplexing": <strong>Tối ưu hóa tài nguyên hữu hạn.</strong>
+*   <strong>Triết lý:</strong> Băng thông là đắt đỏ. Multiplexing là nghệ thuật "nhồi nhét" nhiều luồng dữ liệu nhất có thể vào một sợi cáp duy nhất mà vẫn đảm bảo tính toàn vẹn.
+*   <strong>Thực tế:</strong> Trong công việc của một kỹ sư mạng, bạn sẽ gặp những thuật ngữ này thường xuyên (đặc biệt là trong hạ tầng viễn thông/ISP), nhưng trên bài thi, hãy nhớ từ khóa: "Nhiều người dùng, cùng một môi trường truyền dẫn (baseband), cùng lúc."</p>
+<h3 id="3-thiet-bi-lop-vat-ly-layer-1">3. Thiết bị lớp Vật lý (Layer 1)<a class="headerlink" href="#3-thiet-bi-lop-vat-ly-layer-1" title="Permanent link">¶</a></h3>
+<p>Bước sang phần thứ hai, bài học chuyển trọng tâm sang <strong>Lớp 1 (Physical Layer) của mô hình OSI</strong>. Lớp này là nền tảng "hữu hình" nhất của mạng máy tính.</p>
+<p><strong>Định nghĩa về môi trường truyền dẫn (Media):</strong>
+Các loại cáp như cáp quang (fiber optic), cáp đồng (ethernet), hay cáp đồng trục (coaxial) đều được xếp vào Layer 1. Tại sao? Vì tính chất của chúng là "truyền dẫn thô".
+*   Diễn giả nhấn mạnh: <strong>"Cái gì vào thì cái đó ra"</strong>.
+*   Đây là nguyên tắc bất biến của vật lý: Nếu bạn đẩy ánh sáng vào một đầu cáp quang, ánh sáng sẽ ra ở đầu kia. Nếu bạn đưa xung điện vào một đầu cáp đồng, xung điện sẽ ra ở đầu kia. Hệ thống không hề "hiểu" dữ liệu đó là gì (không quan tâm đó là ảnh, email hay video), nó chỉ đơn thuần là vật trung gian vận chuyển các tín hiệu điện hoặc quang.</p>
+<h3 id="4-truyen-dan-khong-day-va-thiet-bi-ha-tang">4. Truyền dẫn không dây và Thiết bị hạ tầng<a class="headerlink" href="#4-truyen-dan-khong-day-va-thiet-bi-ha-tang" title="Permanent link">¶</a></h3>
+<p>Lớp Vật lý không chỉ giới hạn ở dây dẫn. Nó bao gồm mọi phương thức truyền tín hiệu cơ bản:
+*   <strong>Wireless (Bluetooth, Wi-Fi, NFC):</strong> Tương tự như cáp, môi trường ở đây là sóng vô tuyến (radio frequencies). Khi bạn gửi một tệp qua Bluetooth, ở mức Layer 1, các thiết bị chỉ đơn thuần chuyển đổi dữ liệu thành các sóng vô tuyến trong không khí.
+*   <strong>Thiết bị hạ tầng (Hubs, Access Points, Media Converters):</strong> Đây là những "công nhân" của tầng vật lý. Chúng được gọi là các thiết bị hoạt động tại <strong>"bit layer"</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_9.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_9.jpg"></a> (Sơ đồ một Hub nhận tín hiệu và nhân bản ra tất cả các cổng còn lại)</p>
+<p>Đặc điểm của các thiết bị này (đặc biệt là Hub) là tính chất <strong>"Repeat" (Lặp lại)</strong>:
+*   Chúng không có "bộ não" để suy nghĩ hay phân tích địa chỉ IP/MAC.
+*   Nếu Hub nhận được một tín hiệu điện từ cổng 1, nó sẽ ngay lập tức "bắn" tín hiệu đó ra tất cả các cổng còn lại (cổng 2, 3, 4). Nó giống như một người đưa tin mù chữ, nhận được thư là hô to nội dung đó cho tất cả mọi người trong phòng cùng nghe, bất kể thư đó gửi cho ai. Điều này khác biệt hoàn toàn với Switch (hoạt động ở Layer 2), vốn có khả năng "đọc" địa chỉ để chuyển tin đến đúng người nhận.</p>
+<p>Trong đoạn transcript này, chúng ta đang tập trung vào thiết bị chuyển đổi môi trường (media converter) – một ví dụ điển hình của các thiết bị hoạt động tại tầng 1 (Physical Layer) trong mô hình OSI.</p>
+<p><strong>Phân tích khái niệm Media Converter</strong>
+Thiết bị chuyển đổi môi trường là một phần cứng mạng cho phép kết nối hai loại phương tiện truyền dẫn khác nhau. Trong ví dụ cụ thể này, tác giả đề cập đến việc chuyển đổi từ cáp đồng trục (coaxial) sang cáp quang (fiber optic). Quá trình này không thay đổi dữ liệu mà chỉ thay đổi dạng tín hiệu vật lý: từ các xung điện (trên cáp đồng) sang xung ánh sáng (trên cáp quang). <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_10.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_10.jpg"></a></p>
+<p><strong>Bản chất của Layer 1: Tính "thông minh" bằng không</strong>
+Khi nói thiết bị ở tầng 1 là "dumb" (ngu ngốc), tác giả muốn nhấn mạnh vào sự thiếu vắng logic xử lý dữ liệu. Một thiết bị tầng 1 không hiểu nội dung của gói tin (frame hay packet) là gì, không biết địa chỉ MAC là ai, và không biết IP đích ở đâu. Nó chỉ đơn thuần nhận tín hiệu từ một cổng và "đẩy" nó ra cổng kia. </p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng thiết bị tầng 1 giống như một chiếc gương phản chiếu. Nếu bạn đưa một tấm ảnh chân dung hay một tờ giấy trắng trước gương, nó sẽ phản chiếu lại y hệt hình ảnh đó. Cái gương không quan tâm đó là ảnh của ai hay nội dung tờ giấy viết gì; nó chỉ đơn thuần làm nhiệm vụ "phát lại" (repeat) hình ảnh đó ra phía trước.</p>
+</blockquote>
+<p><strong>Cơ chế hoạt động: Repeater (Bộ lặp)</strong>
+Khái niệm "repeater" ở đây được hiểu là khả năng khôi phục và tái tạo tín hiệu. Khi tín hiệu đi qua cáp, nó bị suy hao (attenuation). Thiết bị tầng 1 tiếp nhận tín hiệu đã yếu, làm sạch và tăng cường nó, rồi truyền tiếp đi. Nó không thực hiện bất kỳ quy trình kiểm tra lỗi (error checking) hay lọc gói tin (filtering) nào. Mọi bit dữ liệu, dù là dữ liệu lỗi hay dữ liệu rác, đều được thiết bị này chuyển tiếp một cách mù quáng.</p>
+<p><strong>Sự khác biệt với các tầng cao hơn</strong>
+Tác giả nhắc đến việc "chúng ta sẽ nói về các thiết bị hạ tầng khác khi tiến vào tầng 2, 3 và 4". Đây là sự chuẩn bị cho tư duy phân tầng mạng:
+- <strong>Tầng 1 (Physical):</strong> Chỉ quan tâm đến bit (0 và 1), cáp, điện áp, ánh sáng.
+- <strong>Tầng 2 (Data Link):</strong> Bắt đầu hiểu về địa chỉ MAC (Switch).
+- <strong>Tầng 3 (Network):</strong> Bắt đầu hiểu về địa chỉ IP và định tuyến (Router).
+- <strong>Tầng 4 (Transport):</strong> Bắt đầu hiểu về các giao thức như TCP/UDP.</p>
+<p>Việc phân biệt rõ ràng tầng 1 là "dumb devices" giúp kỹ sư mạng hiểu rằng nếu có sự cố xảy ra ở tầng này, vấn đề thường nằm ở hạ tầng vật lý (đứt cáp, cổng hỏng, nhiễu điện) chứ không phải do cấu hình logic hay phần mềm.</p>
+<p><strong>Thông điệp về sự kiên trì trong học tập</strong>
+Đoạn cuối của transcript chuyển hướng sang lời khuyên về thói quen học tập. Việc "làm mỗi ngày một ít" (learning a little each day) cực kỳ quan trọng trong lĩnh vực công nghệ thông tin – nơi kiến thức thay đổi và chồng chất rất nhanh. Giống như cách dữ liệu đi qua tầng 1, sự tích lũy kiến thức nhỏ lẻ mỗi ngày (từng bit một) cuối cùng sẽ tạo nên một luồng thông tin (bandwidth) khổng lồ và sâu sắc cho tư duy của người kỹ sư.</p>
+<h3 id="hinh-anh-minh-hoa-them">Hình ảnh minh họa thêm:<a class="headerlink" href="#hinh-anh-minh-hoa-them" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./image/the_osi_physical_layer_anh_11.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="./image/the_osi_physical_layer_anh_11.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_12.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_12.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_13.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_13.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_14.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_14.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_15.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_15.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_16.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_16.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_17.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_17.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_18.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_18.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_19.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_19.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_20.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_20.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_21.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_21.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_22.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_22.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./image/the_osi_physical_layer_anh_23.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="./image/the_osi_physical_layer_anh_23.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_24.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_24.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_25.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_25.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_26.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_26.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/the_osi_physical_layer_anh_27.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/the_osi_physical_layer_anh_27.jpg"></a></p>
+<hr>
+<p><em>Ghi chú: 28 hình ảnh minh họa (.jpg) đã được tải về và lưu tự động vào thư mục con <code>image/</code> cùng cấp với file này. Để ảnh hiển thị tự động, hãy đảm bảo bạn sao chép cả thư mục <code>image/</code> nếu bạn muốn di chuyển file markdown sang nơi khác!</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 tháng 6, 2026 03:59:15 UTC">12 tháng 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../session_layer_essentials/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Session Layer Essentials">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Session Layer Essentials
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../observability/roadmap/" class="md-footer__link md-footer__link--next" aria-label="Sau: Observability Complete Learning Roadmap - Metrics, Logging &amp;amp; Tracing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Observability Complete Learning Roadmap - Metrics, Logging &amp; Tracing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

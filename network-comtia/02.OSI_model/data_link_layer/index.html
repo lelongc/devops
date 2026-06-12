@@ -1,0 +1,2812 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/02.OSI_model/data_link_layer/">
+      
+      
+        <link rel="prev" href="../application_layer_overview/">
+      
+      
+        <link rel="next" href="../encapsulation_and_decapsulation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Data Link Layer - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-link-layer" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Link Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/LPIC-1/01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../linux/LPIC-1/01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network comtia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.fundamental
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01.fundamental
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/01.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/02.net-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các Thành Phần Cơ Bản Của Mạng Máy Tính
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/03.network-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/04.NetworkGeography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/05.network-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.OSI model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02.OSI model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-chuyen-sau-ve-layer-2-data-link-layer-lop-lien-ket-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích chuyên sâu về Layer 2: Data Link Layer (Lớp liên kết dữ liệu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-kiem-soat-quyen-truy-cap-ai-uoc-quyen-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Kiểm soát quyền truy cập: "Ai được quyền nói?"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-logical-link-control-llc-co-quan-kiem-soat-ket-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Logical Link Control (LLC) - Cơ quan kiểm soát kết nối
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-kiem-soat-luu-luong-flow-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Kiểm soát lưu lượng (Flow Control)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-kiem-soat-loi-error-control-va-checksum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Kiểm soát lỗi (Error Control) và Checksum
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-isochronous-che-o-thoi-gian-thuc-ong-bo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Isochronous (Chế độ thời gian thực đồng bộ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-synchronous-che-o-ong-bo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Synchronous (Chế độ đồng bộ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-asynchronous-che-o-bat-ong-bo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Asynchronous (Chế độ bất đồng bộ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuyen-dich-tu-hub-sang-switch-o-layer-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuyển dịch từ Hub sang Switch ở Layer 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-cac-thiet-bi-tai-tang-2-data-link-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của các thiết bị tại Tầng 2 (Data Link Layer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tam-quan-trong-cua-ia-chi-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tầm quan trọng của địa chỉ MAC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinh-anh-minh-hoa-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hình ảnh minh họa thêm:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encapsulation_and_decapsulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encapsulation and Decapsulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layer_4_transport_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_layer_routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Layer Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_packet_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Packet Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osi_model_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI Model Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../presentation_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session_layer_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Layer Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the_osi_physical_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-chuyen-sau-ve-layer-2-data-link-layer-lop-lien-ket-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích chuyên sâu về Layer 2: Data Link Layer (Lớp liên kết dữ liệu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-kiem-soat-quyen-truy-cap-ai-uoc-quyen-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Kiểm soát quyền truy cập: "Ai được quyền nói?"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-logical-link-control-llc-co-quan-kiem-soat-ket-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Logical Link Control (LLC) - Cơ quan kiểm soát kết nối
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-kiem-soat-luu-luong-flow-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Kiểm soát lưu lượng (Flow Control)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-kiem-soat-loi-error-control-va-checksum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Kiểm soát lỗi (Error Control) và Checksum
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-isochronous-che-o-thoi-gian-thuc-ong-bo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Isochronous (Chế độ thời gian thực đồng bộ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-synchronous-che-o-ong-bo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Synchronous (Chế độ đồng bộ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-asynchronous-che-o-bat-ong-bo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Asynchronous (Chế độ bất đồng bộ)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuyen-dich-tu-hub-sang-switch-o-layer-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuyển dịch từ Hub sang Switch ở Layer 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-cac-thiet-bi-tai-tang-2-data-link-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của các thiết bị tại Tầng 2 (Data Link Layer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tam-quan-trong-cua-ia-chi-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tầm quan trọng của địa chỉ MAC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinh-anh-minh-hoa-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hình ảnh minh họa thêm:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/02.OSI_model/data_link_layer.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="data-link-layer">Data Link Layer<a class="headerlink" href="#data-link-layer" title="Permanent link">¶</a></h1>
+<h3 id="phan-tich-chuyen-sau-ve-layer-2-data-link-layer-lop-lien-ket-du-lieu">Phân tích chuyên sâu về Layer 2: Data Link Layer (Lớp liên kết dữ liệu)<a class="headerlink" href="#phan-tich-chuyen-sau-ve-layer-2-data-link-layer-lop-lien-ket-du-lieu" title="Permanent link">¶</a></h3>
+<p><strong>1. Vai trò của Data Link Layer (Lớp 2)</strong>
+Tại tầng này, chúng ta chuyển dịch từ việc truyền tải các dòng bit thuần túy (từ Layer 1) sang việc đóng gói chúng thành các <strong>Frames (khung dữ liệu)</strong>. Việc đóng gói này đóng vai trò như việc chuyển những lá thư rời rạc vào các phong bì có địa chỉ.</p>
+<p>Các chức năng cốt lõi của tầng này bao gồm:</p>
+<ul>
+<li><strong>Đóng gói (Framing):</strong> Biến dữ liệu bit thành cấu trúc có cấu trúc để dễ quản lý.</li>
+<li><strong>Phát hiện và sửa lỗi:</strong> Đảm bảo dữ liệu không bị sai lệch trong quá trình truyền dẫn.</li>
+<li><strong>Định danh thiết bị:</strong> Sử dụng địa chỉ vật lý (MAC Address).</li>
+<li><strong>Kiểm soát luồng (Flow Control):</strong> Điều tiết tốc độ truyền giữa các thiết bị để tránh tình trạng "nghẽn cổ chai" khi máy gửi quá nhanh mà máy nhận không kịp xử lý.</li>
+</ul>
+<hr>
+<p><strong>2. Bản chất của MAC Address và sự chuyển đổi tư duy</strong>
+Địa chỉ MAC (Media Access Control) là một định danh vật lý (Physical Address), nhưng điều thú vị là nó lại cho phép các thiết bị vận hành trên một <strong>Logical Topology (sơ đồ logic)</strong>.</p>
+<ul>
+<li><strong>Sự khác biệt:</strong> Ở Layer 1 (Physical), chúng ta quan tâm đến dây dẫn, sóng vô tuyến hay tín hiệu điện. Nhưng từ Layer 2 trở đi, chúng ta bắt đầu nhìn vào "cách dữ liệu chảy trên mạng" bất kể kết nối vật lý bên dưới trông như thế nào. Các thiết bị như <strong>Switch</strong> chính là "nhân vật chính" vận hành ở tầng này.</li>
+</ul>
+<hr>
+<p><strong>3. Cấu trúc của một địa chỉ MAC</strong>
+Địa chỉ MAC là một chuỗi 48-bit, thường được biểu diễn dưới dạng 12 ký tự thập lục phân (hexadecimal). Mỗi ký tự hex đại diện cho 4 bit (0-9 và A-F).</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_0.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_0.jpg"></a>
+<em>(Hình ảnh mô tả cấu trúc 12 ký tự của địa chỉ MAC: D2:51:F1:AB:CD:EF)</em></p>
+<ul>
+<li><strong>24-bit đầu (OUI - Organizationally Unique Identifier):</strong> Định danh nhà sản xuất. Ví dụ, <code>D2:51:F1</code> là "chữ ký" của hãng sản xuất card mạng đó.</li>
+<li><strong>24-bit sau:</strong> Định danh duy nhất cho riêng chiếc card mạng đó (giống như số thứ tự sản xuất).</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng địa chỉ MAC như một chiếc xe hơi. 3 ký tự đầu của biển số xe (hoặc mã quốc gia/hãng sản xuất) cho biết chiếc xe này được lắp ráp tại đâu và bởi ai (giống như OUI). 6 ký tự phía sau chính là số khung (VIN) duy nhất của riêng chiếc xe đó, dù có hàng triệu chiếc cùng mẫu mã, nhưng không bao giờ có hai chiếc trùng số khung.</p>
+</blockquote>
+<hr>
+<p><strong>4. Tại sao lại dùng Thập lục phân (Hexadecimal)?</strong>
+Máy tính giao tiếp bằng bit (0 và 1). Nếu con người phải đọc địa chỉ 48-bit bằng hệ nhị phân (ví dụ: 11010010:01010001:...), chúng ta sẽ rất dễ nhầm lẫn. Hệ thập lục phân (Hex) là cách viết tắt hoàn hảo: mỗi 4 bit được gộp thành 1 ký tự hex, giúp địa chỉ 48-bit trở nên gọn gàng chỉ với 12 ký tự, giảm thiểu sai sót khi cấu hình mạng.</p>
+<hr>
+<p><strong>5. Sự phân tách giữa Vật lý và Logic</strong>
+Điều quan trọng cần ghi nhớ là khi dữ liệu đã lên đến Layer 2, chúng ta không còn quá bận tâm đến việc thiết bị được cắm vào ổ điện nào hay dùng loại cáp gì. Đó là câu chuyện của Layer 1. Ở Layer 2, chúng ta nhìn vào:</p>
+<ul>
+<li>"Ai là người gửi?" (MAC nguồn)</li>
+<li>"Ai là người nhận?" (MAC đích)</li>
+</ul>
+<p>Điều này giúp mạng lưới trở nên linh hoạt. Một thiết bị có thể thay đổi vị trí vật lý (cắm vào một switch khác, hoặc chuyển từ LAN sang Wi-Fi), nhưng địa chỉ MAC của nó vẫn giữ nguyên, giúp logic mạng không bị phá vỡ khi cấu trúc hạ tầng thay đổi. Đây là bước đệm quan trọng để hiểu cách các gói tin (frames) được định tuyến và chuyển tiếp hiệu quả trong một mạng lưới nội bộ phức tạp.</p>
+<p>Trong lớp liên kết dữ liệu (Data Link Layer - Layer 2), các thiết bị cần một "bộ luật" để điều tiết cách truyền thông tin nhằm tránh tình trạng va chạm tín hiệu. Đoạn transcript này tập trung vào hai phân lớp chính: <strong>Media Access Control (MAC)</strong> và <strong>Logical Link Control (LLC)</strong>.</p>
+<h3 id="1-kiem-soat-quyen-truy-cap-ai-uoc-quyen-noi">1. Kiểm soát quyền truy cập: "Ai được quyền nói?"<a class="headerlink" href="#1-kiem-soat-quyen-truy-cap-ai-uoc-quyen-noi" title="Permanent link">¶</a></h3>
+<p>Ở cấp độ 2, vấn đề cốt lõi là giải quyết sự hỗn loạn khi nhiều thiết bị cùng muốn gửi dữ liệu lên đường truyền. Nếu tất cả cùng truyền một lúc, tín hiệu sẽ chồng chéo lên nhau và gây ra lỗi, khiến không thiết bị nào nhận được nội dung nguyên vẹn.</p>
+<p>Để giải quyết, người giảng viên đưa ra một ẩn dụ về môi trường lớp học: thay vì tất cả cùng la hét, chúng ta dùng quy tắc "giơ tay phát biểu". Trong mạng máy tính, các cơ chế điện tử (như CSMA/CD hoặc CSMA/CA) đóng vai trò là "giáo viên", chỉ định thiết bị nào được quyền chiếm sóng tại một thời điểm nhất định để đảm bảo thông điệp được truyền đi thông suốt.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng một ngã tư không có đèn tín hiệu giao thông. Nếu mọi xe đều lao vào cùng lúc, tai nạn chắc chắn sẽ xảy ra. Cơ chế điều khiển truy cập giống như một người cảnh sát giao thông, chỉ cho phép một làn xe đi vào ngã tư tại một thời điểm, giữ cho dòng chảy thông tin không bị tắc nghẽn hay va chạm.</p>
+</blockquote>
+<h3 id="2-logical-link-control-llc-co-quan-kiem-soat-ket-noi">2. Logical Link Control (LLC) - Cơ quan kiểm soát kết nối<a class="headerlink" href="#2-logical-link-control-llc-co-quan-kiem-soat-ket-noi" title="Permanent link">¶</a></h3>
+<p>Sau khi đã giành được quyền truy cập, LLC đảm nhận vai trò quản lý logic của kết nối. Nó không quan tâm đến phần cứng (như cáp hay card mạng) mà tập trung vào việc <strong>xác nhận (acknowledgment)</strong>.</p>
+<p>LLC cho phép thiết bị nhận thông báo lại cho người gửi rằng "Tôi đã nhận được gói tin của bạn". Đây là cơ sở của việc truyền dữ liệu tin cậy. Nếu không có xác nhận, người gửi sẽ mãi trong trạng thái "bất an" vì không biết thông tin đã đến nơi hay chưa.</p>
+<h3 id="3-kiem-soat-luu-luong-flow-control">3. Kiểm soát lưu lượng (Flow Control)<a class="headerlink" href="#3-kiem-soat-luu-luong-flow-control" title="Permanent link">¶</a></h3>
+<p>Đây là kỹ thuật đảm bảo người nhận không bị "ngợp" vì quá tải. Nếu người gửi truyền dữ liệu với tốc độ nhanh hơn khả năng xử lý của người nhận, bộ đệm (buffer) của người nhận sẽ đầy và dữ liệu sẽ bị mất.</p>
+<p>LLC đóng vai trò điều phối: nếu bên nhận thấy dữ liệu đến quá nhanh, nó sẽ yêu cầu bên gửi "hãy chậm lại" hoặc "truyền lại đoạn vừa rồi".</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_1.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_1.jpg"></a>
+<em>(Sơ đồ mô tả quy trình gửi gói tin: Bên gửi truyền dữ liệu -&gt; Bên nhận phản hồi "tạm dừng" hoặc "yêu cầu truyền lại" khi bộ đệm đạt ngưỡng giới hạn)</em></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang xem một bộ phim. Nếu tốc độ internet quá chậm, trình phát video sẽ tự động hiển thị biểu tượng "đang tải" (buffering). Đó chính là lúc máy tính của bạn nói với máy chủ: "Tôi chưa xử lý kịp dữ liệu, hãy chờ một chút cho tôi tải xong rồi hãy gửi tiếp".</p>
+</blockquote>
+<h3 id="4-kiem-soat-loi-error-control-va-checksum">4. Kiểm soát lỗi (Error Control) và Checksum<a class="headerlink" href="#4-kiem-soat-loi-error-control-va-checksum" title="Permanent link">¶</a></h3>
+<p>Làm sao để biết dữ liệu nhận được có bị biến dạng trên đường đi do nhiễu điện từ hay không? Đây là lúc <strong>Checksum (tổng kiểm tra)</strong> lên tiếng.</p>
+<p>Dữ liệu trong mạng thực chất chỉ là một chuỗi các bit 0 và 1. Khi một gói tin được gửi đi, thiết bị gửi sẽ cộng tổng số các bit 1 trong khung dữ liệu đó. Kết quả (chẵn hoặc lẻ) được đính kèm vào khung tin.</p>
+<ul>
+<li><strong>Tại nơi nhận:</strong> Thiết bị cũng thực hiện phép cộng tương tự trên chuỗi dữ liệu vừa nhận được.</li>
+<li><strong>So sánh:</strong> Nếu kết quả của bên nhận khớp với giá trị Checksum mà bên gửi đính kèm, dữ liệu được coi là toàn vẹn.</li>
+<li><strong>Xử lý lỗi:</strong> Nếu kết quả không khớp, điều đó chứng tỏ dữ liệu đã bị thay đổi trong quá trình truyền (có một bit 0 biến thành 1 hoặc ngược lại do nhiễu). Khi đó, LLC sẽ ra lệnh hủy gói tin hỏng và yêu cầu thiết bị nguồn gửi lại toàn bộ khung dữ liệu đó (retransmission).</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_2.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_2.jpg"></a>
+<em>(Sơ đồ minh họa quá trình tính toán Checksum: Bên gửi gắn mã kiểm tra -&gt; Bên nhận tính toán lại -&gt; So sánh kết quả để chấp nhận hoặc bác bỏ dữ liệu)</em></p>
+<p>Cơ chế này tuy đơn giản (chỉ dựa vào tính chẵn/lẻ) nhưng nó là lớp lá chắn đầu tiên và quan trọng nhất để đảm bảo rằng thông tin đi từ điểm A đến điểm B không bị sai lệch, giúp hệ thống mạng vận hành ổn định và chính xác.</p>
+<p>Trong lớp Data Link (Layer 2), việc đồng bộ hóa dữ liệu là yếu tố sống còn để đảm bảo dữ liệu không bị xung đột hoặc mất mát khi truyền tải. Có ba cơ chế chính để giải quyết vấn đề này:</p>
+<h3 id="1-isochronous-che-o-thoi-gian-thuc-ong-bo">1. Isochronous (Chế độ thời gian thực đồng bộ)<a class="headerlink" href="#1-isochronous-che-o-thoi-gian-thuc-ong-bo" title="Permanent link">¶</a></h3>
+<p>Đây là phương thức tối ưu hóa nhất về mặt hiệu suất. Nó kết hợp hai thế giới: sử dụng một xung nhịp (clock) chung cho toàn hệ thống để giữ nhịp, nhưng đồng thời chia nhỏ thời gian thành các "khe thời gian" (time slots) cố định.</p>
+<ul>
+<li><strong>Cơ chế:</strong> Giống như một đoàn tàu chạy trên đường ray, mỗi toa tàu (đơn vị dữ liệu) được ấn định đúng thời điểm để đi qua một vị trí.</li>
+<li><strong>Ưu điểm:</strong> Vì mọi thiết bị đều biết chính xác "khi nào" đến lượt mình và "bao lâu" được truyền, hệ thống không cần gửi thêm các thông tin điều khiển thừa thãi (overhead). Điều này giúp băng thông được sử dụng triệt để.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng một vũ điệu tập thể nơi mọi người đều đeo tai nghe phát cùng một nhịp đếm. Bạn không cần ra hiệu "bắt đầu" hay "dừng lại" vì bạn biết chính xác mình phải bước chân vào giây thứ mấy. Mọi người cứ thế nhảy khớp với nhau mà không cần ai phải hô to chỉ đạo, giúp tiết kiệm năng lượng và không gian cho các bước nhảy.</p>
+</blockquote>
+<h3 id="2-synchronous-che-o-ong-bo">2. Synchronous (Chế độ đồng bộ)<a class="headerlink" href="#2-synchronous-che-o-ong-bo" title="Permanent link">¶</a></h3>
+<p>Phương thức này dựa hoàn toàn vào xung nhịp dùng chung giữa các thiết bị, tương tự như cách hoạt động ở Layer 1 (Physical). Điểm khác biệt mấu chốt so với Isochronous là ở đây không có "khe thời gian" cố định, thay vào đó, hệ thống sử dụng các khung (frames) có điểm đầu và điểm cuối rõ ràng (start/stop frames) kèm theo các ký tự điều khiển đặc biệt.</p>
+<ul>
+<li><strong>Cơ chế:</strong> Khi có dữ liệu, thiết bị sẽ phát đi một tín hiệu "bắt đầu", dữ liệu truyền đi theo nhịp của đồng hồ, và kết thúc bằng một tín hiệu "kết thúc".</li>
+<li><strong>Nhược điểm:</strong> Do phụ thuộc vào các nhịp clock cứng nhắc, nếu tại một thời điểm nào đó không có dữ liệu để truyền, nhưng nhịp clock vẫn chạy, các khoảng trống này sẽ bị lãng phí.
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_3.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_3.jpg"></a>
+  <em>(Hình ảnh mô tả luồng dữ liệu đồng bộ với các nhịp clock đều đặn, nơi các khoảng trống giữa các khung truyền dữ liệu bị bỏ phí do không thể chèn dữ liệu khác vào được).</em></li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Giống như một bản nhạc có nhịp 4/4. Dù ca sĩ có hát hay nghỉ, dàn nhạc vẫn phải chơi đúng nhịp. Nếu ca sĩ im lặng một đoạn trong khuông nhạc, thì khoảng lặng đó vẫn là một phần của nhịp điệu và không thể bị cắt bỏ hay nén lại, dẫn đến sự lãng phí "thời gian" nếu không có âm thanh nào được phát ra.</p>
+</blockquote>
+<h3 id="3-asynchronous-che-o-bat-ong-bo">3. Asynchronous (Chế độ bất đồng bộ)<a class="headerlink" href="#3-asynchronous-che-o-bat-ong-bo" title="Permanent link">¶</a></h3>
+<p>Đây là phương thức linh hoạt nhất nhưng cũng ít tính kỷ luật nhất. Mỗi thiết bị trong mạng tự sở hữu đồng hồ riêng. Chúng không cần phải khớp nhịp với nhau.</p>
+<ul>
+<li><strong>Cơ chế:</strong> Để biết đâu là bắt đầu và kết thúc của một gói tin, thiết bị sẽ đính kèm các bit khởi đầu (start bit) và bit kết thúc (stop bit) vào từng byte dữ liệu.</li>
+<li><strong>Nhược điểm:</strong> Vì không có sự điều phối chung về thời gian, các thiết bị có thể truyền dữ liệu bất cứ lúc nào, dẫn đến khả năng xung đột cao hơn và cần nhiều bit điều khiển hơn trên mỗi byte truyền đi. Đây là cái giá phải trả cho sự tự do của các thiết bị.</li>
+</ul>
+<hr>
+<h3 id="chuyen-dich-tu-hub-sang-switch-o-layer-2">Chuyển dịch từ Hub sang Switch ở Layer 2<a class="headerlink" href="#chuyen-dich-tu-hub-sang-switch-o-layer-2" title="Permanent link">¶</a></h3>
+<p>Khi nói về phần cứng, chúng ta cần phân biệt rõ giữa "Hub" và "Switch".</p>
+<ul>
+<li><strong>Hub (Thiết bị "câm"):</strong> Khi nhận được dữ liệu từ cổng A, nó sẽ sao chép dữ liệu đó và gửi tới tất cả các cổng còn lại (trừ cổng A). Nó không hề biết dữ liệu đó dành cho ai.</li>
+<li><strong>Switch (Thiết bị "thông minh"):</strong> Đây là sự nâng cấp đột phá. Thay vì truyền mù quáng, switch sử dụng logic để xây dựng bảng địa chỉ.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_4.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_4.jpg"></a>
+<em>(Sơ đồ so sánh: Một bên là Hub broadcast dữ liệu tới mọi máy tính trong mạng; một bên là Switch chỉ gửi gói tin trực tiếp tới đúng địa chỉ MAC mục tiêu).</em></p>
+<p><strong>Tại sao Switch thông minh hơn?</strong></p>
+<ol>
+<li><strong>Học địa chỉ (Learning):</strong> Switch quan sát địa chỉ MAC (Media Access Control) của các thiết bị kết nối vào các cổng vật lý của nó.</li>
+<li><strong>Lưu trữ (CAM Table):</strong> Nó tạo ra một bảng ánh xạ (Content Addressable Memory - CAM table), ghi nhớ rằng "Địa chỉ MAC X đang ở cổng số 1".</li>
+<li><strong>Chuyển mạch có đích (Forwarding):</strong> Nhờ bảng này, khi có dữ liệu gửi đến, switch chỉ chuyển tiếp nó ra đúng cổng cần thiết. Điều này giúp tối ưu hóa băng thông cực lớn vì không làm phiền các thiết bị không liên quan và cho phép nhiều cuộc hội thoại diễn ra song song trên các phân đoạn mạng khác nhau.</li>
+</ol>
+<p>Đây chính là nền tảng cốt lõi giúp các mạng máy tính hiện đại vận hành hiệu quả mà không bị tắc nghẽn bởi lưu lượng rác.</p>
+<p>Đoạn transcript này tập trung vào việc định vị các thiết bị và giao thức then chốt trong mô hình tham chiếu OSI, cụ thể là tầng thứ hai – tầng Liên kết dữ liệu (Data Link Layer).</p>
+<h3 id="1-ban-chat-cua-cac-thiet-bi-tai-tang-2-data-link-layer">1. Bản chất của các thiết bị tại Tầng 2 (Data Link Layer)<a class="headerlink" href="#1-ban-chat-cua-cac-thiet-bi-tai-tang-2-data-link-layer" title="Permanent link">¶</a></h3>
+<p>Tác giả nhắc đến ba thành phần cốt lõi: <strong>Switches (Thiết bị chuyển mạch)</strong>, <strong>Bridges (Cầu nối mạng)</strong>, và <strong>MAC addresses (Địa chỉ điều khiển truy cập môi trường)</strong>. Để hiểu tại sao chúng lại thuộc về tầng 2, ta cần nhớ rằng tầng 2 có nhiệm vụ đóng gói dữ liệu thành các "khung" (frames) và đảm bảo dữ liệu được truyền tải chính xác giữa các thiết bị nằm cùng một mạng nội bộ (LAN).</p>
+<ul>
+<li><strong>Bridges (Cầu nối):</strong> Đây là các thiết bị tiền thân của Switch, được thiết kế để kết nối hai phân đoạn mạng khác nhau nhằm giảm lưu lượng (traffic) bằng cách lọc các khung dữ liệu dựa trên địa chỉ nguồn và đích.</li>
+<li><strong>Switches:</strong> Đây là phiên bản nâng cấp và thông minh hơn của Bridge. Một Switch có nhiều cổng (port), cho phép nó kết nối nhiều thiết bị cùng lúc. Nó hoạt động dựa trên bảng địa chỉ MAC (MAC Address Table) để quyết định dữ liệu đi từ cổng nào đến đúng cổng nào thay vì phát tán ra toàn mạng.
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_5.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_5.jpg"></a> (Sơ đồ mô phỏng quá trình Switch học địa chỉ MAC và chuyển tiếp dữ liệu thông qua bảng CAM - Content Addressable Memory).</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng tầng 2 giống như một <strong>"Người quản lý thư viện địa phương"</strong>. Bạn không cần biết thư viện quốc gia ở đâu (đó là việc của tầng 3 - Router). Người quản lý thư viện chỉ giữ một danh sách tên người đọc (Địa chỉ MAC) và vị trí các kệ sách (Cổng của Switch). Khi có một cuốn sách (Dữ liệu) cần đưa đến cho bạn, người quản lý nhìn vào danh sách, biết ngay bạn đang ngồi ở bàn số mấy và chuyển sách trực tiếp đến tận tay bạn mà không cần hỏi bạn sống ở thành phố nào.</p>
+</blockquote>
+<h3 id="2-tam-quan-trong-cua-ia-chi-mac">2. Tầm quan trọng của địa chỉ MAC<a class="headerlink" href="#2-tam-quan-trong-cua-ia-chi-mac" title="Permanent link">¶</a></h3>
+<p>Địa chỉ MAC (Media Access Control) là địa chỉ vật lý duy nhất, thường được ghi cứng vào card mạng (NIC) của thiết bị ngay từ khi sản xuất. Khác với địa chỉ IP (có thể thay đổi), địa chỉ MAC là "danh tính" vĩnh viễn của phần cứng trong mạng.</p>
+<p>Khi một Switch nhận được một khung dữ liệu, nó sẽ đọc địa chỉ MAC đích. Nếu địa chỉ đó nằm trong bảng của nó, nó sẽ chuyển tiếp trực tiếp đến cổng tương ứng. Nếu chưa có, nó sẽ gửi khung dữ liệu đó ra tất cả các cổng (trừ cổng gửi đến) để tìm kiếm thiết bị sở hữu địa chỉ đó. Đây chính là cơ chế truyền tin cục bộ đặc trưng của tầng 2.</p>
+<h3 id="hinh-anh-minh-hoa-them">Hình ảnh minh họa thêm:<a class="headerlink" href="#hinh-anh-minh-hoa-them" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_6.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_6.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_7.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_7.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_8.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_8.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_9.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_9.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_10.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_10.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_11.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_11.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_12.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_12.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/data_link_layer_anh_13.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/data_link_layer_anh_13.jpg"></a></p>
+<hr>
+<p><em>Ghi chú: 14 hình ảnh minh họa (.jpg) đã được tải về và lưu tự động vào thư mục con <code>image/</code> cùng cấp với file này. Để ảnh hiển thị tự động, hãy đảm bảo bạn sao chép cả thư mục <code>image/</code> nếu bạn muốn di chuyển file markdown sang nơi khác!</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 tháng 6, 2026 03:59:15 UTC">12 tháng 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../application_layer_overview/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Application Layer Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Application Layer Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../encapsulation_and_decapsulation/" class="md-footer__link md-footer__link--next" aria-label="Sau: Encapsulation and Decapsulation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Encapsulation and Decapsulation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

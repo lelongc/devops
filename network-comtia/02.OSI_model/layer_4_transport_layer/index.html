@@ -1,0 +1,3197 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/02.OSI_model/layer_4_transport_layer/">
+      
+      
+        <link rel="prev" href="../encapsulation_and_decapsulation/">
+      
+      
+        <link rel="next" href="../network_layer_routing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Layer 4: Transport Layer - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#layer-4-transport-layer" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Layer 4: Transport Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/LPIC-1/01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../linux/LPIC-1/01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network comtia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.fundamental
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01.fundamental
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/01.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/02.net-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các Thành Phần Cơ Bản Của Mạng Máy Tính
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/03.network-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/04.NetworkGeography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/05.network-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.OSI model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02.OSI model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_link_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encapsulation_and_decapsulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encapsulation and Decapsulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-chi-tiet-tang-giao-van-layer-4-transport-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích chi tiết: Tầng Giao vận (Layer 4 - Transport Layer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co-che-truyen-du-lieu-va-xac-nhan-acknowledgement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế truyền dữ liệu và xác nhận (Acknowledgement)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-khac-biet-cot-loi-tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sự khác biệt cốt lõi: TCP vs UDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sự khác biệt cốt lõi: TCP vs UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-ac-iem-cua-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các đặc điểm của UDP:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-chung-ta-lai-dung-mot-giao-thuc-khong-tin-cay-nhu-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tại sao chúng ta lại dùng một giao thức "không tin cậy" như UDP?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-udp-toc-o-thay-vi-su-hoan-hao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của UDP: Tốc độ thay vì sự hoàn hảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-su-anh-oi-tai-sao-lai-chap-nhan-mat-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sự đánh đổi: Tại sao lại chấp nhận mất dữ liệu?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-so-sanh-tcp-va-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bảng so sánh TCP và UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-co-che-sequencing-va-windowing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cơ chế Sequencing và Windowing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-tich-co-che-truyen-du-lieu-tcp-vs-udp-sequencing-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân tích cơ chế truyền dữ liệu: TCP vs UDP (Sequencing &amp; Order)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-su-anh-oi-o-tin-cay-acknowledgement-va-overhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sự đánh đổi: Độ tin cậy (Acknowledgement) và Overhead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-co-che-windowing-nghe-thuat-ieu-tiet-luu-luong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cơ chế Windowing: Nghệ thuật điều tiết lưu lượng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-chat-cua-viec-thay-oi-kich-thuoc-cua-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bản chất của việc thay đổi kích thước cửa sổ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qua-trinh-do-tim-nguong-bang-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quá trình dò tìm ngưỡng băng thông
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du-ve-giao-tiep-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ về giao tiếp thực tế
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-chat-cua-buffering-trong-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bản chất của Buffering trong mạng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hien-tuong-tran-bo-em-buffer-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiện tượng tràn bộ đệm (Buffer Overflow)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-so-o-nut-that-co-chai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích sơ đồ nút thắt cổ chai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-lai-thiet-ke-mang-nhu-vay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tại sao lại thiết kế mạng như vậy?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-co-che-buffer-bai-toan-nut-that-co-chai-va-toi-uu-chi-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Cơ chế Buffer: Bài toán "nút thắt cổ chai" và tối ưu chi phí
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tai-sao-doanh-nghiep-can-ky-thuat-nay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tại sao doanh nghiệp cần kỹ thuật này?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-thiet-bi-tang-4-layer-4-transport-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Thiết bị Tầng 4 (Layer 4 - Transport Layer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-giai-ma-khai-niem-chan-port-layer-4-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Giải mã khái niệm "Chặn Port" (Layer 4 Block)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinh-anh-minh-hoa-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hình ảnh minh họa thêm:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_layer_routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Layer Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network_packet_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Packet Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osi_model_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI Model Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../presentation_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session_layer_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Layer Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the_osi_physical_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-chi-tiet-tang-giao-van-layer-4-transport-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích chi tiết: Tầng Giao vận (Layer 4 - Transport Layer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co-che-truyen-du-lieu-va-xac-nhan-acknowledgement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế truyền dữ liệu và xác nhận (Acknowledgement)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-khac-biet-cot-loi-tcp-vs-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sự khác biệt cốt lõi: TCP vs UDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sự khác biệt cốt lõi: TCP vs UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-ac-iem-cua-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các đặc điểm của UDP:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-chung-ta-lai-dung-mot-giao-thuc-khong-tin-cay-nhu-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tại sao chúng ta lại dùng một giao thức "không tin cậy" như UDP?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-cua-udp-toc-o-thay-vi-su-hoan-hao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất của UDP: Tốc độ thay vì sự hoàn hảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-su-anh-oi-tai-sao-lai-chap-nhan-mat-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sự đánh đổi: Tại sao lại chấp nhận mất dữ liệu?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-so-sanh-tcp-va-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bảng so sánh TCP và UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-co-che-sequencing-va-windowing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cơ chế Sequencing và Windowing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-phan-tich-co-che-truyen-du-lieu-tcp-vs-udp-sequencing-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Phân tích cơ chế truyền dữ liệu: TCP vs UDP (Sequencing &amp; Order)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-su-anh-oi-o-tin-cay-acknowledgement-va-overhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sự đánh đổi: Độ tin cậy (Acknowledgement) và Overhead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-co-che-windowing-nghe-thuat-ieu-tiet-luu-luong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cơ chế Windowing: Nghệ thuật điều tiết lưu lượng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-chat-cua-viec-thay-oi-kich-thuoc-cua-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bản chất của việc thay đổi kích thước cửa sổ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qua-trinh-do-tim-nguong-bang-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quá trình dò tìm ngưỡng băng thông
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du-ve-giao-tiep-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ về giao tiếp thực tế
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-chat-cua-buffering-trong-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bản chất của Buffering trong mạng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hien-tuong-tran-bo-em-buffer-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiện tượng tràn bộ đệm (Buffer Overflow)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-tich-so-o-nut-that-co-chai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân tích sơ đồ nút thắt cổ chai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-lai-thiet-ke-mang-nhu-vay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tại sao lại thiết kế mạng như vậy?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-co-che-buffer-bai-toan-nut-that-co-chai-va-toi-uu-chi-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Cơ chế Buffer: Bài toán "nút thắt cổ chai" và tối ưu chi phí
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tai-sao-doanh-nghiep-can-ky-thuat-nay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tại sao doanh nghiệp cần kỹ thuật này?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-thiet-bi-tang-4-layer-4-transport-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Thiết bị Tầng 4 (Layer 4 - Transport Layer)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-giai-ma-khai-niem-chan-port-layer-4-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Giải mã khái niệm "Chặn Port" (Layer 4 Block)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hinh-anh-minh-hoa-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hình ảnh minh họa thêm:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/02.OSI_model/layer_4_transport_layer.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="layer-4-transport-layer">Layer 4: Transport Layer<a class="headerlink" href="#layer-4-transport-layer" title="Permanent link">¶</a></h1>
+<h3 id="phan-tich-chi-tiet-tang-giao-van-layer-4-transport-layer">Phân tích chi tiết: Tầng Giao vận (Layer 4 - Transport Layer)<a class="headerlink" href="#phan-tich-chi-tiet-tang-giao-van-layer-4-transport-layer" title="Permanent link">¶</a></h3>
+<p><strong>Vị thế của Layer 4 trong mô hình OSI</strong>
+Layer 4 đóng vai trò là "biên giới" chiến lược trong mô hình OSI. Nó tách biệt rõ rệt hai nhóm chức năng:
+*   <strong>Lower Layers (Tầng dưới: Physical, Data Link, Network):</strong> Tập trung vào việc "làm sao để dữ liệu di chuyển từ điểm A đến điểm B" – xử lý cáp, địa chỉ MAC, địa chỉ IP và định tuyến.
+*   <strong>Upper Layers (Tầng trên: Session, Presentation, Application):</strong> Tập trung vào việc "dữ liệu đó là gì và được xử lý ra sao" – xử lý phiên làm việc, định dạng dữ liệu và giao diện người dùng.
+Tầng Giao vận chính là "người phiên dịch" và "người kiểm soát" kết nối giữa việc truyền tải thô sơ bên dưới và logic ứng dụng bên trên.</p>
+<p><strong>Đơn vị dữ liệu (PDU) tại Layer 4</strong>
+Tại tầng này, dữ liệu không còn được gọi là frame (đóng khung) hay packet (gói tin) nữa, mà được gọi là <strong>Segment</strong> (phân đoạn) hoặc <strong>Datagram</strong>. Việc gọi tên này tùy thuộc vào giao thức bạn sử dụng. Nếu bạn đang nói về TCP, chúng ta dùng thuật ngữ "Segment". Nếu nói về UDP, chúng ta dùng "Datagram".</p>
+<p><strong>Các tính năng cốt lõi: TCP và UDP</strong>
+Layer 4 xoay quanh hai giao thức chính:
+1.  <strong>TCP (Transmission Control Protocol):</strong> Chú trọng sự tin cậy tuyệt đối.
+2.  <strong>UDP (User Datagram Protocol):</strong> Chú trọng tốc độ (sẽ được làm rõ ở các phần sau).</p>
+<p>Bên cạnh đó, Layer 4 còn quản lý hai cơ chế quan trọng giúp tối ưu hóa hiệu suất:
+*   <strong>Windowing (Cửa sổ trượt):</strong> Cho phép gửi nhiều gói tin trước khi cần một xác nhận, giúp tăng tốc độ truyền tải mà không cần đợi xác nhận từng gói.
+*   <strong>Buffering (Bộ đệm):</strong> Lưu trữ tạm thời dữ liệu để xử lý khi tốc độ gửi và nhận không đồng bộ, tránh mất mát dữ liệu do quá tải.</p>
+<p><strong>Đi sâu vào TCP: Giao thức hướng kết nối (Connection-oriented)</strong>
+TCP hoạt động giống như một cuộc đối thoại có sự xác nhận qua lại. Tính chất "Connection-full" có nghĩa là trước khi dữ liệu được gửi đi, thiết bị nguồn và đích phải thiết lập một "thỏa thuận". Nếu một đoạn dữ liệu (segment) bị mất trên đường đi, TCP sẽ không bỏ qua. Nó sẽ kiểm tra trạng thái ACK (Acknowledgement) và yêu cầu gửi lại ngay lập tức.</p>
+<p><strong>Cơ chế Three-way Handshake (Bắt tay 3 bước)</strong>
+Đây là linh hồn của sự tin cậy trong TCP. Quá trình này được mô tả qua sơ đồ dưới đây:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_0.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_0.jpg"></a></p>
+<p>Cấu trúc bắt tay 3 bước diễn ra như sau:
+1.  <strong>SYN (Synchronize):</strong> Client gửi yêu cầu: "Tôi muốn kết nối với ông, số thứ tự bắt đầu của tôi là X".
+2.  <strong>SYN-ACK (Synchronize-Acknowledgment):</strong> Server trả lời: "Tôi nhận được yêu cầu của ông, tôi đồng ý. Số thứ tự của tôi là Y, và tôi xác nhận số X của ông đã đến".
+3.  <strong>ACK (Acknowledgment):</strong> Client chốt lại: "Đã nhận được thông báo của ông. Kết nối chính thức mở, hãy bắt đầu truyền dữ liệu".</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang gọi điện cho một người bạn qua điện thoại bàn kiểu cũ.
+- <strong>SYN:</strong> Bạn gọi điện và nói: "Alo, cậu đó không?"
+- <strong>SYN-ACK:</strong> Bạn của bạn nghe máy và nói: "Ừ, mình đây, mình nghe rõ. Cậu có nghe rõ mình không?"
+- <strong>ACK:</strong> Bạn trả lời: "Ừ, mình nghe rất rõ. Giờ tớ bắt đầu kể chuyện đây nhé."
+Nếu bạn không nghe thấy câu "Ừ, mình nghe rõ" (ACK), bạn sẽ không bắt đầu kể chuyện vì sợ rằng người kia chưa sẵn sàng hoặc cuộc gọi bị nhiễu. TCP cũng hoạt động chính xác như vậy để đảm bảo không một bit dữ liệu nào bị "nói một mình".</p>
+</blockquote>
+<p>Sau khi quá trình "bắt tay ba bước" (three-way handshake) hoàn tất, chúng ta đã thiết lập một "kênh liên lạc" đã được xác nhận. Lúc này, cả client và server đều hiểu rằng: "Tôi đã sẵn sàng nhận dữ liệu" và "Tôi đã sẵn sàng gửi dữ liệu". Đây chính là nền tảng của giao thức TCP (Transmission Control Protocol), một giao thức hướng kết nối (connection-oriented).</p>
+<h3 id="co-che-truyen-du-lieu-va-xac-nhan-acknowledgement">Cơ chế truyền dữ liệu và xác nhận (Acknowledgement)<a class="headerlink" href="#co-che-truyen-du-lieu-va-xac-nhan-acknowledgement" title="Permanent link">¶</a></h3>
+<p>Trong TCP, dữ liệu không được truyền đi như một khối khổng lồ, mà được chia nhỏ thành các đơn vị gọi là <strong>Segment</strong>. Khi một segment được gửi đi, bên nhận không chỉ đơn thuần là nhận lấy, mà nó phải gửi ngược lại một thông điệp xác nhận (ACK - Acknowledgement). </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_1.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_1.jpg"></a> (Sơ đồ luồng gửi gói tin Segment và phản hồi ACK giữa Client và Server)</p>
+<p>Điều này đảm bảo tính "toàn vẹn" của dữ liệu. Nếu server dự định nhận 100 gói dữ liệu nhưng chỉ nhận được 98, nó sẽ lập tức phản hồi rằng: "Tôi đã nhận đủ 98, nhưng 2 gói còn lại đang bị mất". Cơ chế này kích hoạt việc <strong>retransmission</strong> (truyền lại). Nhờ đó, người nhận có thể khôi phục lại dữ liệu nguyên bản như phía gửi đã mong đợi.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn gửi một bộ hồ sơ quan trọng cho đối tác qua dịch vụ "Thư bảo đảm". Bạn không chỉ quăng lá thư vào thùng thư rồi đi về. Bạn yêu cầu người nhận phải ký tên vào biên lai xác nhận. Nếu người nhận báo là thiếu mất 2 trang trong bộ hồ sơ, bạn sẽ gửi bổ sung ngay 2 trang đó. Đó chính là cách TCP đảm bảo không có bất kỳ thông tin nào bị thất lạc.</p>
+</blockquote>
+<h3 id="su-khac-biet-cot-loi-tcp-vs-udp">Sự khác biệt cốt lõi: TCP vs UDP<a class="headerlink" href="#su-khac-biet-cot-loi-tcp-vs-udp" title="Permanent link">¶</a></h3>
+<p>Đoạn transcript chuyển hướng sang một giao thức đối lập hoàn toàn: <strong>UDP (User Datagram Protocol)</strong>. Nếu TCP là "Thư bảo đảm", thì UDP giống như việc bạn hét lớn vào đám đông: bạn nói, thông tin bay ra ngoài không gian, và bạn chẳng hề quan tâm liệu có ai nghe rõ từng chữ hay không.</p>
+<h4 id="cac-ac-iem-cua-udp">Các đặc điểm của UDP:<a class="headerlink" href="#cac-ac-iem-cua-udp" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Connectionless (Phi kết nối):</strong> UDP không cần "bắt tay", không cần kiểm tra đối phương có sẵn sàng hay không. Nó gửi thẳng dữ liệu đi ngay lập tức.</li>
+<li><strong>Datagram:</strong> Đây là thuật ngữ dành riêng cho dữ liệu của UDP (khác với Segment của TCP). Dù là Segment hay Datagram, chúng đều nằm ở <strong>Layer 4 (Transport Layer)</strong> của mô hình OSI.</li>
+<li><strong>Unreliable (Không tin cậy):</strong> Nếu dữ liệu bị mất (dropped) trên đường truyền, UDP sẽ không có cơ chế báo lại hay gửi lại. Bên gửi thậm chí còn không biết là đã xảy ra lỗi.</li>
+</ol>
+<h3 id="tai-sao-chung-ta-lai-dung-mot-giao-thuc-khong-tin-cay-nhu-udp">Tại sao chúng ta lại dùng một giao thức "không tin cậy" như UDP?<a class="headerlink" href="#tai-sao-chung-ta-lai-dung-mot-giao-thuc-khong-tin-cay-nhu-udp" title="Permanent link">¶</a></h3>
+<p>Có thể bạn sẽ tự hỏi: "Tại sao lại phải dùng thứ gì đó không an toàn?". Câu trả lời nằm ở <strong>độ trễ (latency)</strong> và <strong>overhead (tài nguyên dư thừa)</strong>.</p>
+<p>Trong các ứng dụng như gọi điện video (VoIP), livestreaming hay chơi game online, tốc độ là ưu tiên hàng đầu. 
+- Nếu bạn đang xem một trận bóng đá trực tiếp và một gói tin bị mất: Việc bắt hệ thống phải "dừng lại, gửi lại gói tin đó" sẽ khiến hình ảnh bị khựng, bị lag. 
+- Thay vào đó, UDP cho phép bỏ qua gói tin bị mất đó để tiếp tục nhận các gói tin mới nhất. Người dùng chấp nhận một chút nhiễu hình ảnh để đổi lấy dòng chảy thời gian thực không bị gián đoạn.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_2.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_2.jpg"></a> (Biểu đồ so sánh: TCP nặng nề với các gói tin ACK ngược lại, trong khi UDP nhẹ nhàng với các mũi tên dữ liệu đi thẳng một chiều)</p>
+<p>TCP có quá nhiều "overhead" (chi phí quản lý) – nghĩa là các thông tin phụ trợ, các gói tin xác nhận làm nặng thêm đường truyền. UDP cắt bỏ hoàn toàn các thủ tục đó, khiến nó trở thành lựa chọn tối ưu cho những ứng dụng mà tốc độ quan trọng hơn sự chính xác tuyệt đối của từng bit dữ liệu.</p>
+<p>Đoạn transcript này tập trung vào việc so sánh sự khác biệt cơ bản giữa hai giao thức truyền tải tầng Transport là TCP và UDP, đồng thời giải thích lý do tại sao UDP lại chiếm ưu thế trong các ứng dụng thời gian thực.</p>
+<h3 id="1-ban-chat-cua-udp-toc-o-thay-vi-su-hoan-hao">1. Bản chất của UDP: Tốc độ thay vì sự hoàn hảo<a class="headerlink" href="#1-ban-chat-cua-udp-toc-o-thay-vi-su-hoan-hao" title="Permanent link">¶</a></h3>
+<p>Người giảng bắt đầu bằng việc nhấn mạnh rằng UDP (User Datagram Protocol) bỏ qua quy trình "three-way handshake" (bắt tay ba bước). Trong TCP, trước khi dữ liệu được gửi đi, máy gửi và máy nhận phải "chào hỏi" nhau để đảm bảo kết nối sẵn sàng. UDP thì không. Nó hoạt động theo cơ chế "fire-and-forget" (gửi đi và quên luôn).</p>
+<p>Việc không có "checks and balances" (các cơ chế kiểm soát và đối chiếu) giúp UDP loại bỏ được độ trễ (latency). Vì không có yêu cầu gửi lại (retransmission), UDP không bao giờ phải chờ đợi các gói tin bị mất, từ đó tăng hiệu suất mạng đáng kể.</p>
+<h3 id="2-su-anh-oi-tai-sao-lai-chap-nhan-mat-du-lieu">2. Sự đánh đổi: Tại sao lại chấp nhận mất dữ liệu?<a class="headerlink" href="#2-su-anh-oi-tai-sao-lai-chap-nhan-mat-du-lieu" title="Permanent link">¶</a></h3>
+<p>Người giảng đặt câu hỏi: "Tại sao lại muốn mất thông tin?". Câu trả lời nằm ở ngữ cảnh sử dụng. Trong truyền tải video/audio, thời gian thực là ưu tiên số một.</p>
+<ul>
+<li><strong>Với TCP:</strong> Nếu một gói tin bị mất, hệ thống bắt buộc phải dừng lại để yêu cầu gửi lại (retransmission), sau đó sắp xếp lại đúng thứ tự rồi mới phát tiếp. Quá trình này gây ra "buffering" (xoay vòng loading).</li>
+<li><strong>Với UDP:</strong> Nếu mất 1/100 giây video, người dùng không hề nhận ra. Thay vì dừng cả hệ thống để sửa lỗi nhỏ, UDP chọn cách "bỏ qua" và tiếp tục phát các gói tin mới.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng TCP giống như việc gửi thư bảo đảm có ký nhận: Bạn gửi thư, người nhận ký tên, bạn nhận lại biên lai. Nếu thư thất lạc, bưu điện phải gửi lại bản sao. Còn UDP giống như việc bạn đang đứng ở sân vận động và tung hàng trăm quả bóng bay về phía khán giả. Bạn không quan tâm ai bắt được quả nào, bạn chỉ cần ném liên tục để tạo ra bầu không khí sôi động. Nếu vài quả bóng rơi xuống đất, buổi biểu diễn vẫn tiếp tục mà không ai dừng lại để nhặt từng quả.</p>
+</blockquote>
+<p>[CHÈN_ẢNH_MINH_HỌA: Sơ đồ so sánh cơ chế hoạt động của TCP (có vòng lặp phản hồi ACK/Retransmission) và UDP (một chiều, không phản hồi)]</p>
+<h3 id="3-bang-so-sanh-tcp-va-udp">3. Bảng so sánh TCP và UDP<a class="headerlink" href="#3-bang-so-sanh-tcp-va-udp" title="Permanent link">¶</a></h3>
+<p>Người giảng liệt kê các khác biệt cốt lõi mà học viên cần ghi chép lại:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Đặc điểm</th>
+<th style="text-align: left;">TCP (Transmission Control Protocol)</th>
+<th style="text-align: left;">UDP (User Datagram Protocol)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Độ tin cậy</strong></td>
+<td style="text-align: left;">Tin cậy (Reliable)</td>
+<td style="text-align: left;">Không tin cậy (Unreliable)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bắt tay</strong></td>
+<td style="text-align: left;">Có (3-way handshake)</td>
+<td style="text-align: left;">Không có</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kết nối</strong></td>
+<td style="text-align: left;">Connection-oriented (Có kết nối)</td>
+<td style="text-align: left;">Connectionless (Không kết nối)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Truyền lại</strong></td>
+<td style="text-align: left;">Có (Retransmission)</td>
+<td style="text-align: left;">Không có</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Điều khiển</strong></td>
+<td style="text-align: left;">Có Windowing (Flow control)</td>
+<td style="text-align: left;">Không có</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Thứ tự</strong></td>
+<td style="text-align: left;">Có Sequencing (Đánh số thứ tự)</td>
+<td style="text-align: left;">Không có</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-co-che-sequencing-va-windowing">4. Cơ chế Sequencing và Windowing<a class="headerlink" href="#4-co-che-sequencing-va-windowing" title="Permanent link">¶</a></h3>
+<p>Người giảng nhấn mạnh rằng dù TCP hay UDP, dữ liệu đều được gửi từ số 1 đến 100. Tuy nhiên, sự khác biệt nằm ở cách xử lý khi có sai sót:</p>
+<ul>
+<li><strong>TCP:</strong> Sử dụng <strong>Sequencing</strong> để đánh số thứ tự từng gói tin. Nếu gói số 5 bị mất, TCP sẽ biết ngay vì nó chỉ nhận được 1, 2, 3, 4, 6... và nó sẽ ra lệnh "Gửi lại gói số 5". Thêm vào đó, cơ chế <strong>Windowing</strong> (cửa sổ trượt) giúp TCP điều tiết lưu lượng: nếu mạng chậm, nó sẽ gửi ít gói tin hơn để tránh nghẽn.</li>
+<li><strong>UDP:</strong> Không có cơ chế này. Nếu gói số 5 bị mất trên đường đi, nó sẽ vĩnh viễn biến mất. Dữ liệu sẽ tiếp tục với gói 6, 7, 8... mà không cần quan tâm gói 5 đã đến nơi hay chưa.</li>
+</ul>
+<p>[CHÈN_ẢNH_MINH_HỌA: Sơ đồ minh họa quá trình "Sequencing" trong TCP nơi các gói tin được đánh số và yêu cầu truyền lại nếu bị mất thứ tự hoặc thất lạc]</p>
+<p>Tóm lại, thông điệp chính ở đây là: TCP dành cho những dữ liệu cần sự chính xác tuyệt đối (web, email, file transfer), còn UDP dành cho những dữ liệu cần tốc độ và sự liên tục (video streaming, voice call, gaming).</p>
+<h3 id="1-phan-tich-co-che-truyen-du-lieu-tcp-vs-udp-sequencing-order">1. Phân tích cơ chế truyền dữ liệu: TCP vs UDP (Sequencing &amp; Order)<a class="headerlink" href="#1-phan-tich-co-che-truyen-du-lieu-tcp-vs-udp-sequencing-order" title="Permanent link">¶</a></h3>
+<p>Trong mạng máy tính, các gói tin (packets) không phải lúc nào cũng đi theo một con đường cố định từ A đến B. Giống như việc bạn gửi 1.000 lá thư qua các bưu điện khác nhau, chúng có thể đến nơi vào những thời điểm khác nhau.</p>
+<ul>
+<li><strong>Với TCP (Transmission Control Protocol):</strong> TCP giống như một thư ký mẫn cán. Nó đánh số thứ tự (sequencing) cho từng gói tin (từ 1 đến 1.000). Khi dữ liệu đến đích, dù chúng đến lộn xộn (ví dụ: gói số 50 đến trước gói số 1), TCP sẽ "giữ" tất cả lại, chờ đợi cho đến khi đầy đủ, sau đó sắp xếp lại đúng thứ tự rồi mới bàn giao cho ứng dụng. Điều này đảm bảo dữ liệu nguyên vẹn 100%.</li>
+<li><strong>Với UDP (User Datagram Protocol):</strong> Ngược lại, UDP giống như một người đưa tin vội vã. Nó không quan tâm đến thứ tự. Nếu các gói tin đến theo trình tự 1, 50, 2, 500... thì người dùng sẽ nhận được đúng sự lộn xộn đó ngay lập tức. Trong âm thanh hoặc video, điều này tạo ra hiện tượng "jumpiness" (giật lag) hoặc những tiếng rít (high-pitch squeaks) do dữ liệu bị xáo trộn hoặc bị mất một vài khung hình (frames).</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_3.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_3.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang xem một vở kịch. 
+* <strong>TCP</strong> giống như việc đạo diễn yêu cầu diễn viên đứng đúng vị trí theo kịch bản từ chương 1 đến chương 10. Nếu một diễn viên chưa ra, vở kịch sẽ tạm dừng chờ. 
+* <strong>UDP</strong> giống như việc diễn viên cứ nhảy lên sân khấu bất cứ khi nào họ đến nơi. Bạn có thể thấy đoạn kết trước đoạn đầu, hoặc thấy diễn viên lộn xộn. Với một cuộc gọi video, việc thấy bạn mình "nhảy múa" một chút còn hơn là cuộc gọi bị ngắt quãng hoàn toàn.</p>
+</blockquote>
+<h3 id="2-su-anh-oi-o-tin-cay-acknowledgement-va-overhead">2. Sự đánh đổi: Độ tin cậy (Acknowledgement) và Overhead<a class="headerlink" href="#2-su-anh-oi-o-tin-cay-acknowledgement-va-overhead" title="Permanent link">¶</a></h3>
+<p>Sự khác biệt cốt lõi nằm ở cơ chế <strong>Acknowledgement (Xác nhận)</strong>:
+*   <strong>TCP:</strong> Có cơ chế "bắt tay". Khi bên nhận nhận được một đoạn dữ liệu (segment), nó phải gửi lại một tín hiệu "Tôi đã nhận được". Nếu bên gửi không nhận được tín hiệu này, nó tự động hiểu là gói tin đã mất và thực hiện <strong>retransmission</strong> (truyền lại). Điều này cực kỳ an toàn nhưng tốn tài nguyên (overhead lớn).
+*   <strong>UDP:</strong> Không có xác nhận. Bên gửi cứ gửi đi và không bao giờ quan tâm bên kia có nhận được hay không. Không có retransmission, không có sequencing, không có windowing.</p>
+<p><strong>Tại sao phải lựa chọn?</strong>
+*   <strong>Sử dụng TCP cho:</strong> Ngân hàng, Website, E-commerce. Ở đây, mất một gói tin đồng nghĩa với mất tiền, mất mật khẩu hoặc lỗi hiển thị giao diện. Sự an toàn và chính xác là ưu tiên số 1.
+*   <strong>Sử dụng UDP cho:</strong> Audio, Video streaming, Game online. Nếu bạn đang xem bóng đá trực tuyến, việc mất một miligiây hình ảnh không quan trọng bằng việc video bị đứng hình (buffering) do phải chờ tải lại dữ liệu cũ. Việc "bỏ qua" một vài mảnh vỡ dữ liệu là một sự đánh đổi chấp nhận được để có tốc độ thời gian thực.</p>
+<h3 id="3-co-che-windowing-nghe-thuat-ieu-tiet-luu-luong">3. Cơ chế Windowing: Nghệ thuật điều tiết lưu lượng<a class="headerlink" href="#3-co-che-windowing-nghe-thuat-ieu-tiet-luu-luong" title="Permanent link">¶</a></h3>
+<p>Windowing là cơ chế thông minh cho phép các thiết bị "thỏa thuận" về tốc độ truyền tải dựa trên khả năng của đường truyền.</p>
+<ul>
+<li><strong>Định nghĩa:</strong> Windowing cho phép client và server điều chỉnh số lượng dữ liệu (kích thước cửa sổ - window size) được gửi đi trong mỗi lần truyền.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_4.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_4.jpg"></a></p>
+<p><strong>Logic hoạt động của Windowing:</strong>
+1.  <strong>Khi mạng ổn định:</strong> Nếu bên gửi không thấy bất kỳ yêu cầu truyền lại (retransmission) nào, hệ thống hiểu rằng: "Đường truyền đang rất tốt, ta có thể gửi nhiều hơn". Lúc này, nó <strong>mở rộng cửa sổ (open the window)</strong> để gửi nhiều dữ liệu hơn trong mỗi segment.
+2.  <strong>Khi mạng bị tắc nghẽn:</strong> Nếu bên gửi nhận được quá nhiều yêu cầu truyền lại, hệ thống hiểu rằng: "Đường truyền đang quá tải, không nhận kịp". Lúc này, nó <strong>thu hẹp cửa sổ (close the window)</strong>. Việc gửi ít dữ liệu hơn mỗi lần giúp giảm áp lực lên mạng, ngăn chặn tình trạng gói tin bị rơi rụng (packet loss).</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang rót nước vào một chiếc cốc. 
+* Nếu bạn rót vừa phải (window nhỏ), nước không bị tràn (retransmission). 
+* Nếu bạn tự tin rót nhanh (mở rộng window), nhưng thấy nước bắt đầu tràn ra ngoài (retransmission), bạn phải hạ miệng bình xuống để rót chậm lại (thu hẹp window). Đó chính là cách Windowing giữ cho luồng dữ liệu luôn được tối ưu mà không gây quá tải cho thiết bị nhận.</p>
+</blockquote>
+<p>Trong mạng máy tính, khái niệm "cửa sổ" (windowing) đóng vai trò là cơ chế điều khiển lưu lượng (flow control) và tránh tắc nghẽn (congestion control). Đây là cách mà giao thức TCP (Transmission Control Protocol) đảm bảo tính ổn định của việc truyền dữ liệu.</p>
+<h3 id="ban-chat-cua-viec-thay-oi-kich-thuoc-cua-so">Bản chất của việc thay đổi kích thước cửa sổ<a class="headerlink" href="#ban-chat-cua-viec-thay-oi-kich-thuoc-cua-so" title="Permanent link">¶</a></h3>
+<p>Cửa sổ là lượng dữ liệu mà bên gửi có thể truyền đi trước khi cần nhận được tín hiệu xác nhận (ACK - Acknowledgement) từ bên nhận. Khi truyền một tệp tin lớn từ ổ đĩa chia sẻ về máy tính, bạn thường thấy thanh tiến trình nhảy vọt thời gian một cách bất thường. Nguyên nhân nằm ở sự co giãn của kích thước cửa sổ dựa trên tình trạng mạng.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_5.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_5.jpg"></a>
+<em>(Sơ đồ minh họa quá trình TCP Window Scaling với trục tung là lượng dữ liệu và trục hoành là thời gian, thể hiện sự dao động của kích thước cửa sổ theo các khung hình răng cưa)</em></p>
+<p>Khi mạng xảy ra lỗi hoặc có hiện tượng mất gói tin, cơ chế điều khiển sẽ hiểu rằng mạng đang bị nghẽn. Kết quả là kích thước cửa sổ bị thu hẹp lại. Khi cửa sổ nhỏ hơn, bên gửi chỉ được phép gửi một lượng dữ liệu ít hơn trước khi phải dừng lại chờ xác nhận. Điều này làm giảm tốc độ truyền tải, dẫn đến việc Windows ước tính thời gian hoàn thành phải tăng lên (thời gian còn lại tăng vọt). Ngược lại, khi mạng ổn định, cửa sổ được mở rộng dần, giúp tối ưu hóa băng thông và thời gian hoàn thành giảm xuống.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang rót nước vào một chiếc bình cổ hẹp. Nếu bạn đổ ồ ạt, nước sẽ tràn ra ngoài (mất gói tin). Để rót nhanh nhất có thể, bạn sẽ rót từ từ lúc đầu. Khi thấy nước chảy ổn định, bạn tăng dần tốc độ dòng chảy. Nếu thấy nước bắt đầu tràn ở miệng bình, bạn lập tức giảm tốc độ lại. Bạn cứ liên tục "tăng - giảm" tốc độ rót như thế cho đến khi tìm được điểm cân bằng cao nhất mà không làm tràn nước. Đó chính là cách TCP "nhấp nhô" để đạt băng thông tối đa.</p>
+</blockquote>
+<h3 id="qua-trinh-do-tim-nguong-bang-thong">Quá trình dò tìm ngưỡng băng thông<a class="headerlink" href="#qua-trinh-do-tim-nguong-bang-thong" title="Permanent link">¶</a></h3>
+<p>Quá trình này là một vòng lặp liên tục:
+1. <strong>Giai đoạn tăng tốc (Additive Increase):</strong> Hệ thống tăng kích thước cửa sổ để đẩy thêm nhiều dữ liệu hơn. 
+2. <strong>Giai đoạn nhận diện tắc nghẽn:</strong> Khi bên nhận không thể theo kịp (hoặc có gói tin bị mất), bên gửi nhận được tín hiệu cần giảm tốc độ.
+3. <strong>Giai đoạn thu hẹp (Multiplicative Decrease):</strong> Hệ thống ngay lập tức cắt giảm kích thước cửa sổ để giải tỏa nghẽn mạng.</p>
+<p>Hình ảnh minh họa về "màu xanh và màu đỏ" trong đoạn transcript mô tả cuộc chiến giữa:
+* <strong>Màu xanh (Tốc độ gửi của bạn):</strong> Nỗ lực đẩy dữ liệu vào đường truyền.
+* <strong>Màu đỏ (Khả năng đáp ứng của mạng):</strong> Giới hạn vật lý hoặc sự tắc nghẽn mà mạng có thể chịu đựng.</p>
+<p>Nếu màu xanh luôn cao hơn màu đỏ, gói tin sẽ bị mất. Hệ thống thông minh ở chỗ nó luôn cố gắng đẩy màu xanh lên cao sát mức màu đỏ. Nó không giữ nguyên một tốc độ cố định, mà liên tục thử nghiệm. Nếu chưa thấy nghẽn, nó sẽ tăng tốc. Nếu thấy nghẽn, nó giảm tốc. Cứ lặp đi lặp lại như vậy, TCP sẽ đạt được cái gọi là "tốc độ tối ưu" cho điều kiện mạng hiện tại.</p>
+<h3 id="vi-du-ve-giao-tiep-thuc-te">Ví dụ về giao tiếp thực tế<a class="headerlink" href="#vi-du-ve-giao-tiep-thuc-te" title="Permanent link">¶</a></h3>
+<p>Để dễ hiểu hơn, hãy xem xét ví dụ về việc đọc số:
+* Bạn bắt đầu đọc chậm: "Một... hai... ba". Người nghe phản hồi tốt, cho phép bạn tăng tốc.
+* Bạn tăng tốc độ: "Một, hai, ba, bốn, năm". Người nghe vẫn tiếp nhận kịp.
+* Bạn tiếp tục tăng tốc độ lên mức tối đa cho phép của người nghe: "Một, hai, ba, bốn, năm...". Đến một lúc, người nghe bị quá tải, họ kêu "Dừng lại, quá nhanh rồi!".
+* Ngay lập tức, bạn giảm tốc độ xuống để họ kịp tiêu hóa dữ liệu.</p>
+<p>Đây chính là cơ chế <strong>Slow Start</strong> (Khởi động chậm) và <strong>Congestion Avoidance</strong> (Tránh tắc nghẽn) trong TCP. Hệ thống bắt đầu cẩn trọng, thử nghiệm giới hạn, và sau đó điều chỉnh liên tục để khai thác tối đa băng thông sẵn có mà không làm "sập" đường truyền dữ liệu của bạn.</p>
+<p>Tiếp nối ý tưởng về "windowing" (cửa sổ truyền tải) dùng để điều khiển luồng dữ liệu, diễn giả chuyển sang một cơ chế quan trọng không kém để quản lý sự tắc nghẽn: <strong>Buffering</strong> (đệm dữ liệu).</p>
+<h3 id="ban-chat-cua-buffering-trong-mang">Bản chất của Buffering trong mạng<a class="headerlink" href="#ban-chat-cua-buffering-trong-mang" title="Permanent link">¶</a></h3>
+<p>Khái niệm "buffering" mà chúng ta thường thấy khi xem video trực tuyến thực chất là việc tạo ra một vùng đệm tạm thời. Trong các thiết bị mạng như Router, đây là một khu vực bộ nhớ (memory) được thiết kế để giữ chân các gói tin (segments) khi băng thông đầu ra không đủ đáp ứng tốc độ đầu vào.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang ở trong một trạm thu phí cao tốc với 10 làn xe đổ dồn về một làn đường duy nhất đang sửa chữa. Các xe không thể biến mất được, nên chúng phải xếp hàng chờ đợi trên con đường dẫn vào trạm. Vùng đường dẫn chờ đó chính là "Buffer". Khi làn đường sửa xong, xe sẽ được giải phóng dần dần.</p>
+</blockquote>
+<p>Khi băng thông trở nên sẵn sàng, bộ định tuyến sẽ lấy dữ liệu từ "kho chứa" tạm thời này và tiếp tục truyền tải, đồng thời giải phóng bộ nhớ để đón nhận các luồng dữ liệu mới.</p>
+<h3 id="hien-tuong-tran-bo-em-buffer-overflow">Hiện tượng tràn bộ đệm (Buffer Overflow)<a class="headerlink" href="#hien-tuong-tran-bo-em-buffer-overflow" title="Permanent link">¶</a></h3>
+<p>Mọi tài nguyên đều có giới hạn, và bộ nhớ trong Router cũng vậy. Khi tốc độ dữ liệu đi vào (input) vượt xa tốc độ dữ liệu đi ra (output), vùng đệm sẽ dần đầy. Nếu tình trạng này kéo dài, Router sẽ chạm ngưỡng "tràn bộ đệm".</p>
+<p>Kết quả tất yếu khi bộ nhớ cạn kiệt là <strong>rớt gói tin (packet drop)</strong>. Router không còn chỗ để lưu trữ thêm dữ liệu mới, nên nó buộc phải loại bỏ các phân đoạn dữ liệu đến sau. Điều này dẫn đến mất mát thông tin và yêu cầu các giao thức tầng trên (như TCP) phải thực hiện truyền lại (retransmission), làm giảm hiệu năng toàn mạng.</p>
+<h3 id="phan-tich-so-o-nut-that-co-chai">Phân tích sơ đồ nút thắt cổ chai<a class="headerlink" href="#phan-tich-so-o-nut-that-co-chai" title="Permanent link">¶</a></h3>
+<p>Diễn giả đưa ra một kịch bản thực tế tại Router 4 để minh họa sự mất cân bằng giữa luồng vào và luồng ra.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_6.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_6.jpg"></a></p>
+<p>Trong sơ đồ, Router 4 đóng vai trò trung tâm tiếp nhận lưu lượng từ ba hướng:
+*   Từ Router 6: 100 Mbps
+*   Từ Router 1: 100 Mbps
+*   Từ Router 3: 10 Mbps
+*   <strong>Tổng lưu lượng vào:</strong> 210 Mbps.</p>
+<p>Tuy nhiên, đường truyền duy nhất nối từ Router 4 tới đích (Router 5) chỉ có băng thông là 50 Mbps. Tại đây, một "nút thắt cổ chai" (bottleneck) được hình thành.</p>
+<h3 id="tai-sao-lai-thiet-ke-mang-nhu-vay">Tại sao lại thiết kế mạng như vậy?<a class="headerlink" href="#tai-sao-lai-thiet-ke-mang-nhu-vay" title="Permanent link">¶</a></h3>
+<p>Nhiều người sẽ tự hỏi: Tại sao lại thiết kế một cấu trúc mà đầu vào lớn gấp hơn 4 lần đầu ra như vậy? Câu trả lời nằm ở khái niệm <strong>tận dụng tài nguyên (utilization)</strong>.</p>
+<p>Trong thực tế, hiếm khi tất cả các nguồn dữ liệu (Router 1, 3, 6) đều gửi dữ liệu ở mức tải tối đa 100% cùng một lúc. Lưu lượng mạng mang tính chất "bùng nổ" (bursty) – tức là nó tăng vọt trong vài mili giây rồi lại giảm xuống. Thiết kế này tận dụng khả năng lưu trữ tạm thời (buffer) để xử lý các đợt bùng nổ nhỏ mà không gây ra sự cố, đồng thời tiết kiệm chi phí vận hành cho các đường truyền WAN đắt đỏ (thường là kết nối đi ra phía Router 5). Việc chấp nhận sự tắc nghẽn tạm thời và xử lý bằng buffer là một sự đánh đổi khôn ngoan trong kỹ thuật mạng để tối ưu hóa chi phí và hiệu suất trung bình.</p>
+<p>Trong phần cuối của bài học này, chúng ta tập trung vào việc quản lý lưu lượng mạng thông qua kỹ thuật "buffer" (bộ đệm) và các thiết bị hoạt động ở Tầng 4 (Layer 4 - Transport Layer) trong mô hình OSI.</p>
+<h3 id="1-co-che-buffer-bai-toan-nut-that-co-chai-va-toi-uu-chi-phi">1. Cơ chế Buffer: Bài toán "nút thắt cổ chai" và tối ưu chi phí<a class="headerlink" href="#1-co-che-buffer-bai-toan-nut-that-co-chai-va-toi-uu-chi-phi" title="Permanent link">¶</a></h3>
+<p>Giảng viên đưa ra một kịch bản giả định: Bạn có nhiều Router (1, 3, 6) gửi dữ liệu về một Router trung tâm (Router 4) để đi ra Internet thông qua một kết nối có giới hạn 50 Mbps.</p>
+<ul>
+<li><strong>Trường hợp lưu lượng thấp:</strong> Nếu tổng băng thông từ các thiết bị này (10+30+1 = 41 Mbps) nhỏ hơn giới hạn 50 Mbps của đường truyền ra ngoài, dữ liệu sẽ chảy thông suốt. Không có hàng đợi, không có sự chậm trễ.</li>
+<li><strong>Trường hợp bão hòa (Buffer xảy ra):</strong> Nếu Router 1 và 3 đột ngột gửi dữ liệu vượt quá ngưỡng 50 Mbps, Router 4 không thể "xả" hết dữ liệu ra ngoài ngay lập tức. Lúc này, nó sử dụng <strong>Buffer (bộ đệm)</strong>. Nó sẽ giữ lại các gói tin trong bộ nhớ tạm thời, chờ đợi đường truyền ra ngoài rảnh rang, rồi từ từ đẩy tiếp. Đây là giải pháp để tránh việc mất gói tin (packet drop) khi lưu lượng tăng đột biến.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_7.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_7.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng đường truyền 50 Mbps của bạn là một cửa soát vé tại sân vận động chỉ có 1 cổng ra. Nếu 100 người (dữ liệu) cùng chạy ra một lúc, họ sẽ bị kẹt. Cái "Buffer" chính là khu vực chờ ngay trước cửa soát vé. Người soát vé (Router) lần lượt cho từng người qua. Nhờ có khu vực chờ này, không ai bị đuổi về (mất gói tin), họ chỉ cần đợi một chút là ra được bên ngoài.</p>
+</blockquote>
+<h3 id="2-tai-sao-doanh-nghiep-can-ky-thuat-nay">2. Tại sao doanh nghiệp cần kỹ thuật này?<a class="headerlink" href="#2-tai-sao-doanh-nghiep-can-ky-thuat-nay" title="Permanent link">¶</a></h3>
+<p>Thay vì phải bỏ ra một số tiền khổng lồ hàng tháng để thuê đường truyền Fiber 1 Gbps (mà có thể phần lớn thời gian bạn không dùng hết), các doanh nghiệp chọn cách thuê đường truyền nhỏ hơn (ví dụ 50 Mbps). Bằng cách hiểu rõ mô hình lưu lượng mạng (network utilization), họ dùng bộ đệm để "làm phẳng" các đỉnh lưu lượng cao điểm. </p>
+<p>Điều này giúp:
+*   <strong>Tiết kiệm chi phí vận hành:</strong> Chỉ trả tiền cho băng thông trung bình, không phải băng thông cực đại.
+*   <strong>Tối ưu tài nguyên:</strong> Tận dụng tối đa đường truyền hiện có mà không gây nghẽn nghiêm trọng.</p>
+<p>Tuy nhiên, với xu hướng băng thông ngày càng rẻ và tốc độ mạng gia đình tăng nhanh, khái niệm này ít quan trọng hơn với người dùng cá nhân (SOHO), nhưng vẫn là "bài toán sống còn" trong kiến trúc hệ thống của các tập đoàn lớn.</p>
+<h3 id="3-thiet-bi-tang-4-layer-4-transport-layer">3. Thiết bị Tầng 4 (Layer 4 - Transport Layer)<a class="headerlink" href="#3-thiet-bi-tang-4-layer-4-transport-layer" title="Permanent link">¶</a></h3>
+<p>Khi nhắc đến Tầng 4, chúng ta đang nói đến tầng truyền tải, nơi chịu trách nhiệm đảm bảo dữ liệu được gửi đi một cách tin cậy hoặc nhanh chóng.</p>
+<ul>
+<li><strong>TCP (Transmission Control Protocol):</strong> Giao thức hướng kết nối, đảm bảo dữ liệu đến nơi không bị thiếu, không lỗi.</li>
+<li><strong>UDP (User Datagram Protocol):</strong> Giao thức không kết nối, tập trung vào tốc độ, thường dùng cho streaming hoặc game.</li>
+</ul>
+<p>Bất kỳ thiết bị nào "nhìn" được vào TCP/UDP đều được gọi là thiết bị Tầng 4. Cụ thể:</p>
+<ul>
+<li><strong>WAN Accelerators (Bộ tăng tốc WAN):</strong> Thiết bị này thực hiện nén (compression) các gói tin IP ở tầng thấp, làm giảm dung lượng thực tế phải truyền qua mạng, giúp dữ liệu đi nhanh hơn trên các đường truyền đường dài (WAN).</li>
+<li><strong>Load Balancers (Bộ cân bằng tải):</strong> Nó phân phối lưu lượng truy cập giữa nhiều máy chủ. Nó có thể quyết định "gói tin này đi vào server A, gói tin kia đi vào server B" dựa trên thông tin cổng (port) của TCP/UDP.</li>
+<li><strong>Firewalls (Tường lửa):</strong> Đây là ứng dụng thực tế phổ biến nhất. Tường lửa lọc traffic dựa trên Port và Protocol. </li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_8.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_8.jpg"></a></p>
+<h3 id="4-giai-ma-khai-niem-chan-port-layer-4-block">4. Giải mã khái niệm "Chặn Port" (Layer 4 Block)<a class="headerlink" href="#4-giai-ma-khai-niem-chan-port-layer-4-block" title="Permanent link">¶</a></h3>
+<p>Khi bạn vào cấu hình Firewall và thực hiện lệnh "Block Port 80 (TCP)", bạn đang thực hiện hành động của một thiết bị Tầng 4.
+*   <strong>Tại sao lại là Tầng 4?</strong> Vì Port 80 là một thành phần của giao thức TCP (nằm ở Tầng 4). 
+*   <strong>Cách thức hoạt động:</strong> Tường lửa kiểm tra header của gói tin, thấy yêu cầu gửi đến Port 80 (HTTP/Web traffic) qua TCP, nó sẽ đối chiếu với luật bạn đã đặt và từ chối (Drop/Reject) gói tin đó ngay tại ngưỡng Tầng 4, không cho phép gói tin đi sâu vào các ứng dụng bên trong (Tầng 5, 6, 7). </p>
+<p>Việc chặn tại Tầng 4 cực kỳ hiệu quả vì nó ngăn chặn sớm các mối đe dọa trước khi chúng kịp tiếp cận tới các dịch vụ đang chạy trên server.</p>
+<h3 id="hinh-anh-minh-hoa-them">Hình ảnh minh họa thêm:<a class="headerlink" href="#hinh-anh-minh-hoa-them" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_9.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_9.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_10.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_10.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_11.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_11.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_12.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_12.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_13.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_13.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_14.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_14.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_15.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_15.jpg"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/layer_4_transport_layer_anh_16.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/layer_4_transport_layer_anh_16.jpg"></a></p>
+<hr>
+<p><em>Ghi chú: 17 hình ảnh minh họa (.jpg) đã được tải về và lưu tự động vào thư mục con <code>image/</code> cùng cấp với file này. Để ảnh hiển thị tự động, hãy đảm bảo bạn sao chép cả thư mục <code>image/</code> nếu bạn muốn di chuyển file markdown sang nơi khác!</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 tháng 6, 2026 03:59:15 UTC">12 tháng 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../encapsulation_and_decapsulation/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Encapsulation and Decapsulation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Encapsulation and Decapsulation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../network_layer_routing/" class="md-footer__link md-footer__link--next" aria-label="Sau: Network Layer Routing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Network Layer Routing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
