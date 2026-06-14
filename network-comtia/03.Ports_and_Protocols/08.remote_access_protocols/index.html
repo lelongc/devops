@@ -1,0 +1,3373 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/03.Ports_and_Protocols/08.remote_access_protocols/">
+      
+      
+        <link rel="prev" href="../07.file_transfer_protocols/">
+      
+      
+        <link rel="next" href="../09.network_ports_and_protocols/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Remote Access Protocols - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#remote-access-protocols" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Remote Access Protocols
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/LPIC-1/01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../linux/LPIC-1/01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network comtia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.fundamental
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01.fundamental
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/01.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/02.net-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các Thành Phần Cơ Bản Của Mạng Máy Tính
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/03.network-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/04.NetworkGeography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/05.network-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/06.wireless_infrastructure_mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wireless Infrastructure Mode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/07.datacenter_topologies_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datacenter Topologies Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3">
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.OSI model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02.OSI model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/application_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/data_link_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/encapsulation_and_decapsulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encapsulation and Decapsulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/layer_4_transport_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/network_layer_routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Layer Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/network_packet_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Packet Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/osi_model_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI Model Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/presentation_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/session_layer_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Layer Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/the_osi_physical_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03.Ports and Protocols
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00.ports_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.network_port_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Port Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.understanding_tcp_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding TCP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.understanding_udp_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding UDP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.understanding_icmp_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding ICMP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.web_ports_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.email_protocols_and_ports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Email Protocols and Ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.file_transfer_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Transfer Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access Protocols
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-va-muc-tieu-cua-remote-access-truy-cap-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất và Mục tiêu của Remote Access (Truy cập từ xa)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ssh-secure-shell-tieu-chuan-vang-cua-ket-noi-an-toan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. SSH (Secure Shell) – Tiêu chuẩn vàng của kết nối an toàn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-telnet-di-san-cu-va-rui-ro-tiem-an" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Telnet – "Di sản" cũ và rủi ro tiềm ẩn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bang-so-sanh-nhanh-cac-giao-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Bảng so sánh nhanh các giao thức
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tai-sao-ssh-thay-the-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tại sao SSH thay thế Telnet?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-su-chuyen-dich-tu-duy-trong-quan-tri-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Sự chuyển dịch tư duy trong quản trị hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-giao-thuc-vu-khi-sac-ben-cua-nguoi-lam-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Giao thức - "Vũ khí" sắc bén của người làm IT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tam-quan-trong-cua-su-ben-bi-trong-viec-hoc-tap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tầm quan trọng của sự bền bỉ trong việc học tập
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-kip-on-thi-toc-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Bí Kíp Ôn Thi Tốc Độ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Bí Kíp Ôn Thi Tốc Độ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ssh-secure-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SSH (Secure Shell)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Telnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rdp-remote-desktop-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RDP (Remote Desktop Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bang-so-sanh-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng So Sánh Nhanh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.network_ports_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.network_services_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Services and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.network_port_scanning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Port Scanning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-ban-chat-va-muc-tieu-cua-remote-access-truy-cap-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bản chất và Mục tiêu của Remote Access (Truy cập từ xa)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ssh-secure-shell-tieu-chuan-vang-cua-ket-noi-an-toan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. SSH (Secure Shell) – Tiêu chuẩn vàng của kết nối an toàn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-telnet-di-san-cu-va-rui-ro-tiem-an" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Telnet – "Di sản" cũ và rủi ro tiềm ẩn
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bang-so-sanh-nhanh-cac-giao-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Bảng so sánh nhanh các giao thức
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tai-sao-ssh-thay-the-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tại sao SSH thay thế Telnet?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-su-chuyen-dich-tu-duy-trong-quan-tri-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Sự chuyển dịch tư duy trong quản trị hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-giao-thuc-vu-khi-sac-ben-cua-nguoi-lam-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Giao thức - "Vũ khí" sắc bén của người làm IT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tam-quan-trong-cua-su-ben-bi-trong-viec-hoc-tap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tầm quan trọng của sự bền bỉ trong việc học tập
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-kip-on-thi-toc-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Bí Kíp Ôn Thi Tốc Độ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Bí Kíp Ôn Thi Tốc Độ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ssh-secure-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SSH (Secure Shell)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-telnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Telnet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rdp-remote-desktop-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RDP (Remote Desktop Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bang-so-sanh-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng So Sánh Nhanh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/03.Ports_and_Protocols/08.remote_access_protocols.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="remote-access-protocols">Remote Access Protocols<a class="headerlink" href="#remote-access-protocols" title="Permanent link">¶</a></h1>
+<h3 id="1-ban-chat-va-muc-tieu-cua-remote-access-truy-cap-tu-xa">1. Bản chất và Mục tiêu của Remote Access (Truy cập từ xa)<a class="headerlink" href="#1-ban-chat-va-muc-tieu-cua-remote-access-truy-cap-tu-xa" title="Permanent link">¶</a></h3>
+<p>Đoạn transcript mở đầu bằng việc xác định mục tiêu cốt lõi của "Remote access ports and protocols" (các cổng và giao thức truy cập từ xa). Về cơ bản, công nghệ này giải quyết bài toán về khoảng cách địa lý trong quản trị hệ thống. Thay vì phải ngồi trực tiếp trước máy chủ (console), người quản trị có thể thực thi các lệnh, chỉnh sửa tệp tin, và kiểm soát toàn bộ hạ tầng mạng từ bất kỳ đâu trên thế giới thông qua một kết nối mạng. Đây là xương sống của hạ tầng IT hiện đại, giúp tiết kiệm thời gian và tăng khả năng phản ứng nhanh với các sự cố.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_0.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_0.jpg"></a></p>
+<h3 id="2-ssh-secure-shell-tieu-chuan-vang-cua-ket-noi-an-toan">2. SSH (Secure Shell) – Tiêu chuẩn vàng của kết nối an toàn<a class="headerlink" href="#2-ssh-secure-shell-tieu-chuan-vang-cua-ket-noi-an-toan" title="Permanent link">¶</a></h3>
+<p>SSH là giao thức chủ đạo được giới thiệu đầu tiên. Để hiểu sâu về SSH, cần nắm vững 3 trụ cột:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_1.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_1.jpg"></a></p>
+<ul>
+<li><strong>Chức năng:</strong> Tạo ra một "đường hầm" (tunnel) mã hóa, cho phép các dịch vụ mạng chạy trên môi trường không an toàn (như Internet công cộng) mà không bị lộ dữ liệu.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_2.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_2.jpg"></a></p>
+<ul>
+<li><strong>Port:</strong> SSH vận hành mặc định trên <strong>cổng 22</strong>.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_3.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_3.jpg"></a></p>
+<ul>
+<li><strong>Cơ chế:</strong> Hoạt động theo mô hình Client-Server. Client yêu cầu kết nối, xác thực mạnh (thường bằng mật khẩu hoặc khóa công khai - public key), và toàn bộ nội dung sau đó được mã hóa.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_4.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_4.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng SSH giống như việc bạn gửi một bức thư quan trọng bên trong một chiếc két sắt kiên cố thay vì gửi bằng phong bì giấy thông thường. Mặc dù chiếc két sắt đó được vận chuyển bằng một chiếc xe tải đi qua khu phố đầy kẻ trộm (mạng không an toàn), nhưng những kẻ đó chỉ thấy một khối kim loại mà chúng không thể mở được. Nội dung bên trong (lệnh của bạn) vẫn an toàn tuyệt đối.</p>
+</blockquote>
+<p>Việc SSH mã hóa dữ liệu là chìa khóa để chống lại các cuộc tấn công dạng "Man-in-the-Middle" (kẻ đứng giữa nghe lén), đảm bảo tính toàn vẹn và bảo mật của dữ liệu truyền tải.</p>
+<h3 id="3-telnet-di-san-cu-va-rui-ro-tiem-an">3. Telnet – "Di sản" cũ và rủi ro tiềm ẩn<a class="headerlink" href="#3-telnet-di-san-cu-va-rui-ro-tiem-an" title="Permanent link">¶</a></h3>
+<p>Ngược lại với SSH, Telnet (vận hành trên <strong>cổng 23</strong>) là một giao thức sơ khai.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_5.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_5.jpg"></a></p>
+<ul>
+<li><strong>Lịch sử:</strong> Nó được thiết kế cho các mạng nội bộ (LAN) thời kỳ đầu khi mà sự tin tưởng giữa các thiết bị trong mạng là rất cao.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_6.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_6.jpg"></a></p>
+<ul>
+<li><strong>Điểm yếu chết người:</strong> Telnet truyền dữ liệu dưới dạng <strong>văn bản thuần túy (plain text)</strong>. Điều này có nghĩa là từ tên đăng nhập, mật khẩu, đến các lệnh cấu hình bạn gõ đều được gửi "trần trụi" trên dây dẫn.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_7.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_7.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Sử dụng Telnet giống như việc bạn đứng giữa một căn phòng đông người và hét to mật khẩu ngân hàng của mình cho một người ở góc phòng. Bất kỳ ai đi ngang qua hoặc đứng gần đó đều có thể nghe thấy rõ ràng. Trong thế giới mạng, những "kẻ đi ngang qua" này chính là các phần mềm gián điệp hoặc tin tặc đang thực hiện các cuộc tấn công nghe lén (eavesdropping) trên cùng phân đoạn mạng.</p>
+</blockquote>
+<p>Vì lý do bảo mật này, Telnet đã bị coi là lỗi thời trong môi trường mạng hiện đại. Sự tồn tại của Telnet chủ yếu mang tính lịch sử hoặc phục vụ các thiết bị cũ (legacy systems) không hỗ trợ giao thức mã hóa.</p>
+<h3 id="4-bang-so-sanh-nhanh-cac-giao-thuc">4. Bảng so sánh nhanh các giao thức<a class="headerlink" href="#4-bang-so-sanh-nhanh-cac-giao-thuc" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Đặc điểm</th>
+<th style="text-align: left;">SSH (Secure Shell)</th>
+<th style="text-align: left;">Telnet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Port mặc định</strong></td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">23</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bảo mật</strong></td>
+<td style="text-align: left;">Cao (mã hóa toàn bộ nội dung)</td>
+<td style="text-align: left;">Thấp (không có mã hóa)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dạng truyền tải</strong></td>
+<td style="text-align: left;">Mã hóa (Encrypted)</td>
+<td style="text-align: left;">Văn bản thuần (Plain text)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Khả năng bị nghe lén</strong></td>
+<td style="text-align: left;">Gần như bằng 0</td>
+<td style="text-align: left;">Rất cao</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mục đích hiện nay</strong></td>
+<td style="text-align: left;">Quản trị từ xa an toàn</td>
+<td style="text-align: left;">Chỉ dùng cho thiết bị cổ hoặc lab kiểm thử</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-tai-sao-ssh-thay-the-telnet">5. Tại sao SSH thay thế Telnet?<a class="headerlink" href="#5-tai-sao-ssh-thay-the-telnet" title="Permanent link">¶</a></h3>
+<p>Đoạn transcript kết thúc với tiền đề về sự ra đời của SSH. SSH không chỉ đơn thuần là một giao thức quản trị, nó là câu trả lời cho sự thiếu hụt bảo mật trầm trọng của Telnet. Khi mạng lưới thế giới trở nên rộng lớn và Internet phát triển, việc truyền dữ liệu quản trị mà không có lớp bảo vệ là một "tự sát kỹ thuật". SSH được xây dựng để cung cấp mọi tính năng mà Telnet có, nhưng cộng thêm lớp "khiên bảo mật" cần thiết, biến nó thành lựa chọn duy nhất cho quản trị hệ thống chuyên nghiệp ngày nay.</p>
+<p>Việc so sánh SSH và Telnet trong bối cảnh hiện đại cho thấy sự phân cấp rõ rệt về bảo mật. Dù Telnet có thể thực hiện các thao tác lệnh tương tự như SSH, nhưng toàn bộ luồng dữ liệu của Telnet đều ở dạng "trần" (plain text). Khi bạn sử dụng SSH, một "đường ống bảo mật" được thiết lập; mọi lệnh bạn gõ và mọi phản hồi từ máy chủ đều được bọc trong lớp mã hóa. Đây là lý do tại sao Telnet hiện nay chỉ nên tồn tại trong các bảo tàng công nghệ hoặc dùng để tương tác với các thiết bị mạng lỗi thời (legacy equipment) từ 20-30 năm trước – những thiết bị mà phần cứng của chúng quá yếu hoặc phần mềm quá cũ để hiểu được các thuật toán mã hóa của SSH.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng việc gửi một bức thư. Telnet giống như việc bạn gửi một tấm bưu thiếp hở, nơi bất kỳ ai đi ngang qua (tấn công trung gian) đều có thể đọc được nội dung. SSH giống như việc bạn đặt bức thư đó vào một két sắt kiên cố, khóa lại bằng mật mã mà chỉ người nhận mới có chìa khóa. Ngay cả khi két sắt bị lấy cắp trên đường vận chuyển, kẻ trộm cũng không thể biết bên trong chứa gì.</p>
+</blockquote>
+<p>Chuyển sang RDP (Remote Desktop Protocol), chúng ta bước vào một phạm trù khác biệt hoàn toàn: Giao diện đồ họa. Trong khi SSH và Telnet tập trung vào dòng lệnh (CLI - Command Line Interface), RDP là một giao thức độc quyền của Microsoft cho phép truyền tải hình ảnh màn hình thời gian thực. Điều này biến việc quản lý máy tính từ xa trở nên trực quan như thể bạn đang ngồi ngay trước màn hình máy đó. RDP hoạt động dựa trên cổng 3389 và được thiết kế linh hoạt để tương thích với nhiều cấu trúc mạng cũng như các giao thức LAN khác nhau.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_8.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_8.jpg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_9.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_9.jpg"></a></p>
+<p>Điểm mạnh của RDP không chỉ dừng lại ở tính năng hiển thị đồ họa. Nó còn tích hợp các cơ chế bảo mật và tối ưu hóa chuyên sâu:
+* <strong>Mã hóa dữ liệu:</strong> Giúp bảo vệ luồng hình ảnh và thông tin điều khiển khỏi sự dòm ngó.
+* <strong>Xác thực bằng thẻ thông minh (Smart card):</strong> Tăng cường lớp bảo mật định danh, đảm bảo chỉ những người có thiết bị vật lý phù hợp mới có thể truy cập hệ thống.
+* <strong>Cơ chế giảm băng thông (Bandwidth reduction):</strong> Đây là kỹ thuật cốt lõi giúp RDP hoạt động mượt mà ngay cả khi đường truyền internet của bạn không ổn định hoặc có tốc độ chậm, bằng cách tối ưu hóa các thay đổi trên màn hình thay vì gửi lại toàn bộ khung hình liên tục.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_10.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_10.jpg"></a></p>
+<p>Trong kỷ nguyên điện toán đám mây, nơi các máy chủ thường đặt tại các trung tâm dữ liệu cách xa hàng nghìn cây số, việc hiểu rõ bộ ba SSH, Telnet và RDP là bắt buộc. Chúng là "cánh tay nối dài" cho các quản trị viên hệ thống:</p>
+<ul>
+<li><strong>SSH (Cổng 22):</strong> Là lựa chọn tiêu chuẩn vàng cho quản lý dòng lệnh an toàn, giúp cấu hình hệ điều hành và phần mềm mà không để lộ thông tin xác thực.</li>
+<li><strong>Telnet (Cổng 23):</strong> Một di sản cần được loại bỏ trừ khi không còn giải pháp thay thế, vì sự thiếu hụt mã hóa biến nó thành rủi ro bảo mật lớn nhất trong ba giao thức.</li>
+<li><strong>RDP (Cổng 3389):</strong> Là công cụ không thể thiếu khi cần thao tác trên môi trường Desktop Windows hoặc các ứng dụng phụ thuộc vào giao diện người dùng.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/remote_access_protocols_anh_11.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/remote_access_protocols_anh_11.jpg"></a></p>
+<p>Tóm lại, việc lựa chọn giữa các giao thức này phải dựa trên hai yếu tố: yêu cầu bảo mật của hạ tầng (bạn có chấp nhận dữ liệu bị lộ không?) và yêu cầu thao tác (bạn cần gõ lệnh hay cần nhìn màn hình?). Một quản trị viên giỏi luôn biết cách chọn đúng "công cụ" cho đúng "công việc" để đảm bảo hệ thống vừa vận hành trơn tru, vừa được bảo vệ an toàn trước các mối đe dọa từ mạng internet công cộng.</p>
+<p>Trong bối cảnh môi trường làm việc từ xa (remote working) và quản trị từ xa (remote management) đang trở thành tiêu chuẩn vận hành toàn cầu, việc thành thạo các giao thức truy cập không chỉ là một kỹ năng bổ trợ, mà đã trở thành năng lực cốt lõi đối với các chuyên gia IT và quản trị viên mạng.</p>
+<p>Dưới đây là phân tích chi tiết về tầm quan trọng mang tính chiến lược của các giao thức này trong bối cảnh hiện đại:</p>
+<h3 id="1-su-chuyen-dich-tu-duy-trong-quan-tri-he-thong">1. Sự chuyển dịch tư duy trong quản trị hệ thống<a class="headerlink" href="#1-su-chuyen-dich-tu-duy-trong-quan-tri-he-thong" title="Permanent link">¶</a></h3>
+<p>Câu nói "As we continue to embrace remote working and management" phản ánh một sự thay đổi sâu sắc về tư duy. Trước đây, việc tiếp cận vật lý (physical access) với server được coi là tiêu chuẩn vàng về bảo mật và kiểm soát. Tuy nhiên, khi các doanh nghiệp chuyển dịch lên đám mây (cloud) hoặc mô hình làm việc phân tán, "địa điểm" của người quản trị trở nên không quan trọng bằng "cách thức" họ kết nối. Việc nắm vững SSH, Telnet, và RDP không chỉ đơn thuần là biết cách gõ lệnh, mà là biết cách bảo vệ "xương sống" của doanh nghiệp khi nó nằm ngoài tầm với vật lý của bạn.</p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn là một vị tướng cầm quân. Ngày xưa, bạn phải đứng trên đài chỉ huy (truy cập vật lý) để quan sát chiến trường. Ngày nay, bạn chỉ huy cả một sư đoàn từ một căn cứ hầm ngầm thông qua màn hình máy tính. Nếu đường truyền (giao thức) của bạn bị rò rỉ, đối phương sẽ biết toàn bộ kế hoạch tác chiến. Việc chọn giao thức an toàn (như SSH thay vì Telnet) cũng giống như việc sử dụng bộ đàm được mã hóa thay vì hét lớn ngoài sân, nơi bất kỳ ai cũng có thể nghe thấy mệnh lệnh của bạn.</p>
+</blockquote>
+<h3 id="2-giao-thuc-vu-khi-sac-ben-cua-nguoi-lam-it">2. Giao thức - "Vũ khí" sắc bén của người làm IT<a class="headerlink" href="#2-giao-thuc-vu-khi-sac-ben-cua-nguoi-lam-it" title="Permanent link">¶</a></h3>
+<p>Tác giả nhấn mạnh rằng các giao thức này "quan trọng hơn bao giờ hết". Điều này xuất phát từ thực tế là bề mặt tấn công (attack surface) của hệ thống đã mở rộng đáng kể. Khi bạn quản trị từ xa, bạn đang mở một "cánh cửa" từ internet vào hệ thống nội bộ. Nếu cánh cửa đó (giao thức) không được bảo mật (như việc vẫn dùng Telnet), bạn đang vô tình tạo điều kiện cho kẻ xấu thâm nhập mà không để lại dấu vết.</p>
+<p>Trong tư duy của một IT chuyên nghiệp:
+*   <strong>SSH (Port 22):</strong> Được coi là "pháo đài di động" cho mọi nhu cầu quản trị dựa trên dòng lệnh, đảm bảo tính toàn vẹn của dữ liệu truyền tải.
+*   <strong>RDP (Port 3389):</strong> Là "kính hiển vi" cho phép bạn nhìn thấy và thao tác trên giao diện đồ họa, biến khoảng cách địa lý trở nên vô nghĩa.</p>
+<h3 id="3-tam-quan-trong-cua-su-ben-bi-trong-viec-hoc-tap">3. Tầm quan trọng của sự bền bỉ trong việc học tập<a class="headerlink" href="#3-tam-quan-trong-cua-su-ben-bi-trong-viec-hoc-tap" title="Permanent link">¶</a></h3>
+<p>Phần cuối của transcript nhắc nhở về một triết lý quan trọng trong ngành CNTT: "Learning a little each day adds up." Kiến thức về mạng máy tính không phải là thứ có thể học nhồi nhét một lúc là xong. Các giao thức, cổng (ports), và tiêu chuẩn bảo mật thường xuyên thay đổi hoặc bị thay thế bởi các tiêu chuẩn an toàn hơn. </p>
+<p>Đối với một quản trị viên mạng, sự khác biệt giữa một người "có thể kết nối" và một người "có thể kết nối an toàn" nằm ở chỗ họ hiểu sâu đến đâu về giao thức họ đang sử dụng. Việc dành thời gian mỗi ngày để cập nhật các phương thức xác thực, mã hóa và tối ưu hóa băng thông cho các giao thức này chính là cách duy nhất để duy trì năng lực cạnh tranh trong thị trường lao động công nghệ cao hiện nay.</p>
+<p>Tóm lại, thông điệp xuyên suốt ở đây là: <strong>Công cụ thì có sẵn, nhưng cách bạn sử dụng công cụ đó để bảo vệ tài sản số của doanh nghiệp mới là giá trị tạo nên sự khác biệt giữa một người thợ sửa máy và một kiến trúc sư hệ thống mạng thực thụ.</strong></p>
+<hr>
+<h2 id="bi-kip-on-thi-toc-o">🎯 Bí Kíp Ôn Thi Tốc Độ<a class="headerlink" href="#bi-kip-on-thi-toc-o" title="Permanent link">¶</a></h2>
+<p><strong>Mục tiêu:</strong> Quản trị hệ thống/mạng từ xa (Remote Access).</p>
+<h3 id="1-ssh-secure-shell">1. SSH (Secure Shell)<a class="headerlink" href="#1-ssh-secure-shell" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Port:</strong> <strong>22</strong></li>
+<li><strong>Đặc điểm:</strong> Bảo mật cao, mã hóa dữ liệu (encrypted tunnel).</li>
+<li><strong>Giao diện:</strong> Chỉ <strong>dòng lệnh (text-based)</strong>.</li>
+<li><strong>Công dụng:</strong> Thay thế Telnet, dùng để điều khiển server an toàn qua internet.</li>
+</ul>
+<h3 id="2-telnet">2. Telnet<a class="headerlink" href="#2-telnet" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Port:</strong> <strong>23</strong></li>
+<li><strong>Đặc điểm:</strong> <strong>Lỗi thời (legacy)</strong>, truyền dữ liệu dạng <strong>plain text</strong> (không mã hóa).</li>
+<li><strong>Rủi ro:</strong> Dễ bị tấn công nghe lén (eavesdropping).</li>
+<li><strong>Lời khuyên:</strong> <strong>KHÔNG NÊN DÙNG</strong>, chỉ dùng cho thiết bị cũ không hỗ trợ SSH.</li>
+</ul>
+<h3 id="3-rdp-remote-desktop-protocol">3. RDP (Remote Desktop Protocol)<a class="headerlink" href="#3-rdp-remote-desktop-protocol" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Port:</strong> <strong>3389</strong></li>
+<li><strong>Nhà phát triển:</strong> <strong>Microsoft</strong>.</li>
+<li><strong>Giao diện:</strong> <strong>Đồ họa (GUI)</strong> – nhìn thấy màn hình như đang ngồi trực tiếp.</li>
+<li><strong>Tính năng:</strong> Hỗ trợ mã hóa, xác thực smart card, quản lý Windows từ xa.</li>
+</ul>
+<hr>
+<h3 id="bang-so-sanh-nhanh">💡 Bảng So Sánh Nhanh<a class="headerlink" href="#bang-so-sanh-nhanh" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Protocol</th>
+<th style="text-align: left;">Port</th>
+<th style="text-align: left;">Giao diện</th>
+<th style="text-align: left;">Bảo mật</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>SSH</strong></td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">Dòng lệnh</td>
+<td style="text-align: left;">Cao (Mã hóa)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telnet</strong></td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">Dòng lệnh</td>
+<td style="text-align: left;">Thấp (Plain text)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RDP</strong></td>
+<td style="text-align: left;">3389</td>
+<td style="text-align: left;">Đồ họa (GUI)</td>
+<td style="text-align: left;">Có hỗ trợ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mẹo ghi nhớ:</strong>
+*   <strong>SSH (22):</strong> "Secure" = An toàn (Luôn chọn SSH).
+*   <strong>Telnet (23):</strong> "Tệ" = Không dùng.
+*   <strong>RDP (3389):</strong> "Remote Desktop" = Nhìn thấy màn hình (Đồ họa).</p>
+<hr>
+<p><em>Ghi chú: 12 hình ảnh minh họa (.jpg) đã được tải về và lưu tự động vào thư mục con <code>image/</code> cùng cấp với file này. Để ảnh hiển thị tự động, hãy đảm bảo bạn sao chép cả thư mục <code>image/</code> nếu bạn muốn di chuyển file markdown sang nơi khác!</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="14 tháng 6, 2026 06:21:39 UTC">14 tháng 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../07.file_transfer_protocols/" class="md-footer__link md-footer__link--prev" aria-label="Trước: File Transfer Protocols">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                File Transfer Protocols
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../09.network_ports_and_protocols/" class="md-footer__link md-footer__link--next" aria-label="Sau: Network Ports and Protocols">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Network Ports and Protocols
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
