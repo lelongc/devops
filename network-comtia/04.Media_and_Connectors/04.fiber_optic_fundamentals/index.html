@@ -1,0 +1,3949 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/network-comtia/04.Media_and_Connectors/04.fiber_optic_fundamentals/">
+      
+      
+        <link rel="prev" href="../03.ethernet_cable_wiring/">
+      
+      
+        <link rel="next" href="../05.fiber_network_connections/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Fiber Optic Fundamentals - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fiber-optic-fundamentals" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fiber Optic Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../linux/LPIC-1/01/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../linux/LPIC-1/01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network comtia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📡 Roadmap Học Networking &amp; Security Toàn Diện (Zero → Hero)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2">
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.fundamental
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01.fundamental
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/01.intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giới thiệu về các kiến thức nền tảng mạng máy tính: Xương sống của thế giới số
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/02.net-component/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Các Thành Phần Cơ Bản Của Mạng Máy Tính
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/03.network-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tài Nguyên Mạng: Mô Hình Client-Server và Peer-to-Peer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/04.NetworkGeography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Địa Lý Mạng: PAN, LAN, CAN, MAN và WAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/05.network-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Topologies: Hướng Dẫn Chi Tiết Về Các Kiểu Kết Nối Mạng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/06.wireless_infrastructure_mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wireless Infrastructure Mode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.fundamental/07.datacenter_topologies_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datacenter Topologies Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3">
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.OSI model
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02.OSI model
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/application_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/data_link_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Link Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/encapsulation_and_decapsulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encapsulation and Decapsulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/layer_4_transport_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Layer 4: Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/network_layer_routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Layer Routing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/network_packet_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Packet Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/osi_model_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSI Model Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/presentation_layer_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation Layer Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/session_layer_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Layer Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.OSI_model/the_osi_physical_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The OSI Physical Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4">
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03.Ports and Protocols
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/00.ports_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/01.network_port_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Port Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/02.understanding_tcp_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding TCP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/03.understanding_udp_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding UDP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/04.understanding_icmp_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding ICMP Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/05.web_ports_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/06.email_protocols_and_ports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Email Protocols and Ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/07.file_transfer_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Transfer Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/08.remote_access_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/09.network_ports_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Ports and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/10.network_services_and_protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Services and Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.Ports_and_Protocols/11.network_port_scanning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Port Scanning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.Media and Connectors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04.Media and Connectors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00.network_media_and_cabling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Media and Cabling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.copper_media_fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copper Media Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.copper_network_connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copper Network Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.ethernet_cable_wiring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ethernet Cable Wiring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiber Optic Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiber Optic Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#khai-niem-co-ban-ve-fiber-media-cap-quang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khái niệm cơ bản về Fiber Media (Cáp quang)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co-che-truyen-dan-anh-sang-va-soi-quang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế truyền dẫn: Ánh sáng và Sợi quang
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uu-the-vuot-troi-cua-cap-quang-so-voi-cap-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ưu thế vượt trội của cáp quang so với cáp đồng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ưu thế vượt trội của cáp quang so với cáp đồng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mien-nhiem-voi-nhieu-ien-tu-emi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Miễn nhiễm với nhiễu điện từ (EMI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-khoang-cach-truyen-dan-khong-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Khoảng cách truyền dẫn "không tưởng"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-toc-o-truyen-tai-sieu-viet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tốc độ truyền tải siêu việt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-fiber-thay-the-toan-dien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tại sao Fiber thay thế toàn diện?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-su-dich-chuyen-nut-that-co-chai-tu-day-dan-en-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Sự dịch chuyển nút thắt cổ chai: Từ dây dẫn đến thiết bị
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hai-rao-can-lon-chi-phi-va-tinh-phuc-tap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Hai rào cản lớn: Chi phí và Tính phức tạp
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Hai rào cản lớn: Chi phí và Tính phức tạp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-chi-phi-au-tu-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Chi phí đầu tư (Cost)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tinh-phuc-tap-trong-thi-cong-va-bao-tri-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Tính phức tạp trong thi công và bảo trì (Complexity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tong-ket-chi-phi-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tổng kết chi phí triển khai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-single-mode-fiber-smf-cap-quang-on-mot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single-mode Fiber (SMF - Cáp quang đơn mốt)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-multi-mode-fiber-mmf-cap-quang-a-mot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Multi-mode Fiber (MMF - Cáp quang đa mốt)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tom-luoc-su-khac-biet-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tóm lược sự khác biệt cốt lõi:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co-che-vat-ly-tai-sao-single-mode-co-hieu-suat-cao-hon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế vật lý: Tại sao Single-mode có hiệu suất cao hơn?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uu-tien-thiet-ke-tai-sao-multi-mode-mmf-luon-la-lua-chon-au-tien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ưu tiên thiết kế: Tại sao Multi-mode (MMF) luôn là lựa chọn đầu tiên?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ung-dung-trong-moi-truong-ac-thu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ứng dụng trong môi trường đặc thù
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tong-ket-tu-duy-chon-lua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tổng kết tư duy chọn lựa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-kip-on-thi-toc-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Bí Kíp Ôn Thi Tốc Độ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Bí Kíp Ôn Thi Tốc Độ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fiber-vs-copper-so-sanh-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Fiber vs. Copper (So sánh nhanh)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hai-loai-cap-quang-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Hai loại cáp quang cốt lõi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tu-khoa-vang-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Từ khóa "Vàng" cần nhớ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.fiber_network_connections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiber Network Connections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.understanding_network_transceivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding Network Transceivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#khai-niem-co-ban-ve-fiber-media-cap-quang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khái niệm cơ bản về Fiber Media (Cáp quang)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co-che-truyen-dan-anh-sang-va-soi-quang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế truyền dẫn: Ánh sáng và Sợi quang
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uu-the-vuot-troi-cua-cap-quang-so-voi-cap-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ưu thế vượt trội của cáp quang so với cáp đồng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ưu thế vượt trội của cáp quang so với cáp đồng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mien-nhiem-voi-nhieu-ien-tu-emi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Miễn nhiễm với nhiễu điện từ (EMI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-khoang-cach-truyen-dan-khong-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Khoảng cách truyền dẫn "không tưởng"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-toc-o-truyen-tai-sieu-viet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tốc độ truyền tải siêu việt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-fiber-thay-the-toan-dien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tại sao Fiber thay thế toàn diện?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-su-dich-chuyen-nut-that-co-chai-tu-day-dan-en-thiet-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Sự dịch chuyển nút thắt cổ chai: Từ dây dẫn đến thiết bị
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hai-rao-can-lon-chi-phi-va-tinh-phuc-tap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Hai rào cản lớn: Chi phí và Tính phức tạp
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Hai rào cản lớn: Chi phí và Tính phức tạp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-chi-phi-au-tu-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Chi phí đầu tư (Cost)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tinh-phuc-tap-trong-thi-cong-va-bao-tri-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Tính phức tạp trong thi công và bảo trì (Complexity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tong-ket-chi-phi-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tổng kết chi phí triển khai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-single-mode-fiber-smf-cap-quang-on-mot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single-mode Fiber (SMF - Cáp quang đơn mốt)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-multi-mode-fiber-mmf-cap-quang-a-mot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Multi-mode Fiber (MMF - Cáp quang đa mốt)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tom-luoc-su-khac-biet-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tóm lược sự khác biệt cốt lõi:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#co-che-vat-ly-tai-sao-single-mode-co-hieu-suat-cao-hon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế vật lý: Tại sao Single-mode có hiệu suất cao hơn?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uu-tien-thiet-ke-tai-sao-multi-mode-mmf-luon-la-lua-chon-au-tien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ưu tiên thiết kế: Tại sao Multi-mode (MMF) luôn là lựa chọn đầu tiên?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ung-dung-trong-moi-truong-ac-thu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ứng dụng trong môi trường đặc thù
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tong-ket-tu-duy-chon-lua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tổng kết tư duy chọn lựa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-kip-on-thi-toc-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Bí Kíp Ôn Thi Tốc Độ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Bí Kíp Ôn Thi Tốc Độ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fiber-vs-copper-so-sanh-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Fiber vs. Copper (So sánh nhanh)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hai-loai-cap-quang-cot-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Hai loại cáp quang cốt lõi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tu-khoa-vang-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Từ khóa "Vàng" cần nhớ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/network-comtia/04.Media_and_Connectors/04.fiber_optic_fundamentals.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="fiber-optic-fundamentals">Fiber Optic Fundamentals<a class="headerlink" href="#fiber-optic-fundamentals" title="Permanent link">¶</a></h1>
+<h3 id="khai-niem-co-ban-ve-fiber-media-cap-quang">Khái niệm cơ bản về Fiber Media (Cáp quang)<a class="headerlink" href="#khai-niem-co-ban-ve-fiber-media-cap-quang" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_0.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_0.jpg"></a></p>
+<p>Trong mạng máy tính, phương thức truyền dẫn là "xương sống" quyết định hiệu suất toàn hệ thống. Nếu các phương thức truyền dẫn truyền thống dựa trên dòng điện chạy qua kim loại (đồng), thì Fiber Media (cáp quang) tạo ra một cuộc cách mạng bằng cách sử dụng <strong>ánh sáng</strong>. Bằng cách chuyển đổi dữ liệu từ các xung điện sang các xung ánh sáng (photon), công nghệ này cho phép truyền tải thông tin với tốc độ và khoảng cách mà dây đồng không thể mơ tới.</p>
+<h3 id="co-che-truyen-dan-anh-sang-va-soi-quang">Cơ chế truyền dẫn: Ánh sáng và Sợi quang<a class="headerlink" href="#co-che-truyen-dan-anh-sang-va-soi-quang" title="Permanent link">¶</a></h3>
+<p>Fiber optic sử dụng các nguồn sáng như <strong>LED (Light Emitting Diode)</strong> hoặc <strong>Laser</strong> để bắn các tia sáng vào lõi cáp. Cấu trúc của cáp quang không phải là kim loại dẫn điện, mà là các sợi thủy tinh siêu tinh khiết hoặc nhựa đặc biệt. Ánh sáng di chuyển bên trong các sợi này thông qua hiện tượng phản xạ toàn phần, giúp dữ liệu được truyền đi mà không bị thất thoát đáng kể năng lượng dọc đường.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_1.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_1.jpg"></a></p>
+<h3 id="uu-the-vuot-troi-cua-cap-quang-so-voi-cap-ong">Ưu thế vượt trội của cáp quang so với cáp đồng<a class="headerlink" href="#uu-the-vuot-troi-cua-cap-quang-so-voi-cap-ong" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_2.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_2.jpg"></a></p>
+<h4 id="1-mien-nhiem-voi-nhieu-ien-tu-emi">1. Miễn nhiễm với nhiễu điện từ (EMI)<a class="headerlink" href="#1-mien-nhiem-voi-nhieu-ien-tu-emi" title="Permanent link">¶</a></h4>
+<p>Đây là lợi thế mang tính quyết định. Cáp đồng truyền dẫn bằng electron (điện), vốn rất nhạy cảm với các trường điện từ xung quanh. Bất kỳ động cơ, đường dây điện cao thế hay sóng vô tuyến nào gần đó cũng có thể tạo ra nhiễu (EMI), làm méo dạng tín hiệu. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_3.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_3.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng cáp đồng giống như việc bạn cố nói chuyện trong một buổi hòa nhạc rock ồn ào; tiếng ồn (EMI) sẽ làm người nghe khó hiểu được bạn. Ngược lại, cáp quang giống như việc bạn dùng một chiếc đèn pin chiếu vào không gian tĩnh lặng, hoàn toàn tách biệt với âm thanh ồn ào bên ngoài. Ánh sáng không bị ảnh hưởng bởi từ trường, do đó dữ liệu luôn "trong vắt" ngay cả trong môi trường nhiều máy móc điện tử.</p>
+</blockquote>
+<p>Vì không bị ảnh hưởng bởi EMI, cáp quang không cần các lớp bọc chống nhiễu (shielding) dày cộm hay các kỹ thuật xoắn cặp (twisted pair) phức tạp như cáp đồng.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_4.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_4.jpg"></a></p>
+<h4 id="2-khoang-cach-truyen-dan-khong-tuong">2. Khoảng cách truyền dẫn "không tưởng"<a class="headerlink" href="#2-khoang-cach-truyen-dan-khong-tuong" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_5.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_5.jpg"></a></p>
+<p>Sự hạn chế của cáp đồng nằm ở tính chất vật lý: điện trở. Khi dòng điện chạy qua dây đồng, nó bị hao hụt năng lượng dưới dạng nhiệt. 
+*   <strong>Twisted pair (Cáp xoắn đôi):</strong> Bị giới hạn ở khoảng 100 mét. Vượt quá ngưỡng này, tín hiệu suy hao (degradation) mạnh đến mức thiết bị đầu cuối không thể đọc được dữ liệu.
+*   <strong>Coaxial (Cáp đồng trục):</strong> Nhỉnh hơn, đạt khoảng 300 mét.
+*   <strong>Fiber Optic:</strong> Có khả năng truyền tải dữ liệu trên quãng đường lên tới hàng trăm kilomet mà không cần thiết bị khuếch đại tín hiệu (repeater) quá thường xuyên. Điều này biến nó thành lựa chọn số một cho các tuyến cáp quang xuyên đại dương, kết nối internet giữa các lục địa.</p>
+<h4 id="3-toc-o-truyen-tai-sieu-viet">3. Tốc độ truyền tải siêu việt<a class="headerlink" href="#3-toc-o-truyen-tai-sieu-viet" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_6.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_6.jpg"></a></p>
+<p>Trong khi cáp đồng hiện nay chủ yếu dừng lại ở tốc độ khoảng 10 Gbps (Gigabit mỗi giây) và chỉ ở khoảng cách ngắn, cáp quang gần như không có giới hạn lý thuyết về tốc độ trong thực tế ứng dụng hiện tại.</p>
+<ul>
+<li><strong>Đỉnh cao công nghệ:</strong> Việc công ty viễn thông Nhật Bản NTT đạt được tốc độ <strong>1 Petabit/giây</strong> (1 Petabit = 1.000 Terabit = 1.000.000 Gigabit) vào năm 2012 là một cột mốc lịch sử. Để dễ hình dung, tốc độ này có thể tải toàn bộ thư viện dữ liệu khổng lồ của một quốc gia chỉ trong vài giây.</li>
+</ul>
+<h3 id="tai-sao-fiber-thay-the-toan-dien">Tại sao Fiber thay thế toàn diện?<a class="headerlink" href="#tai-sao-fiber-thay-the-toan-dien" title="Permanent link">¶</a></h3>
+<p>Sự chuyển dịch từ đồng sang quang không chỉ là nâng cấp thiết bị, mà là chuyển dịch bản chất vật lý của truyền tin:
+1.  <strong>Độ ổn định:</strong> Không nhiễu, không cần bọc chống nhiễu đắt tiền.
+2.  <strong>Độ bao phủ:</strong> Kết nối từ một phòng làm việc nhỏ đến các hệ thống hạ tầng xuyên quốc gia.
+3.  <strong>Khả năng mở rộng:</strong> Với cùng một sợi cáp, bằng cách sử dụng các bước sóng ánh sáng khác nhau (WDM - Wavelength Division Multiplexing), chúng ta có thể truyền nhiều luồng dữ liệu cùng lúc, nhân tốc độ lên hàng ngàn lần.</p>
+<p>Tóm lại, Fiber Media không đơn thuần là một loại cáp, nó là nền tảng cho phép kỷ nguyên Internet tốc độ cao hiện nay tồn tại và phát triển.</p>
+<p>Mặc dù cáp quang có tiềm năng kỹ thuật vô hạn, thực tế triển khai mạng lại bị chi phối bởi các yếu tố phi kỹ thuật. Dưới đây là phân tích chuyên sâu về sự chuyển dịch từ "giới hạn vật lý" sang "giới hạn hệ thống" và các rào cản thực tế khi triển khai cáp quang.</p>
+<h3 id="1-su-dich-chuyen-nut-that-co-chai-tu-day-dan-en-thiet-bi">1. Sự dịch chuyển nút thắt cổ chai: Từ dây dẫn đến thiết bị<a class="headerlink" href="#1-su-dich-chuyen-nut-that-co-chai-tu-day-dan-en-thiet-bi" title="Permanent link">¶</a></h3>
+<p>Trong các mạng tốc độ cực cao, vấn đề không còn nằm ở môi trường truyền dẫn (cáp quang) mà nằm ở các thiết bị phần cứng xử lý tín hiệu. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_7.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_7.jpg"></a></p>
+<ul>
+<li><strong>Bản chất vấn đề:</strong> Cáp quang có băng thông gần như "vô tận" so với nhu cầu hiện tại. Tuy nhiên, các thiết bị chuyển mạch (switch), bộ định tuyến (router) và thiết bị đầu cuối (end-user devices) mới là những thực thể phải "đọc", "phân tích" và "chuyển tiếp" dữ liệu. Khi các thiết bị này không xử lý kịp tốc độ ánh sáng mà sợi quang cung cấp, chúng trở thành "nút thắt cổ chai" (bottleneck).</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_8.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_8.jpg"></a></p>
+<ul>
+<li><strong>Quyết định dựa trên chi phí (Cost-benefit decision):</strong> Các doanh nghiệp thường dừng lại ở mức 10 Gbps hoặc 100 Gbps không phải vì sợi quang không thể chạy nhanh hơn, mà vì việc nâng cấp phần cứng lên mức cao hơn đòi hỏi chi phí đầu tư hạ tầng mạng cực kỳ đắt đỏ, trong khi hiệu quả mang lại có thể chưa tương xứng với ngân sách bỏ ra.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_9.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_9.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng cáp quang giống như một đường cao tốc 100 làn xe có thể cho phép xe chạy với tốc độ không giới hạn. Nhưng nếu các trạm thu phí (thiết bị mạng) ở đầu và cuối đường chỉ có 2 cửa soát vé, thì dù đường có rộng đến đâu, xe cộ vẫn phải ùn tắc tại trạm thu phí. Việc mở rộng thêm làn đường là không cần thiết nếu bạn không nâng cấp các trạm thu phí đó.</p>
+</blockquote>
+<h3 id="2-hai-rao-can-lon-chi-phi-va-tinh-phuc-tap">2. Hai rào cản lớn: Chi phí và Tính phức tạp<a class="headerlink" href="#2-hai-rao-can-lon-chi-phi-va-tinh-phuc-tap" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_10.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_10.jpg"></a></p>
+<p>Mặc dù vượt trội về mặt hiệu năng, tại sao sợi quang không thay thế hoàn toàn cáp đồng? Có hai lý do chính:</p>
+<h4 id="a-chi-phi-au-tu-cost">A. Chi phí đầu tư (Cost)<a class="headerlink" href="#a-chi-phi-au-tu-cost" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Giá thành cáp:</strong> Sợi quang đắt đỏ hơn đáng kể so với cáp đồng (như ví dụ, tỉ lệ khoảng 3:1 hoặc 4:1 cho cùng một độ dài).</li>
+<li><strong>Chi phí thiết bị đi kèm:</strong> Đây mới là "cú sốc" ngân sách. Để hỗ trợ sợi quang, các cổng kết nối trên switch và router cần các bộ thu phát quang (transceivers) phức tạp. Một cổng cáp đồng RJ45 thông thường được tích hợp sẵn trên thiết bị, nhưng cổng quang yêu cầu module quang (SFP/QSFP) rời, mỗi module này có thể tốn từ vài chục đến hàng ngàn đô la tùy tốc độ.</li>
+</ul>
+<h4 id="b-tinh-phuc-tap-trong-thi-cong-va-bao-tri-complexity">B. Tính phức tạp trong thi công và bảo trì (Complexity)<a class="headerlink" href="#b-tinh-phuc-tap-trong-thi-cong-va-bao-tri-complexity" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_11.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_11.jpg"></a></p>
+<ul>
+<li><strong>Yêu cầu kỹ thuật:</strong> Cáp đồng (Twisted pair) rất "dễ chịu". Bạn có thể cắt, bấm đầu, và kiểm tra bằng các bộ kit giá rẻ (10-15 USD) chỉ sau vài phút hướng dẫn. Ngược lại, sợi quang yêu cầu độ chính xác cực cao. </li>
+<li><strong>Độ nhạy của thủy tinh:</strong> Sợi quang là những sợi thủy tinh siêu mảnh. Nếu bạn bấm đầu không chuẩn, làm cong quá mức, hoặc để bụi bẩn bám vào bề mặt kết nối, tín hiệu ánh sáng sẽ bị suy hao hoặc phản xạ ngược, gây lỗi mạng ngay lập tức.</li>
+<li><strong>Công cụ chuyên dụng:</strong> Việc lắp đặt hoặc sửa chữa cáp quang đòi hỏi máy hàn cáp quang (fusion splicer) – một thiết bị đắt tiền, yêu cầu kỹ năng tay nghề cao và môi trường làm việc sạch sẽ.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_12.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_12.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Cáp đồng giống như việc bạn tự tay làm một chiếc bánh mì kẹp tại nhà: chỉ cần vài dụng cụ bếp cơ bản, nguyên liệu rẻ và mất 10 phút học là xong. Trong khi đó, việc thi công cáp quang giống như việc chế tác một chiếc đồng hồ cơ khí tinh xảo: bạn cần phòng lab sạch, kính hiển vi, máy cắt laser chính xác và phải là thợ lành nghề, chỉ một hạt bụi lọt vào bộ máy cũng khiến nó ngừng chạy.</p>
+</blockquote>
+<h3 id="3-tong-ket-chi-phi-trien-khai">3. Tổng kết chi phí triển khai<a class="headerlink" href="#3-tong-ket-chi-phi-trien-khai" title="Permanent link">¶</a></h3>
+<p>Việc thi công hạ tầng cáp quang trong một tòa nhà văn phòng có chi phí cao gấp 5 đến 10 lần so với chạy cáp đồng cho cùng một khoảng cách. Sự chênh lệch này không chỉ nằm ở giá vật tư mà là sự tổng hòa của:
+1.  <strong>Chi phí thiết bị đầu cuối:</strong> Đắt đỏ hơn.
+2.  <strong>Chi phí nhân công:</strong> Cần kỹ thuật viên trình độ cao, được đào tạo bài bản.
+3.  <strong>Chi phí công cụ:</strong> Máy móc đo kiểm và hàn nối chuyên dụng đòi hỏi vốn đầu tư lớn.</p>
+<p>Vì vậy, trong các quyết định thiết kế mạng, kỹ sư luôn phải cân bằng giữa nhu cầu tốc độ (ưu thế của cáp quang) và bài toán kinh tế (lợi thế của cáp đồng).</p>
+<p>Sau khi đã làm rõ các rào cản về chi phí và độ phức tạp, chúng ta sẽ đi sâu vào cấu trúc kỹ thuật cốt lõi giúp cáp quang trở thành lựa chọn ưu tiên trong hạ tầng mạng doanh nghiệp: <strong>Cáp quang đơn mốt (Single-mode)</strong> và <strong>Cáp quang đa mốt (Multi-mode)</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_13.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_13.jpg"></a></p>
+<h3 id="1-single-mode-fiber-smf-cap-quang-on-mot">1. Single-mode Fiber (SMF - Cáp quang đơn mốt)<a class="headerlink" href="#1-single-mode-fiber-smf-cap-quang-on-mot" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_14.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_14.jpg"></a></p>
+<p>Đặc điểm kỹ thuật quan trọng nhất của SMF là lõi thủy tinh cực nhỏ, chỉ từ 8.3 đến 10 micron. Để bạn hình dung độ tinh vi của nó: một sợi tóc người bình thường có đường kính khoảng 17 - 180 micron. Điều này có nghĩa là lõi cáp quang SMF nhỏ hơn từ 2 đến 20 lần so với sợi tóc của chúng ta.</p>
+<ul>
+<li><strong>Cơ chế truyền dẫn:</strong> Do đường kính lõi quá nhỏ, ánh sáng chỉ có thể di chuyển theo một đường thẳng duy nhất (một "mode" duy nhất). Việc này triệt tiêu hiện tượng tán sắc (dispersion) – hiện tượng các tia sáng va đập và tản mát làm méo tín hiệu.</li>
+<li><strong>Tại sao lại là "đường dài":</strong> Vì tín hiệu không bị tán sắc, nó có thể duy trì cường độ ổn định trên quãng đường rất dài, lên tới hàng chục hoặc hàng trăm dặm. SMF chính là "xương sống" (backbone) cho các kết nối liên tỉnh hoặc giữa các khu vực địa lý xa cách.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_15.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_15.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng bạn đang bắn một tia laser qua một hành lang hẹp và thẳng tắp. Vì hành lang quá hẹp, tia laser không thể va đập vào tường hay đổi hướng, nó sẽ đi thẳng tắp từ đầu này sang đầu kia của tòa nhà mà không bị suy giảm năng lượng. Đó chính là cách SMF hoạt động – tinh gọn và chuẩn xác cho khoảng cách xa.</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_16.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_16.jpg"></a></p>
+<h3 id="2-multi-mode-fiber-mmf-cap-quang-a-mot">2. Multi-mode Fiber (MMF - Cáp quang đa mốt)<a class="headerlink" href="#2-multi-mode-fiber-mmf-cap-quang-a-mot" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_17.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_17.jpg"></a></p>
+<p>Ngược lại với SMF, MMF được thiết kế với lõi lớn hơn, dao động từ 50 đến 100 micron. Dù "lớn" hơn nhiều so với SMF (gấp khoảng 5 lần), nó vẫn là một sợi thủy tinh cực mảnh.</p>
+<ul>
+<li><strong>Cơ chế truyền dẫn:</strong> Với đường kính lõi rộng hơn, ánh sáng không chỉ đi theo một đường thẳng mà có thể phản xạ và đi theo nhiều đường khác nhau (nhiều "mode") bên trong lõi cáp.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_18.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_18.jpg"></a></p>
+<ul>
+<li><strong>Lợi ích và hạn chế:</strong> Việc cho phép nhiều luồng ánh sáng cùng di chuyển giúp truyền được lượng dữ liệu lớn hơn trong khoảng cách ngắn. Tuy nhiên, cái giá phải trả chính là hiện tượng <strong>tán sắc</strong>. Khi ánh sáng đi theo nhiều con đường khác nhau, chúng sẽ đến đích ở những thời điểm hơi khác nhau, làm tín hiệu bị nhòe đi. Vì lý do này, MMF chỉ phù hợp cho các khoảng cách ngắn trong phạm vi nội bộ tòa nhà hoặc trung tâm dữ liệu.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy hình dung SMF là một đường đua xe công thức 1 chỉ dành cho một chiếc xe duy nhất đi thẳng, trong khi MMF là một con đường rộng cho phép nhiều xe chạy song song. Ở cự ly ngắn, nhiều xe chạy cùng lúc (nhiều dữ liệu) là rất tốt, nhưng nếu chạy đường dài, việc các xe đâm va vào nhau hoặc lạc hướng (tán sắc) sẽ khiến hệ thống không còn giữ được sự đồng bộ.</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_19.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_19.jpg"></a></p>
+<h3 id="tom-luoc-su-khac-biet-cot-loi">Tóm lược sự khác biệt cốt lõi:<a class="headerlink" href="#tom-luoc-su-khac-biet-cot-loi" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>SMF:</strong> Lõi siêu nhỏ (8-10µm), truyền được xa (hàng chục/trăm km), dùng làm "xương sống" mạng (backbone).</li>
+<li><strong>MMF:</strong> Lõi lớn (50-100µm), truyền khoảng cách ngắn, dùng phổ biến trong kết nối thiết bị nội bộ do chi phí thiết bị quang đầu cuối rẻ hơn SMF.</li>
+</ul>
+<p>Đoạn transcript đang bỏ ngỏ ở việc "tán sắc tín hiệu" trong MMF. Đây là vấn đề kỹ thuật quan trọng nhất cần lưu ý khi thiết kế mạng: khi lõi cáp càng lớn, khoảng cách truyền dẫn càng xa, thì hiện tượng tán sắc càng làm suy giảm chất lượng dữ liệu, buộc chúng ta phải giới hạn chiều dài của cáp MMF trong các hệ thống mạng thực tế.</p>
+<p>Việc sử dụng lõi lớn hơn trong cáp quang đa mode (multi-mode fiber - MMF) dẫn đến hiện tượng tán xạ ánh sáng nhiều hơn. Hệ quả trực tiếp là khoảng cách truyền tải dữ liệu bị giới hạn đáng kể so với cáp đơn mode (single-mode fiber - SMF). Khi ánh sáng truyền theo nhiều đường (modes) khác nhau trong cùng một lõi, các xung tín hiệu sẽ bị nhòe dần theo thời gian và khoảng cách, khiến máy thu khó có thể phân biệt được các bit dữ liệu ở tốc độ cao.</p>
+<p>Lý do then chốt khiến MMF phổ biến trong các doanh nghiệp không nằm ở hiệu năng tuyệt đối, mà nằm ở <strong>tối ưu hóa chi phí</strong>. Vì lõi MMF lớn (50-100 micron), các thiết bị phát quang (như đèn LED hoặc VCSEL - Vertical-Cavity Surface-Emitting Laser) dùng để "bơm" ánh sáng vào cáp không đòi hỏi độ chính xác cực kỳ khắt khe như thiết bị dùng cho SMF. Việc sản xuất các thành phần này rẻ hơn nhiều, giúp hạ tổng chi phí đầu tư cho hệ thống mạng.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_20.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_20.jpg"></a></p>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng SMF giống như một đường ống nước siêu nhỏ, nơi bạn phải dùng một tia laser cực mảnh để bắn thẳng vào tâm ống. Để làm được điều đó, bạn cần một khẩu súng ngắm cực kỳ đắt tiền và tinh vi. Trong khi đó, MMF giống như một đường ống thoát nước lớn; bạn có thể dùng một chiếc vòi phun nước thông thường (đèn LED) để bơm nước vào. Dù nước (ánh sáng) bắn tung tóe (tán xạ) và không thẳng hàng, nó vẫn đi được vào trong ống. Bạn không cần thiết bị ngắm bắn đắt đỏ, đó chính là lý do MMF rẻ hơn.</p>
+</blockquote>
+<p>Trong kiến trúc mạng thực tế, MMF thường được triển khai trong phạm vi nội bộ (LAN) như bên trong tòa nhà, khuôn viên trường học, các khu công nghệ hoặc giữa các hàng tủ rack trong trung tâm dữ liệu. Đây là nơi khoảng cách vật lý không quá lớn, nhưng nhu cầu băng thông cao đòi hỏi thay thế các loại cáp đồng truyền thống.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_21.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_21.jpg"></a></p>
+<p>Khi đề cập đến "khoảng cách ngắn" đối với cáp quang, tiêu chuẩn kỹ thuật thường quy định là dưới <strong>2.000 mét (2 km)</strong>. Dù con số 2 km này lớn hơn nhiều so với giới hạn 100 mét của cáp đồng (Ethernet), nó vẫn là "sân nhà" so với SMF – vốn có thể vươn xa tới hàng trăm dặm. Về mặt vận hành, bạn có thể coi MMF như một bản nâng cấp hiệu suất cao cho các kết nối patch cord (dây nhảy) đồng. Thay vì dùng cáp đồng để nối switch với switch, switch với server, MMF là lựa chọn thay thế để:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_22.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_22.jpg"></a></p>
+<ol>
+<li>Đạt tốc độ truyền tải cao hơn.</li>
+<li>Miễn nhiễm hoàn toàn với nhiễu điện từ (EMI) – thứ thường xuyên gây lỗi trên cáp đồng nếu đi gần các thiết bị điện công nghiệp.</li>
+</ol>
+<p>Về mặt nhận diện thực địa, vì lõi sợi quang (core) quá nhỏ so với mắt thường, các nhà sản xuất đã sử dụng <strong>quy ước màu sắc (Color Coding)</strong> trên lớp vỏ ngoài (jacket) để kỹ thuật viên phân loại:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_23.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_23.jpg"></a></p>
+<ul>
+<li><strong>Màu vàng (Yellow):</strong> Luôn là SMF (được tối ưu cho đường dài).</li>
+<li><strong>Màu xanh Aqua (Aqua blue) hoặc Cam (Orange):</strong> Luôn là MMF (được tối ưu cho khoảng cách ngắn).</li>
+</ul>
+<p>Quy ước này là "luật bất thành văn" trong ngành viễn thông. Nếu không có mã màu này, việc phân biệt giữa SMF và MMF gần như là bất khả thi ngay cả khi sử dụng kính lúp thông thường, vì cấu trúc vật lý bên ngoài của sợi quang không thể hiện được sự khác biệt về kích thước lõi ở cấp độ micron (nhỏ hơn cả sợi tóc người). Việc nắm vững mã màu này là kỹ năng sinh tồn cơ bản giúp kỹ thuật viên tránh được các sai sót nghiêm trọng như dùng sai loại dây cho module quang (transceiver), vốn có thể dẫn đến việc kết nối không ổn định hoặc mất tín hiệu hoàn toàn.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_24.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_24.jpg"></a></p>
+<p>Dưới đây là phân tích chi tiết các nội dung cốt lõi của đoạn transcript:</p>
+<h3 id="co-che-vat-ly-tai-sao-single-mode-co-hieu-suat-cao-hon">Cơ chế vật lý: Tại sao Single-mode có hiệu suất cao hơn?<a class="headerlink" href="#co-che-vat-ly-tai-sao-single-mode-co-hieu-suat-cao-hon" title="Permanent link">¶</a></h3>
+<p>Điểm khác biệt then chốt nằm ở <strong>lõi sợi quang (fiber core)</strong>. Trong khi Multi-mode có lõi lớn, Single-mode (SMF) sở hữu lõi cực kỳ nhỏ. Sự khác biệt về kích thước này không chỉ là số liệu kỹ thuật mà là yếu tố quyết định hành vi của ánh sáng khi truyền tải:</p>
+<ul>
+<li><strong>Đường đi đơn nhất (Singular path):</strong> Do lõi của SMF quá nhỏ, nó chỉ cho phép một chế độ ánh sáng duy nhất đi qua. Hãy tưởng tượng bạn đang chạy trong một hành lang cực hẹp, bạn bắt buộc phải chạy thẳng và không thể lạng lách.</li>
+<li><strong>Triệt tiêu sự tán xạ (Diffusion):</strong> Khi ánh sáng đi theo một đường thẳng duy nhất, nó không bị va chạm hay phản xạ vào thành ống nhiều lần. Chính điều này giúp tín hiệu không bị "tán xạ" (diffusion) – hiện tượng khiến xung ánh sáng bị mờ đi và biến dạng. Khi tín hiệu không bị biến dạng, nó có thể duy trì cường độ ổn định trên quãng đường cực dài (hàng trăm km) và hỗ trợ băng thông cao hơn hẳn so với MMF.</li>
+</ul>
+<blockquote>
+<p><strong>💡 Ví dụ nhớ đời:</strong> Hãy tưởng tượng Single-mode giống như một tia laser được chiếu qua một ống hút nhỏ – tia sáng đi thẳng tắp từ đầu này sang đầu kia. Còn Multi-mode giống như việc bạn cố gắng đẩy hàng chục quả bóng bàn vào một cái ống nước to; các quả bóng sẽ đập liên tục vào thành ống, va chạm lẫn nhau, tạo ra sự hỗn loạn khiến chúng mất thời gian và sức lực để thoát ra ngoài.</p>
+</blockquote>
+<h3 id="uu-tien-thiet-ke-tai-sao-multi-mode-mmf-luon-la-lua-chon-au-tien">Ưu tiên thiết kế: Tại sao Multi-mode (MMF) luôn là lựa chọn đầu tiên?<a class="headerlink" href="#uu-tien-thiet-ke-tai-sao-multi-mode-mmf-luon-la-lua-chon-au-tien" title="Permanent link">¶</a></h3>
+<p>Dù Single-mode có hiệu suất vượt trội, các kỹ sư mạng vẫn luôn ưu tiên MMF nếu điều kiện khoảng cách cho phép. Sự ưu tiên này dựa trên hai yếu tố thực dụng:</p>
+<ol>
+<li><strong>Dễ triển khai (Ease of implementation):</strong> Với lõi lớn hơn, việc căn chỉnh các điểm nối (connector/splicing) của MMF ít đòi hỏi độ chính xác tuyệt đối như SMF. Một sai lệch nhỏ trong việc căn chỉnh lõi SMF có thể khiến tín hiệu bị mất hoàn toàn, trong khi MMF có "dung sai" lớn hơn, giúp việc thi công trở nên nhanh chóng và ít lỗi hơn.</li>
+<li><strong>Hiệu quả chi phí (Cost-effectiveness):</strong> Chi phí không chỉ nằm ở giá sợi cáp mà còn ở thiết bị phát quang (transceivers). Thiết bị hỗ trợ SMF cần nguồn sáng laser chính xác và đắt đỏ hơn để tập trung ánh sáng vào cái lõi siêu nhỏ kia. Trong môi trường nội bộ, sử dụng MMF giúp tiết kiệm ngân sách đáng kể mà không làm ảnh hưởng đến hiệu năng thực tế.</li>
+</ol>
+<h3 id="ung-dung-trong-moi-truong-ac-thu">Ứng dụng trong môi trường đặc thù<a class="headerlink" href="#ung-dung-trong-moi-truong-ac-thu" title="Permanent link">¶</a></h3>
+<p>Đoạn trích nhấn mạnh MMF là "vua" trong môi trường hạ tầng nội bộ (Office building, Data center). Đặc biệt, việc sử dụng MMF để thay thế cáp đồng (Copper patch cables) mang lại những giá trị chiến lược:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_25.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_25.jpg"></a></p>
+<ul>
+<li><strong>Miễn nhiễm với nhiễu điện từ (EMI):</strong> Trong các trung tâm dữ liệu hoặc các môi trường sản xuất có máy móc hạng nặng, cáp đồng dễ bị ảnh hưởng bởi nhiễu sóng điện từ, làm sụt giảm tốc độ hoặc gây mất gói tin. Vì sợi quang truyền tín hiệu bằng ánh sáng, nó hoàn toàn không bị ảnh hưởng bởi môi trường nhiễu điện từ.</li>
+<li><strong>Tiêu chuẩn bảo mật:</strong> Trong các môi trường đòi hỏi bảo mật cao, cáp đồng có thể phát ra bức xạ điện từ mà kẻ gian có thể dùng thiết bị để thu thập (sniffing). Sợi quang không phát ra bức xạ như vậy, khiến nó trở thành lựa chọn an toàn hơn rất nhiều cho việc truyền tải dữ liệu nhạy cảm.</li>
+</ul>
+<h3 id="tong-ket-tu-duy-chon-lua">Tổng kết tư duy chọn lựa<a class="headerlink" href="#tong-ket-tu-duy-chon-lua" title="Permanent link">¶</a></h3>
+<p>Việc quyết định sử dụng loại cáp nào được đúc kết lại qua một bộ lọc đơn giản:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/fiber_optic_fundamentals_anh_26.jpg" data-desc-position="bottom"><img alt="Hình minh họa" src="../image/fiber_optic_fundamentals_anh_26.jpg"></a></p>
+<ul>
+<li><strong>Khoảng cách &lt; 2km:</strong> Luôn ưu tiên MMF vì tiết kiệm, dễ lắp đặt và đủ mạnh cho nhu cầu nội bộ.</li>
+<li><strong>Khoảng cách &gt; 2km hoặc môi trường đặc biệt:</strong> Chuyển hướng sang SMF để đảm bảo tín hiệu không bị tán xạ và duy trì băng thông lớn trên khoảng cách xa.</li>
+</ul>
+<p>Sự phân chia này giúp các kỹ sư tối ưu hóa được cả bài toán kinh tế lẫn bài toán kỹ thuật trong suốt vòng đời của hệ thống mạng.</p>
+<hr>
+<h2 id="bi-kip-on-thi-toc-o">🎯 Bí Kíp Ôn Thi Tốc Độ<a class="headerlink" href="#bi-kip-on-thi-toc-o" title="Permanent link">¶</a></h2>
+<h3 id="1-fiber-vs-copper-so-sanh-nhanh">1. Fiber vs. Copper (So sánh nhanh)<a class="headerlink" href="#1-fiber-vs-copper-so-sanh-nhanh" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Fiber (Cáp quang):</strong> Truyền bằng <strong>ánh sáng</strong> (LED/Laser).</li>
+<li><strong>Copper (Cáp đồng):</strong> Truyền bằng <strong>xung điện</strong>.</li>
+<li><strong>Ưu điểm Fiber:</strong><ul>
+<li><strong>Miễn nhiễm EMI:</strong> Không bị nhiễu điện từ.</li>
+<li><strong>Khoảng cách:</strong> Rất xa (hàng trăm dặm).</li>
+<li><strong>Tốc độ:</strong> Cực cao (có thể đạt Petabit/giây).</li>
+</ul>
+</li>
+<li><strong>Nhược điểm Fiber:</strong> <strong>Chi phí cao</strong>, đòi hỏi <strong>kỹ thuật chuyên môn</strong> và công cụ đắt tiền.</li>
+</ul>
+<h3 id="2-hai-loai-cap-quang-cot-loi">2. Hai loại cáp quang cốt lõi<a class="headerlink" href="#2-hai-loai-cap-quang-cot-loi" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Đặc điểm</th>
+<th style="text-align: left;">Single-Mode (SMF)</th>
+<th style="text-align: left;">Multi-Mode (MMF)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Đường truyền</strong></td>
+<td style="text-align: left;">1 đường (Single path)</td>
+<td style="text-align: left;">Nhiều đường (Multiple paths)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kích thước lõi</strong></td>
+<td style="text-align: left;">Nhỏ (8.3 - 10 microns)</td>
+<td style="text-align: left;">Lớn (50 - 100 microns)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Khoảng cách</strong></td>
+<td style="text-align: left;">Rất xa (hàng trăm dặm)</td>
+<td style="text-align: left;">Ngắn (&lt; 2 km / 2000m)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ứng dụng</strong></td>
+<td style="text-align: left;">Backbone, đường truyền xuyên lục địa</td>
+<td style="text-align: left;">LAN, Data center, kết nối thiết bị</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Chi phí</strong></td>
+<td style="text-align: left;">Đắt hơn</td>
+<td style="text-align: left;">Rẻ hơn (dễ sản xuất)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Màu nhận diện</strong></td>
+<td style="text-align: left;"><strong>Vàng (Yellow)</strong></td>
+<td style="text-align: left;"><strong>Aqua/Cam (Orange/Aqua)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-tu-khoa-vang-can-nho">3. Từ khóa "Vàng" cần nhớ<a class="headerlink" href="#3-tu-khoa-vang-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>EMI (Electromagnetic Interference):</strong> Fiber hoàn toàn miễn nhiễm; Copper cần bọc chống nhiễu.</li>
+<li><strong>Dispersion (Tán sắc):</strong> Nguyên nhân chính gây suy giảm tín hiệu trong cáp quang.</li>
+<li><strong>Bottleneck:</strong> Tốc độ mạng hiện nay bị giới hạn bởi <strong>thiết bị (router/switch)</strong>, không phải do cáp.</li>
+<li><strong>Kỹ thuật:</strong> Fiber đòi hỏi kỹ năng hàn/bấm chuyên dụng, chi phí lắp đặt gấp <strong>5-10 lần</strong> so với đồng.</li>
+<li><strong>Mẹo thi:</strong> Nhìn màu dây -&gt; <strong>Vàng</strong> (Single/Xa), <strong>Cam/Aqua</strong> (Multi/Gần).</li>
+</ul>
+<hr>
+<p><em>Ghi chú: 27 hình ảnh minh họa (.jpg) đã được tải về và lưu tự động vào thư mục con <code>image/</code> cùng cấp với file này. Để ảnh hiển thị tự động, hãy đảm bảo bạn sao chép cả thư mục <code>image/</code> nếu bạn muốn di chuyển file markdown sang nơi khác!</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 6, 2026 07:45:56 UTC">18 tháng 6, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../03.ethernet_cable_wiring/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Ethernet Cable Wiring">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Ethernet Cable Wiring
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05.fiber_network_connections/" class="md-footer__link md-footer__link--next" aria-label="Sau: Fiber Network Connections">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Fiber Network Connections
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
