@@ -115,6 +115,14 @@ graph LR
 ![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
 
 
+
+### 2.4 Cơ Chế Hoạt Động Bên Dưới Kernel & Kiến Trúc Hệ Thống Chi Tiết (Deep Under The Hood Architecture)
+- **Tầng Giao Tiếp Mạng & Bắt Gói Tin**: Mọi gói tin đi qua Network Interface Card (NIC) đều trải qua quá trình xử lý Ring Buffer, ngắt phần cứng (Hardware Interrupts), Ring Buffer DMA và chồng giao thức Socket Buffers (`sk_buff`) trong Linux Kernel.
+- **Tối Ưu Hóa & Cấu Trúc Dữ Liệu**: Hệ thống duy trì các bảng băm dữ liệu (Routing Table, ARP Cache Table, Connection Tracking Table `conntrack`, Socket Inode Tables) giúp chuyển tiếp gói tin ở tốc độ dây (Line-rate processing).
+- **Phân Lập An Ninh & Phân Vùng**: Sử dụng cơ chế Linux Network Namespaces (`ip netns`), iptables/nftables hooks và mã hóa phần cứng để cách ly lưu lượng mạng tuyệt đối.
+
+---
+
 ## 3. ⚡ Bảng Tra Cứu Khái Niệm & Lệnh Thực Hành (Reference Table)
 
 | Khái niệm / Lệnh | Tầng OSI | Ý nghĩa chi tiết | Lệnh thực hành tương ứng |
@@ -168,6 +176,41 @@ curl -Iv https://google.com
 ![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
 
 
+
+### 4.2 Chi Tiết Các Lỗi Thường Gặp & Kịch Bản Khắc Phục Lỗi (Troubleshooting Deep-Dive)
+1. **Sự cố 1: Lỗi Mất Gói Tin & Mất Kết Nối Cổng Mạng (Packet Loss & Port Unreachable)**:
+   - **Triệu chứng**: Gửi HTTP Request bị Timeout, SSH không kết nối được hoặc gói tin bị nảy rải rác.
+   - **Các bước xử lý khẩn cấp**:
+     ```bash
+     # 1. Kiểm tra trạng thái cổng mạng TCP/UDP đang lắng nghe:
+     sudo ss -tulpn | grep :80
+     
+     # 2. Bắt gói tin trực tiếp trên Interface để kiểm tra bắt tay 3 bước TCP:
+     sudo tcpdump -i eth0 port 80 -nn -vv
+     
+     # 3. Phân tích đường đi của gói tin tìm điểm đứt gãy bằng MTR:
+     mtr -n --report --report-cycles=10 8.8.8.8
+     
+     # 4. Kiểm tra xem gói tin có bị Firewall Drop không:
+     sudo iptables -L -n -v | grep DROP
+     ```
+
+2. **Sự cố 2: Lỗi Sai Cấu Hình DNS & Chuyển Tiếp IP (DNS Resolution & IP Routing Error)**:
+   - **Triệu chứng**: Ping IP thành công nhưng ping Domain Name báo `Could not resolve host`.
+   - **Các bước xử lý khẩn cấp**:
+     ```bash
+     # 1. Tra cứu thử nghiệm phân giải DNS qua server cụ thể:
+     dig @8.8.8.8 company.com +trace
+     
+     # 2. Kiểm tra file cấu hình DNS resolver địa phương:
+     cat /etc/resolv.conf
+     
+     # 3. Kiểm tra bảng định tuyến Kernel IP Routing Table:
+     ip route show default
+     ```
+
+---
+
 ## 5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps & Network Thực Tế (Interview Q&A)
 
 > **Q: Đơn vị dữ liệu (PDU) tại Layer 2, Layer 3 và Layer 4 lần lượt tên là gì?**  
@@ -175,6 +218,16 @@ curl -Iv https://google.com
 
 > **Q: Trường FCS (Frame Check Sequence) nằm ở đâu và đóng vai trò gì trong quá trình truyền tin?**  
 > **A**: FCS nằm ở phần đuôi (Trailer) của **Ethernet Frame ở Layer 2**. Nó sử dụng thuật toán kiểm tra mã dư thừa vòng **CRC32** để giúp cạc mạng phát hiện gói tin có bị nhiễu hỏng dữ liệu trên đường truyền hay không. Nếu hỏng, Frame sẽ bị âm thầm thả (drop).
+
+
+
+> **Q: Làm thế nào để điều tra và dập tắt sự cố một Server bị tấn công làm tràn bộ đệm kết nối TCP SYN Flood DoS?**  
+> **A**:  
+> 1. **Nhận biết**: Lệnh `ss -ant | grep SYN_RECV | wc -l` trả về hàng ngàn kết nối ở trạng thái `SYN_RECV`.  
+> 2. **Xử lý khẩn cấp**: Bật ngay cơ chế **SYN Cookies** của Linux Kernel bằng lệnh `sudo sysctl -w net.ipv4.tcp_syncookies=1`. Kích hoạt bộ lọc Firewall drop các gói tin SYN có tần suất bất thường: `sudo iptables -A INPUT -p tcp --syn -m limit --limit 1/s --limit-burst 3 -j ACCEPT`.
+
+> **Q: Sự khác biệt về mặt bản chất giữa Stateful Firewall và Stateless Firewall là gì?**  
+> **A**: Stateless Firewall chỉ kiểm tra từng gói tin riêng rẻ dựa trên IP nguồn/đích và Port mà KHÔNG nhớ ngữ cảnh. Stateful Firewall duy trì một bảng theo dõi trạng thái kết nối (**Connection Tracking Table `conntrack`**), tự động nhận diện gói tin thuộc về một kết nối hợp lệ đã được chấp nhận trước đó (như trạng thái `ESTABLISHED,RELATED`), giúp bảo mật và tối ưu hiệu năng vượt trội.
 
 ---
 
