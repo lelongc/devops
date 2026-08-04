@@ -522,6 +522,38 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../security/comtia-sec-plus/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
         <a href="../../../../../../system-design/" class="md-tabs__link">
           
@@ -1839,6 +1871,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#24-co-che-hoat-ong-ben-duoi-kernel-kien-truc-he-thong-chi-tiet-deep-kernel-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Cơ Chế Hoạt Động Bên Dưới Kernel &amp; Kiến Trúc Hệ Thống Chi Tiết (Deep Kernel &amp; Architecture)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2344,6 +2387,86 @@
           
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2383,6 +2506,69 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../../../security/comtia-sec-plus/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
   
 
       
@@ -2581,6 +2767,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#24-co-che-hoat-ong-ben-duoi-kernel-kien-truc-he-thong-chi-tiet-deep-kernel-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Cơ Chế Hoạt Động Bên Dưới Kernel &amp; Kiến Trúc Hệ Thống Chi Tiết (Deep Kernel &amp; Architecture)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2711,6 +2908,13 @@
 <li><strong>Xóa Route</strong>: <code>ip route del 10.200.0.0/16</code>.</li>
 </ul>
 <hr>
+<h3 id="24-co-che-hoat-ong-ben-duoi-kernel-kien-truc-he-thong-chi-tiet-deep-kernel-architecture">2.4 Cơ Chế Hoạt Động Bên Dưới Kernel &amp; Kiến Trúc Hệ Thống Chi Tiết (Deep Kernel &amp; Architecture)<a class="headerlink" href="#24-co-che-hoat-ong-ben-duoi-kernel-kien-truc-he-thong-chi-tiet-deep-kernel-architecture" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Tầng Giao Tiếp System Calls</strong>: Mọi thao tác người dùng hay lệnh CLI gõ trên Terminal đều trải qua giao diện System Call Interface (như <code>open()</code>, <code>read()</code>, <code>write()</code>, <code>fork()</code>, <code>execve()</code>, <code>socket()</code>, <code>epoll_wait()</code>) để chuyển quyền điều khiển từ User Space (Ring 3) xuống Kernel Space (Ring 0).</li>
+<li><strong>Quản Lý Tài Nguyên &amp; Cấu Trúc Dữ Liệu</strong>: Kernel duy trì các cấu trúc dữ liệu bảng điều khiển (Process Control Block - PCB, File Descriptor Table, Inode Index Table, Page Tables) để đảm bảo cô lập tài nguyên, an toàn bộ nhớ và tối ưu hiệu năng I/O.</li>
+<li><strong>Tương Tác Phần Cứng &amp; Drivers</strong>: Các trình điều khiển thiết bị (Kernel Modules <code>.ko</code>) trực tiếp tương tác với thanh ghi phần cứng (Hardware Registers) qua ngắt CPU (Interrupts - IRQ) và truy cập bộ nhớ trực tiếp (DMA - Direct Memory Access).</li>
+</ul>
+<hr>
 <h2 id="3-bang-tra-cuu-cau-lenh-cau-hinh-thuc-hanh-cli-reference">3. ⚡ Bảng Tra Cứu Câu Lệnh &amp; Cấu Hình Thực Hành (CLI Reference)<a class="headerlink" href="#3-bang-tra-cuu-cau-lenh-cau-hinh-thuc-hanh-cli-reference" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -2761,12 +2965,56 @@ ip route show</p>
 <p>sudo ip route del default
 sudo ip route add default via 192.168.1.1 dev eth0</p>
 <hr>
+<h3 id="42-chi-tiet-cac-loi-thuong-gap-kich-ban-khac-phuc-loi-troubleshooting-deep-dive">4.2 Chi Tiết Các Lỗi Thường Gặp &amp; Kịch Bản Khắc Phục Lỗi (Troubleshooting Deep-Dive)<a class="headerlink" href="#42-chi-tiet-cac-loi-thuong-gap-kich-ban-khac-phuc-loi-troubleshooting-deep-dive" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Sự cố 1: Lỗi Cạn Kiệt Tài Nguyên &amp; Nghẽn Cổ Chai (Resource Exhaustion / Bottleneck)</strong>:</li>
+<li><strong>Triệu chứng</strong>: Hệ thống phản hồi siêu chậm, ứng dụng bị crash OOM (Out Of Memory) hoặc lệnh báo <code>No space left on device</code> dù đĩa còn dung lượng trống.</li>
+<li><strong>Bản chất nguyên nhân</strong>: Cạn kiệt Inodes đĩa cứng (<code>df -i</code>), tràn bộ nhớ đệm RAM (<code>free -h</code>), hoặc cạn kiệt File Descriptors tối đa (<code>sysctl fs.file-max</code>).</li>
+<li>
+<p><strong>Các bước xử lý khẩn cấp</strong>:
+     </p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Kiểm tra số lượng Inodes khả dụng trên đĩa:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>df<span class="w"> </span>-i<span class="w"> </span>/
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 2. Tìm thư mục chứa hàng triệu file rác gây hết Inodes:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>find<span class="w"> </span>/var/spool<span class="w"> </span>/tmp<span class="w"> </span>-xdev<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d/<span class="w"> </span>-f2-4<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># 3. Kiểm tra các tiến trình đang chiếm giữ file đã bị xóa (Deleted Descriptor Leak):</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>deleted
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># 4. Giải phóng bộ nhớ RAM Cache tạm thời của Linux Kernel:</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.drop_caches<span class="o">=</span><span class="m">3</span>
+</code></pre></div><p></p>
+</li>
+<li>
+<p><strong>Sự cố 2: Lỗi Sai Cấu Hình &amp; Tự Động Phục Hồi (Configuration Misconfiguration &amp; Recovery)</strong>:</p>
+</li>
+<li><strong>Triệu chứng</strong>: Dịch vụ ngắt đột ngột, không kết nối được qua cổng mạng (Port Unreachable) hoặc lệnh service return exit code != 0.</li>
+<li><strong>Các bước xử lý khẩn cấp</strong>:
+     <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. Kiểm tra cú pháp file cấu hình trước khi restart service:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>&lt;service_name&gt;<span class="w"> </span>--no-pager<span class="w"> </span>-l
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 2. Xem log chi tiết lỗi khởi động từ Journald binary log:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>&lt;service_name&gt;<span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>--no-pager<span class="w"> </span>-e
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 3. Phân tích lời gọi hệ thống Syscall xem tiến trình bị treo ở đâu bằng strace:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>strace<span class="w"> </span>-p<span class="w"> </span>&lt;PID&gt;<span class="w"> </span>-f<span class="w"> </span>-e<span class="w"> </span><span class="nv">trace</span><span class="o">=</span>file,network
+</code></pre></div></li>
+</ol>
+<hr>
 <h2 id="5-bo-cau-hoi-phong-van-devops-sysadmin-thuc-te-interview-qa">5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps &amp; SysAdmin Thực Tế (Interview Q&amp;A)<a class="headerlink" href="#5-bo-cau-hoi-phong-van-devops-sysadmin-thuc-te-interview-qa" title="Permanent link">¶</a></h2>
 <blockquote>
 <p><strong>Q: Lệnh hiện đại nào thay thế hoàn toàn lệnh <code>route -n</code> để xem bảng tuyến đường trên Linux?</strong><br>
 <strong>A</strong>: Lệnh <code>ip route</code> (hoặc <code>ip route show</code>).</p>
 <p><strong>Q: Làm sao thêm một địa chỉ IP phụ (Secondary IP) vào card mạng <code>eth0</code> bằng lệnh <code>ip</code>?</strong><br>
 <strong>A</strong>: Dùng lệnh <code>sudo ip addr add 10.0.0.100/24 dev eth0</code>.</p>
+<p><strong>Q: Làm thế nào để điều tra và xử lý tận gốc sự cố Linux Server báo lỗi "No space left on device" trong khi lệnh <code>df -h</code> cho thấy dung lượng đĩa vẫn còn trống 40%?</strong><br>
+<strong>A</strong>: Lỗi này thường do 2 nguyên nhân cốt lõi:<br>
+1. <strong>Hết Inode (Inode Exhaustion)</strong>: File system đã dùng hết số lượng bảng Inode để lưu trữ metadata file (do có hàng triệu file kích thước siêu nhỏ 0-byte). Kiểm tra bằng <code>df -i</code>. Xử lý bằng cách tìm và xóa các thư mục chứa file rác (như <code>/var/spool/postfix/maildrop</code> hay <code>/tmp</code>).<br>
+2. <strong>File Descriptor Leak (File đã xóa nhưng tiến trình vẫn đang mở)</strong>: Một file dung lượng lớn bị xóa bằng lệnh <code>rm</code> nhưng tiến trình ứng dụng vẫn đang giữ file handle mở, khiến Kernel chưa thể giải phóng dung lượng đĩa thực sự. Kiểm tra bằng <code>sudo lsof | grep deleted</code>, sau đó restart lại tiến trình giữ file đó để Kernel thu hồi đĩa.</p>
+<p><strong>Q: Giải thích sự khác biệt giữa hai tín hiệu ngắt <code>SIGTERM</code> (15) và <code>SIGKILL</code> (9) trong Linux OS? Khi nào nên dùng loại nào trong kịch bản tự động hóa DevOps?</strong><br>
+<strong>A</strong>:<br>
+- <strong><code>SIGTERM</code> (Signal 15)</strong>: Tín hiệu yêu cầu dừng ứng dụng <strong>thỏa thuận (Graceful Termination)</strong>. Tiến trình có thể bắt (catch) tín hiệu này để đóng kết nối Database, lưu trạng thái dữ liệu và dọn dẹp tài nguyên trước khi thoát hoàn toàn. Luôn luôn ưu tiên dùng <code>SIGTERM</code> trước (như trong Docker/Kubernetes shutdown flow).<br>
+- <strong><code>SIGKILL</code> (Signal 9)</strong>: Tín hiệu dừng ứng dụng <strong>cưỡng chế tuyệt đối (Forced Termination)</strong> do Kernel trực tiếp tiêu diệt tiến trình ngay lập tức. Tiến trình KHÔNG THỂ bắt hay lờ đi tín hiệu này, dẫn tới nguy cơ hỏng dữ liệu dở dang. Chỉ dùng <code>SIGKILL</code> khi tiến trình bị treo đơ không phản hồi <code>SIGTERM</code>.</p>
 </blockquote>
 <hr>
 <h2 id="6-cheat-sheet-ghi-nho-nhanh-summary">6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)<a class="headerlink" href="#6-cheat-sheet-ghi-nho-nhanh-summary" title="Permanent link">¶</a></h2>
@@ -2796,7 +3044,7 @@ sudo ip route add default via 192.168.1.1 dev eth0</p>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 08:16:55 UTC">4 tháng 8, 2026</span>
   </span>
 
     
