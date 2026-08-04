@@ -22,7 +22,7 @@
     
     
       
-        <title>Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find) - DraDoc</title>
+        <title>🐧 Objective 103.3: Quản Lý File &amp; Nén Dữ Liệu (cp, mv, tar, find) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#objective-1033-quan-ly-file-thu-muc-cp-mv-tar-find" class="md-skip">
+        <a href="#objective-1033-quan-ly-file-nen-du-lieu-cp-mv-tar-find-ban-chat-he-thong-thuc-chien-devops" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)
+              🐧 Objective 103.3: Quản Lý File &amp; Nén Dữ Liệu (cp, mv, tar, find) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
             
           </span>
         </div>
@@ -456,8 +456,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-tabs__link">
           
   
   
@@ -467,6 +474,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -1103,6 +1113,8 @@
       
         
       
+        
+      
     
     
     
@@ -1462,7 +1474,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.1: Làm việc trên Dòng lệnh (CLI Basics &amp; Shell)
+    🐧 Objective 103.1: Làm Việc Dòng Lệnh Bash &amp; Biến Môi Trường - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1490,7 +1502,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.2: Xử lý Luồng Văn bản bằng Bộ lọc (Text Filters)
+    🐧 Objective 103.2: Xử Lý Luồng Văn Bản Bằng Bộ Lọc (Text Filters) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1527,7 +1539,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)
+    🐧 Objective 103.3: Quản Lý File &amp; Nén Dữ Liệu (cp, mv, tar, find) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1545,7 +1557,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)
+    🐧 Objective 103.3: Quản Lý File &amp; Nén Dữ Liệu (cp, mv, tar, find) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1571,22 +1583,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-thao-tac-file-inode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Thao Tác File &amp; Inode
       
     </span>
   </a>
@@ -1599,10 +1622,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -1610,22 +1633,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
       
     </span>
   </a>
@@ -1638,10 +1672,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -1649,21 +1683,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -1693,7 +1716,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.4: Sử dụng Streams, Pipes và Redirects
+    🐧 Objective 103.4: Streams, Pipes &amp; Redirects (STDIN, STDOUT, STDERR) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1721,7 +1744,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)
+    🐧 Objective 103.5: Quản Lý Tiến Trình (ps, top, kill &amp; tmux) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1749,7 +1772,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)
+    🐧 Objective 103.6: Điều Chỉnh Độ Ưu Tiên Tiến Trình (Nice &amp; Renice) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1777,7 +1800,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.7: Biểu thức Chính quy (Regex, grep, sed)
+    🐧 Objective 103.7: Biểu Thức Chính Quy &amp; Thay Thế Chuỗi (grep &amp; sed) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1805,7 +1828,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 103.8: Chỉnh sửa File Văn bản (Vim / Vi Editor)
+    🐧 Objective 103.8: Chỉnh Sửa File Bằng Vi / Vim Editor - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -2277,6 +2300,70 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../LPIC-2/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 2
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2372,8 +2459,6 @@
       
         
       
-        
-      
     
     
     
@@ -2394,7 +2479,11 @@
   
   
   
-    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-nav__link">
       
   
   
@@ -2413,6 +2502,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -2742,22 +2833,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-thao-tac-file-inode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Thao Tác File &amp; Inode
       
     </span>
   </a>
@@ -2770,10 +2872,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -2781,22 +2883,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
       
     </span>
   </a>
@@ -2809,10 +2922,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -2820,21 +2933,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -2866,968 +2968,81 @@
   
 
 
-<h1 id="objective-1033-quan-ly-file-thu-muc-cp-mv-tar-find">Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)<a class="headerlink" href="#objective-1033-quan-ly-file-thu-muc-cp-mv-tar-find" title="Permanent link">¶</a></h1>
+<h1 id="objective-1033-quan-ly-file-nen-du-lieu-cp-mv-tar-find-ban-chat-he-thong-thuc-chien-devops">🐧 Objective 103.3: Quản Lý File &amp; Nén Dữ Liệu (cp, mv, tar, find) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps<a class="headerlink" href="#objective-1033-quan-ly-file-nen-du-lieu-cp-mv-tar-find-ban-chat-he-thong-thuc-chien-devops" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 101-500 Version 5.0)</strong><br>
-📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 235 - 275)<br>
-🎯 <strong>Mục tiêu</strong>: Làm chủ kiến thức Linux căn bản &amp; nâng cao ứng dụng trực tiếp vào công việc DevOps Engineer.</p>
+<p>💡 <strong>Bản chất 1 câu</strong>: Thao tác file/thư mục cơ bản (<code>cp -r</code>, <code>mv</code>, <code>rm -rf</code>), nén/giải nén gói lưu trữ <code>tar -czvf</code> và <code>tar -xzvf</code>.<br>
+🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: Lệnh cp -rp giữ nguyên permission, rm -rf xóa nguy hiểm, nén tar -czvf / tar -xzvf.</p>
 </blockquote>
 <hr>
-<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
-<p>Bài học này giúp bạn nắm vững kiến thức chuyên sâu về <strong>Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)</strong>. </p>
-<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
+<p><code>tar -czvf</code> = <strong>C</strong>reate <strong>Z</strong>ip <strong>V</strong>erbose <strong>F</strong>ile (Tạo nén). <code>tar -xzvf</code> = <strong>X</strong>tract <strong>Z</strong>ip <strong>V</strong>erbose <strong>F</strong>ile (Giải nén).</p>
+<hr>
+<h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" title="Permanent link">¶</a></h2>
+<h3 id="21-ban-chat-thao-tac-file-inode">2.1 Bản Chất Thao Tác File &amp; Inode<a class="headerlink" href="#21-ban-chat-thao-tac-file-inode" title="Permanent link">¶</a></h3>
 <ul>
-<li>Giải thích bản chất lý thuyết và kiến trúc hoạt động của Linux.</li>
-<li>Thành thạo các câu lệnh thao tác trên Terminal, các tham số (options) và cú pháp thực thi.</li>
-<li>Đọc hiểu tệp tin cấu hình hệ thống, thư mục hệ thống chuẩn.</li>
-<li>Áp dụng vào xử lý sự cố (troubleshooting) và vận hành hệ thống trong môi trường DevOps/Cloud.</li>
+<li><code>cp -p</code>: Copy giữ nguyên inode metadata (Permission, UID, GID, Timestamps).</li>
+<li><code>mv</code>: Nếu cùng partition thì chỉ thay đổi tên trong thư mục (Inode không đổi). Nếu khác partition thì copy rồi xóa file cũ.</li>
+<li><code>tar</code>: Gom nhiều file thành 1 file dạng tape archive. Kết hợp tùy chọn <code>-z</code> để gọi thuật toán nén <code>gzip</code>.</li>
 </ul>
 <hr>
-<h2 id="2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh">📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" title="Permanent link">¶</a></h2>
-<p>Below is the detailed material extracted directly from LPIC-1 Official Material:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>103.3 Perform basic file management
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 v5, Exam 101, Objective 103.3
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>4
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Copy, move and remove files and directories individually.
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Copy multiple files and directories recursively.
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Remove files and directories recursively.
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>• Use simple and advanced wildcard specifications in commands.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• Using find to locate and act on files based on type, size or time.
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>• Usage of tar, cpio and dd.
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Partial list of the used files, terms and utilities
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• cp
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• find
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• mkdir
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• mv
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• ls
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>• rm
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>• rmdir
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>• touch
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 225
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>• tar
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>• cpio
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>• dd
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>• file
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>• gzip
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>• gunzip
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>• bzip2
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>• bunzip2
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>• file globbing
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>226 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>103.3 Lesson 1
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>Certificate:
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>LPIC-1
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>Version:
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>5.0
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Topic:
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>103 GNU and Unix Commands
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>Objective:
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>103.3 Perform basic file management
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>Lesson:
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>1 of 2
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>Introduction
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>Everything in Linux is a file, so knowing how to manipulate them is very important. In this lesson,
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>we shall cover basic operations on files.
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>In general, as a Linux user, you will be called upon to navigate through the file system, copy files
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>from one location to another and delete files. We shall also cover the commands associated with
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>file management.
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>A file is an entity that stores data and programs. It consists of content and meta data (file size,
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>owner, creation date, permissions). Files are organized in directories. A directory is a file that
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>stores other files.
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>The different types of files include:
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>Regular files
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>which store data and programs.
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 227
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>Directories
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>which contain other files.
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>Special files
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>which are used for input and output.
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>Of course, other kinds of files exist but are beyond the scope of this lesson. Later, we shall discuss
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>how to identify these different file types.
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>Manipulating Files
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>Using ls to List Files
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>The ls command is one of the most important command line tools you should learn in order to
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>navigate the file system.
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>In its basic form, ls will list file and directory names only:
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>$ ls
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>Desktop Downloads   emp_salary  file1   Music   Public  Videos
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>Documents   emp_name    examples.desktop    file2   Pictures    Templates
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>When used with -l , referred to as “long listing” format, it shows file or directory permissions,
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>owner, size, modified date, time and name:
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>$ ls -l
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>total 60
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Desktop
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Documents
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Downloads
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>-rw-r--r--  1   frank   frank     21    Sep 7   12:59   emp_name
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>-rw-r--r--  1   frank   frank     20    Sep 7   13:03   emp_salary
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>-rw-r--r--  1   frank   frank   8980    Apr 1   2018    examples.desktop
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>-rw-r--r--  1   frank   frank     10    Sep 1   2018    file1
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>-rw-r--r--  1   frank   frank     10    Sep 1   2018    file2
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Music
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Pictures
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Public
-<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Templates
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>drwxr-xr-x  2   frank   frank   4096    Apr 1   2018    Videos
-<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>228 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>
-<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>The first character in the output indicates the file type:
-<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>-
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>for a regular file.
-<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>d
-<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>for a directory.
-<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>c
-<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>for a special file.
-<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>To show the file sizes in a human readable format add the option -h:
-<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>$ ls -lh
-<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>total 60K
-<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Desktop
-<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Documents
-<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Downloads
-<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>-rw-r--r--  1   frank   frank     21    Sep 7   12:59   emp_name
-<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>-rw-r--r--  1   frank   frank     20    Sep 7   13:03   emp_salary
-<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>-rw-r--r--  1   frank   frank   8.8K    Apr 1   2018    examples.desktop
-<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>-rw-r--r--  1   frank   frank     10    Sep 1   2018    file1
-<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>-rw-r--r--  1   frank   frank     10    Sep 1   2018    file2
-<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Music
-<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Pictures
-<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Public
-<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Templates
-<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Videos
-<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>To list all files including hidden files (those starting with .) use the option -a:
-<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>$ ls -a
-<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>.               .dbus   file1   .profile
-<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>..              Desktop file2   Public
-<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>.bash_history   .dmrc  .gconf  .sudo_as_admin_successful
-<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>Configuration files such as .bash_history which are by default hidden are now visible.
-<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>In general, the ls command syntax is given by:
-<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 229
-<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>
-<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>ls OPTIONS FILE
-<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>Where OPTIONS are any of the options shown previously (to view all the possible options run man
-<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>ls), and FILE is the name of the file or directory’s details you wish to list.
-<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>NOTE
-<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>When FILE is not specified, the current directory is implied.
-<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>Creating, Copying, Moving and Deleting Files
-<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>Creating files with touch
-<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>The touch command is the easiest way to create new, empty files. You can also use it to change
-<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>the timestamps (i.e., modification time) of existing files and directories. The syntax for using
-<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>touch is:
-<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>touch OPTIONS FILE_NAME(S)
-<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>Without any options, touch would create new files for any file names that are supplied as
-<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>arguments, provided that files with such names do not already exist. touch can create any
-<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>number of files simultaneously:
-<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>$ touch file1 file2 file3
-<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>This would create three new empty files named file1, file2 and file3.
-<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>Several touch options are specifically designed to allow the user to change the timestamps for
-<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>files. For example, the -a option changes only the access time, while the -m option changes only
-<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>the modification time. The use of both options together changes the access and also the
-<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>modification times to the current time:
-<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>$ touch -am file3
-<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>Copying Files with cp
-<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>As a Linux user, you will often copy files from one location to another. Whether it is moving a
-<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>music file from one directory to another or a system file, use cp for all copy tasks:
-<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>$ cp file1 dir2
-<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>230 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>
-<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>This command can be literally interpreted as copy file1 into directory dir2. The result is the
-<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>presence of file1 inside dir2. For this command to be executed successfully file1 should be
-<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>existent in the user’s current directory. Otherwise, the system reports an error with the message
-<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>No such file or directory.
-<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>$ cp dir1/file1 dir2
-<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>In this case, observe that the path to file1 is more explicit. The source path can be expressed
-<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>either as a relative or absolute path. Relative paths are given in reference to a specific directory,
-<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>while absolute paths are not given with a reference. Below we shall further clarify this notion.
-<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>For the moment, just observe that this command copies file1 into the directory dir2. The path to
-<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>file1 is given with more detail since the user is currently not located in dir1.
-<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>$ cp /home/frank/Documents/file2 /home/frank/Documents/Backup
-<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>In this third case, file2 located at /home/frank/Documents is copied into the directory
-<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>/home/frank/Documents/Backup. The source path provided here is absolute. In the two
-<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>examples above, the source paths are relative. When a path starts with the character / it is an
-<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>absolute path, otherwise it is a relative path.
-<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>The general syntax for cp is:
-<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>cp OPTIONS SOURCE DESTINATION
-<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>SOURCE is the file to copy and DESTINATION the directory into which the file would be copied.
-<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>SOURCE and DESTINATION can be specified either as absolute or relative paths.
-<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>Moving Files with mv
-<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>Just like cp for copying, Linux provides a command for moving and renaming files. It is called mv.
-<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>The move operation is analogue to the cut and paste operation you generally perform through a
-<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>Graphical User Interface (GUI).
-<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>If you wish to move a file into a new location, use mv in the following way:
-<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>mv FILENAME DESTINATION_DIRECTORY
-<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 231
-<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>
-<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>Here is an example:
-<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>$ mv myfile.txt /home/frank/Documents
-<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>The result is that myfile.txt is moved into destination /home/frank/Documents.
-<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>To rename a file, mv is used in the following way:
-<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>$ mv old_file_name new_file_name
-<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>This changes the name of the file from old_file_name to new_file_name.
-<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>By default, mv would not seek your confirmation (technically said “would not prompt”) if you wish
-<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>to overwrite (rename) an existing file. However, you can allow the system to prompt, by using the
-<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>option -i:
-<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>$ mv -i old_file_name new_file_name
-<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>mv: overwrite 'new_file_name'?
-<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>This command would ask the user’s permission before overwriting old_file_name to
-<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>new_file_name.
-<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>Conversely, using the -f:
-<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>$ mv -f old_file_name new_file_name
-<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>would forcefully overwrite the file, without asking any permission.
-<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>Deleting Files with rm
-<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a>rm is used to delete files. Think of it as an abbreviated form of the word “remove”. Note that the
-<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>action of removing a file is usually irreversible thus this command should be used with caution.
-<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>$ rm file1
-<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>This command would delete file1.
-<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>$ rm -i file1
-<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>232 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>
-<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>rm: remove regular file 'file1'?
-<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>This command would request the user for confirmation before deleting file1. Remember, we
-<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>saw the -i option when using mv above.
-<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>$ rm -f file1
-<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>This command forcefully deletes file1 without seeking your confirmation.
-<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>Multiple files can be deleted at the same time:
-<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>$ rm file1 file2 file3
-<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>In this example file1, file2 and file3 are deleted simultaneously.
-<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>The syntax for rm is generally given by:
-<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>rm OPTIONS FILE
-<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>Creating and Deleting Directories
-<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>Creating Directories with mkdir
-<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>Creating directories is critical to organizing your files and folders. Files may be grouped together
-<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>in a logical way by keeping them inside a directory. To create a directory, use mkdir:
-<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>mkdir OPTIONS DIRECTORY_NAME
-<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>where DIRECTORY_NAME is the name of the directory to be created. Any number of directories can
-<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>be created simultaneously:
-<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>$ mkdir dir1
-<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>would create the directory dir1 in the user’s current directory.
-<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>$ mkdir dir1 dir2 dir3
-<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 233
-<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>
-<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>The preceding command would create three directories dir1, dir2 and dir3 at the same time.
-<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>To create a directory together with its subdirectories use the option -p (“parents”):
-<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>$ mkdir -p parents/children
-<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>This command would create the directory structure parents/children, i.e. it would create the
-<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>directories parents and children. children would be located inside parents.
-<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>Removing Directories with rmdir
-<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>rmdir deletes a directory if it is empty. Its syntax is given by:
-<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>rmdir OPTIONS DIRECTORY
-<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>where DIRECTORY could be a single argument or a list of arguments.
-<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>$ rmdir dir1
-<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>This command would delete dir1.
-<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>$ rmdir dir1 dir2
-<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>This command would simultaneously delete dir1 and dir2.
-<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>You may remove a directory with its subdirectory:
-<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>$ rmdir -p parents/children
-<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>This would remove the directory structure parents/children. Note that if any of the directories
-<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>are not empty, they will not be deleted.
-<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>Recursive Manipulation of Files and Directories
-<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>To manipulate a directory and its contents, you need to apply recursion. Recursion means, do an
-<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>action and repeat that action all down the directory tree. In Linux, the options -r or -R or
-<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>--recursive are generally associated with recursion.
-<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>234 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>
-<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>The following scenario would help you better understand recursion:
-<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>You list the contents of a directory students, which contains two subdirectories level 1 and
-<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>level 2 and the file named frank. By applying recursion, the ls command would list the content
-<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>of students i.e. level 1, level 2 and frank, but would not end there. It would equally enter
-<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>subdirectories level 1 and level 2 and list their contents and so on down the directory tree.
-<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>Recursive Listing with ls -R
-<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>ls -R is used to list the contents of a directory together with its subdirectories and files.
-<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>$ ls -R mydirectory
-<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a>mydirectory/:
-<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>file1   newdirectory
-<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>mydirectory/newdirectory:
-<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>In the listing above, mydirectory including all its content are listed. You can observe
-<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>mydirectory contains the subdirectory newdirectory and the file file1. newdirectory is
-<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>empty that is why no content is shown.
-<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>In general, to list the contents of a directory including its subdirectories, use:
-<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>ls -R DIRECTORY_NAME
-<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>Adding a trailing slash to DIRECTORY_NAME has no effect:
-<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>$ ls -R animal
-<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>is similar to
-<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>$ ls -R animal/
-<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>Recursive Copy with cp -r
-<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>cp -r (or -R or --recursive) allows you to copy a directory together with its all subdirectories
-<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>and files.
-<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>$ tree mydir
-<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 235
-<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>
-<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>mydir
-<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>|_file1
-<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>|_newdir
-<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>&nbsp;   |_file2
-<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>&nbsp;   |_insidenew
-<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>&nbsp;       |_lastdir
-<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>3 directories, 2 files
-<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>$ mkdir newcopy
-<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>$ cp mydir newcopy
-<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>cp: omitting directory 'mydir'
-<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>$ cp -r mydir newcopy
-<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>* tree newcopy
-<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>newcopy
-<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>|_mydir
-<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>&nbsp;   |_file1
-<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>&nbsp;   |_newdir
-<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>&nbsp;       |_file2
-<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>&nbsp;       |_insidenew
-<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>&nbsp;           |_lastdir
-<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>4 directories, 2 files
-<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>In the listing above, we observe that trying to copy mydir into newcopy, using cp without -r, the
-<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>system displays the message cp: omitting directory 'mydir'. However, by adding the
-<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>option -r all the contents of mydir including itself are copied into newcopy.
-<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>To copy directories and subdirectories use:
-<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>cp -r SOURCE DESTINATION
-<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>Recursive Deletion with rm -r
-<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>rm -r will remove a directory and all its contents (subdirectories and files).
-<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>WARNING
-<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>Be very careful with either the -r or the option combination of -rf when used
-<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>with the rm command. A recursive remove command on an important system
-<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>directory could render the system unusable. Employ the recursive remove
-<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>command only when absolutely certain that the contents of a directory are
-<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>safe to remove from a computer.
-<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>236 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>
-<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a>In trying to delete a directory without using -r the system would report an error:
-<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>$ rm newcopy/
-<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>rm: cannot remove 'newcopy/': Is a directory
-<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>$ rm -r newcopy/
-<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a>You have to add -r as in the second command for the deletion to take effect.
-<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a>NOTE
-<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a>You may be wondering why we do not use rmdir in this case. There is a subtle
-<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a>difference between the two commands. rmdir would succeed in deleting only if the
-<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>given directory is empty whereas rm -r can be used irrespective of whether this
-<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a>directory is empty or not.
-<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>Add the option -i to seek confirmation before the file is deleted:
-<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a>$ rm -ri mydir/
-<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a>rm: remove directory 'mydir/'?
-<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>The system prompts before trying to delete mydir.
-<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>File Globbing and Wildcards
-<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a>File globbing is a feature provided by the Unix/Linux shell to represent multiple filenames by
-<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>using special characters called wildcards. Wildcards are essentially symbols which may be used to
-<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>substitute for one or more characters. They allow, for example, to show all files that start with the
-<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>letter A or all files that end with the letters .conf.
-<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>Wildcards are very useful as they can be used with commands such as cp, ls or rm.
-<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>The following are some examples of file globbing:
-<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>rm *
-<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>Delete all files in current working directory.
-<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>ls l?st
-<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a>List all files with names beginning with l followed by any single character and ending with st.
-<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>rmdir [a-z]*
-<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>Remove all directories whose name starts with a letter.
-<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 237
-<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>
-<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>Types of Wildcards
-<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>There are three characters that can be used as wildcards in Linux:
-<a id="__codelineno-0-340" name="__codelineno-0-340" href="#__codelineno-0-340"></a>* (asterisk)
-<a id="__codelineno-0-341" name="__codelineno-0-341" href="#__codelineno-0-341"></a>which represents zero, one or more occurrences of any character.
-<a id="__codelineno-0-342" name="__codelineno-0-342" href="#__codelineno-0-342"></a>? (question mark)
-<a id="__codelineno-0-343" name="__codelineno-0-343" href="#__codelineno-0-343"></a>which represents a single occurrence of any character.
-<a id="__codelineno-0-344" name="__codelineno-0-344" href="#__codelineno-0-344"></a>[ ] (bracketed characters)
-<a id="__codelineno-0-345" name="__codelineno-0-345" href="#__codelineno-0-345"></a>which represents any occurrence of the character(s) enclosed in the square brackets. It is
-<a id="__codelineno-0-346" name="__codelineno-0-346" href="#__codelineno-0-346"></a>possible to use different types of characters whether numbers, letters, other special characters.
-<a id="__codelineno-0-347" name="__codelineno-0-347" href="#__codelineno-0-347"></a>For example, the expression [0-9] matches all digits.
-<a id="__codelineno-0-348" name="__codelineno-0-348" href="#__codelineno-0-348"></a>The Asterisk
-<a id="__codelineno-0-349" name="__codelineno-0-349" href="#__codelineno-0-349"></a>An asterisk (*) matches zero, one or more occurrences of any character.
-<a id="__codelineno-0-350" name="__codelineno-0-350" href="#__codelineno-0-350"></a>For example:
-<a id="__codelineno-0-351" name="__codelineno-0-351" href="#__codelineno-0-351"></a>$ find /home -name *.png
-<a id="__codelineno-0-352" name="__codelineno-0-352" href="#__codelineno-0-352"></a>This would find all files that end with .png such as photo.png, cat.png, frank.png. The find
-<a id="__codelineno-0-353" name="__codelineno-0-353" href="#__codelineno-0-353"></a>command will be explored further in a following lesson.
-<a id="__codelineno-0-354" name="__codelineno-0-354" href="#__codelineno-0-354"></a>Similarly:
-<a id="__codelineno-0-355" name="__codelineno-0-355" href="#__codelineno-0-355"></a>$ ls lpic-*.txt
-<a id="__codelineno-0-356" name="__codelineno-0-356" href="#__codelineno-0-356"></a>would list all text files that start with the characters lpic- followed by any number of characters
-<a id="__codelineno-0-357" name="__codelineno-0-357" href="#__codelineno-0-357"></a>and end with .txt, such as lpic-1.txt and lpic-2.txt.
-<a id="__codelineno-0-358" name="__codelineno-0-358" href="#__codelineno-0-358"></a>The asterisk wildcard can be used to manipulate (copy, delete or move) all the contents of a
-<a id="__codelineno-0-359" name="__codelineno-0-359" href="#__codelineno-0-359"></a>directory:
-<a id="__codelineno-0-360" name="__codelineno-0-360" href="#__codelineno-0-360"></a>$ cp -r animal/* forest
-<a id="__codelineno-0-361" name="__codelineno-0-361" href="#__codelineno-0-361"></a>In this example, all the contents of animal is copied into forest.
-<a id="__codelineno-0-362" name="__codelineno-0-362" href="#__codelineno-0-362"></a>238 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-363" name="__codelineno-0-363" href="#__codelineno-0-363"></a>
-<a id="__codelineno-0-364" name="__codelineno-0-364" href="#__codelineno-0-364"></a>In general to copy all the contents of a directory we use:
-<a id="__codelineno-0-365" name="__codelineno-0-365" href="#__codelineno-0-365"></a>cp -r SOURCE_PATH/* DEST_PATH
-<a id="__codelineno-0-366" name="__codelineno-0-366" href="#__codelineno-0-366"></a>where SOURCE_PATH can be omitted if we are already in the required directory.
-<a id="__codelineno-0-367" name="__codelineno-0-367" href="#__codelineno-0-367"></a>The asterisk, just as any other wildcard, could be used repeatedly in the same command and at
-<a id="__codelineno-0-368" name="__codelineno-0-368" href="#__codelineno-0-368"></a>any position:
-<a id="__codelineno-0-369" name="__codelineno-0-369" href="#__codelineno-0-369"></a>$ rm *ate*
-<a id="__codelineno-0-370" name="__codelineno-0-370" href="#__codelineno-0-370"></a>Filenames prefixed with zero, one or more occurrence of any character, followed by the letters
-<a id="__codelineno-0-371" name="__codelineno-0-371" href="#__codelineno-0-371"></a>ate and ending with zero, one or more occurrence of any character will be removed.
-<a id="__codelineno-0-372" name="__codelineno-0-372" href="#__codelineno-0-372"></a>The Question Mark
-<a id="__codelineno-0-373" name="__codelineno-0-373" href="#__codelineno-0-373"></a>The question mark (?) matches a single occurrence of a character.
-<a id="__codelineno-0-374" name="__codelineno-0-374" href="#__codelineno-0-374"></a>Consider the listing:
-<a id="__codelineno-0-375" name="__codelineno-0-375" href="#__codelineno-0-375"></a>$ ls
-<a id="__codelineno-0-376" name="__codelineno-0-376" href="#__codelineno-0-376"></a>last.txt    lest.txt    list.txt    third.txt   past.txt
-<a id="__codelineno-0-377" name="__codelineno-0-377" href="#__codelineno-0-377"></a>To return only the files that start with l followed by any single character and the characters
-<a id="__codelineno-0-378" name="__codelineno-0-378" href="#__codelineno-0-378"></a>st.txt, we use the question mark (?) wildcard:
-<a id="__codelineno-0-379" name="__codelineno-0-379" href="#__codelineno-0-379"></a>$ ls l?st.txt
-<a id="__codelineno-0-380" name="__codelineno-0-380" href="#__codelineno-0-380"></a>last.txt    lest.txt    list.txt
-<a id="__codelineno-0-381" name="__codelineno-0-381" href="#__codelineno-0-381"></a>Only the files last.txt, lest.txt and list.txt are displayed as they match the given criteria.
-<a id="__codelineno-0-382" name="__codelineno-0-382" href="#__codelineno-0-382"></a>Similarly,
-<a id="__codelineno-0-383" name="__codelineno-0-383" href="#__codelineno-0-383"></a>$ ls ??st.txt
-<a id="__codelineno-0-384" name="__codelineno-0-384" href="#__codelineno-0-384"></a>last.txt    lest.txt    list.txt    past.txt
-<a id="__codelineno-0-385" name="__codelineno-0-385" href="#__codelineno-0-385"></a>output files that are prefixed with any two characters followed by the text st.txt.
-<a id="__codelineno-0-386" name="__codelineno-0-386" href="#__codelineno-0-386"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 239
-<a id="__codelineno-0-387" name="__codelineno-0-387" href="#__codelineno-0-387"></a>
-<a id="__codelineno-0-388" name="__codelineno-0-388" href="#__codelineno-0-388"></a>Bracketed Characters
-<a id="__codelineno-0-389" name="__codelineno-0-389" href="#__codelineno-0-389"></a>The bracketed wildcards matches any occurrence of the character(s) enclosed in the square
-<a id="__codelineno-0-390" name="__codelineno-0-390" href="#__codelineno-0-390"></a>brackets:
-<a id="__codelineno-0-391" name="__codelineno-0-391" href="#__codelineno-0-391"></a>$ ls l[aef]st.txt
-<a id="__codelineno-0-392" name="__codelineno-0-392" href="#__codelineno-0-392"></a>last.txt    lest.txt
-<a id="__codelineno-0-393" name="__codelineno-0-393" href="#__codelineno-0-393"></a>This command would list all files starting with l followed by any of the characters in the set aef
-<a id="__codelineno-0-394" name="__codelineno-0-394" href="#__codelineno-0-394"></a>and ending with st.txt.
-<a id="__codelineno-0-395" name="__codelineno-0-395" href="#__codelineno-0-395"></a>The square brackets could also take ranges:
-<a id="__codelineno-0-396" name="__codelineno-0-396" href="#__codelineno-0-396"></a>$ ls l[a-z]st.txt
-<a id="__codelineno-0-397" name="__codelineno-0-397" href="#__codelineno-0-397"></a>last.txt    lest.txt    list.txt
-<a id="__codelineno-0-398" name="__codelineno-0-398" href="#__codelineno-0-398"></a>This outputs all files with names starting with l followed by any lower case letter in the range a to
-<a id="__codelineno-0-399" name="__codelineno-0-399" href="#__codelineno-0-399"></a>z and ending with st.txt.
-<a id="__codelineno-0-400" name="__codelineno-0-400" href="#__codelineno-0-400"></a>Multiple ranges could also be applied in the square brackets:
-<a id="__codelineno-0-401" name="__codelineno-0-401" href="#__codelineno-0-401"></a>$ ls
-<a id="__codelineno-0-402" name="__codelineno-0-402" href="#__codelineno-0-402"></a>student-1A.txt  student-2A.txt  student-3.txt
-<a id="__codelineno-0-403" name="__codelineno-0-403" href="#__codelineno-0-403"></a>$ ls student-[0-9][A-Z].txt
-<a id="__codelineno-0-404" name="__codelineno-0-404" href="#__codelineno-0-404"></a>student-1A.text student-2A.txt
-<a id="__codelineno-0-405" name="__codelineno-0-405" href="#__codelineno-0-405"></a>The listing shows a school directory with a list of registered students. To list only those students
-<a id="__codelineno-0-406" name="__codelineno-0-406" href="#__codelineno-0-406"></a>whose registration numbers meet the following criteria:
-<a id="__codelineno-0-407" name="__codelineno-0-407" href="#__codelineno-0-407"></a>• begin with student-
-<a id="__codelineno-0-408" name="__codelineno-0-408" href="#__codelineno-0-408"></a>• followed by a number, and an uppercase character
-<a id="__codelineno-0-409" name="__codelineno-0-409" href="#__codelineno-0-409"></a>• and end with .txt
-<a id="__codelineno-0-410" name="__codelineno-0-410" href="#__codelineno-0-410"></a>Combining Wildcards
-<a id="__codelineno-0-411" name="__codelineno-0-411" href="#__codelineno-0-411"></a>Wildcards can be combined as in:
-<a id="__codelineno-0-412" name="__codelineno-0-412" href="#__codelineno-0-412"></a>$ ls
-<a id="__codelineno-0-413" name="__codelineno-0-413" href="#__codelineno-0-413"></a>last.txt    lest.txt    list.txt    third.txt   past.txt
-<a id="__codelineno-0-414" name="__codelineno-0-414" href="#__codelineno-0-414"></a>240 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-415" name="__codelineno-0-415" href="#__codelineno-0-415"></a>
-<a id="__codelineno-0-416" name="__codelineno-0-416" href="#__codelineno-0-416"></a>$ ls [plf]?st* 
-<a id="__codelineno-0-417" name="__codelineno-0-417" href="#__codelineno-0-417"></a>last.txt    lest.txt    list.txt    past.txt
-<a id="__codelineno-0-418" name="__codelineno-0-418" href="#__codelineno-0-418"></a>The first wildcard component ([plf]) matches any of the characters p, l or f. The second
-<a id="__codelineno-0-419" name="__codelineno-0-419" href="#__codelineno-0-419"></a>wildcard component (?) matches any single character. The third wildcard component (*) matches
-<a id="__codelineno-0-420" name="__codelineno-0-420" href="#__codelineno-0-420"></a>zero, one or many occurrences of any character.
-<a id="__codelineno-0-421" name="__codelineno-0-421" href="#__codelineno-0-421"></a>$ ls
-<a id="__codelineno-0-422" name="__codelineno-0-422" href="#__codelineno-0-422"></a>file1.txt file.txt file23.txt fom23.txt
-<a id="__codelineno-0-423" name="__codelineno-0-423" href="#__codelineno-0-423"></a>$ ls f*[0-9].txt
-<a id="__codelineno-0-424" name="__codelineno-0-424" href="#__codelineno-0-424"></a>file1.txt file23.txt fom23.txt
-<a id="__codelineno-0-425" name="__codelineno-0-425" href="#__codelineno-0-425"></a>The previous command displays all files that begin with the letter f, followed by any set of letters,
-<a id="__codelineno-0-426" name="__codelineno-0-426" href="#__codelineno-0-426"></a>at least one occurrence of a digit and ends with .txt. Note that file.txt is not displayed as it
-<a id="__codelineno-0-427" name="__codelineno-0-427" href="#__codelineno-0-427"></a>does not match this criteria.
-<a id="__codelineno-0-428" name="__codelineno-0-428" href="#__codelineno-0-428"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 241
-</code></pre></div>
-<hr>
-<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
-<h3 id="bang-lenh-trong-tam-key-command-reference">💡 Bảng Lệnh Trọng Tâm (Key Command Reference)<a class="headerlink" href="#bang-lenh-trong-tam-key-command-reference" title="Permanent link">¶</a></h3>
+<h2 id="3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference">3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)<a class="headerlink" href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Lệnh / File / Folder</th>
-<th style="text-align: left;">Chức năng chính</th>
-<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+<th style="text-align: left;">Câu lệnh</th>
+<th style="text-align: left;">Tham số (Options/Flags)</th>
+<th style="text-align: left;">Giải thích ý nghĩa chi tiết</th>
+<th style="text-align: left;">Ví dụ thực tế trong DevOps</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>command / path</code></td>
-<td style="text-align: left;">Tra cứu &amp; kiểm tra cấu hình</td>
-<td style="text-align: left;">Quản trị Server Linux, Cloud EC2, Docker Container</td>
+<td style="text-align: left;"><strong><code>cp</code></strong></td>
+<td style="text-align: left;"><code>Sao chép file/thư mục</code></td>
+<td style="text-align: left;">-r, -p</td>
+<td style="text-align: left;"><code>cp -rp /src /dst</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>/etc/</code></td>
-<td style="text-align: left;">Thư mục chứa cấu hình hệ thống</td>
-<td style="text-align: left;">Quản lý cấu hình bằng Ansible, Terraform, Puppet</td>
+<td style="text-align: left;"><strong><code>tar</code></strong></td>
+<td style="text-align: left;"><code>Nén và giải nén file .tar.gz</code></td>
+<td style="text-align: left;">-czvf, -xzvf</td>
+<td style="text-align: left;"><code>tar -czvf backup.tar.gz /etc</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>systemctl / journalctl</code></td>
-<td style="text-align: left;">Quản lý Service &amp; Xem Log tiến trình</td>
-<td style="text-align: left;">Debug ứng dụng microservices trên Linux Server</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>grep / sed / awk</code></td>
-<td style="text-align: left;">Xử lý &amp; Lọc luồng dữ liệu text</td>
-<td style="text-align: left;">Viết Bash script tự động hóa CI/CD Pipelines</td>
+<td style="text-align: left;"><strong><code>rm</code></strong></td>
+<td style="text-align: left;"><code>Xóa file hoặc thư mục</code></td>
+<td style="text-align: left;">-r, -f</td>
+<td style="text-align: left;"><code>rm -rf /tmp/test</code></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
-<p>Guided Exercises
-1. Consider the listing below:
-$ ls -lh
-total 60K
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Desktop
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Documents
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Downloads
--rw-r--r--  1   frank   frank     21    Sep 7   12:59   emp_name
--rw-r--r--  1   frank   frank     20    Sep 7   13:03   emp_salary
--rw-r--r--  1   frank   frank   8.8K    Apr 1   2018    examples.desktop
--rw-r--r--  1   frank   frank     10    Sep 1   2018    file1
--rw-r--r--  1   frank   frank     10    Sep 1   2018    file2
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Music
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Pictures
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Public
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Templates
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Videos
-◦What does the character d represent in the output?
-◦Why are the sizes given in human readable format?
-◦What would be the difference in the output if ls was used with no argument?
-2. Consider the command below:
-$ cp /home/frank/emp_name /home/frank/backup
-◦What would happen to the file emp_name if this command is executed successfully?
-◦If emp_name was a directory what option should be added to cp to execute the command?
-◦If cp is now changed to mv what results do you expect?
-242 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<ol>
-<li>Consider the listing :
-$ ls
-file1.txt file2.txt file3.txt file4.txt
-Which wildcard would help to delete all the contents of this directory?</li>
-<li>Based on the previous listing, what files would be displayed by the following command?
-$ ls file*.txt</li>
-<li>Complete the command by adding the appropriate digits and characters in the square brackets
-that would list all the content above:
-$ ls file[].txt
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 243</li>
-</ol>
-<p>Explorational Exercises
-1. In your home directory, create the files called dog and cat.
-2. Still in your home directory, create the directory called animal. Move dog and cat into
-animal.
-3. Go to the Documents folder found in your home directory and inside, create the directory
-backup.
-4. Copy animal and its contents into backup.
-5. Rename animal in backup to animal.bkup.
-6. The /home/lpi/databases directory contains many files which includes: db-1.tar.gz, db-
-2.tar.gz and db-3.tar.gz. Which single command can you use to list only the files
-mentioned above?
-7. Consider the listing:
-$ ls
-cne1222223.pdf cne12349.txt cne1234.pdf
-With the use of a single globbing character, what command would remove only the pdf files?
-244 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Summary
-In this lesson, we explored how to view what is within a directory with the ls command, how to
-copy (cp) files and folders and how to move (mv) them as well. We also looked at how new
-directoris can be created with the mkdir command. The commands for removing files (rm) and
-folders (rmdir) was also discussed.
-In this lesson, you also learned about file globbing and wildcards. File globbing is used to
-represent multiple file names by using special characters called wildcards. The basic wildcards
-and their meanings:
-? (question mark)
-represents a single occurrence of a character.
-[ ] (square brackets)
-represents any occurrence of the character(s) enclosed in the square brackets.
-* (asterisk)
-represents zero, one or more occurrences of any character.
-You may combine any these wildcards in the same statement.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 245</p>
+<h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
+<h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Nén thư mục /etc thành file backup.tar.gz:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar<span class="w"> </span>-czvf<span class="w"> </span>/backup/etc_<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>.tar.gz<span class="w"> </span>/etc
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Giải nén file backup:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>tar<span class="w"> </span>-xzvf<span class="w"> </span>backup.tar.gz<span class="w"> </span>-C<span class="w"> </span>/tmp
+</code></pre></div>
+<h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
+<p>Tự động nén backup thư mục web:
+tar -czvf /backups/app_$(date +%F).tar.gz /var/www/html</p>
 <hr>
-<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
-<p>Answers to Guided Exercises
-1. Consider the listing below:
-$ ls -lh
-total 60K
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Desktop
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Documents
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Downloads
--rw-r--r--  1   frank   frank     21    Sep 7   12:59   emp_name
--rw-r--r--  1   frank   frank     20    Sep 7   13:03   emp_salary
--rw-r--r--  1   frank   frank   8.8K    Apr 1   2018    examples.desktop
--rw-r--r--  1   frank   frank     10    Sep 1   2018    file1
--rw-r--r--  1   frank   frank     10    Sep 1   2018    file2
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Music
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Pictures
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Public
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Templates
-drwxr-xr-x  2   frank   frank   4.0K    Apr 1   2018    Videos
-◦What does the character d represent in the output?
-d is the character that identifies a directory.
-◦Why are the sizes given in human readable format?
-Due the option -h.
-◦What would be the difference in the output if ls was used with no argument?
-Directory and file names would be provided only.
-2. Consider the command below:
-$ cp /home/frank/emp_name /home/frank/backup
-◦What would happen to the file emp_name if this command is executed successfully?
-emp_name would be copied into backup.
-◦If emp_name was a directory what option should be added to cp to execute the command?
-246 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>-r
-◦If cp is now changed to mv what results do you expect?
-emp_name would be moved into backup. It would no longer be present inside the home
-directory of user frank.
-3. Consider the listing :
-$ ls
-file1.txt file2.txt file3.txt file4.txt
-Which wildcard would help to delete all the contents of this directory?
-The asterisk <em>.
-4. Based on the previous listing, what files would be displayed by the following command?
-$ ls file</em>.txt
-All of them, since the asterisk character represents any number of characters.
-5. Complete the command by adding the appropriate digits and characters in the square brackets
-that would list all the content above:
-$ ls file[].txt
-file[0-9].txt
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 247</p>
-<p>Answers to Explorational Exercises
-1. In your home directory, create the files called dog and cat.
-$ touch dog cat
-2. Still in your home directory, create the directory called animal. Move dog and cat into
-animal.
-$ mkdir animal
-$ mv dog cat -t animal/
-3. Go to the Documents folder found in your home directory and inside, create the directory
-backup.
-$ cd ~/Documents
-$ mkdir backup
-4. Copy animal and its contents into backup.
-$ cp -r animal ~/Documents/backup
-5. Rename animal in backup to animal.bkup.
-$ mv animal/ animal.bkup
-6. The /home/lpi/databases directory contains many files which includes: db-1.tar.gz, db-
-2.tar.gz and db-3.tar.gz. Which single command can you use to list only the files mention
-above?
-$ ls db-[1-3].tar.gz
-7. Consider the listing:
-$ ls
-cne1222223.pdf cne12349.txt cne1234.pdf
-248 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>With the use of a single globbing character, what command would remove only the pdf files?
-$ rm *.pdf
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 249</p>
-<p>103.3 Lesson 2
-Certificate:
-LPIC-1
-Version:
-5.0
-Topic:
-103 GNU and Unix Commands
-Objective:
-103.3 Perform basic file management
-Lesson:
-2 of 2
-Introduction
-How to Find Files
-As you use your machine, files progressively grow in number and size. Sometimes it becomes
-difficult to locate a particular file. Fortunately, Linux provides find to quickly search and locate
-files. find uses the following syntax:
-find STARTING_PATH OPTIONS EXPRESSION
-STARTING_PATH
-defines the directory where the search begins.
-OPTIONS
-controls the behavior and adds specific criteria to optimize the search process.
-EXPRESSION
-defines the search query.
-250 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>$ find . -name "myfile.txt"
-./myfile.txt
-The starting path in this case is the current directory. The option -name specifies that the search is
-based on the name of the file. myfile.txt is the name of the file to search. When using file
-globbing, be sure to include the expression in quotation marks:
-$ find /home/frank -name "<em>.png"
-/home/frank/Pictures/logo.png
-/home/frank/screenshot.png
-This command finds all files ending with .png starting from /home/frank/ directory and
-beneath. If you do not understand the usage of the asterisk (</em>), it is covered in the previous lesson.
-Using Criteria to Speed Search
-Use find to locate files based on type, size or time. By specifying one or more options, the desired
-results are obtained in less time.
-Switches to finding files based on type include:
--type f
-file search.
--type d
-directory search.
--type l
-symbolic link search.
-$ find . -type d -name "example"
-This command finds all directories in the current directory and below, that have the name
-example.
-Other criteria which could be used with find include:
--name
-performs a search based on the given name.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 251</p>
-<p>-iname
-searches based on the name, however, the case is not important (i.e. the test case myFile is
-similar to MYFILE).
--not
-returns those results that do not match the test case.
--maxdepth N
-searches the current directory as well as subdirectories N levels deep.
-Locating Files by Modification Time
-find also allows to filter a directory hierarchy based on when the file was modified:
-$ sudo find / -name "*.conf" -mtime 7
-/etc/logrotate.conf
-This command would search for all files in the entire file system (the starting path is the root
-directory, i.e. /) that end with the characters .conf and have been modified in the last seven days.
-This command would require elevated privileges to access directories starting at the base of the
-system’s directory structure, hence the use of sudo here. The argument passed to mtime
-represents the number of days since the file was last modified.
-Locating Files by Size
-find can also locate files by size. For example, searching for files larger than 2G in /var:
-$ sudo find /var -size +2G
-/var/lib/libvirt/images/debian10.qcow2
-/var/lib/libvirt/images/rhel8.qcow2
-The -size option displays files of sizes corresponding to the argument passed. Some example
-arguments include:
--size 100c
-files which are exactly 100 bytes.
--size +100k
-files taller than 100 kilobytes.
-252 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>-size -20M
-files smaller than 20 megabytes.
--size +2G
-files larger than 2 gigabytes.
-NOTE
-To find empty files we can use: find . -size 0c&nbsp; or&nbsp; find . -empty.
-Acting on the Result Set
-Once a search is done, it is possible to perform an action on the resulting set by using -exec:
-$ find . -name "*.conf" -exec chmod 644 '{}' \;
-This filters every object in the current directory (.) and below for file names ending with .conf
-and then executes the chmod 644 command to modify file permissions on the results.
-For now, do not bother with the meaning of '{}' \; as it will be discussed later.
-Using grep to Filter for Files Based on Content
-grep is used to search for the occurrence of a keyword.
-Consider a situation where we are to find files based on content:
-$ find . -type f -exec grep "lpi" '{}' \; -print
-./.bash_history
-Alpine/M
-helping/M
-This would search every object in the current directory hierarchy (.) that is a file (-type f) and
-then executes the command grep "lpi" for every file that satisfies the conditions. The files that
-match these conditions are printed on the screen (-print). The curly braces ({}) are a
-placeholder for the find match results. The {} are enclosed in single quotes (') to avoid passing
-grep files with names containing special characters. The -exec command is terminated with a
-semicolon (;), which should be escaped (\;) to avoid interpretation by the shell.
-Adding the option -delete to the end of an expression would delete all files that match. This
-option should be used when you are certain that the results only match the files that you wish to
-delete.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 253</p>
-<p>In the example below, find locates all files in the hierarchy starting at the current directory then
-deletes all files that end with the characters .bak:
-$ find . -name "*.bak" -delete
-Archiving Files
-The tar Command (Archiving and Compresssion)
-The tar command, short for “tape archive(r)”, is used to create tar archives by converting a group
-of files into an archive. Archives are created so as to easily move or backup a group of files. Think
-of tar as a tool that creates a glue onto which files can be attached, grouped and easily moved.
-tar also has the ability to extract tar archives, display a list of the files included in the archive as
-well as add additional files to an existing archive.
-The tar command syntax is as follows:
-tar [OPERATION_AND_OPTIONS] [ARCHIVE_NAME] [FILE_NAME(S)]
-OPERATION
-Only one operation argument is allowed and required. The most frequently used operations
-are:
---create (-c)
-Create a new tar archive.
---extract (-x)
-Extract the entire archive or one or more files from an archive.
---list (-t)
-Display a list of the files included in the archive.
-OPTIONS
-The most frequently used options are:
---verbose (-v)
-Show the files being processed by the tar command.
-254 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>--file=archive-name (-f archive-name)
-Specifies the archive file name.
-ARCHIVE_NAME
-The name of the archive.
-FILE_NAME(S)
-A space-separated list of file names to be extracted. If not provided the entire archive is
-extracted.
-Creating an Archive
-Let’s say we have a directory named stuff in the current directory and we want to save it to a file
-named archive.tar. We would run the following command:
-$ tar -cvf archive.tar stuff
-stuff/
-stuff/service.conf
-Here’s what those switches actually mean:
--c
-Create an archive.
--v
-Display progress in the terminal while creating the archive, also known as “verbose” mode. The
--v is always optional in these commands, but it is helpful.
--f
-Allows to specify the filename of the archive.
-In general to archive a single directory or a single file on Linux, we use:
-tar -cvf NAME-OF-ARCHIVE.tar /PATH/TO/DIRECTORY-OR-FILE
-NOTE
-tar works recursively. It will perform the required action on every subsequent
-directory inside the directory specified.
-To archive multiple directories at once, we list all the directories delimiting them by a space in the
-section /PATH/TO/DIRECTORY-OR-FILE:
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 255</p>
-<p>$ tar -cvf archive.tar stuff1 stuff2
-This would produce an archive of stuff1 and stuff2 in archive.tar
-Extracting an Archive
-We can extract an archive using tar:
-$ tar -xvf archive.tar
-stuff/
-stuff/service.conf
-This will extract the contents of archive.tar to the current directory.
-This command is the same as the archive creation command used above, except the -x switch that
-replaces the -c switch.
-To extract the contents of the archive to a specific directory we use -C:
-$ tar -xvf archive.tar -C /tmp
-This will extract the contents of archive.tar to the /tmp directory.
-$ ls /tmp
-stuff
-Compressing with tar
-The GNU tar command included with Linux distributions can create a .tar archive and then
-compress it with gzip or bzip2 compression in a single command:
-$ tar -czvf name-of-archive.tar.gz stuff
-This command would create a compressed file using the gzip algorithm (-z).
-While gzip compression is most frequently used to create .tar.gz or .tgz files, tar also
-supports bzip2 compression. This allows the creation of bzip2 compressed files, often named
-.tar.bz2, .tar.bz or .tbz files.
-256 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>To do so, we replace -z for gzip with -j for bzip2:
-$ tar -cjvf name-of-archive.tar.bz stuff
-To decompress the file, we replace -c with -x, where x stands for “extract”:
-$ tar -xzvf archive.tar.gz
-gzip is faster, but it generally compresses a bit less, so you get a somewhat larger file. bzip2 is
-slower, but it compresses a bit more, so you get a somewhat smaller file. In general, though, gzip
-and bzip2 are practically the same thing and both will work similarly.
-Alternatively we may apply gzip or bzip2 compression using gzip command for gzip
-compressions and the bzip command for bzip compressions. For example, to apply gzip
-compression, use:
-gzip FILE-TO-COMPRESS
-gzip
-creates the compressed file with the same name but with a .gz ending.
-gzip
-removes the original files after creating the compressed file.
-The bzip2 command works in a similar fashion.
-To uncompress the files we use either gunzip or bunzip2 depending on the algorithm used to
-compressed a file.
-The cpio Command
-cpio stands for “copy in, copy out”. It is used to process archive files such as <em>.cpio or </em>.tar
-files.
-cpio performs the following operations:
-• Copying files to an archive.
-• Extracting files from an archive.
-It takes the list of files from the standard input (mostly output from ls).
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 257</p>
-<p>To create a cpio archive, we use:
-$ ls | cpio -o &gt; archive.cpio
-The -o option instructs cpio to create an output. In this case, the output file created is
-archive.cpio. The ls command lists the contents of the current directory which are to be
-archived.
-To extract the archive we use :
-$ cpio -id &lt; archive.cpio
-The -i option is used to perform the extract. The -d option would create the destination folder.
-The character &lt; represents standard input. The input file to be extracted is archive.cpio.
-The dd Command
-dd copies data from one location to another. The command line syntax of dd differs from many
-other Unix programs, it uses the syntax option=value for its command line options rather than
-the GNU standard -option value or --option=value formats:
-$ dd if=oldfile of=newfile
-This command would copy the content of oldfile into newfile, where if= is the input file and
-of= refers to the output file.
-NOTE
-The dd command typically will not output anything to the screen until the
-command has finished. By providing the status=progress option, the console
-will display the amount of work getting done by the command. For example: dd
-status=progress if=oldfile of=newfile.
-dd is also used in changing data to upper/lower case or writing directly to block devices such as
-/dev/sdb:
-$ dd if=oldfile of=newfile conv=ucase
-This would copy all the contents of oldfile into newfile and capitalise all of the text.
-The following command will backup the whole hard disk located at /dev/sda to a file named
-258 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>backup.dd:
-$ dd if=/dev/sda of=backup.dd bs=4096
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 259</p>
-<p>Guided Exercises
-1. Consider the following listing:
-$ find /home/frank/Documents/ -type d
-/home/frank/Documents/
-/home/frank/Documents/animal
-/home/frank/Documents/animal/domestic
-/home/frank/Documents/animal/wild
-◦What kind of files would this command output?
-◦In which directory does the search begin?
-2. A user wishes to compress his backup folder. He uses the following command:
-$ tar cvf /home/frank/backup.tar.gz /home/frank/dir1
-Which option is lacking to compress the backup using the gzip algorithm?
-260 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Explorational Exercises
-1. As system administrator, it is required to perform regular checks in order to remove
-voluminous files. These voluminous files are located in /var and end with a .backup
-extension.
-◦Write down the command, using find, to locate these files:
-◦An analysis of the sizes of these files reveals that they range from 100M to 1000M. Complete
-the previous command with this new information, so that you may locate those backup files
-ranging from 100M to 1000M:
-◦Finally, complete this command, with the delete action so that these files will be removed:
-2. In the /var directory, there exist four backup files:
-db-jan-2018.backup
-db-feb-2018.backup
-db-march-2018.backup
-db-apr-2018.backup
-◦Using tar, specify the command that would create an archive file with the name db-first-
-quarter-2018.backup.tar:
-◦Using tar, specify the command that would create the archive and compress it using gzip.
-Take note that the resulting file name should end with .gz:
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 261</p>
-<p>Summary
-In this section, you learned:
-• How to find files with find.
-• How to add search criteria based on time, file type or size by supplying argument to find.
-• How to act on a returned set.
-• How to archive, compress and decompress files using tar.
-• Processing archives with cpio.
-• Copying files with dd.
-262 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Answers to Guided Exercises
-1. Consider the following listing:
-$ find /home/frank/Documents/ -type d
-/home/frank/Documents/
-/home/frank/Documents/animal
-/home/frank/Documents/animal/domestic
-/home/frank/Documents/animal/wild
-◦What kind of files would this command output?
-Directories.
-◦In which directory does the search begins?
-/home/frank/Documents
-2. A user wishes to compress his backup folder. He uses the following command:
-$ tar cvf /home/frank/backup.tar.gz /home/frank/dir1
-Which option is lacking to compress the backup using the gzip algorithm?
-Option -z.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 263</p>
-<p>Answers to Explorational Exercises
-1. As system administrator, it is required of you to perform regular checks in order to remove
-voluminous files. These voluminous files are located in /var and end with a .backup
-extension.
-◦Write down the command, using find, to locate these files:
-$ find /var -name <em>.backup
-◦An analysis of the sizes of these files reveals that they range from 100M to 1000M. Complete
-the previous command with this new information, so that you may locate those backup files
-ranging from 100M to 1000M:
-$ find /var -name </em>.backup -size +100M -size -1000M
-◦Finally, complete this command, with the delete action so that these files will be removed:
-$ find /var -name *.backup -size +100M -size -1000M -delete
-2. In the /var directory, there exist four backup files:
-db-jan-2018.backup
-db-feb-2018.backup
-db-march-2018.backup
-db-apr-2018.backup
-◦Using tar, specify the command that would create an archive file with the name db-first-
-quarter-2018.backup.tar:
-$ tar -cvf db-first-quarter-2018.backup.tar db-jan-2018.backup db-feb-2018.backup db-
-march-2018.backup db-apr-2018.backup
-◦Using tar, specify the command that would create the archive and compress it using gzip.
-Take note that the resulting file name should end with .gz:
-$ tar -zcvf db-first-quarter-2018.backup.tar.gz db-jan-2018.backup db-feb-2018.backup
-264 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>db-march-2018.backup db-apr-2018.backup
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 265</p>
+<h2 id="5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa">5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)<a class="headerlink" href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>Q: Cờ nào của lệnh tar dùng để NÉN file dạng .tar.gz?</strong><br>
+<strong>A</strong>: Cờ <code>-czvf</code> (c: create, z: gzip).</p>
+<p><strong>Q: Cờ nào của lệnh tar dùng để GIẢI NÉN file .tar.gz?</strong><br>
+<strong>A</strong>: Cờ <code>-xzvf</code> (x: extract, z: gzip).</p>
+</blockquote>
 <hr>
-<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
-<ol>
-<li>Ghi nhớ cú pháp câu lệnh và ý nghĩa từng tùy chọn (flag/option).</li>
-<li>Hiểu rõ vị trí các file cấu hình quan trọng trong hệ thống Linux.</li>
-<li>Luôn kiểm tra log bằng <code>journalctl</code> hoặc tệp log tương ứng khi gặp sự cố.</li>
-</ol>
+<h2 id="6-cheat-sheet-ghi-nho-nhanh-summary">6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)<a class="headerlink" href="#6-cheat-sheet-ghi-nho-nhanh-summary" title="Permanent link">¶</a></h2>
+<ul>
+<li>[x] cp -rp: Copy giữ quyền &amp; timestamp</li>
+<li>[x] tar -czvf: Nén tar.gz</li>
+<li>[x] tar -xzvf: Giải nén tar.gz</li>
+</ul>
 
 
 
@@ -3848,7 +3063,7 @@ $ tar -zcvf db-first-quarter-2018.backup.tar.gz db-jan-2018.backup db-feb-2018.b
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:22:33 UTC">4 tháng 8, 2026</span>
   </span>
 
     
@@ -3921,7 +3136,7 @@ $ tar -zcvf db-first-quarter-2018.backup.tar.gz db-jan-2018.backup db-feb-2018.b
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../103.2-process-text-streams-using-filters/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 103.2: Xử lý Luồng Văn bản bằng Bộ lọc (Text Filters)">
+          <a href="../103.2-process-text-streams-using-filters/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🐧 Objective 103.2: Xử Lý Luồng Văn Bản Bằng Bộ Lọc (Text Filters) - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3931,20 +3146,20 @@ $ tar -zcvf db-first-quarter-2018.backup.tar.gz db-jan-2018.backup db-feb-2018.b
                 Trước
               </span>
               <div class="md-ellipsis">
-                Objective 103.2: Xử lý Luồng Văn bản bằng Bộ lọc (Text Filters)
+                🐧 Objective 103.2: Xử Lý Luồng Văn Bản Bằng Bộ Lọc (Text Filters) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
           </a>
         
         
           
-          <a href="../103.4-use-streams-pipes-and-redirects/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 103.4: Sử dụng Streams, Pipes và Redirects">
+          <a href="../103.4-use-streams-pipes-and-redirects/" class="md-footer__link md-footer__link--next" aria-label="Sau: 🐧 Objective 103.4: Streams, Pipes &amp;amp; Redirects (STDIN, STDOUT, STDERR) - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Objective 103.4: Sử dụng Streams, Pipes và Redirects
+                🐧 Objective 103.4: Streams, Pipes &amp; Redirects (STDIN, STDOUT, STDERR) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
             <div class="md-footer__button md-icon">

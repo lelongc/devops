@@ -22,7 +22,7 @@
     
     
       
-        <title>Objective 104.3: Quản lý Mount và Unmount (/etc/fstab) - DraDoc</title>
+        <title>🐧 Objective 104.3: Gắn Mount Ổ Đĩa &amp; File /etc/fstab - Bản Chất Hệ Thống &amp; Thực Chiến DevOps - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#objective-1043-quan-ly-mount-va-unmount-etcfstab" class="md-skip">
+        <a href="#objective-1043-gan-mount-o-ia-file-etcfstab-ban-chat-he-thong-thuc-chien-devops" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Objective 104.3: Quản lý Mount và Unmount (/etc/fstab)
+              🐧 Objective 104.3: Gắn Mount Ổ Đĩa &amp; File /etc/fstab - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
             
           </span>
         </div>
@@ -456,8 +456,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-tabs__link">
           
   
   
@@ -467,6 +474,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -1103,6 +1113,8 @@
       
         
       
+        
+      
     
     
     
@@ -1530,7 +1542,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems
+    🐧 Objective 104.1: Phân Đĩa &amp; Định Dạng Filesystem (fdisk &amp; mkfs) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1558,7 +1570,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.2: Duy trì Tính Toàn vẹn Filesystem (fsck, df, du)
+    🐧 Objective 104.2: Kiểm Tra Dung Lượng &amp; Sửa Lỗi Filesystem - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1595,7 +1607,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.3: Quản lý Mount và Unmount (/etc/fstab)
+    🐧 Objective 104.3: Gắn Mount Ổ Đĩa &amp; File /etc/fstab - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1613,7 +1625,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.3: Quản lý Mount và Unmount (/etc/fstab)
+    🐧 Objective 104.3: Gắn Mount Ổ Đĩa &amp; File /etc/fstab - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1639,22 +1651,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-lop-vfs-mount-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Lớp VFS &amp; Mount Table
       
     </span>
   </a>
@@ -1667,10 +1690,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -1678,22 +1701,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
       
     </span>
   </a>
@@ -1706,10 +1740,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -1717,10 +1751,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -1750,7 +1784,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.5: Quản lý Quyền File &amp; Owner (chmod, chown, umask)
+    🐧 Objective 104.5: Quản Lý Quyền File &amp; Owner (chmod, chown, umask) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1778,7 +1812,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.6: Quản lý Hard Link &amp; Symbolic Link
+    🐧 Objective 104.6: Quản Lý Hard Link &amp; Symbolic Link (ln &amp; ln -s) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1806,7 +1840,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 104.7: Tiêu chuẩn Phân cấp Hệ thống File (FHS) &amp; Tìm kiếm
+    🐧 Objective 104.7: Chuẩn Phân Cấp FHS &amp; Tìm Kiếm File (find &amp; locate) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -2210,6 +2244,70 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../LPIC-2/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 2
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2305,8 +2403,6 @@
       
         
       
-        
-      
     
     
     
@@ -2327,7 +2423,11 @@
   
   
   
-    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-nav__link">
       
   
   
@@ -2346,6 +2446,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -2675,22 +2777,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-lop-vfs-mount-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Lớp VFS &amp; Mount Table
       
     </span>
   </a>
@@ -2703,10 +2816,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -2714,22 +2827,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
       
     </span>
   </a>
@@ -2742,10 +2866,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -2753,10 +2877,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -2788,574 +2912,80 @@
   
 
 
-<h1 id="objective-1043-quan-ly-mount-va-unmount-etcfstab">Objective 104.3: Quản lý Mount và Unmount (/etc/fstab)<a class="headerlink" href="#objective-1043-quan-ly-mount-va-unmount-etcfstab" title="Permanent link">¶</a></h1>
+<h1 id="objective-1043-gan-mount-o-ia-file-etcfstab-ban-chat-he-thong-thuc-chien-devops">🐧 Objective 104.3: Gắn Mount Ổ Đĩa &amp; File /etc/fstab - Bản Chất Hệ Thống &amp; Thực Chiến DevOps<a class="headerlink" href="#objective-1043-gan-mount-o-ia-file-etcfstab-ban-chat-he-thong-thuc-chien-devops" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 101-500 Version 5.0)</strong><br>
-📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 471 - 490)<br>
-🎯 <strong>Mục tiêu</strong>: Làm chủ kiến thức Linux căn bản &amp; nâng cao ứng dụng trực tiếp vào công việc DevOps Engineer.</p>
+<p>💡 <strong>Bản chất 1 câu</strong>: Gắn (mount) phân đĩa vào cây thư mục Linux, tháo (umount) an toàn và cấu hình mount tự động khi boot bằng UUID trong <code>/etc/fstab</code>.<br>
+🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: Lệnh mount, umount, blkid (lấy UUID), file /etc/fstab (6 trường cấu hình).</p>
 </blockquote>
 <hr>
-<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
-<p>Bài học này giúp bạn nắm vững kiến thức chuyên sâu về <strong>Objective 104.3: Quản lý Mount và Unmount (/etc/fstab)</strong>. </p>
-<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
+<p>Mount như cắm ổ USB vào máy tính: Phải chỉ định cắm vào thư mục nào (<code>/mnt/data</code>). Muốn máy tự cắm lại mỗi khi khởi động thì khai báo UUID vào sổ tay <code>/etc/fstab</code>.</p>
+<hr>
+<h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" title="Permanent link">¶</a></h2>
+<h3 id="21-ban-chat-lop-vfs-mount-table">2.1 Bản Chất Lớp VFS &amp; Mount Table<a class="headerlink" href="#21-ban-chat-lop-vfs-mount-table" title="Permanent link">¶</a></h3>
 <ul>
-<li>Giải thích bản chất lý thuyết và kiến trúc hoạt động của Linux.</li>
-<li>Thành thạo các câu lệnh thao tác trên Terminal, các tham số (options) và cú pháp thực thi.</li>
-<li>Đọc hiểu tệp tin cấu hình hệ thống, thư mục hệ thống chuẩn.</li>
-<li>Áp dụng vào xử lý sự cố (troubleshooting) và vận hành hệ thống trong môi trường DevOps/Cloud.</li>
+<li>Linux Virtual File System (VFS) hợp nhất mọi phân đĩa thành một cây thư mục gốc duy nhất (<code>/</code>).</li>
+<li><code>/etc/fstab</code> có 6 trường: <code>Device/UUID</code>, <code>Mount Point</code>, <code>Filesystem Type</code>, <code>Mount Options</code>, <code>Dump (0/1)</code>, <code>Fsck Pass (0/1/2)</code>.</li>
 </ul>
 <hr>
-<h2 id="2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh">📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" title="Permanent link">¶</a></h2>
-<p>Below is the detailed material extracted directly from LPIC-1 Official Material:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>104.3 Control mounting and unmounting of filesystems
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 version 5.0, Exam 101, Objective 104.3
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>3
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Manually mount and unmount filesystems.
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Configure filesystem mounting on bootup.
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Configure user mountable removable filesystems.
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>• Use of labels and UUIDs for identifying and mounting file systems.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• Awareness of systemd mount units.
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Partial list of the used files, terms and utilities
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• /etc/fstab
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• /media/
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• mount
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• umount
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• blkid
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• lsblk
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 461
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>104.3 Lesson 1
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>Certificate:
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>LPIC-1
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>Version:
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>5.0
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>Topic:
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>104 Devices, Linux Filesystems, Filesystem
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Hierarchy Standard
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>Objective:
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>104.3 Control mounting and unmounting of
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>filesystems
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>Lesson:
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>1 of 1
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>Introduction
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>Up until now, you learned how to partition disks and how to create and maintain filesystems on
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>them. However before a filesystem can be accessed on Linux, it needs to be mounted.
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>This means attaching the filesystem to a specific point in your system’s directory tree, called a
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>mount point. Filesystems can be mounted manually or automatically and there are many ways to
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>do this. We will learn about some of them in this lesson.
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Mounting and Unmounting Filesystems
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>The command to manually mount a filesystem is called mount and its syntax is:
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>mount -t TYPE DEVICE MOUNTPOINT
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>Where:
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>462 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>TYPE
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>The type of the filesystem being mounted (e.g. ext4, btrfs, exfat, etc.).
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>DEVICE
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>The name of the partition containing the filesystem (e.g. /dev/sdb1)
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>MOUNTPOINT
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>Where the filesystem will be mounted. The mounted-on directory need not be empty, although
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>it must exist. Any files in it, however, will be inaccessible by name while the filesystem is
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>mounted.
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>For example, to mount a USB flash drive containing an exFAT filesystem located on /dev/sdb1 to
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>a directory called flash under your home directory, you could use:
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a># mount -t exfat /dev/sdb1 ~/flash/
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>TIP
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>Many Linux systems use the Bash shell, and on those the tilde ~ on the path to the
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>mountpoint is a shorthand for the current user’s home directory. If the current user
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>is named john, for example, it will be replaced by /home/john.
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>After mounting, the contents of the filesystem will be accessible under the ~/flash directory:
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>$  ls -lh ~/flash/
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>total 469M
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>-rwxrwxrwx 1 root root 454M jul 19 09:49 lineage-16.0-20190711-MOD-quark.zip
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>-rwxrwxrwx 1 root root  16M jul 19 09:44 twrp-3.2.3-mod_4-quark.img
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>Listing Mounted Filesystems
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>If you type just mount, you will get a list of all the filesystems currently mounted on your system.
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>This list can be quite large, because in addition to the disks attached to your system, it also
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>contains a number of run-time filesystems in memory that serve various purposes. To filter the
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>output, you can use the -t parameter to list only filesystems of the corresponding type, like below:
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a># mount -t ext4
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>/dev/sda1 on / type ext4 (rw,noatime,errors=remount-ro)
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>You can specify multiple filesystems at once by separating them with a comma:
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 463
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a># mount -t ext4,fuseblk
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>/dev/sda1 on / type ext4 (rw,noatime,errors=remount-ro)
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>/dev/sdb1 on /home/carol/flash type fuseblk
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>(rw,nosuid,nodev,relatime,user_id=0,group_id=0,default_permissions,allow_other,blksize=4096)
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>[DT_8GB]
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>The output in the examples above can be described in the format:
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>SOURCE on TARGET type TYPE OPTIONS
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>Where SOURCE is the partition which contains the filesystem, TARGET is the directory where it is
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>mounted, TYPE is the filesystem type and OPTIONS are the options passed to the mount command
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>at mount time.
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>Additional Command Line Parameters
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>There are many command line parameters that can be used with mount. Some of the most used
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>ones are:
-<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>-a
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>This will mount all filesystems listed in the file /etc/fstab (more on that in the next section).
-<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>-o or --options
-<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>This will pass a list of comma-separated mount options to the mount command, which can
-<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>change how the filesystem will be mounted. These will also be discussed alongside
-<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>/etc/fstab.
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>-r or -ro
-<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>This will mount the filesystem as read-only.
-<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>-w or -rw
-<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>This will the mount filesystem as writable.
-<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>To unmount a filesystem, use the umount command, followed by the device name or the mount
-<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>point. Considering the example above, the commands below are interchangeable:
-<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a># umount /dev/sdb1
-<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a># umount ~/flash
-<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>464 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>
-<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>Some of the command line parameters to umount are:
-<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>-a
-<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>This will unmount all filesystems listed in /etc/fstab.
-<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>-f
-<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>This will force the unmounting of a filesystem. This may be useful if you mounted a remote
-<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>filesystem that has become unreachable.
-<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>-r
-<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>If the filesystem cannot be unmounted, this will try to make it read-only.
-<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>Dealing with Open Files
-<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>When unmounting a filesystem, you may encounter an error message stating that the target is
-<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>busy. This will happen if any files on the filesystem are open. However, it may not be immediately
-<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>obvious where an open file is located, or what is accessing the filesystem.
-<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>In such cases you may use the lsof command, followed by the name of the device containing the
-<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>filesystem, to see a list of processes accessing it and which files are open. For example:
-<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a># umount /dev/sdb1
-<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>umount: /media/carol/External_Drive: target is busy.
-<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a># lsof /dev/sdb1
-<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>COMMAND  PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>evince  3135 carol   16r   REG   8,17 21881768 5195 /media/carol/External_Drive/Documents/E-
-<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>Books/MagPi40.pdf
-<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>COMMAND is the name of the executable that opened the file, and PID is the process number. NAME
-<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>is the name of the file that is open. In the example above, the file MagPi40.pdf is opened by the
-<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>program evince (a PDF viewer). If we close the program, then we will be able to unmount the
-<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>filesystem.
-<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>NOTE
-<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>Before the lsof output appears GNOME users may see a warning message in the
-<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>terminal window.
-<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>lsof: WARNING: can't stat() fuse.gvfsd-fuse file system /run/user/1000/gvfs
-<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>Output information may be incomplete.
-<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 465
-<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>
-<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>lsof tries to process all mounted filesystems. This warning message is raised
-<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>because lsof has encountered a GNOME Virtual file system (GVFS). This is a special
-<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>case of a filesystem in user space (FUSE). It acts as a bridge between GNOME, its APIs
-<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>and the kernel. No one—not even root—can access one of these file systems, apart
-<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>from the owner who mounted it (in this case, GNOME). You can ignore this warning.
-<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>Where to Mount?
-<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>You can mount a filesystem anywhere you want. However, there are some good practices that
-<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>should be followed to make system administration easier.
-<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>Traditionally, /mnt was the directory under which all external devices would be mounted and a
-<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>number of pre-configured “anchor points” for common devices, like CD-ROM drives (/mnt/cdrom)
-<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>and floppy disks (/mnt/floppy) existed under it.
-<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>This has been superseded by /media, which is now the default mount point for any user-
-<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>removable media (e.g. external disks, USB flash drives, memory card readers, etc.) connected to
-<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>the system.
-<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>On most modern Linux distributions and desktop environments, removable devices are
-<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>automatically mounted under /media/USER/LABEL when connected to the system, where USER is
-<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>the username and LABEL is the device label. For example, a USB flash drive with the label
-<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>FlashDrive connected by the user john would be mounted under /media/john/FlashDrive/.
-<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>The way this is handled is different depending on the desktop environment.
-<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>That being said, whenever you need to manually mount a filesystem, it is good practice to mount it
-<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>under /mnt.
-<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>Mounting Filesystems on Bootup
-<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>The file /etc/fstab contains descriptions about the filesystems that can be mounted. This is a
-<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>text file, where each line describes a filesystem to be mounted, with six fields per line in the
-<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>following order:
-<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>FILESYSTEM MOUNTPOINT TYPE OPTIONS DUMP PASS
-<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>Where:
-<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>FILESYSTEM
-<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>The device containing the filesystem to be mounted. Instead of the device, you can specify the
-<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>UUID or label of the partition, something which we will discuss later on.
-<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>466 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>
-<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>MOUNTPOINT
-<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>Where the filesystem will be mounted.
-<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>TYPE
-<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>The filesystem type.
-<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>OPTIONS
-<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>Mount options that will be passed to mount.
-<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>DUMP
-<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>Indicates whether any ext2, ext3 or ext4 filesystems should be considered for backup by the
-<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>dump command. Usually it is zero, meaning they should be ignored.
-<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>PASS
-<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>When non-zero, defines the order in which the filesystems will be checked on bootup. Usually
-<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>it is zero.
-<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>For example, the first partition on the first disk of a machine could be described as:
-<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>/dev/sda1  /  ext4  noatime,errors
-<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>The mount options on OPTIONS are a comma-separated list of parameters, which can be generic
-<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>or filesystem specific. Among the generic ones we have:
-<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>atime and noatime
-<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>By default, every time a file is read the access time information is updated. Disabling this (with
-<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>noatime) can speed up disk I/O. Do not confuse this with the modification time, which is
-<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>updated every time a file is written to.
-<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>auto and noauto
-<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>Whether the filesystem can (or can not) be mounted automatically with mount -a.
-<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>defaults
-<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>This will pass the options rw, suid, dev, exec, auto, nouser and async to mount.
-<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>dev and nodev
-<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>Whether character or block devices in the mounted filesystem should be interpreted.
-<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>exec and noexec
-<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>Allow or deny permission to execute binaries on the filesystem.
-<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 467
-<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>
-<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>user and nouser
-<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>Allows (or not) an ordinary user to mount the filesystem.
-<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>group
-<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>Allows a user to mount the filesystem if the user belongs to the same group which owns the
-<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>device containing it.
-<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>owner
-<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>Allows a user to mount a filesystem if the user owns the device containing it.
-<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>suid and nosuid
-<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>Allow, or not, SETUID and SETGID bits to take effect.
-<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>ro and rw
-<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>Mount a filesystem as read-only or writable.
-<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>remount
-<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>This will attempt to remount an already mounted filesystem. This is not used on /etc/fstab,
-<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>but as a parameter to mount -o. For example, to remount the already mounted partition
-<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>/dev/sdb1 as read-only, you could use the command mount -o remount,ro /dev/sdb1.
-<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>When remounting, you do not need to specify the filesystem type, only the device name or the
-<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>mount point.
-<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>sync and async
-<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>Whether to do all I/O operations to the filesystem synchronously or asynchronously. async is
-<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>usually the default. The manual page for mount warns that using sync on media with a limited
-<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>number of write cycles (like flash drives or memory cards) may shorten the life span of the
-<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>device.
-<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>Using UUIDs and Labels
-<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>Specifying the name of the device containing the filesystem to mount may introduce some
-<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>problems. Sometimes the same device name may be assigned to another device depending on
-<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>when, or where, it was connected to your system. For example, a USB flash drive on /dev/sdb1
-<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>may be assigned to /dev/sdc1 if plugged on another port, or after another flash drive.
-<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>One way to avoid this is to specify the label or UUID (Universally Unique Identifier) of the volume.
-<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>Both are specified when the filesystem is created and will not change, unless the filesystem is
-<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>destroyed or manually assigned a new label or UUID.
-<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>The command lsblk can be used to query information about a filesystem and find out the label
-<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>468 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>
-<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>and UUID associated to it. To do this, use the -f parameter, followed by the device name:
-<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>$ lsblk -f /dev/sda1
-<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>NAME FSTYPE LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
-<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>sda1 ext4         6e2c12e3-472d-4bac-a257-c49ac07f3761   64,9G    33% /
-<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>Here is the meaning of each column:
-<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>NAME
-<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>Name of the device containing the filesystem.
-<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>FSTYPE
-<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>Filesystem type.
-<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>LABEL
-<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>Filesystem label.
-<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>UUID
-<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>Universally Unique Identifier (UUID) assigned to the filesystem.
-<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>FSAVAIL
-<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>How much space is available in the filesystem.
-<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>FSUSE%
-<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>Usage percentage of the filesystem.
-<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>MOUNTPOINT
-<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>Where the filesystem is mounted.
-<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>In /etc/fstab a device can be specified by its UUID with the UUID= option, followed by the UUID,
-<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>or with LABEL=, followed by the label. So, instead of:
-<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>/dev/sda1  /  ext4  noatime,errors
-<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>You would use:
-<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>UUID=6e2c12e3-472d-4bac-a257-c49ac07f3761  /  ext4  noatime,errors
-<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>Or, if you have a disk labeled homedisk:
-<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 469
-<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>
-<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>LABEL=homedisk  /home ext4  defaults
-<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>The same syntax can be used with the mount command. Instead of the device name, pass the UUID
-<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>or label. For example, to mount an external NTFS disk with the UUID 56C11DCC5D2E1334 on
-<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>/mnt/external, the command would be:
-<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>$ mount -t ntfs UUID=56C11DCC5D2E1334 /mnt/external
-<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>Mounting Disks with Systemd
-<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>Systemd is the init process, the first process to run on many Linux distributions. It is responsible
-<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>for spawning other processes, starting services and bootstraping the system. Among many other
-<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>tasks, systemd can also be used to manage the mounting (and automounting) of filesystems.
-<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>To use this feature of systemd, you need to create a configuration file called a mount unit. Each
-<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>volume to be mounted gets its own mount unit and they need to be placed in
-<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>/etc/systemd/system/.
-<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>Mount units are simple text files with the .mount extension. The basic format is shown below:
-<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>[Unit]
-<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>Description=
-<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>[Mount]
-<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>What=
-<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>Where=
-<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>Type=
-<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>Options=
-<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>[Install]
-<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>WantedBy=
-<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>Description=
-<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>Short description of the mount unit, something like Mounts the backup disk.
-<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>What=
-<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>What should be mounted. The volume must be specified as /dev/disk/by-uuid/VOL_UUID
-<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>where VOL_UUID is the UUID of the volume.
-<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>470 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>
-<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>Where=
-<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>Should be the full path to where the volume should be mounted.
-<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>Type=
-<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>The filesystem type.
-<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>Options=
-<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>Mount options that you may wish to pass, these are the same used with the mount command or
-<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>in /etc/fstab.
-<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>WantedBy=
-<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>Used for dependency management. In this case, we will use multi-user.target, which
-<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>means that whenever the system boots into a multi-user environment (a normal boot) the unit
-<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>will be mounted.
-<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>Our previous example of the external disk could be written as:
-<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>[Unit]
-<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>Description=External data disk
-<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>[Mount]
-<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>What=/dev/disk/by-uuid/56C11DCC5D2E1334
-<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>Where=/mnt/external
-<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>Type=ntfs
-<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>Options=defaults
-<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>[Install]
-<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>WantedBy=multi-user.target
-<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>But we are not done yet. To work correctly, the mount unit must have the same name as the
-<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a>mount point. In this case, the mount point is /mnt/external, so the file should be named mnt-
-<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>external.mount.
-<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>After that, you need to restart the systemd daemon with the systemctl command, and start the
-<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>unit:
-<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a># systemctl daemon-reload
-<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a># systemctl start mnt-external.mount
-<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a>Now the contents of the external disk should be available on /mnt/external. You can check the
-<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 471
-<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>
-<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a>status of the mounting with the command systemctl status mnt-external.mount, like
-<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>below:
-<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a># systemctl status mnt-external.mount
-<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a>● mnt-external.mount - External data disk
-<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>&nbsp;  Loaded: loaded (/etc/systemd/system/mnt-external.mount; disabled; vendor pres
-<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>&nbsp;  Active: active (mounted) since Mon 2019-08-19 22:27:02 -03; 14s ago
-<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a>&nbsp;   Where: /mnt/external
-<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>&nbsp;    What: /dev/sdb1
-<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>&nbsp;   Tasks: 0 (limit: 4915)
-<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>&nbsp;  Memory: 128.0K
-<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>&nbsp;  CGroup: /system.slice/mnt-external.mount
-<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>ago 19 22:27:02 pop-os systemd[1]: Mounting External data disk...
-<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>ago 19 22:27:02 pop-os systemd[1]: Mounted External data disk.
-<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>The systemctl start mnt-external.mount command will only enable the unit for the current
-<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>session. If you want to enable it on every boot, replace start with enable:
-<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a># systemctl enable mnt-external.mount
-<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>Automounting a Mount Unit
-<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>Mount units can be automounted whenever the mount point is accessed. To do this, you need an
-<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a>.automount file, alongside the .mount file describing the unit. The basic format is:
-<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>[Unit]
-<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>Description=
-<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>[Automount]
-<a id="__codelineno-0-340" name="__codelineno-0-340" href="#__codelineno-0-340"></a>Where=
-<a id="__codelineno-0-341" name="__codelineno-0-341" href="#__codelineno-0-341"></a>[Install]
-<a id="__codelineno-0-342" name="__codelineno-0-342" href="#__codelineno-0-342"></a>WantedBy=multi-user.target
-<a id="__codelineno-0-343" name="__codelineno-0-343" href="#__codelineno-0-343"></a>Like before, Description= is a short description of the file, and Where= is the mountpoint. For
-<a id="__codelineno-0-344" name="__codelineno-0-344" href="#__codelineno-0-344"></a>example, an .automount file for our previous example would be:
-<a id="__codelineno-0-345" name="__codelineno-0-345" href="#__codelineno-0-345"></a>[Unit]
-<a id="__codelineno-0-346" name="__codelineno-0-346" href="#__codelineno-0-346"></a>Description=Automount for the external data disk
-<a id="__codelineno-0-347" name="__codelineno-0-347" href="#__codelineno-0-347"></a>472 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-348" name="__codelineno-0-348" href="#__codelineno-0-348"></a>
-<a id="__codelineno-0-349" name="__codelineno-0-349" href="#__codelineno-0-349"></a>[Automount]
-<a id="__codelineno-0-350" name="__codelineno-0-350" href="#__codelineno-0-350"></a>Where=/mnt/external
-<a id="__codelineno-0-351" name="__codelineno-0-351" href="#__codelineno-0-351"></a>[Install]
-<a id="__codelineno-0-352" name="__codelineno-0-352" href="#__codelineno-0-352"></a>WantedBy=multi-user.target
-<a id="__codelineno-0-353" name="__codelineno-0-353" href="#__codelineno-0-353"></a>Save the file with the same name as the mount point (in this case, mnt-external.automount),
-<a id="__codelineno-0-354" name="__codelineno-0-354" href="#__codelineno-0-354"></a>reload systemd and start the unit:
-<a id="__codelineno-0-355" name="__codelineno-0-355" href="#__codelineno-0-355"></a># systemctl daemon-reload
-<a id="__codelineno-0-356" name="__codelineno-0-356" href="#__codelineno-0-356"></a># systemctl start mnt-external.automount
-<a id="__codelineno-0-357" name="__codelineno-0-357" href="#__codelineno-0-357"></a>Now whenever the /mnt/external directory is accessed, the disk will be mounted. Like before, to
-<a id="__codelineno-0-358" name="__codelineno-0-358" href="#__codelineno-0-358"></a>enable the automount on every boot you would use:
-<a id="__codelineno-0-359" name="__codelineno-0-359" href="#__codelineno-0-359"></a># systemctl enable mnt-external.automount
-<a id="__codelineno-0-360" name="__codelineno-0-360" href="#__codelineno-0-360"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 473
-</code></pre></div>
-<hr>
-<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
-<h3 id="bang-lenh-trong-tam-key-command-reference">💡 Bảng Lệnh Trọng Tâm (Key Command Reference)<a class="headerlink" href="#bang-lenh-trong-tam-key-command-reference" title="Permanent link">¶</a></h3>
+<h2 id="3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference">3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)<a class="headerlink" href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Lệnh / File / Folder</th>
-<th style="text-align: left;">Chức năng chính</th>
-<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+<th style="text-align: left;">Câu lệnh</th>
+<th style="text-align: left;">Tham số (Options/Flags)</th>
+<th style="text-align: left;">Giải thích ý nghĩa chi tiết</th>
+<th style="text-align: left;">Ví dụ thực tế trong DevOps</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>command / path</code></td>
-<td style="text-align: left;">Tra cứu &amp; kiểm tra cấu hình</td>
-<td style="text-align: left;">Quản trị Server Linux, Cloud EC2, Docker Container</td>
+<td style="text-align: left;"><strong><code>mount</code></strong></td>
+<td style="text-align: left;"><code>Gắn phân đĩa vào một thư mục</code></td>
+<td style="text-align: left;">-t, -o</td>
+<td style="text-align: left;"><code>sudo mount /dev/sdb1 /mnt/data</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>/etc/</code></td>
-<td style="text-align: left;">Thư mục chứa cấu hình hệ thống</td>
-<td style="text-align: left;">Quản lý cấu hình bằng Ansible, Terraform, Puppet</td>
+<td style="text-align: left;"><strong><code>umount</code></strong></td>
+<td style="text-align: left;"><code>Tháo gắn phân đĩa an toàn</code></td>
+<td style="text-align: left;">Path</td>
+<td style="text-align: left;"><code>sudo umount /mnt/data</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>systemctl / journalctl</code></td>
-<td style="text-align: left;">Quản lý Service &amp; Xem Log tiến trình</td>
-<td style="text-align: left;">Debug ứng dụng microservices trên Linux Server</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>grep / sed / awk</code></td>
-<td style="text-align: left;">Xử lý &amp; Lọc luồng dữ liệu text</td>
-<td style="text-align: left;">Viết Bash script tự động hóa CI/CD Pipelines</td>
+<td style="text-align: left;"><strong><code>blkid</code></strong></td>
+<td style="text-align: left;"><code>Xem mã định danh UUID của các phân đĩa</code></td>
+<td style="text-align: left;">Không</td>
+<td style="text-align: left;"><code>sudo blkid</code></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
-<p>Guided Exercises
-1. Using mount, how can you mount an ext4 filesystem on /dev/sdc1 to /mnt/external as
-read-only, using the noatime and async options?
-2. When unmounting a filesystem at /dev/sdd2, you get the target is busy error message.
-How can you find out which files on the filesystem are open, and what processes opened them?
-3. Consider 
-the 
-following 
-entry 
-in 
-/etc/fstab: 
-/dev/sdb1 
-/data 
-ext4
-noatime,noauto,async. Will this filesystem be mounted if the command mount -a is issued?
-Why?
-4. How can you find out the UUID of a filesystem under /dev/sdb1?
-5. How can you use mount to remount as read-only an exFAT filesystem with the UUID
-6e2c12e3-472d-4bac-a257-c49ac07f3761, mounted at /mnt/data?
-6. How can you get a list of all ext3 and ntfs filesystems currently mounted on a system?
-474 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Explorational Exercises
-1. Consider 
-the 
-following 
-entry 
-in 
-/etc/fstab: 
-/dev/sdc1 
-/backup 
-ext4
-noatime,nouser,async. Can a user mount this filesystem with the command mount
-/backup? Why?
-2. Consider a remote filesystem mounted at /mnt/server, which has become unreachable due to
-a loss of network connectivity. How could you force it to be unmounted, or mounted as read-
-only if this is not possible?
-3. Write an /etc/fstab entry that would mount a btrfs volume with the label Backup on
-/mnt/backup, with default options and without allowing the execution of binaries from it.
-4. Consider the following systemd mount unit:
-[Unit]
-Description=External data disk
-[Mount]
-What=/dev/disk/by-uuid/56C11DCC5D2E1334
-Where=/mnt/external
-Type=ntfs
-Options=defaults
-[Install]
-WantedBy=multi-user.target
-◦What would be an equivalent /etc/fstab entry for this filesystem?
-5. What should be the file name for the unit above, so it can be used by systemd? Where should it
-be placed?
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 475</p>
-<p>Summary
-In this lesson, you learned how to mount and unmount filesystems, manually or automatically.
-Some of the commands and concepts explained were:
-• mount (mounts a device to a location)
-• umount (unmounts a device)
-• lsof (lists the processes accessing a filesystem)
-• /mnt and /media directories
-• /etc/fstab
-• lsblk (lists the type and UUID of a filesystem)
-• How to mount a filesystem using its UUID or label.
-• How to mount a filesystem using systemd mount units.
-• How to automount a filesystem using systemd mount units.
-476 &nbsp;&nbsp;&nbsp; |</p>
+<h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
+<h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Thêm vào /etc/fstab:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">UUID</span><span class="o">=</span>a1b2c3d4-xxxx<span class="w">  </span>/data<span class="w">  </span>ext4<span class="w">  </span>defaults<span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">2</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Test mount:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-a
+</code></pre></div>
+<h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
+<p>Mount đĩa EBS AWS:
+sudo mount -a</p>
 <hr>
-<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
-<p>Answers to Guided Exercises
-1. Using mount, how can you mount an ext4 filesystem on /dev/sdc1 to /mnt/external as
-read-only, using the noatime and async options?</p>
-<h1 id="mount-t-ext4-o-noatimeasyncro-devsdc1-mntexternal">mount -t ext4 -o noatime,async,ro /dev/sdc1 /mnt/external<a class="headerlink" href="#mount-t-ext4-o-noatimeasyncro-devsdc1-mntexternal" title="Permanent link">¶</a></h1>
-<ol>
-<li>When unmounting a filesystem at /dev/sdd2, you get the target is busy error message.
-How can you find out which files on the filesystem are open, and what processes opened them?
-Use lsof followed by the device name:
-$ lsof /dev/sdd2</li>
-<li>Consider 
-the 
-following 
-entry 
-in 
-/etc/fstab: 
-/dev/sdb1 
-/data 
-ext4
-noatime,noauto,async. Will this filesystem be mounted if the command mount -a is issued?
-Why?
-It will not be mounted. The key is the noauto parameter, which means this entry be ignored by
-mount -a.</li>
-<li>How can you find out the UUID of a filesystem under /dev/sdb1?
-Use lsblk -f, followed by the filesystem name:
-$ lsblk -f /dev/sdb1</li>
-<li>How can you use mount to remount as read-only an exFAT filesystem with the UUID
-6e2c12e3-472d-4bac-a257-c49ac07f3761, mounted at /mnt/data?
-Since the filesystem is mounted, you do not need to worry about the filesystem type or the ID,
-just use the remount option with the ro (read-only) parameter and the mount point:</li>
-</ol>
-<h1 id="mount-o-remountro-mntdata">mount -o remount,ro /mnt/data<a class="headerlink" href="#mount-o-remountro-mntdata" title="Permanent link">¶</a></h1>
-<ol>
-<li>How can you get a list of all ext3 and ntfs filesystems currently mounted on a system?
-Use mount -t, followed by a comma-separated list of filesystems:
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 477</li>
-</ol>
-<h1 id="mount-t-ext3ntfs">mount -t ext3,ntfs<a class="headerlink" href="#mount-t-ext3ntfs" title="Permanent link">¶</a></h1>
-<p>478 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Answers to Explorational Exercises
-1. Consider 
-the 
-following 
-entry 
-in 
-/etc/fstab: 
-/dev/sdc1 
-/backup 
-ext4
-noatime,nouser,async. Can a user mount this filesystem with the command mount
-/backup? Why?
-No, the parameter nouser will not allow ordinary users to mount this filesystem.
-2. Consider a remote filesystem mounted at /mnt/server, which has become unreachable due to
-a loss of network connectivity. How could you force it to be unmounted, or mounted as read-
-only if this is not possible?
-Pass the -f and -r parameters to unmount. The command would be umount -f -r
-/mnt/server. Remember that you can group parameters, so umount -fr /mnt/server
-would also work.
-3. Write an /etc/fstab entry that would mount an btrfs volume with the label Backup on
-/mnt/backup, with default options and without allowing the execution of binaries from it.
-The line should be LABEL=Backup /mnt/backup btrfs defaults,noexec
-4. Consider the following systemd mount unit:
-[Unit]
-Description=External data disk
-[Mount]
-What=/dev/disk/by-uuid/56C11DCC5D2E1334
-Where=/mnt/external
-Type=ntfs
-Options=defaults
-[Install]
-WantedBy=multi-user.target
-◦What would be an equivalent /etc/fstab entry for this filesystem?
-The entry would be: UUID=56C11DCC5D2E1334 /mnt/external ntfs defaults
-5. What should be the file name for the unit above, so it can be used by systemd? Where should it
-be placed?
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 479</p>
-<p>The filename must be the same as the mount point, so mnt-external.mount, placed in
-/etc/systemd/system.
-480 &nbsp;&nbsp;&nbsp; |</p>
+<h2 id="5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa">5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)<a class="headerlink" href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>Q: File nào chứa cấu hình mount phân đĩa tự động khi khởi động hệ thống?</strong><br>
+<strong>A</strong>: File <code>/etc/fstab</code>.</p>
+<p><strong>Q: Tại sao nên dùng UUID trong /etc/fstab?</strong><br>
+<strong>A</strong>: Vì UUID là mã duy nhất không thay đổi khi thêm bớt đĩa.</p>
+</blockquote>
 <hr>
-<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
-<ol>
-<li>Ghi nhớ cú pháp câu lệnh và ý nghĩa từng tùy chọn (flag/option).</li>
-<li>Hiểu rõ vị trí các file cấu hình quan trọng trong hệ thống Linux.</li>
-<li>Luôn kiểm tra log bằng <code>journalctl</code> hoặc tệp log tương ứng khi gặp sự cố.</li>
-</ol>
+<h2 id="6-cheat-sheet-ghi-nho-nhanh-summary">6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)<a class="headerlink" href="#6-cheat-sheet-ghi-nho-nhanh-summary" title="Permanent link">¶</a></h2>
+<ul>
+<li>[x] mount /dev/sdX /dir: Gắn đĩa vào thư mục</li>
+<li>[x] blkid: Lấy mã UUID đĩa</li>
+<li>[x] /etc/fstab: Cấu hình mount tự động khi boot</li>
+</ul>
 
 
 
@@ -3376,7 +3006,7 @@ be placed?
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:22:33 UTC">4 tháng 8, 2026</span>
   </span>
 
     
@@ -3449,7 +3079,7 @@ be placed?
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../104.2-maintain-the-integrity-of-filesystems/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 104.2: Duy trì Tính Toàn vẹn Filesystem (fsck, df, du)">
+          <a href="../104.2-maintain-the-integrity-of-filesystems/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🐧 Objective 104.2: Kiểm Tra Dung Lượng &amp;amp; Sửa Lỗi Filesystem - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3459,20 +3089,20 @@ be placed?
                 Trước
               </span>
               <div class="md-ellipsis">
-                Objective 104.2: Duy trì Tính Toàn vẹn Filesystem (fsck, df, du)
+                🐧 Objective 104.2: Kiểm Tra Dung Lượng &amp; Sửa Lỗi Filesystem - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
           </a>
         
         
           
-          <a href="../104.5-manage-file-permissions-and-ownership/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 104.5: Quản lý Quyền File &amp;amp; Owner (chmod, chown, umask)">
+          <a href="../104.5-manage-file-permissions-and-ownership/" class="md-footer__link md-footer__link--next" aria-label="Sau: 🐧 Objective 104.5: Quản Lý Quyền File &amp;amp; Owner (chmod, chown, umask) - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Objective 104.5: Quản lý Quyền File &amp; Owner (chmod, chown, umask)
+                🐧 Objective 104.5: Quản Lý Quyền File &amp; Owner (chmod, chown, umask) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
             <div class="md-footer__button md-icon">

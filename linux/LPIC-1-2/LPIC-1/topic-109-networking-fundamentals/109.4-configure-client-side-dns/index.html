@@ -22,7 +22,7 @@
     
     
       
-        <title>Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved) - DraDoc</title>
+        <title>🐧 Objective 109.4: Cấu Hình Phân Giải Tên Miền DNS Khách (/etc/resolv.conf &amp; dig) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#objective-1094-cau-hinh-dns-khach-etcresolvconf-systemd-resolved" class="md-skip">
+        <a href="#objective-1094-cau-hinh-phan-giai-ten-mien-dns-khach-etcresolvconf-dig-ban-chat-he-thong-thuc-chien-devops" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved)
+              🐧 Objective 109.4: Cấu Hình Phân Giải Tên Miền DNS Khách (/etc/resolv.conf &amp; dig) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
             
           </span>
         </div>
@@ -456,8 +456,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-tabs__link">
           
   
   
@@ -467,6 +474,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -1100,6 +1110,8 @@
   
     
     
+      
+        
       
         
       
@@ -1842,7 +1854,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.1: Căn bản Giao thức Internet Protocol (IPv4, IPv6, Subnetting)
+    🐧 Objective 109.1: Căn Bản Mạng Mát Tính, IP &amp; Ports Cho DevOps - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1870,7 +1882,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli)
+    🐧 Objective 109.2: Cấu Hình Mạng Cố Định (Netplan &amp; NetworkManager) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1898,7 +1910,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.3: Chẩn đoán &amp; Debug Sự cố Mạng (ping, traceroute, ss, netstat, tcpdump)
+    🐧 Objective 109.3: Chẩn Đoán &amp; Debug Sự Cố Mạng (ss, nc, tcpdump) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1935,7 +1947,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved)
+    🐧 Objective 109.4: Cấu Hình Phân Giải Tên Miền DNS Khách (/etc/resolv.conf &amp; dig) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1953,7 +1965,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved)
+    🐧 Objective 109.4: Cấu Hình Phân Giải Tên Miền DNS Khách (/etc/resolv.conf &amp; dig) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1979,22 +1991,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-name-resolution-order-nss-switch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Name Resolution Order (NSS Switch)
       
     </span>
   </a>
@@ -2007,10 +2030,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -2018,10 +2041,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -2029,10 +2091,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -2120,6 +2182,70 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../LPIC-2/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 2
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -2221,8 +2347,6 @@
       
         
       
-        
-      
     
     
     
@@ -2243,7 +2367,11 @@
   
   
   
-    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-nav__link">
       
   
   
@@ -2262,6 +2390,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -2591,22 +2721,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-name-resolution-order-nss-switch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Name Resolution Order (NSS Switch)
       
     </span>
   </a>
@@ -2619,10 +2760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -2630,10 +2771,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -2641,10 +2821,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -2676,507 +2856,71 @@
   
 
 
-<h1 id="objective-1094-cau-hinh-dns-khach-etcresolvconf-systemd-resolved">Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved)<a class="headerlink" href="#objective-1094-cau-hinh-dns-khach-etcresolvconf-systemd-resolved" title="Permanent link">¶</a></h1>
+<h1 id="objective-1094-cau-hinh-phan-giai-ten-mien-dns-khach-etcresolvconf-dig-ban-chat-he-thong-thuc-chien-devops">🐧 Objective 109.4: Cấu Hình Phân Giải Tên Miền DNS Khách (/etc/resolv.conf &amp; dig) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps<a class="headerlink" href="#objective-1094-cau-hinh-phan-giai-ten-mien-dns-khach-etcresolvconf-dig-ban-chat-he-thong-thuc-chien-devops" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 102-500 Version 5.0)</strong><br>
-📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 472 - 488)<br>
-🎯 <strong>Mục tiêu</strong>: Nắm vững kỹ năng Shell Scripting, Quản trị Hệ thống, Mạng và Bảo mật Linux cho DevOps.</p>
+<p>💡 <strong>Bản chất 1 câu</strong>: Cấu hình DNS Server trong <code>/etc/resolv.conf</code>, map IP thủ công trong <code>/etc/hosts</code> và tra cứu bản ghi DNS bằng <code>dig</code>.<br>
+🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: File /etc/resolv.conf (nameserver 8.8.8.8), file /etc/hosts (IP mapping), lệnh dig (dig A, dig MX).</p>
 </blockquote>
 <hr>
-<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
-<p>Bài học này cung cấp kiến thức thực chiến sâu sắc về <strong>Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved)</strong>.</p>
-<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
-<ul>
-<li>Nắm chắc cơ chế hoạt động của Linux trong môi trường Production/DevOps.</li>
-<li>Sử dụng thành thạo câu lệnh Terminal, biến môi trường và cấu hình hệ thống.</li>
-<li>Viết và tối ưu script tự động hóa công việc.</li>
-<li>Quản trị bảo mật, mạng, phân quyền và giám sát dịch vụ Linux Server.</li>
-</ul>
+<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
+<p><code>/etc/hosts</code> như cuốn danh bạ cá nhân (được ưu tiên tra cứu đầu tiên). <code>/etc/resolv.conf</code> như tổng đài 1080 DNS (nếu danh bạ cá nhân không có thì gọi tổng đài hỏi).</p>
 <hr>
-<h2 id="2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500">📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>109.4 Configure client side DNS
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 version 5.0, Exam 102, Objective 109.4
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>2
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Query remote DNS servers.
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Configure local name resolution and use remote DNS servers.
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Modify the order in which name resolution is done.
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>• Debug errors related to name resolution.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• Awareness of systemd-resolved
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Partial list of the used files, terms and utilities
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• /etc/hosts
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• /etc/resolv.conf
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• /etc/nsswitch.conf
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• host
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• dig
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• getent
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>462 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>109.4 Lesson 1
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>Certificate:
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>LPIC-1
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>Version:
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>5.0
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>Topic:
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>109 Networking Fundamentals
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Objective:
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>109.4 Configure client side DNS
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>Lesson:
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>1 of 1
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>Introduction
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>This lesson covers configuring client side name resolution and how to use a few CLI name
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>resolution tools.
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>Remembering and maintaining IP addresses, UIDs, and GIDs, and other numbers for everything
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>isn’t feasible. Name resolution services translate easy to remember names to numbers and vice
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>versa. This lesson focuses on host name resolution, but a similar process happens for user names,
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>group names, port numbers, and several others.
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>Name Resolution Process
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Programs that resolve names to numbers almost always use functions provided by the standard C
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>library, which on Linux systems is the GNU project’s glibc. The first things these functions do is
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>read the file /etc/nsswitch.conf for instructions on how to resolve that type of name. This
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>lesson is focused on host name resolution, but the same process applies to other types of name
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>resolution as well. Once the process reads /etc/nsswitch.conf, it looks up the name in the
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>manner specified. Since /etc/nsswitch.conf supports plugins, what comes next could be
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>anything. After the function is done looking up the name or number, it returns the result to the
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 463
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>calling process.
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>DNS Classes
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>DNS has three record classes, IN, HS, and CH. In this lesson, all DNS queries will be of type IN. The
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>IN class is for internet addresses using the TCP/IP stack. CH is for ChaosNet, which is a network
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>technology that was short lived and is no longer in use. The HS class is for Hesiod. Hesiod is a way
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>to store things like passwd and group entries in DNS. Hesiod is beyond the scope of this lesson.
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>Understanding /etc/nsswitch.conf
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>The best way to learn about this file is to read the man page that is part of the Linux man-pages
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>project. It is available on most systems. It can be accessed with the command man
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>nsswitch.conf. 
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>Alternatively, 
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>it 
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>can 
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>be 
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>found 
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>at 
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>https://man7.org/linux/man-pages/
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>dir_section_5.html
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>Below is a simple example of /etc/nsswitch.conf from its man page:
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>&nbsp;          passwd:         compat
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>&nbsp;          group:          compat
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>&nbsp;          shadow:         compat
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>&nbsp;          hosts:          dns [!UNAVAIL=return] files
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>&nbsp;          networks:       nis [NOTFOUND=return] files
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>&nbsp;          ethers:         nis [NOTFOUND=return] files
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>&nbsp;          protocols:      nis [NOTFOUND=return] files
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>&nbsp;          rpc:            nis [NOTFOUND=return] files
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>&nbsp;          services:       nis [NOTFOUND=return] files
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>&nbsp;          # This is a comment. It is ignored by the resolution functions.
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>The file is organized into columns. The far left column is the type of name database. The rest of
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>the columns are the methods the resolution functions should use to lookup a name. The methods
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>are followed by the functions from left to right. Columns with [] are used to provide some limited
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>conditional logic to the column immediately to the left of it.
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>appropriate C library call (most likely gethostbyname). This function will then read
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>/etc/nsswitch.conf. Since the process is looking up a host name, it will find the line starting
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>with hosts. It would then attempt to use DNS to resolve the name. The next column,
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>[!UNAVAIL=return] means that if the service is not unavailable, then do not try the next source,
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>i.e., if DNS is available, stop trying to resolve the host name even if the name servers are unable to.
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>464 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>
-<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>If DNS is unavailable, then continue on to the next source. In this case, the next source is files.
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>When you see a column in the format [result=action], it means that when a resolver lookup of
-<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>the column to the left of it is result, then action is performed. If result is preceded with a !, it
-<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>means if the result is not result, then perform action. For descriptions of the possible results
-<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>and actions, see the man page.
-<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>Now suppose a process is trying to resolve a port number to a service name. It would read the
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>services line. The first source listed is NIS. NIS stands for Network Information Service (it is
-<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>sometimes referred to as yellow pages). It is an old service that allowed central management of
-<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>things such as users. It is rarely used anymore due to its weak security. The next column
-<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>[NOTFOUND=return] means that if the lookup succeeded but the service was not found to stop
-<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>looking. If the aforementioned condition does not apply, use local files.
-<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>Anything to the right of # is a comment and ignored.
-<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>The /etc/resolv.conf File
-<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>The file /etc/resolv.conf is used to configure host resolution via DNS. Some distributions have
-<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>startup scripts, daemons, and other tools that write to this file. Keep this in mind when manually
-<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>editing this file. Check your distribution and any network configuration tools documentation if
-<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>this is the case. Some tools, such as Network Manager will leave a comment in the file letting you
-<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>know that manual changes will be overwritten.
-<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>As with /etc/nsswitch.conf, there is a man page associated with the file. It can be accessed
-<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>with 
-<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>the 
-<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>command 
-<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>man 
-<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>resolv.conf 
-<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>or 
-<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>at 
-<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>https://man7.org/linux/man-pages/man5/
-<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>resolv.conf.5.html.
-<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>The file format is rather straight forward. In the far left column, you have the option name. The
-<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>rest of the columns on the same line are the option’s value.
-<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>The most common option is the nameserver option. It is used to specify the IPv4 or IPv6 address
-<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>of a DNS server. As of the date of this writing, you can specify up to three name servers. If your
-<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>/etc/resolv.conf does not have a nameserver option, your system will by default use the
-<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>name server on the local machine.
-<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>Below is a simple example file that is representative of common configurations:
-<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>search lpi.org
-<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>nameserver 10.0.0.53
-<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>nameserver fd00:ffff::2:53
-<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 465
-<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>
-<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>The search option is used to allow short form searches. In the example, a single search domain of
-<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>lpi.org is configured. This means that any attempt to resolve a host name without a domain
-<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>portion will have .lpi.org appended before the search. For example, if you were to try to search
-<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>to six search domains configured.
-<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>Another common option is the domain option. This is used to set your local domain name. If this
-<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>option is missing, this defaults to everything after the first . in the machine’s host name. If the
-<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>host name does not contain a ., it is assumed that the machine is part of the root domain. Like
-<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>search, domain can be used for short name searches.
-<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>Keep in mind that domain and search are mutually exclusive. If both are present, the last
-<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>instance in the file is used.
-<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>There are several options that can be set to affect the behavior of the resolver. To set these, use the
-<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>options keyword, followed by the name of the option to set, and if applicable, a : followed by the
-<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>value. Below is an example of setting the timeout option, which is the length of time in seconds the
-<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>resolver will wait for a name server before giving up:
-<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>option timeout:3
-<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>There are other options to resolv.conf, but these are the most common.
-<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>The /etc/hosts File
-<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>The file /etc/hosts is used to resolve names to IP addresses and vice versa. Both IPv4 and IPv6
-<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>are supported. The left column is the IP address, the rest are names associated with that address.
-<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>The most common use for /etc/hosts is for hosts and addresses where DNS is not possible, such
-<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>as loop back addresses. In the example below, IP addresses of critical infrastructure components
-<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>are defined.
-<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>Here is a realistic example of an /etc/hosts file:
-<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>127.0.0.1       localhost
-<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>127.0.1.1       proxy
-<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>::1             localhost ip6-localhost ip6-loopback
-<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>ff02::1         ip6-allnodes
-<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>ff02::2         ip6-allrouters
-<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>10.0.0.1        gateway.lpi.org gateway gw
-<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>fd00:ffff::1    gateway.lpi.org gateway gw
-<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>466 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>
-<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>10.0.1.53       dns1.lpi.org
-<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>fd00:ffff::1:53 dns1.lpi.org
-<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>10.0.2.53       dns2.lpi.org
-<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>fd00:ffff::2:53 dns2.lpi.org
-<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>systemd-resolved
-<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>Systemd provides a service called systemd-resolved. It provides mDNS, DNS, and LLMNR. When
-<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>it is running, it listens for DNS requests on 127.0.0.53. It does not provide a full fledged DNS
-<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>server. Any DNS requests it receives are looked up by querying servers configured in
-<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>/etc/systemd/resolv.conf or /etc/resolv.conf. If you wish to use this, use resolve for
-<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>hosts in /etc/nsswitch.conf. Keep in mind that the OS package that has the systemd-
-<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>resolved library may not be installed by default.
-<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>Name Resolution Tools
-<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>There are many tools available to Linux users for name resolution. This lesson covers three. One,
-<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>getent, is useful for seeing how real world requests will resolve. Another command is host,
-<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>which is useful for simple DNS queries. A program called dig is useful for complex DNS
-<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>operations that can aid with troubleshooting DNS server problems.
-<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>The getent Command
-<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>The getent utility is used to display entries from name service databases. It can retrieve records
-<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>from any source configurable by /etc/nsswitch.conf.
-<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>To use getent, follow the command with the type of name you wish to resolve and optionally a
-<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>specific entry to lookup. If you only specify the type of name, getent will attempt to display all
-<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>entries of that data type:
-<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>$ getent hosts
-<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>127.0.0.1       localhost
-<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>127.0.1.1       proxy
-<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>10.0.1.53       dns1.lpi.org
-<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>10.0.2.53       dns2.lpi.org
-<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>127.0.0.1       localhost ip6-localhost ip6-loopback
-<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>$ getent hosts dns1.lpi.org
-<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>fd00:ffff::1:53 dns1.lpi.org
-<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 467
-<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>
-<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>Starting with glibc version 2.2.5, you can force getent to use a specific data source with the -s
-<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>option. The example below demonstrates this:
-<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>The host Command
-<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a>host is a simple program for looking up DNS entries. With no options, if host is given a name, it
-<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>returns the A, AAAA, and MX record sets. If given an IPv4 or IPv6 address, it outputs the PTR
-<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>record if one is available:
-<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>$ host wikipedia.org
-<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>wikipedia.org has address 208.80.154.224
-<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>wikipedia.org has IPv6 address 2620:0:861:ed1a::1
-<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>wikipedia.org mail is handled by 10 mx1001.wikimedia.org.
-<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>wikipedia.org mail is handled by 50 mx2001.wikimedia.org.
-<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>$ host 208.80.154.224
-<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>224.154.80.208.in-addr.arpa domain name pointer text-lb.eqiad.wikimedia.org.
-<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>If you are looking for a specific record type, you can use host -t:
-<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>$ host -t NS lpi.org
-<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>lpi.org name server dns1.easydns.com.
-<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>lpi.org name server dns3.easydns.ca.
-<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>lpi.org name server dns2.easydns.net.
-<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>$ host -t SOA lpi.org
-<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>lpi.org has SOA record dns1.easydns.com. zone.easydns.com. 1593109612 3600 600 1209600 300
-<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>host can also be used to query a specific name server if you do not wish to use the ones in
-<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>/etc/resolv.conf. Simply add the IP address or host name of the server you wish to use as the
-<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>last argument:
-<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>$ host -t MX lpi.org dns1.easydns.com
-<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>Using domain server:
-<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>Name: dns1.easydns.com
-<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>Address: 64.68.192.10#53
-<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>Aliases:
-<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>468 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>
-<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>lpi.org mail is handled by 10 aspmx4.googlemail.com.
-<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>lpi.org mail is handled by 10 aspmx2.googlemail.com.
-<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>lpi.org mail is handled by 5 alt1.aspmx.l.google.com.
-<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>lpi.org mail is handled by 0 aspmx.l.google.com.
-<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>lpi.org mail is handled by 10 aspmx5.googlemail.com.
-<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>lpi.org mail is handled by 10 aspmx3.googlemail.com.
-<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>lpi.org mail is handled by 5 alt2.aspmx.l.google.com.
-<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>The dig Command
-<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>Another tool for querying DNS servers is dig. This command is much more verbose than host. By
-<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>default, dig queries for A records. It is probably too verbose for simply looking up an IP address
-<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>or host name. dig will work for simple lookups, but it is more suited for troubleshooting DNS
-<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>server configuration:
-<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>;; global options: +cmd
-<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>;; Got answer:
-<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 63004
-<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 5
-<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>;; OPT PSEUDOSECTION:
-<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>; EDNS: version: 0, flags:; udp: 4096
-<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>; COOKIE: ca7a415be1cec45592b082665ef87f3483b81ddd61063c30 (good)
-<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>;; QUESTION SECTION:
-<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>;; ANSWER SECTION:
-<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>;; AUTHORITY SECTION:
-<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>lpi.org.        86400   IN  NS  dns2.easydns.net.
-<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>lpi.org.        86400   IN  NS  dns1.easydns.com.
-<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>lpi.org.        86400   IN  NS  dns3.easydns.ca.
-<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>;; ADDITIONAL SECTION:
-<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>dns1.easydns.com.   172682  IN  A   64.68.192.10
-<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>dns2.easydns.net.   170226  IN  A   198.41.222.254
-<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>dns1.easydns.com.   172682  IN  AAAA    2400:cb00:2049:1::a29f:1835
-<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>dns2.easydns.net.   170226  IN  AAAA    2400:cb00:2049:1::c629:defe
-<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 469
-<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>
-<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>;; Query time: 135 msec
-<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a>;; SERVER: 192.168.1.20#53(192.168.1.20)
-<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>;; WHEN: Sun Jun 28 07:29:56 EDT 2020
-<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>;; MSG SIZE  rcvd: 266
-<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>As you can see, dig provides a lot of information. The output is divided into sections. The first
-<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>section displays information about the version of dig installed and the query sent, along with any
-<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>options used for the command. Next it shows information about the query and the response.
-<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>The next section shows information about EDNS extensions used and the query. In the example,
-<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>The next section shows the result of the query. The number in the second column is the TTL of the
-<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>resource in seconds.
-<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>The rest of the output provides information about the domain’s name servers, including the NS
-<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>records for the server along with the A and AAAA records of the servers in the domain’s NS
-<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>record.
-<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>Like host, you can specify a record type with the -t option:
-<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>$ dig -t SOA lpi.org
-<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1+deb10u1-Debian &lt;&lt;&gt;&gt; -t SOA lpi.org
-<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>;; global options: +cmd
-<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>;; Got answer:
-<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 16695
-<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 6
-<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>;; OPT PSEUDOSECTION:
-<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>; EDNS: version: 0, flags:; udp: 4096
-<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>; COOKIE: 185c67140a63baf46c4493215ef8906f7bfbe15bdca3b01a (good)
-<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>;; QUESTION SECTION:
-<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>;lpi.org.           IN  SOA
-<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>;; ANSWER SECTION:
-<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>lpi.org.        600 IN  SOA dns1.easydns.com. zone.easydns.com. 1593109612 3600 600 1209600
-<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>300
-<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>;; AUTHORITY SECTION:
-<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>lpi.org.        81989   IN  NS  dns1.easydns.com.
-<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>lpi.org.        81989   IN  NS  dns2.easydns.net.
-<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>470 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>
-<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>lpi.org.        81989   IN  NS  dns3.easydns.ca.
-<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>;; ADDITIONAL SECTION:
-<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>dns1.easydns.com.   168271  IN  A   64.68.192.10
-<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>dns2.easydns.net.   165815  IN  A   198.41.222.254
-<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>dns3.easydns.ca.    107 IN  A   64.68.196.10
-<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>dns1.easydns.com.   168271  IN  AAAA    2400:cb00:2049:1::a29f:1835
-<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>dns2.easydns.net.   165815  IN  AAAA    2400:cb00:2049:1::c629:defe
-<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>;; Query time: 94 msec
-<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>;; SERVER: 192.168.1.20#53(192.168.1.20)
-<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>;; WHEN: Sun Jun 28 08:43:27 EDT 2020
-<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>;; MSG SIZE  rcvd: 298
-<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>Dig has many options to fine tune both the output and query sent to the server. These options
-<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>begin with +. One option is the short option, which suppresses all output except the result:
-<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>$ dig +short lpi.org
-<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>65.39.134.165
-<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>$ dig +short -t SOA lpi.org
-<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>dns1.easydns.com. zone.easydns.com. 1593109612 3600 600 1209600 300
-<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>Here is an example of turning off the cookie EDNS extension:
-<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>$ dig +nocookie -t MX lpi.org
-<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>; &lt;&lt;&gt;&gt; DiG 9.11.5-P4-5.1+deb10u1-Debian &lt;&lt;&gt;&gt; +nocookie -t MX lpi.org
-<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>;; global options: +cmd
-<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a>;; Got answer:
-<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 47774
-<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>;; flags: qr rd ra; QUERY: 1, ANSWER: 7, AUTHORITY: 3, ADDITIONAL: 5
-<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>;; OPT PSEUDOSECTION:
-<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a>; EDNS: version: 0, flags:; udp: 4096
-<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a>;; QUESTION SECTION:
-<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a>;lpi.org.           IN  MX
-<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a>;; ANSWER SECTION:
-<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>lpi.org.        468 IN  MX  0 aspmx.l.google.com.
-<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a>lpi.org.        468 IN  MX  10 aspmx4.googlemail.com.
-<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>lpi.org.        468 IN  MX  10 aspmx5.googlemail.com.
-<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a>lpi.org.        468 IN  MX  10 aspmx2.googlemail.com.
-<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 471
-<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>
-<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>lpi.org.        468 IN  MX  10 aspmx3.googlemail.com.
-<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a>lpi.org.        468 IN  MX  5 alt2.aspmx.l.google.com.
-<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>lpi.org.        468 IN  MX  5 alt1.aspmx.l.google.com.
-<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>;; AUTHORITY SECTION:
-<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>lpi.org.        77130   IN  NS  dns2.easydns.net.
-<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>lpi.org.        77130   IN  NS  dns3.easydns.ca.
-<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>lpi.org.        77130   IN  NS  dns1.easydns.com.
-<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>;; ADDITIONAL SECTION:
-<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>dns1.easydns.com.   76140   IN  A   64.68.192.10
-<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>dns2.easydns.net.   73684   IN  A   198.41.222.254
-<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a>dns1.easydns.com.   76140   IN  AAAA    2400:cb00:2049:1::a29f:1835
-<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>dns2.easydns.net.   73684   IN  AAAA    2400:cb00:2049:1::c629:defe
-<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>;; Query time: 2 msec
-<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a>;; SERVER: 192.168.1.20#53(192.168.1.20)
-<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>;; WHEN: Mon Jun 29 10:18:58 EDT 2020
-<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>;; MSG SIZE  rcvd: 389
-<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>472 &nbsp;&nbsp;&nbsp; |
-</code></pre></div>
+<h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" title="Permanent link">¶</a></h2>
+<h3 id="21-ban-chat-name-resolution-order-nss-switch">2.1 Bản Chất Name Resolution Order (NSS Switch)<a class="headerlink" href="#21-ban-chat-name-resolution-order-nss-switch" title="Permanent link">¶</a></h3>
+<p>Thứ tự tra cứu tên miền được quyết định bởi <code>/etc/nsswitch.conf</code> dòng <code>hosts: files dns</code>.
+1. <code>files</code>: Tra cứu file <code>/etc/hosts</code> trước.
+2. <code>dns</code>: Tra cứu các IP <code>nameserver</code> định nghĩa trong <code>/etc/resolv.conf</code>.
+- <code>dig google.com +short</code>: Gửi trực tiếp DNS UDP packet tới DNS Server để truy vấn bản ghi A record.</p>
 <hr>
-<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<h2 id="3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference">3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)<a class="headerlink" href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Lệnh / File / Folder</th>
-<th style="text-align: left;">Chức năng chính</th>
-<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+<th style="text-align: left;">Câu lệnh</th>
+<th style="text-align: left;">Tham số (Options/Flags)</th>
+<th style="text-align: left;">Giải thích ý nghĩa chi tiết</th>
+<th style="text-align: left;">Ví dụ thực tế trong DevOps</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>command / path</code></td>
-<td style="text-align: left;">Thao tác và quản trị hệ thống</td>
-<td style="text-align: left;">Quản lý Linux Server, CI/CD Runner, Container Node</td>
+<td style="text-align: left;"><strong><code>dig</code></strong></td>
+<td style="text-align: left;"><code>Tra cứu bản ghi DNS chi tiết chuyên sâu</code></td>
+<td style="text-align: left;">+short, A</td>
+<td style="text-align: left;"><code>dig google.com A</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>/etc/</code></td>
-<td style="text-align: left;">File cấu hình hệ thống</td>
-<td style="text-align: left;">Quản lý cấu hình hạ tầng qua IaC (Ansible, Terraform)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>cron / crontab</code></td>
-<td style="text-align: left;">Lập lịch chạy tác vụ tự động</td>
-<td style="text-align: left;">Tự động hóa backup cơ sở dữ liệu, cleanup log định kỳ</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>ss / tcpdump / dig</code></td>
-<td style="text-align: left;">Chẩn đoán &amp; Debug mạng</td>
-<td style="text-align: left;">Debug kết nối Microservices, DNS resolution, Firewall</td>
+<td style="text-align: left;"><strong><code>nslookup</code></strong></td>
+<td style="text-align: left;"><code>Tra cứu tên miền DNS đơn giản</code></td>
+<td style="text-align: left;">Domain</td>
+<td style="text-align: left;"><code>nslookup devops.local</code></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
-<p>Guided Exercises
-1. What will the command below do?
-getent group openldap
-2. What is the biggest difference between getent and the other tools covered, host and dig?
-3. Which option to dig and host is used to specify the type of record you wish to retrieve?
-4. Which of the following is a proper /etc/hosts entry?
-::1 localhost
-localhost 127.0.0.1
-5. Which option to getent is used to specify which data source should be used to perform a
-lookup?
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 473</p>
-<p>Explorational Exercises
-1. If you were to edit the /etc/resolv.conf below with a text editor, what is likely to happen?</p>
-<h1 id="generated-by-networkmanager">Generated by NetworkManager<a class="headerlink" href="#generated-by-networkmanager" title="Permanent link">¶</a></h1>
-<p>nameserver 192.168.1.20
-The changes will be overwritten by
-NetworkManager.
-NetworkManager will update its configuration
-with your changes.
-Your changes won’t affect the system.
-NetworkManager will be disabled.
-2. What does the following line in /etc/nsswitch.conf mean:
-hosts: files [SUCCESS=continue] dns
-3. Considering the following /etc/resolv.conf why isn’t the system resolving names through
-DNS?
-search lpi.org</p>
-<h1 id="nameserver-fd00ffff153">nameserver fd00:ffff::1:53<a class="headerlink" href="#nameserver-fd00ffff153" title="Permanent link">¶</a></h1>
-<h1 id="nameserver-100153">nameserver 10.0.1.53<a class="headerlink" href="#nameserver-100153" title="Permanent link">¶</a></h1>
-<ol>
-<li>What does the command dig +noall +answer +question lpi.org do?</li>
-<li>How can you override the defaults of dig without specifying them on the command line?
-474 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </li>
-</ol>
-<p>Summary
-The getent command is a great tool to see the results of resolver calls. For simple DNS queries,
-host is easy to use and produces straightforward output. If you need detailed information or need
-to fine tune a DNS query, dig is most likely your best bet.
-Due to the ability to add shared library plugins and configure the resolver behavior, Linux has
-excellent support for name and number resolution of various types. The getent program can be
-used to resolve names using the resolver libraries. host and dig can be used to query DNS
-servers.
-The file /etc/nsswitch.conf is used to configure the resolver behavior. You are able to change
-data sources and add some simple conditional logic for name types with multiple sources.
-DNS is configured by editing /etc/resolv.conf. Many distributions have tools that manage this
-file for you, so make sure to check your system’s documentation if manual changes aren’t
-persisting.
-The /etc/hosts file is used to resolve host names to IPs and vice versa. It is typically used to
-define names, such as localhost, that aren’t available through DNS.
-It is possible to leave comments in the configuration files covered in this lesson. Any text to the
-right of # is ignored by the system.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 475</p>
+<h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
+<h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Map IP tĩnh trong /etc/hosts:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'192.168.1.50 myapp.internal'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/hosts
+</code></pre></div>
+<h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
+<p>Tra cứu A record DNS:
+dig google.com +short</p>
 <hr>
-<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
-<p>Answers to Guided Exercises
-1. What will the command below do?
-getent group openldap
-It will read /etc/nsswitch.conf, lookup the openldap group from the sources listed, and
-display information about it if it is found.
-2. What is the biggest difference between getent and the other tools covered, host and dig?
-getent looks up names using the resolver libraries, the others just query DNS. getent can be
-used to troubleshoot your /etc/nsswitch.conf and the configuration of name resolution
-libraries your system is configured to use. host and dig are used to lookup DNS records.
-3. Which option to dig and host is used to specify the type of record you wish to retrieve?
-Both programs use -t to specify the type of record you wish to look up.
-4. Which of the following is a proper /etc/hosts entry?
-::1 localhost
-X
-localhost 127.0.0.1
-::1 localhost is the correct line. The left column is always an IPv4 or IPv6 address.
-5. Which option to getent is used to specify which data source should be used to perform a
-lookup?
-The -s option is used to specify the data source. For example:
-476 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Answers to Explorational Exercises
-1. If you were to edit the /etc/resolv.conf below with a text editor, what is likely to happen?</p>
-<h1 id="generated-by-networkmanager_1">Generated by NetworkManager<a class="headerlink" href="#generated-by-networkmanager_1" title="Permanent link">¶</a></h1>
-<p>nameserver 192.168.1.20
-The changes will be overwritten by
-NetworkManager.
-X
-NetworkManager will update its configuration
-with your changes.
-Your changes won’t affect the system.
-NetworkManager will be disabled.
-2. What does the following line in /etc/nsswitch.conf mean:
-hosts: files [SUCCESS=continue] dns
-Lookups for host names will check your /etc/hosts files first and then DNS. If an entry found
-is found in files and DNS, the entry in DNS will be used.
-3. Considering the following /etc/resolv.conf why isn’t the system resolving names through
-DNS?
-search lpi.org</p>
-<h1 id="nameserver-fd00ffff153_1">nameserver fd00:ffff::1:53<a class="headerlink" href="#nameserver-fd00ffff153_1" title="Permanent link">¶</a></h1>
-<h1 id="nameserver-100153_1">nameserver 10.0.1.53<a class="headerlink" href="#nameserver-100153_1" title="Permanent link">¶</a></h1>
-<p>Both DNS servers are commented out and there is no DNS server running on the local host.
-4. What does the command dig +noall +answer +question lpi.org do?
-It looks up the A record for lpi.org and displays only the query and response.
-5. How can you override the defaults of dig without specifying them on the command line?
-You create a .digrc file in your home directory.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 477</p>
-<p>Topic 110: Security
-478 &nbsp;&nbsp;&nbsp; |</p>
+<h2 id="5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa">5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)<a class="headerlink" href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>Q: File nào định nghĩa địa chỉ các máy chủ DNS Server (nameserver)?</strong><br>
+<strong>A</strong>: File <code>/etc/resolv.conf</code>.</p>
+<p><strong>Q: File nào cho phép map trực tiếp IP với Hostname cục bộ được ưu tiên tra cứu trước DNS?</strong><br>
+<strong>A</strong>: File <code>/etc/hosts</code>.</p>
+</blockquote>
 <hr>
-<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
-<ol>
-<li>Ghi nhớ các câu lệnh quản trị mạng, bảo mật và lập trình shell script.</li>
-<li>Áp dụng các quy chuẩn bảo mật SSH, phân quyền và mã hóa dữ liệu.</li>
-<li>Thực hành liên tục trên Linux Terminal để làm chủ kỹ năng vận hành.</li>
-</ol>
+<h2 id="6-cheat-sheet-ghi-nho-nhanh-summary">6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)<a class="headerlink" href="#6-cheat-sheet-ghi-nho-nhanh-summary" title="Permanent link">¶</a></h2>
+<ul>
+<li>[x] /etc/resolv.conf: Chứa địa chỉ DNS Server</li>
+<li>[x] /etc/hosts: Map IP nội bộ</li>
+<li>[x] dig domain: Tra cứu DNS</li>
+</ul>
 
 
 
@@ -3197,7 +2941,7 @@ You create a .digrc file in your home directory.
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:22:33 UTC">4 tháng 8, 2026</span>
   </span>
 
     
@@ -3270,7 +3014,7 @@ You create a .digrc file in your home directory.
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../109.3-basic-network-troubleshooting/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 109.3: Chẩn đoán &amp;amp; Debug Sự cố Mạng (ping, traceroute, ss, netstat, tcpdump)">
+          <a href="../109.3-basic-network-troubleshooting/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🐧 Objective 109.3: Chẩn Đoán &amp;amp; Debug Sự Cố Mạng (ss, nc, tcpdump) - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3280,20 +3024,20 @@ You create a .digrc file in your home directory.
                 Trước
               </span>
               <div class="md-ellipsis">
-                Objective 109.3: Chẩn đoán &amp; Debug Sự cố Mạng (ping, traceroute, ss, netstat, tcpdump)
+                🐧 Objective 109.3: Chẩn Đoán &amp; Debug Sự Cố Mạng (ss, nc, tcpdump) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 110.1: Tác vụ Quản trị Bảo mật Hệ thống (Find SUID, ulimit, chage)">
+          <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-footer__link md-footer__link--next" aria-label="Sau: 🐧 Objective 110.1: Quản Trị Bảo Mật Hệ Thống &amp;amp; Sudo Audit (LPI 102-500) - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Objective 110.1: Tác vụ Quản trị Bảo mật Hệ thống (Find SUID, ulimit, chage)
+                🐧 Objective 110.1: Quản Trị Bảo Mật Hệ Thống &amp; Sudo Audit (LPI 102-500) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
             <div class="md-footer__button md-icon">

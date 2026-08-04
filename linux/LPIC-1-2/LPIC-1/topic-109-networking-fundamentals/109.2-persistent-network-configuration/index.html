@@ -22,7 +22,7 @@
     
     
       
-        <title>Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli) - DraDoc</title>
+        <title>🐧 Objective 109.2: Cấu Hình Mạng Cố Định (Netplan &amp; NetworkManager) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#objective-1092-cau-hinh-mang-co-inh-network-interfaces-netplan-nmcli" class="md-skip">
+        <a href="#objective-1092-cau-hinh-mang-co-inh-netplan-networkmanager-ban-chat-he-thong-thuc-chien-devops" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli)
+              🐧 Objective 109.2: Cấu Hình Mạng Cố Định (Netplan &amp; NetworkManager) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
             
           </span>
         </div>
@@ -456,8 +456,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+        <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-tabs__link">
           
   
   
@@ -467,6 +474,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -1100,6 +1110,8 @@
   
     
     
+      
+        
       
         
       
@@ -1842,7 +1854,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.1: Căn bản Giao thức Internet Protocol (IPv4, IPv6, Subnetting)
+    🐧 Objective 109.1: Căn Bản Mạng Mát Tính, IP &amp; Ports Cho DevOps - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1879,7 +1891,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli)
+    🐧 Objective 109.2: Cấu Hình Mạng Cố Định (Netplan &amp; NetworkManager) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1897,7 +1909,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli)
+    🐧 Objective 109.2: Cấu Hình Mạng Cố Định (Netplan &amp; NetworkManager) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -1923,22 +1935,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-netplan-networkmanager-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Netplan &amp; NetworkManager Stack
       
     </span>
   </a>
@@ -1951,10 +1974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -1962,10 +1985,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -1973,21 +2035,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -2017,7 +2068,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.3: Chẩn đoán &amp; Debug Sự cố Mạng (ping, traceroute, ss, netstat, tcpdump)
+    🐧 Objective 109.3: Chẩn Đoán &amp; Debug Sự Cố Mạng (ss, nc, tcpdump) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -2045,7 +2096,7 @@
   <span class="md-ellipsis">
     
   
-    Objective 109.4: Cấu hình DNS Khách (/etc/resolv.conf, systemd-resolved)
+    🐧 Objective 109.4: Cấu Hình Phân Giải Tên Miền DNS Khách (/etc/resolv.conf &amp; dig) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
   
 
     
@@ -2131,6 +2182,70 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../LPIC-2/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 2
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -2232,8 +2347,6 @@
       
         
       
-        
-      
     
     
     
@@ -2254,7 +2367,11 @@
   
   
   
-    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="../../../../../network-comtia/01.fundamental/01.intro/" class="md-nav__link">
       
   
   
@@ -2273,6 +2390,8 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
   
 
       
@@ -2602,22 +2721,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+  <a href="#21-ban-chat-netplan-networkmanager-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các trọng tâm cần nhớ:
+        2.1 Bản Chất Netplan &amp; NetworkManager Stack
       
     </span>
   </a>
@@ -2630,10 +2760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" class="md-nav__link">
+  <a href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)
+        3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)
       
     </span>
   </a>
@@ -2641,10 +2771,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+  <a href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+        4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-lenh-thuc-hanh-go-la-an-ngay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 Các lệnh thực hành gõ là ăn ngay:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Kịch bản xử lý sự cố thực tế khi đi làm:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)
       
     </span>
   </a>
@@ -2652,21 +2821,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+  <a href="#6-cheat-sheet-ghi-nho-nhanh-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+        6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)
       
     </span>
   </a>
@@ -2698,753 +2856,68 @@
   
 
 
-<h1 id="objective-1092-cau-hinh-mang-co-inh-network-interfaces-netplan-nmcli">Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli)<a class="headerlink" href="#objective-1092-cau-hinh-mang-co-inh-network-interfaces-netplan-nmcli" title="Permanent link">¶</a></h1>
+<h1 id="objective-1092-cau-hinh-mang-co-inh-netplan-networkmanager-ban-chat-he-thong-thuc-chien-devops">🐧 Objective 109.2: Cấu Hình Mạng Cố Định (Netplan &amp; NetworkManager) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps<a class="headerlink" href="#objective-1092-cau-hinh-mang-co-inh-netplan-networkmanager-ban-chat-he-thong-thuc-chien-devops" title="Permanent link">¶</a></h1>
 <blockquote>
-<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 102-500 Version 5.0)</strong><br>
-📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 412 - 439)<br>
-🎯 <strong>Mục tiêu</strong>: Nắm vững kỹ năng Shell Scripting, Quản trị Hệ thống, Mạng và Bảo mật Linux cho DevOps.</p>
+<p>💡 <strong>Bản chất 1 câu</strong>: Cấu hình IP tĩnh/DHCP cố định trên Ubuntu với Netplan (<code>/etc/netplan/*.yaml</code>) và RHEL với NetworkManager (<code>nmcli</code>).<br>
+🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: Netplan config YAML, lệnh netplan apply, NetworkManager công cụ nmcli.</p>
 </blockquote>
 <hr>
-<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
-<p>Bài học này cung cấp kiến thức thực chiến sâu sắc về <strong>Objective 109.2: Cấu hình Mạng Cố định (Network Interfaces, Netplan, nmcli)</strong>.</p>
-<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
-<ul>
-<li>Nắm chắc cơ chế hoạt động của Linux trong môi trường Production/DevOps.</li>
-<li>Sử dụng thành thạo câu lệnh Terminal, biến môi trường và cấu hình hệ thống.</li>
-<li>Viết và tối ưu script tự động hóa công việc.</li>
-<li>Quản trị bảo mật, mạng, phân quyền và giám sát dịch vụ Linux Server.</li>
-</ul>
+<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
+<p>Netplan dùng file cấu hình YAML thụt lùi dòng bằng khoảng trắng (không dùng Tab). Sửa xong bắt buộc gõ <code>sudo netplan apply</code>.</p>
 <hr>
-<h2 id="2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500">📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>109.2 Persistent network configuration
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 version 5.0, Exam 102, Objective 109.2
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>4
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Understand basic TCP/IP host configuration
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Configure ethernet and wi-fi network configuration using NetworkManager
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Awareness of systemd-networkd
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Partial list of the used files, terms and utilities
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• /etc/hostname
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>• /etc/hosts
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• /etc/nsswitch.conf
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• /etc/resolv.conf
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• nmcli
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• hostnamectl
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• ifup
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• ifdown
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>402 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>109.2 Lesson 1
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>Certificate:
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>LPIC-1
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>Version:
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>5.0
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>Topic:
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>109 Networking Fundamentals
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Objective:
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>109.2 Persistent network configuration
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>Lesson:
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>1 of 2
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>Introduction
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>In any TCP/IP network, every node must configure its network adapter to match the network
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>requirements, otherwise they will not be able to communicate with each other. Therefore, the
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>system administrator must provide the basic configuration so the operating system will be able to
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>setup the appropriate network interface, as well as to identify itself and the basic features of the
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>network every time it boots.
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>Network settings are agnostic in regard to operating systems, but the latter have their own
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>methods to store and apply these settings. Linux systems rely on configurations stored in plain
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>text files under the /etc directory to bring up network connectivity during boot time. It is worth
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>knowing how these files are used to avoid connectivity loss due to local misconfiguration.
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>The Network Interface
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>Network interface is the term by which the operating system refers to the communication channel
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>configured to work with the network hardware attached to the system, such as an ethernet or wi-
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>fi device. The exception to this is the loopback interface, which the operating system uses when it
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>needs to establish a connection with itself, but the main purpose of a network interface is to
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 403
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>provide a route through which local data can be sent and remote data can be received. Unless the
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>network interface is properly configured, the operating system will not be able to communicate
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>with other machines in the network.
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>For most cases, the correct interface settings are either defined by default or customized during
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>the installation of the operating system. Nevertheless, these settings often need to be inspected or
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>even modified when the communication isn’t working properly or when the interface’s behavior
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>requires customization.
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>There are many Linux commands to list which network interfaces are present on the system, but
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>not all of them are available in all distributions. Command ip, however, is part of the basic set of
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>networking tools bundled with all Linux distributions and can be used to list the network
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>interfaces. The complete command to show the interfaces is ip link show:
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>$ ip link show
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>default qlen 1000
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>&nbsp;       link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>2: enp3s5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>group default qlen 1000
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>&nbsp;       link/ether 00:16:3e:8d:2b:5b brd ff:ff:ff:ff:ff:ff
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>If available, command nmcli device can also be used:
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>$ nmcli device
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>DEVICE      TYPE      STATE      CONNECTION
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>enp3s5      ethernet  connected  Gigabit Powerline Adapter
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>lo          loopback  unmanaged  --
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>The commands shown in the examples do not modify any settings in the system, so they can be
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>executed by an unprivileged user. Both commands list two network interfaces: lo (the loopback
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>interface) and enp3s5 (an ethernet interface).
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>Desktops and laptops running Linux usually have two or three predefined network interfaces, one
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>for the loopback virtual interface and the others assigned to the network hardware found by the
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>system. Servers and network appliances running Linux, on the other hand, may have tens of
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>network interfaces, but the same principles apply to all of them. The abstraction provided by the
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>operating system allows for the setup of network interfaces using the same methods, regardless of
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>the underlying hardware.
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>However, knowing the details about the underlying hardware of an interface can be useful to
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>404 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>better understand what is going on when the communication is not working as expected. In a
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>system where many network interfaces are available, it could not be obvious which one
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>corresponds to the wi-fi and which one corresponds to the ethernet, for example. For this reason,
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>Linux uses an interface naming convention that helps identify which network interface
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>corresponds to which device and port.
-<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>Interface Names
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>Older Linux distributions named ethernet network interfaces as eth0, eth1, etc., numbered
-<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>according to the order in which the kernel identifies the devices. The wireless interfaces were
-<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>named wlan0, wlan1, etc. This naming convention, however, does not clarify which specific
-<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>ethernet port matches with the interface eth0, for example. Depending on how the hardware was
-<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>detected, it was even possible for two network interfaces to swap names after a reboot.
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>To overcome this ambiguity, more recent Linux systems employ a predictable naming convention
-<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>for network interfaces, making up a closer relationship between the interface name and the
-<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>underlying hardware connection.
-<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>In Linux distributions that use the systemd naming scheme, all interface names start with a two-
-<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>character prefix that signifies the interface type:
-<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>en
-<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>Ethernet
-<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>ib
-<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>InfiniBand
-<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>sl
-<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>Serial line IP (slip)
-<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>wl
-<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>Wireless local area network (WLAN)
-<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>ww
-<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>Wireless wide area network (WWAN)
-<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>From higher to lower priority, the following rules are used by the operating system to name and
-<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>number the network interfaces:
-<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>1. Name the interface after the index provided by the BIOS or by the firmware of embedded
-<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>devices, e.g. eno1.
-<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 405
-<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>
-<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>2. Name the interface after the PCI express slot index, as given by the BIOS or firmware, e.g. ens1.
-<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>3. Name the interface after its address at the corresponding bus, e.g. enp3s5.
-<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>4. Name the interface after the interface’s MAC address, e.g. enx78e7d1ea46da.
-<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>5. Name the interface using the legacy convention, e.g. eth0.
-<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>It is correct to assume, for example, that the network interface enp3s5 was so named because it
-<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>did not fit the first two naming methods, so its address in the corresponding bus and slot was used
-<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>instead. The device address 03:05.0, found in the output of the lspci command, reveals the
-<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>associate device:
-<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>$ lspci | fgrep Ethernet
-<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>03:05.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8110SC/8169SC Gigabit
-<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>Ethernet (rev 10)
-<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>Network interfaces are created by the Linux kernel itself, but there are many commands that can
-<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>be used to interact with them. Normally, the configuration happens automatically and there is no
-<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>need to change the settings manually. Nonetheless, with the name of the interface, it is possible to
-<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>tell the kernel how to proceed in configuring it if necessary.
-<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>Interface Management
-<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>Over the years, several programs have been developed to interact with the networking features
-<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>provided by the Linux kernel. Although the old ifconfig command can still be used to do simple
-<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>interface configurations and queries, it is now deprecated due to its limited support of non-
-<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>ethernet interfaces. The ifconfig command was superseded by the command ip, which is
-<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>capable of managing many other aspects of TCP/IP interfaces, like routes and tunnels.
-<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>The many capabilities of the ip command can be overkill for most ordinary tasks, so there are
-<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>auxiliary commands to facilitate the activation and configuration of the network interfaces.
-<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>Commands ifup and ifdown may be used to configure network interfaces based on interface
-<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>definitions found in the file /etc/network/interfaces. Although they can be invoked manually,
-<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>these commands are normally executed automatically during system boot.
-<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>All 
-<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>network 
-<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>interfaces 
-<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>managed 
-<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>by 
-<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>ifup 
-<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>and 
-<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>ifdown 
-<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>should 
-<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>be 
-<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>listed 
-<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>in 
-<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>the
-<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>/etc/network/interfaces file. The format used in the file is straightforward: lines beginning
-<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>with the word auto are used to identify the physical interfaces to be brought up when ifup is
-<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>executed with the -a option. The interface name should follow the word auto on the same line.
-<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>All interfaces marked auto are brought up at boot time, in the order they are listed.
-<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>406 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>
-<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>WARNING
-<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>Network configuration methods used by ifup and ifdown are not
-<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>standardized throughout all Linux distributions. CentOS, for example, keeps
-<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>the interface settings in individual files in the /etc/sysconfig/network-
-<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>scripts/ directory and the configuration format used in them is slightly
-<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>different from the format used in /etc/network/interfaces.
-<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>The actual interface configuration is written in another line, starting with the word iface,
-<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>followed by the interface name, the name of the address family that the interface uses and the
-<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>name of the method used to configure the interface. The following example shows a basic
-<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>configuration file for interfaces lo (loopback) and enp3s5:
-<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>auto lo
-<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>iface lo inet loopback
-<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>auto enp3s5
-<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>iface enp3s5 inet dhcp
-<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>The address family should be inet for TCP/IP networking, but there is also support for IPX
-<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>networking (ipx), and IPv6 networking (inet6). Loopback interfaces use the loopback
-<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>configuration method. With the dhcp method, the interface will use the IP settings provided by the
-<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>network’s DHCP server. The settings from the example configuration allow the execution of
-<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>command ifup using interface name enp3s5 as its argument:
-<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a># ifup enp3s5
-<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>Internet Systems Consortium DHCP Client 4.4.1
-<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>Copyright 2004-2018 Internet Systems Consortium.
-<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>All rights reserved.
-<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>For info, please visit https://www.isc.org/software/dhcp/
-<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>Listening on LPF/enp3s5/00:16:3e:8d:2b:5b
-<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>Sending on   LPF/enp3s5/00:16:3e:8d:2b:5b
-<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>Sending on   Socket/fallback
-<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>DHCPDISCOVER on enp3s5 to 255.255.255.255 port 67 interval 4
-<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>DHCPOFFER of 10.90.170.158 from 10.90.170.1
-<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>DHCPREQUEST for 10.90.170.158 on enp3s5 to 255.255.255.255 port 67
-<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>DHCPACK of 10.90.170.158 from 10.90.170.1
-<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>bound to 10.90.170.158 -- renewal in 1616 seconds.
-<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>In this example, the method chosen for the enp3s5 interface was dhcp, so the command ifup
-<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>called a DHCP client program to obtain the IP settings from the DHCP server. Likewise, command
-<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>ifdown enp3s5 can be used to turn the interface off.
-<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 407
-<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>
-<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>In networks without a DHCP server, the static method could be used instead and the IP settings
-<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>provided manually in /etc/network/interfaces. For example:
-<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>iface enp3s5 inet static
-<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>&nbsp;   address 192.168.1.2/24
-<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>&nbsp;   gateway 192.168.1.1
-<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>Interfaces using the static method do not need a corresponding auto directive, as they are
-<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>brought up whenever the network hardware is detected.
-<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>If the same interface has more than one iface entry, then all of the configured addresses and
-<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>options will be applied when bringing up that interface. This is useful to configure both IPv4 and
-<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>IPv6 addresses on the same interface, as well as to configure multiple addresses of the same type
-<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>on a single interface.
-<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>Local and Remote Names
-<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>A working TCP/IP setup is just the first step towards full network usability. In addition to being
-<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>able to identify nodes on the network by their IP numbers, the system must be able to identify
-<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>them with names more easily understood by human beings.
-<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>The name by which the system identifies itself is customizable and it is good practice to define it,
-<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>even if the machine is not intended to join a network. The local name often matches the network
-<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>name of the machine, but this isn’t necessarily always true. If the file /etc/hostname exists, the
-<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>operating system will use the contents of the first line as its local name, thereafter simply called
-<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>the hostname. Lines starting with # inside /etc/hostname are ignored.
-<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>The /etc/hostname file can be edited directly, but the machine’s hostname can also be defined
-<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>with the hostnamectl command. When supplied with sub-command set-hostname, command
-<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>hostnamectl will take the name given as an argument and write it in /etc/hostname:
-<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a># hostnamectl set-hostname storage
-<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a># cat /etc/hostname
-<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>storage
-<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>The hostname defined in /etc/hostname is the static hostname, that is, the name which is used to
-<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>initialize the system’s hostname at boot. The static hostname may be a free-form string up to 64
-<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>characters in length. However, it is recommended that it consists only of ASCII lower-case
-<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>characters and no spaces or dots. It should also limit itself to the format allowed for DNS domain
-<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>name labels, even though this is not a strict requirement.
-<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>408 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>
-<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>Command hostnamectl can set two other types of hostnames in addition to the static hostname:
-<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>Pretty hostname
-<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>Unlike the static hostname, the pretty hostname may include all kinds of special characters. It
-<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>can be used to set a more descriptive name for the machine, e.g. “LAN Shared Storage”:
-<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a># hostnamectl --pretty set-hostname "LAN Shared Storage"
-<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>Transient hostname
-<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>Used when the static hostname is not set or when it is the default localhost name. The
-<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>transient hostname is normally the name set together with other automatic configurations, but
-<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>it can also be modified by the command hostnamectl, e.g.
-<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a># hostnamectl --transient set-hostname generic-host
-<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>If neither the --pretty nor --transient option is used, then all three hostname types will be set
-<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>to the given name. To set the static hostname, but not the pretty and transient names, the option
-<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>--static should be used instead. In all cases, only the static hostname is stored in the
-<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>/etc/hostname file. Command hostnamectl can also be used to display various descriptive and
-<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>identity bits of information about the running system:
-<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>$ hostnamectl status
-<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>&nbsp;    Static hostname: storage
-<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>&nbsp;    Pretty hostname: LAN Shared Storage
-<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>&nbsp; Transient hostname: generic-host
-<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>&nbsp;          Icon name: computer-server
-<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>&nbsp;            Chassis: server
-<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>&nbsp;         Machine ID: d91962a957f749bbaf16da3c9c86e093
-<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>&nbsp;            Boot ID: 8c11dcab9c3d4f5aa53f4f4e8fdc6318
-<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>&nbsp;   Operating System: Debian GNU/Linux 10 (buster)
-<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>&nbsp;             Kernel: Linux 4.19.0-8-amd64
-<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a>&nbsp;       Architecture: x86-64
-<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>This is the default action of the hostnamectl command, so the status sub-command can be
-<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>omitted.
-<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>Regarding the name of the remote network nodes, there are two basic ways the operating system
-<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>can implement to match names and IP numbers: to use a local source or to use a remote server to
-<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>translate names into IP numbers and vice versa. The methods can be complementary to each
-<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 409
-<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>
-<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>other and their priority order is defined in the Name Service Switch configuration file:
-<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>/etc/nsswitch.conf. This file is used by the system and applications to determine not only the
-<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>sources for name-IP matches, but also the sources from which to obtain name-service information
-<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>in a range of categories, called databases.
-<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>The hosts database keeps track of the mapping between host names and host numbers. The line
-<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>inside /etc/nsswitch.conf beginning with hosts defines the services accountable for
-<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>providing the associations for it:
-<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>hosts: files dns
-<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>In this example entry, files and dns are the service names that specify how the lookup process
-<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>for host names will work. First, the system will look for matches in local files, then it will ask the
-<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>DNS service for matches.
-<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>The local file for the hosts database is /etc/hosts, a simple text file that associates IP addresses
-<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>with hostnames, one line per IP address, e.g.:
-<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>127.0.0.1 localhost
-<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>The IP number 127.0.0.1 is the default address for the loopback interface, hence its association
-<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>with the localhost name.
-<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>It is also possible to bind optional aliases to the same IP. Aliases can provide alternate spellings,
-<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>shorter hostnames and should be added at the end of the line, for example:
-<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>192.168.1.10 foo.mydomain.org foo
-<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>The formatting rules for the /etc/hosts file are:
-<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>• Fields of the entry are separated by any number of blanks and/or tab characters.
-<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>• Text from a # character until the end of the line is a comment and is ignored.
-<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>• Host names may contain only alphanumeric characters, minus signs and periods.
-<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>• Host names must begin with an alphabetic character and end with an alphanumeric character.
-<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>IPv6 addresses may also be added to /etc/hosts. The following entry refers to the IPv6 loopback
-<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>address:
-<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>410 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>
-<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>::1 localhost ip6-localhost ip6-loopback
-<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>Following the files service specification, the dns specification tells the system to ask a DNS
-<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>service for the desired name/IP association. The set of routines responsible for this method is
-<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>called the resolver and its configuration file is /etc/resolv.conf. The following example shows
-<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>a generic /etc/resolv.conf containing entries for Google’s public DNS servers:
-<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>nameserver 8.8.4.4
-<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>nameserver 8.8.8.8
-<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>As shown in the example, the nameserver keyword indicates the IP address of the DNS server.
-<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>Only one nameserver is required, but up to three nameservers can be given. The supplementary
-<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>ones will be used as a fallback. If no nameserver entries are present, the default behaviour is to
-<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>use the name server on the local machine.
-<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>The resolver can be configured to automatically add the domain to names before consulting them
-<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>on the name server. For example:
-<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>nameserver 8.8.4.4
-<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>nameserver 8.8.8.8
-<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>domain mydomain.org
-<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>search mydomain.net mydomain.com
-<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a>The domain entry sets mydomain.org as the local domain name, so queries for names within this
-<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>domain will be allowed to use short names relative to the local domain. The search entry has a
-<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>similar purpose, but it accepts a list of domains to try when a short name is provided. By default, it
-<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>contains only the local domain name.
-<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 411
-</code></pre></div>
+<h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" title="Permanent link">¶</a></h2>
+<h3 id="21-ban-chat-netplan-networkmanager-stack">2.1 Bản Chất Netplan &amp; NetworkManager Stack<a class="headerlink" href="#21-ban-chat-netplan-networkmanager-stack" title="Permanent link">¶</a></h3>
+<p>Netplan là renderer cấu hình mạng trên Ubuntu: Đọc YAML <code>/etc/netplan/*.yaml</code> rồi biên dịch ra file cấu hình cho <code>systemd-networkd</code> hoặc NetworkManager. <code>nmcli</code> là CLI giao tiếp D-Bus với NetworkManager trên RHEL.</p>
 <hr>
-<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<h2 id="3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference">3. ⚡ Bảng Tra Cứu Câu Lệnh Thực Hành (CLI Command Reference)<a class="headerlink" href="#3-bang-tra-cuu-cau-lenh-thuc-hanh-cli-command-reference" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Lệnh / File / Folder</th>
-<th style="text-align: left;">Chức năng chính</th>
-<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+<th style="text-align: left;">Câu lệnh</th>
+<th style="text-align: left;">Tham số (Options/Flags)</th>
+<th style="text-align: left;">Giải thích ý nghĩa chi tiết</th>
+<th style="text-align: left;">Ví dụ thực tế trong DevOps</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>command / path</code></td>
-<td style="text-align: left;">Thao tác và quản trị hệ thống</td>
-<td style="text-align: left;">Quản lý Linux Server, CI/CD Runner, Container Node</td>
+<td style="text-align: left;"><strong><code>netplan apply</code></strong></td>
+<td style="text-align: left;"><code>Áp dụng ngay cấu hình mạng mới trên Ubuntu</code></td>
+<td style="text-align: left;">Không</td>
+<td style="text-align: left;"><code>sudo netplan apply</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>/etc/</code></td>
-<td style="text-align: left;">File cấu hình hệ thống</td>
-<td style="text-align: left;">Quản lý cấu hình hạ tầng qua IaC (Ansible, Terraform)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>cron / crontab</code></td>
-<td style="text-align: left;">Lập lịch chạy tác vụ tự động</td>
-<td style="text-align: left;">Tự động hóa backup cơ sở dữ liệu, cleanup log định kỳ</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>ss / tcpdump / dig</code></td>
-<td style="text-align: left;">Chẩn đoán &amp; Debug mạng</td>
-<td style="text-align: left;">Debug kết nối Microservices, DNS resolution, Firewall</td>
+<td style="text-align: left;"><strong><code>nmcli</code></strong></td>
+<td style="text-align: left;"><code>Quản lý mạng bằng NetworkManager CLI trên RHEL</code></td>
+<td style="text-align: left;">device, connection</td>
+<td style="text-align: left;"><code>nmcli device status</code></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
-<p>Guided Exercises
-1. What commands can be used to list the network adapters present in the system?
-2. What is the type of network adapter whose interface name is wlo1?
-3. What role does the file /etc/network/interfaces play during boot time?
-4. What entry in /etc/network/interfaces configures interface eno1 to obtain its IP settings
-with DHCP?
-412 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Explorational Exercises
-1. How could the hostnamectl command be used to change only the static hostname of the local
-machine to firewall?
-2. What details other than hostnames can be modified by command hostnamectl?
-3. What entry in /etc/hosts associates both names firewall and router with IP 10.8.0.1?
-4. How could the /etc/resolv.conf file be modified in order to send all DNS requests to
-1.1.1.1?
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 413</p>
-<p>Summary
-This lesson covers how to make persistent changes to the local network configuration using
-standard Linux files and commands. Linux expects the TCP/IP settings to be in specific places and
-it may be necessary to change them when the default settings are not appropriate. The lesson goes
-through the following topics:
-• How Linux identifies network interfaces.
-• Interface activation during boot and basic IP configuration.
-• How the operating system associates names with hosts.
-The concepts, commands and procedures addressed were:
-• Interface naming conventions.
-• Listing network interfaces with ip and nmcli.
-• Interface activation with ifup and ifdown.
-• Command hostnamectl and the /etc/hostname file.
-• Files /etc/nsswitch.conf, /etc/hosts and /etc/resolv.conf.
-414 &nbsp;&nbsp;&nbsp; |</p>
+<h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
+<h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Áp dụng cấu hình Netplan mới:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+</code></pre></div>
+<h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
+<p>Xem trạng thái card mạng trên RHEL:
+nmcli device status</p>
 <hr>
-<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
-<p>Answers to Guided Exercises
-1. What commands can be used to list the network adapters present in the system?
-Commands ip link show, nmcli device and the legacy ifconfig.
-2. What is the type of a network adapter whose interface name is wlo1?
-The name starts with wl, so it is a wireless LAN adapter.
-3. What role does the file /etc/network/interfaces play during boot time?
-It has the configurations used by command ifup to activate the corresponding interfaces
-during boot time.
-4. What entry in /etc/network/interfaces configures interface eno1 to obtain its IP settings
-with DHCP?
-The line iface eno1 inet dhcp.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 415</p>
-<p>Answers to Explorational Exercises
-1. How could the hostnamectl command be used to change only the static hostname of the local
-machine to firewall?
-With the --static option: hostnamectl --static set-hostname firewall.
-2. What details other than hostnames can be modified by command hostnamectl?
-hostnamectl can also set the default icon for the local machine, its chassis type, the location
-and the deployment environment.
-3. What entry in /etc/hosts associates both names firewall and router with IP 10.8.0.1?
-The line 10.8.0.1 firewall router.
-4. How could the /etc/resolv.conf file be modified in order to send all DNS requests to
-1.1.1.1?
-Using nameserver 1.1.1.1 as its only nameserver entry.
-416 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>109.2 Lesson 2
-Certificate:
-LPIC-1
-Version:
-5.0
-Topic:
-109 Networking Fundamentals
-Objective:
-109.2 Persistent network configuration
-Lesson:
-2 of 2
-Introduction
-Linux supports virtually every network technology used to connect servers, containers, virtual
-machines, desktops and mobile devices. The connections between all these network nodes can be
-dynamic and heterogeneous, thus requiring appropriate management by the operating system
-running in them.
-In the past, distributions developed their own customized solutions for managing dynamic
-network infrastructure. Today, tools like NetworkManager and systemd provide more
-comprehensive and integrated features to meet all the specific demands.
-NetworkManager
-Most Linux distributions adopt the NetworkManager service daemon to configure and control the
-system’s network connections. NetworkManager’s purpose is to make the network configuration
-as simple and automatic as possible. When using DHCP, for example, NetworkManager arranges
-route changes, IP address fetching and updates to the local list of DNS servers, if necessary. When
-both wired and wireless connections are available, NetworkManager prioritizes the wired
-connection by default. NetworkManager will try to keep at least one connection active all the time,
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 417</p>
-<p>whenever it is possible.
-NOTE
-A request using DHCP (Dynamic Host Configuration Protocol) is usually sent
-through the network adapter as soon as the link to the network is established. The
-DHCP server that is active on the network then responds with the settings (IP
-address, network mask, default route, etc.) which the requester must use to
-communicate via IP protocol.
-By default, the NetworkManager daemon controls the network interfaces not mentioned in the
-/etc/network/interfaces file. It does so to not interfere with other configuration methods that
-may be present as well, thus modifying the unattended interfaces only.
-The NetworkManager service runs in the background with root privileges and triggers the
-necessary actions to keep the system online. Ordinary users can create and modify network
-connections with client applications that, albeit not having root privileges themselves, are capable
-of communicating with the underlying service in order to perform the requested actions.
-Client applications for NetworkManager are available for both the command line and the
-graphical environment. For the latter, the client application comes as an accessory of the desktop
-environment (under names like, nm-tray, network-manager-gnome, nm-applet or plasma-nm) and
-it is usually accessible through an indicator icon at the corner of the desktop bar or from the
-system configuration utility.
-In the command line, NetworkManager itself provides two client programs: nmcli and nmtui.
-Both programs have the same basic features, but nmtui has a curses-based interface while nmcli
-is a more comprehensive command that can also be used in scripts. Command nmcli separates all
-network related properties controlled by NetworkManager in categories called objects:
-general
-NetworkManager’s general status and operations.
-networking
-Overall networking control.
-radio
-NetworkManager radio switches.
-connection
-NetworkManager’s connections.
-418 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>device
-Devices managed by NetworkManager.
-agent
-NetworkManager secret agent or polkit agent.
-monitor
-Monitor NetworkManager changes.
-The object name is the main argument to command nmcli. To show the overall connectivity
-status of the system, for example, the object general should be given as the argument:
-$ nmcli general
-STATE      CONNECTIVITY  WIFI-HW  WIFI     WWAN-HW  WWAN
-connected  full          enabled  enabled  enabled  enabled
-Column STATE tells whether the system is connected to a network or not. If the connection is
-limited due to external misconfiguration or access restrictions, then the CONNECTIVITY column
-will not report the full connectivity status. If Portal appears in the CONNECTIVITY column, it
-means that extra authentication steps (usually through the web browser) are required to complete
-the connection process. The remaining columns report the status of the wireless connections (if
-any), either WIFI or WWAN (Wide Wireless Area Network, i.e. cellular networks). The HW suffix
-indicates that the status corresponds to the network device rather than the system network
-connection, that is, it tells if the hardware is enabled or disabled to save power.
-In addition to the object argument, nmcli also needs a command argument to execute. The
-status command is used by default if no command argument is present, so the command nmcli
-general is actually interpreted as nmcli general status.
-It is hardly necessary to take any action when the network adapter is connected directly to the
-access point through cables, but wireless networks require further interaction to accept new
-members. nmcli facilitates the connection process and saves the settings to connect automatically
-in the future, hence it is very helpful for laptops or any other mobile appliances.
-Before connecting to wi-fi, it is convenient to first list the available networks in the local area. If
-the system has a working wi-fi adapter, then the device object will use it to scan the available
-networks with command nmcli device wifi list:
-$ nmcli device wifi list
-IN-USE  BSSID              SSID        MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
-&nbsp;       90:F6:52:C5:FA:12  Hypnotoad   Infra  11    130 Mbit/s  67      ▂▄▆_  WPA2
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 419</p>
-<p>10:72:23:C7:27:AC  Jumbao      Infra  1     130 Mbit/s  55      ▂▄<strong>  WPA2
-&nbsp;       00:1F:33:33:E9:BE  NETGEAR     Infra  1     54 Mbit/s   35      ▂▄</strong>  WPA1 WPA2
-&nbsp;       A4:33:D7:85:6D:B0  AP53        Infra  11    130 Mbit/s  32      ▂▄__  WPA1 WPA2
-&nbsp;       98:1E:19:1D:CC:3A  Bruma       Infra  1     195 Mbit/s  22      ▂___  WPA1 WPA2
-Most users will probably use the name in the SSID column to identify the network of interest. For
-example, command nmcli can connect to the network named Hypnotoad using the device object
-again:
-$ nmcli device wifi connect Hypnotoad
-If the command is executed inside a terminal emulator in the graphical environment, then a
-dialog box will appear asking for the network’s passphrase. When executed in a text only console,
-the password may be provided together with the other arguments:
-$ nmcli device wifi connect Hypnotoad password MyPassword
-If the wi-fi network hides its SSID name, nmcli can still connect to it with the extra hidden yes
-arguments:
-$ nmcli device wifi connect Hypnotoad password MyPassword hidden yes
-If the system has more than one wi-fi adapter, the one to be used may be indicated with ifname.
-For example, to connect using the adapter named wlo1:
-$ nmcli device wifi connect Hypnotoad password MyPassword ifname wlo1
-After the connection succeeds, NetworkManager will name it after the corresponding SSID (if it is
-a wi-fi connection) and will keep it for future connections. The connections names and their
-UUIDs are listed by command nmcli connection show:
-$ nmcli connection show
-NAME               UUID                                  TYPE      DEVICE
-Ethernet           53440255-567e-300d-9922-b28f0786f56e  ethernet  enp3s5
-tun0               cae685e1-b0c4-405a-8ece-6d424e1fb5f8  tun       tun0
-Hypnotoad          6fdec048-bcc5-490a-832b-da83d8cb7915  wifi      wlo1
-4G                 a2cf4460-0cb7-42e3-8df3-ccb927f2fd88  gsm       --
-420 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>The type of each connection is shown — which can be ethernet, wifi, tun, gsm, bridge, etc. — as
-well as the device to which they are associated with. To perform actions on a specific connection,
-its name or UUID must be supplied. To deactivate the Hypnotoad connection, for example:
-$ nmcli connection down Hypnotoad
-Connection 'Hypnotoad' successfully deactivated
-Likewise, the command nmcli connection up Hypnotoad can be used to bring the connection
-up, as it is now saved by NetworkManager. The interface name can also be used to reconnect, but
-in this case the device object should be used instead:
-$ nmcli device disconnect wlo2
-Device 'wlo1' successfully disconnected.
-The interface name can also be used to reestablish the connection:
-$ nmcli device connect wlo2
-Device 'wlo1' successfully activated with '833692de-377e-4f91-a3dc-d9a2b1fcf6cb'.
-Note that the connection UUID changes every time the connection is brought up, so it is preferable
-to use its name for consistency.
-If the wireless adapter is available but it is not being used, then it can be turned off to save power.
-This time, the object radio should be passed to nmcli:
-$ nmcli radio wifi off
-Of course, the wireless device can be turned on again with command nmcli radio wifi on.
-Once the connections are established no manual interaction will be required in the future, as
-NetworkManager identifies available known networks and automatically connects to them. If
-necessary, NetworkManager has plugins that can extend its functionalities, like the plugin to
-support VPN connections.
-systemd-networkd
-Systems running systemd can optionally use its built-in daemons to manage network connectivity:
-systemd-networkd to control network interfaces and systemd-resolved to manage the local
-name resolution. These services are backwards compatible with legacy Linux configuration
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 421</p>
-<p>methods, but the configuration of network interfaces in particular has features that are worth
-knowing.
-The configuration files used by systemd-networkd to setup network interfaces can be found in any
-of the following three directories:
-/lib/systemd/network
-The system network directory.
-/run/systemd/network
-The volatile runtime network directory.
-/etc/systemd/network
-The local administration network directory.
-The files are processed in lexicographic order, so it is recommended to start their names with
-numbers to make the ordering easier to read and set.
-Files in /etc have the highest priority, whilst files in /run take precedence over files with the
-same name in /lib. This means that if configuration files in different directories have the same
-name, then systemd-networkd will ignore the files with lesser priority. Separating files like that is
-a way to change the interface settings without having to modify the original files: modifications
-can be placed in /etc/systemd/network to override those in /lib/systemd/network.
-The purpose of each configuration file depends on its suffix. File names ending in .netdev are
-used by systemd-networkd to create virtual network devices, such as bridge or tun devices. Files
-ending in .link set low-level configurations for the corresponding network interface. systemd-
-networkd detects and configures network devices automatically as they appear — as well as
-ignore devices already configured by other means — so there is little need to add these files in
-most situations.
-The most important suffix is .network. Files using this suffix can be used to setup network
-addresses and routes. As with the other configuration file types, the name of the file defines the
-order in which the file will be processed. The network interface to which the configuration file
-refers to is defined in the [Match]` section inside the file.
-For example, the ethernet network interface enp3s5 can be selected within the file
-/etc/systemd/network/30-lan.network by using the Name=enp3s5 entry in the [Match]
-section:
-[Match]
-422 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Name=enp3s5
-A list of whitespace-separated names is also accepted to match many network interfaces with this
-same file at once. The names can contain shell-style globs, like en*. Other entries provide various
-matching rules, like selecting a network device by its MAC address:
-[Match]
-MACAddress=00:16:3e:8d:2b:5b
-The settings for the device are in the [Network] section of the file. A simple static network
-configuration only requires the Address and Gateway entries:
-[Match]
-MACAddress=00:16:3e:8d:2b:5b
-[Network]
-Address=192.168.0.100/24
-Gateway=192.168.0.1
-To use the DHCP protocol instead of static IP addresses, the DHCP entry should be used instead:
-[Match]
-MACAddress=00:16:3e:8d:2b:5b
-[Network]
-DHCP=yes
-The systemd-networkd service will try to fetch both IPv4 and IPv6 addresses for the network
-interface. To use IPv4 only, DHCP=ipv4 should be used. Likewise, DHCP=ipv6 will ignore IPv4
-settings and use the provided IPv6 address only.
-Password-protected wireless networks can also be configured by systemd-networkd, but the
-network adapter must be already authenticated in the network before systemd-networkd can
-configure it. Authentication is performed by WPA supplicant, a program dedicated to configure
-network adapters for password protected networks.
-The first step is to create the credentials file with command wpa_passphrase:</p>
-<h1 id="wpa_passphrase-mywifi-etcwpa_supplicantwpa_supplicant-wlo1conf">wpa_passphrase MyWifi &gt; /etc/wpa_supplicant/wpa_supplicant-wlo1.conf<a class="headerlink" href="#wpa_passphrase-mywifi-etcwpa_supplicantwpa_supplicant-wlo1conf" title="Permanent link">¶</a></h1>
-<p>| &nbsp;&nbsp;&nbsp; 423</p>
-<p>This command will take the passphrase for the MyWifi wireless network from the standard input
-and store its hash in the /etc/wpa_supplicant/wpa_supplicant-wlo1.conf. Note that the
-filename should contain the appropriate name of the wireless interface, hence the wlo1 in the file
-name.
-The systemd manager reads the WPA passphrase files in /etc/wpa_supplicant/ and creates the
-corresponding service to run WPA supplicant and bring the interface up. The passphrase file
-created 
-in 
-the 
-example 
-will 
-then 
-have 
-a 
-corresponding 
-service 
-unit 
-called
-wpa_supplicant@wlo1.service. 
-Command 
-systemctl 
-start
-wpa_supplicant@wlo1.service will associate the wireless adapter with the remote access
-point. Command systemctl enable wpa_supplicant@wlo1.service makes the association
-automatic during boot time.
-Finally, 
-a 
-.network 
-file 
-matching 
-the 
-wlo1 
-interface 
-must 
-be 
-present 
-in
-/etc/systemd/network/, as systemd-networkd will use it to configure the interface as soon as
-WPA supplicant finishes the association with the access point.
-424 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Guided Exercises
-1. What is the meaning of the word Portal in the CONNECTIVITY column in the output of
-command nmcli general status?
-2. In a console terminal, how can an ordinary user use the command nmcli to connect to the
-MyWifi wireless network protected by the password MyPassword?
-3. What command can turn the wireless adapter on if it was previously disabled by the operating
-system?
-4. Custom configuration files should be placed in what directory when systemd-networkd is
-managing the network interfaces?
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 425</p>
-<p>Explorational Exercises
-1. How can a user run the command nmcli to delete an unused connection named Hotel
-Internet?
-2. NetworkManager scans wi-fi networks periodically and command nmcli device wifi list
-only lists the access points found in the last scan. How should the nmcli command be used to
-ask NetworkManager to immediately re-scan all available access points?
-3. What name entry should be used in the [Match] section of a systemd-networkd configuration
-file to match all ethernet interfaces?
-4. How should the wpa_passphrase command be executed to use the passphrase given as an
-argument and not from the standard input?
-426 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Summary
-This lesson covers the common tools used in Linux to manage heterogeneous and dynamic
-network connections. Although most configuration methods do not require user intervention,
-sometimes that is necessary and tools like NetworkManager and systemd-networkd can reduce the
-hassle to a minimum. The lesson goes through the following topics:
-• How NetworkManager and systemd-networkd integrate with the system.
-• How the user can interact with NetworkManager and systemd-networkd.
-• Basic interface configuration with both NetworkManager and systemd-networkd.
-The concepts, commands and procedures addressed were:
-• NetworkManager’s client commands: nmtui and nmcli.
-• Scanning and connecting to wireless networks using nmcli appropriate commands.
-• Persistent wi-fi network connections using systemd-networkd.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 427</p>
-<p>Answers to Guided Exercises
-1. What is the meaning of the word Portal in the CONNECTIVITY column in the output of
-command nmcli general status?
-It means that extra authentication steps (usually through the web browser) are required to
-complete the connection process.
-2. In a console terminal, how can an ordinary user use the command nmcli to connect to the
-MyWifi wireless network protected by the password MyPassword?
-In a text-only terminal, the command would be
-$ nmcli device wifi connect MyWifi password MyPassword
-3. What command can turn the wireless adapter on if it was previously disabled by the operating
-system?
-$ nmcli radio wifi on
-4. Custom configuration files should be placed in what directory when systemd-networkd is
-managing the network interfaces?
-In the local administration network directory: /etc/systemd/network.
-428 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
-<p>Answers to Explorational Exercises
-1. How can a user run the command nmcli to delete an unused connection named Hotel
-Internet?
-$ nmcli connection delete "Hotel Internet"
-2. NetworkManager scans wi-fi networks periodically and command nmcli device wifi list
-only lists the access points found in the last scan. How should the nmcli command be used to
-ask NetworkManager to immediately re-scan all available access points?
-The root user can run nmcli device wifi rescan to make NetworkManager re-scan
-available access points.
-3. What name entry should be used in the [Match] section of a systemd-networkd configuration
-file to match all ethernet interfaces?
-The entry name=en*, as en is the prefix for ethernet interfaces in Linux and systemd-networkd
-accepts shell-like globs.
-4. How should the wpa_passphrase command be executed to use the passphrase given as an
-argument and not from the standard input?
-The password should be given just after the SSID, as in wpa_passphrase MyWifi
-MyPassword.
- &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 429</p>
+<h2 id="5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa">5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps Thực Tế (Interview Q&amp;A)<a class="headerlink" href="#5-bo-cau-hoi-phong-van-devops-thuc-te-interview-qa" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>Q: Lệnh nào áp dụng cấu hình mạng mới trên Ubuntu dùng Netplan?</strong><br>
+<strong>A</strong>: Lệnh <code>sudo netplan apply</code>.</p>
+<p><strong>Q: Công cụ CLI tiêu chuẩn quản lý mạng trên RHEL/CentOS là gì?</strong><br>
+<strong>A</strong>: Công cụ <code>nmcli</code>.</p>
+</blockquote>
 <hr>
-<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
-<ol>
-<li>Ghi nhớ các câu lệnh quản trị mạng, bảo mật và lập trình shell script.</li>
-<li>Áp dụng các quy chuẩn bảo mật SSH, phân quyền và mã hóa dữ liệu.</li>
-<li>Thực hành liên tục trên Linux Terminal để làm chủ kỹ năng vận hành.</li>
-</ol>
+<h2 id="6-cheat-sheet-ghi-nho-nhanh-summary">6. 📝 Cheat Sheet &amp; Ghi Nhớ Nhanh (Summary)<a class="headerlink" href="#6-cheat-sheet-ghi-nho-nhanh-summary" title="Permanent link">¶</a></h2>
+<ul>
+<li>[x] Ubuntu: Netplan (/etc/netplan/*.yaml)</li>
+<li>[x] RHEL: NetworkManager (nmcli)</li>
+<li>[x] netplan apply: Nạp cấu hình</li>
+</ul>
 
 
 
@@ -3465,7 +2938,7 @@ MyPassword.
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:22:33 UTC">4 tháng 8, 2026</span>
   </span>
 
     
@@ -3538,7 +3011,7 @@ MyPassword.
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../109.1-fundamentals-of-internet-protocols/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 109.1: Căn bản Giao thức Internet Protocol (IPv4, IPv6, Subnetting)">
+          <a href="../109.1-fundamentals-of-internet-protocols/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🐧 Objective 109.1: Căn Bản Mạng Mát Tính, IP &amp;amp; Ports Cho DevOps - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3548,20 +3021,20 @@ MyPassword.
                 Trước
               </span>
               <div class="md-ellipsis">
-                Objective 109.1: Căn bản Giao thức Internet Protocol (IPv4, IPv6, Subnetting)
+                🐧 Objective 109.1: Căn Bản Mạng Mát Tính, IP &amp; Ports Cho DevOps - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
           </a>
         
         
           
-          <a href="../109.3-basic-network-troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 109.3: Chẩn đoán &amp;amp; Debug Sự cố Mạng (ping, traceroute, ss, netstat, tcpdump)">
+          <a href="../109.3-basic-network-troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Sau: 🐧 Objective 109.3: Chẩn Đoán &amp;amp; Debug Sự Cố Mạng (ss, nc, tcpdump) - Bản Chất Hệ Thống &amp;amp; Thực Chiến DevOps">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Objective 109.3: Chẩn đoán &amp; Debug Sự cố Mạng (ping, traceroute, ss, netstat, tcpdump)
+                🐧 Objective 109.3: Chẩn Đoán &amp; Debug Sự Cố Mạng (ss, nc, tcpdump) - Bản Chất Hệ Thống &amp; Thực Chiến DevOps
               </div>
             </div>
             <div class="md-footer__button md-icon">
