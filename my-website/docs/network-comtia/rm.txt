@@ -1,0 +1,568 @@
+Introduction
+13:48
+Download your free study guide
+00:04
+Exam Tips
+07:06
+Checkpoint: Introduction
+2 questions
+Network Fundamentals
+05:28
+Network Components (OBJ. 1.2)
+07:20
+Network Resources (OBJ. 1.2)
+04:40
+Network Geography (OBJ. 1.6)
+07:30
+Understanding Network Geography (OBJ. 1.6)
+01:27
+Wired Network Topology (OBJ. 1.6)
+11:27
+Wireless Network Topology (OBJ. 2.3)
+03:59
+Datacenter Topology (OBJ. 1.6)
+09:40
+Checkpoint: Network Fundamentals
+4 questions
+OSI Model (OBJ. 1.1)
+09:06
+Layer 1 (Physical) (OBJ. 1.1)
+11:15
+Layer 2 (Data Link Layer) (OBJ. 1.1)
+06:46
+Layer 3 (Network Layer) (OBJ. 1.1)
+12:29
+Layer 4 (Transport Layer) (OBJ. 1.1)
+15:01
+Layer 5 (Session Layer) (OBJ. 1.1)
+06:06
+Layer 6 (Presentation Layer) (OBJ. 1.1)
+04:52
+Layer 7 (Application Layer) (OBJ. 1.1)
+03:35
+Encapsulation and Decapsulation (OBJ. 1.1)
+11:20
+Understanding the OSI Model (OBJ. 1.1)
+11:20
+Checkpoint: OSI Model
+5 questions
+N09_04_01 Ports and Protocols
+04:13
+N09_04_02 Network Port Fundamentals (OBJ. 1.4)
+06:30
+N09_04_03 Transmission Control Protocol (TCP) (OBJ. 1.4)
+04:05
+N09_04_04 User Datagram Protocol (UDP) (OBJ. 1.4)
+04:49
+N09_04_05 Internet Control Message Protocol (ICMP) (OBJ. 1.4)
+06:08
+N09_04_06 Web Ports and Protocols (OBJ. 1.4)
+07:36
+N09_04_07 Email Ports and Protocols (OBJ. 1.4)
+05:35
+N09_04_08 File Transfer Ports and Protocols (OBJ. 1.4)
+05:01
+N09_04_09 Remote Access Ports and Protocols (OBJ. 1.4)
+04:39
+Network Service Ports and Protocols (OBJ. 1.4)
+05:27
+Other Network Service Ports and Protocols (OBJ. 1.4)
+04:33
+Finding Open Ports (OBJ. 1.4)
+07:51
+Checkpoint: Ports and Protocols
+5 questions
+Media and Cabling Distributions (OBJ 1.5 & 5.5)
+02:28
+Copper Media (OBJ. 1.5)
+17:21
+Copper Network Connections (OBJ. 1.5)
+08:37
+Building a Copper Cable (OBJ. 5.5)
+12:32
+Fiber Media (OBJ. 1.5)
+09:47
+Fiber Network Connections (OBJ. 1.5)
+10:24
+Transceivers (OBJ. 1.5)
+09:15
+Media and Connectors
+5 questions
+Distribution Systems (OBJ. 2.4 & 5.5)
+02:01
+Cable Distribution Systems (OBJ. 2.4)
+12:40
+Wiring a Network (OBJ. 5.5)
+09:07
+Testing a Network (OBJ. 5.5)
+05:22
+Power Distribution Systems (OBJ. 2.4)
+07:36
+Heating, Ventilation, and Air Conditioning (HVAC) Systems (OBJ. 2.4)
+04:44
+Fire Suppression Systems (OBJ. 2.4)
+02:56
+Checkpoint: Media and Cabling Distributions
+5 questions
+Wireless Networks (OBJ 1.5 & 2.3)
+02:53
+Wireless Network Types (OBJ. 2.3)
+09:52
+Wireless Antennas (OBJ. 2.3)
+04:54
+Understanding Antennas (OBJ. 2.3)
+06:27
+Wireless Frequencies (OBJ. 2.3)
+11:03
+802.11 Standards (OBJ. 1.5)
+11:14
+Wireless Security (OBJ. 2.3)
+15:29
+Understanding Wireless Security (OBJ. 2.3)
+10:34
+When Wireless Security Fails (OBJ. 2.3)
+07:35
+Captive Portals (OBJ. 2.3)
+03:40
+Checkpoint: Wireless Networks
+5 questions
+Ethernet Switching (OBJ 1.2, 2.2, & 4.3)
+02:10
+Ethernet Fundamentals (OBJ 2.2)
+18:40
+Network Devices (OBJ. 1.2)
+15:21
+Understanding Network Devices (OBJ. 1.2)
+06:40
+Virtual Local Area Network (VLAN) (OBJ. 2.2)
+08:05
+VLAN Configuration (OBJ. 2.2)
+11:49
+Understanding VLANs (OBJ. 2.2)
+10:50
+Spanning Tree Protocol (STP) (OBJ. 2.2)
+12:48
+Network Access Control (NAC) (OBJ. 4.3)
+11:46
+Maximum Transmission Unit (MTU) (OBJ 2.2)
+06:56
+Checkpoint: Ethernet Switching
+5 questions
+IP Addressing (OBJ 1.5, 1.7, & 1.8)
+09:49
+IPv4 Addressing (OBJ. 1.7)
+15:55
+IPv4 Address Types (OBJ. 1.5)
+15:17
+IPv4 Data Flows (OBJ. 1.5)
+03:09
+Assigning IPv4 Addresses (OBJ. 1.7)
+12:21
+Computer Mathematics (OBJ. 1.7)
+05:32
+Subnetting (OBJ. 1.7)
+17:08
+Subnetting Practice (OBJ. 1.7)
+08:15
+Subnetting by Hand (OBJ. 1.7)
+10:35
+IPv6 Addressing (OBJ. 1.8)
+19:02
+IPv6 Data Flows (OBJ. 1.5)
+02:46
+IPv4 and IPv6 Compatibility Requirements (OBJ. 1.8)
+08:41
+Checkpoint: IP Addressing
+5 questions
+Routing (OBJ 1.4 & 2.1)
+07:11
+Routing Fundamentals (OBJ. 2.1)
+05:28
+Routing Tables (OBJ. 2.1)
+11:54
+Routing Protocols (OBJ. 2.1)
+10:35
+Route Selection (OBJ. 2.1)
+05:50
+Address Translation (OBJ. 2.1)
+09:12
+Routing Redundancy Protocols (OBJ. 2.1)
+08:15
+Configuring Routers (OBJ. 2.1)
+12:44
+Multicast Routing (OBJ. 2.1)
+06:21
+Generic Routing Encapsulation (GRE) (OBJ. 1.4)
+04:20
+Checkpoint: Routing
+5 questions
+Network Services (OBJ. 1.2 & 3.4)
+01:54
+Dynamic Host Configuration Protocol (DHCP) (OBJ. 3.4)
+09:29
+Understanding DHCP (OBJ. 3.4)
+07:17
+Stateless Address Autoconfiguration (SLAAC) (OBJ. 3.4)
+03:45
+Domain Name System (DNS) (OBJ. 3.4)
+10:40
+DNS Record Types (OBJ. 3.4)
+14:22
+Securing DNS (OBJ. 3.4)
+04:59
+Understanding DNS (OBJ. 3.4)
+22:44
+Network Time Protocol (NTP) (OBJ. 3.4)
+06:56
+Quality of Service (QoS) (OBJ. 1.2)
+05:25
+QoS Categorization (OBJ. 1.2)
+07:18
+QoS Mechanisms (OBJ. 1.2)
+09:41
+Checkpoint: Network Services
+5 questions
+Wide Area Networks (WANs) (OBJ. 1.5)
+03:39
+Fiber Optic Connections (OBJ. 1.5)
+06:09
+Cable (DOCSIS) Connections (OBJ. 1.5)
+04:39
+Digital Subscriber Line (DSL) Connections (OBJ. 1.5)
+05:16
+Satellite Connections (OBJ. 1.5)
+05:41
+Cellular Connections (OBJ. 1.5)
+11:22
+Microwave Connections (OBJ. 1.6)
+03:44
+Leased Line Connections (OBJ. 1.5)
+05:53
+MPLS Connections (OBJ. 1.5)
+05:12
+Understanding WAN Connections (OBJ. 1.5)
+03:14
+Checkpoint: Wide Area Networks (WANs)
+5 questions
+Cloud and the Datacenter (OBJ. 1.3 & 1.8)
+02:36
+Cloud Computing (OBJ. 1.3)
+11:56
+Cloud Service Models (OBJ. 1.3)
+09:25
+Cloud Deployment Models (OBJ. 1.3)
+04:32
+Using Cloud Computing (OBJ. 1.3)
+22:32
+Cloud Connectivity (OBJ. 1.3)
+03:52
+Cloud Security (OBJ. 1.3)
+09:45
+Network Virtualization (OBJ. 1.3)
+04:23
+Software Defined Network (SDN) (OBJ. 1.8)
+08:11
+Software-Defined Wide Area Network (SD-WAN) (OBJ. 1.8)
+03:27
+Virtual Extensible Local Area Network (VXLAN) (OBJ. 1.8)
+05:42
+SASE and SSE (OBJ. 1.8)
+08:24
+Checkpoint: Cloud and the Datacenter
+5 questions
+Network Security Fundamentals (OBJ. 4.1 & 4.3)
+02:01
+The CIA Triad (OBJ. 4.1)
+11:08
+Threats and Vulnerabilities (OBJ. 4.1)
+09:29
+Risk Management (OBJ. 4.1)
+07:38
+Audits and Compliance (OBJ. 4.1)
+07:36
+Device Hardening (OBJ. 4.3)
+06:58
+Understanding Device Hardening (OBJ. 4.3)
+05:36
+Physical Security (OBJ. 4.1)
+10:20
+Honeypots and Active Defense (OBJ. 4.1)
+06:12
+Checkpoint: Network Security Fundamentals
+5 questions
+Network Attacks (OBJ. 4.2)
+02:28
+DoS and DDoS Attacks (OBJ. 4.2)
+08:20
+MAC Flooding (OBJ. 4.2)
+04:37
+Address Resolution Protocol (ARP) Attacks (OBJ. 4.2)
+05:38
+VLAN Hopping (OBJ. 4.2)
+06:55
+Domain Name System (DNS) Attacks (OBJ. 4.2)
+04:42
+On-path Attack (OBJ. 4.2)
+05:24
+Rogue Device and Attacks (OBJ. 4.2)
+11:06
+Social Engineering Attacks (OBJ. 4.2)
+07:11
+Understanding Phishing Attacks (OBJ. 4.2)
+05:15
+Malware Attacks (OBJ. 4.2)
+10:10
+Understanding Malware Attacks (OBJ. 4.2)
+07:45
+Checkpoint: Network Attacks
+5 questions
+Logical Security (OBJ. 1.4, 4.1, & 4.3)
+02:24
+Identity and Access Management (IAM) (OBJ. 4.1)
+06:55
+Multifactor Authentication (MFA) (OBJ. 4.1)
+10:22
+Authentication Methods (OBJ. 4.1)
+13:33
+Security Principles (OBJ. 4.1)
+09:17
+Encryption (OBJ. 4.1)
+07:28
+Internet Protocol Security (IPSec) (OBJ. 1.4)
+14:40
+Public Key Infrastructure (PKI) (OBJ. 4.1)
+05:59
+Digital Certificates (OBJ. 4.1)
+11:15
+Understanding Digital Certificates (OBJ. 4.1)
+03:32
+Key Management (OBJ. 4.3)
+02:13
+Logical Security
+5 questions
+Network Segmentation (OBJ 1.2, 1.8, 3.5, 4.1, & 4.3)
+03:38
+Firewalls (OBJ. 1.2)
+08:40
+Access Control List (ACL) (OBJ. 4.3)
+11:08
+Segmentation Zones (OBJ. 4.3)
+05:07
+Jumpbox (OBJ. 3.5)
+05:03
+Understanding Firewalls (OBJ. 4.3)
+13:57
+Content Filtering (OBJ. 1.2 & 4.3)
+05:04
+Internet of Things (IoT) (OBJ. 4.1)
+09:06
+SCADA and ICS (OBJ. 4.1)
+08:00
+Bring Your Own Device (OBJ. 4.1)
+04:59
+Zero-trust Architecture (OBJ 1.8)
+09:42
+Virtual Private Network (VPN) (OBJ. 3.5)
+10:49
+Using VPN Connections (OBJ. 3.5)
+04:30
+Remote Access Management (OBJ. 3.5)
+10:15
+Checkpoint: Network Segmentation
+5 questions
+Network Monitoring (OBJ 1.2 & 3.2)
+03:16
+Intrusion Detection and Protection Systems (IDS/IPS) (OBJ. 1.2)
+06:39
+Simple Network Management Protocol (SNMP) (OBJ. 3.2)
+06:54
+Network Sensors (OBJ. 3.2)
+04:37
+Packet Captures (OBJ. 3.2)
+08:38
+Network Flow Data (OBJ. 3.2)
+07:35
+Log Aggregation with Syslog (OBJ. 3.2)
+10:09
+Security Information and Event Management (SIEM) (OBJ. 3.2)
+06:39
+Understanding SIEMs (OBJ. 3.2)
+19:45
+Network Performance Metrics (OBJ. 3.2)
+06:13
+Interface Statistics (OBJ. 3.2)
+12:15
+Checkpoint: Networking Monitoring
+5 questions
+Orchestration and Automation (OBJ 1.8)
+03:18
+Infrastructure as Code (IaC) (OBJ 1.8)
+05:02
+When to Automate and Orchestrate (OBJ 1.8)
+09:33
+Benefits of Automation and Orchestration (OBJ 1.8)
+07:22
+Playbooks (OBJ 1.8)
+08:15
+Upgrades and Compliance (OBJ 1.8)
+06:50
+Automating Network Inventories (OBJ 1.8)
+05:03
+Integrations and APIs (OBJ 1.8)
+10:15
+Source Control (OBJ 1.8)
+08:56
+Using Source Control (OBJ 1.8)
+09:16
+Orchestration and Automation
+5 questions
+Documentation and Processes (OBJ. 3.1)
+05:55
+Common Documentation (OBJ. 3.1)
+07:58
+Asset Inventory (OBJ. 3.1)
+12:49
+IP Address Management (IPAM) (OBJ. 3.1)
+03:43
+Common Agreements (OBJ. 3.1)
+07:38
+Product Lifecycle (OBJ. 3.1)
+06:04
+Change Management (OBJ. 3.1)
+07:08
+Configuration Management (OBJ. 3.1)
+06:21
+Patch Management (OBJ. 3.1)
+09:02
+Checkpoint: Documentation and Processes
+5 questions
+Disaster Recovery (OBJ. 3.3)
+01:52
+High Availability Approaches (OBJ. 3.3)
+08:38
+Designing Redundant Networks (OBJ. 3.3)
+08:54
+Disaster Recovery Metrics (OBJ. 3.3)
+13:31
+Redundant Site Considerations (OBJ. 3.3)
+12:18
+Training and Exercises (OBJ. 3.3)
+04:46
+Checkpoint: Disaster Recovery
+5 questions
+Troubleshooting Methodology (OBJ. 5.1)
+02:04
+Step One (OBJ. 5.1)
+06:34
+Step Two (OBJ. 5.1)
+10:51
+Step Three (OBJ. 5.1)
+05:53
+Step Four and Step Five (OBJ. 5.1)
+06:58
+Step Six (OBJ. 5.1)
+05:02
+Step Seven (OBJ. 5.1)
+04:19
+Understanding the Troubleshooting Methodology (OBJ. 5.1)
+06:35
+Checkpoint: Troubleshooting Methodology
+5 questions
+Troubleshooting Tools (OBJ. 5.5)
+03:10
+Hardware Tools (OBJ. 5.5)
+13:38
+Software Tools (OBJ. 5.5)
+07:50
+ipconfig, ifconfig, and ip (OBJ. 5.5)
+09:02
+ping, traceroute, and tracert (OBJ. 5.5)
+10:22
+nslookup and dig (OBJ. 5.5)
+06:03
+arp (OBJ. 5.5)
+03:16
+netstat (OBJ. 5.5)
+04:36
+tcpdump (OBJ. 5.5)
+09:13
+nmap (OBJ. 5.5)
+09:43
+Basic Network Device Commands (OBJ. 5.5)
+10:42
+More Network Device Commands (OBJ. 5.5)
+07:17
+Discovery Protocols (OBJ. 5.5)
+04:35
+Checkpoint: Troubleshooting Tools
+5 questions
+Troubleshooting Physical Networks (OBJ. 5.2)
+01:59
+Network Cable Limitations (OBJ. 5.2)
+08:34
+Cable Signal Issues (OBJ. 5.2)
+08:34
+Copper Cable Issues (OBJ. 5.2)
+05:35
+Fiber Cable Issues (OBJ. 5.2)
+04:05
+Ethernet Issues (OBJ. 5.2)
+02:47
+Interface Issues (OBJ. 5.2)
+06:33
+Power over Ethernet (PoE) Issues (OBJ. 5.2)
+05:50
+Checkpoint: Troubleshooting Physical Networks
+5 questions
+Troubleshooting Wireless Issues (OBJ. 5.4)
+07:48
+Wireless Coverage Issues (OBJ. 5.4)
+04:15
+Interference Issues (OBJ. 5.4)
+03:28
+Client Disassociation Issues (OBJ. 5.4)
+03:01
+Incorrect Wireless Configurations (OBJ. 5.4)
+03:50
+Captive Portal Issues (OBJ. 5.4)
+05:18
+Wireless Considerations in Troubleshooting (OBJ. 5.4)
+13:02
+Checkpoint: Troubleshooting Wireless Issues
+5 questions
+Troubleshooting Network Services (OBJ. 5.3)
+02:34
+Duplicate Addresses (OBJ. 5.3)
+07:37
+DHCP Issues (OBJ. 5.3)
+05:28
+Routing Issues (OBJ. 5.3)
+04:44
+Switching and Routing Loops (OBJ. 5.3)
+05:01
+Firewall Issues (OBJ. 5.3)
+08:38
+IP Configuration Issues (OBJ. 5.3)
+05:34
+VLAN Issues (OBJ. 5.3)
+04:00
+DNS and NTP Issues (OBJ. 5.3)
+05:59
+Troubleshooting Network Services
+5 questions
+Troubleshooting Performance Issues (OBJ. 5.4)
+02:05
+Collisions and Broadcast Storms (OBJ. 5.4)
+10:41
+VOIP Issues (OBJ. 5.4)
+06:09
+Packet Loss (OBJ. 5.4)
+05:19
+Network Performance Issues (OBJ. 5.4)
+04:28
+Other Performance Issues (OBJ. 5.4)
+11:27
+Troubleshooting Performance Issues
+5 questions
+Access Your Readiness Assessment
+00:06
