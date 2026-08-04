@@ -1,0 +1,3402 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/linux/LPIC-1-2/LPIC-1/topic-103-gnu-and-unix-commands/103.6-modify-process-execution-priorities/">
+      
+      
+        <link rel="prev" href="../103.5-create-monitor-and-kill-processes/">
+      
+      
+        <link rel="next" href="../103.7-search-text-files-using-regular-expressions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice) - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objective-1036-ieu-chinh-o-uu-tien-tien-trinh-nice-renice" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-101-system-architecture/101.1-determine-and-configure-hardware-settings/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 101 system architecture
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 102 installation and package management
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1_4" id="__nav_8_1_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 103 gnu and unix commands
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic 103 gnu and unix commands
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.1-work-on-the-command-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.1: Làm việc trên Dòng lệnh (CLI Basics &amp; Shell)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.2-process-text-streams-using-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.2: Xử lý Luồng Văn bản bằng Bộ lọc (Text Filters)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.3-perform-basic-file-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.4-use-streams-pipes-and-redirects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.4: Sử dụng Streams, Pipes và Redirects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.5-create-monitor-and-kill-processes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.7-search-text-files-using-regular-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.7: Biểu thức Chính quy (Regex, grep, sed)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.8-basic-file-editing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.8: Chỉnh sửa File Văn bản (Vim / Vi Editor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-104-devices-filesystems-fhs/104.1-create-partitions-and-filesystems/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 104 devices filesystems fhs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-105-shells-and-shell-scripting/105.1-customize-and-use-the-shell-environment/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 105 shells and shell scripting
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-106-user-interfaces-and-desktops/106.1-install-and-configure-x11/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 106 user interfaces and desktops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-107-administrative-tasks/107.1-manage-user-and-group-accounts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 107 administrative tasks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-108-essential-system-services/108.1-maintain-system-time/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 108 essential system services
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-109-networking-fundamentals/109.1-fundamentals-of-internet-protocols/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 109 networking fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 110 security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/LPIC-1-2/LPIC-1/topic-103-gnu-and-unix-commands/103.6-modify-process-execution-priorities.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="objective-1036-ieu-chinh-o-uu-tien-tien-trinh-nice-renice">Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)<a class="headerlink" href="#objective-1036-ieu-chinh-o-uu-tien-tien-trinh-nice-renice" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 101-500 Version 5.0)</strong><br>
+📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 357 - 369)<br>
+🎯 <strong>Mục tiêu</strong>: Làm chủ kiến thức Linux căn bản &amp; nâng cao ứng dụng trực tiếp vào công việc DevOps Engineer.</p>
+</blockquote>
+<hr>
+<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
+<p>Bài học này giúp bạn nắm vững kiến thức chuyên sâu về <strong>Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)</strong>. </p>
+<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li>Giải thích bản chất lý thuyết và kiến trúc hoạt động của Linux.</li>
+<li>Thành thạo các câu lệnh thao tác trên Terminal, các tham số (options) và cú pháp thực thi.</li>
+<li>Đọc hiểu tệp tin cấu hình hệ thống, thư mục hệ thống chuẩn.</li>
+<li>Áp dụng vào xử lý sự cố (troubleshooting) và vận hành hệ thống trong môi trường DevOps/Cloud.</li>
+</ul>
+<hr>
+<h2 id="2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh">📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" title="Permanent link">¶</a></h2>
+<p>Below is the detailed material extracted directly from LPIC-1 Official Material:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>103.6 Modify process execution priorities
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 v5, Exam 101, Objective 103.6
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>2
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Know the default priority of a job that is created.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Run a program with higher or lower priority than the default.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Change the priority of a running process.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Partial list of the used files, terms and utilities
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• nice
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>• ps
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• renice
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• top
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 347
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>103.6 Lesson 1
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>Certificate:
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>LPIC-1
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Version:
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>5.0
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>Topic:
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>103 GNU and Unix Commands
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>Objective:
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>103.6 Modify process execution priorities
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>Lesson:
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>1 of 1
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Introduction
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>Operating systems able to run more than one process at the same time are called multi-tasking or
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>multi-processing systems. Whilst true simultaneity only happens when more than one processing
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>unit is available, even single processor systems can mimic simultaneity by switching between
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>processes very quickly. This technique is also employed in systems with many equivalent CPUs, or
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>symmetric multi-processor (SMP) systems, given that the number of potential concurrent processes
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>greatly exceeds the number of available processor units.
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>In fact, only one process at a time can control the CPU. However, most process activities are
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>system calls, that is, the running process transfers CPU control to an operating system’s process so
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>it performs the requested operation. System calls are in charge of all inter-device communication,
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>like memory allocations, reading and writing on filesystems, printing text on the screen, user
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>interaction, network transfers, etc. Transferring CPU control during a system call allows the
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>operating system to decide whether to return CPU control to the previous process or to hand it to
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>another process. As modern CPUs can execute instructions much faster than most external
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>hardware can communicate with each other, a new controlling process can do a lot of CPU work
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>while previously requested hardware responses are still unavailable. To ensure maximum CPU
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>harnessing, multi-processing operating systems keep a dynamic queue of active processes waiting
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>348 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>for a CPU time slot.
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>Although they allow to significantly improve CPU time utilization, relying solely on system calls to
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>switch between processes is not enough to achieve satisfactory multi-tasking performance. A
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>process that makes no system calls could control the CPU indefinitely. This is why modern
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>operating systems are also preemptive, that is, a running process can be put back in the queue so a
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>more important process can control the CPU, even if the running process has not made a system
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>call.
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>The Linux Scheduler
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>Linux, as a preemptive multi-processing operating system, implements a scheduler that organizes
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>the process queue. More precisely, the scheduler also decides which queued thread will be
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>executed — a process can branch out many independent threads — but process and thread are
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>interchangeable terms in this context. Every process has two predicates that intervene on its
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>scheduling: the scheduling policy and the scheduling priority.
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>There are two main types of scheduling policies: real-time policies and normal policies. Processes
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>under a real-time policy are scheduled by their priority values directly. If a more important
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>process becomes ready to run, a less important running process is preempted and the higher
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>priority process takes control of the CPU. A lower priority process will gain CPU control only if
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>higher priority processes are idle or waiting for hardware response.
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>Any real-time process has higher priority than a normal process. As a general purpose operating
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>system, Linux runs just a few real-time processes. Most processes, including system and user
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>programs, run under normal scheduling policies. Normal processes usually have the same priority
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>value, but normal policies can define execution priority rules using another process predicate: the
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>nice value. To avoid confusion with the dynamic priorities derived from nice values, scheduling
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>priorities are usually called static scheduling priorities.
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>The Linux scheduler can be configured in many different ways and even more intricate ways of
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>establishing priorities exist, but these general concepts always apply. When inspecting and tuning
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>process scheduling, it is important to keep in mind that only processes under normal scheduling
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>policy will be affected.
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>Reading Priorities
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>Linux reserves static priorities ranging from 0 to 99 for real-time processes and normal processes
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>are assigned to static priorities ranging from 100 to 139, meaning that there are 39 different
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>priority levels for normal processes. Lower values mean higher priority. The static priority of an
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>active process can be found in the sched file, located in its respective directory inside the /proc
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 349
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>filesystem:
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>$ grep ^prio /proc/1/sched
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>prio                   :       120
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>As shown in the example, the line beginning with prio gives the priority value of the process (the
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>PID 1 process is the init or the systemd process, the first process the kernel starts during system
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>initialization). The standard priority for normal processes is 120, so that it can be decreased to 100
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>or increased to 139. The priorities of all running process can be verified with the command ps
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>-Al or ps -el:
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>$ ps -el
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>4 S     0     1     0  0  80   0 -  9292 -      ?        00:00:00 systemd
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>4 S     0    19     1  0  80   0 -  8817 -      ?        00:00:00 systemd-journal
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>4 S   104    61     1  0  80   0 - 64097 -      ?        00:00:00 rsyslogd
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>4 S     0    63     1  0  80   0 -  7244 -      ?        00:00:00 cron
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>1 S     0   126     1  0  80   0 -  4031 -      ?        00:00:00 dhclient
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>4 S     0   154     1  0  80   0 -  3937 -      pts/0    00:00:00 agetty
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>4 S     0   155     1  0  80   0 -  3937 -      pts/1    00:00:00 agetty
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>4 S     0   156     1  0  80   0 -  3937 -      pts/2    00:00:00 agetty
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>4 S     0   157     1  0  80   0 -  3937 -      pts/3    00:00:00 agetty
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>4 S     0   158     1  0  80   0 -  3937 -      console  00:00:00 agetty
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>4 S     0   160     1  0  80   0 - 16377 -      ?        00:00:00 sshd
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>4 S     0   280     0  0  80   0 -  5301 -      ?        00:00:00 bash
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>0 R     0   392   280  0  80   0 -  7221 -      ?        00:00:00 ps
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>The PRI column indicates the static priority assigned by the kernel. Note, however, that the
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>priority value displayed by ps differs from that obtained in the previous example. Due to
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>historical reasons, priorities displayed by ps range from -40 to 99 by default, so the actual priority
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>is obtained by adding 40 to it (in particular, 80 + 40 = 120).
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>It is also possible to continuously monitor processes currently being managed by the Linux kernel
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>with program top. As with ps, top also displays the priority value differently. To make it easier to
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>identify real-time processes, top subtracts the priority value by 100, thus making all real-time
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>priorities negative, with a negative number or rt identifying them. Therefore, normal priorities
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>displayed by top range from 0 to 39.
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>NOTE
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>To get more details from the ps command, additional options can be used.
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>Compare the output from this command to the one from our previous example:
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>350 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>$ ps -e -o user,uid,comm,tty,pid,ppid,pri,pmem,pcpu --sort=-pcpu | head
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>Process Niceness
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>Every normal process begins with a default nice value of 0 (priority 120). The nice name comes
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>from the idea that “nicer” processes allow other processes to run before them in a particular
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>execution queue. Nice numbers range from -20 (less nice, high priority) to 19 (more nice, low
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>priority). Linux also allows the ability to assign different nice values to threads within the same
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>process. The NI column in ps output indicates the nice number.
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>Only the root user can decrease the niceness of a process below zero. It’s possible to start a
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>process with a non-standard priority with the command nice. By default, nice changes the
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>niceness to 10, but it can be specified with option -n:
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>$ nice -n 15 tar czf home_backup.tar.gz /home
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>In this example, the command tar is executed with a niceness of 15. The command renice can be
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>used to change the priority of a running process. The option -p indicates the PID number of the
+<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>target process. For example:
+<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a># renice -10 -p 2164
+<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>2164 (process ID) old priority 0, new priority -10
+<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>The options -g and -u are used to modify all the processes of a specific group or user,
+<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>respectively. With renice +5 -g users, the niceness of processes owned by users of the group
+<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>users will be raised in five.
+<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>Besides renice, the priority of processes can be modified with other programs, like the program
+<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>top. On the top main screen, the niceness of a process can be modified by pressing r and then the
+<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>PID number of the process:
+<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>top - 11:55:21 up 23:38,  1 user,  load average: 0,10, 0,04, 0,05
+<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>Tasks:  20 total,   1 running,  19 sleeping,   0 stopped,   0 zombie
+<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>%Cpu(s):  0,5 us,  0,3 sy,  0,0 ni, 99,0 id,  0,0 wa,  0,2 hi,  0,0 si,  0,0 st
+<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>KiB Mem :  4035808 total,   774700 free,  1612600 used,  1648508 buff/cache
+<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>KiB Swap:  7999828 total,  7738780 free,   261048 used.  2006688 avail Mem
+<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>PID to renice [default pid = 1]
+<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>&nbsp; PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>&nbsp;   1 root      20   0   74232   7904   6416 S 0,000 0,196   0:00.12 systemd
+<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 351
+<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>
+<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>&nbsp;  15 root      20   0   67436   6144   5568 S 0,000 0,152   0:00.03 systemd-journal
+<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>&nbsp;  21 root      20   0   61552   5628   5000 S 0,000 0,139   0:00.01 systemd-logind
+<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>&nbsp;  22 message+  20   0   43540   4072   3620 S 0,000 0,101   0:00.03 dbus-daemon
+<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>&nbsp;  23 root      20   0   45652   6204   4992 S 0,000 0,154   0:00.06 wickedd-dhcp4
+<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>&nbsp;  24 root      20   0   45648   6276   5068 S 0,000 0,156   0:00.06 wickedd-auto4
+<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>&nbsp;  25 root      20   0   45648   6272   5060 S 0,000 0,155   0:00.06 wickedd-dhcp6
+<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>The message PID to renice [default pid = 1] appears with the first listed process selected
+<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>by default. To change the priority of another process, type its PID and press Enter. Then, the
+<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>message Renice PID 1 to value will appear (with the requested PID number) and a new nice
+<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>value can be assigned.
+<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>352 &nbsp;&nbsp;&nbsp; |
+</code></pre></div>
+<hr>
+<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<h3 id="bang-lenh-trong-tam-key-command-reference">💡 Bảng Lệnh Trọng Tâm (Key Command Reference)<a class="headerlink" href="#bang-lenh-trong-tam-key-command-reference" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Lệnh / File / Folder</th>
+<th style="text-align: left;">Chức năng chính</th>
+<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>command / path</code></td>
+<td style="text-align: left;">Tra cứu &amp; kiểm tra cấu hình</td>
+<td style="text-align: left;">Quản trị Server Linux, Cloud EC2, Docker Container</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/etc/</code></td>
+<td style="text-align: left;">Thư mục chứa cấu hình hệ thống</td>
+<td style="text-align: left;">Quản lý cấu hình bằng Ansible, Terraform, Puppet</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>systemctl / journalctl</code></td>
+<td style="text-align: left;">Quản lý Service &amp; Xem Log tiến trình</td>
+<td style="text-align: left;">Debug ứng dụng microservices trên Linux Server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grep / sed / awk</code></td>
+<td style="text-align: left;">Xử lý &amp; Lọc luồng dữ liệu text</td>
+<td style="text-align: left;">Viết Bash script tự động hóa CI/CD Pipelines</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
+<p>Guided Exercises
+1. In a preemptive multi-tasking system, what happens when a lower priority process is
+occupying the processor and a higher priority process is queued to be executed?
+2. Consider the following top screen:
+top - 08:43:14 up 23 days, 12:29,  5 users,  load average: 0,13, 0,18, 0,21
+Tasks: 240 total,   2 running, 238 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1,4 us,  0,4 sy,  0,0 ni, 98,1 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+MiB Mem :   7726,4 total,    590,9 free,   1600,8 used,   5534,7 buff/cache
+MiB Swap:  30517,0 total,  30462,5 free,     54,5 used.   5769,4 avail Mem
+&nbsp; PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+&nbsp;   1 root      20   0  171420  10668   7612 S   0,0   0,1   9:59.15 systemd
+&nbsp;   2 root      20   0       0      0      0 S   0,0   0,0   0:02.76 kthreadd
+&nbsp;   3 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 rcu_gp
+&nbsp;   4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 rcu_par_gp
+&nbsp;   8 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 mm_percpu_wq
+&nbsp;   9 root      20   0       0      0      0 S   0,0   0,0   0:49.06 ksoftirqd/0
+&nbsp;  10 root      20   0       0      0      0 I   0,0   0,0  18:24.20 rcu_sched
+&nbsp;  11 root      20   0       0      0      0 I   0,0   0,0   0:00.00 rcu_bh
+&nbsp;  12 root      rt   0       0      0      0 S   0,0   0,0   0:08.17 migration/0
+&nbsp;  14 root      20   0       0      0      0 S   0,0   0,0   0:00.00 cpuhp/0
+&nbsp;  15 root      20   0       0      0      0 S   0,0   0,0   0:00.00 cpuhp/1
+&nbsp;  16 root      rt   0       0      0      0 S   0,0   0,0   0:11.79 migration/1
+&nbsp;  17 root      20   0       0      0      0 S   0,0   0,0   0:26.01 ksoftirqd/1
+What PIDs have real-time priorities?
+3. Consider the following ps -el listing:
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+4 S     0     1     0  0  80   0 - 42855 -      ?        00:09:59 systemd
+1 S     0     2     0  0  80   0 -     0 -      ?        00:00:02 kthreadd
+1 I     0     3     2  0  60 -20 -     0 -      ?        00:00:00 rcu_gp
+1 S     0     9     2  0  80   0 -     0 -      ?        00:00:49 ksoftirqd/0
+1 I     0    10     2  0  80   0 -     0 -      ?        00:18:26 rcu_sched
+1 I     0    11     2  0  80   0 -     0 -      ?        00:00:00 rcu_bh
+1 S     0    12     2  0 -40   - -     0 -      ?        00:00:08 migration/0
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 353</p>
+<p>1 S     0    14     2  0  80   0 -     0 -      ?        00:00:00 cpuhp/0
+5 S     0    15     2  0  80   0 -     0 -      ?        00:00:00 cpuhp/1
+Which PID has higher priority?
+4. After trying to renice a process with renice, the following error happens:
+$ renice -10 21704
+renice: failed to set priority for 21704 (process ID): Permission denied
+What is the probable cause for the error?
+354 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Explorational Exercises
+1. Changing process priorities is usually required when a process is occupying too much CPU
+time. Using ps with standard options for printing all system processes in long format, what
+--sort flag will sort processes by CPU utilization, increasing order?
+2. Command schedtool can set all CPU scheduling parameters Linux is capable of or display
+information for given processes. How can it be used to display the scheduling parameters of
+process 1750? Also, how can schedtool be used to change process 1750 to real-time with
+priority -90 (as displayed by top)?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 355</p>
+<p>Summary
+This lesson covers how Linux shares CPU time among its managed processes. To ensure best
+performance, more critical processes must overtake less critical processes. The lesson goes
+through the following steps:
+• Basic concepts about multi-processing systems.
+• What is a process scheduler and how Linux implements it.
+• What are Linux priorities, nice numbers and their purpose.
+• How to read and interpret process priorities in Linux.
+• How to change the priority of a process, before and during its execution.
+356 &nbsp;&nbsp;&nbsp; |</p>
+<hr>
+<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
+<p>Answers to Guided Exercises
+1. In a preemptive multi-tasking system, what happens when a lower priority process is
+occupying the processor and a higher priority process is queued to be executed?
+The lower priority process pauses and the higher priority process is executed instead.
+2. Consider the following top screen:
+top - 08:43:14 up 23 days, 12:29,  5 users,  load average: 0,13, 0,18, 0,21
+Tasks: 240 total,   2 running, 238 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1,4 us,  0,4 sy,  0,0 ni, 98,1 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+MiB Mem :   7726,4 total,    590,9 free,   1600,8 used,   5534,7 buff/cache
+MiB Swap:  30517,0 total,  30462,5 free,     54,5 used.   5769,4 avail Mem
+&nbsp; PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+&nbsp;   1 root      20   0  171420  10668   7612 S   0,0   0,1   9:59.15 systemd
+&nbsp;   2 root      20   0       0      0      0 S   0,0   0,0   0:02.76 kthreadd
+&nbsp;   3 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 rcu_gp
+&nbsp;   4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 rcu_par_gp
+&nbsp;   8 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 mm_percpu_wq
+&nbsp;   9 root      20   0       0      0      0 S   0,0   0,0   0:49.06 ksoftirqd/0
+&nbsp;  10 root      20   0       0      0      0 I   0,0   0,0  18:24.20 rcu_sched
+&nbsp;  11 root      20   0       0      0      0 I   0,0   0,0   0:00.00 rcu_bh
+&nbsp;  12 root      rt   0       0      0      0 S   0,0   0,0   0:08.17 migration/0
+&nbsp;  14 root      20   0       0      0      0 S   0,0   0,0   0:00.00 cpuhp/0
+&nbsp;  15 root      20   0       0      0      0 S   0,0   0,0   0:00.00 cpuhp/1
+&nbsp;  16 root      rt   0       0      0      0 S   0,0   0,0   0:11.79 migration/1
+&nbsp;  17 root      20   0       0      0      0 S   0,0   0,0   0:26.01 ksoftirqd/1
+What PIDs have real-time priorities?
+PIDs 12 and 16.
+3. Consider the following ps -el listing:
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+4 S     0     1     0  0  80   0 - 42855 -      ?        00:09:59 systemd
+1 S     0     2     0  0  80   0 -     0 -      ?        00:00:02 kthreadd
+1 I     0     3     2  0  60 -20 -     0 -      ?        00:00:00 rcu_gp
+1 S     0     9     2  0  80   0 -     0 -      ?        00:00:49 ksoftirqd/0
+1 I     0    10     2  0  80   0 -     0 -      ?        00:18:26 rcu_sched
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 357</p>
+<p>1 I     0    11     2  0  80   0 -     0 -      ?        00:00:00 rcu_bh
+1 S     0    12     2  0 -40   - -     0 -      ?        00:00:08 migration/0
+1 S     0    14     2  0  80   0 -     0 -      ?        00:00:00 cpuhp/0
+5 S     0    15     2  0  80   0 -     0 -      ?        00:00:00 cpuhp/1
+Which PID has higher priority?
+PID 12.
+4. After trying to renice a process with renice, the following error happens:
+$ renice -10 21704
+renice: failed to set priority for 21704 (process ID): Permission denied
+What is the probable cause for the error?
+Only user root can decrease nice numbers below zero.
+358 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Answers to Explorational Exercises
+1. Changing process priorities is usually required when a process is occupying too much CPU
+time. Using ps with standard options for printing all system processes in long format, what
+--sort flag will sort processes by CPU utilization, increasing order?
+$ ps -el --sort=pcpu
+2. Command schedtool can set all CPU scheduling parameters Linux is capable of or display
+information for given processes. How can it be used to display the scheduling parameters of
+process 1750? Also, how can schedtool be used to change process 1750 to real-time with
+priority -90 (as displayed by top)?
+$ schedtool 1750
+$ schedtool -R -p 89 1750
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 359</p>
+<hr>
+<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
+<ol>
+<li>Ghi nhớ cú pháp câu lệnh và ý nghĩa từng tùy chọn (flag/option).</li>
+<li>Hiểu rõ vị trí các file cấu hình quan trọng trong hệ thống Linux.</li>
+<li>Luôn kiểm tra log bằng <code>journalctl</code> hoặc tệp log tương ứng khi gặp sự cố.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../103.5-create-monitor-and-kill-processes/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../103.7-search-text-files-using-regular-expressions/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 103.7: Biểu thức Chính quy (Regex, grep, sed)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Objective 103.7: Biểu thức Chính quy (Regex, grep, sed)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

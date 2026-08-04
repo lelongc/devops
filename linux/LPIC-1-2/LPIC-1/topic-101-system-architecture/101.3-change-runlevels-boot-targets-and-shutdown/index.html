@@ -1,0 +1,3410 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/linux/LPIC-1-2/LPIC-1/topic-101-system-architecture/101.3-change-runlevels-boot-targets-and-shutdown/">
+      
+      
+        <link rel="prev" href="../101.2-boot-the-system/">
+      
+      
+        <link rel="next" href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Objective 101.3: Runlevel, Boot Target &amp; Shutdown/Reboot System - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objective-1013-runlevel-boot-target-shutdownreboot-system" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Objective 101.3: Runlevel, Boot Target &amp; Shutdown/Reboot System
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1_2" id="__nav_8_1_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 101 system architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic 101 system architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../101.1-determine-and-configure-hardware-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 101.1: Xác định và Cấu hình Thiết bị Phần cứng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../101.2-boot-the-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 101.2: Khởi động Hệ thống Linux (Boot Process &amp; Systemd)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 101.3: Runlevel, Boot Target &amp; Shutdown/Reboot System
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 101.3: Runlevel, Boot Target &amp; Shutdown/Reboot System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 102 installation and package management
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-103-gnu-and-unix-commands/103.1-work-on-the-command-line/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 103 gnu and unix commands
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-104-devices-filesystems-fhs/104.1-create-partitions-and-filesystems/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 104 devices filesystems fhs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-105-shells-and-shell-scripting/105.1-customize-and-use-the-shell-environment/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 105 shells and shell scripting
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-106-user-interfaces-and-desktops/106.1-install-and-configure-x11/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 106 user interfaces and desktops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-107-administrative-tasks/107.1-manage-user-and-group-accounts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 107 administrative tasks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-108-essential-system-services/108.1-maintain-system-time/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 108 essential system services
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-109-networking-fundamentals/109.1-fundamentals-of-internet-protocols/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 109 networking fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 110 security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/LPIC-1-2/LPIC-1/topic-101-system-architecture/101.3-change-runlevels-boot-targets-and-shutdown.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="objective-1013-runlevel-boot-target-shutdownreboot-system">Objective 101.3: Runlevel, Boot Target &amp; Shutdown/Reboot System<a class="headerlink" href="#objective-1013-runlevel-boot-target-shutdownreboot-system" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 101-500 Version 5.0)</strong><br>
+📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 44 - 61)<br>
+🎯 <strong>Mục tiêu</strong>: Làm chủ kiến thức Linux căn bản &amp; nâng cao ứng dụng trực tiếp vào công việc DevOps Engineer.</p>
+</blockquote>
+<hr>
+<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
+<p>Bài học này giúp bạn nắm vững kiến thức chuyên sâu về <strong>Objective 101.3: Runlevel, Boot Target &amp; Shutdown/Reboot System</strong>. </p>
+<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li>Giải thích bản chất lý thuyết và kiến trúc hoạt động của Linux.</li>
+<li>Thành thạo các câu lệnh thao tác trên Terminal, các tham số (options) và cú pháp thực thi.</li>
+<li>Đọc hiểu tệp tin cấu hình hệ thống, thư mục hệ thống chuẩn.</li>
+<li>Áp dụng vào xử lý sự cố (troubleshooting) và vận hành hệ thống trong môi trường DevOps/Cloud.</li>
+</ul>
+<hr>
+<h2 id="2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh">📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" title="Permanent link">¶</a></h2>
+<p>Below is the detailed material extracted directly from LPIC-1 Official Material:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>101.3 Change runlevels / boot targets and shutdown or reboot system
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 v5, Exam 101, Objective 101.3
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>3
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Set the default runlevel or boot target.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Change between runlevels / boot targets including single user mode.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Shutdown and reboot from the command line.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>• Alert users before switching runlevels / boot targets or other major system events.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• Properly terminate processes.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>• Awareness of acpid.
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Partial list of the used files, terms and utilities
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• /etc/inittab
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• shutdown
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• init
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• /etc/init.d/
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• telinit
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>• systemd
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>• systemctl
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>• /etc/systemd/
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>34 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>• /usr/lib/systemd/
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>• wall
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 35
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>101.3 Lesson 1
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>Certificate:
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>LPIC-1
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>Version:
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>5.0
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>Topic:
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>101 System Architecture
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>Objective:
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>101.3 Change runlevels / boot targets and
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>shutdown or reboot system
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>Lesson:
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>1 of 1
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Introduction
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>A common feature among operating systems following Unix design principles is the employment
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>of separate processes to control distinct functions of the system. These processes, called daemons
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>(or, more generally, services), are also responsible for extended features underlying the operating
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>system, like network application services (HTTP server, file sharing, email, etc.), databases, on-
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>demand configuration, etc. Although Linux utilizes a monolithic kernel, many low level aspects of
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>the operating system are affected by daemons, like load balancing and firewall configuration.
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>Which daemons should be active depends on the purpose of the system. The set of active daemons
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>should also be modifiable at runtime, so services can be started and stopped without having to
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>reboot the whole system. To tackle this issue, every major Linux distribution offers some form of
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>service management utility to control the system.
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>Services can be controlled by shell scripts or by a program and its supporting configuration files.
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>The first method is implemented by the SysVinit standard, also known as System V or just SysV.
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>The second method is implemented by systemd and Upstart. Historically, SysV based service
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>managers were the most used by Linux distributions. Today, systemd based service managers are
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>36 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>more often found in most Linux distributions. The service manager is the first program launched
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>by the kernel during the boot process, so its PID (process identification number) is always 1.
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>SysVinit
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>A service manager based on the SysVinit standard will provide predefined sets of system states,
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>called runlevels, and their corresponding service script files to be executed. Runlevels are
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>numbered 0 to 6, being generally assigned to the following purposes:
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>Runlevel 0
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>System shutdown.
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>Runlevel 1, s or single
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>Single user mode, without network and other non-essential capabilities (maintenance mode).
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>Runlevel 2, 3 or 4
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>Multi-user mode. Users can log in by console or network. Runlevels 2 and 4 are not often used.
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>Runlevel 5
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>Multi-user mode. It is equivalent to 3, plus the graphical mode login.
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>Runlevel 6
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>System restart.
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>The program responsible for managing runlevels and associated daemons/resources is
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>/sbin/init. During system initialization, the init program identifies the requested runlevel,
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>defined by a kernel parameter or in the /etc/inittab file, and loads the associated scripts listed
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>there for the given runlevel. Every runlevel may have many associated service files, usually
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>scripts in the /etc/init.d/ directory. As not all runlevels are equivalent through different Linux
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>distributions, a short description of the runlevel’s purpose can also be found in SysV based
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>distributions.
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>The syntax of the /etc/inittab file uses this format:
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>id:runlevels:action:process
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>The id is a generic name up to four characters in length used to identify the entry. The runlevels
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>entry is a list of runlevel numbers for which a specified action should be executed. The action
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>term defines how init will execute the process indicated by the term process. The available
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>actions are:
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 37
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>boot
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>The process will be executed during system initialization. The field runlevels is ignored.
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>bootwait
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>The process will be executed during system initialization and init will wait until it finishes to
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>continue. The field runlevels is ignored.
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>sysinit
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>The process will be executed after system initialization, regardless of runlevel. The field
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>runlevels is ignored.
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>wait
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>The process will be executed for the given runlevels and init will wait until it finishes to
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>continue.
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>respawn
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>The process will be restarted if it is terminated.
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>ctrlaltdel
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>The process will be executed when the init process receives the SIGINT signal, triggered when
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>the key sequence of Ctrl  +  Alt  +  Del  is pressed.
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>The default runlevel — the one that will be chosen if no other is given as a kernel parameter — is
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>also defined in /etc/inittab, in the entry id:x:initdefault. The x is the number of the
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>default runlevel. This number should never be 0 or 6, given that it would cause the system to
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>shutdown or restart as soon as it finishes the boot process. A typical /etc/inittab file is shown
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>below:
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a># Default runlevel
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>id:3:initdefault:
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a># Configuration script executed during boot
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>si::sysinit:/etc/init.d/rcS
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a># Action taken on runlevel S (single user)
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>~:S:wait:/sbin/sulogin
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a># Configuration for each execution level
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>l0:0:wait:/etc/init.d/rc 0
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>l1:1:wait:/etc/init.d/rc 1
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>l2:2:wait:/etc/init.d/rc 2
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>38 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>l3:3:wait:/etc/init.d/rc 3
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>l4:4:wait:/etc/init.d/rc 4
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>l5:5:wait:/etc/init.d/rc 5
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>l6:6:wait:/etc/init.d/rc 6
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a># Action taken upon ctrl+alt+del keystroke
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>ca::ctrlaltdel:/sbin/shutdown -r now
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a># Enable consoles for runlevels 2 and 3
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>1:23:respawn:/sbin/getty tty1 VC linux
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>2:23:respawn:/sbin/getty tty2 VC linux
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>3:23:respawn:/sbin/getty tty3 VC linux
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>4:23:respawn:/sbin/getty tty4 VC linux
+<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a># For runlevel 3, also enable serial
+<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a># terminals ttyS0 and ttyS1 (modem) consoles
+<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>S0:3:respawn:/sbin/getty -L 9600 ttyS0 vt320
+<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>S1:3:respawn:/sbin/mgetty -x0 -D ttyS1
+<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>The telinit q command should be executed every time after the /etc/inittab file is modified.
+<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>The argument q (or Q) tells init to reload its configuration. Such a step is important to avoid a
+<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>system halt due to an incorrect configuration in /etc/inittab.
+<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>The scripts used by init to setup each runlevel are stored in the directory /etc/init.d/. Every
+<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>runlevel has an associated directory in /etc/, named /etc/rc0.d/, /etc/rc1.d/, /etc/rc2.d/,
+<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>etc., with the scripts that should be executed when the corresponding runlevel starts. As the same
+<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>script can be used by different runlevels, the files in those directories are just symbolic links to the
+<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>actual scripts in /etc/init.d/. Furthermore, the first letter of the link filename in the runlevel’s
+<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>directory indicates if the service should be started or terminated for the corresponding runlevel. A
+<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>link’s filename starting with letter K determines that the service will be killed when entering the
+<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>runlevel (kill). Starting with letter S, the service will be started when entering the runlevel (start).
+<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>The directory /etc/rc1.d/, for example, will have many links to network scripts beginning with
+<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>letter K, considering that the runlevel 1 is the single user runlevel, without network connectivity.
+<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>The command runlevel shows the current runlevel for the system. The runlevel command
+<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>shows two values, the first is the previous runlevel and the second is the current runlevel:
+<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>$ runlevel
+<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>N 3
+<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>The letter N in the output shows that the runlevel has not changed since last boot. In the example,
+<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 39
+<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>
+<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>the runlevel 3 is the current runlevel of the system.
+<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>The same init program can be used to alternate between runlevels in a running system, without
+<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>the need to reboot. The command telinit can also be used to alternate between runlevels. For
+<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>example, commands telinit 1, telinit s or telinit S will change the system to runlevel 1.
+<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>systemd
+<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>Currently, systemd is the most widely used set of tools to manage system resources and services,
+<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>which are referred to as units by systemd. A unit consists of a name, a type and a corresponding
+<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>configuration file. For example, the unit for a httpd server process (like the Apache web server)
+<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>will be httpd.service on Red Hat based distributions and its configuration file will also be
+<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>called httpd.service (on Debian based distributions this unit is named apache2.service).
+<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>There are seven distinct types of systemd units:
+<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>service
+<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>The most common unit type, for active system resources that can be initiated, interrupted and
+<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>reloaded.
+<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>socket
+<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>The socket unit type can be a filesystem socket or a network socket. All socket units have a
+<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>corresponding service unit, loaded when the socket receives a request.
+<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>device
+<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>A device unit is associated with a hardware device identified by the kernel. A device will only
+<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>be taken as a systemd unit if a udev rule for this purpose exists. A device unit can be used to
+<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>resolve configuration dependencies when certain hardware is detected, given that properties
+<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>from the udev rule can be used as parameters for the device unit.
+<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>mount
+<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>A mount unit is a mount point definition in the filesystem, similar to an entry in /etc/fstab.
+<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>automount
+<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>An automount unit is also a mount point definition in the filesystem, but mounted
+<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>automatically. Every automount unit has a corresponding mount unit, which is initiated when
+<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>the automount mount point is accessed.
+<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>target
+<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>A target unit is a grouping of other units, managed as a single unit.
+<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>40 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>
+<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>snapshot
+<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>A snapshot unit is a saved state of the systemd manager (not available on every Linux
+<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>distribution).
+<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>The main command for controlling systemd units is systemctl. Command systemctl is used to
+<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>execute all tasks regarding unit activation, deactivation, execution, interruption, monitoring, etc.
+<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>For a fictitious unit called unit.service, for example, the most common systemctl actions will
+<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>be:
+<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>systemctl start unit.service
+<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a>Starts unit.
+<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>systemctl stop unit.service
+<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>Stops unit.
+<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>systemctl restart unit.service
+<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>Restarts unit.
+<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>systemctl status unit.service
+<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>Shows the state of unit, including if it is running or not.
+<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>systemctl is-active unit.service
+<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>Shows active if unit is running or inactive otherwise.
+<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>systemctl enable unit.service
+<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>Enables unit, that is, unit will load during system initialization.
+<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>systemctl disable unit.service
+<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>unit will not start with the system.
+<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>systemctl is-enabled unit.service
+<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>Verifies if unit starts with the system. The answer is stored in the variable $?. The value 0
+<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>indicates that unit starts with the system and the value 1 indicates that unit does not starts
+<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>with the system.
+<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>NOTE
+<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>Newer installations of systemd will actually list a unit’s configuration for boot time.
+<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>For example:
+<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>$ systemctl is-enabled apparmor.service
+<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>enabled
+<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 41
+<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>
+<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>If no other units with the same name exist in the system, then the suffix after the dot can be
+<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>dropped. If, for example, there is only one httpd unit of type service, then only httpd is enough
+<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>as the unit parameter for systemctl.
+<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>The systemctl command can also control system targets. The multi-user.target unit, for
+<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>example, combines all units required by the multi-user system environment. It is similar to the
+<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>runlevel number 3 in a system utilizing SysV.
+<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>Command systemctl isolate alternates between different targets. So, to manually alternate to
+<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>target multi-user:
+<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a># systemctl isolate multi-user.target
+<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>There are corresponding targets to SysV runlevels, starting with runlevelO.target up to
+<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>runlevel6.target. However, systemd does not use the /etc/inittab file. To change the default
+<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>system target, the option systemd.unit can be added to the kernel parameters list. For example,
+<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>to use multi-user.target as the standard target, the kernel parameter should be
+<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>systemd.unit=multi-user.target. All kernel parameters can be made persistent by changing
+<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>the bootloader configuration.
+<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>Another 
+<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>way 
+<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>to 
+<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>change 
+<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>the 
+<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>default 
+<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>target 
+<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>is 
+<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>to 
+<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>modify 
+<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>the 
+<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>symbolic 
+<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>link
+<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>/etc/systemd/system/default.target so it points to the desired target. The redefinition of
+<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>the link can be done with the systemctl command by itself:
+<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a># systemctl set-default multi-user.target
+<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>Likewise, you can determine what your system’s default boot target is with the following
+<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>command:
+<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>$ systemctl get-default
+<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>graphical.target
+<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>Similar to systems adopting SysV, the default target should never point to shutdown.target, as it
+<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a>corresponds to the runlevel 0 (shutdown).
+<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>The configuration files associated with every unit can be found in the /lib/systemd/system/
+<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>directory. The command systemctl list-unit-files lists all available units and shows if they
+<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>are enabled to start when the system boots. The option --type will select only the units for a
+<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>given type, as in systemctl list-unit-files --type=service and systemctl list-unit-
+<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>42 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>
+<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>files --type=target.
+<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>Active units or units that have been active during the current system session can be listed with
+<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>command systemctl list-units. Like the list-unit-files option, the systemctl list-
+<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>units --type=service command will select only units of type service and command
+<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>systemctl list-units --type=target will select only units of type target.
+<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>systemd is also responsible for triggering and responding to power related events. The systemctl
+<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>suspend command will put the system in low power mode, keeping current data in memory.
+<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>Command systemctl hibernate will copy all memory data to disk, so the current state of the
+<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>system can be recovered after powering it off. The actions associated with such events are defined
+<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>in 
+<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>the 
+<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>file 
+<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>/etc/systemd/logind.conf 
+<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>or 
+<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>in 
+<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>separate 
+<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>files 
+<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>inside 
+<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>the 
+<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>directory
+<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>/etc/systemd/logind.conf.d/. However, this systemd feature can only be used when there is
+<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>no other power manager running in the system, like the acpid daemon. The acpid daemon is the
+<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>main power manager for Linux and allows finer adjustments to the actions following power
+<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>related events, like closing the laptop lid, low battery or battery charging levels.
+<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>Upstart
+<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>The initialization scripts used by Upstart are located in the directory /etc/init/. System services
+<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>can be listed with command initctl list, which also shows the current state of the services
+<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>and, if available, their PID number.
+<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a># initctl list
+<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>avahi-cups-reload stop/waiting
+<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>avahi-daemon start/running, process 1123
+<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>mountall-net stop/waiting
+<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>mountnfs-bootclean.sh start/running
+<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>nmbd start/running, process 3085
+<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>passwd stop/waiting
+<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>rc stop/waiting
+<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>rsyslog start/running, process 1095
+<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>tty4 start/running, process 1761
+<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>udev start/running, process 1073
+<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>upstart-udev-bridge start/running, process 1066
+<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>console-setup stop/waiting
+<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>irqbalance start/running, process 1842
+<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>plymouth-log stop/waiting
+<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>smbd start/running, process 1457
+<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>tty5 start/running, process 1764
+<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>failsafe stop/waiting
+<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 43
+<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>
+<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>Every Upstart action has its own independent command. For example, command start can be
+<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>used to initiate a sixth virtual terminal:
+<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a># start tty6
+<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a>The current state of a resource can be verified with command status:
+<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a># status tty6
+<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a>tty6 start/running, process 3282
+<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>And the interruption of a service is done with the command stop:
+<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a># stop tty6
+<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>Upstart does not use the /etc/inittab file to define runlevels, but the legacy commands
+<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a>runlevel and telinit can still be used to verify and alternate between runlevels.
+<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a>NOTE
+<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>Upstart was developed for the Ubuntu Linux distribution to help facilitate parallel
+<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>startup of processes. Ubuntu has stopped using Upstart since 2015 when it switched
+<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a>from Upstart to systemd.
+<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>Shutdown and Restart
+<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>A very traditional command used to shutdown or restart the system is unsurprisingly called
+<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>shutdown. The shutdown command adds extra functions to the power off process: it
+<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>automatically notifies all logged-in users with a warning message in their shell sessions and new
+<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>logins are prevented. Command shutdown acts as an intermediary to SysV or systemd procedures,
+<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>that is, it executes the requested action by calling the corresponding action in the services
+<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>manager adopted by the system.
+<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>After shutdown is executed, all processes receive the SIGTERM signal, followed by the SIGKILL
+<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a>signal, then the system shuts down or changes its runlevel. By default, when neither options -h or
+<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>-r are used, the system alternates to runlevel 1, that is, the single user mode. To change the
+<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>default options for shutdown, the command should be executed with the following syntax:
+<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a>$ shutdown [option] time [message]
+<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>Only the parameter time is required. The time parameter defines when the requested action will
+<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>44 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>
+<a id="__codelineno-0-340" name="__codelineno-0-340" href="#__codelineno-0-340"></a>be executed, accepting the following formats:
+<a id="__codelineno-0-341" name="__codelineno-0-341" href="#__codelineno-0-341"></a>hh:mm
+<a id="__codelineno-0-342" name="__codelineno-0-342" href="#__codelineno-0-342"></a>This format specifies the execution time as hour and minutes.
+<a id="__codelineno-0-343" name="__codelineno-0-343" href="#__codelineno-0-343"></a>+m
+<a id="__codelineno-0-344" name="__codelineno-0-344" href="#__codelineno-0-344"></a>This format specifies how many minutes to wait before execution.
+<a id="__codelineno-0-345" name="__codelineno-0-345" href="#__codelineno-0-345"></a>now or +0
+<a id="__codelineno-0-346" name="__codelineno-0-346" href="#__codelineno-0-346"></a>This format determines immediate execution.
+<a id="__codelineno-0-347" name="__codelineno-0-347" href="#__codelineno-0-347"></a>The message parameter is the warning text sent to all terminal sessions of logged-in users.
+<a id="__codelineno-0-348" name="__codelineno-0-348" href="#__codelineno-0-348"></a>The SysV implementation allows for the limiting of users that will be able to restart the machine
+<a id="__codelineno-0-349" name="__codelineno-0-349" href="#__codelineno-0-349"></a>by pressing Ctrl  +  Alt  +  Del . This is possible by placing option -a for the shutdown command present
+<a id="__codelineno-0-350" name="__codelineno-0-350" href="#__codelineno-0-350"></a>at the line regarding ctrlaltdel in the /etc/inittab file. By doing this, only users whose
+<a id="__codelineno-0-351" name="__codelineno-0-351" href="#__codelineno-0-351"></a>usernames are in the /etc/shutdown.allow file will be able to restart the system with the Ctrl
+<a id="__codelineno-0-352" name="__codelineno-0-352" href="#__codelineno-0-352"></a> +  Alt  +  Del  keystroke combination.
+<a id="__codelineno-0-353" name="__codelineno-0-353" href="#__codelineno-0-353"></a>The systemctl command can also be used to turn off or to restart the machine in systems
+<a id="__codelineno-0-354" name="__codelineno-0-354" href="#__codelineno-0-354"></a>employing systemd. To restart the system, the command systemctl reboot should be used. To
+<a id="__codelineno-0-355" name="__codelineno-0-355" href="#__codelineno-0-355"></a>turn off the system, the command systemctl poweroff should be used. Both commands require
+<a id="__codelineno-0-356" name="__codelineno-0-356" href="#__codelineno-0-356"></a>root privileges to run, as ordinary users can not perform such procedures.
+<a id="__codelineno-0-357" name="__codelineno-0-357" href="#__codelineno-0-357"></a>NOTE
+<a id="__codelineno-0-358" name="__codelineno-0-358" href="#__codelineno-0-358"></a>Some Linux distributions will link poweroff and reboot to systemctl as
+<a id="__codelineno-0-359" name="__codelineno-0-359" href="#__codelineno-0-359"></a>individual commands. For example:
+<a id="__codelineno-0-360" name="__codelineno-0-360" href="#__codelineno-0-360"></a>$ sudo which poweroff
+<a id="__codelineno-0-361" name="__codelineno-0-361" href="#__codelineno-0-361"></a>/usr/sbin/poweroff
+<a id="__codelineno-0-362" name="__codelineno-0-362" href="#__codelineno-0-362"></a>$ sudo ls -l /usr/sbin/poweroff
+<a id="__codelineno-0-363" name="__codelineno-0-363" href="#__codelineno-0-363"></a>lrwxrwxrwx 1 root root 14 Aug 20 07:50 /usr/sbin/poweroff -&gt; /bin/systemctl
+<a id="__codelineno-0-364" name="__codelineno-0-364" href="#__codelineno-0-364"></a>Not all maintenance activities require the system to be turned off or restarted. However, when it
+<a id="__codelineno-0-365" name="__codelineno-0-365" href="#__codelineno-0-365"></a>is necessary to change the system’s state to single-user mode, it is important to warn logged-in
+<a id="__codelineno-0-366" name="__codelineno-0-366" href="#__codelineno-0-366"></a>users so that they are not harmed by an abrupt termination of their activities.
+<a id="__codelineno-0-367" name="__codelineno-0-367" href="#__codelineno-0-367"></a>Similar to what the shutdown command does when powering off or restarting the system, the
+<a id="__codelineno-0-368" name="__codelineno-0-368" href="#__codelineno-0-368"></a>wall command is able to send a message to terminal sessions of all logged-in users. To do so, the
+<a id="__codelineno-0-369" name="__codelineno-0-369" href="#__codelineno-0-369"></a>system administrator only needs to provide a file or directly write the message as a parameter to
+<a id="__codelineno-0-370" name="__codelineno-0-370" href="#__codelineno-0-370"></a>command wall.
+<a id="__codelineno-0-371" name="__codelineno-0-371" href="#__codelineno-0-371"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 45
+</code></pre></div>
+<hr>
+<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<h3 id="bang-lenh-trong-tam-key-command-reference">💡 Bảng Lệnh Trọng Tâm (Key Command Reference)<a class="headerlink" href="#bang-lenh-trong-tam-key-command-reference" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Lệnh / File / Folder</th>
+<th style="text-align: left;">Chức năng chính</th>
+<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>command / path</code></td>
+<td style="text-align: left;">Tra cứu &amp; kiểm tra cấu hình</td>
+<td style="text-align: left;">Quản trị Server Linux, Cloud EC2, Docker Container</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/etc/</code></td>
+<td style="text-align: left;">Thư mục chứa cấu hình hệ thống</td>
+<td style="text-align: left;">Quản lý cấu hình bằng Ansible, Terraform, Puppet</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>systemctl / journalctl</code></td>
+<td style="text-align: left;">Quản lý Service &amp; Xem Log tiến trình</td>
+<td style="text-align: left;">Debug ứng dụng microservices trên Linux Server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grep / sed / awk</code></td>
+<td style="text-align: left;">Xử lý &amp; Lọc luồng dữ liệu text</td>
+<td style="text-align: left;">Viết Bash script tự động hóa CI/CD Pipelines</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
+<p>Guided Exercises
+1. How could the telinit command be used to reboot the system?
+2. What will happen to the services related to the file /etc/rc1.d/K90network when the system
+enters runlevel 1?
+3. Using command systemctl, how could a user verify if the unit sshd.service is running?
+4. In a systemd based system, what command must be executed to enable activation of the unit
+sshd.service during system initialization?
+46 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Explorational Exercises
+1. In a SysV based system, suppose the default runlevel defined in /etc/inittab is 3, but the
+system always starts in runlevel 1. What is the probable cause for that?
+2. Although the file /sbin/init can be found in systemd based systems, it is only a symbolic link
+to another executable file. In such systems, what is the file pointed by /sbin/init?
+3. How can the default system target be verified in a systemd based system?
+4. How can a system reboot scheduled with the shutdown command be canceled?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 47</p>
+<p>Summary
+This lesson covers the main utilities used as service managers by Linux distributions. The
+SysVinit, systemd and Upstart utilities each have their own approach to control system services
+and system states. The lesson goes through the following topics:
+• What system services are and their role in the operating system.
+• Concepts and basic usage of SysVinit, systemd and Upstart commands.
+• How to properly start, stop and restart system services and the system itself.
+The commands and procedures addressed were:
+• Commands and files related to SysVinit, like init, /etc/inittab and telinit.
+• The main systemd command: systemctl.
+• Upstart commands: initctl, status, start, stop.
+• Traditional power management commands, like shutdown, and command wall.
+48 &nbsp;&nbsp;&nbsp; |</p>
+<hr>
+<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
+<p>Answers to Guided Exercises
+1. How could the telinit command be used to reboot the system?
+The command telinit 6 will alternate to runlevel 6, that is, reboot the system.
+2. What will happen to the services related to the file /etc/rc1.d/K90network when the system
+enters runlevel 1?
+Due to the letter K in the beginning of the file name, the related services will be stopped.
+3. Using command systemctl, how could a user verify if the unit sshd.service is running?
+With the command systemctl status sshd.service or systemctl is-active
+sshd.service.
+4. In a systemd based system, what command must be executed to enable activation of the unit
+sshd.service during system initialization?
+Command systemctl enable sshd.service, executed by root.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 49</p>
+<p>Answers to Explorational Exercises
+1. In a SysV based system, suppose the default runlevel defined in /etc/inittab is 3, but the
+system always starts in runlevel 1. What is the probable cause for that?
+The parameters 1 or S may be present in the kernel’s parameter list.
+2. Although file /sbin/init can be found in systemd based systems, it is only a symbolic link to
+another executable file. In such systems, what is the file pointed by /sbin/init?
+The main systemd binary: /lib/systemd/systemd.
+3. How can the default system target be verified in a systemd based system?
+The symbolic link /etc/systemd/system/default.target will point to the unit file defined
+as the default target. Command systemctl get-default can also be used.
+4. How can a system reboot scheduled with the shutdown command be canceled?
+The command shutdown -c should be used.
+50 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Topic 102: Linux Installation and Package Management
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 51</p>
+<hr>
+<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
+<ol>
+<li>Ghi nhớ cú pháp câu lệnh và ý nghĩa từng tùy chọn (flag/option).</li>
+<li>Hiểu rõ vị trí các file cấu hình quan trọng trong hệ thống Linux.</li>
+<li>Luôn kiểm tra log bằng <code>journalctl</code> hoặc tệp log tương ứng khi gặp sự cố.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../101.2-boot-the-system/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 101.2: Khởi động Hệ thống Linux (Boot Process &amp;amp; Systemd)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Objective 101.2: Khởi động Hệ thống Linux (Boot Process &amp; Systemd)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 102.1: Thiết kế Bố cục Ổ đĩa Cứng (Hard Disk Layout)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Objective 102.1: Thiết kế Bố cục Ổ đĩa Cứng (Hard Disk Layout)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

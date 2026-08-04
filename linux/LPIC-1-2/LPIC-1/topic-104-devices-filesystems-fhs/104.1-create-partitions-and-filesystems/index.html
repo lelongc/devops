@@ -1,0 +1,4092 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/linux/LPIC-1-2/LPIC-1/topic-104-devices-filesystems-fhs/104.1-create-partitions-and-filesystems/">
+      
+      
+        <link rel="prev" href="../../topic-103-gnu-and-unix-commands/103.8-basic-file-editing/">
+      
+      
+        <link rel="next" href="../104.2-maintain-the-integrity-of-filesystems/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objective-1041-tao-phan-ia-partitions-filesystems" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-101-system-architecture/101.1-determine-and-configure-hardware-settings/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 101 system architecture
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 102 installation and package management
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-103-gnu-and-unix-commands/103.1-work-on-the-command-line/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 103 gnu and unix commands
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1_5" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1_5" id="__nav_8_1_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 104 devices filesystems fhs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_1_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic 104 devices filesystems fhs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../104.2-maintain-the-integrity-of-filesystems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.2: Duy trì Tính Toàn vẹn Filesystem (fsck, df, du)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../104.3-control-mounting-and-unmounting-filesystems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.3: Quản lý Mount và Unmount (/etc/fstab)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../104.5-manage-file-permissions-and-ownership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.5: Quản lý Quyền File &amp; Owner (chmod, chown, umask)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../104.6-create-and-change-hard-and-symbolic-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.6: Quản lý Hard Link &amp; Symbolic Link
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../104.7-find-system-files-and-place-files-in-correct-location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 104.7: Tiêu chuẩn Phân cấp Hệ thống File (FHS) &amp; Tìm kiếm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-105-shells-and-shell-scripting/105.1-customize-and-use-the-shell-environment/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 105 shells and shell scripting
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-106-user-interfaces-and-desktops/106.1-install-and-configure-x11/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 106 user interfaces and desktops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-107-administrative-tasks/107.1-manage-user-and-group-accounts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 107 administrative tasks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-108-essential-system-services/108.1-maintain-system-time/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 108 essential system services
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-109-networking-fundamentals/109.1-fundamentals-of-internet-protocols/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 109 networking fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 110 security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-ket-luan-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 6. Tóm Tắt &amp; Kết Luận (Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/LPIC-1-2/LPIC-1/topic-104-devices-filesystems-fhs/104.1-create-partitions-and-filesystems.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="objective-1041-tao-phan-ia-partitions-filesystems">Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems<a class="headerlink" href="#objective-1041-tao-phan-ia-partitions-filesystems" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 101-500 Version 5.0)</strong><br>
+📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 414 - 448)<br>
+🎯 <strong>Mục tiêu</strong>: Làm chủ kiến thức Linux căn bản &amp; nâng cao ứng dụng trực tiếp vào công việc DevOps Engineer.</p>
+</blockquote>
+<hr>
+<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
+<p>Bài học này giúp bạn nắm vững kiến thức chuyên sâu về <strong>Objective 104.1: Tạo Phân đĩa (Partitions) &amp; Filesystems</strong>. </p>
+<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li>Giải thích bản chất lý thuyết và kiến trúc hoạt động của Linux.</li>
+<li>Thành thạo các câu lệnh thao tác trên Terminal, các tham số (options) và cú pháp thực thi.</li>
+<li>Đọc hiểu tệp tin cấu hình hệ thống, thư mục hệ thống chuẩn.</li>
+<li>Áp dụng vào xử lý sự cố (troubleshooting) và vận hành hệ thống trong môi trường DevOps/Cloud.</li>
+</ul>
+<hr>
+<h2 id="2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh">📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" title="Permanent link">¶</a></h2>
+<p>Below is the detailed material extracted directly from LPIC-1 Official Material:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>104.1 Create partitions and filesystems
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 v5, Exam 101, Objective 104.1
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>2
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Manage MBR and GPT partition tables
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Use various mkfs commands to create various filesystems such as:
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>◦ext2/ext3/ext4
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>◦XFS
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>◦VFAT
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>◦exFAT
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• Basic feature knowledge of Btrfs, including multi-device filesystems, compression and
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>subvolumes.
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Partial list of the used files, terms and utilities
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• fdisk
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• gdisk
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• parted
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>• mkfs
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>• mkswap
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>404 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>104.1 Lesson 1
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>Certificate:
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>LPIC-1
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>Version:
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>5.0
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Topic:
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>104 Devices, Linux Filesystems, Filesystem
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>Hierarchy Standard
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>Objective:
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>104.1 Create partitions and filesystems
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>Lesson:
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>1 of 1
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>Introduction
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>On any operating system, a disk needs to be partitioned before it can be used. A partition is a
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>logical subset of the physical disk, and information about partitions are stored in a partition table.
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>This table includes information about the first and last sectors of the partition and its type, and
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>further details on each partition.
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Usually each partition is seen by an operating system as a separate “disk”, even if they all reside in
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>the same physical media. On Windows systems they are assigned letters like C: (historically the
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>main disk), D: and so on. On Linux each partition is assigned to a directory under /dev, like
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>/dev/sda1 or /dev/sda2.
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>In this lesson, you will learn how to create, delete, restore and resize partitions using the three
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>most common utilities (fdisk, gdisk and parted), how to create a filesystem on them and how to
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>create and set up a swap partition or swap file to be used as virtual memory.
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>NOTE
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>For historical reasons, through this lesson we will refer to storage media as “disks”,
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>even though modern storage systems, like SSDs and Flash Storage, do not contain
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 405
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>any “disks” at all.
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>Understanding MBR and GPT
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>There are two main ways of storing partition information on hard disks. The first one is MBR
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>(Master Boot Record), and the second one is GPT (GUID Partition Table).
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>MBR
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>This is a remnant from the early days of MS-DOS (more specifically, PC-DOS 2.0 from 1983) and
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>for decades was the standard partitioning scheme on PCs. The partition table is stored on the
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>first sector of a disk, called the Boot Sector, along with a boot loader, which on Linux systems is
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>usually the GRUB bootloader. But MBR has a series of limitations that hinder its use on modern
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>systems, like the inability to address disks of more than 2 TB in size, and the limit of only 4
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>primary partitions per disk.
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>GUID
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>A partitioning system that addresses many of the limitations of MBR. There is no practical limit
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>on disk size, and the maximum number of partitions are limited only by the operating system
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>itself. It is more commonly found on more modern machines that use UEFI instead of the old PC
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>BIOS.
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>During system administration tasks it is highly possible that you will find both schemes in use, so
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>it is important to know how to use the tools associated with each one to create, delete or modify
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>partitions.
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>Managing MBR Partitions with FDISK
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>The standard utility for managing MBR partitions on Linux is fdisk. This is an interactive, menu-
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>driven utility. To use it, type fdisk followed by the device name corresponding to the disk you
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>want to edit. For example, the command
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a># fdisk /dev/sda
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>would edit the partition table of the first SATA-connected device (sda) on the system. Keep in
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>mind that you need to specify the device corresponding to the physical disk, not one of its
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>partitions (like /dev/sda1).
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>NOTE
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>All disk-related operations in this lesson need to be done as the user root (the
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>system administrator), or with root privileges using sudo.
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>406 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>When invoked, fdisk will show a greeting, then a warning and it will wait for your commands.
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a># fdisk /dev/sda
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>Welcome to fdisk (util-linux 2.33.1).
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>Changes will remain in memory only, until you decide to write them.
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>Be careful before using the write command.
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>Command (m for help):
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>The warning is important. You can create, edit or delete partitions at will, but nothing will be
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>written to disk unless you use the write (w) command. So you can “practice” without risk of losing
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>data, as long as you stay clear of the w key. To exit fdisk without saving changes, use the q
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>command.
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>NOTE
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>That being said, you should never practice on an important disk, as there are
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>always risks. Use a spare external disk, or a USB flash drive instead.
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>Printing the Current Partition Table
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>The command p is used to print the current partition table. The output is something like this:
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>Command (m for help): p
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>Disk /dev/sda: 111.8 GiB, 120034123776 bytes, 234441648 sectors
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>Disk model: CT120BX500SSD1
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>Units: sectors of 1 * 512 = 512 bytes
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>Sector size (logical/physical): 512 bytes / 512 bytes
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>I/O size (minimum/optimal): 512 bytes / 512 bytes
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>Disklabel type: dos
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>Disk identifier: 0x97f8fef5
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>Device     Boot     Start       End   Sectors   Size Id Type
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>/dev/sda1            4096 226048942 226044847 107.8G 83 Linux
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>/dev/sda2       226048944 234437550   8388607     4G 82 Linux swap / Solaris
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>Here is the meaning of each column:
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>Device
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>The device assigned to the partition.
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>Boot
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>Shows whether the partition is “bootable” or not.
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 407
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>Start
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>The sector where the partition starts.
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>End
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>The sector where the partition ends.
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>Sectors
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>The total number of sectors in the partition. Multiply it by the sector size to get the partition
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>size in bytes.
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>Size
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>The size of the partition in “human readable” format. In the example above, values are in
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>gigabytes.
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>Id
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>The numerical value representing the partition type.
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>Type
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>The description for the partition type.
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>Primary vs Extended Partitions
+<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>On an MBR disk, you can have 2 main types of partitions, primary and extended. Like we said
+<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>before, you can have only 4 primary partitions on the disk, and if you want to make the disk
+<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>“bootable”, the first partition must be a primary one.
+<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>One way to work around this limitation is to create an extended partition that acts as a container
+<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>for logical partitions. You could have, for example, a primary partition, an extended partition
+<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>occupying the remainder of the disk space and five logical partitions inside it.
+<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>For an operating system like Linux, primary and extended partitions are treated exactly in the
+<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>same way, so there are no “advantages” of using one over the other.
+<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>Creating a Partition
+<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>To create a partition, use the n command. By default, partitions will be created at the start of
+<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>unallocated space on the disk. You will be asked for the partition type (primary or extended), first
+<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>sector and last sector.
+<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>For the first sector, you can usually accept the default value suggested by fdisk, unless you need
+<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>a partition to start at a specific sector. Instead of specifying the last sector, you can specify a size
+<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>408 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>
+<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>followed by the letters K, M, G, T or P (Kilo, Mega, Giga, Tera or Peta). So, if you want to create a 1
+<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>GB partition, you could specify +1G as the Last sector, and fdisk will size the partition
+<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>accordingly. See this example for the creation of a primary partition:
+<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>Command (m for help): n
+<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>Partition type
+<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>&nbsp;  p   primary (0 primary, 0 extended, 4 free)
+<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>&nbsp;  e   extended (container for logical partitions)
+<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>Select (default p): p
+<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>Partition number (1-4, default 1): 1
+<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>First sector (2048-3903577, default 2048): 2048
+<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-3903577, default 3903577): +1G
+<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>Checking for Unallocated Space
+<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>If you do not know how much free space there is on the disk, you can use the F command to show
+<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>the unallocated space, like so:
+<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>Command (m for help): F
+<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>Unpartitioned space /dev/sdd: 881 MiB, 923841536 bytes, 1804378 sectors
+<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>Units: sectors of 1 * 512 = 512 bytes
+<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>Sector size (logical/physical): 512 bytes / 512 bytes
+<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>&nbsp; Start     End Sectors  Size
+<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>2099200 3903577 1804378  881M
+<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>Deleting Partitions
+<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>To delete a partition, use the d command. fdisk will ask you for the number of the partition you
+<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>want to delete, unless there is only one partition on the disk. In this case, this partition will be
+<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>selected and deleted immediately.
+<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>Be aware that if you delete an extended partition, all the logical partitions inside it will also be
+<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>deleted.
+<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>Mind the Gap!
+<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>Keep in mind that when creating a new partition with fdisk, the maximum size will be limited to
+<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>the maximum amount of contiguous unallocated space on the disk. Say, for example, that you
+<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>have the following partition map:
+<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 409
+<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>
+<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>Device     Boot   Start     End Sectors  Size Id Type
+<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>/dev/sdd1          2048 1050623 1048576  512M 83 Linux
+<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>/dev/sdd2       1050624 2099199 1048576  512M 83 Linux
+<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>/dev/sdd3       2099200 3147775 1048576  512M 83 Linux
+<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>Then you delete partition 2 and check for free space:
+<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>Command (m for help): F
+<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>Unpartitioned space /dev/sdd: 881 MiB, 923841536 bytes, 1804378 sectors
+<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>Units: sectors of 1 * 512 = 512 bytes
+<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>Sector size (logical/physical): 512 bytes / 512 bytes
+<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>&nbsp; Start     End Sectors  Size
+<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>1050624 2099199 1048576  512M
+<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>3147776 3903577  755802  369M
+<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>Adding up the size of the unallocated space, in theory we have 881 MB available. But see what
+<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>happens when we try to create a 700 MB partition:
+<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>Command (m for help): n
+<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>Partition type
+<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a>&nbsp;  p   primary (2 primary, 0 extended, 2 free)
+<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>&nbsp;  e   extended (container for logical partitions)
+<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>Select (default p): p
+<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>Partition number (2,4, default 2): 2
+<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>First sector (1050624-3903577, default 1050624):
+<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>Last sector, +/-sectors or +/-size{K,M,G,T,P} (1050624-2099199, default 2099199): +700M
+<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>Value out of range.
+<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>That happens because the largest contiguous unallocated space on the disk is the 512 MB block
+<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>that belonged to partition 2. Your new partition cannot “reach over” partition 3 to use some of the
+<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>unallocated space after it.
+<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>Changing the Partition Type
+<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>Occasionally, you may need to change the partition type, especially when dealing with disks that
+<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>will be used on other operating systems and platforms. This is done with the command t, followed
+<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>by the number of the partition you wish to change.
+<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>The partition type must be specified by its corresponding hexadecimal code, and you can see a list
+<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>410 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>
+<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>of all the valid codes by using the command l.
+<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>Do not confuse the partition type with the filesystem used on it. Although at first there was a
+<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>relation between them, today you cannot assume this to be true. A Linux partition, for example,
+<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>can contain any Linux-native filesystem, like ext4 or ReiserFS.
+<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>TIP
+<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>Linux partitions are type 83 (Linux). Swap partitions are type 82 (Linux Swap).
+<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>Managing GUID Partitions with GDISK
+<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>The utility gdisk is the equivalent of fdisk when dealing with GPT partitioned disks. In fact, the
+<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>interface is modeled after fdisk, with an interactive prompt and the same (or very similar)
+<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>commands.
+<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>Printing the Current Partition Table
+<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>The command p is used to print the current partition table. The output is something like this:
+<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>Command (? for help): p
+<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>Disk /dev/sdb: 3903578 sectors, 1.9 GiB
+<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>Model: DataTraveler 2.0
+<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>Sector size (logical/physical): 512/512 bytes
+<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>Disk identifier (GUID): AB41B5AA-A217-4D1E-8200-E062C54285BE
+<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>Partition table holds up to 128 entries
+<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>Main partition table begins at sector 2 and ends at sector 33
+<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>First usable sector is 34, last usable sector is 3903544
+<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>Partitions will be aligned on 2048-sector boundaries
+<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>Total free space is 1282071 sectors (626.0 MiB)
+<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>Number  Start (sector)    End (sector)  Size       Code  Name
+<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>&nbsp;  1            2048         2099199   1024.0 MiB  8300  Linux filesystem
+<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>&nbsp;  2         2623488         3147775   256.0 MiB   8300  Linux filesystem
+<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>Right from the start, we notice a few different things:
+<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>• Each disk has a unique Disk Identifier (GUID). This is a 128 bit hexadecimal number, assigned
+<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>randomly when the partition table is created. Since there are 3.4 × 10
+<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>38 possible values to this
+<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>number, the chances that 2 random disks have the same GUID are pretty slim. The GUID can be
+<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>used to identify which filesystems to mount at boot time (and where), eliminating the need to
+<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>use the device path to do so (like /dev/sdb).
+<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>• See the phrase Partition table holds up to 128 entries? That’s right, you can have up
+<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>to 128 partitions on a GPT disk. Because of this, there is no need for primary and extended
+<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 411
+<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>
+<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>partitions.
+<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>• The free space is listed on the last line, so there is no need for an equivalent of the F command
+<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>from fdisk.
+<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>Creating a Partition
+<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>The command to create a partition is n, just as in fdisk. The main difference is that besides the
+<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>partition number and the first and last sector (or size), you can also specify the partition type
+<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>during the creation. GPT partitions support many more types than MBR. You can check a list of all
+<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a>the supported types by using the l command.
+<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>Deleting a Partition
+<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>To delete a partition, type d and the partition number. Unlike fdisk, the first partition will not be
+<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>automatically selected if it is the only one on the disk.
+<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>On GPT disks, partitions can be easily reordered, or “sorted”, to avoid gaps in the numbering
+<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>sequence. To do this, simply use the s command. For example, imagine a disk with the following
+<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>partition table:
+<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>Number  Start (sector)    End (sector)  Size       Code  Name
+<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>&nbsp;  1            2048         2099199   1024.0 MiB  8300  Linux filesystem
+<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>&nbsp;  2         2099200         2361343   128.0 MiB   8300  Linux filesystem
+<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>&nbsp;  3         2361344         2623487   128.0 MiB   8300  Linux filesystem
+<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>If you delete the second partition, the table would become:
+<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>Number  Start (sector)    End (sector)  Size       Code  Name
+<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>&nbsp;  1            2048         2099199   1024.0 MiB  8300  Linux filesystem
+<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>&nbsp;  3         2361344         2623487   128.0 MiB   8300  Linux filesystem
+<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>If you use the s command, it would become:
+<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>Number  Start (sector)    End (sector)  Size       Code  Name
+<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>&nbsp;  1            2048         2099199   1024.0 MiB  8300  Linux filesystem
+<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>&nbsp;  2         2361344         2623487   128.0 MiB   8300  Linux filesystem
+<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>Notice that the third partition became the second one.
+<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>412 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>
+<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>Recovery Options
+<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>GPT disks store backup copies of the GPT header and partition table, making it easy to recover
+<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>disks in case this data has been damaged. gdisk provides features to aid in those recovery tasks,
+<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>accessed with the r command.
+<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>You can rebuild a corrupt main GPT header or partition table with b and c, respectively, or use
+<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>the main header and table to rebuild a backup with d and e. You can also convert a MBR to a GPT
+<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>with f, and do the opposite with g, among other operations. Type ? in the recovery menu to get a
+<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>list of all the available recovery commands and descriptions about what they do.
+<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>Creating File Systems
+<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>Partitioning the disk is only the first step towards being able to use a disk. After that, you will need
+<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>to format the partition with a filesystem before using it to store data.
+<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>A filesystem controls how the data is stored and accessed on the disk. Linux supports many
+<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>filesystems, some native, like the ext (Extended Filesystem) family, while others come from other
+<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>operating systems like FAT from MS-DOS, NTFS from Windows NT, HFS and HFS+ from Mac OS,
+<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>etc.
+<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>The standard tool used to create a filesystem on Linux is mkfs, which comes in many “flavors”
+<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>according to the filesystem it needs to work with.
+<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>Creating an ext2/ext3/ext4 Filesystem
+<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>The Extended Filesystem (ext) was the first filesystem for Linux, and through the years was
+<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>replaced by new versions called ext2, ext3 and ext4, which is currently the default filesystem for
+<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>many Linux distributions.
+<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>The utilities mkfs.ext2, mkfs.ext3 and mkfs.ext4 are used to create ext2, ext3 and ext4
+<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>filesystems. In fact, all of these “utilities” exist only as symbolic links to another utility called
+<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>mke2fs. mke2fs alters its defaults according to the name it is called by. As such, they all have the
+<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>same behavior and command line parameters.
+<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>The most simple form of usage is:
+<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a># mkfs.ext2 TARGET
+<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>Where TARGET is the name of the partition where the filesystem should be created. For example,
+<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>to create an ext3 filesystem on /dev/sdb1 the command would be:
+<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 413
+<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>
+<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a># mkfs.ext3 /dev/sdb1
+<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>Instead of using the command corresponding to the filesystem you wish to create, you can pass
+<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>the -t parameter to mke2fs followed by the filesystem name. For example, the following
+<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>commands are equivalent, and will create an ext4 filesystem on /dev/sdb1.
+<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a># mkfs.ext4 /dev/sdb1
+<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a># mke2fs -t ext4 /dev/sdb1
+<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a>Command Line Parameters
+<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a>mke2fs supports a wide range of command line parameters and options. Here are some of the
+<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>most significant ones. All of them also apply to mkfs.ext2, mkfs.ext3 and mkfs.ext4:
+<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a>-b SIZE
+<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>Sets the size of the data blocks in the device to SIZE, which can be 1024, 2048 or 4096 bytes per
+<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a>block.
+<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a>-c
+<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>Checks the target device for bad blocks before creating the filesystem. You can run a thorough,
+<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>but much slower check by passing this parameter twice, as in mkfs.ext4 -c -c TARGET.
+<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a>-d DIRECTORY
+<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>Copies the contents of the specified directory to the root of the new filesystem. Useful if you
+<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>need to “pre-populate” the disk with a predefined set of files.
+<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>-F
+<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>Danger, Will Robinson! This option will force mke2fs to create a filesystem, even if the other
+<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>options passed to it or the target are dangerous or make no sense at all. If specified twice (as in
+<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>-F -F) it can even be used to create a filesystem on a device which is mounted or in use, which
+<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>is a very, very bad thing to do.
+<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>-L VOLUME_LABEL
+<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a>Will set the volume label to the one specified in VOLUME_LABEL. This label must be at most 16
+<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>characters long.
+<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>-n
+<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a>This is a truly useful option that simulates the creation of the filesystem, and displays what
+<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>would be done if executed without the n option. Think of it as a “trial” mode. Good to check
+<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>414 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>
+<a id="__codelineno-0-340" name="__codelineno-0-340" href="#__codelineno-0-340"></a>things out before actually committing any changes to disk.
+<a id="__codelineno-0-341" name="__codelineno-0-341" href="#__codelineno-0-341"></a>-q
+<a id="__codelineno-0-342" name="__codelineno-0-342" href="#__codelineno-0-342"></a>Quiet mode. mke2fs will run normally, but will not produce any output to the terminal. Useful
+<a id="__codelineno-0-343" name="__codelineno-0-343" href="#__codelineno-0-343"></a>when running mke2fs from a script.
+<a id="__codelineno-0-344" name="__codelineno-0-344" href="#__codelineno-0-344"></a>-U ID
+<a id="__codelineno-0-345" name="__codelineno-0-345" href="#__codelineno-0-345"></a>This will set the UUID (Universally Unique Identifier) of a partition to the value specified as ID.
+<a id="__codelineno-0-346" name="__codelineno-0-346" href="#__codelineno-0-346"></a>UUIDs are 128 bit numbers in hexadecimal notation that serve to uniquely identify a partition
+<a id="__codelineno-0-347" name="__codelineno-0-347" href="#__codelineno-0-347"></a>to the operating system. This number is specified as a 32-digit string in the format 8-4-4-4-12,
+<a id="__codelineno-0-348" name="__codelineno-0-348" href="#__codelineno-0-348"></a>meaning 8 digits, hyphen, 4 digits, hyphen, 4 digits, hyphen, 4 digits, hyphen, 12 digits, like
+<a id="__codelineno-0-349" name="__codelineno-0-349" href="#__codelineno-0-349"></a>D249E380-7719-45A1-813C-35186883987E. Instead of an ID you can also specify parameters
+<a id="__codelineno-0-350" name="__codelineno-0-350" href="#__codelineno-0-350"></a>like clear to clear the filesystem UUID, random, to use a randomly generated UUID, or time to
+<a id="__codelineno-0-351" name="__codelineno-0-351" href="#__codelineno-0-351"></a>create a time-based UUID.
+<a id="__codelineno-0-352" name="__codelineno-0-352" href="#__codelineno-0-352"></a>-V
+<a id="__codelineno-0-353" name="__codelineno-0-353" href="#__codelineno-0-353"></a>Verbose mode, prints much more information during operation than usual. Useful for
+<a id="__codelineno-0-354" name="__codelineno-0-354" href="#__codelineno-0-354"></a>debugging purposes.
+<a id="__codelineno-0-355" name="__codelineno-0-355" href="#__codelineno-0-355"></a>Creating an XFS Filesystem
+<a id="__codelineno-0-356" name="__codelineno-0-356" href="#__codelineno-0-356"></a>XFS is a high-performance filesystem originally developed by Silicon Graphics in 1993 for its IRIX
+<a id="__codelineno-0-357" name="__codelineno-0-357" href="#__codelineno-0-357"></a>operating system. Due to its performance and reliability features, it is commonly used for servers
+<a id="__codelineno-0-358" name="__codelineno-0-358" href="#__codelineno-0-358"></a>and other environments that require high (or guaranteed) filesystem bandwidth.
+<a id="__codelineno-0-359" name="__codelineno-0-359" href="#__codelineno-0-359"></a>Tools for managing XFS filesystems are part of the xfsprogs package. This package may need to
+<a id="__codelineno-0-360" name="__codelineno-0-360" href="#__codelineno-0-360"></a>be installed manually, as it is not included by default in some Linux distributions. Others, like Red
+<a id="__codelineno-0-361" name="__codelineno-0-361" href="#__codelineno-0-361"></a>Hat Enterprise Linux 7, use XFS as the default filesystem.
+<a id="__codelineno-0-362" name="__codelineno-0-362" href="#__codelineno-0-362"></a>XFS filesystems are divided into at least 2 parts, a log section where a log of all filesystem
+<a id="__codelineno-0-363" name="__codelineno-0-363" href="#__codelineno-0-363"></a>operations (commonly called a Journal) are maintained, and the data section. The log section may
+<a id="__codelineno-0-364" name="__codelineno-0-364" href="#__codelineno-0-364"></a>be located inside the data section (the default behavior), or even on a separate disk altogether, for
+<a id="__codelineno-0-365" name="__codelineno-0-365" href="#__codelineno-0-365"></a>better performance and reliability.
+<a id="__codelineno-0-366" name="__codelineno-0-366" href="#__codelineno-0-366"></a>The most basic command to create an XFS filesystem is mkfs.xfs TARGET, where TARGET is the
+<a id="__codelineno-0-367" name="__codelineno-0-367" href="#__codelineno-0-367"></a>partition you want the filesystem to be created in. For example: mkfs.xfs /dev/sda1.
+<a id="__codelineno-0-368" name="__codelineno-0-368" href="#__codelineno-0-368"></a>As in mke2fs, mkfs.xfs supports a number of command line options. Here are some of the most
+<a id="__codelineno-0-369" name="__codelineno-0-369" href="#__codelineno-0-369"></a>common ones.
+<a id="__codelineno-0-370" name="__codelineno-0-370" href="#__codelineno-0-370"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 415
+<a id="__codelineno-0-371" name="__codelineno-0-371" href="#__codelineno-0-371"></a>
+<a id="__codelineno-0-372" name="__codelineno-0-372" href="#__codelineno-0-372"></a>-b size=VALUE
+<a id="__codelineno-0-373" name="__codelineno-0-373" href="#__codelineno-0-373"></a>Sets the block size on the filesystem, in bytes, to the one specified in VALUE. The default value is
+<a id="__codelineno-0-374" name="__codelineno-0-374" href="#__codelineno-0-374"></a>4096 bytes (4 KiB), the minimum is 512, and the maximum is 65536 (64 KiB).
+<a id="__codelineno-0-375" name="__codelineno-0-375" href="#__codelineno-0-375"></a>-m crc=VALUE
+<a id="__codelineno-0-376" name="__codelineno-0-376" href="#__codelineno-0-376"></a>Parameters starting with -m are metadata options. This one enables (if VALUE is 1) or disables
+<a id="__codelineno-0-377" name="__codelineno-0-377" href="#__codelineno-0-377"></a>(if VALUE is 0) the use of CRC32c checks to verify the integrity of all metadata on the disk. This
+<a id="__codelineno-0-378" name="__codelineno-0-378" href="#__codelineno-0-378"></a>enables better error detection and recovery from crashes related to hardware issues, so it is
+<a id="__codelineno-0-379" name="__codelineno-0-379" href="#__codelineno-0-379"></a>enabled by default. The performance impact of this check should be minimal, so normally
+<a id="__codelineno-0-380" name="__codelineno-0-380" href="#__codelineno-0-380"></a>there is no reason to disable it.
+<a id="__codelineno-0-381" name="__codelineno-0-381" href="#__codelineno-0-381"></a>-m uuid=VALUE
+<a id="__codelineno-0-382" name="__codelineno-0-382" href="#__codelineno-0-382"></a>Sets the partition UUID to the one specified as VALUE. Remember that UUIDs are 32-character
+<a id="__codelineno-0-383" name="__codelineno-0-383" href="#__codelineno-0-383"></a>(128 bits) numbers in hexadecimal base, specified in groups of 8, 4, 4, 4 and 12 digits separated
+<a id="__codelineno-0-384" name="__codelineno-0-384" href="#__codelineno-0-384"></a>by dashes, like 1E83E3A3-3AE9-4AAC-BF7E-29DFFECD36C0.
+<a id="__codelineno-0-385" name="__codelineno-0-385" href="#__codelineno-0-385"></a>-f
+<a id="__codelineno-0-386" name="__codelineno-0-386" href="#__codelineno-0-386"></a>Force the creation of a filesystem on the target device even if a filesystem is detected on it.
+<a id="__codelineno-0-387" name="__codelineno-0-387" href="#__codelineno-0-387"></a>-l logdev=DEVICE
+<a id="__codelineno-0-388" name="__codelineno-0-388" href="#__codelineno-0-388"></a>This will put the log section of the filesystem on the specified device, instead of inside the data
+<a id="__codelineno-0-389" name="__codelineno-0-389" href="#__codelineno-0-389"></a>section.
+<a id="__codelineno-0-390" name="__codelineno-0-390" href="#__codelineno-0-390"></a>-l size=VALUE
+<a id="__codelineno-0-391" name="__codelineno-0-391" href="#__codelineno-0-391"></a>This will set the size of the log section to the one specified in VALUE. The size can be specified in
+<a id="__codelineno-0-392" name="__codelineno-0-392" href="#__codelineno-0-392"></a>bytes, and suffixes like m or g can be used. -l size=10m, for example, will limit the log section
+<a id="__codelineno-0-393" name="__codelineno-0-393" href="#__codelineno-0-393"></a>to 10 Megabytes.
+<a id="__codelineno-0-394" name="__codelineno-0-394" href="#__codelineno-0-394"></a>-q
+<a id="__codelineno-0-395" name="__codelineno-0-395" href="#__codelineno-0-395"></a>Quiet mode. In this mode, mkfs.xfs will not print the parameters of the file system being
+<a id="__codelineno-0-396" name="__codelineno-0-396" href="#__codelineno-0-396"></a>created.
+<a id="__codelineno-0-397" name="__codelineno-0-397" href="#__codelineno-0-397"></a>-L LABEL
+<a id="__codelineno-0-398" name="__codelineno-0-398" href="#__codelineno-0-398"></a>Sets the filesystem label, which can be at most 12 characters long.
+<a id="__codelineno-0-399" name="__codelineno-0-399" href="#__codelineno-0-399"></a>-N
+<a id="__codelineno-0-400" name="__codelineno-0-400" href="#__codelineno-0-400"></a>Similar to the -n parameter of mke2fs, will make mkfs.xfs print all the parameters for the
+<a id="__codelineno-0-401" name="__codelineno-0-401" href="#__codelineno-0-401"></a>creation of the file system, without actually creating it.
+<a id="__codelineno-0-402" name="__codelineno-0-402" href="#__codelineno-0-402"></a>416 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-403" name="__codelineno-0-403" href="#__codelineno-0-403"></a>
+<a id="__codelineno-0-404" name="__codelineno-0-404" href="#__codelineno-0-404"></a>Creating a FAT or VFAT Filesystem
+<a id="__codelineno-0-405" name="__codelineno-0-405" href="#__codelineno-0-405"></a>The FAT filesystem originated from MS-DOS, and through the years has received many revisions
+<a id="__codelineno-0-406" name="__codelineno-0-406" href="#__codelineno-0-406"></a>culminating on the FAT32 format released in 1996 with Windows 95 OSR2.
+<a id="__codelineno-0-407" name="__codelineno-0-407" href="#__codelineno-0-407"></a>VFAT is an extension of the FAT16 format with support for long (up to 255 characters) file names.
+<a id="__codelineno-0-408" name="__codelineno-0-408" href="#__codelineno-0-408"></a>Both filesystems are handled by the same utility, mkfs.fat. mkfs.vfat is an alias to it.
+<a id="__codelineno-0-409" name="__codelineno-0-409" href="#__codelineno-0-409"></a>The FAT filesystem has important drawbacks which restrict its use on large disks. FAT16, for
+<a id="__codelineno-0-410" name="__codelineno-0-410" href="#__codelineno-0-410"></a>example, supports volumes of at most 4 GB and a maximum file size of 2 GB. FAT32 ups the
+<a id="__codelineno-0-411" name="__codelineno-0-411" href="#__codelineno-0-411"></a>volume size to up to 2 PB, and the maximum file size to 4 GB. Because of this, FAT filesystems are
+<a id="__codelineno-0-412" name="__codelineno-0-412" href="#__codelineno-0-412"></a>today more commonly used on small flash drives or memory cards (up to 2 GB in size), or legacy
+<a id="__codelineno-0-413" name="__codelineno-0-413" href="#__codelineno-0-413"></a>devices and OSs that do not support more advanced filesystems.
+<a id="__codelineno-0-414" name="__codelineno-0-414" href="#__codelineno-0-414"></a>The most basic command for the creation of a FAT filesystem is mkfs.fat TARGET, where TARGET
+<a id="__codelineno-0-415" name="__codelineno-0-415" href="#__codelineno-0-415"></a>is the partition you want the filesystem to be created in. For example: mkfs.fat /dev/sdc1.
+<a id="__codelineno-0-416" name="__codelineno-0-416" href="#__codelineno-0-416"></a>Like other utilities, mkfs.fat supports a number of command line options. Below are the most
+<a id="__codelineno-0-417" name="__codelineno-0-417" href="#__codelineno-0-417"></a>important ones. A full list and description of every option can be read in the manual for the utility,
+<a id="__codelineno-0-418" name="__codelineno-0-418" href="#__codelineno-0-418"></a>with the command man mkfs.fat.
+<a id="__codelineno-0-419" name="__codelineno-0-419" href="#__codelineno-0-419"></a>-c
+<a id="__codelineno-0-420" name="__codelineno-0-420" href="#__codelineno-0-420"></a>Checks the target device for bad blocks before creating the filesystem.
+<a id="__codelineno-0-421" name="__codelineno-0-421" href="#__codelineno-0-421"></a>-C FILENAME BLOCK_COUNT
+<a id="__codelineno-0-422" name="__codelineno-0-422" href="#__codelineno-0-422"></a>Will create the file specified in FILENAME and then create a FAT filesystem inside it, effectively
+<a id="__codelineno-0-423" name="__codelineno-0-423" href="#__codelineno-0-423"></a>creating an empty “disk image”, that can be later written to a device using a utility such as dd
+<a id="__codelineno-0-424" name="__codelineno-0-424" href="#__codelineno-0-424"></a>or mounted as a loopback device. When using this option, the number of blocks in the
+<a id="__codelineno-0-425" name="__codelineno-0-425" href="#__codelineno-0-425"></a>filesystem (BLOCK_COUNT) must be specified after the device name.
+<a id="__codelineno-0-426" name="__codelineno-0-426" href="#__codelineno-0-426"></a>-F SIZE
+<a id="__codelineno-0-427" name="__codelineno-0-427" href="#__codelineno-0-427"></a>Selects the size of the FAT (File Allocation Table), between 12, 16 or 32, i.e., between FAT12,
+<a id="__codelineno-0-428" name="__codelineno-0-428" href="#__codelineno-0-428"></a>FAT16 or FAT32. If not specified, mkfs.fat will select the appropriate option based on the
+<a id="__codelineno-0-429" name="__codelineno-0-429" href="#__codelineno-0-429"></a>filesystem size.
+<a id="__codelineno-0-430" name="__codelineno-0-430" href="#__codelineno-0-430"></a>-n NAME
+<a id="__codelineno-0-431" name="__codelineno-0-431" href="#__codelineno-0-431"></a>Sets the volume label, or name, for the filesystem. This can be up to 11 characters long, and the
+<a id="__codelineno-0-432" name="__codelineno-0-432" href="#__codelineno-0-432"></a>default is no name.
+<a id="__codelineno-0-433" name="__codelineno-0-433" href="#__codelineno-0-433"></a>-v
+<a id="__codelineno-0-434" name="__codelineno-0-434" href="#__codelineno-0-434"></a>Verbose mode. Prints much more information than usual, useful for debugging.
+<a id="__codelineno-0-435" name="__codelineno-0-435" href="#__codelineno-0-435"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 417
+<a id="__codelineno-0-436" name="__codelineno-0-436" href="#__codelineno-0-436"></a>
+<a id="__codelineno-0-437" name="__codelineno-0-437" href="#__codelineno-0-437"></a>NOTE
+<a id="__codelineno-0-438" name="__codelineno-0-438" href="#__codelineno-0-438"></a>mkfs.fat cannot create a “bootable” filesystem. According to the manual page,
+<a id="__codelineno-0-439" name="__codelineno-0-439" href="#__codelineno-0-439"></a>“this isn’t as easy as you might think” and will not be implemented.
+<a id="__codelineno-0-440" name="__codelineno-0-440" href="#__codelineno-0-440"></a>Creating an exFAT Filesystem
+<a id="__codelineno-0-441" name="__codelineno-0-441" href="#__codelineno-0-441"></a>exFAT is a filesystem created by Microsoft in 2006 that addresses one of the most important
+<a id="__codelineno-0-442" name="__codelineno-0-442" href="#__codelineno-0-442"></a>limitations of FAT32: file and disk size. On exFAT, the maximum file size is 16 exabytes (from 4 GB
+<a id="__codelineno-0-443" name="__codelineno-0-443" href="#__codelineno-0-443"></a>on FAT32), and the maximum disk size is 128 petabytes.
+<a id="__codelineno-0-444" name="__codelineno-0-444" href="#__codelineno-0-444"></a>As it is well supported by all three major operating systems (Windows, Linux and mac OS), it is a
+<a id="__codelineno-0-445" name="__codelineno-0-445" href="#__codelineno-0-445"></a>good choice where interoperability is needed, like on large capacity flash drives, memory cards
+<a id="__codelineno-0-446" name="__codelineno-0-446" href="#__codelineno-0-446"></a>and external disks. In fact, it is the default filesystem, as defined by the SD Association, for SDXC
+<a id="__codelineno-0-447" name="__codelineno-0-447" href="#__codelineno-0-447"></a>memory cards larger than 32 GB.
+<a id="__codelineno-0-448" name="__codelineno-0-448" href="#__codelineno-0-448"></a>The default utility for creating exFAT filesystems is mkfs.exfat, which is a link to mkexfatfs.
+<a id="__codelineno-0-449" name="__codelineno-0-449" href="#__codelineno-0-449"></a>The most basic command is mkfs.exfat TARGET, where TARGET is the partition you want the
+<a id="__codelineno-0-450" name="__codelineno-0-450" href="#__codelineno-0-450"></a>filesystem to be created in. For example: mkfs.exfat /dev/sdb2.
+<a id="__codelineno-0-451" name="__codelineno-0-451" href="#__codelineno-0-451"></a>Contrary to the other utilities discussed in this lesson, mkfs.exfat has very few command line
+<a id="__codelineno-0-452" name="__codelineno-0-452" href="#__codelineno-0-452"></a>options. They are:
+<a id="__codelineno-0-453" name="__codelineno-0-453" href="#__codelineno-0-453"></a>-i VOL_ID
+<a id="__codelineno-0-454" name="__codelineno-0-454" href="#__codelineno-0-454"></a>Sets the Volume ID to the value specified in VOL_ID. This is a 32-Bit hexadecimal number. If not
+<a id="__codelineno-0-455" name="__codelineno-0-455" href="#__codelineno-0-455"></a>defined, an ID based on the current time is set.
+<a id="__codelineno-0-456" name="__codelineno-0-456" href="#__codelineno-0-456"></a>-n NAME
+<a id="__codelineno-0-457" name="__codelineno-0-457" href="#__codelineno-0-457"></a>Sets the volume label, or name. This can have up to 15 characters, and the default is no name.
+<a id="__codelineno-0-458" name="__codelineno-0-458" href="#__codelineno-0-458"></a>-p SECTOR
+<a id="__codelineno-0-459" name="__codelineno-0-459" href="#__codelineno-0-459"></a>Specifies the first sector of the first partition on the disk. This is an optional value, and the
+<a id="__codelineno-0-460" name="__codelineno-0-460" href="#__codelineno-0-460"></a>default is zero.
+<a id="__codelineno-0-461" name="__codelineno-0-461" href="#__codelineno-0-461"></a>-s SECTORS
+<a id="__codelineno-0-462" name="__codelineno-0-462" href="#__codelineno-0-462"></a>Defines the number of physical sectors per cluster of allocation. This must be a power of two,
+<a id="__codelineno-0-463" name="__codelineno-0-463" href="#__codelineno-0-463"></a>like 1, 2, 4, 8, and so on.
+<a id="__codelineno-0-464" name="__codelineno-0-464" href="#__codelineno-0-464"></a>Getting to Know the Btrfs Filesystem
+<a id="__codelineno-0-465" name="__codelineno-0-465" href="#__codelineno-0-465"></a>Btrfs (officially the B-Tree Filesystem, pronounced as “Butter FS”, “Better FS” or even “Butterfuss”,
+<a id="__codelineno-0-466" name="__codelineno-0-466" href="#__codelineno-0-466"></a>your pick) is a filesystem that has been in development since 2007 specifically for Linux by the
+<a id="__codelineno-0-467" name="__codelineno-0-467" href="#__codelineno-0-467"></a>Oracle Corporation and other companies, including Fujitsu, Red Hat, Intel and SUSE, among
+<a id="__codelineno-0-468" name="__codelineno-0-468" href="#__codelineno-0-468"></a>418 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-469" name="__codelineno-0-469" href="#__codelineno-0-469"></a>
+<a id="__codelineno-0-470" name="__codelineno-0-470" href="#__codelineno-0-470"></a>others.
+<a id="__codelineno-0-471" name="__codelineno-0-471" href="#__codelineno-0-471"></a>There are many features that make Btrfs attractive on modern systems where massive amounts of
+<a id="__codelineno-0-472" name="__codelineno-0-472" href="#__codelineno-0-472"></a>storage are common. Among these are multiple device support (including striping, mirroring and
+<a id="__codelineno-0-473" name="__codelineno-0-473" href="#__codelineno-0-473"></a>striping+mirroring, as in a RAID setup), transparent compression, SSD optimizations, incremental
+<a id="__codelineno-0-474" name="__codelineno-0-474" href="#__codelineno-0-474"></a>backups, snapshots, online defragmentation, offline checks, support for subvolumes (with quotas),
+<a id="__codelineno-0-475" name="__codelineno-0-475" href="#__codelineno-0-475"></a>deduplication and much more.
+<a id="__codelineno-0-476" name="__codelineno-0-476" href="#__codelineno-0-476"></a>As it is a copy-on-write filesystem it is very resilient to crashes. And on top of that, Btrfs is simple
+<a id="__codelineno-0-477" name="__codelineno-0-477" href="#__codelineno-0-477"></a>to use, and well supported by many Linux distributions. And some of them, like SUSE, use it as the
+<a id="__codelineno-0-478" name="__codelineno-0-478" href="#__codelineno-0-478"></a>default filesystem.
+<a id="__codelineno-0-479" name="__codelineno-0-479" href="#__codelineno-0-479"></a>NOTE
+<a id="__codelineno-0-480" name="__codelineno-0-480" href="#__codelineno-0-480"></a>On a traditional filesystem, when you want to overwrite part of a file the new data
+<a id="__codelineno-0-481" name="__codelineno-0-481" href="#__codelineno-0-481"></a>is put directly over the old data that it is replacing. On a copy-on-write filesystem
+<a id="__codelineno-0-482" name="__codelineno-0-482" href="#__codelineno-0-482"></a>the new data is written to free space on disk, then the file’s original metadata is
+<a id="__codelineno-0-483" name="__codelineno-0-483" href="#__codelineno-0-483"></a>updated to refer to the new data and only then the old data is freed up, as it is no
+<a id="__codelineno-0-484" name="__codelineno-0-484" href="#__codelineno-0-484"></a>longer needed. This reduces the chances of data loss in case of a crash, as the old
+<a id="__codelineno-0-485" name="__codelineno-0-485" href="#__codelineno-0-485"></a>data is only discarded after the filesystem is absolutely sure that it is no longer
+<a id="__codelineno-0-486" name="__codelineno-0-486" href="#__codelineno-0-486"></a>needed and the new data is in place.
+<a id="__codelineno-0-487" name="__codelineno-0-487" href="#__codelineno-0-487"></a>Creating a Btrfs Filesystem
+<a id="__codelineno-0-488" name="__codelineno-0-488" href="#__codelineno-0-488"></a>The utility mkfs.btrfs is used to create a Btrfs filesystem. Using the command without any
+<a id="__codelineno-0-489" name="__codelineno-0-489" href="#__codelineno-0-489"></a>options creates a Btrfs filesystem on a given device, like so:
+<a id="__codelineno-0-490" name="__codelineno-0-490" href="#__codelineno-0-490"></a># mkfs.btrfs /dev/sdb1
+<a id="__codelineno-0-491" name="__codelineno-0-491" href="#__codelineno-0-491"></a>TIP
+<a id="__codelineno-0-492" name="__codelineno-0-492" href="#__codelineno-0-492"></a>If you do not have the mkfs.btrfs utility on your system, look for btrfs-progs in
+<a id="__codelineno-0-493" name="__codelineno-0-493" href="#__codelineno-0-493"></a>your distribution’s package manager.
+<a id="__codelineno-0-494" name="__codelineno-0-494" href="#__codelineno-0-494"></a>You can use the -L to set a label (or name) for your filesystem. Btrfs labels can have up to 256
+<a id="__codelineno-0-495" name="__codelineno-0-495" href="#__codelineno-0-495"></a>characters, except for newlines:
+<a id="__codelineno-0-496" name="__codelineno-0-496" href="#__codelineno-0-496"></a># mkfs.btrfs /dev/sdb1 -L "New Disk"
+<a id="__codelineno-0-497" name="__codelineno-0-497" href="#__codelineno-0-497"></a>TIP
+<a id="__codelineno-0-498" name="__codelineno-0-498" href="#__codelineno-0-498"></a>Enclose the label in quotes (like above) if it contains spaces.
+<a id="__codelineno-0-499" name="__codelineno-0-499" href="#__codelineno-0-499"></a>Note this peculiar thing about Btrfs: you can pass multiple devices to the mkfs.btrfs command.
+<a id="__codelineno-0-500" name="__codelineno-0-500" href="#__codelineno-0-500"></a>Passing more than one device will span the filesystem over all the devices which is similar to a
+<a id="__codelineno-0-501" name="__codelineno-0-501" href="#__codelineno-0-501"></a>RAID or LVM setup. To specify how metadata will be distributed in the disk array, use the -m
+<a id="__codelineno-0-502" name="__codelineno-0-502" href="#__codelineno-0-502"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 419
+<a id="__codelineno-0-503" name="__codelineno-0-503" href="#__codelineno-0-503"></a>
+<a id="__codelineno-0-504" name="__codelineno-0-504" href="#__codelineno-0-504"></a>parameter. Valid parameters are raid0, raid1, raid5, raid6, raid10, single and dup.
+<a id="__codelineno-0-505" name="__codelineno-0-505" href="#__codelineno-0-505"></a>For example, to create a filesystem spanning /dev/sdb1 and /dev/sdc1, concatenating the two
+<a id="__codelineno-0-506" name="__codelineno-0-506" href="#__codelineno-0-506"></a>partitions into one big partition, use:
+<a id="__codelineno-0-507" name="__codelineno-0-507" href="#__codelineno-0-507"></a># mkfs.btrfs -d single -m single /dev/sdb /dev/sdc
+<a id="__codelineno-0-508" name="__codelineno-0-508" href="#__codelineno-0-508"></a>WARNING
+<a id="__codelineno-0-509" name="__codelineno-0-509" href="#__codelineno-0-509"></a>Filesystems spanning multiple partitions such as above might look
+<a id="__codelineno-0-510" name="__codelineno-0-510" href="#__codelineno-0-510"></a>advantageous at first but are not a good idea from a data safety standpoint, as
+<a id="__codelineno-0-511" name="__codelineno-0-511" href="#__codelineno-0-511"></a>a failure on a single disk of the array means certain data loss. The risk gets
+<a id="__codelineno-0-512" name="__codelineno-0-512" href="#__codelineno-0-512"></a>bigger the more disks you use, as you also have more possible points of
+<a id="__codelineno-0-513" name="__codelineno-0-513" href="#__codelineno-0-513"></a>failure.
+<a id="__codelineno-0-514" name="__codelineno-0-514" href="#__codelineno-0-514"></a>Managing Subvolumes
+<a id="__codelineno-0-515" name="__codelineno-0-515" href="#__codelineno-0-515"></a>Subvolumes are like filesystems inside filesystems. Think of them as a directory which can be
+<a id="__codelineno-0-516" name="__codelineno-0-516" href="#__codelineno-0-516"></a>mounted as (and treated like) a separate filesystem. Subvolumes make organization and system
+<a id="__codelineno-0-517" name="__codelineno-0-517" href="#__codelineno-0-517"></a>administration easier, as each one of them can have separate quotas or snapshot rules.
+<a id="__codelineno-0-518" name="__codelineno-0-518" href="#__codelineno-0-518"></a>NOTE
+<a id="__codelineno-0-519" name="__codelineno-0-519" href="#__codelineno-0-519"></a>Subvolumes are not partitions. A partition allocates a fixed space on a drive. This
+<a id="__codelineno-0-520" name="__codelineno-0-520" href="#__codelineno-0-520"></a>can lead to problems further down the line, like one partition running out of space
+<a id="__codelineno-0-521" name="__codelineno-0-521" href="#__codelineno-0-521"></a>when another one has plenty of space left. Not so with subvolumes, as they “share”
+<a id="__codelineno-0-522" name="__codelineno-0-522" href="#__codelineno-0-522"></a>the free space from their root filesystem, and grow as needed.
+<a id="__codelineno-0-523" name="__codelineno-0-523" href="#__codelineno-0-523"></a>Suppose you have a Btrfs filesystem mounted on /mnt/disk, and you wish to create a subvolume
+<a id="__codelineno-0-524" name="__codelineno-0-524" href="#__codelineno-0-524"></a>inside it to store your backups. Let’s call it BKP:
+<a id="__codelineno-0-525" name="__codelineno-0-525" href="#__codelineno-0-525"></a># btrfs subvolume create /mnt/disk/BKP
+<a id="__codelineno-0-526" name="__codelineno-0-526" href="#__codelineno-0-526"></a>Next we list the contents of the /mnt/disk filesystem. You will see that we have a new directory,
+<a id="__codelineno-0-527" name="__codelineno-0-527" href="#__codelineno-0-527"></a>named after our subvolume.
+<a id="__codelineno-0-528" name="__codelineno-0-528" href="#__codelineno-0-528"></a>$ ls -lh /mnt/disk/
+<a id="__codelineno-0-529" name="__codelineno-0-529" href="#__codelineno-0-529"></a>total 0
+<a id="__codelineno-0-530" name="__codelineno-0-530" href="#__codelineno-0-530"></a>drwxr-xr-x 1 root   root     0 jul 13 17:35 BKP
+<a id="__codelineno-0-531" name="__codelineno-0-531" href="#__codelineno-0-531"></a>drwxrwxr-x 1 carol carol 988 jul 13 17:30 Images
+<a id="__codelineno-0-532" name="__codelineno-0-532" href="#__codelineno-0-532"></a>NOTE
+<a id="__codelineno-0-533" name="__codelineno-0-533" href="#__codelineno-0-533"></a>Yes, subvolumes can also be accessed like any other directory.
+<a id="__codelineno-0-534" name="__codelineno-0-534" href="#__codelineno-0-534"></a>We can check that the subvolume is active, with the command:
+<a id="__codelineno-0-535" name="__codelineno-0-535" href="#__codelineno-0-535"></a>420 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-536" name="__codelineno-0-536" href="#__codelineno-0-536"></a>
+<a id="__codelineno-0-537" name="__codelineno-0-537" href="#__codelineno-0-537"></a># btrfs subvolume show /mnt/disk/BKP/
+<a id="__codelineno-0-538" name="__codelineno-0-538" href="#__codelineno-0-538"></a>&nbsp;   Name:           BKP
+<a id="__codelineno-0-539" name="__codelineno-0-539" href="#__codelineno-0-539"></a>&nbsp;   UUID:           e90a1afe-69fa-da4f-9764-3384f66fa32e
+<a id="__codelineno-0-540" name="__codelineno-0-540" href="#__codelineno-0-540"></a>&nbsp;   Parent UUID:        -
+<a id="__codelineno-0-541" name="__codelineno-0-541" href="#__codelineno-0-541"></a>&nbsp;   Received UUID:      -
+<a id="__codelineno-0-542" name="__codelineno-0-542" href="#__codelineno-0-542"></a>&nbsp;   Creation time:      2019-07-13 17:35:40 -0300
+<a id="__codelineno-0-543" name="__codelineno-0-543" href="#__codelineno-0-543"></a>&nbsp;   Subvolume ID:       260
+<a id="__codelineno-0-544" name="__codelineno-0-544" href="#__codelineno-0-544"></a>&nbsp;   Generation:         23
+<a id="__codelineno-0-545" name="__codelineno-0-545" href="#__codelineno-0-545"></a>&nbsp;   Gen at creation:    22
+<a id="__codelineno-0-546" name="__codelineno-0-546" href="#__codelineno-0-546"></a>&nbsp;   Parent ID:      5
+<a id="__codelineno-0-547" name="__codelineno-0-547" href="#__codelineno-0-547"></a>&nbsp;   Top level ID:       5
+<a id="__codelineno-0-548" name="__codelineno-0-548" href="#__codelineno-0-548"></a>&nbsp;   Flags:          -
+<a id="__codelineno-0-549" name="__codelineno-0-549" href="#__codelineno-0-549"></a>&nbsp;   Snapshot(s):
+<a id="__codelineno-0-550" name="__codelineno-0-550" href="#__codelineno-0-550"></a>You can mount the subvolume on /mnt/BKP by passing the -t btrfs -o subvol=NAME
+<a id="__codelineno-0-551" name="__codelineno-0-551" href="#__codelineno-0-551"></a>parameter to the mount command:
+<a id="__codelineno-0-552" name="__codelineno-0-552" href="#__codelineno-0-552"></a># mount -t btrfs -o subvol=BKP /dev/sdb1 /mnt/bkp
+<a id="__codelineno-0-553" name="__codelineno-0-553" href="#__codelineno-0-553"></a>NOTE
+<a id="__codelineno-0-554" name="__codelineno-0-554" href="#__codelineno-0-554"></a>The -t parameter specifies the filesystem type to be mounted.
+<a id="__codelineno-0-555" name="__codelineno-0-555" href="#__codelineno-0-555"></a>Working with Snapshots
+<a id="__codelineno-0-556" name="__codelineno-0-556" href="#__codelineno-0-556"></a>Snapshots are just like subvolumes, but pre-populated with the contents from the volume from
+<a id="__codelineno-0-557" name="__codelineno-0-557" href="#__codelineno-0-557"></a>which the snapshot was taken.
+<a id="__codelineno-0-558" name="__codelineno-0-558" href="#__codelineno-0-558"></a>When created, a snapshot and the original volume have exactly the same content. But from that
+<a id="__codelineno-0-559" name="__codelineno-0-559" href="#__codelineno-0-559"></a>point in time, they will diverge. Changes made to the original volume (like files added, renamed or
+<a id="__codelineno-0-560" name="__codelineno-0-560" href="#__codelineno-0-560"></a>deleted) will not be reflected on the snapshot, and vice-versa.
+<a id="__codelineno-0-561" name="__codelineno-0-561" href="#__codelineno-0-561"></a>Keep in mind that a snapshot does not duplicate the files, and initially takes almost no disk space.
+<a id="__codelineno-0-562" name="__codelineno-0-562" href="#__codelineno-0-562"></a>It simply duplicates the filesystem tree, while pointing to the original data.
+<a id="__codelineno-0-563" name="__codelineno-0-563" href="#__codelineno-0-563"></a>The command to create a snapshot is the same used to create a subvolume, just add the snapshot
+<a id="__codelineno-0-564" name="__codelineno-0-564" href="#__codelineno-0-564"></a>parameter after btrfs subvolume. The command below will create a snapshot of the Btrfs
+<a id="__codelineno-0-565" name="__codelineno-0-565" href="#__codelineno-0-565"></a>filesysten mounted in /mnt/disk in /mnt/disk/snap:
+<a id="__codelineno-0-566" name="__codelineno-0-566" href="#__codelineno-0-566"></a># btrfs subvolume snapshot /mnt/disk /mnt/disk/snap
+<a id="__codelineno-0-567" name="__codelineno-0-567" href="#__codelineno-0-567"></a>Now, imagine you have the following contents in /mnt/disk:
+<a id="__codelineno-0-568" name="__codelineno-0-568" href="#__codelineno-0-568"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 421
+<a id="__codelineno-0-569" name="__codelineno-0-569" href="#__codelineno-0-569"></a>
+<a id="__codelineno-0-570" name="__codelineno-0-570" href="#__codelineno-0-570"></a>$ ls -lh
+<a id="__codelineno-0-571" name="__codelineno-0-571" href="#__codelineno-0-571"></a>total 2,8M
+<a id="__codelineno-0-572" name="__codelineno-0-572" href="#__codelineno-0-572"></a>-rw-rw-r-- 1 carol carol 109K jul 10 16:22 Galaxy_Note_10.png
+<a id="__codelineno-0-573" name="__codelineno-0-573" href="#__codelineno-0-573"></a>-rw-rw-r-- 1 carol carol 484K jul  5 15:01 geminoid2.jpg
+<a id="__codelineno-0-574" name="__codelineno-0-574" href="#__codelineno-0-574"></a>-rw-rw-r-- 1 carol carol 429K jul  5 14:52 geminoid.jpg
+<a id="__codelineno-0-575" name="__codelineno-0-575" href="#__codelineno-0-575"></a>-rw-rw-r-- 1 carol carol 467K jul  2 11:48 LG-G8S-ThinQ-Mirror-White.jpg
+<a id="__codelineno-0-576" name="__codelineno-0-576" href="#__codelineno-0-576"></a>-rw-rw-r-- 1 carol carol 654K jul  2 11:39 LG-G8S-ThinQ-Range.jpg
+<a id="__codelineno-0-577" name="__codelineno-0-577" href="#__codelineno-0-577"></a>-rw-rw-r-- 1 carol carol  94K jul  2 15:43 Mimoji_Comparativo.jpg
+<a id="__codelineno-0-578" name="__codelineno-0-578" href="#__codelineno-0-578"></a>-rw-rw-r-- 1 carol carol 112K jul 10 16:20 Note10Plus.jpg
+<a id="__codelineno-0-579" name="__codelineno-0-579" href="#__codelineno-0-579"></a>drwx------ 1 carol carol  366 jul 13 17:56 snap
+<a id="__codelineno-0-580" name="__codelineno-0-580" href="#__codelineno-0-580"></a>-rw-rw-r-- 1 carol carol 118K jul 11 16:36 Twitter_Down_20190711.jpg
+<a id="__codelineno-0-581" name="__codelineno-0-581" href="#__codelineno-0-581"></a>-rw-rw-r-- 1 carol carol 324K jul  2 15:22 Xiaomi_Mimoji.png
+<a id="__codelineno-0-582" name="__codelineno-0-582" href="#__codelineno-0-582"></a>Notice the snap directory, containing the snapshot. Now let us remove some files, and check the
+<a id="__codelineno-0-583" name="__codelineno-0-583" href="#__codelineno-0-583"></a>directory contents:
+<a id="__codelineno-0-584" name="__codelineno-0-584" href="#__codelineno-0-584"></a>$ rm LG-G8S-ThinQ-*
+<a id="__codelineno-0-585" name="__codelineno-0-585" href="#__codelineno-0-585"></a>$ ls -lh
+<a id="__codelineno-0-586" name="__codelineno-0-586" href="#__codelineno-0-586"></a>total 1,7M
+<a id="__codelineno-0-587" name="__codelineno-0-587" href="#__codelineno-0-587"></a>-rw-rw-r-- 1 carol carol 109K jul 10 16:22 Galaxy_Note_10.png
+<a id="__codelineno-0-588" name="__codelineno-0-588" href="#__codelineno-0-588"></a>-rw-rw-r-- 1 carol carol 484K jul  5 15:01 geminoid2.jpg
+<a id="__codelineno-0-589" name="__codelineno-0-589" href="#__codelineno-0-589"></a>-rw-rw-r-- 1 carol carol 429K jul  5 14:52 geminoid.jpg
+<a id="__codelineno-0-590" name="__codelineno-0-590" href="#__codelineno-0-590"></a>-rw-rw-r-- 1 carol carol  94K jul  2 15:43 Mimoji_Comparativo.jpg
+<a id="__codelineno-0-591" name="__codelineno-0-591" href="#__codelineno-0-591"></a>-rw-rw-r-- 1 carol carol 112K jul 10 16:20 Note10Plus.jpg
+<a id="__codelineno-0-592" name="__codelineno-0-592" href="#__codelineno-0-592"></a>drwx------ 1 carol carol  366 jul 13 17:56 snap
+<a id="__codelineno-0-593" name="__codelineno-0-593" href="#__codelineno-0-593"></a>-rw-rw-r-- 1 carol carol 118K jul 11 16:36 Twitter_Down_20190711.jpg
+<a id="__codelineno-0-594" name="__codelineno-0-594" href="#__codelineno-0-594"></a>-rw-rw-r-- 1 carol carol 324K jul  2 15:22 Xiaomi_Mimoji.png
+<a id="__codelineno-0-595" name="__codelineno-0-595" href="#__codelineno-0-595"></a>However, if you check inside the snap directory, the files you deleted are still there and can be
+<a id="__codelineno-0-596" name="__codelineno-0-596" href="#__codelineno-0-596"></a>restored if needed.
+<a id="__codelineno-0-597" name="__codelineno-0-597" href="#__codelineno-0-597"></a>$ ls -lh snap/
+<a id="__codelineno-0-598" name="__codelineno-0-598" href="#__codelineno-0-598"></a>total 2,8M
+<a id="__codelineno-0-599" name="__codelineno-0-599" href="#__codelineno-0-599"></a>-rw-rw-r-- 1 carol carol 109K jul 10 16:22 Galaxy_Note_10.png
+<a id="__codelineno-0-600" name="__codelineno-0-600" href="#__codelineno-0-600"></a>-rw-rw-r-- 1 carol carol 484K jul  5 15:01 geminoid2.jpg
+<a id="__codelineno-0-601" name="__codelineno-0-601" href="#__codelineno-0-601"></a>-rw-rw-r-- 1 carol carol 429K jul  5 14:52 geminoid.jpg
+<a id="__codelineno-0-602" name="__codelineno-0-602" href="#__codelineno-0-602"></a>-rw-rw-r-- 1 carol carol 467K jul  2 11:48 LG-G8S-ThinQ-Mirror-White.jpg
+<a id="__codelineno-0-603" name="__codelineno-0-603" href="#__codelineno-0-603"></a>-rw-rw-r-- 1 carol carol 654K jul  2 11:39 LG-G8S-ThinQ-Range.jpg
+<a id="__codelineno-0-604" name="__codelineno-0-604" href="#__codelineno-0-604"></a>-rw-rw-r-- 1 carol carol  94K jul  2 15:43 Mimoji_Comparativo.jpg
+<a id="__codelineno-0-605" name="__codelineno-0-605" href="#__codelineno-0-605"></a>-rw-rw-r-- 1 carol carol 112K jul 10 16:20 Note10Plus.jpg
+<a id="__codelineno-0-606" name="__codelineno-0-606" href="#__codelineno-0-606"></a>-rw-rw-r-- 1 carol carol 118K jul 11 16:36 Twitter_Down_20190711.jpg
+<a id="__codelineno-0-607" name="__codelineno-0-607" href="#__codelineno-0-607"></a>422 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-608" name="__codelineno-0-608" href="#__codelineno-0-608"></a>
+<a id="__codelineno-0-609" name="__codelineno-0-609" href="#__codelineno-0-609"></a>-rw-rw-r-- 1 carol carol 324K jul  2 15:22 Xiaomi_Mimoji.png
+<a id="__codelineno-0-610" name="__codelineno-0-610" href="#__codelineno-0-610"></a>It is also possible to create read-only snapshots. They work exactly like writable snapshots, with
+<a id="__codelineno-0-611" name="__codelineno-0-611" href="#__codelineno-0-611"></a>the difference that the contents of the snapshot cannot be changed, they are “frozen” in time. Just
+<a id="__codelineno-0-612" name="__codelineno-0-612" href="#__codelineno-0-612"></a>add the -r parameter when creating the snapshot:
+<a id="__codelineno-0-613" name="__codelineno-0-613" href="#__codelineno-0-613"></a># btrfs subvolume snapshot -r /mnt/disk /mnt/disk/snap
+<a id="__codelineno-0-614" name="__codelineno-0-614" href="#__codelineno-0-614"></a>A Few Words on Compression
+<a id="__codelineno-0-615" name="__codelineno-0-615" href="#__codelineno-0-615"></a>Btrfs supports transparent file compression, with three different algorithms available to the user.
+<a id="__codelineno-0-616" name="__codelineno-0-616" href="#__codelineno-0-616"></a>This is done automatically on a per-file basis, as long as the filesystem is mounted with the -o
+<a id="__codelineno-0-617" name="__codelineno-0-617" href="#__codelineno-0-617"></a>compress option. The algorithms are smart enough to detect incompressible files and will not try
+<a id="__codelineno-0-618" name="__codelineno-0-618" href="#__codelineno-0-618"></a>to compress them, saving system resources. So on a single directory you may have compressed
+<a id="__codelineno-0-619" name="__codelineno-0-619" href="#__codelineno-0-619"></a>and uncompressed files together. The default compression algorithm is ZLIB, but LZO (faster,
+<a id="__codelineno-0-620" name="__codelineno-0-620" href="#__codelineno-0-620"></a>worse compression ratio) or ZSTD (faster than ZLIB, comparable compression) are available, with
+<a id="__codelineno-0-621" name="__codelineno-0-621" href="#__codelineno-0-621"></a>multiple compression levels (see the cooresponding objective on mount options).
+<a id="__codelineno-0-622" name="__codelineno-0-622" href="#__codelineno-0-622"></a>Managing Partitions with GNU Parted
+<a id="__codelineno-0-623" name="__codelineno-0-623" href="#__codelineno-0-623"></a>GNU Parted is a very powerful partition editor (hence the name) that can be used to create, delete,
+<a id="__codelineno-0-624" name="__codelineno-0-624" href="#__codelineno-0-624"></a>move, resize, rescue and copy partitions. It can work with both GPT and MBR disks, and cover
+<a id="__codelineno-0-625" name="__codelineno-0-625" href="#__codelineno-0-625"></a>almost all of your disk management needs.
+<a id="__codelineno-0-626" name="__codelineno-0-626" href="#__codelineno-0-626"></a>There are many graphical front-ends that make working with parted much easier, like GParted
+<a id="__codelineno-0-627" name="__codelineno-0-627" href="#__codelineno-0-627"></a>for GNOME-based desktop environments and the KDE Partition Manager for KDE Desktops.
+<a id="__codelineno-0-628" name="__codelineno-0-628" href="#__codelineno-0-628"></a>However, you should learn how to use parted on the command line, since in a server setting you
+<a id="__codelineno-0-629" name="__codelineno-0-629" href="#__codelineno-0-629"></a>can never count on a graphical desktop environment being available.
+<a id="__codelineno-0-630" name="__codelineno-0-630" href="#__codelineno-0-630"></a>WARNING
+<a id="__codelineno-0-631" name="__codelineno-0-631" href="#__codelineno-0-631"></a>Unlike fdisk and gdisk, parted makes changes to the disk immediately after
+<a id="__codelineno-0-632" name="__codelineno-0-632" href="#__codelineno-0-632"></a>the command is issued, without waiting for another command to write the
+<a id="__codelineno-0-633" name="__codelineno-0-633" href="#__codelineno-0-633"></a>changes to disk. When practicing, it is wise to do so on an empty or spare disk
+<a id="__codelineno-0-634" name="__codelineno-0-634" href="#__codelineno-0-634"></a>or flash drive, so there is no risk of data loss should you make a mistake.
+<a id="__codelineno-0-635" name="__codelineno-0-635" href="#__codelineno-0-635"></a>The simplest way to start using parted is by typing parted DEVICE, where DEVICE is the device
+<a id="__codelineno-0-636" name="__codelineno-0-636" href="#__codelineno-0-636"></a>you want to manage (parted /dev/sdb). The program starts an interactive command line
+<a id="__codelineno-0-637" name="__codelineno-0-637" href="#__codelineno-0-637"></a>interface like fdisk and gdisk with a (parted) prompt for you to enter commands.
+<a id="__codelineno-0-638" name="__codelineno-0-638" href="#__codelineno-0-638"></a># parted /dev/sdb
+<a id="__codelineno-0-639" name="__codelineno-0-639" href="#__codelineno-0-639"></a>GNU Parted 3.2
+<a id="__codelineno-0-640" name="__codelineno-0-640" href="#__codelineno-0-640"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 423
+<a id="__codelineno-0-641" name="__codelineno-0-641" href="#__codelineno-0-641"></a>
+<a id="__codelineno-0-642" name="__codelineno-0-642" href="#__codelineno-0-642"></a>Using /dev/sdb
+<a id="__codelineno-0-643" name="__codelineno-0-643" href="#__codelineno-0-643"></a>Welcome to GNU Parted! Type 'help' to view a list of commands.
+<a id="__codelineno-0-644" name="__codelineno-0-644" href="#__codelineno-0-644"></a>(parted)
+<a id="__codelineno-0-645" name="__codelineno-0-645" href="#__codelineno-0-645"></a>WARNING
+<a id="__codelineno-0-646" name="__codelineno-0-646" href="#__codelineno-0-646"></a>Be careful! If you do not specify a device, parted will automatically select the
+<a id="__codelineno-0-647" name="__codelineno-0-647" href="#__codelineno-0-647"></a>primary disk (usually /dev/sda) to work with.
+<a id="__codelineno-0-648" name="__codelineno-0-648" href="#__codelineno-0-648"></a>Selecting Disks
+<a id="__codelineno-0-649" name="__codelineno-0-649" href="#__codelineno-0-649"></a>To switch to a different disk than the one specified on the command line, you can use the select
+<a id="__codelineno-0-650" name="__codelineno-0-650" href="#__codelineno-0-650"></a>command, followed by the device name:
+<a id="__codelineno-0-651" name="__codelineno-0-651" href="#__codelineno-0-651"></a>(parted) select /dev/sdb
+<a id="__codelineno-0-652" name="__codelineno-0-652" href="#__codelineno-0-652"></a>Using /dev/sdb
+<a id="__codelineno-0-653" name="__codelineno-0-653" href="#__codelineno-0-653"></a>Getting Information
+<a id="__codelineno-0-654" name="__codelineno-0-654" href="#__codelineno-0-654"></a>The print command can be used to get more information about a specific partition or even all of
+<a id="__codelineno-0-655" name="__codelineno-0-655" href="#__codelineno-0-655"></a>the block devices (disks) connected to your system.
+<a id="__codelineno-0-656" name="__codelineno-0-656" href="#__codelineno-0-656"></a>To get information about the currently selected partition, just type print:
+<a id="__codelineno-0-657" name="__codelineno-0-657" href="#__codelineno-0-657"></a>(parted) print
+<a id="__codelineno-0-658" name="__codelineno-0-658" href="#__codelineno-0-658"></a>Model: ATA CT120BX500SSD1 (scsi)
+<a id="__codelineno-0-659" name="__codelineno-0-659" href="#__codelineno-0-659"></a>Disk /dev/sda: 120GB
+<a id="__codelineno-0-660" name="__codelineno-0-660" href="#__codelineno-0-660"></a>Sector size (logical/physical): 512B/512B
+<a id="__codelineno-0-661" name="__codelineno-0-661" href="#__codelineno-0-661"></a>Partition Table: msdos
+<a id="__codelineno-0-662" name="__codelineno-0-662" href="#__codelineno-0-662"></a>Disk Flags:
+<a id="__codelineno-0-663" name="__codelineno-0-663" href="#__codelineno-0-663"></a>Number  Start   End    Size    Type     File system     Flags
+<a id="__codelineno-0-664" name="__codelineno-0-664" href="#__codelineno-0-664"></a>&nbsp;1      2097kB  116GB  116GB   primary  ext4
+<a id="__codelineno-0-665" name="__codelineno-0-665" href="#__codelineno-0-665"></a>&nbsp;2      116GB   120GB  4295MB  primary  linux-swap(v1)
+<a id="__codelineno-0-666" name="__codelineno-0-666" href="#__codelineno-0-666"></a>You can get a list of all block devices connected to your system using print devices:
+<a id="__codelineno-0-667" name="__codelineno-0-667" href="#__codelineno-0-667"></a>(parted) print devices
+<a id="__codelineno-0-668" name="__codelineno-0-668" href="#__codelineno-0-668"></a>/dev/sdb (1999MB)
+<a id="__codelineno-0-669" name="__codelineno-0-669" href="#__codelineno-0-669"></a>/dev/sda (120GB)
+<a id="__codelineno-0-670" name="__codelineno-0-670" href="#__codelineno-0-670"></a>/dev/sdc (320GB)
+<a id="__codelineno-0-671" name="__codelineno-0-671" href="#__codelineno-0-671"></a>424 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-672" name="__codelineno-0-672" href="#__codelineno-0-672"></a>
+<a id="__codelineno-0-673" name="__codelineno-0-673" href="#__codelineno-0-673"></a>/dev/mapper/cryptswap (4294MB)
+<a id="__codelineno-0-674" name="__codelineno-0-674" href="#__codelineno-0-674"></a>To get information about all connected devices at once, you can use print all. If you wish to
+<a id="__codelineno-0-675" name="__codelineno-0-675" href="#__codelineno-0-675"></a>know how much free space there is in each one of them, you can use print free:
+<a id="__codelineno-0-676" name="__codelineno-0-676" href="#__codelineno-0-676"></a>(parted) print free
+<a id="__codelineno-0-677" name="__codelineno-0-677" href="#__codelineno-0-677"></a>Model: ATA CT120BX500SSD1 (scsi)
+<a id="__codelineno-0-678" name="__codelineno-0-678" href="#__codelineno-0-678"></a>Disk /dev/sda: 120GB
+<a id="__codelineno-0-679" name="__codelineno-0-679" href="#__codelineno-0-679"></a>Sector size (logical/physical): 512B/512B
+<a id="__codelineno-0-680" name="__codelineno-0-680" href="#__codelineno-0-680"></a>Partition Table: msdos
+<a id="__codelineno-0-681" name="__codelineno-0-681" href="#__codelineno-0-681"></a>Disk Flags:
+<a id="__codelineno-0-682" name="__codelineno-0-682" href="#__codelineno-0-682"></a>Number  Start   End     Size    Type     File system     Flags
+<a id="__codelineno-0-683" name="__codelineno-0-683" href="#__codelineno-0-683"></a>&nbsp;       32.3kB  2097kB  2065kB           Free Space
+<a id="__codelineno-0-684" name="__codelineno-0-684" href="#__codelineno-0-684"></a>&nbsp;1      2097kB  116GB   116GB   primary  ext4
+<a id="__codelineno-0-685" name="__codelineno-0-685" href="#__codelineno-0-685"></a>&nbsp;       116GB   116GB   512B             Free Space
+<a id="__codelineno-0-686" name="__codelineno-0-686" href="#__codelineno-0-686"></a>&nbsp;2      116GB   120GB   4295MB  primary  linux-swap(v1)
+<a id="__codelineno-0-687" name="__codelineno-0-687" href="#__codelineno-0-687"></a>&nbsp;       120GB   120GB   2098kB           Free Space
+<a id="__codelineno-0-688" name="__codelineno-0-688" href="#__codelineno-0-688"></a>Creating a Partition Table on an Empty Disk
+<a id="__codelineno-0-689" name="__codelineno-0-689" href="#__codelineno-0-689"></a>To create a partition table on an empty disk, use the mklabel command, followed by the partition
+<a id="__codelineno-0-690" name="__codelineno-0-690" href="#__codelineno-0-690"></a>table type that you want to use.
+<a id="__codelineno-0-691" name="__codelineno-0-691" href="#__codelineno-0-691"></a>There are many supported partition table types, but the main types you should know of are msdos
+<a id="__codelineno-0-692" name="__codelineno-0-692" href="#__codelineno-0-692"></a>which is used here to refer to an MBR partition table, and gpt to refer to a GPT partition table. To
+<a id="__codelineno-0-693" name="__codelineno-0-693" href="#__codelineno-0-693"></a>create an MBR partition table, type:
+<a id="__codelineno-0-694" name="__codelineno-0-694" href="#__codelineno-0-694"></a>(parted) mklabel msdos
+<a id="__codelineno-0-695" name="__codelineno-0-695" href="#__codelineno-0-695"></a>And to create a GPT partition table, the command is:
+<a id="__codelineno-0-696" name="__codelineno-0-696" href="#__codelineno-0-696"></a>(parted) mklabel gpt
+<a id="__codelineno-0-697" name="__codelineno-0-697" href="#__codelineno-0-697"></a>Creating a Partition
+<a id="__codelineno-0-698" name="__codelineno-0-698" href="#__codelineno-0-698"></a>To create a partition the command mkpart is used, using the syntax mkpart PARTTYPE FSTYPE
+<a id="__codelineno-0-699" name="__codelineno-0-699" href="#__codelineno-0-699"></a>START END, where:
+<a id="__codelineno-0-700" name="__codelineno-0-700" href="#__codelineno-0-700"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 425
+<a id="__codelineno-0-701" name="__codelineno-0-701" href="#__codelineno-0-701"></a>
+<a id="__codelineno-0-702" name="__codelineno-0-702" href="#__codelineno-0-702"></a>PARTTYPE
+<a id="__codelineno-0-703" name="__codelineno-0-703" href="#__codelineno-0-703"></a>Is the partition type, which can be primary, logical or extended in case an MBR partition
+<a id="__codelineno-0-704" name="__codelineno-0-704" href="#__codelineno-0-704"></a>table is used.
+<a id="__codelineno-0-705" name="__codelineno-0-705" href="#__codelineno-0-705"></a>FSTYPE
+<a id="__codelineno-0-706" name="__codelineno-0-706" href="#__codelineno-0-706"></a>Specifies which filesystem will be used on this partition. Note that parted will not create the
+<a id="__codelineno-0-707" name="__codelineno-0-707" href="#__codelineno-0-707"></a>filesystem. It just sets a flag on the partition which tells the OS what kind of data to expect from
+<a id="__codelineno-0-708" name="__codelineno-0-708" href="#__codelineno-0-708"></a>it.
+<a id="__codelineno-0-709" name="__codelineno-0-709" href="#__codelineno-0-709"></a>START
+<a id="__codelineno-0-710" name="__codelineno-0-710" href="#__codelineno-0-710"></a>Specifies the exact point on the device where the partition begins. You can use different units to
+<a id="__codelineno-0-711" name="__codelineno-0-711" href="#__codelineno-0-711"></a>specify this point. 2s can be used to refer to the second sector of the disk, while 1m refers to the
+<a id="__codelineno-0-712" name="__codelineno-0-712" href="#__codelineno-0-712"></a>beginning of the first megabyte of the disk. Other common units are B (bytes) and % (percentage
+<a id="__codelineno-0-713" name="__codelineno-0-713" href="#__codelineno-0-713"></a>of the disk).
+<a id="__codelineno-0-714" name="__codelineno-0-714" href="#__codelineno-0-714"></a>END
+<a id="__codelineno-0-715" name="__codelineno-0-715" href="#__codelineno-0-715"></a>Specifies the end of the partition. Note that this is not the size of the partition, this is the point
+<a id="__codelineno-0-716" name="__codelineno-0-716" href="#__codelineno-0-716"></a>on the disk where it ends. For example, if you specify 100m the partition will end 100 MB after
+<a id="__codelineno-0-717" name="__codelineno-0-717" href="#__codelineno-0-717"></a>the start of the disk. You can use the same units as in the START parameter.
+<a id="__codelineno-0-718" name="__codelineno-0-718" href="#__codelineno-0-718"></a>So, the command:
+<a id="__codelineno-0-719" name="__codelineno-0-719" href="#__codelineno-0-719"></a>(parted) mkpart primary ext4 1m 100m
+<a id="__codelineno-0-720" name="__codelineno-0-720" href="#__codelineno-0-720"></a>Creates a primary partition of type ext4, starting at the first megabyte of the disk, and ending
+<a id="__codelineno-0-721" name="__codelineno-0-721" href="#__codelineno-0-721"></a>after the 100th megabyte.
+<a id="__codelineno-0-722" name="__codelineno-0-722" href="#__codelineno-0-722"></a>Removing a Partition
+<a id="__codelineno-0-723" name="__codelineno-0-723" href="#__codelineno-0-723"></a>To remove a partition, use the command rm followed by the partition number, which you can
+<a id="__codelineno-0-724" name="__codelineno-0-724" href="#__codelineno-0-724"></a>display using the print command. So, rm 2 would remove the second partition on the currently
+<a id="__codelineno-0-725" name="__codelineno-0-725" href="#__codelineno-0-725"></a>selected disk.
+<a id="__codelineno-0-726" name="__codelineno-0-726" href="#__codelineno-0-726"></a>Recovering Partitions
+<a id="__codelineno-0-727" name="__codelineno-0-727" href="#__codelineno-0-727"></a>parted can recover a deleted partition. Consider you have the following partition structure:
+<a id="__codelineno-0-728" name="__codelineno-0-728" href="#__codelineno-0-728"></a>Number  Start   End     Size    File system  Name     Flags
+<a id="__codelineno-0-729" name="__codelineno-0-729" href="#__codelineno-0-729"></a>&nbsp;1      1049kB  99.6MB  98.6MB  ext4         primary
+<a id="__codelineno-0-730" name="__codelineno-0-730" href="#__codelineno-0-730"></a>&nbsp;2      99.6MB  200MB   100MB   ext4         primary
+<a id="__codelineno-0-731" name="__codelineno-0-731" href="#__codelineno-0-731"></a>426 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-732" name="__codelineno-0-732" href="#__codelineno-0-732"></a>
+<a id="__codelineno-0-733" name="__codelineno-0-733" href="#__codelineno-0-733"></a>&nbsp;3      200MB   300MB   99.6MB  ext4         primary
+<a id="__codelineno-0-734" name="__codelineno-0-734" href="#__codelineno-0-734"></a>By accident, you removed partition 2 using rm 2. To recover it, you can use the rescue command,
+<a id="__codelineno-0-735" name="__codelineno-0-735" href="#__codelineno-0-735"></a>with the syntax rescue START END, where START is the approximate location where the partition
+<a id="__codelineno-0-736" name="__codelineno-0-736" href="#__codelineno-0-736"></a>started, and END the approximate location where it ended.
+<a id="__codelineno-0-737" name="__codelineno-0-737" href="#__codelineno-0-737"></a>parted will scan the disk in search of partitions, and offer to restore any that are found. In the
+<a id="__codelineno-0-738" name="__codelineno-0-738" href="#__codelineno-0-738"></a>example above the partition 2 started at 99,6 MB and ended at 200 MB. So you can use the
+<a id="__codelineno-0-739" name="__codelineno-0-739" href="#__codelineno-0-739"></a>following command to recover the partition:
+<a id="__codelineno-0-740" name="__codelineno-0-740" href="#__codelineno-0-740"></a>(parted) rescue 90m 210m
+<a id="__codelineno-0-741" name="__codelineno-0-741" href="#__codelineno-0-741"></a>Information: A ext4 primary partition was found at 99.6MB -&gt; 200MB.
+<a id="__codelineno-0-742" name="__codelineno-0-742" href="#__codelineno-0-742"></a>Do you want to add it to the partition table?
+<a id="__codelineno-0-743" name="__codelineno-0-743" href="#__codelineno-0-743"></a>Yes/No/Cancel? y
+<a id="__codelineno-0-744" name="__codelineno-0-744" href="#__codelineno-0-744"></a>This will recover the partition and its contents. Note that rescue can only recover partitions that
+<a id="__codelineno-0-745" name="__codelineno-0-745" href="#__codelineno-0-745"></a>have a filesystem installed on them. Empty partitions are not detected.
+<a id="__codelineno-0-746" name="__codelineno-0-746" href="#__codelineno-0-746"></a>Resizing ext2/3/4 Partitions
+<a id="__codelineno-0-747" name="__codelineno-0-747" href="#__codelineno-0-747"></a>parted can be used to resize partitions to make them bigger or smaller. However, there are some
+<a id="__codelineno-0-748" name="__codelineno-0-748" href="#__codelineno-0-748"></a>caveats:
+<a id="__codelineno-0-749" name="__codelineno-0-749" href="#__codelineno-0-749"></a>• During resizing the partition must be unused and unmounted.
+<a id="__codelineno-0-750" name="__codelineno-0-750" href="#__codelineno-0-750"></a>• You need enough free space after the partition to grow it to the size you want.
+<a id="__codelineno-0-751" name="__codelineno-0-751" href="#__codelineno-0-751"></a>The command is resizepart, followed by the partition number and where it should end. For
+<a id="__codelineno-0-752" name="__codelineno-0-752" href="#__codelineno-0-752"></a>example, if you have the following partition table:
+<a id="__codelineno-0-753" name="__codelineno-0-753" href="#__codelineno-0-753"></a>Number  Start   End     Size    File system  Name     Flags
+<a id="__codelineno-0-754" name="__codelineno-0-754" href="#__codelineno-0-754"></a>&nbsp;1      1049kB  99.6MB  98.6MB  ext4         primary
+<a id="__codelineno-0-755" name="__codelineno-0-755" href="#__codelineno-0-755"></a>&nbsp;2      99.6MB  200MB   100MB   ext4
+<a id="__codelineno-0-756" name="__codelineno-0-756" href="#__codelineno-0-756"></a>&nbsp;3      200MB   300MB   99.6MB  ext4         primary
+<a id="__codelineno-0-757" name="__codelineno-0-757" href="#__codelineno-0-757"></a>Trying to grow partition 1 using resizepart would trigger an error message, because with the
+<a id="__codelineno-0-758" name="__codelineno-0-758" href="#__codelineno-0-758"></a>new size partition 1 would overlap with partition 2. However partition 3 can be resized as there is
+<a id="__codelineno-0-759" name="__codelineno-0-759" href="#__codelineno-0-759"></a>free space after it, which can be verified with the command print free:
+<a id="__codelineno-0-760" name="__codelineno-0-760" href="#__codelineno-0-760"></a>(parted) print free
+<a id="__codelineno-0-761" name="__codelineno-0-761" href="#__codelineno-0-761"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 427
+<a id="__codelineno-0-762" name="__codelineno-0-762" href="#__codelineno-0-762"></a>
+<a id="__codelineno-0-763" name="__codelineno-0-763" href="#__codelineno-0-763"></a>Model: Kingston DataTraveler 2.0 (scsi)
+<a id="__codelineno-0-764" name="__codelineno-0-764" href="#__codelineno-0-764"></a>Disk /dev/sdb: 1999MB
+<a id="__codelineno-0-765" name="__codelineno-0-765" href="#__codelineno-0-765"></a>Sector size (logical/physical): 512B/512B
+<a id="__codelineno-0-766" name="__codelineno-0-766" href="#__codelineno-0-766"></a>Partition Table: gpt
+<a id="__codelineno-0-767" name="__codelineno-0-767" href="#__codelineno-0-767"></a>Disk Flags:
+<a id="__codelineno-0-768" name="__codelineno-0-768" href="#__codelineno-0-768"></a>&nbsp;Number  Start   End     Size    File system  Name     Flags
+<a id="__codelineno-0-769" name="__codelineno-0-769" href="#__codelineno-0-769"></a>&nbsp;       17.4kB  1049kB  1031kB  Free Space
+<a id="__codelineno-0-770" name="__codelineno-0-770" href="#__codelineno-0-770"></a>&nbsp;1      1049kB  99.6MB  98.6MB  ext4         primary
+<a id="__codelineno-0-771" name="__codelineno-0-771" href="#__codelineno-0-771"></a>&nbsp;2      99.6MB  200MB   100MB   ext4
+<a id="__codelineno-0-772" name="__codelineno-0-772" href="#__codelineno-0-772"></a>&nbsp;3      200MB   300MB   99.6MB  ext4         primary
+<a id="__codelineno-0-773" name="__codelineno-0-773" href="#__codelineno-0-773"></a>&nbsp;       300MB   1999MB  1699MB  Free Space
+<a id="__codelineno-0-774" name="__codelineno-0-774" href="#__codelineno-0-774"></a>So you can use the following command to resize partition 3 to 350 MB:
+<a id="__codelineno-0-775" name="__codelineno-0-775" href="#__codelineno-0-775"></a>(parted) resizepart 3 350m
+<a id="__codelineno-0-776" name="__codelineno-0-776" href="#__codelineno-0-776"></a>(parted) print
+<a id="__codelineno-0-777" name="__codelineno-0-777" href="#__codelineno-0-777"></a>Model: Kingston DataTraveler 2.0 (scsi)
+<a id="__codelineno-0-778" name="__codelineno-0-778" href="#__codelineno-0-778"></a>Disk /dev/sdb: 1999MB
+<a id="__codelineno-0-779" name="__codelineno-0-779" href="#__codelineno-0-779"></a>Sector size (logical/physical): 512B/512B
+<a id="__codelineno-0-780" name="__codelineno-0-780" href="#__codelineno-0-780"></a>Partition Table: gpt
+<a id="__codelineno-0-781" name="__codelineno-0-781" href="#__codelineno-0-781"></a>Disk Flags:
+<a id="__codelineno-0-782" name="__codelineno-0-782" href="#__codelineno-0-782"></a>Number  Start   End     Size    File system  Name     Flags
+<a id="__codelineno-0-783" name="__codelineno-0-783" href="#__codelineno-0-783"></a>&nbsp;1      1049kB  99.6MB  98.6MB  ext4         primary
+<a id="__codelineno-0-784" name="__codelineno-0-784" href="#__codelineno-0-784"></a>&nbsp;2      99.6MB  200MB   100MB   ext4
+<a id="__codelineno-0-785" name="__codelineno-0-785" href="#__codelineno-0-785"></a>&nbsp;3      200MB   350MB   150MB   ext4         primary
+<a id="__codelineno-0-786" name="__codelineno-0-786" href="#__codelineno-0-786"></a>Remember that the new end point is specified counting from the start of the disk. So, because
+<a id="__codelineno-0-787" name="__codelineno-0-787" href="#__codelineno-0-787"></a>partition 3 ended at 300 MB, now it needs to end at 350 MB.
+<a id="__codelineno-0-788" name="__codelineno-0-788" href="#__codelineno-0-788"></a>But resizing the partition is only one part of the task. You also need to resize the filesystem that
+<a id="__codelineno-0-789" name="__codelineno-0-789" href="#__codelineno-0-789"></a>resides in it. For ext2/3/4 filesystems this is done with the resize2fs command. In the case of the
+<a id="__codelineno-0-790" name="__codelineno-0-790" href="#__codelineno-0-790"></a>example above, partition 3 still shows the “old” size when mounted:
+<a id="__codelineno-0-791" name="__codelineno-0-791" href="#__codelineno-0-791"></a>$ df -h /dev/sdb3
+<a id="__codelineno-0-792" name="__codelineno-0-792" href="#__codelineno-0-792"></a>Filesystem      Size  Used Avail Use% Mounted on
+<a id="__codelineno-0-793" name="__codelineno-0-793" href="#__codelineno-0-793"></a>/dev/sdb3        88M  1.6M   80M   2% /media/carol/part3
+<a id="__codelineno-0-794" name="__codelineno-0-794" href="#__codelineno-0-794"></a>To adjust the size the command resize2fs DEVICE SIZE can be used, where DEVICE
+<a id="__codelineno-0-795" name="__codelineno-0-795" href="#__codelineno-0-795"></a>428 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-796" name="__codelineno-0-796" href="#__codelineno-0-796"></a>
+<a id="__codelineno-0-797" name="__codelineno-0-797" href="#__codelineno-0-797"></a>corresponds to the partition you want to resize, and SIZE is the new size. If you omit the size
+<a id="__codelineno-0-798" name="__codelineno-0-798" href="#__codelineno-0-798"></a>parameter, it will use all of the available space of the partition. Before resizing, it is advised to
+<a id="__codelineno-0-799" name="__codelineno-0-799" href="#__codelineno-0-799"></a>unmount the partition.
+<a id="__codelineno-0-800" name="__codelineno-0-800" href="#__codelineno-0-800"></a>In the example above:
+<a id="__codelineno-0-801" name="__codelineno-0-801" href="#__codelineno-0-801"></a>$ sudo resize2fs /dev/sdb3
+<a id="__codelineno-0-802" name="__codelineno-0-802" href="#__codelineno-0-802"></a>resize2fs 1.44.6 (5-Mar-2019)
+<a id="__codelineno-0-803" name="__codelineno-0-803" href="#__codelineno-0-803"></a>Resizing the filesystem on /dev/sdb3 to 146212 (1k) blocks.
+<a id="__codelineno-0-804" name="__codelineno-0-804" href="#__codelineno-0-804"></a>The filesystem on /dev/sdb3 is now 146212 (1k) blocks long.
+<a id="__codelineno-0-805" name="__codelineno-0-805" href="#__codelineno-0-805"></a>$ df -h /dev/sdb3
+<a id="__codelineno-0-806" name="__codelineno-0-806" href="#__codelineno-0-806"></a>Filesystem      Size  Used Avail Use% Mounted on
+<a id="__codelineno-0-807" name="__codelineno-0-807" href="#__codelineno-0-807"></a>/dev/sdb3       135M  1.6M  123M   2% /media/carol/part3
+<a id="__codelineno-0-808" name="__codelineno-0-808" href="#__codelineno-0-808"></a>To shrink a partition, the process needs to be done in the reverse order. First you resize the
+<a id="__codelineno-0-809" name="__codelineno-0-809" href="#__codelineno-0-809"></a>filesystem to the new, smaller size, then you resize the partition itself using parted.
+<a id="__codelineno-0-810" name="__codelineno-0-810" href="#__codelineno-0-810"></a>WARNING
+<a id="__codelineno-0-811" name="__codelineno-0-811" href="#__codelineno-0-811"></a>Pay attention when shrinking partitions. If you get the order of things wrong,
+<a id="__codelineno-0-812" name="__codelineno-0-812" href="#__codelineno-0-812"></a>you will lose data!
+<a id="__codelineno-0-813" name="__codelineno-0-813" href="#__codelineno-0-813"></a>In our example:
+<a id="__codelineno-0-814" name="__codelineno-0-814" href="#__codelineno-0-814"></a># resize2fs /dev/sdb3 88m
+<a id="__codelineno-0-815" name="__codelineno-0-815" href="#__codelineno-0-815"></a>resize2fs 1.44.6 (5-Mar-2019)
+<a id="__codelineno-0-816" name="__codelineno-0-816" href="#__codelineno-0-816"></a>Resizing the filesystem on /dev/sdb3 to 90112 (1k) blocks.
+<a id="__codelineno-0-817" name="__codelineno-0-817" href="#__codelineno-0-817"></a>The filesystem on /dev/sdb3 is now 90112 (1k) blocks long.
+<a id="__codelineno-0-818" name="__codelineno-0-818" href="#__codelineno-0-818"></a># parted /dev/sdb3
+<a id="__codelineno-0-819" name="__codelineno-0-819" href="#__codelineno-0-819"></a>(parted) resizepart 3 300m
+<a id="__codelineno-0-820" name="__codelineno-0-820" href="#__codelineno-0-820"></a>Warning: Shrinking a partition can cause data loss, are you sure
+<a id="__codelineno-0-821" name="__codelineno-0-821" href="#__codelineno-0-821"></a>you want to continue?
+<a id="__codelineno-0-822" name="__codelineno-0-822" href="#__codelineno-0-822"></a>Yes/No? y
+<a id="__codelineno-0-823" name="__codelineno-0-823" href="#__codelineno-0-823"></a>(parted) print
+<a id="__codelineno-0-824" name="__codelineno-0-824" href="#__codelineno-0-824"></a>Model: Kingston DataTraveler 2.0 (scsi)
+<a id="__codelineno-0-825" name="__codelineno-0-825" href="#__codelineno-0-825"></a>Disk /dev/sdb: 1999MB
+<a id="__codelineno-0-826" name="__codelineno-0-826" href="#__codelineno-0-826"></a>Sector size (logical/physical): 512B/512B
+<a id="__codelineno-0-827" name="__codelineno-0-827" href="#__codelineno-0-827"></a>Partition Table: gpt
+<a id="__codelineno-0-828" name="__codelineno-0-828" href="#__codelineno-0-828"></a>Disk Flags:
+<a id="__codelineno-0-829" name="__codelineno-0-829" href="#__codelineno-0-829"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 429
+<a id="__codelineno-0-830" name="__codelineno-0-830" href="#__codelineno-0-830"></a>
+<a id="__codelineno-0-831" name="__codelineno-0-831" href="#__codelineno-0-831"></a>Number  Start   End     Size    File system  Name     Flags
+<a id="__codelineno-0-832" name="__codelineno-0-832" href="#__codelineno-0-832"></a>&nbsp;1      1049kB  99.6MB  98.6MB  ext4         primary
+<a id="__codelineno-0-833" name="__codelineno-0-833" href="#__codelineno-0-833"></a>&nbsp;2      99.6MB  200MB   100MB   ext4
+<a id="__codelineno-0-834" name="__codelineno-0-834" href="#__codelineno-0-834"></a>&nbsp;3      200MB   300MB   99.7MB  ext4         primary
+<a id="__codelineno-0-835" name="__codelineno-0-835" href="#__codelineno-0-835"></a>TIP
+<a id="__codelineno-0-836" name="__codelineno-0-836" href="#__codelineno-0-836"></a>Instead of specifying a new size, you can use the -M parameter of resize2fs to
+<a id="__codelineno-0-837" name="__codelineno-0-837" href="#__codelineno-0-837"></a>adjust the size of the filesystem so it is just big enough for the files on it.
+<a id="__codelineno-0-838" name="__codelineno-0-838" href="#__codelineno-0-838"></a>Creating Swap Partitions
+<a id="__codelineno-0-839" name="__codelineno-0-839" href="#__codelineno-0-839"></a>On Linux, the system can swap memory pages from RAM to disk as needed, storing them on a
+<a id="__codelineno-0-840" name="__codelineno-0-840" href="#__codelineno-0-840"></a>separate space usually implemented as a separate partition on a disk, called the swap partition or
+<a id="__codelineno-0-841" name="__codelineno-0-841" href="#__codelineno-0-841"></a>simply swap. This partition needs to be of a specific type, and set-up with a proper utility (mkswap)
+<a id="__codelineno-0-842" name="__codelineno-0-842" href="#__codelineno-0-842"></a>before it can be used.
+<a id="__codelineno-0-843" name="__codelineno-0-843" href="#__codelineno-0-843"></a>To create the swap partition using fdisk or gdisk, just proceed as if you were creating a regular
+<a id="__codelineno-0-844" name="__codelineno-0-844" href="#__codelineno-0-844"></a>partition, as explained before. The only difference is that you will need to change the partition
+<a id="__codelineno-0-845" name="__codelineno-0-845" href="#__codelineno-0-845"></a>type to Linux swap.
+<a id="__codelineno-0-846" name="__codelineno-0-846" href="#__codelineno-0-846"></a>• On fdisk use the t command. Select the partition you want to use and change its type to 82.
+<a id="__codelineno-0-847" name="__codelineno-0-847" href="#__codelineno-0-847"></a>Write changes to disk and quit with w.
+<a id="__codelineno-0-848" name="__codelineno-0-848" href="#__codelineno-0-848"></a>• On gdisk the command to change the partition type is also t, but the code is 8200. Write
+<a id="__codelineno-0-849" name="__codelineno-0-849" href="#__codelineno-0-849"></a>changes to disk and quit with w.
+<a id="__codelineno-0-850" name="__codelineno-0-850" href="#__codelineno-0-850"></a>If you are using parted, the partition should be identified as a swap partition during creation, just
+<a id="__codelineno-0-851" name="__codelineno-0-851" href="#__codelineno-0-851"></a>use linux-swap as the filesystem type. For example, the command to create a 500 MB swap
+<a id="__codelineno-0-852" name="__codelineno-0-852" href="#__codelineno-0-852"></a>partition, starting at 300 MB on disk is:
+<a id="__codelineno-0-853" name="__codelineno-0-853" href="#__codelineno-0-853"></a>(parted) mkpart primary linux-swap 301m 800m
+<a id="__codelineno-0-854" name="__codelineno-0-854" href="#__codelineno-0-854"></a>Once the partition is created and properly identified, just use mkswap followed by the device
+<a id="__codelineno-0-855" name="__codelineno-0-855" href="#__codelineno-0-855"></a>representing the partition you want to use, like:
+<a id="__codelineno-0-856" name="__codelineno-0-856" href="#__codelineno-0-856"></a># mkswap /dev/sda2
+<a id="__codelineno-0-857" name="__codelineno-0-857" href="#__codelineno-0-857"></a>To enable swap on this partition, use swapon followed by the device name:
+<a id="__codelineno-0-858" name="__codelineno-0-858" href="#__codelineno-0-858"></a># swapon /dev/sda2
+<a id="__codelineno-0-859" name="__codelineno-0-859" href="#__codelineno-0-859"></a>430 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-860" name="__codelineno-0-860" href="#__codelineno-0-860"></a>
+<a id="__codelineno-0-861" name="__codelineno-0-861" href="#__codelineno-0-861"></a>Similarly, swapoff, followed by the device name, will disable swap on that device.
+<a id="__codelineno-0-862" name="__codelineno-0-862" href="#__codelineno-0-862"></a>Linux also supports the use of swap files instead of partitions. Just create an empty file of the size
+<a id="__codelineno-0-863" name="__codelineno-0-863" href="#__codelineno-0-863"></a>you want using dd and then use mkswap and swapon with this file as the target.
+<a id="__codelineno-0-864" name="__codelineno-0-864" href="#__codelineno-0-864"></a>The following commands will create a 1 GB file called myswap in the current directory, filled with
+<a id="__codelineno-0-865" name="__codelineno-0-865" href="#__codelineno-0-865"></a>zeroes, and than set-up and enable it as a swap file.
+<a id="__codelineno-0-866" name="__codelineno-0-866" href="#__codelineno-0-866"></a>Create the swap file:
+<a id="__codelineno-0-867" name="__codelineno-0-867" href="#__codelineno-0-867"></a>$ dd if=/dev/zero of=myswap bs=1M count=1024
+<a id="__codelineno-0-868" name="__codelineno-0-868" href="#__codelineno-0-868"></a>1024+0 records in
+<a id="__codelineno-0-869" name="__codelineno-0-869" href="#__codelineno-0-869"></a>1024+0 records out
+<a id="__codelineno-0-870" name="__codelineno-0-870" href="#__codelineno-0-870"></a>1073741824 bytes (1.1 GB, 1.0 GiB) copied, 7.49254 s, 143 MB/s
+<a id="__codelineno-0-871" name="__codelineno-0-871" href="#__codelineno-0-871"></a>if= is the input file, the source of the data that will be written to the file. In this case it is the
+<a id="__codelineno-0-872" name="__codelineno-0-872" href="#__codelineno-0-872"></a>/dev/zero device, which provides as many NULL characters as requested. of= is the output file,
+<a id="__codelineno-0-873" name="__codelineno-0-873" href="#__codelineno-0-873"></a>the file that will be created. bs= is the size of the data blocks, here specified in Megabytes, and
+<a id="__codelineno-0-874" name="__codelineno-0-874" href="#__codelineno-0-874"></a>count= is the amount of blocks to be written to the output. 1024 blocks of 1 MB each equals 1 GB.
+<a id="__codelineno-0-875" name="__codelineno-0-875" href="#__codelineno-0-875"></a># mkswap myswap
+<a id="__codelineno-0-876" name="__codelineno-0-876" href="#__codelineno-0-876"></a>Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+<a id="__codelineno-0-877" name="__codelineno-0-877" href="#__codelineno-0-877"></a>no label, UUID=49c53bc4-c4b1-4a8b-a613-8f42cb275b2b
+<a id="__codelineno-0-878" name="__codelineno-0-878" href="#__codelineno-0-878"></a># swapon myswap
+<a id="__codelineno-0-879" name="__codelineno-0-879" href="#__codelineno-0-879"></a>Using the commands above, this swap file will be used only during the current system session. If
+<a id="__codelineno-0-880" name="__codelineno-0-880" href="#__codelineno-0-880"></a>the machine is rebooted, the file will still be available, but will not be automatically loaded. You
+<a id="__codelineno-0-881" name="__codelineno-0-881" href="#__codelineno-0-881"></a>can automate that by adding the new swap file to /etc/fstab, which we will discuss in a later
+<a id="__codelineno-0-882" name="__codelineno-0-882" href="#__codelineno-0-882"></a>lesson.
+<a id="__codelineno-0-883" name="__codelineno-0-883" href="#__codelineno-0-883"></a>TIP
+<a id="__codelineno-0-884" name="__codelineno-0-884" href="#__codelineno-0-884"></a>Both mkswap and swapon will complain if your swap file has insecure permissions.
+<a id="__codelineno-0-885" name="__codelineno-0-885" href="#__codelineno-0-885"></a>The recommended file permission flag is 0600. Owner and group should be root.
+<a id="__codelineno-0-886" name="__codelineno-0-886" href="#__codelineno-0-886"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 431
+</code></pre></div>
+<hr>
+<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<h3 id="bang-lenh-trong-tam-key-command-reference">💡 Bảng Lệnh Trọng Tâm (Key Command Reference)<a class="headerlink" href="#bang-lenh-trong-tam-key-command-reference" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Lệnh / File / Folder</th>
+<th style="text-align: left;">Chức năng chính</th>
+<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>command / path</code></td>
+<td style="text-align: left;">Tra cứu &amp; kiểm tra cấu hình</td>
+<td style="text-align: left;">Quản trị Server Linux, Cloud EC2, Docker Container</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/etc/</code></td>
+<td style="text-align: left;">Thư mục chứa cấu hình hệ thống</td>
+<td style="text-align: left;">Quản lý cấu hình bằng Ansible, Terraform, Puppet</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>systemctl / journalctl</code></td>
+<td style="text-align: left;">Quản lý Service &amp; Xem Log tiến trình</td>
+<td style="text-align: left;">Debug ứng dụng microservices trên Linux Server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grep / sed / awk</code></td>
+<td style="text-align: left;">Xử lý &amp; Lọc luồng dữ liệu text</td>
+<td style="text-align: left;">Viết Bash script tự động hóa CI/CD Pipelines</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
+<p>Guided Exercises
+1. Which partitioning scheme should be used to partition a 3 TB hard disk into three 1 GB
+partitions? Why?
+2. On gdisk, how can we find out how much space is available on the disk?
+3. What would be the command to create an ext3 filesystem, checking for bad blocks before, with
+the label MyDisk and a random UUID, on the device /dev/sdc1?
+4. Using parted, what is the command to create a 300 MB ext4 partition, starting at 500 MB on the
+disk?
+5. Imagine you have 2 partitions, one on /dev/sda1 and the other on /dev/sda2, both 20 GB in
+size. How can you use them on a single Btrfs filesystem, in such a way that the contents of one
+partition will be automatically mirrored on the other, like on a RAID1 setup? How big will the
+filesystem be?
+432 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Explorational Exercises
+1. Consider a 2 GB disk with an MBR partition table and the following layout:
+Disk /dev/sdb: 1.9 GiB, 1998631936 bytes, 3903578 sectors
+Disk model: DataTraveler 2.0
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x31a83a48
+Device     Boot   Start     End Sectors  Size Id Type
+/dev/sdb1          2048 1050623 1048576  512M 83 Linux
+/dev/sdb3       2099200 3147775 1048576  512M 83 Linux
+Can you create a 600 MB partition on it? Why?
+2. On a disk at /dev/sdc, we have a first partition of 1 GB, containing about 256 MB of files. Using
+parted, how can you shrink it so it has just enough space for the files?
+3. Imagine you have a disk at /dev/sdb, and you want to create a 1 GB swap partition at the start
+of it. So, using parted, you create the partition with mkpart primary linux-swap 0 1024M.
+Then, you enable swap on this partition with swapon /dev/sdb1, but get the following error
+message:
+swapon: /dev/sdb1: read swap header failed
+What went wrong?
+4. During the course of this lesson, you were trying out some commands in parted but, by
+mistake, deleted the 3rd partition on your hard disk. You know that it came after a 250 MB
+UEFI partition and a 4 GB swap partition, and was 10 GB in size. Which command can you use
+to recover it?
+5. Imagine you have a 4 GB unused partition on /dev/sda3. Using fdisk, what would be the
+sequence of operations to turn it into an active swap partition?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 433</p>
+<p>434 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Summary
+In this lesson, you learned:
+• How to create an MBR partition table on a disk with fdisk, and how to use it to create and
+delete partitions.
+• How to create an MBR partition table on a disk with gdisk, and how to use it to create and
+delete partitions.
+• How to create ext2, ext3, ext4, XFS, VFAT and exFAT partitions.
+• How to use parted to create, delete and recover partitions on both MBR and GPT disks.
+• How to use resize ext2, ext3, ext4 and Brts partitions.
+• How to create, set-up and activate swap partitions and swap files.
+The following commands were discussed in this lesson:
+• fdisk
+• gdisk
+• mkfs.ext2, mkfs.ext3, mkfs.ext4, mkfs.xfs, mkfs.vfat and mkfs.exfat
+• parted
+• btrfs
+• mkswap
+• swapon and swapoff
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 435</p>
+<hr>
+<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
+<p>Answers to Guided Exercises
+1. Which partitioning scheme should be used to partition a 3 TB hard disk into three 1 GB
+partitions? Why?
+GPT, as MBR supports at most 2 TB hard disks.
+2. On gdisk, how can we find out how much space is available on the disk?
+Use p (print). The total free space will be shown as the last line of information before the
+partition table itself.
+3. What would be the command to create an ext3 filesystem, checking for bad blocks before, with
+the label MyDisk and a random UUID, on the device /dev/sdc1?
+The command would be mkfs.ext3 -c -L MyDisk -U random /dev/sdc1. Alternatively,
+mke2fs -t ext3 can also be used instead of mkfs.ext3
+4. Using parted, what is the command to create a 300 MB ext4 partition, starting at 500 MB on the
+disk?
+Use mkpart primary ext4 500m 800m. Remember that you will have to create the filesystem
+using mkfs.ext4, as parted does not do this.
+5. Imagine you have 2 partitions, one on /dev/sda1 and the other on /dev/sdb1, both 20 GB in
+size. How can you use them on a single Btrfs filesystem, in such a way that the contents of one
+partition will be automatically mirrored on the other, like on a RAID1 setup? How big will the
+filesystem be?
+Use mkfs.btrfs /dev/sda1 /dev/sdb1 -m raid1. The resulting filesystem will be 20 GB in
+size, as one partition acts simply as a mirror of the other.
+436 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Answers to Explorational Exercises
+1. Consider a 2 GB disk with an MBR partition table and the following layout:
+Disk /dev/sdb: 1.9 GiB, 1998631936 bytes, 3903578 sectors
+Disk model: DataTraveler 2.0
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x31a83a48
+Device     Boot   Start     End Sectors  Size Id Type
+/dev/sdb1          2048 1050623 1048576  512M 83 Linux
+/dev/sdb3       2099200 3147775 1048576  512M 83 Linux
+Can you create a 600 MB partition on it? Why?
+You cannot, because there is not enough contiguous space. The first clue that something is “off”
+is the list of devices: you have /dev/sdb1 and /dev/sdb3, but no /dev/sdb2. So, something is
+missing.
+Then, you need to look where a partition ends and the other one begins. Partition one ends at
+sector 1050623, and partition 2 starts at 2099200. That’s a “gap” of 1048577 sectors. At 512
+bytes per sector, that’s 536.871.424 bytes. If you divide it by 1024 you get 524.288 Kilobytes.
+Divide by 1024 again and you get… 512 MB. This is the size of the “gap”.
+If the disk is 2 GB, then we have at most another 512 MB after partition 3. Even if we have in
+total around 1 GB unallocated, the biggest contiguous block is 512 MB. So, there is no space for
+a 600 MB partition.
+2. On a disk at /dev/sdc, we have a first partition of 1 GB, containing an ext4 filesystem with 241
+MB of files. Using parted, how can you shrink it so it has just enough space for the files?
+This is a multi-part operation. First you have to shrink the filesystem using resize2fs. Instead
+of specifying the new size directly, you can use the -M parameter so it is just “big enough”. So:
+resize2fs -M /dev/sdc1.
+Then, you resize the partition itself with parted using resizepart. Since it is the first partition,
+we can assume that it starts at zero and ends at 241 MB. So the command is resizepart 1
+241M.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 437</p>
+<ol>
+<li>Imagine you have a disk at /dev/sdb, and you want to create a 1 GB partition at the start of it.
+So, using parted, you create the partition with mkpart primary linux-swap 0 1024M. Then,
+you enable swap on this partition with swapon /dev/sdb1, but get the following error
+message:
+swapon: /dev/sdb1: read swap header failed
+What went wrong?
+You created a partition of the correct type (linux-swap), but remember that mkpart does not
+create a filesystem. You forgot to set-up the partition as a swap space first with mkswap before
+using it.</li>
+<li>During the course of this lesson, you were trying out some commands in parted but, by
+mistake, deleted the 3rd partition on your hard disk. You know that it came after a 250 MB EFI
+partition and a 4 GB swap partition, and was 10 GB in size. Which parted command can you
+use to recover it?
+Don’t panic, you have all the information you need to recover the partition, just use rescue
+and do the math. You had 250 MB + 4.096 MB (4<em>1024) before it, so the start point should be
+around 4346 MB. Plus 10.240 MB (10</em>1024) in size, it should end at 14.586 MB. So, rescue
+4346m 14586m should do the trick. You might need to give some “slack” to rescue, starting a
+little early and ending a little late, depending on the geometry of your disk.</li>
+<li>Imagine you have a 4 GB unused partition on /dev/sda3. Using fdisk, what would be the
+sequence of operations to turn it into an active swap partition?
+First, change the partition type to “Linux Swap” (82), write your changes to disk and quit. Then,
+use mkswap to set up the partition as a swap area. Then, use swapon to enable it.
+438 &nbsp;&nbsp;&nbsp; |</li>
+</ol>
+<hr>
+<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
+<ol>
+<li>Ghi nhớ cú pháp câu lệnh và ý nghĩa từng tùy chọn (flag/option).</li>
+<li>Hiểu rõ vị trí các file cấu hình quan trọng trong hệ thống Linux.</li>
+<li>Luôn kiểm tra log bằng <code>journalctl</code> hoặc tệp log tương ứng khi gặp sự cố.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../topic-103-gnu-and-unix-commands/103.8-basic-file-editing/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 103.8: Chỉnh sửa File Văn bản (Vim / Vi Editor)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Objective 103.8: Chỉnh sửa File Văn bản (Vim / Vi Editor)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../104.2-maintain-the-integrity-of-filesystems/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 104.2: Duy trì Tính Toàn vẹn Filesystem (fsck, df, du)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Objective 104.2: Duy trì Tính Toàn vẹn Filesystem (fsck, df, du)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

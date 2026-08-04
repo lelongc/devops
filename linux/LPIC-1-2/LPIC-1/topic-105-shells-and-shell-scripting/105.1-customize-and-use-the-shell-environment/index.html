@@ -1,0 +1,5189 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/linux/LPIC-1-2/LPIC-1/topic-105-shells-and-shell-scripting/105.1-customize-and-use-the-shell-environment/">
+      
+      
+        <link rel="prev" href="../../topic-104-devices-filesystems-fhs/104.7-find-system-files-and-place-files-in-correct-location/">
+      
+      
+        <link rel="next" href="../105.2-customize-or-write-simple-scripts/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Objective 105.1: Tùy biến và Sử dụng Môi trường Shell - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objective-1051-tuy-bien-va-su-dung-moi-truong-shell" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Objective 105.1: Tùy biến và Sử dụng Môi trường Shell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-101-system-architecture/101.1-determine-and-configure-hardware-settings/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 101 system architecture
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 102 installation and package management
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-103-gnu-and-unix-commands/103.1-work-on-the-command-line/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 103 gnu and unix commands
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-104-devices-filesystems-fhs/104.1-create-partitions-and-filesystems/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 104 devices filesystems fhs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1_6" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1_6" id="__nav_8_1_1_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 105 shells and shell scripting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic 105 shells and shell scripting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 105.1: Tùy biến và Sử dụng Môi trường Shell
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 105.1: Tùy biến và Sử dụng Môi trường Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../105.2-customize-or-write-simple-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 105.2: Viết và Tùy biến Script Bash Tự động hóa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-106-user-interfaces-and-desktops/106.1-install-and-configure-x11/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 106 user interfaces and desktops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-107-administrative-tasks/107.1-manage-user-and-group-accounts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 107 administrative tasks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-108-essential-system-services/108.1-maintain-system-time/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 108 essential system services
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-109-networking-fundamentals/109.1-fundamentals-of-internet-protocols/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 109 networking fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 110 security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/LPIC-1-2/LPIC-1/topic-105-shells-and-shell-scripting/105.1-customize-and-use-the-shell-environment.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="objective-1051-tuy-bien-va-su-dung-moi-truong-shell">Objective 105.1: Tùy biến và Sử dụng Môi trường Shell<a class="headerlink" href="#objective-1051-tuy-bien-va-su-dung-moi-truong-shell" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 102-500 Version 5.0)</strong><br>
+📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 12 - 94)<br>
+🎯 <strong>Mục tiêu</strong>: Nắm vững kỹ năng Shell Scripting, Quản trị Hệ thống, Mạng và Bảo mật Linux cho DevOps.</p>
+</blockquote>
+<hr>
+<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
+<p>Bài học này cung cấp kiến thức thực chiến sâu sắc về <strong>Objective 105.1: Tùy biến và Sử dụng Môi trường Shell</strong>.</p>
+<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li>Nắm chắc cơ chế hoạt động của Linux trong môi trường Production/DevOps.</li>
+<li>Sử dụng thành thạo câu lệnh Terminal, biến môi trường và cấu hình hệ thống.</li>
+<li>Viết và tối ưu script tự động hóa công việc.</li>
+<li>Quản trị bảo mật, mạng, phân quyền và giám sát dịch vụ Linux Server.</li>
+</ul>
+<hr>
+<h2 id="2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500">📖 2. Nội Dung Lý Thuyết Chi Tiết (Trích xuất từ Sách LPI 102-500)<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-trich-xuat-tu-sach-lpi-102-500" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>105.1 Customize and use the shell environment
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 version 5.0, Exam 102, Objective 105.1
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>4
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Set environment variables (e.g. PATH) at login or when spawning a new shell.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Write Bash functions for frequently used sequences of commands.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Maintain skeleton directories for new user accounts.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>• Set command search path with the proper directory.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Partial list of the used files, terms and utilities
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>• .
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• source
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• /etc/bash.bashrc
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• /etc/profile
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• env
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• export
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• set
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>• unset
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>• ~/.bash_profile
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>• ~/.bash_login
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>2 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>• ~/.profile
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>• ~/.bashrc
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>• ~/.bash_logout
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>• function
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>• alias
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 3
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>105.1 Lesson 1
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>Certificate:
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>LPIC-1
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>Version:
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>5.0
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>Topic:
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>105 Shells and Shell Scripting
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>Objective:
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>105.1 Customize and use the shell environment
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Lesson:
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>1 of 3
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>Introduction
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>The shell is arguably the most powerful tool in a Linux system and can be defined as an interface
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>between the user and the kernel of the operating system. It interprets commands entered by the
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>user. Therefore, all system administrators must be skilled in using the shell. As we may certainly
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>know by now, the Bourne Again Shell (Bash) is the de facto shell for the vast majority of Linux
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>distributions.
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>Once started, the first thing Bash — or any other shell for that matter — does is executing a series
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>of startup scripts. These scripts customize the session’s environment. There are both system wide
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>and user specific scripts. We can put our personal preferences or settings that best fit our users'
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>needs in these scripts in the form of variables, aliases and functions.
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>The exact series of startup files depends on a very important parameter: the type of shell. Let us
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>have a look at the variety of shells that exist.
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>4 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>Shell Types: Interactive vs. Non-Interactive and Login vs. Non-
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>Login
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>To start with, let us clarify the concepts of interactive and login in the context of shells:
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>Interactive / Non-interactive Shells
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>This kind of shell refers to the interaction that takes place between the user and the shell: The
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>user provides input by typing commands into the terminal using the keyboard; the shell
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>provides output by printing messages on the screen.
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>Login / Non-login Shells
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>This kind of shell refers to the event of a user accessing a computer system providing its
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>credentials, such as username and password.
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>Both interactive and non-interactive shells can be either login or non-login and any possible
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>combination of these types has its specific uses.
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>Interactive login shells are executed when users log into the system and are used to customize
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>users' configurations according to their needs. A good example of this type of shell would be that
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>of a group of users belonging to the same department who need a particular variable set in their
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>sessions.
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>By interactive non-login shells we refer to any other shells opened by the user after logging into
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>the system. Users use these shells during sessions to carry out maintenance and administrative
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>tasks such as setting variables, the time, copying files, writing scripts, etc.
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>On the other hand, non-interactive shells do not require any kind of human interaction. Thus,
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>these shells do not ask the user for input and their output — if any — is in most cases written to a
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>log.
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>Non-interactive login shells are quite rare and impractical. Their uses are virtually non-existent
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>and we will only comment on them for the sake of insight into shell behaviour. Some odd
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>examples include forcing a script to be run from a login shell with /bin/bash --login
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>&lt;some_script&gt; or piping the standard output (stdout) of a command into the standard input
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>(stdin) of an ssh connection:
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>&lt;some_command&gt; | ssh &lt;some_user&gt;@&lt;some_server&gt;
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>As for non-interactive non-login shell there is neither interaction nor login on behalf of the user, so
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>we are referring here to the use of automated scripts. These scripts are mostly used to carry out
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 5
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>repetitive administrative and maintenance tasks such as those included in cronjobs. In such cases,
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>bash does not read any startup files.
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>Opening a Terminal
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>When we are in a desktop environment, we can either open a terminal application or switch to
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>one of the system consoles. Therefore, a new shell is either a pts shell when opened from a
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>terminal emulator in the GUI or a tty shell when run from a system console. In the first case we
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>are not dealing with a terminal but with a terminal emulator. As part of graphical sessions,
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>terminal emulators like gnome-terminal or konsole are very feature-rich and user-friendly as
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>compared to text-based user interface terminals. Less feature-rich terminal emulators
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>include — amongst others — XTerm and sakura.
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>Using the Ctrl  +  Alt  +  F1 - F6  combos we can go to the console logins which open an interactive text-
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>based login shell. Ctrl  +  Alt  +  F7  will take the session back into the Desktop.
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>NOTE
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>tty stands for teletypewritter; pts stands for pseudo terminal slave. For more
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>information: man tty and man pts.
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>Launching Shells with bash
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>After logging in, type bash into a terminal to open a new shell. Technically, this shell is a child
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>process of the current shell.
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>While starting the bash child process, we can specify various switches to define which kind of
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>shell we want to start. Here some important bash invocation options:
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>bash -l or bash --login
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>will invoke a login shell.
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>bash -i
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>will invoke an interactive shell.
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>bash --noprofile
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>with login shells will ignore both the system-wide startup file /etc/profile and the user-level
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>startup files ~/.bash_profile, ~/.bash_login and ~/.profile.
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>bash --norc
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>with interactive shells will ignore both the system-wide startup file /etc/bash.bashrc and
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>the user-level startup file ~/.bashrc.
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>6 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>bash --rcfile &lt;file&gt;
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>with interactive shells will take &lt;file&gt; as the startup file ignoring system wide
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>/etc/bash.bashrc and user-level ~/.bashrc.
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>We will discus the various startup files below.
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>Launching Shells with su and sudo
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>Through the use of these two similar programs we can obtain specific types of shells:
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>su
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>Change user ID or become superuser (root). With this command we can invoke both login and
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>non-login shells:
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>• su - user2, su -l user2 or su --login user2 will start an interactive login shell as
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>user2.
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>• su user2 will start an interactive non-login shell as user2.
+<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>• su - root or su - will start an interactive login shell as root.
+<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>• su root or su will start an interactive non-login shell as root.
+<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>sudo
+<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>Execute commands as another user (including the supersuser). Because this command is
+<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>mainly used to gain root privileges temporarily, the user using it must be in the sudoers file.
+<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>To add users to sudoers we need to become root and then run:
+<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>root@debian:~# usermod -aG sudo user2
+<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>Just as su, sudo allows us to invoke both login and non-login shells:
+<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>• sudo su - user2, sudo su -l user2 or sudo su --login user2 will start an
+<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a>interactive login shell as user2.
+<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>• sudo su user2 will start an interactive non-login shell as user2.
+<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>• sudo -u user2 -s will start an interactive non-login shell as user2.
+<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>• sudo su - root or sudo su - will start an interactive login shell as root.
+<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>• sudo -i will start an interactive login shell as root.
+<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>• sudo -i &lt;some_command&gt; will start an interactive login shell as root, run the command
+<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>and return to the original user.
+<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 7
+<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>
+<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>• sudo su root or sudo su will start an interactive non-login shell as root.
+<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>• sudo -s or sudo -u root -s will start a non-login shell as root.
+<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>When using either su or sudo, it is important to consider our particular case scenario for starting
+<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>a new shell: Do we need the target user’s environment or not? If so, we would use the options
+<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>which invoke login shells; if not, those which invoke non-login shells.
+<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>What Shell Type Do We Have?
+<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>In order to find out what type of shell we are working at, we can type echo $0 into the terminal
+<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>and get the following output:
+<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>Interactive login
+<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>-bash or -su
+<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>Interactive non-login
+<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>bash or /bin/bash
+<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>Non-interactive non-login (scripts)
+<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>&lt;name_of_script&gt;
+<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>How Many Shells Do We Have?
+<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>To see how many bash shells we have up and running in the system, we can use the command ps
+<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>aux | grep bash:
+<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>user2@debian:~$ ps aux | grep bash
+<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>user2       5270  0.1  0.1  25532  5664 pts/0    Ss   23:03   0:00 bash
+<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>user2       5411  0.3  0.1  25608  5268 tty1     S+   23:03   0:00 -bash
+<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>user2       5452  0.0  0.0  16760   940 pts/0    S+   23:04   0:00 grep --color=auto bash
+<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>user2 at debian has logged into a GUI (or X Window System) session and opened gnome-terminal,
+<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>then she has pressed Ctrl  +  Alt  +  F1  to go into a tty terminal session. Finally, she has gone back to
+<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>the GUI session by pressing Ctrl  +  Alt  +  F7  and typed in the command ps aux | grep bash. Thus,
+<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>the output shows an interactive non-login shell via the terminal emulator (pts/0) and an
+<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>interactive login shell via the proper text-based terminal (tty1). Note also how the last field of
+<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>each line (the command) is bash for the former and -bash for the latter.
+<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>8 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>
+<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>Where Shells Get their Configuration From: Startup Files
+<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>Well, now that we know the shell types that we can find in a Linux system, it is high time that we
+<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>saw what startup files get executed by what shell. Note that system wide or global scripts are
+<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>placed in the /etc/ directory, whereas local or user-level ones are found in the user’s home (~).
+<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>Also, when there is more than one file to be searched, once one is found and run the others are
+<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>ignored. Explore and study these files yourself with your favorite text editor or by typing less
+<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>&lt;startup_file&gt;.
+<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>NOTE
+<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>Startup files can be divided into Bash specific (those limited only to bash
+<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>configurations and commands) and general ones (relating to most shells).
+<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a>Interactive Login Shell
+<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>Global Level
+<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>/etc/profile
+<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>This is the system-wide .profile file for the Bourne shell and Bourne compatible shells (bash
+<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>included). Through a series of if statements this file sets a number of variables such as PATH
+<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>and PS1 accordingly as well as sourcing — if they exist — both the file /etc/bash.bashrc and
+<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>those in the directory /etc/profile.d.
+<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a>/etc/profile.d/*
+<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>This directory may contain scripts that get executed by /etc/profile.
+<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>Local Level
+<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a>~/.bash_profile
+<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>This Bash specific file is used for configuring the user environment. It can also be used to
+<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>source both ~/.bash_login and ~/.profile.
+<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>~/.bash_login
+<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>Also Bash specific, this file will only be executed if there is no ~/.bash_profile file. Its name
+<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>suggests that it should be used to run commands needed on login.
+<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>~/.profile
+<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>This file is not Bash specific and gets sourced only if neither ~/.bash_profile nor
+<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>~/.bash_login exist — which is normally the case. Thus, the main purpose of ~/.profile is
+<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>that of checking if a Bash shell is being run and — if so — sourcing ~/.bashrc if it exists. It
+<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>usually sets the variable PATH so that it includes the user’s private ~/bin directory if it exists.
+<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 9
+<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>
+<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>~/.bash_logout
+<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>If it exists, this Bash specific file does some clean-up operations when exiting the shell. This can
+<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>be convenient in such cases as those in remote sessions.
+<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>Exploring Interactive Login Shell Configuration Files
+<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>Let 
+<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>us 
+<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>show 
+<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>some 
+<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>of 
+<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>these 
+<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>files 
+<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>in 
+<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>action 
+<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>by 
+<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>modifying 
+<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>/etc/profile 
+<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>and
+<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>/home/user2/.profile. We will append to each a line reminding us the file being executed:
+<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>root@debian:~# echo 'echo Hello from /etc/profile' &gt;&gt; /etc/profile
+<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>root@debian:~# echo 'echo Hello from ~/.profile' &gt;&gt; ~/.profile
+<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>NOTE
+<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>Two redirection operators &gt;&gt; append the output of a command into an existing
+<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>file — not overwriting it. If the file does not exist, though, it will be created.
+<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>Thus, through the output of their respective echo commands we will know when each of these
+<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>files is read and executed. To prove it, let us see what happens when user2 logs in via ssh from
+<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>another machine:
+<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>user2@debian:~$ ssh user2@192.168.1.6
+<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>user2@192.168.1.6's password:
+<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>Linux debian 4.9.0-8-amd64 #1 SMP Debian 4.9.130-2 (2018-10-27) x86_64
+<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>The programs included with the Debian GNU/Linux system are free software;
+<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>the exact distribution terms for each program are described in the
+<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>individual files in /usr/share/doc/*/copyright.
+<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>permitted by applicable law.
+<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>Last login: Tue Nov 27 19:57:19 2018 from 192.168.1.10
+<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>Hello from /etc/profile
+<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>Hello from /home/user2/.profile
+<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>As the last two lines show, it worked. Also, note three things:
+<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>• The global file was run first.
+<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>• There were no .bash_profile or .bash_login files in he home directory of user2.
+<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>• The tilde (~) expanded to the absolute path of the file (/home/user2/.profile).
+<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>10 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>
+<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>Interactive Non-Login Shell
+<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a>Global Level
+<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>/etc/bash.bashrc
+<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>This is the system-wide .bashrc file for interactive bash shells. Through its execution bash
+<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>makes sure it is being run interactively, checks the window size after each command (updating
+<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>the values of LINES and COLUMNS if necessary) and sets some variables.
+<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>Local Level
+<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>~/.bashrc
+<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>In addition to carrying out similar tasks to those described for /etc/bash.bashrc at a user
+<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>level (such as checking the window size or if being run interactively), this Bash specific file
+<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>usually sets some history variables and sources ~/.bash_aliases if it exists. Apart from that,
+<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>this file is normally used to store users' specific aliases and functions.
+<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>Likewise, it is also worthwhile noting that ~/.bashrc is read if bash detects its &lt;stdin&gt; is a
+<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>network connection (as it was the case with the Secure Shell (SSH) connection in the example
+<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>above).
+<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>Exploring Interactive Non-Login Shell Configuration Files
+<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>Let us now modify /etc/bash.bashrc and /home/user2/.bashrc:
+<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>root@debian:~# echo 'echo Hello from /etc/bash.bashrc' &gt;&gt; /etc/bash.bashrc
+<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>root@debian:~# echo 'echo Hello from ~/.bashrc' &gt;&gt; ~/.bashrc
+<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>And this is what happens when user2 starts a new shell:
+<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>user2@debian:~$ bash
+<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>Hello from /etc/bash.bashrc
+<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>Hello from /home/user2/.bashrc
+<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>Again, the two files were read and executed.
+<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>WARNING
+<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>Remember, because of the order in which files are run, local files take
+<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>precedence over global ones.
+<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 11
+<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>
+<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>Non-Interactive Login Shell
+<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>A non-interactive shell with the -l or --login options is forced to behave like a login shell and so
+<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>the startup files to be run will be the same as those for interactive login shells.
+<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>To prove it, let us write a simple script and make it executable. We will not include any shebangs
+<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>because we will be invoking the bash executable (/bin/bash with the login option) from the
+<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>command line.
+<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>1. We create the script test.sh containing the line echo 'Hello from a script' so that we
+<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>can prove the script runs successfully:
+<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>user2@debian:~$ echo "echo 'Hello from a script'" &gt; test.sh
+<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>2. We make our script executable:
+<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>user2@debian:~$ chmod +x ./test.sh
+<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>3. Finally, we invoke bash with the -l option to run the script:
+<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>user2@debian:~$ bash -l ./test.sh
+<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>Hello from /etc/profile
+<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>Hello from /home/user2/.profile
+<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>Hello from a script
+<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>It works! Before running the script, the login took place and both /etc/profile and
+<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>~/.profile were executed.
+<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>NOTE
+<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>We will learn about shebangs and all other aspects of shell scripting in future
+<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>lessons.
+<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>Let us now have the standard output (stdout) of the echo command into the standard input (stdin)
+<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>of an ssh connection by means of a pipe (|):
+<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>user2@debian:~$ echo "Hello-from-a-noninteractive-login-shell" | ssh user2@192.168.1.6
+<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>Pseudo-terminal will not be allocated because stdin is not a terminal.
+<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a>user2@192.168.1.6's password:
+<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>Linux debian 4.9.0-8-amd64 #1 SMP Debian 4.9.130-2 (2018-10-27) x86_64
+<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>The programs included with the Debian GNU/Linux system are free software;
+<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>12 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a>
+<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a>the exact distribution terms for each program are described in the
+<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a>individual files in /usr/share/doc/*/copyright.
+<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>permitted by applicable law.
+<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a>Hello from /etc/profile
+<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>Hello from /home/user2/.profile
+<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a>-bash: line 1: Hello-from-a-noninteractive-login-shell: command not found
+<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a>Again, /etc/profile and ~/.profile are executed. Other than that, the first and last lines of the
+<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>output are quite telling as far as the behaviour of the shell is concerned.
+<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>Non-Interactive Non-Login Shell
+<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a>Scripts do not read any of the files listed above but look for the environment variable BASH_ENV,
+<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>expand its value if needed and use it as the name of a startup file to read and execute commands.
+<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>We will learn more about environment variables in the next lesson.
+<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>As mentioned above, typically /etc/profile and ~/.profile make sure that both
+<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>/etc/bash.bashrc and ~/.bashrc get executed after a successful login. The output of the
+<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>following command shows this phenomenon:
+<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>root@debian:~# su - user2
+<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>Hello from /etc/bash.bashrc
+<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>Hello from /etc/profile
+<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a>Hello from /home/user2/.bashrc
+<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>Hello from /home/user2/.profile
+<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>Bearing in mind the lines we previously appended to the startup scripts — and invoking an
+<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a>interactive-login shell at user-level with su - user2 — the four lines of output can be explained
+<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>as follows:
+<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>1. Hello from /etc/bash.bashrc means /etc/profile has sourced /etc/bash.bashrc.
+<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>2. Hello from /etc/profile means /etc/profile has been fully read and executed.
+<a id="__codelineno-0-340" name="__codelineno-0-340" href="#__codelineno-0-340"></a>3. Hello from /home/user2/.bashrc means ~/.profile has sourced ~/.bashrc.
+<a id="__codelineno-0-341" name="__codelineno-0-341" href="#__codelineno-0-341"></a>4. Hello from /home/user2/.profile means ~/.profile has been fully read and executed.
+<a id="__codelineno-0-342" name="__codelineno-0-342" href="#__codelineno-0-342"></a>Note how with su - &lt;username&gt; (also su -l &lt;username&gt; and su --login &lt;username&gt;) we
+<a id="__codelineno-0-343" name="__codelineno-0-343" href="#__codelineno-0-343"></a>guarantee the invocation of a login shell, whereas su &lt;username&gt; would have only invoked
+<a id="__codelineno-0-344" name="__codelineno-0-344" href="#__codelineno-0-344"></a>/etc/bash.bashrc and ~/.bashrc.
+<a id="__codelineno-0-345" name="__codelineno-0-345" href="#__codelineno-0-345"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 13
+<a id="__codelineno-0-346" name="__codelineno-0-346" href="#__codelineno-0-346"></a>
+<a id="__codelineno-0-347" name="__codelineno-0-347" href="#__codelineno-0-347"></a>Sourcing Files
+<a id="__codelineno-0-348" name="__codelineno-0-348" href="#__codelineno-0-348"></a>In the previous sections we have discussed that some startup scripts include or execute other
+<a id="__codelineno-0-349" name="__codelineno-0-349" href="#__codelineno-0-349"></a>scripts. This mechanism is called sourcing and is explained in this section.
+<a id="__codelineno-0-350" name="__codelineno-0-350" href="#__codelineno-0-350"></a>Sourcing Files with .
+<a id="__codelineno-0-351" name="__codelineno-0-351" href="#__codelineno-0-351"></a>The dot (.) is normally found in startup files.
+<a id="__codelineno-0-352" name="__codelineno-0-352" href="#__codelineno-0-352"></a>In the .profile file of our Debian server we can find — for instance — the following block:
+<a id="__codelineno-0-353" name="__codelineno-0-353" href="#__codelineno-0-353"></a>&nbsp;   # include .bashrc if it exists
+<a id="__codelineno-0-354" name="__codelineno-0-354" href="#__codelineno-0-354"></a>&nbsp;   if [ -f "$HOME/.bashrc" ]; then
+<a id="__codelineno-0-355" name="__codelineno-0-355" href="#__codelineno-0-355"></a>&nbsp;   . "$HOME/.bashrc"
+<a id="__codelineno-0-356" name="__codelineno-0-356" href="#__codelineno-0-356"></a>&nbsp;   fi
+<a id="__codelineno-0-357" name="__codelineno-0-357" href="#__codelineno-0-357"></a>We already saw how the execution of a script may lead to that of another. Thus, the if statement
+<a id="__codelineno-0-358" name="__codelineno-0-358" href="#__codelineno-0-358"></a>guarantees that the file $HOME/.bashrc — if it exists (-f) — will be sourced (i.e. read and
+<a id="__codelineno-0-359" name="__codelineno-0-359" href="#__codelineno-0-359"></a>executed) at login:
+<a id="__codelineno-0-360" name="__codelineno-0-360" href="#__codelineno-0-360"></a>. "$HOME/.bashrc"
+<a id="__codelineno-0-361" name="__codelineno-0-361" href="#__codelineno-0-361"></a>NOTE
+<a id="__codelineno-0-362" name="__codelineno-0-362" href="#__codelineno-0-362"></a>As we will learn in the next lesson, $HOME is an environment variable that expands
+<a id="__codelineno-0-363" name="__codelineno-0-363" href="#__codelineno-0-363"></a>to the absolute path of the user’s home directory.
+<a id="__codelineno-0-364" name="__codelineno-0-364" href="#__codelineno-0-364"></a>Furthermore, we can use the . whenever we have modified a startup file and want to make the
+<a id="__codelineno-0-365" name="__codelineno-0-365" href="#__codelineno-0-365"></a>changes effective without a reboot. For example we can:
+<a id="__codelineno-0-366" name="__codelineno-0-366" href="#__codelineno-0-366"></a>• add an alias to ~/.bashrc:
+<a id="__codelineno-0-367" name="__codelineno-0-367" href="#__codelineno-0-367"></a>user2@debian:~$ echo "alias hi='echo We salute you.'" &gt;&gt; ~/.bashrc
+<a id="__codelineno-0-368" name="__codelineno-0-368" href="#__codelineno-0-368"></a>WARNING
+<a id="__codelineno-0-369" name="__codelineno-0-369" href="#__codelineno-0-369"></a>When sending the output of one command into a file, remember not to
+<a id="__codelineno-0-370" name="__codelineno-0-370" href="#__codelineno-0-370"></a>mistake append (&gt;&gt;) with overwrite (&gt;).
+<a id="__codelineno-0-371" name="__codelineno-0-371" href="#__codelineno-0-371"></a>• output the last line of ~/.bashrc to check everything went fine:
+<a id="__codelineno-0-372" name="__codelineno-0-372" href="#__codelineno-0-372"></a>user2@debian:~$ tail -n 1 !$
+<a id="__codelineno-0-373" name="__codelineno-0-373" href="#__codelineno-0-373"></a>tail -n 1 ~/.bashrc
+<a id="__codelineno-0-374" name="__codelineno-0-374" href="#__codelineno-0-374"></a>alias hi='echo We salute you.'
+<a id="__codelineno-0-375" name="__codelineno-0-375" href="#__codelineno-0-375"></a>14 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-376" name="__codelineno-0-376" href="#__codelineno-0-376"></a>
+<a id="__codelineno-0-377" name="__codelineno-0-377" href="#__codelineno-0-377"></a>NOTE
+<a id="__codelineno-0-378" name="__codelineno-0-378" href="#__codelineno-0-378"></a>!$ expands to the last argument from the previous command, in our case:
+<a id="__codelineno-0-379" name="__codelineno-0-379" href="#__codelineno-0-379"></a>~/.bashrc.
+<a id="__codelineno-0-380" name="__codelineno-0-380" href="#__codelineno-0-380"></a>• source the file by hand:
+<a id="__codelineno-0-381" name="__codelineno-0-381" href="#__codelineno-0-381"></a>user2@debian:~$ . ~/.bashrc
+<a id="__codelineno-0-382" name="__codelineno-0-382" href="#__codelineno-0-382"></a>• and invoke the alias to prove it works:
+<a id="__codelineno-0-383" name="__codelineno-0-383" href="#__codelineno-0-383"></a>user2@debian:~$ hi
+<a id="__codelineno-0-384" name="__codelineno-0-384" href="#__codelineno-0-384"></a>We salute you.
+<a id="__codelineno-0-385" name="__codelineno-0-385" href="#__codelineno-0-385"></a>NOTE
+<a id="__codelineno-0-386" name="__codelineno-0-386" href="#__codelineno-0-386"></a>Refer to the next lesson to learn about aliases and variables.
+<a id="__codelineno-0-387" name="__codelineno-0-387" href="#__codelineno-0-387"></a>Sourcing Files with source
+<a id="__codelineno-0-388" name="__codelineno-0-388" href="#__codelineno-0-388"></a>The source command is a synonym for .. So to source ~/.bashrc we can also do it like this:
+<a id="__codelineno-0-389" name="__codelineno-0-389" href="#__codelineno-0-389"></a>user2@debian:~$ source ~/.bashrc
+<a id="__codelineno-0-390" name="__codelineno-0-390" href="#__codelineno-0-390"></a>The Origin of Shell Startup Files: SKEL
+<a id="__codelineno-0-391" name="__codelineno-0-391" href="#__codelineno-0-391"></a>SKEL is a variable whose value is the absolute path to the skel directory. This directory serves as
+<a id="__codelineno-0-392" name="__codelineno-0-392" href="#__codelineno-0-392"></a>a template for the file system structure of users' home directories. It includes the files that will be
+<a id="__codelineno-0-393" name="__codelineno-0-393" href="#__codelineno-0-393"></a>inherited by any new user accounts created (including, of course, the configuration files for
+<a id="__codelineno-0-394" name="__codelineno-0-394" href="#__codelineno-0-394"></a>shells). SKEL and other related variables are stored in /etc/adduser.conf, which is the
+<a id="__codelineno-0-395" name="__codelineno-0-395" href="#__codelineno-0-395"></a>configuration file for adduser:
+<a id="__codelineno-0-396" name="__codelineno-0-396" href="#__codelineno-0-396"></a>user2@debian:~$ grep SKEL /etc/adduser.conf
+<a id="__codelineno-0-397" name="__codelineno-0-397" href="#__codelineno-0-397"></a># The SKEL variable specifies the directory containing "skeletal" user
+<a id="__codelineno-0-398" name="__codelineno-0-398" href="#__codelineno-0-398"></a>SKEL=/etc/skel
+<a id="__codelineno-0-399" name="__codelineno-0-399" href="#__codelineno-0-399"></a># If SKEL_IGNORE_REGEX is set, adduser will ignore files matching this
+<a id="__codelineno-0-400" name="__codelineno-0-400" href="#__codelineno-0-400"></a>SKEL_IGNORE_REGEX="dpkg-(old|new|dist|save)"
+<a id="__codelineno-0-401" name="__codelineno-0-401" href="#__codelineno-0-401"></a>SKEL is set to /etc/skel; thus, the startup scripts that configure our shells lie therein:
+<a id="__codelineno-0-402" name="__codelineno-0-402" href="#__codelineno-0-402"></a>user2@debian:~$ ls -a /etc/skel/
+<a id="__codelineno-0-403" name="__codelineno-0-403" href="#__codelineno-0-403"></a>.  ..  .bash_logout  .bashrc  .profile
+<a id="__codelineno-0-404" name="__codelineno-0-404" href="#__codelineno-0-404"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 15
+<a id="__codelineno-0-405" name="__codelineno-0-405" href="#__codelineno-0-405"></a>
+<a id="__codelineno-0-406" name="__codelineno-0-406" href="#__codelineno-0-406"></a>WARNING
+<a id="__codelineno-0-407" name="__codelineno-0-407" href="#__codelineno-0-407"></a>Remember, files starting with a . are hidden, so we must use ls -a to see
+<a id="__codelineno-0-408" name="__codelineno-0-408" href="#__codelineno-0-408"></a>them when listing directory contents.
+<a id="__codelineno-0-409" name="__codelineno-0-409" href="#__codelineno-0-409"></a>Let us now create a directory in /etc/skel for all new users to store their personal scripts in:
+<a id="__codelineno-0-410" name="__codelineno-0-410" href="#__codelineno-0-410"></a>1. As root we move into /etc/skel:
+<a id="__codelineno-0-411" name="__codelineno-0-411" href="#__codelineno-0-411"></a>root@debian:~# cd /etc/skel/
+<a id="__codelineno-0-412" name="__codelineno-0-412" href="#__codelineno-0-412"></a>root@debian:/etc/skel#
+<a id="__codelineno-0-413" name="__codelineno-0-413" href="#__codelineno-0-413"></a>2. We list its contents:
+<a id="__codelineno-0-414" name="__codelineno-0-414" href="#__codelineno-0-414"></a>root@debian:/etc/skel# ls -a
+<a id="__codelineno-0-415" name="__codelineno-0-415" href="#__codelineno-0-415"></a>.  ..  .bash_logout  .bashrc  .profile
+<a id="__codelineno-0-416" name="__codelineno-0-416" href="#__codelineno-0-416"></a>3. We create our directory and check all went as expected:
+<a id="__codelineno-0-417" name="__codelineno-0-417" href="#__codelineno-0-417"></a>root@debian:/etc/skel# mkdir my_personal_scripts
+<a id="__codelineno-0-418" name="__codelineno-0-418" href="#__codelineno-0-418"></a>root@debian:/etc/skel# ls -a
+<a id="__codelineno-0-419" name="__codelineno-0-419" href="#__codelineno-0-419"></a>.  ..  .bash_logout  .bashrc  my_personal_scripts  .profile
+<a id="__codelineno-0-420" name="__codelineno-0-420" href="#__codelineno-0-420"></a>4. Now we delete user2 together with its home directory:
+<a id="__codelineno-0-421" name="__codelineno-0-421" href="#__codelineno-0-421"></a>root@debian:~# deluser --remove-home user2
+<a id="__codelineno-0-422" name="__codelineno-0-422" href="#__codelineno-0-422"></a>Looking for files to backup/remove ...
+<a id="__codelineno-0-423" name="__codelineno-0-423" href="#__codelineno-0-423"></a>Removing files ...
+<a id="__codelineno-0-424" name="__codelineno-0-424" href="#__codelineno-0-424"></a>Removing user `user2' ...
+<a id="__codelineno-0-425" name="__codelineno-0-425" href="#__codelineno-0-425"></a>Warning: group `user2' has no more members.
+<a id="__codelineno-0-426" name="__codelineno-0-426" href="#__codelineno-0-426"></a>Done.
+<a id="__codelineno-0-427" name="__codelineno-0-427" href="#__codelineno-0-427"></a>5. We add user2 again so that it gets a new home directory:
+<a id="__codelineno-0-428" name="__codelineno-0-428" href="#__codelineno-0-428"></a>root@debian:~# adduser user2
+<a id="__codelineno-0-429" name="__codelineno-0-429" href="#__codelineno-0-429"></a>Adding user `user2' ...
+<a id="__codelineno-0-430" name="__codelineno-0-430" href="#__codelineno-0-430"></a>Adding new group `user2' (1001) ...
+<a id="__codelineno-0-431" name="__codelineno-0-431" href="#__codelineno-0-431"></a>Adding new user `user2' (1001) with group `user2' ...
+<a id="__codelineno-0-432" name="__codelineno-0-432" href="#__codelineno-0-432"></a>Creating home directory `/home/user2' ...
+<a id="__codelineno-0-433" name="__codelineno-0-433" href="#__codelineno-0-433"></a>Copying files from `/etc/skel' ...
+<a id="__codelineno-0-434" name="__codelineno-0-434" href="#__codelineno-0-434"></a>Enter new UNIX password:
+<a id="__codelineno-0-435" name="__codelineno-0-435" href="#__codelineno-0-435"></a>Retype new UNIX password:
+<a id="__codelineno-0-436" name="__codelineno-0-436" href="#__codelineno-0-436"></a>16 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-437" name="__codelineno-0-437" href="#__codelineno-0-437"></a>
+<a id="__codelineno-0-438" name="__codelineno-0-438" href="#__codelineno-0-438"></a>passwd: password updated successfully
+<a id="__codelineno-0-439" name="__codelineno-0-439" href="#__codelineno-0-439"></a>Changing the user information for user2
+<a id="__codelineno-0-440" name="__codelineno-0-440" href="#__codelineno-0-440"></a>Enter the new value, or press ENTER for the default
+<a id="__codelineno-0-441" name="__codelineno-0-441" href="#__codelineno-0-441"></a>&nbsp;   Full Name []:
+<a id="__codelineno-0-442" name="__codelineno-0-442" href="#__codelineno-0-442"></a>&nbsp;   Room Number []:
+<a id="__codelineno-0-443" name="__codelineno-0-443" href="#__codelineno-0-443"></a>&nbsp;   Work Phone []:
+<a id="__codelineno-0-444" name="__codelineno-0-444" href="#__codelineno-0-444"></a>&nbsp;   Home Phone []:
+<a id="__codelineno-0-445" name="__codelineno-0-445" href="#__codelineno-0-445"></a>&nbsp;   Other []:
+<a id="__codelineno-0-446" name="__codelineno-0-446" href="#__codelineno-0-446"></a>Is the information correct? [Y/n] y
+<a id="__codelineno-0-447" name="__codelineno-0-447" href="#__codelineno-0-447"></a>6. Finally, we login as user2 and list all the files in /home/user2 to see if everything went as
+<a id="__codelineno-0-448" name="__codelineno-0-448" href="#__codelineno-0-448"></a>expected:
+<a id="__codelineno-0-449" name="__codelineno-0-449" href="#__codelineno-0-449"></a>root@debian:~# su - user2
+<a id="__codelineno-0-450" name="__codelineno-0-450" href="#__codelineno-0-450"></a>user2@debian:~$ pwd
+<a id="__codelineno-0-451" name="__codelineno-0-451" href="#__codelineno-0-451"></a>/home/user2
+<a id="__codelineno-0-452" name="__codelineno-0-452" href="#__codelineno-0-452"></a>user2@debian:~$ ls -a
+<a id="__codelineno-0-453" name="__codelineno-0-453" href="#__codelineno-0-453"></a>.  ..  .bash_history  .bash_logout  .bashrc  my_personal_scripts  .profile
+<a id="__codelineno-0-454" name="__codelineno-0-454" href="#__codelineno-0-454"></a>It did.
+<a id="__codelineno-0-455" name="__codelineno-0-455" href="#__codelineno-0-455"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 17
+</code></pre></div>
+<hr>
+<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Lệnh / File / Folder</th>
+<th style="text-align: left;">Chức năng chính</th>
+<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>command / path</code></td>
+<td style="text-align: left;">Thao tác và quản trị hệ thống</td>
+<td style="text-align: left;">Quản lý Linux Server, CI/CD Runner, Container Node</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/etc/</code></td>
+<td style="text-align: left;">File cấu hình hệ thống</td>
+<td style="text-align: left;">Quản lý cấu hình hạ tầng qua IaC (Ansible, Terraform)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cron / crontab</code></td>
+<td style="text-align: left;">Lập lịch chạy tác vụ tự động</td>
+<td style="text-align: left;">Tự động hóa backup cơ sở dữ liệu, cleanup log định kỳ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ss / tcpdump / dig</code></td>
+<td style="text-align: left;">Chẩn đoán &amp; Debug mạng</td>
+<td style="text-align: left;">Debug kết nối Microservices, DNS resolution, Firewall</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
+<p>Guided Exercises
+1. Study how the shells have been started under the column “Shell Started with…” and complete
+with the required information:
+Shell Started with…
+Interactive?
+Login?
+Result of echo $0
+sudo ssh
+user2@machine2
+Ctrl  +  Alt  +  F2
+su - user2
+gnome-terminal
+A regular user uses
+konsole to start an
+instance of sakura
+A script named
+test.sh containing
+the command echo
+$0
+2. Write the su and sudo commands to launch the specified shell:
+Interactive-login shell as user2
+su:
+sudo:
+Interactive login shell as root
+su:
+sudo:
+Interactive non-login shell as root
+su:
+sudo:
+Interactive non-login shell as user2
+su:
+18 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>sudo:
+3. What startup file gets read when the shell under “Shell Type” is started?
+Shell Type
+/etc/profile
+/etc/bash.bash
+rc
+~/.profile
+~/.bashrc
+Interactive-login
+shell as user2
+Interactive login
+shell as root
+Interactive non-
+login shell as
+root
+Interactive non-
+login shell as
+user2
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 19</p>
+<p>Explorational Exercises
+1. In Bash we can write a simple Hello world! function by including the following code in an
+empty file:
+function hello() {
+&nbsp;    echo "Hello world!"
+}
+◦What should we do next to make the function available to the shell?
+◦Once it is available to the current shell, how would you invoke it?
+◦To automate things, in what file would you put the function and its invocation so that it gets
+executed when user2 opens a terminal from an X Window session? What type of shell is it?
+◦In what file would you put the function and its invocation so that it is run when root
+launches a new interactive shell irrespective of whether it is login or not?
+2. Have a look at the following basic, Hello world! bash script:</p>
+<h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">¶</a></h1>
+<h1 id="hello_world-a-simple-bash-script-to-discuss-interaction-in-scripts">hello_world: a simple bash script to discuss interaction in scripts.<a class="headerlink" href="#hello_world-a-simple-bash-script-to-discuss-interaction-in-scripts" title="Permanent link">¶</a></h1>
+<p>echo "Hello world!"
+◦Suppose we make the script executable and run it. Would that be an interactive script?
+Why?
+◦What makes a script interactive?
+3. Imagine you have changed the values of some variables in ~/.bashrc and want those changes
+to take effect without a reboot. From your home directory, how could you achieve that in two
+20 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>different ways?
+4. John has just started an X Window session on a Linux server. He opens a terminal emulator to
+carry out some administrative tasks but, surprisingly, the session freezes and he needs to open
+a text shell.
+◦How can he open that tty shell?
+◦What startup files will get sourced?
+5. Linda is a user of a Linux server. She kindly asks the administrator to have a ~/.bash_login
+file so she can have the time and date printed on the screen when she logs in. Other users like
+the idea and follow suit. The administrator has a hard time creating the file for all other users
+on the server so he decides to add a new policy and have ~/.bash_login created for all
+potential new users. How can the administrator accomplish that task?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 21</p>
+<p>Summary
+In this lesson we learned:
+• Shells set users' environment in a Linux system.
+• Bash is the number one shell across GNU/Linux distributions.
+• The first job a shell carries out is that of reading and executing one or various startup files.
+• The concepts of interaction and login as related to shells.
+• How to launch different types of shells with bash, su, sudo and Ctrl  +  Alt  +  F1 - F6 .
+• How to check the type of shell with echo $0.
+• The local startup files ~/.bash_profile, ~/.profile, ~/.bash_login, ~/.bash_logout and
+~/.bashrc.
+• The global startup files /etc/profile, /etc/profile.d/*, /etc/bash.bashrc.
+• Local files take precedence over global ones.
+• How to redirect the output of a command with &gt; (overwrite) and &gt;&gt; (append).
+• The meaning of the skel directory.
+• How to source files.
+Commands used in this lesson:
+bash
+Create a new shell.
+su
+Create a new shell.
+sudo
+Create a new shell.
+usermod
+Modify a user account.
+echo
+Display a line of text.
+22 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>ps
+Report a snapshot of the current processes.
+less
+A pager for long files.
+ssh
+Start an Open SSH connection (remotely).
+chmod
+Change mode bits of a file, for example make it executable.
+grep
+Print lines matching a pattern.
+ls
+List directory contents.
+cd
+Change directory.
+mkdir
+Make directory.
+deluser
+Delete user.
+adduser
+Add a new user.
+.
+Source a file.
+source
+Source a file.
+tail
+Output the last part of files.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 23</p>
+<hr>
+<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
+<p>Answers to Guided Exercises
+1. Study how the shells have been started under the column “Shell Started with…” and complete
+with the required information:
+Shell Started with…
+Interactive?
+Login?
+Result of echo $0
+sudo ssh
+user2@machine2
+Yes
+Yes
+-bash
+Ctrl  +  Alt  +  F2
+Yes
+Yes
+-bash
+su - user2
+Yes
+Yes
+-bash
+gnome-terminal
+Yes
+No
+bash
+A regular user uses
+konsole to start an
+instance of sakura
+Yes
+No
+/bin/bash
+A script named
+test.sh containing
+the command echo
+$0
+No
+No
+./test.sh
+2. Write the su and sudo commands to launch the specified shell:
+Interactive-login shell as user2
+su
+su - user2, su -l user2 or su --login user2
+sudo
+sudo su - user2, sudo su -l user2 or sudo su --login user2
+Interactive login shell as root
+su
+su - root or su -
+sudo
+sudo su - root, sudo su - or sudo -i
+24 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Interactive non-login shell as root
+su
+su root or su
+sudo
+sudo su root, sudo su, sudo -s or sudo -u root -s
+Interactive non-login shell as user2
+su
+su user2
+sudo
+sudo su user2 or sudo -u user2 -s
+3. What startup file gets read when the shell under “Shell Type” is started?
+Shell Type
+/etc/profile
+/etc/bash.bash
+rc
+~/.profile
+~/.bashrc
+Interactive login
+shell as user2
+Yes
+Yes
+Yes
+Yes
+Interactive login
+shell as root
+Yes
+Yes
+Yes
+Yes
+Interactive non-
+login shell as
+root
+No
+Yes
+No
+Yes
+Interactive non-
+login shell as
+user2
+No
+Yes
+No
+Yes
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 25</p>
+<p>Answers to Explorational Exercises
+1. In Bash we can write a simple Hello world! function by including the following code in an
+empty file:
+function hello() {
+&nbsp;    echo "Hello world!"
+}
+◦What should we do next to make the function available to the shell?
+To make the function availabe to the current shell, we must source the file which includes it.
+◦Once it is available to the current shell, how would you invoke it?
+We will invoke it by typing its name into the terminal.
+◦To automate things, in what file would you put the function and its invocation so that it gets
+executed when user2 opens a terminal from an X Window session? What type of shell is it?
+The best file to put it is /home/user2/.bashrc. The invoked shell would be an interactive
+non-login one.
+◦In what file would you put the function and its invocation so that it is run when root
+launches a new interactive shell irrespective of whether it is login or not?
+In /etc/bash.bashrc since this file gets executed for all interactive shells — whether login
+or not.
+2. Have a look at the following basic, Hello world! bash script:</p>
+<h1 id="binbash_1">!/bin/bash<a class="headerlink" href="#binbash_1" title="Permanent link">¶</a></h1>
+<h1 id="hello_world-a-simple-bash-script-to-discuss-interaction-in-scripts_1">hello_world: a simple bash script to discuss interaction in scripts.<a class="headerlink" href="#hello_world-a-simple-bash-script-to-discuss-interaction-in-scripts_1" title="Permanent link">¶</a></h1>
+<p>echo "Hello world!"
+◦Suppose we make the script executable and run it. Would that be an interactive script?
+Why?
+No, as there is no human interaction and no commands being typed in by the user.
+26 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>◦What makes a script interactive?
+The fact that it requires user input.
+3. Imagine you have changed the values of some variables in ~/.bashrc and want those changes
+to take effect without a reboot. From your home directory, how could you achieve that in two
+different ways?
+$ source .bashrc
+or
+$ . .bashrc
+4. John has just started an X Window session on a Linux server. He opens a terminal emulator to
+carry out some administrative tasks but, surprisingly, the session freezes and he needs to open
+a text shell.
+◦How can he open that tty shell?
+He could do that by pressing Ctrl  +  Alt  +  F1 - F6  to enter one of the six tty shells.
+◦What startup files will get sourced?
+/etc/profile
+/home/john/.profile
+5. Linda is a user of a Linux server. She kindly asks the administrator to have a ~/.bash_login
+file so she can have the time and date printed on the screen when she logs in. Other users like
+the idea and follow suit. The administrator has a hard time creating the file for all other users
+on the server so he decides to add a new policy and have ~/.bash_login created for all
+potential new users. How can the administrator accomplish that task?
+He could achieve that by putting .bash_login into the /etc/skel directory.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 27</p>
+<p>105.1 Lesson 2
+Certificate:
+LPIC-1
+Version:
+5.0
+Topic:
+105 Shells and Shell Scripting
+Objective:
+105.1 Customize and use the shell environment
+Lesson:
+2 of 3
+Introduction
+Think of a variable as an imaginary box in which to temporarily place a piece of information. The
+same as with its initialization scripts, Bash classifies variables as either shell/local (those which
+live only within the limits of the shell in which they were created) or environment/global (those
+that are inherited by children shells and/or processes). In fact, in the previous lesson we had a
+look at shells and their configuration or initialization scripts. It is now convenient to point out that
+the power of these startup files lies in the fact that they allow us to use variables — as well as
+aliases and functions — which help us create and customize the shell environment of our choice.
+Variables: Assignment and Reference
+A variable can be defined as a name containing a value.
+In Bash, giving a value to a name is called variable assignment and it is the way in which we create
+or set variables. On the other hand, the process of accessing the value contained in the name is
+called variable referencing.
+The syntax for assigning variables is:
+28 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p><variable_name>=<variable_value>
+For example:
+$ distro=zorinos
+The variable distro equals zorinos, that is to say, there is a portion of memory holding the
+value zorinos — with distro being the pointer to it.
+Note, however, that there can not be any space on either side of the equal sign when assigning a
+variable:
+$ distro =zorinos
+-bash: distro: command not found
+$ distro= zorinos
+-bash: zorinos: command not found
+Because of our mistake, Bash read distro and zorinos as commands.
+To reference a variable (that is, to check its value) we use the echo command preceding the
+variable name with a $ sign:
+$ echo $distro
+zorinos
+Variable Names
+When choosing the name of variables, there are certain rules that we must take into
+consideration.
+The name of a variable may contain letters (a-z,A-Z), numbers (0-9) and underscores (_):
+$ distro=zorinos
+$ echo $distro
+zorinos
+$ DISTRO=zorinos
+$ echo $DISTRO
+zorinos
+$ distro_1=zorinos
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 29</variable_value></variable_name></p>
+<p>$ echo $distro_1
+zorinos
+$ _distro=zorinos
+$ echo $_distro
+zorinos
+It may not start with a number or Bash will get confused:
+$ 1distro=zorinos
+-bash: 1distro=zorinos: command not found
+It may not contain spaces (not even using quotes); by convention, underscores are used instead:
+$ "my distro"=zorinos
+-bash: my: command not found
+$ my_distro=zorinos
+$ echo $my_distro
+zorinos
+Variable Values
+Concerning the reference or value of variables it is also important to consider a number of rules.
+Variables may contain any alphanumerical characters (a-z,A-Z,0-9) as well as most other
+characters (?,!,*,.,/, etc.):
+$ distro=zorin12.4?
+$ echo $distro
+zorin12.4?
+Variable values must be enclosed in quotes if they contain single spaces:
+$ distro=zorin 12.4
+-bash: 12.4: command not found
+$ distro="zorin 12.4"
+$ echo $distro
+zorin 12.4
+$ distro='zorin 12.4'
+$ echo $distro
+30 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>zorin 12.4
+Variable values must also be enclosed in quotes if they contain such characters as those used for
+redirection (&lt;,&gt;) or the pipe symbol (|). The only thing the following command does is create an
+empty file named zorin:
+$ distro=&gt;zorin
+$ echo $distro
+$ ls zorin
+zorin
+This works, though, when we use the quotes:
+$ distro="&gt;zorin"
+$ echo $distro</p>
+<blockquote>
+<p>zorin
+However, single and double quotes are not always interchangeable. Depending on what we are
+doing with a variable (assigning or referencing), the use of one or the other has implications and
+will yield different results. In the context of variable assignment single quotes take all the
+characters of the variable value literally, whereas double quotes allow for variable substitution:
+$ lizard=uromastyx
+$ animal='My $lizard'
+$ echo $animal
+My $lizard
+$ animal="My $lizard"
+$ echo $animal
+My uromastyx
+On the other hand, when referencing a variable whose value includes some initial (or extra)
+spaces — sometimes combined with asterisks — it is mandatory that we use double quotes after
+the echo command to avoid field splitting and pathname expansion:
+$ lizard="   genus   |   uromastyx"
+$ echo $lizard
+genus | uromastyx
+$ echo "$lizard"
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 31</p>
+</blockquote>
+<p>genus   |   uromastyx
+If the reference of the variable contains a closing exclamation mark, this must be the last
+character in the string (as otherwise Bash will think we are referring to a history event):
+$ distro=zorin.?/!os
+-bash: !os: event not found
+$ distro=zorin.?/!
+$ echo $distro
+zorin.?/!
+Any backslashes must be escaped with another backslash. Also, if a backslash is the last character
+in the string and we do not escape it Bash will interpret we want a line break and give us a new
+line:
+$ distro=zorinos\</p>
+<blockquote>
+<p>$ distro=zorinos\
+$ echo $distro
+zorinos\
+In the next two sections we will sum up the main differences between local and environment
+variables.
+Local or Shell Variables
+Local or shell variables exist only in the shell in which they are created. By convention, local
+variables are written in lower-case letters.
+For the sake of carrying out a few tests, let us create a local variable. As explained above, we
+choose an appropriate variable name and equate it to an appropriate value. For instance:
+$ reptile=tortoise
+Let us now use the echo command to reference our variable and check that everything went as
+expected:
+$ echo $reptile
+32 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+</blockquote>
+<p>tortoise
+In certain scenarios — such as when writing scripts — immutability can be an interesting feature
+of variables. If we want our variables to be immutable, we can either create them readonly:
+$ readonly reptile=tortoise
+Or turn them so after they have been created:
+$ reptile=tortoise
+$ readonly reptile
+Now, if we try to change the value of reptile, Bash will refuse:
+$ reptile=lizard
+-bash: distro: readonly variable
+NOTE
+To list all readonly variables in our current session, type readonly or readonly
+-p into the terminal.
+A useful command when dealing with local variables is set.
+set outputs all of the currently assigned shell variables and functions. Since that can be a lot of
+lines (try it yourself!), it is recommended to use it in combination with a pager such as less:
+$ set | less
+BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extglob:extquote:force_figno
+re:histappend:interactive_comments:login_shell:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_COMPLETION_COMPAT_DIR=/etc/bash_completion.d
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="4" [1]="4" [2]="12" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='4.4.12(1)-release'
+(...)
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 33</p>
+<p>Is our reptile variable there?
+$ set | grep reptile
+reptile=tortoise
+Yes, there it is!
+However, reptile — being a local variable — will not be inherited by any child processes
+spawned from the current shell:
+$ bash
+$ set | grep reptile
+$
+And, of course, we cannot echo out its value either:
+$ echo $reptile
+$
+NOTE
+By typing the bash command into the terminal we open a new (child) shell.
+To unset any variables (either local or global), we use the unset command:
+$ echo $reptile
+tortoise
+$ unset reptile
+$ echo $reptile
+$
+NOTE
+unset must be followed by the name of the variable alone (not preceded by the $
+symbol).
+Global or Environment Variables
+Global or environment variables exist for the current shell as well as for all subsequent processes
+spawned from it. By convention, environment variables are written in uppercase letters:
+$ echo $SHELL
+34 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>/bin/bash
+We can recursively pass the value of these variables to other variables and the value of the latter
+will ultimately expand to that of the former:
+$ my_shell=$SHELL
+$ echo $my_shell
+/bin/bash
+$ your_shell=$my_shell
+$ echo $your_shell
+/bin/bash
+$ our_shell=$your_shell
+$ echo $our_shell
+/bin/bash
+In order for a local shell variable to become an environment variable, the export command must
+be used:
+$ export reptile
+With export reptile we have turned our local variable into an environment variable so that
+child shells can recognize it and use it:
+$ bash
+$ echo $reptile
+tortoise
+Likewise, export can be used to set and export a variable, all at once:
+$ export amphibian=frog
+Now we can open a new instance of Bash and successfully reference the new variable:
+$ bash
+$ echo $amphibian
+frog
+NOTE
+With export -n <variable-name> the variable will be turned back into a local
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 35</variable-name></p>
+<p>shell variable.
+The export command will also give us a list of all existing environment variables when typed on
+its own (or with the -p option):
+$ export
+declare -x HOME="/home/user2"
+declare -x LANG="en_GB.UTF-8"
+declare -x LOGNAME="user2"
+(...)
+declare -x PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+declare -x PWD="/home/user2"
+declare -x SHELL="/bin/bash"
+declare -x SHLVL="1"
+declare -x SSH_CLIENT="192.168.1.10 49330 22"
+declare -x SSH_CONNECTION="192.168.1.10 49330 192.168.1.7 22"
+declare -x SSH_TTY="/dev/pts/0"
+declare -x TERM="xterm-256color"
+declare -x USER="user2"
+declare -x XDG_RUNTIME_DIR="/run/user/1001"
+declare -x XDG_SESSION_ID="8"
+declare -x reptile="tortoise"
+NOTE
+The command declare -x is equivalent to export.
+Two more commands that can be used to print a list of all environment variables are env and
+printenv:
+$ env
+SSH_CONNECTION=192.168.1.10 48678 192.168.1.7 22
+LANG=en_GB.UTF-8
+XDG_SESSION_ID=3
+USER=user2
+PWD=/home/user2
+HOME=/home/user2
+SSH_CLIENT=192.168.1.10 48678 22
+SSH_TTY=/dev/pts/0
+MAIL=/var/mail/user2
+TERM=xterm-256color
+SHELL=/bin/bash
+SHLVL=1
+LOGNAME=user2
+XDG_RUNTIME_DIR=/run/user/1001
+36 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+<em>=/usr/bin/env
+On top of being a synonym for env, we can sometimes use printenv in a similar way as we use
+the echo command to check for the value of a variable:
+$ echo $PWD
+/home/user2
+$ printenv PWD
+/home/user2
+Note, however, that with printenv the variable name is not preceded by $.
+NOTE
+PWD stores the path of the present working directory. We will learn about this and
+other common environment variables later.
+Running a Program in a Modified Environment
+env can be used to modify the shell environment at a program’s time of execution.
+To start a new Bash session with as empty an environment as possible — clearing most variables
+(as well as functions and aliases) — we will use env with the -i option:
+$ env -i bash
+Now most of our environment variables are gone:
+$ echo $USER
+$
+And only a few remain:
+$ env
+LS_COLORS=
+PWD=/home/user2
+SHLVL=1
+</em>=/usr/bin/printenv
+We can also use env to set a particular variable for a particular program.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 37</p>
+<p>In our previous lesson, when discussing non-interactive non-login shells, we saw how scripts do
+not read any standard startup files but instead they look for the value of the BASH_ENV variable
+and use it as their startup file if it exists.
+Let us demonstrate this process:
+1. We create our own startup file called .startup_script with the following content:
+CROCODILIAN=caiman
+2. We write a Bash script named test_env.sh with the following content:</p>
+<h1 id="binbash_2">!/bin/bash<a class="headerlink" href="#binbash_2" title="Permanent link">¶</a></h1>
+<p>echo $CROCODILIAN
+3. We set the executable bit for our test_env.sh script:
+$ chmod +x test_env.sh
+4. Finally, we use env to set BASH_ENV to .startup_script for test_env.sh:
+$ env BASH_ENV=/home/user2/.startup_script ./test_env.sh
+caiman
+The env command is implicit even if we get rid of it:
+$ BASH_ENV=/home/user2/.startup_script ./test_env.sh
+caiman
+NOTE
+If you do not understand the line #!/bin/bash or the chmod +x command, do not
+panic! We will learn everything necessary about shell scripting in future lessons.
+For now, just remember that to execute a script from within its own directory we
+use ./some_script.
+Common Environment Variables
+Time now for reviewing some of the most relevant environment variables that are set in Bash
+38 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>configuration files.
+DISPLAY
+Related to the X server, this variable’s value is normally made up of three elements:
+• The hostname (the absence of it means localhost) where the X server is running.
+• A colon as a delimiter.
+• A number (it is normally 0 and refers to the computer’s display).
+$ printenv DISPLAY
+:0
+An empty value for this variable means a server without an X Window System. An extra
+number — as in my.xserver:0:1 — would refer to the screen number if more than one
+exists.
+HISTCONTROL
+This variable controls what commands get saved into the HISTFILE (see below). Their are
+three possible values:
+ignorespace
+Commands starting with a space will not be saved.
+ignoredups
+A command which is the same as the previous one will not be saved.
+ignoreboth
+Commands which fall into any of the two previous categories will not be saved.
+$ echo $HISTCONTROL
+ignoreboth
+HISTSIZE
+This sets the number of commands to be stored in memory while the shell session lasts.
+$ echo $HISTSIZE
+1000
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 39</p>
+<p>HISTFILESIZE
+This sets the number of commands to be saved in HISTFILE both at the start and at the end of
+the session:
+$ echo $HISTFILESIZE
+2000
+HISTFILE
+The name of the file which stores all commands as they are typed. By default this file is located
+at ~/.bash_history:
+$ echo $HISTFILE
+/home/user2/.bash_history
+NOTE
+To view the contents of HISTFILE, we simply type history. Alternatively, we
+can specify the number of commands we want to see by passing an argument
+(the number of the most recent commands) to history as in history 3.
+HOME
+This variable stores the absolute path of the current user’s home directory and it is set when
+the user logs in.
+This piece of code — from ~/.profile — is self-explanatory (it sources "$HOME/.bashrc" if it
+exists):
+&nbsp;   # include .bashrc if it exists
+&nbsp;   if [ -f "$HOME/.bashrc" ]; then
+&nbsp;   . "$HOME/.bashrc"
+&nbsp;   fi
+NOTE
+If you do not quite understand the if statement, do not worry: just refer to the
+lessons about shell scripting.
+Remember that ~ is equivalent to $HOME:
+$ echo ~; echo $HOME
+/home/carol
+/home/carol
+40 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>NOTE
+Commands can be concatenated with a semicolon (;).
+We can also prove this with an if statement:
+$ if [ ~ == "$HOME" ]; then echo "true"; else echo "false"; fi
+true
+NOTE
+Remember: The equals sign = is used for variable assignment. == is used to test
+for equality.
+HOSTNAME
+This variable stores the TCP/IP name of the host computer:
+$ echo $HOSTNAME
+debian
+HOSTTYPE
+This stores the architecture of the host computer’s processor:
+$ echo $HOSTTYPE
+x86_64
+LANG
+This variable saves the locale of the system:
+$ echo $LANG
+en_UK.UTF-8
+LD_LIBRARY_PATH
+This variable consists of a colon-separated set of directories where shared libraries are shared
+by programs:
+$ echo $LD_LIBRARY_PATH
+/usr/local/lib
+MAIL
+This variable stores the file in which Bash searches for email:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 41</p>
+<p>$ echo $MAIL
+/var/mail/carol
+Another common value for this variable is /var/spool/mail/$USER.
+MAILCHECK
+This variable stores a numeric value which indicates in seconds the frequency with which Bash
+checks for new mail:
+$ echo $MAILCHECK
+60
+PATH
+This environment variable stores the list of directories where Bash looks for executable files
+when told to run any program. In our example machine this variable is set through the system-
+wide /etc/profile file:
+if [ "<code>id -u</code>" -eq 0 ]; then
+&nbsp; PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+else
+&nbsp; PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+fi
+export PATH
+Through the if statement the identity of the user is tested and — depending on the result of the
+test (root or otherwise) — we will obtain one PATH or the other. Finally the chosen PATH is
+propagated with export.
+Observe two things regarding the value of PATH:
+• Directory names are written using absolute paths.
+• The colon is used as a delimiter.
+If we wanted to include the folder /usr/local/sbin in the PATH for regular users, we will
+modify the line so that it looks like this:
+(...)
+else
+&nbsp; PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/sbin"
+42 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>fi
+export PATH
+Now we can see how the value of the variable changes when we login as a regular user:</p>
+<h1 id="su-carol">su - carol<a class="headerlink" href="#su-carol" title="Permanent link">¶</a></h1>
+<p>$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/sbin
+NOTE
+We could have also added /usr/local/sbin to the user’s PATH at the
+command 
+line 
+by 
+typing 
+either 
+PATH=/usr/local/sbin:$PATH 
+or
+PATH=$PATH:/usr/local/sbin — the former making /usr/local/sbin
+the first directory to be searched for executable files; the latter making it the
+last.
+PS1
+This variable stores the value of the Bash prompt. In the following chunk of code (also from
+/etc/profile), the if statement tests for the identity of the user and gives them a very
+discrete prompt accordingly ( # for root or $ for regular users):
+if [ "<code>id -u</code>" -eq 0 ]; then
+&nbsp; PS1='# '
+else
+&nbsp; PS1='$ '
+fi
+NOTE
+The id of root is 0. Become root and test it yourself with id -u.
+Other Prompt Variables include:
+PS2
+Normally set to &gt; and used as a continuation prompt for long multiline commands.
+PS3
+Used as the prompt for the select command.
+PS4
+Normally set to + and used for debugging.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 43</p>
+<p>SHELL
+This variable stores the absolute path of the current shell:
+$ echo $SHELL
+/bin/bash
+USER
+This stores the name of the current user:
+$ echo $USER
+carol
+44 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Guided Exercises
+1. Observe the variable assignment under the “Command(s)” column and indicate if the resulting
+variable is “Local” or “Global”:
+Command(s)
+Local
+Global
+debian=mother
+ubuntu=deb-based
+mint=ubuntu-based;
+export mint
+export suse=rpm-based
+zorin=ubuntu-based
+2. Study the “Command” and the “Output” and explain the meaning:
+Command
+Output
+Meaning
+echo $HISTCONTROL
+ignoreboth
+echo ~
+/home/carol
+echo $DISPLAY
+reptilium:0:2
+echo $MAILCHECK
+60
+echo $HISTFILE
+/home/carol/.bash_histor
+y
+3. Variables are being set incorrectly under the “Wrong Command” column. Provide the missing
+information under “Right Command” and “Variable Reference” so that we get the “Expected
+Output”:
+Wrong Command
+Right Command
+Variable Reference
+Expected Output
+lizard =chameleon
+chameleon
+cool
+lizard=chameleon
+chameleon
+lizard=cha|me|leon
+cha|me|leon
+lizard=/<strong>
+chameleon </strong>/
+/<strong> chamelon </strong>/
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 45</p>
+<p>Wrong Command
+Right Command
+Variable Reference
+Expected Output
+win_path=C:\path\t
+o\dir\
+C:\path\to\dir\
+4. Consider the purpose and write the appropriate command:
+Purpose
+Command
+Set the language of the current shell to
+Spanish UTF-8 (es_ES.UTF-8).
+Print the name of the current working
+directory.
+Reference the environment variable which
+stores the information about ssh connections.
+Set PATH to include /home/carol/scripts as
+the last directory to search for executables.
+Set the value of my_path to PATH.
+Set the value of my_path to that of PATH.
+5. Create a local variable named mammal and assign it the value gnu:
+6. Using variable substitution, create another local variable named var_sub with the appropriate
+value so that when referenced via echo $var_sub we obtain: The value of mammal is
+gnu:
+7. Turn mammal into an environment variable:
+8. Search for it with set and grep:
+9. Search for it with env and grep:
+10. Create, in two consecutive commands, an environment variable named BIRD whose value is
+penguin:
+46 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<ol>
+<li>Create, in a single command, an environment variable named NEW_BIRD whose value is
+yellow-eyed penguin:</li>
+<li>Assuming you are user2, create a folder named bin in your home directory:</li>
+<li>Type the command to add the ~/bin folder to your PATH so that it is the first directory bash
+searches for binaries:</li>
+<li>To guarantee the value of PATH remains unaltered across reboots, what piece of code — in the
+form of an if statement — would you put into ~/.profile?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 47</li>
+</ol>
+<p>Explorational Exercises
+1. let: more than arithmetic expression evaluation:
+◦Do a manpage or web search for let and its implications when setting variables and create
+a new local variable named my_val whose value is 10 — as a result of adding 5 and 5:
+◦Now create another variable named your_val whose value is 5 — as a result of dividing the
+value of my_val into 2:
+2. The result of a command in a variable? Of course, that is possible; it is called command
+substitution. Investigate it and study the following function named music_info:
+music_info(){
+latest_music=<code>ls -l1t ~/Music | head -n 6</code>
+echo -e "Your latest 5 music files:\n$latest_music"
+}
+The result of the command ls -l1t ~/Music | head -n 6 becomes the value of the
+variable latest_music. Then the variable latest_music is referenced in the echo command
+(which outputs the total number of bytes occupied by the Music folder and the latest five music
+files stored in the Music folder — one per line).
+Which of the following is a valid synonym for
+latest_music=<code>ls -l1t ~/Music | head -n 6</code>
+Option A:
+latest_music=$(ls -l1t ~/Music| head -n 6)
+Option B:
+latest_music="(ls -l1t ~/Music| head -n 6)"
+Option C:
+48 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>latest_music=((ls -l1t ~/Music| head -n 6))
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 49</p>
+<p>Summary
+In this lesson we learned:
+• Variables are a very important part of the shell environment as they are used by the shell itself
+as well as by other programs.
+• How to assign and reference variables.
+• The differences between local and global (or environment) variables.
+• How to make variables readonly.
+• How to turn a local variable into an environment variable with the export command.
+• How to list all environment variables.
+• How to run a program in a modified environment.
+• How to make variables persistent with the help of startup scripts.
+• Some common environment variables: DISPLAY, HISTCONTROL, HISTSIZE, HISTFILESIZE,
+HISTFILE, HOME, HOSTNAME, HOSTTYPE, LANG, LD_LIBRARY_PATH, MAIL, MAILCHECK, PATH, PS1
+(and other prompt variables), SHELL and USER.
+• The meaning of the tilde (~).
+• The very basics of if statements.
+Commands used in this lesson:
+echo
+Reference a variable.
+ls
+List directory contents.
+readonly
+Make variables immutable. List all readonly variables in current session.
+set
+List all variables and functions in current session.
+grep
+Print lines matching a pattern.
+50 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>bash
+Launch a new shell
+unset
+Unset variables.
+export
+Turn a local variable into an environment variable. List environment variables.
+env
+List environment variables. Run a program in a modified environment.
+printenv
+List environment variables. Reference a variable.
+chmod
+Change mode bits of a file, for example make it executable.
+history
+List previous commands.
+su
+Change user ID or become superuser.
+id
+Print user ID.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 51</p>
+<p>Answers to Guided Exercises
+1. Observe the variable assignment under the “Command(s)” column and indicate if the resulting
+variable is “Local” or “Global”:
+Command(s)
+Local
+Global
+debian=mother
+Yes
+No
+ubuntu=deb-based
+Yes
+No
+mint=ubuntu-based;
+export mint
+No
+Yes
+export suse=rpm-based
+No
+Yes
+zorin=ubuntu-based
+Yes
+No
+2. Study the “Command” and the “Output” and explain the meaning:
+Command
+Output
+Meaning
+echo $HISTCONTROL
+ignoreboth
+Both duplicate commands and
+those starting with a space
+will not be saved in history.
+echo ~
+/home/carol
+The HOME of carol is
+/home/carol.
+echo $DISPLAY
+reptilium:0:2
+reptilium machine has a X
+server running and we are
+using the second screen of the
+display.
+echo $MAILCHECK
+60
+Mail will be checked every
+minute.
+echo $HISTFILE
+/home/carol/.bash_histor
+y
+history will be saved in
+/home/carol/.bash_histor
+y.
+3. Variables are being set incorrectly under the “Wrong Command” column. Provide the missing
+information under “Right Command” and “Variable Reference” so that we get the “Expected
+Output”:
+52 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Wrong Command
+Right Command
+Variable Reference
+Expected Output
+lizard =chameleon
+lizard=chameleon
+echo $lizard
+chameleon
+cool
+lizard=chameleon
+cool_lizard=chamel
+eon (for example)
+echo $cool_lizard
+chameleon
+lizard=cha|me|leon lizard="cha|me|leo
+n" or
+lizard='cha|me|leo
+n'
+echo $lizard
+cha|me|leon
+lizard=/<strong>
+chameleon </strong>/
+lizard="/<strong>
+chameleon </strong>/" or
+lizard='/<strong>
+chameleon </strong>/'
+echo "$lizard"
+/<strong> chamelon </strong>/
+win_path=C:\path\t
+o\dir\
+win_path=C:\path\
+\to\dir\
+echo $win_path
+C:\path\to\dir\
+4. Consider the purpose and write the appropriate command:
+Purpose
+Command
+Set the language of the current shell to
+Spanish UTF-8 (es_ES.UTF-8).
+LANG=es_ES.UTF-8
+Print the name of the current working
+directory
+echo $PWD or pwd
+Reference the environment variable which
+stores the information about ssh connections
+echo $SSH_CONNECTION
+Set PATH to include /home/carol/scripts as
+the last directory to search for executables.
+PATH=$PATH:/home/carol/scripts
+Set the value of my_path to PATH.
+my_path=PATH
+Set the value of my_path to that of PATH.
+my_path=$PATH
+5. Create a local variable named mammal and assign it the value gnu:
+mammal=gnu
+6. Using variable substitution, create another local variable named var_sub with the appropriate
+value so that when referenced via echo $var_sub we obtain The value of mammal is gnu:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 53</p>
+<p>var_sub="The value of mammal is $mammal"
+7. Turn mammal into an environment variable:
+export mammal
+8. Search for it with set and grep:
+set | grep mammal
+9. Search for it with env and grep:
+env | grep mammal
+10. Create, in two consecutive commands, an environment variable named BIRD whose value is
+penguin:
+BIRD=penguin; export BIRD
+11. Create, in a single command, an environment variable named NEW_BIRD whose value is
+yellow-eyed penguin:
+export NEW_BIRD="yellow-eyed penguin"
+or
+export NEW_BIRD='yellow-eyed penguin'
+12. Assuming you are user2, use mkdir to create a folder named bin in your home directory:
+mkdir ~/bin
+or
+mkdir /home/user2/bin
+54 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>or
+mkdir $HOME/bin
+13. Type the command to add the ~/bin folder to your PATH so that it is the first directory bash
+searches for binaries:
+PATH="$HOME/bin:$PATH"
+PATH=~/bin:$PATH or PATH=/home/user2/bin:$PATH are equally valid.
+14. To guarantee the value of PATH remains unaltered across reboots, what piece of code — in the
+form of an if statement — would you put into ~/.profile?
+if [ -d "$HOME/bin" ] ; then
+&nbsp;   PATH="$HOME/bin:$PATH"
+fi
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 55</p>
+<p>Answers to Explorational Exercises
+1. let: more than arithmetic expression evaluation:
+◦Do a manpage or web search for let and its implications when setting variables and create
+a new local variable named my_val whose value is 10 — as a result of adding 5 and 5:
+let "my_val = 5 + 5"
+or
+let 'my_val = 5 + 5'
+◦Now create another variable named your_val whose value is 5 — as a result of dividing the
+value of my_val into 2:
+let "your_val = $my_val / 2"
+or
+let 'your_val = $my_val / 2'
+2. The result of a command in a variable? Of course, that is possible; it is called command
+substitution. Investigate it and study the following function named music_info:
+music_info(){
+latest_music=<code>ls -l1t ~/Music | head -n 6</code>
+echo -e "Your latest 5 music files:\n$latest_music"
+}
+The result of the command ls -l1t ~/Music | head -n 6 becomes the value of the
+variable latest_music. Then the variable latest_music is referenced in the echo command
+(which outputs the total number of bytes occupied by the Music folder and the latest five music
+files stored in the Music folder — one per line).
+Which of the following is a valid synonym for
+56 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>latest_music=<code>ls -l1t ~/Music | head -n 6</code>
+It is option A:
+latest_music=$(ls -l1t ~/Music| head -n 6)
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 57</p>
+<p>105.1 Lesson 3
+Certificate:
+LPIC-1
+Version:
+5.0
+Topic:
+105 Shells and Shell Scripting
+Objective:
+105.1 Customize and use the shell environment
+Lesson:
+3 of 3
+Introduction
+After going through shells, startup scripts and variables in the previous lessons, we will round the
+whole topic of customizing the shell off by having a look at two very interesting shell elements:
+aliases and functions. In fact the entire group of variables, aliases and functions — and their
+influence on one another — is what makes up the shell environment.
+The main strength of these two flexible and time-saving shell facilities has to do with the concept
+of encapsulation: they offer the possibility of putting together — under a single command — a
+series of repetitive or recurrent commands.
+Creating Aliases
+An alias is a substitute name for another command(s). It can run like a regular command, but
+instead executes another command according to the alias definition.
+The syntax for declaring aliases is quite straightforward. Aliases are declared by writing the
+keyword alias followed by the alias assignment. In turn, the alias assignment consists of the alias
+name, an equal sign and one or more commands:
+58 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>alias alias_name=command(s)
+For example:
+$ alias oldshell=sh
+This awkward alias will start an instance of the original sh shell when the user types oldshell
+into the terminal:
+$ oldshell
+$
+The power of aliases lies in that they allow us to write short versions of long commands:
+$ alias ls='ls --color=auto'
+NOTE
+For information about ls and its colors, type man dir_colors into the terminal.
+Likewise, we can create aliases for a series of concatenated commands — the semicolon (;) is used
+as a delimiter. We can, for instance, have an alias that gives us information about the location of
+the git executable and its version:
+$ alias git_info='which git;git --version'
+To invoke an alias, we type its name into the terminal:
+$ git_info
+/usr/bin/git
+git version 2.7.4
+The alias command will produce a listing of all available aliases in the system:
+$ alias
+alias git-info='which git;git --version'
+alias ls='ls --color=auto'
+alias oldshell='sh'
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 59</p>
+<p>The unalias command removes aliases. We can, for instance, unalias git-info and see how it
+disappears from the listing:
+$ unalias git-info
+$ alias
+alias ls='ls --color=auto'
+alias oldshell='sh'
+As we saw with the alias hi='echo We salute you.' in a previous lesson, we must enclose
+commands in quotes (either single or double) when — as a result of having arguments or
+parameters — they contain spaces:
+$ alias greet='echo Hello world!'
+$ greet
+Hello world!
+Commands with spaces include also those with options:
+$ alias ll='ls -al'
+Now ll will list all files — including the hidden ones (a) — in the long format (l).
+We can reference variables in aliases:
+$ reptile=uromastyx
+$ alias greet='echo Hello $reptile!'
+$ greet
+Hello uromastyx!
+The variable can also be assigned within the alias:
+$ alias greet='reptile=tortoise; echo Hello $reptile!'
+$ greet
+Hello tortoise!
+We can escape an alias with \:
+$ alias where?='echo $PWD'
+60 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>$ where?
+/home/user2
+$ \where?
+-bash: where?: command not found
+Escaping an alias is useful when an alias has the same name as a regular command. In this case,
+the alias takes precedence over the original command, which, however, is still be accessible by
+escaping the alias.
+Likewise, we can put an alias inside another alias:
+$ where?
+/home/user2
+$ alias my_home=where?
+$ my_home
+/home/user2
+On top of that, we can also put a function inside an alias as you will be shown below.
+Expansion and Evaluation of Quotes in Aliases
+When using quotes with environment variables, single quotes make the expansion dynamic:
+$ alias where?='echo $PWD'
+$ where?
+/home/user2
+$ cd Music
+$ where?
+/home/user2/Music
+However, with double quotes the expansion is done statically:
+$ alias where?="echo $PWD"
+$ where?
+/home/user2
+$ cd Music
+$ where?
+/home/user2
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 61</p>
+<p>Persistence of Aliases: Startup Scripts
+Just as with variables, for our aliases to gain persistence, we must put them into initialization
+scripts that are sourced at startup. As we already know, a good file for users to put their personal
+aliases in is ~/.bashrc. You will probably find some aliases there already (most of them
+commented out and ready to be used by removing the leading #):
+$ grep alias .bashrc</p>
+<h1 id="enable-color-support-of-ls-and-also-add-handy-aliases">enable color support of ls and also add handy aliases<a class="headerlink" href="#enable-color-support-of-ls-and-also-add-handy-aliases" title="Permanent link">¶</a></h1>
+<p>alias ls='ls --color=auto'
+&nbsp;   #alias dir='dir --color=
+&nbsp;   #alias vdir='vdir --color=
+&nbsp;   #alias grep='grep --color=
+&nbsp;   #alias fgrep='fgrep --color'
+&nbsp;   #alias egrep='egrep --color=</p>
+<h1 id="some-more-ls-aliases">some more ls aliases<a class="headerlink" href="#some-more-ls-aliases" title="Permanent link">¶</a></h1>
+<h1 id="llls-al">ll='ls -al'<a class="headerlink" href="#llls-al" title="Permanent link">¶</a></h1>
+<h1 id="alias-lals-a">alias la='ls -A'<a class="headerlink" href="#alias-lals-a" title="Permanent link">¶</a></h1>
+<h1 id="alias-lls-cf">alias l='ls -CF'<a class="headerlink" href="#alias-lls-cf" title="Permanent link">¶</a></h1>
+<h1 id="bash_aliases-instead-of-adding-them-here-directly">~/.bash_aliases, instead of adding them here directly.<a class="headerlink" href="#bash_aliases-instead-of-adding-them-here-directly" title="Permanent link">¶</a></h1>
+<p>if [ -f ~/.bash_aliases ]; then
+&nbsp;  . ~/.bash_aliases
+As you can read in the last three lines, we are offered the possibility of having our own alias-
+dedicated file — ~/.bash_aliases — and have it sourced by .bashrc with every system start. So
+we can go for that option and create and populate such file:</p>
+<h6 id="_1"><a class="headerlink" href="#_1" title="Permanent link">¶</a></h6>
+<h1 id="bash_aliases">.bash_aliases:<a class="headerlink" href="#bash_aliases" title="Permanent link">¶</a></h1>
+<h1 id="a-file-to-be-populated-by-the-users-personal-aliases-and-sourced-by-bashrc">a file to be populated by the user's personal aliases (and sourced by ~/.bashrc).<a class="headerlink" href="#a-file-to-be-populated-by-the-users-personal-aliases-and-sourced-by-bashrc" title="Permanent link">¶</a></h1>
+<h6 id="_2"><a class="headerlink" href="#_2" title="Permanent link">¶</a></h6>
+<p>alias git_info='which git;git --version'
+alias greet='echo Hello world!'
+alias ll='ls -al'
+alias where?='echo $PWD'
+Creating Functions
+Compared to aliases, functions are more programmatic and flexible, specially when it comes to
+exploiting the full potential of Bash special built-in variables and positional parameters. They are
+also great to work with flow control structures such as loops or conditionals. We can think of a
+62 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>function as a command which includes logic through blocks or collections of other commands.
+Two Syntaxes for Creating Functions
+There are two valid syntaxes to define functions.
+Using the keyword function
+On the one hand, we can use the keyword function, followed by the name of the function and
+the commands between curly brackets:
+function function_name {
+command #1
+command #2
+command #3
+.
+.
+.
+command #n
+}
+Using ()
+On the other, we can leave out the keyword function and use two brackets right after the
+name of the function instead:
+function_name() {
+command #1
+command #2
+command #3
+.
+.
+.
+command #n
+}
+It is commonplace to put functions in files or scripts. However, they can also be written directly
+into the shell prompt with each command on a different line — note PS2(&gt;) indicating a new line
+after a line break:
+$ greet() {</p>
+<blockquote>
+<p>greeting="Hello world!"
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 63</p>
+<p>echo $greeting
+}
+Whatever the case — and irrespective of the syntax we choose — , if we decide to skip line breaks
+and write a function in just one line, commands must be separated by semicolons (note the
+semicolon after the last command too):
+$ greet() { greeting="Hello world!"; echo $greeting; }
+bash did not complain when we pressed Enter, so our function is ready to be invoked. To invoke a
+function, we must type its name into the terminal:
+$ greet
+Hello world!
+Just as with variables and aliases, if we want functions to be persistent across system reboots we
+have to put them into shell initialization scripts such as /etc/bash.bashrc (global) or
+~/.bashrc (local).
+WARNING
+After adding aliases or functions to any startup script file, you should source
+such files with either . or source for the changes to take effect if you do not
+want to logout and back in again or reboot the system.
+Bash Special Built-in Variables
+The Bourne Again Shell comes with a set of special variables which are particularly useful for
+functions and scripts. These are special because they can only be referenced — not assigned. Here
+is a list of the most relevant ones:
+$?
+This variable’s reference expands to the result of the last command run. A value of 0 means
+success:
+$ ps aux | grep bash
+user2      420  0.0  0.4  21156  5012 pts/0    Ss   17:10   0:00 -bash
+user2      640  0.0  0.0  12784   936 pts/0    S+   18:04   0:00 grep bash
+$ echo $?
+0
+64 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+</blockquote>
+<p>A value other than 0 means error:
+user1@debian:~$ ps aux |rep bash
+-bash: rep: command not found
+user1@debian:~$ echo $?
+127
+$$
+It expands to the shell PID (process ID):
+$ ps aux | grep bash
+user2      420  0.0  0.4  21156  5012 pts/0    Ss   17:10   0:00 -bash
+user2      640  0.0  0.0  12784   936 pts/0    S+   18:04   0:00 grep bash
+$ echo $$
+420
+$!
+It expands to the PID of the last background job:
+$ ps aux | grep bash &amp;
+[1] 663
+$ user2      420  0.0  0.4  21156  5012 pts/0    Ss+  17:10   0:00 -bash
+user2      663  0.0  0.0  12784   972 pts/0    S    18:08   0:00 grep bash
+^C
+[1]+  Done                   ps aux | grep bash
+$ echo $!
+663
+NOTE
+Remember, the ampersand (&amp;) is used to start processes in the background.
+Positional parameters $0 through $9
+They expand to the parameters or arguments being passed to the function (alias or script) — $0
+expanding to the name of the script or shell.
+Let us create a function to demonstrate positional parameters — note PS2 (&gt;) indicating new
+lines after line breaks:
+$ special_vars() {</p>
+<blockquote>
+<p>echo $0
+echo $1
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 65</p>
+<p>echo $2
+echo $3
+}
+Now, we will invoke the function (special_vars) passing three parameters to it (debian,
+ubuntu, zorin):
+$ special_vars debian ubuntu zorin
+-bash
+debian
+ubuntu
+zorin
+It worked as expected.
+WARNING
+Although passing positional parameters to aliases is technically possible, it
+is not at all functional since — with aliases — positional parameters are
+always passed at the end:
+$ alias great_editor='echo $1 is a great text editor'
+$ great_editor emacs
+is a great text editor emacs
+Other Bash special built-in variables include:
+$#
+It expands to the number of arguments passed to the command.
+$@, $*
+They expand to the arguments passed to the command.
+$_
+It expands to the last parameter or the name of the script (amongst other things; see man bash
+to find out more!):
+Variables in Functions
+Of course, variables can be used within functions.
+To prove it, this time we will create a new empty file called funed and put the following function
+66 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+</blockquote>
+<p>into it:
+editors() {
+editor=emacs
+echo "My editor is: $editor. $editor is a fun text editor."
+}
+As you may have guessed by now, we must source the file first to be able to invoke the function:
+$ . funed
+And now we can test it:
+$ editors
+My editor is emacs. emacs is a fun text editor.
+As you can appreciate, for the editors function to work properly, the editor variable must first
+be set. The scope of that variable is local to the current shell and we can reference it as long as the
+session lasts:
+$ echo $editor
+emacs
+Together with local variables we can also include environment variables in our function:
+editors() {
+editor=emacs
+echo "The text editor of $USER is: $editor."
+}
+editors
+Note how this time we decided to call the function from within the file itself (editors in the last
+line). That way, when we source the file, the function will also be invoked — all at once:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 67</p>
+<p>$ . funed
+The text editor of user2 is: emacs.
+Positional Parameters in Functions
+Something similar occurs with positional parameters.
+We can pass them to functions from within the file or script (note the last line: editors
+tortoise):
+editors() {
+editor=emacs
+echo "The text editor of $USER is: $editor."
+echo "Bash is not a $1 shell."
+}
+editors tortoise
+We source the file and prove it works:
+$ . funed
+The text editor of user2 is: emacs.
+Bash is not a tortoise shell.
+And we can also pass positional parameters to functions at the command line. To prove it, we get
+rid of the last line of the file:
+editors() {
+editor=emacs
+echo "The text editor of $USER is: $editor."
+echo "Bash is not a $1 shell."
+}
+Then, we have to source the file:
+68 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>$ . funed
+Finally, we invoke the function with tortoise as the positional parameter $1 at the command
+line:
+$ editors tortoise
+The text editor of user2 is: emacs.
+Bash is not a tortoise shell.
+Functions in Scripts
+Functions are mostly found in Bash scripts.
+Turning our funed file into a script (we will name it funed.sh) is really a piece of cake:</p>
+<h1 id="binbash_3">!/bin/bash<a class="headerlink" href="#binbash_3" title="Permanent link">¶</a></h1>
+<p>editors() {
+editor=emacs
+echo "The text editor of $USER is: $editor."
+echo "Bash is not a $1 shell."
+}
+editors tortoise
+That is it! We only added two lines:
+• The first line is the shebang and defines what program is going to interpret the script:</p>
+<h1 id="binbash-curiously-enough-that-program-is-bash-itself">!/bin/bash. Curiously enough, that program is bash itself.<a class="headerlink" href="#binbash-curiously-enough-that-program-is-bash-itself" title="Permanent link">¶</a></h1>
+<p>• The last line is simply the invocation of the function.
+Now there is only one thing left — we have to make the script executable:
+$ chmod +x funed.sh
+And now it is ready to be executed:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 69</p>
+<p>$ ./funed.sh
+The text editor of user2 is: emacs.
+Bash is not a tortoise shell.
+NOTE
+You will learn all about shell scripting in the next few lessons.
+A Function within an Alias
+As said above, we can put a function inside an alias:
+$ alias great_editor='gr8_ed() { echo $1 is a great text editor; unset -f gr8_ed; }; gr8_ed'
+This long alias value deserves an explanation. Let us break it down:
+• First there is the function itself: gr8_ed() { echo $1 is a great text editor; unset
+-f gr8_ed; }
+• The last command in the function — unset -f gr8_ed — unsets the function so that it does
+not remain in the present bash session after the alias is called.
+• Last but not least, to have a successful alias invocation, we must first invoke the function too:
+gr8_ed.
+Let us invoke the alias and prove it works:
+$ great_editor emacs
+emacs is a great text editor
+As shown in unset -f gr8_ed above, the unset command is not only used to unset variables,
+but also functions. In fact, there are specific switches or options:
+unset -v
+for variables
+unset -f
+for functions
+If used without switches, unset will try to unset a variable first and — if it fails — then it will try to
+unset a function.
+70 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>A Function within a Function
+Now say we want to communicate two things to user2 every time she logs into the system:
+• Say hello and recommend/praise a text editor.
+• Since she is starting to put a lot of Matroska video files in its $HOME/Video folder, we also want
+to give her a warning.
+To 
+accomplish 
+that 
+purpose, 
+we 
+have 
+put 
+the 
+following 
+two 
+functions 
+into
+/home/user2/.bashrc:
+The first function (check_vids) does the checking on .mkv files and the warning:
+check_vids() {
+&nbsp;   ls -1 ~/Video/*.mkv &gt; /dev/null 2&gt;&amp;1
+&nbsp;   if [ "$?" = "0" ];then
+&nbsp;       echo -e "Remember, you must not keep more than 5 video files in your Video
+folder.\nThanks."
+&nbsp;   else
+&nbsp;   echo -e "You do not have any videos in the Video folder. You can keep up to 5.\nThanks."
+&nbsp;   fi
+}
+check_vids does three things:
+• It lists the mkv files in ~/Video sending the output — and any errors — to the so-called bit-
+bucket (/dev/null).
+• It tests the output of the previous command for success.
+• Depending on the result of the test, it echoes one of two messages.
+The second function is a modified version of our editors function:
+editors() {
+editor=emacs
+echo "Hi, $USER!"
+echo "$editor is more than a text editor!"
+check_vids
+}
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 71</p>
+<p>editors
+It is important to observe two things:
+• The last command of editors invokes check_vids so both functions get chained: The
+greeting, praise and the checking and warning are executed in sequence.
+• editors itself is the entry point to the sequence of functions so it is invoked in the last line
+(editors).
+Now, let us log in as user2 and prove it works:</p>
+<h1 id="su-user2">su - user2<a class="headerlink" href="#su-user2" title="Permanent link">¶</a></h1>
+<p>Hi, user2!
+emacs is more than a text editor!
+Remember, you must not keep more than 5 video files in your Video folder.
+Thanks.
+72 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Guided Exercises
+1. Complete the table with “Yes” or “No” considering the capabilities of aliases and functions:
+Feature
+Aliases?
+Functions?
+Local variables can be used
+Environment variables can be
+used
+Can be escaped with \
+Can be recursive
+Very productive when used
+with positional parameters
+2. Enter the command that list all aliases in your system:
+3. Write an alias named logg that lists all ogg files in ~/Music — one per line:
+4. Invoke the alias to prove it works:
+5. Now, modify the alias so that it echoes out the session’s user and a colon before the listing:
+6. Invoke it again to prove this new version also works:
+7. List all aliases again and check your logg alias appears in the listing:
+8. Remove the alias:
+9. Study the columns “Alias Name” and “Aliased Command(s)`” and assign the aliases to their
+values correctly:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 73</p>
+<p>Alias Name
+Aliased Command(s)
+Alias Assignment
+b
+bash
+bash_info
+which bash + echo
+"$BASH_VERSION"
+kernel_info
+uname -r
+greet
+echo Hi, $USER!
+computer
+pc=slimbook + echo My
+computer is a $pc
+10. As root, write a function called my_fun in /etc/bash.bashrc. The function must say hello to
+the user and tell them what their path is. Invoke it so that the user gets both messages every
+time they log in:
+11. Login as user2 to check it works:
+12. Write the same function in just one line:
+13. Invoke the function:
+14. Unset the function:
+15. This is a modified version of the special_vars function:
+$ special_vars2() {</p>
+<blockquote>
+<p>echo $#
+echo $<em>
+echo $1
+echo $4
+echo $6
+echo $7
+echo $</em>
+echo $@
+echo $?
+74 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>}
+This is the command we use to invoke it:
+$ special_vars2 crying cockles and mussels alive alive oh
+Guess the outputs:
+Reference
+Value
+echo $#
+echo $<em>
+echo $1
+echo $4
+echo $6
+echo $7
+echo $</em>
+echo $@
+echo $?
+16. Based on the sample function (check_vids) in the section “A Function within a Function”,
+write a function named check_music to include into a bash startup script that accepts
+positional parameters so that we can modify easily:
+◦the type of file being checked: ogg
+◦the directory in which files are saved: ~/Music
+◦the type of file being kept: music
+◦the number of files being saved: 7
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 75</p>
+</blockquote>
+<p>Explorational Exercises
+1. Read-only functions are those whose contents we cannot modify. Do a research on readonly
+functions and complete the following table:
+Function Name
+Make it readonly
+List all readonly Functions
+my_fun
+2. Search the web for how to modify PS1 and anything else you may need to write a function
+called fyi (to be placed in a startup script) which gives the user the following information:
+◦name of the user
+◦home directory
+◦name of the host
+◦operating system type
+◦search path for executables
+◦mail directory
+◦how often mail is checked
+◦how many shells deep the current session is
+◦prompt (you should modify it so that it shows <user>@<host-date>)
+76 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </host-date></user></p>
+<p>Summary
+In this lesson you learned:
+• Both aliases and functions are important features of the shell that allow us to encapsulate
+recurrent blocks of code.
+• Aliases are useful to have shorter versions of long and/or complicated commands.
+• Functions are procedures that implement logic and allow us to automate tasks, specially when
+used in scripts.
+• The syntax to write aliases and functions.
+• How to concatenate various commands by means of the semicolon (;).
+• How to properly use quotes with aliases.
+• How to make aliases and functions persistent.
+• Bash special built-in variables: $?, $$, $!, positional parameters ($0-$9), $#, $@, $* and $_.
+• How to use variables and positional parameters with functions.
+• How to use functions in scripts.
+• How to invoke a function from an alias.
+• How to invoke a function from another function.
+• The basics for creating a bash script.
+Commands and keywords used in this lesson:
+alias
+Create aliases.
+unalias
+Remove aliases.
+cd
+Change directory.
+grep
+Print lines matching a pattern.
+function
+Shell keyword to create functions.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 77</p>
+<p>.
+Source a file.
+source
+Source a file.
+ps
+Report a snapshot of the current processes.
+echo
+Display a line of text.
+chmod
+Change mode bits of a file, for example make it executable.
+unset
+Unset variables and functions.
+su
+Change user ID or become superuser.
+78 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Answers to Guided Exercises
+1. Complete the table with “Yes” or “No” considering the capabilities of aliases and functions:
+Feature
+Aliases?
+Functions?
+Local variables can be used
+Yes
+Yes
+Environment variables can be
+used
+Yes
+Yes
+Can be escaped with \
+Yes
+No
+Can be recursive
+Yes
+Yes
+Very productive when used
+with positional parameters
+No
+Yes
+2. Enter the command that list all aliases in your system:
+alias
+3. Write an alias named logg that lists all ogg files in ~/Music — one per line:
+alias logg='ls -1 ~/Music/<em>ogg'
+4. Invoke the alias to prove it works:
+logg
+5. Now, modify the alias so that it echoes out the session’s user and a colon before the listing:
+alias logg='echo $USER:; ls -1 ~/Music/</em>ogg'
+6. Invoke it again to prove this new version also works:
+logg
+7. List all aliases again and check your logg alias appears in the listing:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 79</p>
+<p>alias
+8. Remove the alias:
+unalias logg
+9. Study the columns “Alias Name” and “Aliased Command(s)” and assign the aliases to their
+values correctly:
+Alias Name
+Aliased Command(s)
+Alias Assignment
+b
+bash
+alias b=bash
+bash_info
+which bash + echo
+"$BASH_VERSION"
+alias bash_info='which
+bash; echo
+"$BASH_VERSION"'
+kernel_info
+uname -r
+alias kernel_info='uname
+-r'
+greet
+echo Hi, $USER!
+alias greet='echo Hi,
+$USER'
+computer
+pc=slimbook + echo My
+computer is a $pc
+alias
+computer='pc=slimbook;
+echo My computer is a
+$pc'
+NOTE
+Single quotes can also be replaced by double ones.
+10. As root, write a function called my_fun in /etc/bash.bashrc. The function must say hello to
+the user and tell them what their path is. Invoke it so that the user gets both messages every
+time they log in:
+Option A:
+my_fun() {
+echo Hello, $USER!
+echo Your path is: $PATH
+}
+my_fun
+80 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Option B:
+function my_fun {
+echo Hello, $USER!
+echo Your path is: $PATH
+}
+my_fun
+11. Login as user2 to check it works:
+su - user2
+12. Write the same function in just one line:
+Option A:
+my_fun() { echo "Hello, $USER!"; echo "Your path is: $PATH"; }
+Option B:
+function my_fun { echo "Hello, $USER!"; echo "Your path is: $PATH"; }
+13. Invoke the function:
+my_fun
+14. Unset the function:
+unset -f my_fun
+15. This is a modified version of the special_vars function:
+$ special_vars2() {</p>
+<blockquote>
+<p>echo $#
+echo $_
+echo $1
+echo $4
+echo $6
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 81</p>
+<p>echo $7
+echo $<em>
+echo $@
+echo $?
+}
+This is the command we use to invoke it:
+$ special_vars2 crying cockles and mussels alive alive oh
+Guess the outputs:
+Reference
+Value
+echo $#
+7
+echo $</em>
+7
+echo $1
+crying
+echo $4
+mussels
+echo $6
+alive
+echo $7
+oh
+echo $_
+oh
+echo $@
+crying cockles and mussels alive
+alive oh
+echo $?
+0
+16. Based on the sample function (check_vids) in section “A Function within a Function”, write a
+function named check_music to include into a bash startup script that accepts positional
+parameters so that we can modify easily:
+◦the type of file being checked: ogg
+◦the directory in which files are saved: ~/Music
+◦the type of file being kept: music
+◦the number of files being saved: 7
+check_music() {
+&nbsp;   ls -1 ~/$1/*.$2 &gt; ~/.mkv.log 2&gt;&amp;1
+&nbsp;   if [ "$?" = "0" ];then
+82 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+</blockquote>
+<p>echo -e "Remember, you must not keep more than $3 $4 files in your $1
+folder.\nThanks."
+&nbsp;   else
+&nbsp;    echo -e "You do not have any $4 files in the $1 folder. You can keep up to
+$3.\nThanks."
+&nbsp;   fi
+}
+check_music Music ogg 7 music
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 83</p>
+<p>Answers to Explorational Exercises
+1. Read-only functions are those whose contents we cannot modify. Do a research on readonly
+functions and complete the following table:
+Function Name
+Make it readonly
+List all readonly Functions
+my_fun
+readonly -f my_fun
+readonly -f
+2. Search the web for how to modify PS1 and anything else you may need to write a function
+called fyi (to be placed in a startup script) which gives the user the following information:
+◦name of the user
+◦home directory
+◦name of the host
+◦operating system type
+◦search path for executables
+◦mail directory
+◦how often mail is checked
+◦how many shells deep the current session is
+◦prompt (you should modify it so that it shows <user>@<host-date>)
+fyi() {
+&nbsp;   echo -e "For your Information:\n
+&nbsp;   Username: $USER
+&nbsp;   Home directory: $HOME
+&nbsp;   Host: $HOSTNAME
+&nbsp;   Operating System: $OSTYPE
+&nbsp;   Path for executable files: $PATH
+&nbsp;   Your mail directory is $MAIL and is searched every $MAILCHECK seconds.
+&nbsp;   The current level of your shell is: $SHLVL"
+&nbsp;   PS1="\u@\h-\d "
+}
+fyi
+84 &nbsp;&nbsp;&nbsp; |</host-date></user></p>
+<hr>
+<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
+<ol>
+<li>Ghi nhớ các câu lệnh quản trị mạng, bảo mật và lập trình shell script.</li>
+<li>Áp dụng các quy chuẩn bảo mật SSH, phân quyền và mã hóa dữ liệu.</li>
+<li>Thực hành liên tục trên Linux Terminal để làm chủ kỹ năng vận hành.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../topic-104-devices-filesystems-fhs/104.7-find-system-files-and-place-files-in-correct-location/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 104.7: Tiêu chuẩn Phân cấp Hệ thống File (FHS) &amp;amp; Tìm kiếm">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Objective 104.7: Tiêu chuẩn Phân cấp Hệ thống File (FHS) &amp; Tìm kiếm
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../105.2-customize-or-write-simple-scripts/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 105.2: Viết và Tùy biến Script Bash Tự động hóa">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Objective 105.2: Viết và Tùy biến Script Bash Tự động hóa
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

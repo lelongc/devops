@@ -1,0 +1,4535 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/devops/linux/LPIC-1-2/LPIC-1/topic-103-gnu-and-unix-commands/103.5-create-monitor-and-kill-processes/">
+      
+      
+        <link rel="prev" href="../103.4-use-streams-pipes-and-redirects/">
+      
+      
+        <link rel="next" href="../103.6-modify-process-execution-priorities/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux) - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objective-1035-quan-ly-tien-trinh-ps-top-kill-tmux" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../cicd/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cicd
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../docker/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../git/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Git
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../k8s/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../lab/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-ccna/ccna/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network ccna
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network-comtia/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network comtia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../observability/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Observability
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../security/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Security
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../system-design/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  System design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../testing/roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/devops" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../Programming/Roblox-Lua-Roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../cicd/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cicd
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../docker/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../git/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../k8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K8s
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../lab/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LPIC 1
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1_1" id="__nav_8_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LPIC 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-101-system-architecture/101.1-determine-and-configure-hardware-settings/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 101 system architecture
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-102-installation-and-package-management/102.1-design-hard-disk-layout/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 102 installation and package management
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_1_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_1_4" id="__nav_8_1_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 103 gnu and unix commands
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_1_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_1_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic 103 gnu and unix commands
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.1-work-on-the-command-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.1: Làm việc trên Dòng lệnh (CLI Basics &amp; Shell)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.2-process-text-streams-using-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.2: Xử lý Luồng Văn bản bằng Bộ lọc (Text Filters)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.3-perform-basic-file-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.3: Quản lý File &amp; Thư mục (cp, mv, tar, find)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.4-use-streams-pipes-and-redirects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.4: Sử dụng Streams, Pipes và Redirects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.6-modify-process-execution-priorities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.7-search-text-files-using-regular-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.7: Biểu thức Chính quy (Regex, grep, sed)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../103.8-basic-file-editing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objective 103.8: Chỉnh sửa File Văn bản (Vim / Vi Editor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-104-devices-filesystems-fhs/104.1-create-partitions-and-filesystems/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 104 devices filesystems fhs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-105-shells-and-shell-scripting/105.1-customize-and-use-the-shell-environment/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 105 shells and shell scripting
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-106-user-interfaces-and-desktops/106.1-install-and-configure-x11/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 106 user interfaces and desktops
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-107-administrative-tasks/107.1-manage-user-and-group-accounts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 107 administrative tasks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-108-essential-system-services/108.1-maintain-system-time/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 108 essential system services
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-109-networking-fundamentals/109.1-fundamentals-of-internet-protocols/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 109 networking fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../topic-110-security/110.1-perform-security-administration-tasks/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic 110 security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../../network-ccna/ccna/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network ccna
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../network-comtia/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network comtia
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../observability/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../python/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../security/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../system-design/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System design
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../testing/roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-trong-tam-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trọng tâm cần nhớ:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-lenh-trong-tam-key-command-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Bảng Lệnh Trọng Tâm (Key Command Reference)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/devops/edit/main/my-website/docs/linux/LPIC-1-2/LPIC-1/topic-103-gnu-and-unix-commands/103.5-create-monitor-and-kill-processes.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="objective-1035-quan-ly-tien-trinh-ps-top-kill-tmux">Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)<a class="headerlink" href="#objective-1035-quan-ly-tien-trinh-ps-top-kill-tmux" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>📚 <strong>Chứng chỉ LPIC-1 (Exam 101-500 Version 5.0)</strong><br>
+📖 <strong>Trích xuất nội dung</strong>: LPI Learning Materials (Trang 298 - 356)<br>
+🎯 <strong>Mục tiêu</strong>: Làm chủ kiến thức Linux căn bản &amp; nâng cao ứng dụng trực tiếp vào công việc DevOps Engineer.</p>
+</blockquote>
+<hr>
+<h2 id="1-tong-quan-muc-tieu-bai-hoc-objective-overview">📑 1. Tổng Quan &amp; Mục Tiêu Bài Học (Objective Overview)<a class="headerlink" href="#1-tong-quan-muc-tieu-bai-hoc-objective-overview" title="Permanent link">¶</a></h2>
+<p>Bài học này giúp bạn nắm vững kiến thức chuyên sâu về <strong>Objective 103.5: Quản lý Tiến trình (ps, top, kill, tmux)</strong>. </p>
+<h3 id="cac-trong-tam-can-nho">Các trọng tâm cần nhớ:<a class="headerlink" href="#cac-trong-tam-can-nho" title="Permanent link">¶</a></h3>
+<ul>
+<li>Giải thích bản chất lý thuyết và kiến trúc hoạt động của Linux.</li>
+<li>Thành thạo các câu lệnh thao tác trên Terminal, các tham số (options) và cú pháp thực thi.</li>
+<li>Đọc hiểu tệp tin cấu hình hệ thống, thư mục hệ thống chuẩn.</li>
+<li>Áp dụng vào xử lý sự cố (troubleshooting) và vận hành hệ thống trong môi trường DevOps/Cloud.</li>
+</ul>
+<hr>
+<h2 id="2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh">📖 2. Nội Dung Lý Thuyết &amp; Chi Tiết Lập Trình/Cấu Hình<a class="headerlink" href="#2-noi-dung-ly-thuyet-chi-tiet-lap-trinhcau-hinh" title="Permanent link">¶</a></h2>
+<p>Below is the detailed material extracted directly from LPIC-1 Official Material:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>103.5 Create, monitor and kill processes
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Reference to LPI objectives
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>LPIC-1 v5, Exam 101, Objective 103.5
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Weight
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>4
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key knowledge areas
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>• Run jobs in the foreground and background.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>• Signal a program to continue running after logout.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>• Monitor active processes.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>• Select and sort processes for display.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>• Send signals to processes.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Partial list of the used files, terms and utilities
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>• &amp;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>• bg
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>• fg
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>• jobs
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>• kill
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>• nohup
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>• ps
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>• top
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>• free
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>288 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>• uptime
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>• pgrep
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>• pkill
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>• killall
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>• watch
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>• screen
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>• tmux
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 289
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>103.5 Lesson 1
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>Certificate:
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>LPIC-1
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>Version:
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>5.0
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>Topic:
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>103 GNU and Unix Commands
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>Objective:
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>103.5 Create, monitor and kill processes
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>Lesson:
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>1 of 2
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>Introduction
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>Every time we invoke a command, one or more processes are started. A well-trained system
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>administrator not only needs to create processes, but also be able to keep track of them and send
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>them different types of signals if and when required. In this lesson we will look at job control and
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>how to monitor processes.
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>Job Control
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>Jobs are processes that have been started interactively through a terminal, sent to the background
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>and have not yet finished execution. You can find out about the active jobs (and their status) in
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>your Linux system by running jobs:
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>$ jobs
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>The jobs command above did not produce any output, which means there are no active jobs at
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>the moment. Let us create our first job by running a command that takes some time to finish
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>executing (the sleep command with a parameter of 60) and — while running — press Ctrl  +  Z :
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>290 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>$ sleep 60
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>^Z
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>The execution of the command has been stopped (or — rather — suspended) and the command
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>prompt is available again. You can look for jobs a second time and will find the suspended one
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>now:
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>$ jobs
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>Let us explain the output:
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>[1]
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>This number is the job ID and can be used — preceded by a percentage symbol (%) — to change
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>the job status by the fg, bg and kill utilities (as you will be shown later).
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>+
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>The plus sign indicates the current, default job (that is, the last one being suspended or sent to
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>the background). The previous job is flagged with a minus sign (-). Any other prior jobs are not
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>flagged.
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>Stopped
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>Description of the job status.
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>sleep 60
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>The command or job itself.
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>With the -l option, jobs will additionally display the process ID (PID) right before the status:
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>$ jobs -l
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>[1]+  1114 Stopped                 sleep 60
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>The remaining possible options of jobs are:
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>-n
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>Lists only processes that have changed status since the last notification. Possible status include,
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>Running, Stopped, Terminated or Done.
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 291
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>-p
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>Lists process IDs.
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>-r
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>Lists only running jobs.
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>-s
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>Lists only stopped (or suspended) jobs.
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>NOTE
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>Remember, a job has both a job ID and a process ID (PID).
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>Job Specification
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>The jobs command as well as other utilities such as fg, bg and kill (that you will see in the next
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>section) need a job specification (or jobspec) to act upon a particular job. As we have just seen,
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>this can be — and normally is — the job ID preceded by %. However, other job specifications are
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>also possible. Let us have a look at them:
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>%n
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>Job whose id number is n:
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>$ jobs %1
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>%str
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>Job whose command line starts with str:
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>$ jobs %sl
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>%?str
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>Job whose command line contains str:
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>$ jobs %?le
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>%+ or %%
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>Current job (the one that was last started in the background or suspended from the
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>292 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>foreground):
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>$ jobs %+
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a>%-
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a>Previous job (the one that was %+ before the default, current one):
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>$ jobs %-
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a>[1]+  Stopped                 sleep 60
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a>In our case, since there is only one job, it is both current and previous.
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a>Job Status: Suspension, Foreground and Background
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a>Once a job is in the background or has been suspended, we can do any of three things to it:
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a>1. Take it to the foreground with fg:
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a>$ fg %1
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>sleep 60
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>fg moves the specified job to the foreground and makes it the current job. Now we can wait
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a>until it finishes, stop it again with Ctrl  +  Z  or terminate it with Ctrl  +  C .
+<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>2. Take it to the background with bg:
+<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a>$ bg %1
+<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a>[1]+ sleep 60 &amp;
+<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>Once in the background, the job can be brought back into the foreground with fg or killed (see
+<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a>below). Note the ampersand (&amp;) meaning the job has been sent to the background. As a matter
+<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a>of fact, you can also use the ampersand to start a process directly in the background:
+<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a>$ sleep 100 &amp;
+<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a>[2] 970
+<a id="__codelineno-0-140" name="__codelineno-0-140" href="#__codelineno-0-140"></a>Together with the job ID of the new job ([2]), we now get its process ID (970) too. Now both
+<a id="__codelineno-0-141" name="__codelineno-0-141" href="#__codelineno-0-141"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 293
+<a id="__codelineno-0-142" name="__codelineno-0-142" href="#__codelineno-0-142"></a>
+<a id="__codelineno-0-143" name="__codelineno-0-143" href="#__codelineno-0-143"></a>jobs are running in the background:
+<a id="__codelineno-0-144" name="__codelineno-0-144" href="#__codelineno-0-144"></a>$ jobs
+<a id="__codelineno-0-145" name="__codelineno-0-145" href="#__codelineno-0-145"></a>[1]-  Running                 sleep 60 &amp;
+<a id="__codelineno-0-146" name="__codelineno-0-146" href="#__codelineno-0-146"></a>[2]+  Running                 sleep 100 &amp;
+<a id="__codelineno-0-147" name="__codelineno-0-147" href="#__codelineno-0-147"></a>A bit later the first job finishes execution:
+<a id="__codelineno-0-148" name="__codelineno-0-148" href="#__codelineno-0-148"></a>$ jobs
+<a id="__codelineno-0-149" name="__codelineno-0-149" href="#__codelineno-0-149"></a>[1]-  Done                    sleep 60
+<a id="__codelineno-0-150" name="__codelineno-0-150" href="#__codelineno-0-150"></a>[2]+  Running                 sleep 100 &amp;
+<a id="__codelineno-0-151" name="__codelineno-0-151" href="#__codelineno-0-151"></a>3. Terminate it through a SIGTERM signal with kill:
+<a id="__codelineno-0-152" name="__codelineno-0-152" href="#__codelineno-0-152"></a>$ kill %2
+<a id="__codelineno-0-153" name="__codelineno-0-153" href="#__codelineno-0-153"></a>To make sure the job has been terminated, run jobs again:
+<a id="__codelineno-0-154" name="__codelineno-0-154" href="#__codelineno-0-154"></a>$ jobs
+<a id="__codelineno-0-155" name="__codelineno-0-155" href="#__codelineno-0-155"></a>[2]+  Terminated                 sleep 100
+<a id="__codelineno-0-156" name="__codelineno-0-156" href="#__codelineno-0-156"></a>NOTE
+<a id="__codelineno-0-157" name="__codelineno-0-157" href="#__codelineno-0-157"></a>If no job is specified, fg and bg will act upon the current, default one. kill,
+<a id="__codelineno-0-158" name="__codelineno-0-158" href="#__codelineno-0-158"></a>however, always needs a job specification.
+<a id="__codelineno-0-159" name="__codelineno-0-159" href="#__codelineno-0-159"></a>Detached Jobs: nohup
+<a id="__codelineno-0-160" name="__codelineno-0-160" href="#__codelineno-0-160"></a>The jobs we have seen in the previous sections were all attached to the session of the user who
+<a id="__codelineno-0-161" name="__codelineno-0-161" href="#__codelineno-0-161"></a>invoked them. That means that if the session is terminated, the jobs are gone. However, it is
+<a id="__codelineno-0-162" name="__codelineno-0-162" href="#__codelineno-0-162"></a>possible to detach jobs from sessions and have them run even after the session is closed. This is
+<a id="__codelineno-0-163" name="__codelineno-0-163" href="#__codelineno-0-163"></a>achieved with the nohup (“no hangup”) command. The syntax is as follows:
+<a id="__codelineno-0-164" name="__codelineno-0-164" href="#__codelineno-0-164"></a>nohup COMMAND &amp;
+<a id="__codelineno-0-165" name="__codelineno-0-165" href="#__codelineno-0-165"></a>Remember, the &amp; sends the process into the background and frees up the terminal you are
+<a id="__codelineno-0-166" name="__codelineno-0-166" href="#__codelineno-0-166"></a>working at.
+<a id="__codelineno-0-167" name="__codelineno-0-167" href="#__codelineno-0-167"></a>Let us detach the background job ping localhost from the current session:
+<a id="__codelineno-0-168" name="__codelineno-0-168" href="#__codelineno-0-168"></a>294 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-169" name="__codelineno-0-169" href="#__codelineno-0-169"></a>
+<a id="__codelineno-0-170" name="__codelineno-0-170" href="#__codelineno-0-170"></a>$ nohup ping localhost &amp;
+<a id="__codelineno-0-171" name="__codelineno-0-171" href="#__codelineno-0-171"></a>[1] 1251
+<a id="__codelineno-0-172" name="__codelineno-0-172" href="#__codelineno-0-172"></a>$ nohup: ignoring input and appending output to 'nohup.out'
+<a id="__codelineno-0-173" name="__codelineno-0-173" href="#__codelineno-0-173"></a>^C
+<a id="__codelineno-0-174" name="__codelineno-0-174" href="#__codelineno-0-174"></a>The output shows us the job ID ([1]) and the PID (1251), followed by a message telling us about
+<a id="__codelineno-0-175" name="__codelineno-0-175" href="#__codelineno-0-175"></a>the file nohup.out. This is the default file where stdout and stderr will be saved. Now we can
+<a id="__codelineno-0-176" name="__codelineno-0-176" href="#__codelineno-0-176"></a>press Ctrl  +  C  to free up the command prompt, close the session, start another one as root and use
+<a id="__codelineno-0-177" name="__codelineno-0-177" href="#__codelineno-0-177"></a>tail -f to check if the command is running and output is being written to the default file:
+<a id="__codelineno-0-178" name="__codelineno-0-178" href="#__codelineno-0-178"></a>$ exit
+<a id="__codelineno-0-179" name="__codelineno-0-179" href="#__codelineno-0-179"></a>logout
+<a id="__codelineno-0-180" name="__codelineno-0-180" href="#__codelineno-0-180"></a>$ tail -f /home/carol/nohup.out
+<a id="__codelineno-0-181" name="__codelineno-0-181" href="#__codelineno-0-181"></a>64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.070 ms
+<a id="__codelineno-0-182" name="__codelineno-0-182" href="#__codelineno-0-182"></a>64 bytes from localhost (::1): icmp_seq=4 ttl=64 time=0.068 ms
+<a id="__codelineno-0-183" name="__codelineno-0-183" href="#__codelineno-0-183"></a>64 bytes from localhost (::1): icmp_seq=5 ttl=64 time=0.070 ms
+<a id="__codelineno-0-184" name="__codelineno-0-184" href="#__codelineno-0-184"></a>^C
+<a id="__codelineno-0-185" name="__codelineno-0-185" href="#__codelineno-0-185"></a>TIP
+<a id="__codelineno-0-186" name="__codelineno-0-186" href="#__codelineno-0-186"></a>Instead of using the default nohup.out you could have specified the output file of
+<a id="__codelineno-0-187" name="__codelineno-0-187" href="#__codelineno-0-187"></a>your choice with nohup ping localhost &gt; /path/to/your/file &amp;.
+<a id="__codelineno-0-188" name="__codelineno-0-188" href="#__codelineno-0-188"></a>If we want to kill the process, we should specify its PID:
+<a id="__codelineno-0-189" name="__codelineno-0-189" href="#__codelineno-0-189"></a># kill 1251
+<a id="__codelineno-0-190" name="__codelineno-0-190" href="#__codelineno-0-190"></a>Process Monitoring
+<a id="__codelineno-0-191" name="__codelineno-0-191" href="#__codelineno-0-191"></a>A process or task is an instance of a running program. Thus, you create new processes every time
+<a id="__codelineno-0-192" name="__codelineno-0-192" href="#__codelineno-0-192"></a>you type in commands into the terminal.
+<a id="__codelineno-0-193" name="__codelineno-0-193" href="#__codelineno-0-193"></a>The watch command executes a program periodically (2 seconds by default) and allows us to
+<a id="__codelineno-0-194" name="__codelineno-0-194" href="#__codelineno-0-194"></a>watch the program’s output change over time. For instance, we can monitor how the load average
+<a id="__codelineno-0-195" name="__codelineno-0-195" href="#__codelineno-0-195"></a>changes as more processes are run by typing watch uptime:
+<a id="__codelineno-0-196" name="__codelineno-0-196" href="#__codelineno-0-196"></a>Every  2.0s: uptime          debian: Tue Aug 20 23:31:27 2019
+<a id="__codelineno-0-197" name="__codelineno-0-197" href="#__codelineno-0-197"></a>&nbsp;23:31:27 up 21 min,  1 user,  load average: 0.00, 0.00, 0.00
+<a id="__codelineno-0-198" name="__codelineno-0-198" href="#__codelineno-0-198"></a>The command runs until interrupted so we would have to stop it with Ctrl  +  C . We get two lines as
+<a id="__codelineno-0-199" name="__codelineno-0-199" href="#__codelineno-0-199"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 295
+<a id="__codelineno-0-200" name="__codelineno-0-200" href="#__codelineno-0-200"></a>
+<a id="__codelineno-0-201" name="__codelineno-0-201" href="#__codelineno-0-201"></a>output: the first one corresponds to watch and tells us how often the command will be run (Every
+<a id="__codelineno-0-202" name="__codelineno-0-202" href="#__codelineno-0-202"></a>2.0s: uptime), what command/program to watch (uptime) as well as the hostname and date
+<a id="__codelineno-0-203" name="__codelineno-0-203" href="#__codelineno-0-203"></a>(debian: Tue Aug 20 23:31:27 2019). The second line of output is uptime’s and includes the
+<a id="__codelineno-0-204" name="__codelineno-0-204" href="#__codelineno-0-204"></a>time (23:31:27), how much time the system has been up (up 21 min), the number of active users
+<a id="__codelineno-0-205" name="__codelineno-0-205" href="#__codelineno-0-205"></a>(1 user) and the average system load or number of processes in execution or in waiting state for
+<a id="__codelineno-0-206" name="__codelineno-0-206" href="#__codelineno-0-206"></a>the last 1, 5 and 15 minutes (load average: 0.00, 0.00, 0.00).
+<a id="__codelineno-0-207" name="__codelineno-0-207" href="#__codelineno-0-207"></a>Similarly, you can check on memory use as new processes are created with watch free:
+<a id="__codelineno-0-208" name="__codelineno-0-208" href="#__codelineno-0-208"></a>Every  2.0s: free            debian: Tue Aug 20 23:43:37 2019
+<a id="__codelineno-0-209" name="__codelineno-0-209" href="#__codelineno-0-209"></a>&nbsp;23:43:37 up 24 min,  1 user,  load average: 0.00, 0.00, 0.00
+<a id="__codelineno-0-210" name="__codelineno-0-210" href="#__codelineno-0-210"></a>&nbsp;             total        used        free      shared  buff/cache   available
+<a id="__codelineno-0-211" name="__codelineno-0-211" href="#__codelineno-0-211"></a>Mem:       16274868      493984    14729396       35064     1051488    15462040
+<a id="__codelineno-0-212" name="__codelineno-0-212" href="#__codelineno-0-212"></a>Swap:      16777212           0    16777212
+<a id="__codelineno-0-213" name="__codelineno-0-213" href="#__codelineno-0-213"></a>To change the update interval for watch use the -n or --interval options plus the number of
+<a id="__codelineno-0-214" name="__codelineno-0-214" href="#__codelineno-0-214"></a>seconds as in:
+<a id="__codelineno-0-215" name="__codelineno-0-215" href="#__codelineno-0-215"></a>$ watch -n 5 free
+<a id="__codelineno-0-216" name="__codelineno-0-216" href="#__codelineno-0-216"></a>Now the free command will run every 5 seconds.
+<a id="__codelineno-0-217" name="__codelineno-0-217" href="#__codelineno-0-217"></a>For more information about the options for uptime, free and watch, please refer to their manual
+<a id="__codelineno-0-218" name="__codelineno-0-218" href="#__codelineno-0-218"></a>pages.
+<a id="__codelineno-0-219" name="__codelineno-0-219" href="#__codelineno-0-219"></a>NOTE
+<a id="__codelineno-0-220" name="__codelineno-0-220" href="#__codelineno-0-220"></a>The information provided by uptime and free is also integrated in the more
+<a id="__codelineno-0-221" name="__codelineno-0-221" href="#__codelineno-0-221"></a>comprehensive tools top and ps (see below).
+<a id="__codelineno-0-222" name="__codelineno-0-222" href="#__codelineno-0-222"></a>Sending Signals to Processes: kill
+<a id="__codelineno-0-223" name="__codelineno-0-223" href="#__codelineno-0-223"></a>Every single process has a unique process identifier or PID. One way of finding out the PID of a
+<a id="__codelineno-0-224" name="__codelineno-0-224" href="#__codelineno-0-224"></a>process is by using the pgrep command followed by the process' name:
+<a id="__codelineno-0-225" name="__codelineno-0-225" href="#__codelineno-0-225"></a>$ pgrep sleep
+<a id="__codelineno-0-226" name="__codelineno-0-226" href="#__codelineno-0-226"></a>1201
+<a id="__codelineno-0-227" name="__codelineno-0-227" href="#__codelineno-0-227"></a>NOTE
+<a id="__codelineno-0-228" name="__codelineno-0-228" href="#__codelineno-0-228"></a>A process' identifier can also be discovered through the pidof command (e.g.
+<a id="__codelineno-0-229" name="__codelineno-0-229" href="#__codelineno-0-229"></a>pidof sleep).
+<a id="__codelineno-0-230" name="__codelineno-0-230" href="#__codelineno-0-230"></a>296 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-231" name="__codelineno-0-231" href="#__codelineno-0-231"></a>
+<a id="__codelineno-0-232" name="__codelineno-0-232" href="#__codelineno-0-232"></a>Similar to pgrep, pkill command kills a process based on its name:
+<a id="__codelineno-0-233" name="__codelineno-0-233" href="#__codelineno-0-233"></a>$ pkill sleep
+<a id="__codelineno-0-234" name="__codelineno-0-234" href="#__codelineno-0-234"></a>[1]+  Terminated              sleep 60
+<a id="__codelineno-0-235" name="__codelineno-0-235" href="#__codelineno-0-235"></a>To kill multiple instances of the same process, the killall command can be used:
+<a id="__codelineno-0-236" name="__codelineno-0-236" href="#__codelineno-0-236"></a>$ sleep 60 &amp;
+<a id="__codelineno-0-237" name="__codelineno-0-237" href="#__codelineno-0-237"></a>[1] 1246
+<a id="__codelineno-0-238" name="__codelineno-0-238" href="#__codelineno-0-238"></a>$ sleep 70 &amp;
+<a id="__codelineno-0-239" name="__codelineno-0-239" href="#__codelineno-0-239"></a>[2] 1247
+<a id="__codelineno-0-240" name="__codelineno-0-240" href="#__codelineno-0-240"></a>$ killall sleep
+<a id="__codelineno-0-241" name="__codelineno-0-241" href="#__codelineno-0-241"></a>[1]-  Terminated              sleep 60
+<a id="__codelineno-0-242" name="__codelineno-0-242" href="#__codelineno-0-242"></a>[2]+  Terminated              sleep 70
+<a id="__codelineno-0-243" name="__codelineno-0-243" href="#__codelineno-0-243"></a>Both pkill and killall work much in the same way as kill in that they send a terminating
+<a id="__codelineno-0-244" name="__codelineno-0-244" href="#__codelineno-0-244"></a>signal to the specified process(es). If no signal is provided, the default of SIGTERM is sent.
+<a id="__codelineno-0-245" name="__codelineno-0-245" href="#__codelineno-0-245"></a>However, kill only takes either a job or a process ID as an argument.
+<a id="__codelineno-0-246" name="__codelineno-0-246" href="#__codelineno-0-246"></a>Signals can be specified either by:
+<a id="__codelineno-0-247" name="__codelineno-0-247" href="#__codelineno-0-247"></a>• Name:
+<a id="__codelineno-0-248" name="__codelineno-0-248" href="#__codelineno-0-248"></a>$ kill -SIGHUP 1247
+<a id="__codelineno-0-249" name="__codelineno-0-249" href="#__codelineno-0-249"></a>• Number:
+<a id="__codelineno-0-250" name="__codelineno-0-250" href="#__codelineno-0-250"></a>$ kill -1 1247
+<a id="__codelineno-0-251" name="__codelineno-0-251" href="#__codelineno-0-251"></a>• Option:
+<a id="__codelineno-0-252" name="__codelineno-0-252" href="#__codelineno-0-252"></a>$ kill -s SIGHUP 1247
+<a id="__codelineno-0-253" name="__codelineno-0-253" href="#__codelineno-0-253"></a>To have kill work in a similar way to pkill or killall (and save ourselves the commands to
+<a id="__codelineno-0-254" name="__codelineno-0-254" href="#__codelineno-0-254"></a>find out PIDs first) we can use command substitution:
+<a id="__codelineno-0-255" name="__codelineno-0-255" href="#__codelineno-0-255"></a>$ kill -1 $(pgrep sleep)
+<a id="__codelineno-0-256" name="__codelineno-0-256" href="#__codelineno-0-256"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 297
+<a id="__codelineno-0-257" name="__codelineno-0-257" href="#__codelineno-0-257"></a>
+<a id="__codelineno-0-258" name="__codelineno-0-258" href="#__codelineno-0-258"></a>As you should already know, an alternative syntax is kill -1 `pgrep sleep`.
+<a id="__codelineno-0-259" name="__codelineno-0-259" href="#__codelineno-0-259"></a>TIP
+<a id="__codelineno-0-260" name="__codelineno-0-260" href="#__codelineno-0-260"></a>For an exhaustive list of all kill signals and their codes, type kill -l into the
+<a id="__codelineno-0-261" name="__codelineno-0-261" href="#__codelineno-0-261"></a>terminal. Use -KILL (-9 or -s KILL) to kill rebel processes when any other signal
+<a id="__codelineno-0-262" name="__codelineno-0-262" href="#__codelineno-0-262"></a>fails.
+<a id="__codelineno-0-263" name="__codelineno-0-263" href="#__codelineno-0-263"></a>top and ps
+<a id="__codelineno-0-264" name="__codelineno-0-264" href="#__codelineno-0-264"></a>When it comes to process monitoring, two invaluable tools are top and ps. Whilst the former
+<a id="__codelineno-0-265" name="__codelineno-0-265" href="#__codelineno-0-265"></a>produces output dynamically, the latter does it statically. In any case, both are excellent utilities to
+<a id="__codelineno-0-266" name="__codelineno-0-266" href="#__codelineno-0-266"></a>have a comprehensive view of all processes in the system.
+<a id="__codelineno-0-267" name="__codelineno-0-267" href="#__codelineno-0-267"></a>Interacting with top
+<a id="__codelineno-0-268" name="__codelineno-0-268" href="#__codelineno-0-268"></a>To invoke top, simply type top:
+<a id="__codelineno-0-269" name="__codelineno-0-269" href="#__codelineno-0-269"></a>$ top
+<a id="__codelineno-0-270" name="__codelineno-0-270" href="#__codelineno-0-270"></a>top - 11:10:29 up  2:21,  1 user,  load average: 0,11, 0,20, 0,14
+<a id="__codelineno-0-271" name="__codelineno-0-271" href="#__codelineno-0-271"></a>Tasks:  73 total,   1 running,  72 sleeping,   0 stopped,   0 zombie
+<a id="__codelineno-0-272" name="__codelineno-0-272" href="#__codelineno-0-272"></a>%Cpu(s):  0,0 us,  0,3 sy,  0,0 ni, 99,7 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+<a id="__codelineno-0-273" name="__codelineno-0-273" href="#__codelineno-0-273"></a>KiB Mem :  1020332 total,   909492 free,    38796 used,    72044 buff/cache
+<a id="__codelineno-0-274" name="__codelineno-0-274" href="#__codelineno-0-274"></a>KiB Swap:  1046524 total,  1046524 free,        0 used.   873264 avail Mem
+<a id="__codelineno-0-275" name="__codelineno-0-275" href="#__codelineno-0-275"></a>&nbsp;  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+<a id="__codelineno-0-276" name="__codelineno-0-276" href="#__codelineno-0-276"></a>&nbsp;  436 carol     20   0   42696   3624   3060 R  0,7  0,4   0:00.30 top
+<a id="__codelineno-0-277" name="__codelineno-0-277" href="#__codelineno-0-277"></a>&nbsp;    4 root      20   0       0      0      0 S  0,3  0,0   0:00.12 kworker/0:0
+<a id="__codelineno-0-278" name="__codelineno-0-278" href="#__codelineno-0-278"></a>&nbsp;  399 root      20   0   95204   6748   5780 S  0,3  0,7   0:00.22 sshd
+<a id="__codelineno-0-279" name="__codelineno-0-279" href="#__codelineno-0-279"></a>&nbsp;    1 root      20   0   56872   6596   5208 S  0,0  0,6   0:01.29 systemd
+<a id="__codelineno-0-280" name="__codelineno-0-280" href="#__codelineno-0-280"></a>&nbsp;    2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd
+<a id="__codelineno-0-281" name="__codelineno-0-281" href="#__codelineno-0-281"></a>&nbsp;    3 root      20   0       0      0      0 S  0,0  0,0   0:00.02 ksoftirqd/0
+<a id="__codelineno-0-282" name="__codelineno-0-282" href="#__codelineno-0-282"></a>&nbsp;    5 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0H
+<a id="__codelineno-0-283" name="__codelineno-0-283" href="#__codelineno-0-283"></a>&nbsp;    6 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kworker/u2:0
+<a id="__codelineno-0-284" name="__codelineno-0-284" href="#__codelineno-0-284"></a>&nbsp;    7 root      20   0       0      0      0 S  0,0  0,0   0:00.08 rcu_sched
+<a id="__codelineno-0-285" name="__codelineno-0-285" href="#__codelineno-0-285"></a>&nbsp;    8 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcu_bh
+<a id="__codelineno-0-286" name="__codelineno-0-286" href="#__codelineno-0-286"></a>&nbsp;    9 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 migration/0
+<a id="__codelineno-0-287" name="__codelineno-0-287" href="#__codelineno-0-287"></a>&nbsp;   10 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 lru-add-drain
+<a id="__codelineno-0-288" name="__codelineno-0-288" href="#__codelineno-0-288"></a>&nbsp;   (...)
+<a id="__codelineno-0-289" name="__codelineno-0-289" href="#__codelineno-0-289"></a>top allows the user some interaction. By default, the output is sorted by the percentage of CPU
+<a id="__codelineno-0-290" name="__codelineno-0-290" href="#__codelineno-0-290"></a>time used by each process in descending order. This behavior can be modified by pressing the
+<a id="__codelineno-0-291" name="__codelineno-0-291" href="#__codelineno-0-291"></a>following keys from within top:
+<a id="__codelineno-0-292" name="__codelineno-0-292" href="#__codelineno-0-292"></a>298 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-293" name="__codelineno-0-293" href="#__codelineno-0-293"></a>
+<a id="__codelineno-0-294" name="__codelineno-0-294" href="#__codelineno-0-294"></a>M
+<a id="__codelineno-0-295" name="__codelineno-0-295" href="#__codelineno-0-295"></a>Sort by memory usage.
+<a id="__codelineno-0-296" name="__codelineno-0-296" href="#__codelineno-0-296"></a>N
+<a id="__codelineno-0-297" name="__codelineno-0-297" href="#__codelineno-0-297"></a>Sort by process ID number.
+<a id="__codelineno-0-298" name="__codelineno-0-298" href="#__codelineno-0-298"></a>T
+<a id="__codelineno-0-299" name="__codelineno-0-299" href="#__codelineno-0-299"></a>Sort by running time.
+<a id="__codelineno-0-300" name="__codelineno-0-300" href="#__codelineno-0-300"></a>P
+<a id="__codelineno-0-301" name="__codelineno-0-301" href="#__codelineno-0-301"></a>Sort by percentage of CPU usage.
+<a id="__codelineno-0-302" name="__codelineno-0-302" href="#__codelineno-0-302"></a>TIP
+<a id="__codelineno-0-303" name="__codelineno-0-303" href="#__codelineno-0-303"></a>To switch between descending/ascending order just press R.
+<a id="__codelineno-0-304" name="__codelineno-0-304" href="#__codelineno-0-304"></a>Other interesting keys to interact with top are:
+<a id="__codelineno-0-305" name="__codelineno-0-305" href="#__codelineno-0-305"></a>? or h
+<a id="__codelineno-0-306" name="__codelineno-0-306" href="#__codelineno-0-306"></a>Help.
+<a id="__codelineno-0-307" name="__codelineno-0-307" href="#__codelineno-0-307"></a>k
+<a id="__codelineno-0-308" name="__codelineno-0-308" href="#__codelineno-0-308"></a>Kill a process. top will ask for the PID of the process to be killed as well as for the signal to be
+<a id="__codelineno-0-309" name="__codelineno-0-309" href="#__codelineno-0-309"></a>sent (by default SIGTERM or 15).
+<a id="__codelineno-0-310" name="__codelineno-0-310" href="#__codelineno-0-310"></a>r
+<a id="__codelineno-0-311" name="__codelineno-0-311" href="#__codelineno-0-311"></a>Change the priority of a process (renice). top will ask you for the nice value. Possible values
+<a id="__codelineno-0-312" name="__codelineno-0-312" href="#__codelineno-0-312"></a>range from -20 through 19, but only the superuser (root) can set it to a value which is negative
+<a id="__codelineno-0-313" name="__codelineno-0-313" href="#__codelineno-0-313"></a>or lower than the current one.
+<a id="__codelineno-0-314" name="__codelineno-0-314" href="#__codelineno-0-314"></a>u
+<a id="__codelineno-0-315" name="__codelineno-0-315" href="#__codelineno-0-315"></a>List processes from a particular user (by default processes from all users are shown).
+<a id="__codelineno-0-316" name="__codelineno-0-316" href="#__codelineno-0-316"></a>c
+<a id="__codelineno-0-317" name="__codelineno-0-317" href="#__codelineno-0-317"></a>Show programs' absolute paths and differentiate between userspace processes and kernelspace
+<a id="__codelineno-0-318" name="__codelineno-0-318" href="#__codelineno-0-318"></a>processes (in square brackets).
+<a id="__codelineno-0-319" name="__codelineno-0-319" href="#__codelineno-0-319"></a>V
+<a id="__codelineno-0-320" name="__codelineno-0-320" href="#__codelineno-0-320"></a>Forest/hierarchy view of processes.
+<a id="__codelineno-0-321" name="__codelineno-0-321" href="#__codelineno-0-321"></a>t and m
+<a id="__codelineno-0-322" name="__codelineno-0-322" href="#__codelineno-0-322"></a>Change the look of CPU and memory readings respectively in a four-stage cycle: the first two
+<a id="__codelineno-0-323" name="__codelineno-0-323" href="#__codelineno-0-323"></a>presses show progress bars, the third hides the bar and the fourth brings it back.
+<a id="__codelineno-0-324" name="__codelineno-0-324" href="#__codelineno-0-324"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 299
+<a id="__codelineno-0-325" name="__codelineno-0-325" href="#__codelineno-0-325"></a>
+<a id="__codelineno-0-326" name="__codelineno-0-326" href="#__codelineno-0-326"></a>W
+<a id="__codelineno-0-327" name="__codelineno-0-327" href="#__codelineno-0-327"></a>Save configuration settings to ~/.toprc.
+<a id="__codelineno-0-328" name="__codelineno-0-328" href="#__codelineno-0-328"></a>TIP
+<a id="__codelineno-0-329" name="__codelineno-0-329" href="#__codelineno-0-329"></a>A fancier and more user-friendly version of top is htop. Another — perhaps more
+<a id="__codelineno-0-330" name="__codelineno-0-330" href="#__codelineno-0-330"></a>exhaustive — alternative is atop. If not already installed in your system, use your
+<a id="__codelineno-0-331" name="__codelineno-0-331" href="#__codelineno-0-331"></a>package manager to install them and give them a try.
+<a id="__codelineno-0-332" name="__codelineno-0-332" href="#__codelineno-0-332"></a>An Explanation of the output of top
+<a id="__codelineno-0-333" name="__codelineno-0-333" href="#__codelineno-0-333"></a>top output is divided into two areas: the summary area and the task area.
+<a id="__codelineno-0-334" name="__codelineno-0-334" href="#__codelineno-0-334"></a>The Summary Area in top
+<a id="__codelineno-0-335" name="__codelineno-0-335" href="#__codelineno-0-335"></a>The summary area is made up of the the five top rows and gives us the following information:
+<a id="__codelineno-0-336" name="__codelineno-0-336" href="#__codelineno-0-336"></a>• top - 11:10:29 up 2:21, 1 user, load average: 0,11, 0,20, 0,14
+<a id="__codelineno-0-337" name="__codelineno-0-337" href="#__codelineno-0-337"></a>◦current time (in 24-hour format): 11:20:29
+<a id="__codelineno-0-338" name="__codelineno-0-338" href="#__codelineno-0-338"></a>◦uptime (how much time the system has been up and running): up 2:21
+<a id="__codelineno-0-339" name="__codelineno-0-339" href="#__codelineno-0-339"></a>◦number of users logged in and load average of the CPU for the last 1, 5 and 15 minutes,
+<a id="__codelineno-0-340" name="__codelineno-0-340" href="#__codelineno-0-340"></a>respectively: load average: 0,11, 0,20, 0,14
+<a id="__codelineno-0-341" name="__codelineno-0-341" href="#__codelineno-0-341"></a>• Tasks: 73 total, 1 running, 72 sleeping, 0 stopped, 0 zombie (information about
+<a id="__codelineno-0-342" name="__codelineno-0-342" href="#__codelineno-0-342"></a>the processes)
+<a id="__codelineno-0-343" name="__codelineno-0-343" href="#__codelineno-0-343"></a>◦total number of processes in active mode: 73 total
+<a id="__codelineno-0-344" name="__codelineno-0-344" href="#__codelineno-0-344"></a>◦running (those being executed): 1 running
+<a id="__codelineno-0-345" name="__codelineno-0-345" href="#__codelineno-0-345"></a>◦sleeping (those waiting to resume execution): 72 sleeping
+<a id="__codelineno-0-346" name="__codelineno-0-346" href="#__codelineno-0-346"></a>◦stopped (by a job control signal): 0 stopped
+<a id="__codelineno-0-347" name="__codelineno-0-347" href="#__codelineno-0-347"></a>◦zombie (those which have completed execution but are still waiting for their parent process
+<a id="__codelineno-0-348" name="__codelineno-0-348" href="#__codelineno-0-348"></a>to remove them from the process table): 0 zombie
+<a id="__codelineno-0-349" name="__codelineno-0-349" href="#__codelineno-0-349"></a>• %Cpu(s): 0,0 us, 0,3 sy, 0,0 ni, 99,7 id, 0,0 wa, 0,0 hi, 0,0 si, 0,0 st
+<a id="__codelineno-0-350" name="__codelineno-0-350" href="#__codelineno-0-350"></a>(percentage of CPU time spent on)
+<a id="__codelineno-0-351" name="__codelineno-0-351" href="#__codelineno-0-351"></a>◦user processes: 0,0 us
+<a id="__codelineno-0-352" name="__codelineno-0-352" href="#__codelineno-0-352"></a>◦system/kernel processes: 0,4 sy
+<a id="__codelineno-0-353" name="__codelineno-0-353" href="#__codelineno-0-353"></a>◦processes set to a nice value — the nicer the value, the lower the priority: 0,0 ni
+<a id="__codelineno-0-354" name="__codelineno-0-354" href="#__codelineno-0-354"></a>◦nothing — idle CPU time: 99,7 id
+<a id="__codelineno-0-355" name="__codelineno-0-355" href="#__codelineno-0-355"></a>◦processes waiting for I/O operations: 0,0 wa
+<a id="__codelineno-0-356" name="__codelineno-0-356" href="#__codelineno-0-356"></a>300 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-357" name="__codelineno-0-357" href="#__codelineno-0-357"></a>
+<a id="__codelineno-0-358" name="__codelineno-0-358" href="#__codelineno-0-358"></a>◦processes serving hardware interrupts — peripherals sending the processor signals that
+<a id="__codelineno-0-359" name="__codelineno-0-359" href="#__codelineno-0-359"></a>require attention: 0,0 hi
+<a id="__codelineno-0-360" name="__codelineno-0-360" href="#__codelineno-0-360"></a>◦processes serving software interrupts: 0,0 si
+<a id="__codelineno-0-361" name="__codelineno-0-361" href="#__codelineno-0-361"></a>◦processes serving other virtual machine’s tasks in a virtual environment, hence steal time:
+<a id="__codelineno-0-362" name="__codelineno-0-362" href="#__codelineno-0-362"></a>0,0 st
+<a id="__codelineno-0-363" name="__codelineno-0-363" href="#__codelineno-0-363"></a>• KiB Mem : 1020332 total, 909492 free, 38796 used, 72044 buff/cache (memory
+<a id="__codelineno-0-364" name="__codelineno-0-364" href="#__codelineno-0-364"></a>information in kilobytes)
+<a id="__codelineno-0-365" name="__codelineno-0-365" href="#__codelineno-0-365"></a>◦the total amount of memory: 1020332 total
+<a id="__codelineno-0-366" name="__codelineno-0-366" href="#__codelineno-0-366"></a>◦unused memory: 909492 free
+<a id="__codelineno-0-367" name="__codelineno-0-367" href="#__codelineno-0-367"></a>◦memory in use: 38796 used
+<a id="__codelineno-0-368" name="__codelineno-0-368" href="#__codelineno-0-368"></a>◦the memory which is buffered and cached to avoid excessive disk access: 72044
+<a id="__codelineno-0-369" name="__codelineno-0-369" href="#__codelineno-0-369"></a>buff/cache
+<a id="__codelineno-0-370" name="__codelineno-0-370" href="#__codelineno-0-370"></a>Notice how the total is the sum of the other three values — free, used and
+<a id="__codelineno-0-371" name="__codelineno-0-371" href="#__codelineno-0-371"></a>buff/cache — (roughly 1 GB in our case).
+<a id="__codelineno-0-372" name="__codelineno-0-372" href="#__codelineno-0-372"></a>• KiB Swap: 1046524 total, 1046524 free, 0 used. 873264 avail Mem (swap
+<a id="__codelineno-0-373" name="__codelineno-0-373" href="#__codelineno-0-373"></a>information in kilobytes)
+<a id="__codelineno-0-374" name="__codelineno-0-374" href="#__codelineno-0-374"></a>◦the total amount of swap space: 1046524 total
+<a id="__codelineno-0-375" name="__codelineno-0-375" href="#__codelineno-0-375"></a>◦unused swap space: 1046524 free
+<a id="__codelineno-0-376" name="__codelineno-0-376" href="#__codelineno-0-376"></a>◦swap space in use: 0 used
+<a id="__codelineno-0-377" name="__codelineno-0-377" href="#__codelineno-0-377"></a>◦the amount of swap memory that can be allocated to processes without causing more
+<a id="__codelineno-0-378" name="__codelineno-0-378" href="#__codelineno-0-378"></a>swapping: 873264 avail Mem
+<a id="__codelineno-0-379" name="__codelineno-0-379" href="#__codelineno-0-379"></a>The Task Area in top: Fields and Columns
+<a id="__codelineno-0-380" name="__codelineno-0-380" href="#__codelineno-0-380"></a>Below the summary area there comes the task area, which includes a series of fields and columns
+<a id="__codelineno-0-381" name="__codelineno-0-381" href="#__codelineno-0-381"></a>reporting information about the running processes:
+<a id="__codelineno-0-382" name="__codelineno-0-382" href="#__codelineno-0-382"></a>PID
+<a id="__codelineno-0-383" name="__codelineno-0-383" href="#__codelineno-0-383"></a>Process identifier.
+<a id="__codelineno-0-384" name="__codelineno-0-384" href="#__codelineno-0-384"></a>USER
+<a id="__codelineno-0-385" name="__codelineno-0-385" href="#__codelineno-0-385"></a>User who issued the command that generated the process.
+<a id="__codelineno-0-386" name="__codelineno-0-386" href="#__codelineno-0-386"></a>PR
+<a id="__codelineno-0-387" name="__codelineno-0-387" href="#__codelineno-0-387"></a>Priority of process to the kernel.
+<a id="__codelineno-0-388" name="__codelineno-0-388" href="#__codelineno-0-388"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 301
+<a id="__codelineno-0-389" name="__codelineno-0-389" href="#__codelineno-0-389"></a>
+<a id="__codelineno-0-390" name="__codelineno-0-390" href="#__codelineno-0-390"></a>NI
+<a id="__codelineno-0-391" name="__codelineno-0-391" href="#__codelineno-0-391"></a>Nice value of process. Lower values have a higher priority than higher ones.
+<a id="__codelineno-0-392" name="__codelineno-0-392" href="#__codelineno-0-392"></a>VIRT
+<a id="__codelineno-0-393" name="__codelineno-0-393" href="#__codelineno-0-393"></a>Total amount of memory used by process (including Swap).
+<a id="__codelineno-0-394" name="__codelineno-0-394" href="#__codelineno-0-394"></a>RES
+<a id="__codelineno-0-395" name="__codelineno-0-395" href="#__codelineno-0-395"></a>RAM memory used by process.
+<a id="__codelineno-0-396" name="__codelineno-0-396" href="#__codelineno-0-396"></a>SHR
+<a id="__codelineno-0-397" name="__codelineno-0-397" href="#__codelineno-0-397"></a>Shared memory of the process with other processes.
+<a id="__codelineno-0-398" name="__codelineno-0-398" href="#__codelineno-0-398"></a>S
+<a id="__codelineno-0-399" name="__codelineno-0-399" href="#__codelineno-0-399"></a>Status of process. Values include: S (interruptible sleep — waiting for an event to finish), R
+<a id="__codelineno-0-400" name="__codelineno-0-400" href="#__codelineno-0-400"></a>(runnable — either executing or in the queue to be executed) or Z (zombie — terminated child
+<a id="__codelineno-0-401" name="__codelineno-0-401" href="#__codelineno-0-401"></a>processes whose data structures have not yet been removed from the process table).
+<a id="__codelineno-0-402" name="__codelineno-0-402" href="#__codelineno-0-402"></a>%CPU
+<a id="__codelineno-0-403" name="__codelineno-0-403" href="#__codelineno-0-403"></a>Percentage of CPU used by process.
+<a id="__codelineno-0-404" name="__codelineno-0-404" href="#__codelineno-0-404"></a>%MEM
+<a id="__codelineno-0-405" name="__codelineno-0-405" href="#__codelineno-0-405"></a>Percentage of RAM used by process, that is, the RES value expressed as a percentage.
+<a id="__codelineno-0-406" name="__codelineno-0-406" href="#__codelineno-0-406"></a>TIME+
+<a id="__codelineno-0-407" name="__codelineno-0-407" href="#__codelineno-0-407"></a>Total time of activity of process.
+<a id="__codelineno-0-408" name="__codelineno-0-408" href="#__codelineno-0-408"></a>COMMAND
+<a id="__codelineno-0-409" name="__codelineno-0-409" href="#__codelineno-0-409"></a>Name of command/program which generated the process.
+<a id="__codelineno-0-410" name="__codelineno-0-410" href="#__codelineno-0-410"></a>Viewing processes statically: ps
+<a id="__codelineno-0-411" name="__codelineno-0-411" href="#__codelineno-0-411"></a>As said above, ps shows a snapshot of processes. To see all processes with a terminal (tty), type ps
+<a id="__codelineno-0-412" name="__codelineno-0-412" href="#__codelineno-0-412"></a>a:
+<a id="__codelineno-0-413" name="__codelineno-0-413" href="#__codelineno-0-413"></a>$ ps a
+<a id="__codelineno-0-414" name="__codelineno-0-414" href="#__codelineno-0-414"></a>&nbsp; PID TTY      STAT   TIME COMMAND
+<a id="__codelineno-0-415" name="__codelineno-0-415" href="#__codelineno-0-415"></a>&nbsp; 386 tty1     Ss+    0:00 /sbin/agetty --noclear tty1 linux
+<a id="__codelineno-0-416" name="__codelineno-0-416" href="#__codelineno-0-416"></a>&nbsp; 424 tty7     Ssl+   0:00 /usr/lib/xorg/Xorg :0 -seat seat0 (...)
+<a id="__codelineno-0-417" name="__codelineno-0-417" href="#__codelineno-0-417"></a>&nbsp; 655 pts/0    Ss     0:00 -bash
+<a id="__codelineno-0-418" name="__codelineno-0-418" href="#__codelineno-0-418"></a>&nbsp;1186 pts/0    R+     0:00 ps a
+<a id="__codelineno-0-419" name="__codelineno-0-419" href="#__codelineno-0-419"></a>302 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-420" name="__codelineno-0-420" href="#__codelineno-0-420"></a>
+<a id="__codelineno-0-421" name="__codelineno-0-421" href="#__codelineno-0-421"></a>&nbsp;(...)
+<a id="__codelineno-0-422" name="__codelineno-0-422" href="#__codelineno-0-422"></a>An Explanation of ps Option Syntax and Output
+<a id="__codelineno-0-423" name="__codelineno-0-423" href="#__codelineno-0-423"></a>Concerning options, ps can accept three different styles: BSD, UNIX and GNU. Let us see how each
+<a id="__codelineno-0-424" name="__codelineno-0-424" href="#__codelineno-0-424"></a>of these styles would work when reporting information about a particular process ID:
+<a id="__codelineno-0-425" name="__codelineno-0-425" href="#__codelineno-0-425"></a>BSD
+<a id="__codelineno-0-426" name="__codelineno-0-426" href="#__codelineno-0-426"></a>Options do not follow any leading dash:
+<a id="__codelineno-0-427" name="__codelineno-0-427" href="#__codelineno-0-427"></a>$ ps p 811
+<a id="__codelineno-0-428" name="__codelineno-0-428" href="#__codelineno-0-428"></a>&nbsp; PID TTY      STAT   TIME COMMAND
+<a id="__codelineno-0-429" name="__codelineno-0-429" href="#__codelineno-0-429"></a>&nbsp; 811 pts/0    S      0:00 -su
+<a id="__codelineno-0-430" name="__codelineno-0-430" href="#__codelineno-0-430"></a>UNIX
+<a id="__codelineno-0-431" name="__codelineno-0-431" href="#__codelineno-0-431"></a>Options do follow a leading dash:
+<a id="__codelineno-0-432" name="__codelineno-0-432" href="#__codelineno-0-432"></a>$ ps -p 811
+<a id="__codelineno-0-433" name="__codelineno-0-433" href="#__codelineno-0-433"></a>&nbsp; PID TTY          TIME CMD
+<a id="__codelineno-0-434" name="__codelineno-0-434" href="#__codelineno-0-434"></a>&nbsp; 811 pts/0    00:00:00 bash
+<a id="__codelineno-0-435" name="__codelineno-0-435" href="#__codelineno-0-435"></a>GNU
+<a id="__codelineno-0-436" name="__codelineno-0-436" href="#__codelineno-0-436"></a>Options are followed by double leading dashes:
+<a id="__codelineno-0-437" name="__codelineno-0-437" href="#__codelineno-0-437"></a>$ ps --pid 811
+<a id="__codelineno-0-438" name="__codelineno-0-438" href="#__codelineno-0-438"></a>&nbsp; PID TTY          TIME CMD
+<a id="__codelineno-0-439" name="__codelineno-0-439" href="#__codelineno-0-439"></a>&nbsp; 811 pts/0    00:00:00 bash
+<a id="__codelineno-0-440" name="__codelineno-0-440" href="#__codelineno-0-440"></a>In all three cases, ps reports information about the process whose PID is 811 — in this case, bash.
+<a id="__codelineno-0-441" name="__codelineno-0-441" href="#__codelineno-0-441"></a>Similarly, you can use ps to search for the processes started by a particular user:
+<a id="__codelineno-0-442" name="__codelineno-0-442" href="#__codelineno-0-442"></a>• ps U carol (BSD)
+<a id="__codelineno-0-443" name="__codelineno-0-443" href="#__codelineno-0-443"></a>• ps -u carol (UNIX)
+<a id="__codelineno-0-444" name="__codelineno-0-444" href="#__codelineno-0-444"></a>• ps --user carol (GNU)
+<a id="__codelineno-0-445" name="__codelineno-0-445" href="#__codelineno-0-445"></a>Let us check on the processes started by carol:
+<a id="__codelineno-0-446" name="__codelineno-0-446" href="#__codelineno-0-446"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 303
+<a id="__codelineno-0-447" name="__codelineno-0-447" href="#__codelineno-0-447"></a>
+<a id="__codelineno-0-448" name="__codelineno-0-448" href="#__codelineno-0-448"></a>$ ps U carol
+<a id="__codelineno-0-449" name="__codelineno-0-449" href="#__codelineno-0-449"></a>&nbsp; PID TTY      STAT   TIME COMMAND
+<a id="__codelineno-0-450" name="__codelineno-0-450" href="#__codelineno-0-450"></a>&nbsp; 811 pts/0    S      0:00 -su
+<a id="__codelineno-0-451" name="__codelineno-0-451" href="#__codelineno-0-451"></a>&nbsp; 898 pts/0    R+     0:00 ps U carol
+<a id="__codelineno-0-452" name="__codelineno-0-452" href="#__codelineno-0-452"></a>She started two processes: bash (-su) and ps (ps U carol). The STAT column tells us the state of
+<a id="__codelineno-0-453" name="__codelineno-0-453" href="#__codelineno-0-453"></a>the process (see below).
+<a id="__codelineno-0-454" name="__codelineno-0-454" href="#__codelineno-0-454"></a>We can get the best out of ps by combining some of its options. A very useful command
+<a id="__codelineno-0-455" name="__codelineno-0-455" href="#__codelineno-0-455"></a>(producing an output similar to that of top) is ps aux (BSD style). In this case, processes from all
+<a id="__codelineno-0-456" name="__codelineno-0-456" href="#__codelineno-0-456"></a>shells (not only the current one) are shown. The meaning of the switches are the following:
+<a id="__codelineno-0-457" name="__codelineno-0-457" href="#__codelineno-0-457"></a>a
+<a id="__codelineno-0-458" name="__codelineno-0-458" href="#__codelineno-0-458"></a>Show processes that are attached to a tty or terminal.
+<a id="__codelineno-0-459" name="__codelineno-0-459" href="#__codelineno-0-459"></a>u
+<a id="__codelineno-0-460" name="__codelineno-0-460" href="#__codelineno-0-460"></a>Display user-oriented format.
+<a id="__codelineno-0-461" name="__codelineno-0-461" href="#__codelineno-0-461"></a>x
+<a id="__codelineno-0-462" name="__codelineno-0-462" href="#__codelineno-0-462"></a>Show processes that are not attached to a tty or terminal.
+<a id="__codelineno-0-463" name="__codelineno-0-463" href="#__codelineno-0-463"></a>$ ps aux
+<a id="__codelineno-0-464" name="__codelineno-0-464" href="#__codelineno-0-464"></a>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+<a id="__codelineno-0-465" name="__codelineno-0-465" href="#__codelineno-0-465"></a>root         1  0.0  0.1 204504  6780 ?        Ss   14:04   0:00 /sbin/init
+<a id="__codelineno-0-466" name="__codelineno-0-466" href="#__codelineno-0-466"></a>root         2  0.0  0.0      0     0 ?        S    14:04   0:00 [kthreadd]
+<a id="__codelineno-0-467" name="__codelineno-0-467" href="#__codelineno-0-467"></a>root         3  0.0  0.0      0     0 ?        S    14:04   0:00 [ksoftirqd/0]
+<a id="__codelineno-0-468" name="__codelineno-0-468" href="#__codelineno-0-468"></a>root         5  0.0  0.0      0     0 ?        S&lt;   14:04   0:00 [kworker/0:0H]
+<a id="__codelineno-0-469" name="__codelineno-0-469" href="#__codelineno-0-469"></a>root         7  0.0  0.0      0     0 ?        S    14:04   0:00 [rcu_sched]
+<a id="__codelineno-0-470" name="__codelineno-0-470" href="#__codelineno-0-470"></a>root         8  0.0  0.0      0     0 ?        S    14:04   0:00 [rcu_bh]
+<a id="__codelineno-0-471" name="__codelineno-0-471" href="#__codelineno-0-471"></a>root         9  0.0  0.0      0     0 ?        S    14:04   0:00 [migration/0]
+<a id="__codelineno-0-472" name="__codelineno-0-472" href="#__codelineno-0-472"></a>(...)
+<a id="__codelineno-0-473" name="__codelineno-0-473" href="#__codelineno-0-473"></a>Let us explain the columns:
+<a id="__codelineno-0-474" name="__codelineno-0-474" href="#__codelineno-0-474"></a>USER
+<a id="__codelineno-0-475" name="__codelineno-0-475" href="#__codelineno-0-475"></a>Owner of process.
+<a id="__codelineno-0-476" name="__codelineno-0-476" href="#__codelineno-0-476"></a>PID
+<a id="__codelineno-0-477" name="__codelineno-0-477" href="#__codelineno-0-477"></a>Process identifier.
+<a id="__codelineno-0-478" name="__codelineno-0-478" href="#__codelineno-0-478"></a>304 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+<a id="__codelineno-0-479" name="__codelineno-0-479" href="#__codelineno-0-479"></a>
+<a id="__codelineno-0-480" name="__codelineno-0-480" href="#__codelineno-0-480"></a>%CPU
+<a id="__codelineno-0-481" name="__codelineno-0-481" href="#__codelineno-0-481"></a>Percentage of CPU used.
+<a id="__codelineno-0-482" name="__codelineno-0-482" href="#__codelineno-0-482"></a>%MEM
+<a id="__codelineno-0-483" name="__codelineno-0-483" href="#__codelineno-0-483"></a>Percentage of physical memory used.
+<a id="__codelineno-0-484" name="__codelineno-0-484" href="#__codelineno-0-484"></a>VSZ
+<a id="__codelineno-0-485" name="__codelineno-0-485" href="#__codelineno-0-485"></a>Virtual memory of process in KiB.
+<a id="__codelineno-0-486" name="__codelineno-0-486" href="#__codelineno-0-486"></a>RSS
+<a id="__codelineno-0-487" name="__codelineno-0-487" href="#__codelineno-0-487"></a>Non-swapped physical memory used by process in KiB.
+<a id="__codelineno-0-488" name="__codelineno-0-488" href="#__codelineno-0-488"></a>TT
+<a id="__codelineno-0-489" name="__codelineno-0-489" href="#__codelineno-0-489"></a>Terminal (tty) controlling the process.
+<a id="__codelineno-0-490" name="__codelineno-0-490" href="#__codelineno-0-490"></a>STAT
+<a id="__codelineno-0-491" name="__codelineno-0-491" href="#__codelineno-0-491"></a>Code representing the state of process. Apart from S, R and Z (that we saw when describing the
+<a id="__codelineno-0-492" name="__codelineno-0-492" href="#__codelineno-0-492"></a>output of top), other possible values include: D (uninterruptible sleep — usually waiting for
+<a id="__codelineno-0-493" name="__codelineno-0-493" href="#__codelineno-0-493"></a>I/O), T (stopped — normally by a control signal). Some extra modifier include: &lt; (high-
+<a id="__codelineno-0-494" name="__codelineno-0-494" href="#__codelineno-0-494"></a>priority — not nice to other processes), N (low-priority — nice to other processes), or + (in the
+<a id="__codelineno-0-495" name="__codelineno-0-495" href="#__codelineno-0-495"></a>foreground process group).
+<a id="__codelineno-0-496" name="__codelineno-0-496" href="#__codelineno-0-496"></a>STARTED
+<a id="__codelineno-0-497" name="__codelineno-0-497" href="#__codelineno-0-497"></a>Time at which the process started.
+<a id="__codelineno-0-498" name="__codelineno-0-498" href="#__codelineno-0-498"></a>TIME
+<a id="__codelineno-0-499" name="__codelineno-0-499" href="#__codelineno-0-499"></a>Accumulated CPU time.
+<a id="__codelineno-0-500" name="__codelineno-0-500" href="#__codelineno-0-500"></a>COMMAND
+<a id="__codelineno-0-501" name="__codelineno-0-501" href="#__codelineno-0-501"></a>Command that started the process.
+<a id="__codelineno-0-502" name="__codelineno-0-502" href="#__codelineno-0-502"></a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 305
+</code></pre></div>
+<hr>
+<h2 id="3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te">🛠 3. Bảng Tra Cứu Lệnh &amp; Ứng Dụng DevOps Thực Tế<a class="headerlink" href="#3-bang-tra-cuu-lenh-ung-dung-devops-thuc-te" title="Permanent link">¶</a></h2>
+<h3 id="bang-lenh-trong-tam-key-command-reference">💡 Bảng Lệnh Trọng Tâm (Key Command Reference)<a class="headerlink" href="#bang-lenh-trong-tam-key-command-reference" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Lệnh / File / Folder</th>
+<th style="text-align: left;">Chức năng chính</th>
+<th style="text-align: left;">Ứng dụng thực tế DevOps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>command / path</code></td>
+<td style="text-align: left;">Tra cứu &amp; kiểm tra cấu hình</td>
+<td style="text-align: left;">Quản trị Server Linux, Cloud EC2, Docker Container</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/etc/</code></td>
+<td style="text-align: left;">Thư mục chứa cấu hình hệ thống</td>
+<td style="text-align: left;">Quản lý cấu hình bằng Ansible, Terraform, Puppet</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>systemctl / journalctl</code></td>
+<td style="text-align: left;">Quản lý Service &amp; Xem Log tiến trình</td>
+<td style="text-align: left;">Debug ứng dụng microservices trên Linux Server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grep / sed / awk</code></td>
+<td style="text-align: left;">Xử lý &amp; Lọc luồng dữ liệu text</td>
+<td style="text-align: left;">Viết Bash script tự động hóa CI/CD Pipelines</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-bai-tap-huong-dan-thuc-hanh-guided-exercises">🧪 4. Bài Tập Hướng Dẫn &amp; Thực Hành (Guided Exercises)<a class="headerlink" href="#4-bai-tap-huong-dan-thuc-hanh-guided-exercises" title="Permanent link">¶</a></h2>
+<p>Guided Exercises
+1. oneko is a nice funny program that displays a cat chasing your mouse cursor. If not already
+installed in your desktop system, install it using your distribution’s package manager. We will
+use it to study job control.
+◦Start the program. How do you do that?
+◦Move the mouse cursor to see how the cat chases it. Now suspend the process. How do you
+do that? What is the output?
+◦Check how many jobs you currently have. What do you type? What is the output?
+◦Now send it to the background specifying its job ID. What is the output? How can you tell the
+job is running in the background?
+◦Finally, terminate the job specifying its job ID. What do you type?
+2. Discover the PIDs of all the processes spawned by the Apache HTTPD web server (apache2)
+with two different commands:
+3. Terminate all apache2 processes without using their PIDs and with two different commands:
+4. Suppose you have to terminate all instances of apache2 and you do not have time to find out
+what their PIDs are. How would you accomplish that using kill with the default SIGTERM
+signal in a one-liner:
+5. Start top and interact with it by performing the following:
+306 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>◦Show a forest view of processes:
+◦Show full paths of processes differentiating between userspace and kernelspace:
+6. Type the ps command to display all processes started by the Apache HTTPD web server user
+(www-data):
+◦Using BSD syntax:
+◦Using UNIX syntax:
+◦Using GNU syntax:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 307</p>
+<p>Explorational Exercises
+1. The SIGHUP signal can be used as a way to restart certain daemons. With the Apache HTTPD
+web server — for example — sending SIGHUP to the parent process (the one started by init)
+kills off its children. The parent, however, re-reads its configuration files, re-opens log files and
+spawns a new set of children. Do the following tasks:
+◦Start the web server:
+◦Make sure you know the PID of the parent process:
+◦Make the Apache HTTPD web server restart by sending it the SIGHUP signal to the parent
+process:
+◦Check that the parent was not killed and that new children have been spawned:
+2. Although initially static, the output of ps can be turned dynamic by combining ps and watch.
+We will monitor the Apache HTTPD web server for new connections. Before doing the tasks
+described 
+below 
+it 
+is 
+recommended 
+that 
+you 
+read 
+the 
+description 
+of 
+the
+MaxConnectionsPerChild directive in Apache MPM Common Directives.
+◦Add the MaxConnectionsPerChild directive with a value of 1 in the configuration file of
+apache2 — in Debian and derivatives that is found in /etc/apache2/apache2.conf; in the
+CentOS family, in /etc/httpd/conf/httpd.conf. Do not forget to restart apache2 for the
+changes to take effect.
+◦Type in a command that uses watch, ps and grep for apache2 connections.
+◦Now open a web browser or use a command line browser such as lynx to establish a
+connection to the web server through its IP address. What do you observe in the output of
+watch?
+3. As you have learned, by default top sorts the tasks by percentage of CPU usage in descending
+308 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>order (the higher values on top). This behaviour can be modified with the interactive keys M
+(memory usage), N (process unique identifier), T (running time) and P (percentage of CPU time).
+However, you can also sort the task list to your liking by launching top with the -o switch (for
+more information, check top’s man page). Now, perform the following tasks:
+◦Launch top so that the tasks are sorted by memory usage:
+◦Verify that you typed the right command by highlighting the memory column:
+4. ps also has an o switch to specify the columns you want shown. Investigate this option and do
+the following tasks:
+◦Launch ps so that only information about user, percentage of memory used, percentage of
+CPU time used and full command is shown:
+◦Now, launch ps so that the only information displayed is that of the user and the name of
+the programs they are using:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 309</p>
+<p>Summary
+In this lesson you have learned about jobs and job control. Important facts and concepts to bear in
+mind are:
+• Jobs are processes that are sent to the background.
+• Apart from a process ID, jobs are also assigned a job ID when created.
+• To control jobs, a job specification (jobspec) is required.
+• Jobs can be brought to the foreground, sent to the background, suspended and terminated (or
+killed).
+• A job can be detached from the terminal and session in which it was created.
+Likewise, we have also discussed the concept of processes and process monitoring. The most
+relevant ideas are:
+• Processes are running programs.
+• Processes can be monitored.
+• Different utilities allow us to find out the process ID of processes as well as to send them signals
+to terminate them.
+• Signals can be specified by name (e.g. -SIGTERM), number (e.g. -15) or option (e.g. -s
+SIGTERM).
+• top and ps are very powerful when it comes to monitoring processes. The output of the former
+is dynamic and keeps updating constantly; on the other hand, ps reveals output statically.
+Commands used in this lesson:
+jobs
+Display active jobs and their status.
+sleep
+Delay for a specific amount of time.
+fg
+Bring job to the foreground.
+bg
+Move job to the background.
+310 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>kill
+Terminate job.
+nohup
+Detach job from session/terminal.
+exit
+Exit current shell.
+tail
+Display most recent lines in a file.
+watch
+Run a command repeatedly (2 seconds cycle by default).
+uptime
+Display how long the system has been running, the number of current users and system load
+average.
+free
+Display memory usage.
+pgrep
+Look up process ID based on name.
+pidof
+Look up process ID based on name.
+pkill
+Send signal to process by name.
+killall
+Kill process(es) by name.
+top
+Display Linux processes.
+ps
+Report a snapshot of the current processes.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 311</p>
+<hr>
+<h2 id="5-ap-an-giai-thich-chi-tiet-answers-solutions">✅ 5. Đáp Án &amp; Giải Thích Chi Tiết (Answers &amp; Solutions)<a class="headerlink" href="#5-ap-an-giai-thich-chi-tiet-answers-solutions" title="Permanent link">¶</a></h2>
+<p>Answers to Guided Exercises
+1. oneko is a nice funny program that displays a cat chasing your mouse cursor. If not already
+installed in your desktop system, install it using your distribution’s package manager. We will
+use it to study job control.
+◦Start the program. How do you do that?
+By typing oneko into the terminal.
+◦Move the mouse cursor to see how the cat chases it. Now suspend the process. How do you
+do that? What is the output?
+By pressing the key combo Ctrl  +  z :
+[1]+  Stopped                 oneko
+◦Check how many jobs you currently have. What do you type? What is the output?
+$ jobs
+[1]+  Stopped                 oneko
+◦Now send it to the background specifying its job ID. What is the output? How can you tell the
+job is running in the background?
+$ bg %1
+[1]+ oneko &amp;
+The cat is moving again.
+◦Finally, terminate the job specifying its job ID. What do you type?
+$ kill %1
+2. Discover the PIDs of all the processes spawned by the Apache HTTPD web server (apache2)
+with two different commands:
+$ pgrep apache2
+312 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>or
+$ pidof apache2
+3. Terminate all apache2 processes without using their PIDs and with two different commands:
+$ pkill apache2
+or
+$ killall apache2
+4. Suppose you have to terminate all instances of apache2 and you do not have time to find out
+what their PIDs are. How would you accomplish that using kill with the default SIGTERM
+signal in a one-liner:
+$ kill $(pgrep apache2)
+$ kill <code>pgrep apache2</code>
+or
+$ kill $(pidof apache2)
+$ kill <code>pidof apache2</code>
+NOTE
+Since SIGTERM (15) is the default signal, it is not necessary to pass any options to
+kill.
+5. Start top and interact with it by performing the following:
+◦Show a forest view of processes:
+Press V.
+◦Show full paths of processes differentiating between userspace and kernelspace:
+Press c.
+6. Type the ps command to display all processes started by the Apache HTTPD web server user
+(www-data):
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 313</p>
+<p>◦Using BSD syntax:
+$ ps U www-data
+◦Using UNIX syntax:
+$ ps -u www-data
+◦Using GNU syntax:
+$ ps --user www-data
+314 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Answers to Explorational Exercises
+1. The SIGHUP signal can be used as a way to restart certain daemons. With the Apache HTTPD
+web server — for example — sending SIGHUP to the parent process (the one started by init)
+kills off its children. The parent, however, re-reads its configuration files, re-opens log files and
+spawns a new set of children. Do the following tasks:
+◦Start the web server:
+$ sudo systemctl start apache2
+◦Make sure you know the PID of the parent process:
+$ ps aux | grep apache2
+The parent process is that started by the root user. In our case the one with PID 1653.
+◦Make the Apache HTTPD web server restart by sending it the SIGHUP signal to the parent
+process:
+$ kill -SIGHUP 1653
+◦Check that the parent was not killed and that new children have been spawned:
+$ ps aux | grep apache2
+Now you should see the parent apache2 process together with two new children.
+2. Although initially static, the output of ps can be turned dynamic by combining ps and watch.
+We will monitor the Apache HTTPD web server for new connections. Before doing the tasks
+described 
+below 
+it 
+is 
+recommended 
+that 
+you 
+read 
+the 
+description 
+of 
+the
+MaxConnectionsPerChild directive in Apache MPM Common Directives.
+◦Add the MaxConnectionsPerChild directive with a value of 1 in the config file of
+apache2 — in Debian and derivatives that is found in /etc/apache2/apache2.conf; in the
+CentOS family, in /etc/httpd/conf/httpd.conf. Do not forget to restart apache2 for the
+changes to take effect.
+The line to include in the config file is MaxConnectionsPerChild 1. One way to restart the
+web server is through sudo systemctl restart apache2.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 315</p>
+<p>◦Type in a command that uses watch, ps and grep for apache2 connections.
+$ watch 'ps aux | grep apache2'
+or
+$ watch "ps aux | grep apache2"
+◦Now open a web browser or use a command line browser such as lynx to establish a
+connection to the web server through its IP address. What do you observe in the output of
+watch?
+One of the child processes owned by www-data disappears.
+3. As you have learned, by default top sorts the tasks by percentage of CPU usage in descending
+order (the higher values on top). This behaviour can be modify with the interactive keys M
+(memory usage), N (process unique identifier), T (running time) and P (percentage of CPU time).
+However, you can also sort the task list to your liking by launching top with the -o switch (for
+more information, check top’s man page). Now, do the following tasks:
+◦Launch top so that the tasks are sorted by memory usage:
+$ top -o %MEM
+◦Verify that you typed the right command by highlighting the memory column:
+Press x.
+4. ps has also an o switch to specify the columns you want shown. Investigate about this and do
+the following tasks:
+◦Launch ps so that only information about user, percentage of memory used, percentage of
+CPU time used and full command is shown:
+$ ps o user,%mem,%cpu,cmd
+◦Now, launch ps so that the only information displayed is that of the user and the name of
+the programs they are using:
+316 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>$ ps o user,comm
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 317</p>
+<p>103.5 Lesson 2
+Certificate:
+LPIC-1
+Version:
+5.0
+Topic:
+103 GNU and Unix Commands
+Objective:
+103.5 Create, monitor and kill processes
+Lesson:
+2 of 2
+Introduction
+The tools and utilities seen in the previous lesson are very useful for process monitoring at large.
+However, a system administrator may need to go one step further. In this lesson we will discuss
+the concept of terminal multiplexers and learn about GNU Screen and tmux as — despite today’s
+modern and great terminal emulators — multiplexers still preserve some cool, powerful features
+for a productive system administrator.
+Features of Terminal Multiplexers
+In electronics, a multiplexer (or mux) is a device that allows for multiple inputs to be connected to
+a single output. Thus, a terminal multiplexer gives us the ability to switch between different
+inputs as required. Although not exactly the same, screen and tmux share a series of common
+features:
+• Any successful invocation will result in at least a session which — in turn — will include at least
+a window. Windows contain programs.
+• Windows can be split into regions or panes — which can aid in productivity when working
+318 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>with various programs simultaneously.
+• Ease of control: to run most commands, they use a key combination — the so-called command
+prefix or command key — followed by another character.
+• Sessions can be detached from their current terminal (that is, programs are sent to the
+background and continue to run). This guarantees complete execution of programs no matter if
+we accidentally close a terminal, experience an occasional terminal freeze or even remote
+connection loss.
+• Socket connection.
+• Copy mode.
+• They are highly customizable.
+GNU Screen
+In the earlier days of Unix (1970s - 80s) computers basically consisted of terminals connected to a
+central computer. That was all, no multiple windows or tabs. And that was the reason behind the
+creation of GNU Screen in 1987: emulate multiple independent VT100 screens on a single physical
+terminal.
+Windows
+GNU Screen is invoked just by typing screen into the terminal. You will first see a welcome
+message:
+GNU Screen version 4.05.00 (GNU) 10-Dec-16
+Copyright (c) 2010 Juergen Weigert, Sadrul Habib Chowdhury
+Copyright (c) 2008, 2009 Juergen Weigert, Michael Schroeder, Micah Cowan, Sadrul Habib
+Chowdhury
+Copyright (c) 1993-2002, 2003, 2005, 2006, 2007 Juergen Weigert, Michael Schroeder
+Copyright (c) 1987 Oliver Laumann
+(...)
+Press Space or Enter to close the message and you will be shown a command prompt:
+$
+It may seem nothing has happened but the fact is that screen has already created and managing
+its first session and window. Screen’s command prefix is Ctrl  +  a . To see all windows at the bottom
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 319</p>
+<p>of the terminal display, type Ctrl  +  a - w :
+0<em>$ bash
+There it is, our one and only window so far! Note that the count starts at 0, though. To create
+another window, type Ctrl  +  a - c . You will see a new prompt. Let us start ps in that new window:
+$ ps
+&nbsp; PID TTY          TIME CMD
+&nbsp; 974 pts/2    00:00:00 bash
+&nbsp; 981 pts/2    00:00:00 ps
+and type Ctrl  +  a - w  again:
+0-$ bash  1</em>$ bash
+There we have our two windows (note the asterisk indicating the one that is being shown at the
+moment). However, as they were started with Bash, they are both given the same name. Since we
+invoked ps in our current window, let us rename it with that same name. For that, you have to
+type Ctrl  +  a - A  and write the new window name (ps) when prompted:
+Set window's title to: ps
+Now, let us create another window but provide it a name from the start: yetanotherwindow. This
+is done by invoking screen with the -t switch:
+$ screen -t yetanotherwindow
+You can move between windows in different ways:
+• By using Ctrl  +  a - n  (go to next window) and Ctrl  +  a - p  (go to previous window).
+• By using Ctrl  +  a - number  (go to window number number).
+• By using Ctrl  +  a - "  to see a list of all windows. You can move up and down with the arrow keys
+and select the one you want with Enter:
+Num Name                                                Flags
+320 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>0 bash                                                   $
+&nbsp;  1 ps                                                     $
+&nbsp;  2 yetanotherwindow
+While working with windows it is important to remember the following:
+• Windows run their programs completely independent of each other.
+• Programs will continue to run even if their window is not visible (also when the screen session
+is detached as we will see shortly).
+To remove a window, simply terminate the program running in it (once the last window is
+removed, screen will itself terminate). Alternatively, use Ctrl  +  a - k  while in the window you want
+to remove; you will be asked for confirmation:
+Really kill this window [y/n]
+Window 0 (bash) killed.
+Regions
+screen can divide a terminal screen up into multiple regions in which to accommodate windows.
+These divisions can be either horizontal ( Ctrl  +  a - S ) or vertical ( Ctrl  +  a - | ).
+The only thing the new region will show is just -- at the bottom meaning it is empty:
+&nbsp;  1 ps                                                               --
+To move to the new region, type Ctrl  +  a - Tab . Now you can add a window by any of the methods that
+we have already seen, for example: 
+Ctrl  +  a - 2 . Now the -- should have turned into 2
+yetanotherwindow:
+$ ps                                                  $
+&nbsp; PID TTY          TIME CMD
+&nbsp;1020 pts/2    00:00:00 bash
+&nbsp;1033 pts/2    00:00:00 ps
+$ screen -t yetanotherwindow
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 321</p>
+<p>1 ps                                                                2 yetanotherwindow
+Important aspects to keep in mind when working with regions are:
+• You move between regions by typing Ctrl  +  a - Tab .
+• You can terminate all regions except the current one with Ctrl  +  a - Q .
+• You can terminate the current region with Ctrl  +  a - X .
+• Terminating a region does not terminate its associated window.
+Sessions
+So far we have played with a few windows and regions, but all belonging to the same and only
+session. It is time to start playing with sessions. To see a list of all sessions, type screen -list or
+screen -ls:
+$ screen -list
+There is a screen on:
+&nbsp;       1037.pts-0.debian       (08/24/19 13:53:35)     (Attached)
+1 Socket in /run/screen/S-carol.
+That is our only session so far:
+PID
+1037
+Name
+pts-0.debian (indicating the terminal — in our case a pseudo terminal slave — and the
+hostname).
+Status
+Attached
+Let us create a new session giving it a more descriptive name:
+$ screen -S "second session"
+The terminal display will be cleared and you will be given a new prompt. You can check for
+sessions once more:
+322 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>$ screen -ls
+There are screens on:
+&nbsp;       1090.second session     (08/24/19 14:38:35)     (Attached)
+&nbsp;       1037.pts-0.debian       (08/24/19 13:53:36)     (Attached)
+2 Sockets in /run/screen/S-carol.
+To kill a session, quit out of all its windows or just type the command screen -S SESSION-PID
+-X quit (you can also provide the session name instead). Let us get rid of our first session:
+$ screen -S 1037 -X quit
+You will be sent back to your terminal prompt outside of screen. But remember, our second
+session is still alive:
+$ screen -ls
+There is a screen on:
+&nbsp;   1090.second session (08/24/19 14:38:35) (Detached)
+1 Socket in /run/screen/S-carol.
+However, since we killed its parent session, it is given a new label: Detached.
+Session Detachment
+For a number of reasons you may want to detach a screen session from its terminal:
+• To let your computer at work do its business and connect remotely later from home.
+• To share a session with other users.
+You detach a session with the key combination Ctrl  +  a - d . You will be taken back into your terminal:
+[detached from 1090.second session]
+$
+To attach again to the session, you use the command screen -r SESSION-PID. Alternatively, you
+can use the SESSION-NAME as we saw above. If there is only one detached session, neither is
+compulsory:
+$ screen -r
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 323</p>
+<p>This command suffices to reattach to our second session:
+$ screen -ls
+There is a screen on:
+&nbsp;       1090.second session      (08/24/19 14:38:35)     (Attached)
+1 Socket in /run/screen/S-carol.
+Important options for session reattaching:
+-d -r
+Reattach a session and — if necessary — detach it first.
+-d -R
+Same as -d -r but screen will even create the session first if it does not exist.
+-d -RR
+Same as -d -R. However, use the first session if more than one is available.
+-D -r
+Reattach a session. If necessary, detach and logout remotely first.
+-D -R
+If a session is running, then reattach (detaching and logging out remotely first if necessary). If it
+was not running create it and notify the user.
+-D -RR
+Same as -D -R — only stronger.
+-d -m
+Start screen in detached mode. This creates a new session but does not attach to it. This is
+useful for system startup scripts.
+-D -m
+Same as -d -m, but does not fork a new process. The command exits if the session terminates.
+Read the manual pages for screen to find out about other options.
+Copy &amp; Paste: Scrollback Mode
+GNU Screen features a copy or scrollback mode. Once entered, you can move the cursor in the
+current window and through the contents of its history using the arrow keys. You can mark text
+324 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>and copy it across windows. The steps to follow are:
+1. Enter copy/scrollback mode: Ctrl  +  a - [ .
+2. Move to the beginning of the piece of text you want to copy using the arrow keys.
+3. Mark the beginning of the piece of text you want to copy: Space.
+4. Move to the end of the piece of text you want to copy using the arrow keys.
+5. Mark the end of the piece of text you want to copy: Space.
+6. Go to the window of your choice and paste the piece of text: Ctrl  +  a - ] .
+Customization of screen
+The system-wide configuration file for screen is /etc/screenrc. Alternatively, a user-level
+~/.screenrc can be used. The file includes four main configuration sections:
+SCREEN SETTINGS
+You can define general settings by specifying the directive followed by a space and the value as
+in: defscrollback 1024.
+SCREEN KEYBINDINGS
+This section is quite interesting as it allows you to redefine keybindings that perhaps interfere
+with your everyday use of the terminal. Use the keyword bind followed by a Space, the
+character to use after the command prefix, another Space and the command as in: bind l
+kill (this setting will change the default way of killing a window to Ctrl  +  a - l ).
+To display all of screen’s bindings, type Ctrl  +  a - ?  or consult the manual page.
+TIP
+Of course, you can also change the command prefix itself. For example to go from
+Ctrl  +  a  to Ctrl  +  b , just add this line: escape ^Bb.
+TERMINAL SETTINGS
+This section includes settings related to terminal window sizes and buffers — amongst others.
+To enable non-blocking mode to better cope with unstable ssh connections, for instance, the
+following configuration is used: defnonblock 5.
+STARTUP SCREENS
+You can include commands to have various programs running on screen startup; for example:
+screen -t top top (screen will open a window named top with top inside).
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 325</p>
+<p>tmux
+tmux was released in 2007. Although very similar to screen, it includes a few notable differences:
+• Client-server model: the server supplies a number of sessions, each of which may have a
+number of windows linked to it that can, in turn, be shared by various clients.
+• Interactive selection of sessions, windows and clients via menus.
+• The same window can be linked to a number of sessions.
+• Availability of both vim and Emacs key layouts.
+• UTF-8 and 256-colour terminal support.
+Windows
+tmux can be invoked by simply typing tmux at the command prompt. You will be shown a shell
+prompt and a status bar at the bottom of the window:
+[0] 0:bash<em>                                                        "debian" 18:53 27-Aug-19
+Other than the hostname, the time and the date, the status bar provides the following
+information:
+Session name
+[0]
+Window number
+0:
+Window name
+bash</em>. By default this is the name of the program running inside the window and — unlike
+screen — tmux will automatically update it to reflect the current running program. Note the
+asterisk indicating that this is the current, visible window.
+You can assign session and window names when invoking tmux:
+$ tmux new -s "LPI" -n "Window zero"
+The status bar will change accordingly:
+326 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>[LPI] 0:Window zero<em>                                                 "debian" 19:01 27-Aug-
+19
+tmux’s command prefix is Ctrl  +  b . To create a new window, just type Ctrl  +  b - c ; you will be taken to a
+new prompt and the status bar will reflect the new window:
+[LPI] 0:Window zero- 1:bash</em>                                         "debian" 19:02 27-Aug-
+19
+As Bash is the underlying shell, the new window is given that name by default. Start top and see
+how the name changes to top:
+[LPI] 0:Window zero- 1:top<em>                                         "debian" 19:03 27-Aug-19
+In any case, you can rename a window with Ctrl  +  b - , . When prompted, supply the new name and
+hit Enter:
+(rename-window) Window one
+You can have all windows displayed for selection with Ctrl  +  b - w  (use the arrow keys to move up
+and down and enter  to select):
+(0)  0: Window zero- "debian"
+(1)  1: Window one</em> "debian"
+In a similar fashion to screen, we can jump from one window to another with:
+Ctrl  +  b - n
+go to next window.
+Ctrl  +  b - p
+go to previous window.
+Ctrl  +  b - number
+go to window number number.
+To get rid of a window, use Ctrl  +  b - &amp; . You will be asked for confirmation:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 327</p>
+<p>kill-window Window one? (y/n)
+Other interesting window commands include:
+Ctrl  +  b - f
+find window by name.
+Ctrl  +  b - .
+change window index number.
+To read the whole list of commands, consult the manual page.
+Panes
+The window-splitting facility of screen is also present in tmux. The resulting divisions are not
+called regions but panes, though. The most important difference between regions and panes is that
+the latter are complete pseudo-terminals linked to a window. This means that killing a pane will
+also kill its pseudo-terminal and any associated programs running within.
+To split a window horizontally, we use Ctrl  +  b - " :
+Tasks:  93 total,   1 running,  92 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  4050960 total,  3730920 free,   114880 used,   205160 buff/cache
+KiB Swap:  4192252 total,  4192252 free,        0 used.  3716004 avail Mem
+&nbsp; PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+&nbsp;1340 carol     20   0   44876   3400   2800 R  0.3  0.1   0:00.24 top
+&nbsp;   1 root      20   0  139088   6988   5264 S  0.0  0.2   0:00.50 systemd
+&nbsp;   2 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kthreadd
+&nbsp;   3 root      20   0       0      0      0 S  0.0  0.0   0:00.04 ksoftirqd/0
+&nbsp;   4 root      20   0       0      0      0 S  0.0  0.0   0:01.62 kworker/0:0
+&nbsp;   5 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 kworker/0:0H
+&nbsp;   7 root      20   0       0      0      0 S  0.0  0.0   0:00.06 rcu_sched
+&nbsp;   8 root      20   0       0      0      0 S  0.0  0.0   0:00.00 rcu_bh
+&nbsp;   9 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0
+&nbsp;  10 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 lru-add-drain
+&nbsp;  11 root      rt   0       0      0      0 S  0.0  0.0   0:00.01 watchdog/0
+&nbsp;  12 root      20   0       0      0      0 S  0.0  0.0   0:00.00 cpuhp/0
+$
+────────────────────────────────────────────────────────────────────────────────────────────
+───
+328 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>$
+[LPI] 0:Window zero- 1:Window one*                                      "debian" 19:05 27-
+Aug-19
+To split it vertically, use Ctrl  +  b - % :
+&nbsp;                                                                              │$
+&nbsp;   1 root      20   0  139088   6988   5264 S  0.0  0.2   0:00.50 systemd     │
+&nbsp;                                                                              │
+&nbsp;   2 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kthreadd    │
+&nbsp;                                                                              │
+&nbsp;   3 root      20   0       0      0      0 S  0.0  0.0   0:00.04 ksoftirqd/0 │
+&nbsp;   4 root      20   0       0      0      0 S  0.0  0.0   0:01.62 kworker/0:0 │
+&nbsp;   5 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 kworker/0:0H│
+&nbsp;   7 root      20   0       0      0      0 S  0.0  0.0   0:00.06 rcu_sched   │
+&nbsp;   8 root      20   0       0      0      0 S  0.0  0.0   0:00.00 rcu_bh      │
+&nbsp;   9 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0 │
+&nbsp;                                                                              │
+&nbsp;  10 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 lru-add-drai│
+n                                                                              │
+&nbsp;  11 root      rt   0       0      0      0 S  0.0  0.0   0:00.01 watchdog/0  │
+&nbsp;                                                                              │
+&nbsp;  12 root      20   0       0      0      0 S  0.0  0.0   0:00.00 cpuhp/0     │
+&nbsp;                                                                              │
+$                                                                              │
+───────────────────────────────────────────────────────────────────────────────┴────────────
+───
+$
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 329</p>
+<p>[LPI] 0:Window zero- 1:Window one*                                      "debian" 19:05 27-
+Aug-19
+To destroy the current pane (along with its pseudo-terminal running within it, along with any
+associated programs), use Ctrl  +  b - x . You will be asked for confirmation on the status bar:
+kill-pane 1? (y/n)
+Important pane commands:
+Ctrl  +  b - ↑, ↓, ←, →
+move between panes.
+Ctrl  +  b - ;
+move to the last active pane.
+Ctrl  +  b - Ctrl  +  arrow key</p>
+<p>resize pane by one line.
+Ctrl  +  b - Alt  +  arrow key</p>
+<p>resize pane by five lines.
+Ctrl  +  b - {
+swap panes (current to previous).
+Ctrl  +  b - }
+swap panes (current to next).
+330 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Ctrl  +  b - z
+zoom in/out panel.
+Ctrl  +  b - t
+tmux displays a fancy clock inside the pane (kill it by pressing q).
+Ctrl  +  b - !
+turn pane into window.
+To read the whole list of commands, consult the manual page.
+Sessions
+To list sessions in tmux you can use Ctrl  +  b - s :
+(0) + LPI: 2 windows (attached)
+Alternatively, you can use the tmux ls command:
+$ tmux ls
+LPI: 2 windows (created Tue Aug 27 19:01:49 2019) [158x39] (attached)
+There is only one session (LPI) which includes two windows. Let us create a new session from
+within our current session. This can be achieved by using Ctrl  +  b , type in :new at the prompt, then
+press Enter. You will be sent to the new session as can be observed on the status bar:
+[2] 0:bash*                                                       "debian" 19:15 27-Aug-19
+By default tmux named the session 2. To rename it, use Ctrl  +  b - $ . When prompted, supply the new
+name and hit Enter:
+(rename-session) Second Session
+You can switch sessions with Ctrl  +  b - s  (use the arrow keys and enter ):
+(0) + LPI: 2 windows
+(1) + Second Session: 1 windows (attached)
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 331</p>
+<p>To kill a session, you can use the command tmux kill-session -t SESSION-NAME. If you type
+the command from within the current, attached session, you will be taken out of tmux and back to
+your initial terminal session:
+$ tmux kill-session -t "Second Session"
+[exited]
+$
+Sessions Detachment
+By killing Second Session we were thrown outside tmux. However, we still have an active
+session. Ask tmux for a listing of sessions and you will surely find it there:
+$ tmux ls
+LPI: 2 windows (created Tue Aug 27 19:01:49 2019) [158x39]
+However this session is detached from its terminal. We can attach it with tmux attach -t
+SESSION-NAME (attach can be replaced by at or — simply — a). When there is only a single
+session, the name specification is optional:
+$ tmux a
+You are now back in your session; to detach from it, press Ctrl  +  b - d :
+[detached (from session LPI)]
+$
+TIP
+The same session can be attached to more than one terminal. If you want to attach a
+session making sure it is first detached from any other terminals, use the -d switch:
+tmux attach -d -t SESSION-NAME.
+Important commands for session attaching/detaching:
+Ctrl  +  b - D
+select what client to detach.
+Ctrl  +  b - r
+refresh the client’s terminal.
+332 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>To read the whole list of commands, consult the manual page.
+Copy &amp; Paste: Scrollback Mode
+tmux also features copy mode in basically the same fashion as screen (remember to use tmux’s
+command prefix and not screen’s!). The only difference command-wise is that you use Ctrl  + Space
+to mark the beginning of the selection and Alt  +  w  to copy the selected text.
+Customization of tmux
+The configuration files for tmux are typically located at /etc/tmux.conf and ~/.tmux.conf.
+When started, tmux sources these files if they exist. There is also the possibility of starting tmux
+with the -f switch to supply an alternate configuration file. You can find a tmux configuration file
+example located at /usr/share/doc/tmux/example_tmux.conf. The level of customization that
+you can achieve is really high. Some of the things you can do include:
+• Change the prefix key</p>
+<h1 id="change-the-prefix-key-to-c-a">Change the prefix key to C-a<a class="headerlink" href="#change-the-prefix-key-to-c-a" title="Permanent link">¶</a></h1>
+<p>set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+• Set extra key bindings for windows higher than 9</p>
+<h1 id="some-extra-key-bindings-to-select-higher-numbered-windows">Some extra key bindings to select higher numbered windows<a class="headerlink" href="#some-extra-key-bindings-to-select-higher-numbered-windows" title="Permanent link">¶</a></h1>
+<p>bind F1 selectw -t:10
+bind F2 selectw -t:11
+bind F3 selectw -t:12
+For a comprehensive list of all bindings, type Ctrl  +  b - ?  (press q to quit) or consult the manual page.
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 333</p>
+<p>Guided Exercises
+1. Indicate if the following statements/features correspond to GNU Screen, tmux or both:
+Feature/Statement
+GNU Screen
+tmux
+Default command prefix is
+Ctrl  +  a
+Client-Server Model
+Panes are pseudo-terminals
+Killing a region does not kill
+its associated window(s)
+Sessions include windows
+Sessions can be detached
+2. Install GNU Screen on your computer (package name: screen) and complete the following
+tasks:
+◦Start the program. What command do you use?
+◦Start top:
+◦Using screen’s key prefix, open a new window; then, open /etc/screenrc using vi:
+◦List the windows at the bottom of the screen:
+◦Change the name of the current window to vi:
+◦Change the name of the remaining window to top. To do that, first display a list of all
+windows so that you can move up and down and select the right one:
+◦Check that the names have changed by having the window names displayed at the bottom of
+334 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>the screen again:
+◦Now, detach the session and have screen create a new one named ssh:
+◦Detach also from ssh and have screen display the list of sessions:
+◦Now, attach to the first session using its PID:
+◦You should be back at the window displaying top. Split the window horizontally and move
+to the new empty region:
+◦Have screen list all windows and select vi to be displayed in the new empty region:
+◦Now, split the current region vertically, move into the newly created empty region and
+associate it with a brand new window:
+◦Terminate all regions except the current one (remember, although you kill the regions, the
+windows are still alive). Then, quit out of all the windows of the current session until the
+session itself is terminated:
+◦Finally, have screen list its sessions one more time, kill the remaining ssh session by PID
+and check that there are actually no sessions left:
+3. Install tmux on your computer (package name: tmux) and complete the following tasks:
+◦Start the program. What command do you use?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 335</p>
+<p>◦Start top (note how — in a couple of seconds — the name of the window changes to top in
+the status bar):
+◦Using tmux’s key prefix, open a new window; then, create ~/.tmux.conf using nano:
+◦Split the window vertically and reduce the size of the newly created pane a few times:
+◦Now change the name of the current window to text editing; then, have tmux display a
+list with all its sessions:
+◦Move to the window running top and back to the current one using the same key
+combination:
+◦Detach from the current session and create a new one whose name is ssh and its window
+name is ssh window:
+◦Detach also from the ssh session and have tmux display the list of sessions again:
+NOTE
+From this point on the exercise requires that you use a remote machine for
+ssh connections to your local host (a virtual machine is perfectly valid and
+can prove really practical). Make sure you have openssh-server installed
+and running on your local machine and that at least openssh-client is
+installed on the remote machine.
+◦Now, start a remote machine and connect via ssh with your local host. Once the connection
+has been established, check for tmux sessions:
+◦On the remote host, attach to the ssh session by name:
+336 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>◦Back at your local machine, attach to the ssh session by name making sure the connection to
+the remote host is terminated first:
+◦Have all sessions displayed for selection and go to your first session ([0]). Once there, kill
+session ssh by name:
+◦Finally, detach from the current session and kill it by name:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 337</p>
+<p>Explorational Exercises
+1. Both screen and tmux can enter command line mode through command prefix + :  (we already
+saw a brief example with tmux). Do some research and the following tasks in command line
+mode:
+◦Make screen enter copy mode:
+◦Make tmux rename the current window:
+◦Make screen close all windows and terminate session:
+◦Make tmux split a pane into two:
+◦Make tmux kill the current window:
+2. When you enter copy mode in screen not only can you use the arrow keys and PgUP  or PgDown  to
+navigate the current window and the scrollback buffer. There is also the possibility of using a
+vi-like full screen editor. Using this editor, perform the following tasks:
+◦Echo supercalifragilisticexpialidocious in your screen terminal:
+◦Now, copy the five consecutive characters (left-to-right) in the line right above your cursor:
+◦Finally, paste the selection (stice) back at your command prompt:
+3. Suppose you want to share a tmux session (our_session) with another user. You have created
+the socket (/tmp/our_socket) with the right permissions so that both you and the other user
+can read and write. What other two conditions should be met in order for the second user to be
+able to successfully attach the session through tmux -S /tmp/our_socket a -t
+338 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>our_session?
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 339</p>
+<p>Summary
+In this lesson you have learned about terminal multiplexers in general and GNU Screen and tmux
+in particular. Important concepts to remember include:
+• Command prefix: screen uses Ctrl  +  a  + character; tmux, Ctrl  +  b  + character.
+• Structure of sessions, windows and window divisions (regions or panes).
+• Copy mode.
+• Session detachment: one of the most powerful features of multiplexers.
+Commands used in this lesson:
+screen
+Start a screen session.
+tmux
+Start a tmux session.
+340 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Answers to Guided Exercises
+1. Indicate if the following statements/features correspond to GNU Screen, tmux or both:
+Feature/Statement
+GNU Screen
+tmux
+Default command prefix is
+Ctrl  +  a
+x
+Client-Server Model
+x
+Panes are pseudo-terminals
+x
+Killing a region does not kill
+its associated window(s)
+x
+Sessions include windows
+x
+x
+Sessions can be detached
+x
+x
+2. Install GNU Screen on your computer (package name: screen) and complete the following
+tasks:
+◦Start the program. What command do you use?
+screen
+◦Start top:
+top
+◦Using screen’s key prefix, open a new window; then, open /etc/screenrc using vi:
+Ctrl  +  a - c
+sudo vi /etc/screenrc
+◦List the windows at the bottom of the screen:
+Ctrl  +  a - w
+◦Change the name of the current window to vi:
+Ctrl  +  a - A . Then we have to type vi and press enter .
+◦Change the name of the remaining window to top. To do that, first display a list of all
+windows so that you can move up and down and select the right one:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 341</p>
+<p>First we type Ctrl  +  a - " . Then we use the arrow keys to mark the one that says 0 bash and
+press enter . Finally, we type Ctrl  +  a - A , type in top and press enter .
+◦Check that the names have changed by having the window names displayed at the bottom of
+the screen again:
+Ctrl  +  a - w
+◦Now, detach the session and have screen create a new one named ssh:
+Ctrl  +  a - d  screen -S "ssh" and press enter .
+◦Detach also from ssh and have screen display the list of sessions:
+Ctrl  +  a - d  screen -list or screen -ls.
+◦Now, attach to the first session using using its PID:
+screen -r PID-OF-SESSION
+◦You should be back at the window displaying top. Split the window horizontally and move
+to the new empty region:
+Ctrl  +  a - S
+Ctrl  +  a - Tab
+◦Have screen list all windows and select vi to be displayed in the new empty region:
+We use Ctrl  +  a - "  to have all windows displayed for selection, mark vi and press enter .
+◦Now, split the current region vertically, move into the newly created empty region and
+associate it with a brand new window:
+Ctrl  +  a - |
+Ctrl  +  a - Tab
+Ctrl  +  a - c
+◦Terminate all regions except the current one (remember, although you kill the regions, the
+windows are still alive). Then, quit out of all the windows of the current session until the
+session itself is terminated:
+Ctrl  +  a - Q . exit (to exit Bash). Shift  +  : , then we type quit and press enter  (to exit vi). After that,
+342 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>we type exit (to exit the underlying Bash shell) q (to terminate top); then we type exit (to
+exit the underlying Bash shell).
+◦Finally, have screen list its sessions one more time, kill the remaining ssh session by PID
+and check that there are actually no sessions left:
+screen -list or screen -ls
+screen -S PID-OF-SESSION -X quit
+screen -list or screen -ls
+3. Install tmux on your computer (package name: tmux) and complete the following tasks:
+◦Start the program. What command do you use?
+tmux
+◦Start top (note how — in a couple of seconds — the name of the window changes to top in
+the status bar):
+top
+◦Using tmux’s key prefix, open a new window; then, create ~/.tmux.conf using nano:
+Ctrl  +  b - c  nano ~/.tmux.conf
+◦Split the window vertically and reduce the size of the newly created pane a few times:
+Ctrl  +  b - "
+Ctrl  +  b - Ctrl  +  ↓
+◦Now change the name of the current window to text editing; then, have tmux display a
+list with all its sessions:
+Ctrl  +  b - , . Then we supply the new name and press enter . Ctrl  +  b - s  or tmux ls.
+◦Move to the window running top and back to the current one using the same key
+combination:
+Ctrl  +  b - n  or Ctrl  +  b - p
+◦Detach from the current session and create a new one whose name is ssh and its window
+name is ssh window:
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 343</p>
+<p>Ctrl  +  b - d  tmux new -s "ssh" -n "ssh window"
+◦Detach also from the ssh session and have tmux display the list of sessions again:
+Ctrl  +  b - d  tmux ls
+NOTE
+From this point on the exercise requires that you use a remote machine for
+ssh connections to your local host (a virtual machine is perfectly valid and
+can prove really practical). Make sure you have openssh-server installed
+and running on your local machine and that at least openssh-client is
+installed on the remote machine.
+◦Now, start a remote machine and connect via ssh with your local host. Once the connection
+has been established, check for tmux sessions:
+On remote host: ssh local-username@local-ipaddress. Once connected to the local
+machine: tmux ls.
+◦On the remote host, attach to the ssh session by name:
+tmux a -t ssh (a can be replaced by at or attach).
+◦Back at your local machine, attach to the ssh session by name making sure the connection to
+the remote host is terminated first:
+tmux a -d -t ssh (a can be replaced by at or attach).
+◦Have all sessions displayed for selection and go to your first session ([0]). Once there, kill
+session ssh by name:
+We type Ctrl  +  b - s , use the arrow keys to mark session 0 and press enter  tmux kill-session
+-t ssh.
+◦Finally, detach from the current session and kill it by name:
+Ctrl  +  b - d  tmux kill-session -t 0.
+344 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; </p>
+<p>Answers to Explorational Exercises
+1. Both screen and tmux can enter command line mode through command prefix + :  (we already
+saw a brief example with tmux). Do some research and the following tasks in command line
+mode:
+◦Make screen enter copy mode:
+Ctrl  +  a - :  — then, we type copy.
+◦Make tmux rename the current window:
+Ctrl  +  b - :  — then, we type rename-window.
+◦Make screen close all windows and terminate session:
+Ctrl  +  a - :  — then, we type quit.
+◦Make tmux split a pane into two:
+Ctrl  +  b - :  — then, we type split-window.
+◦Make tmux kill the current window:
+Ctrl  +  b - :  — then, we type kill-window.
+2. When you enter copy mode in screen not only can you use the arrow keys and PgUp  or PgDown  to
+navigate the current window and the scrollback buffer. There is also the possibility of using a
+vi-like full screen editor. Using this editor, perform the following tasks:
+◦Echo supercalifragilisticexpialidocious in your screen terminal:
+echo supercalifragilisticexpialidocious
+◦Now, copy the five consecutive characters (left-to-right) in the line right above your cursor:
+We enter copy mode: Ctrl  +  a - [  or Ctrl  +  a - :  and then type copy. Then, we move to the line
+above using k and press space  to mark beginning of selection. Finally, we move forward four
+characters using l and press space  again to mark the end of the selection.
+◦Finally, paste the selection (stice) back at your command prompt:
+Ctrl  +  a - ]
+3. Suppose you want to share a tmux session (our_session) with another user. You have created
+ &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 345</p>
+<p>the socket (/tmp/our_socket) with the right permissions so that both you and the other user
+can read and write. What other two conditions should be met in order for the second user to be
+able to successfully attach the session through tmux -S /tmp/our_socket a -t
+our_session?
+Both users must have a group in common, e.g. multiplexer. Then, we must have the socket
+changed into that group as well: chgrp multiplexer /tmp/our_socket.
+346 &nbsp;&nbsp;&nbsp; |</p>
+<hr>
+<h2 id="6-tom-tat-ket-luan-summary">📝 6. Tóm Tắt &amp; Kết Luận (Summary)<a class="headerlink" href="#6-tom-tat-ket-luan-summary" title="Permanent link">¶</a></h2>
+<ol>
+<li>Ghi nhớ cú pháp câu lệnh và ý nghĩa từng tùy chọn (flag/option).</li>
+<li>Hiểu rõ vị trí các file cấu hình quan trọng trong hệ thống Linux.</li>
+<li>Luôn kiểm tra log bằng <code>journalctl</code> hoặc tệp log tương ứng khi gặp sự cố.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 06:57:43 UTC">4 tháng 8, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="lelongc/devops" data-repo-id="R_kgDOOg304w" data-category="Q&amp;A" data-category-id="DIC_kwDOOg30484Cpie6" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="vi" crossorigin="anonymous" async="">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../103.4-use-streams-pipes-and-redirects/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Objective 103.4: Sử dụng Streams, Pipes và Redirects">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Objective 103.4: Sử dụng Streams, Pipes và Redirects
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../103.6-modify-process-execution-priorities/" class="md-footer__link md-footer__link--next" aria-label="Sau: Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp;amp; Renice)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Objective 103.6: Điều chỉnh Độ ưu tiên Tiến trình (Nice &amp; Renice)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
