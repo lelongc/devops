@@ -541,123 +541,95 @@
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/01.Network_Fundamentals/01.intro_and_components/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/01.Network_Fundamentals/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/01.Network_Fundamentals/02.network_geography_and_topologies/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/02.OSI_Model/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/02.OSI_Model/01.osi_7_layers_deep_dive/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/03.Ports_and_Protocols/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/02.OSI_Model/02.encapsulation_and_decapsulation/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/04.Media_and_Connectors/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/03.Ports_and_Protocols/01.tcp_udp_icmp_fundamentals/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/05.Distribution_Systems/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/03.Ports_and_Protocols/02.common_network_ports_reference/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/06.Wireless_Networks/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/03.Ports_and_Protocols/03.finding_open_ports_nmap/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/07.Ethernet_Switching/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/04.Media_and_Connectors/01.copper_media_and_wiring/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/08.IP_Addressing_and_Subnetting/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/04.Media_and_Connectors/02.fiber_optic_media_and_transceivers/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/09.Routing_and_Protocols/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/05.Wireless_Networks/01.wireless_standards_and_security/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/10.Network_Services/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/06.Ethernet_Switching/01.ethernet_frames_and_vlans/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/11.Wide_Area_Networks/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/06.Ethernet_Switching/02.stp_and_jumbo_frames/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/12.Cloud_and_Datacenter/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/07.IP_Addressing_and_Subnetting/01.ipv4_addressing_and_classes/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/13.Network_Security_Fundamentals/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/07.IP_Addressing_and_Subnetting/02.subnetting_and_cidr_mastery/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/14.Network_Attacks/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/07.IP_Addressing_and_Subnetting/03.ipv6_addressing_and_coexistence/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/15.Logical_Security_and_PKI/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/08.Routing_and_Protocols/01.routing_tables_and_protocols/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/16.Network_Segmentation_and_Firewalls/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/09.Network_Services/01.dns_dhcp_and_network_services/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/17.Network_Monitoring_and_SIEM/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/10.Wide_Area_Networks/01.wan_technologies/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/18.Orchestration_and_Automation/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/11.Cloud_and_Datacenter/01.cloud_architecture_sdn_vxlan/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/19.Documentation_and_Processes/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/12.Network_Security_Fundamentals/01.security_fundamentals_hardening/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/20.Disaster_Recovery/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/13.Network_Attacks/01.network_attacks_and_defenses/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/21.Troubleshooting_Methodology/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/14.Logical_Security_and_PKI/01.iam_encryption_pki/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/22.Troubleshooting_Tools/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/15.Network_Segmentation_and_Firewalls/01.firewalls_segmentation_vpn/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/16.Network_Monitoring_and_SIEM/01.monitoring_tools_snmp_siem/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/17.Orchestration_and_Automation/01.network_automation_iac_apis/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/18.Documentation_and_Processes/01.documentation_ipam_change_management/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/19.Disaster_Recovery/01.disaster_recovery_ha/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/20.Troubleshooting_Methodology_and_Tools/01.comptia_troubleshooting_methodology/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/20.Troubleshooting_Methodology_and_Tools/02.network_troubleshooting_cli_tools/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/network-comtia/20.Troubleshooting_Methodology_and_Tools/03.physical_wireless_service_troubleshooting/</loc>
+         <loc>https://lelongc.github.io/devops/network-comtia/23.Troubleshooting_Scenarios/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
