@@ -41,14 +41,6 @@
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/docker/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
-         <loc>https://lelongc.github.io/devops/docker/roadmap/</loc>
-         <lastmod>2026-08-04</lastmod>
-    </url>
-    <url>
          <loc>https://lelongc.github.io/devops/docker/docker-project/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
@@ -62,6 +54,90 @@
     </url>
     <url>
          <loc>https://lelongc.github.io/devops/docker/docker-project/templates/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/01.Docker_Architecture_and_Kernel_Namespaces/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/02.Docker_CLI_Fundamentals_and_Container_Lifecycle/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/03.Image_Management_and_Layer_Caching/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/04.Storage_Volumes_and_Bind_Mounts/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/05.Docker_Networking_Deep_Dive/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/06.Dockerfile_Directives_Mastery/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/07.Multi_Stage_Builds_Optimization/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/08.Best_Practices_and_Security_Hardening/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/09.Language_Specific_Dockerfiles/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/10.Container_Health_Checks_and_Signals/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/11.Docker_Compose_Architecture_and_YAML/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/12.Multi_Container_Dev_Environment/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/13.Compose_Dependencies_and_Health_Wait/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/14.Compose_Profiles_and_Overrides/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/15.Docker_Swarm_Basics_and_Service_Scaling/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/16.Docker_in_CICD_Pipelines/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/17.Logging_Monitoring_and_Resource_Limits/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/18.Debugging_and_Troubleshooting_Containers/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/19.Private_Registries_and_Authentication/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/docker/dockerfile/20.Migration_to_Kubernetes_Ready_Containers/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
@@ -85,7 +161,83 @@
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
+         <loc>https://lelongc.github.io/devops/git/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
          <loc>https://lelongc.github.io/devops/git/roadmap/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/01.Git_Architecture_and_Internals/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/02.Branching_Workflows_and_Release_Management/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/02.Git_CLI_Fundamentals_and_Workflows/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/03.DevOps_Automation_and_GitOps_Workflows/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/03.Git_Branching_and_Merging_Deep_Dive/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/04.Git_Stash_Reset_Revert_and_Time_Travel/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/04.PM_Metrics_Troubleshooting_and_CheatSheet/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/05.Branching_Strategies_GitFlow_GitHubFlow_TrunkBased/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/06.Pull_Requests_Code_Reviews_and_Branch_Protection/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/07.Semantic_Versioning_and_Release_Tags/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/08.Monorepo_vs_Polyrepo_Management/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/09.Git_Hooks_and_Pre_Commit_Automation/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/10.GitOps_Principles_and_Single_Source_of_Truth/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/11.Git_LFS_Large_File_Storage/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/12.Git_Security_GPG_Signing_and_Secret_Scanning/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/13.Git_Analytics_and_DevOps_Metrics/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/14.Git_Troubleshooting_and_Incident_Playbooks/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/git/15.Git_Master_CheatSheet_and_Best_Practices/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
@@ -109,99 +261,103 @@
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/roadmap/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/01.Kubernetes_Architecture_and_Components/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/00.k8s-manifests/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/02.Kubeadm_Cluster_Bootstrap_and_HA/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/00/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/03.Kubectl_CLI_Mastery_and_Imperative_Commands/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/01.cluster-architecture/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/04.Pod_Architecture_and_Multi_Container_Patterns/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/02-03.docker-containerd/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/05.Deployments_ReplicaSets_and_Rollout_Strategies/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/04.etcd/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/06.StatefulSets_and_DaemonSets/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/05.kube-api-server/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/07.Jobs_CronJobs_and_Batch_Processing/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/06.kube-controller-manager/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/08.Autoscaling_HPA_VPA_and_Karpenter/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/07.KubeScheduler/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/09.Storage_Architecture_PV_PVC_StorageClass_CSI/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/08.kubelet/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/10.Kubernetes_Networking_CNI_and_Services/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/09.kube-proxy/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/11.Ingress_Controllers_and_Cert_Manager/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/10.pods/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/12.Network_Policies_and_Microsegmentation/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/11-12.pods-yml-demo/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/13.Service_Mesh_Istio_Architecture/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/13.replicaset-demo/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/14.DNS_CoreDNS_and_Service_Discovery/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/14.deployment/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/15.ConfigMaps_Secrets_and_External_Secrets/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/15.services-nodeport/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/16.RBAC_ServiceAccounts_and_Authentication/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/16.services-clusterIP/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/17.SecurityContext_and_Pod_Security_Standards/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/17.services-loadbalancer/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/18.Resource_Management_Quotas_and_LimitRanges/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/18.service-engpoint/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/19.Advanced_Scheduling_Taints_Tolerations_Affinity/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/19.namespace/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/20.Helm_V3_Package_Manager_Mastery/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/20.ImperativeDeclarative/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/21.GitOps_Continuous_Delivery_ArgoCD/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/01.core/21.kubectlAppy/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/22.Monitoring_Logging_Tracing_Prometheus_Grafana/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/02.Scheduling/01.manualScheduling/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/23.Production_Incident_Response_Playbooks/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
-         <loc>https://lelongc.github.io/devops/k8s/02.Scheduling/02.LabelsAndSelectors/</loc>
+         <loc>https://lelongc.github.io/devops/k8s/24.Hardening_Kubernetes_Security_CKS/</loc>
+         <lastmod>2026-08-04</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/devops/k8s/25.CKA_CKAD_CKS_Exam_Mastery_and_Architecture/</loc>
          <lastmod>2026-08-04</lastmod>
     </url>
     <url>
