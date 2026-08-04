@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <rect width="800" height="450" fill="#1e1e2e" rx="12"/>
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="22" fill="#cba6f7" font-weight="bold" text-anchor="middle">SƠ ĐỒ 7 TẦNG MÔ HÌNH OSI (OSI 7-LAYER REFERENCE MODEL)</text>
+  <g font-family="Arial, sans-serif" font-size="14" font-weight="bold">
+    <rect x="50" y="70" width="700" height="40" fill="#f38ba8" rx="6"/>
+    <text x="70" y="95" fill="#11111b">Layer 7: Application (HTTP, HTTPS, SSH, DNS, SMTP)</text>
+    <text x="720" y="95" fill="#11111b" text-anchor="end">PDU: Data</text>
+    
+    <rect x="50" y="118" width="700" height="40" fill="#fab387" rx="6"/>
+    <text x="70" y="143" fill="#11111b">Layer 6: Presentation (SSL/TLS, JSON, UTF-8, Data Compression)</text>
+    <text x="720" y="143" fill="#11111b" text-anchor="end">PDU: Data</text>
+
+    <rect x="50" y="166" width="700" height="40" fill="#f9e2af" rx="6"/>
+    <text x="70" y="191" fill="#11111b">Layer 5: Session (Sockets, RPC, Session Management)</text>
+    <text x="720" y="191" fill="#11111b" text-anchor="end">PDU: Data</text>
+
+    <rect x="50" y="214" width="700" height="40" fill="#a6e3a1" rx="6"/>
+    <text x="70" y="239" fill="#11111b">Layer 4: Transport (TCP, UDP - Port 80, 443, 22)</text>
+    <text x="720" y="239" fill="#11111b" text-anchor="end">PDU: Segment / Datagram</text>
+
+    <rect x="50" y="262" width="700" height="40" fill="#89dceb" rx="6"/>
+    <text x="70" y="287" fill="#11111b">Layer 3: Network (IP, ICMP, Router - IP Address)</text>
+    <text x="720" y="287" fill="#11111b" text-anchor="end">PDU: Packet</text>
+
+    <rect x="50" y="310" width="700" height="40" fill="#89b4fa" rx="6"/>
+    <text x="70" y="335" fill="#11111b">Layer 2: Data Link (Ethernet, Switch L2 - MAC Address &amp; FCS)</text>
+    <text x="720" y="335" fill="#11111b" text-anchor="end">PDU: Frame</text>
+
+    <rect x="50" y="358" width="700" height="40" fill="#b4befe" rx="6"/>
+    <text x="70" y="383" fill="#11111b">Layer 1: Physical (Cáp đồng Cat6a, Cáp quang SMF/MMF, SFP+ Module)</text>
+    <text x="720" y="383" fill="#11111b" text-anchor="end">PDU: Bits 010101</text>
+  </g>
+</svg>

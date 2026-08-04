@@ -1383,17 +1383,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1406,10 +1395,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#22-chi-tiet-tien-trinh-khoi-ong-linux-boot-sequence-internals" class="md-nav__link">
+  <a href="#22-chi-tiet-tien-trinh-khoi-ong-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Chi Tiết Tiến Trình Khởi Động Linux (Boot Sequence Internals)
+        2.2 Chi Tiết Tiến Trình Khởi Động Linux
       
     </span>
   </a>
@@ -2638,17 +2627,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2661,10 +2639,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#22-chi-tiet-tien-trinh-khoi-ong-linux-boot-sequence-internals" class="md-nav__link">
+  <a href="#22-chi-tiet-tien-trinh-khoi-ong-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Chi Tiết Tiến Trình Khởi Động Linux (Boot Sequence Internals)
+        2.2 Chi Tiết Tiến Trình Khởi Động Linux
       
     </span>
   </a>
@@ -2779,17 +2757,25 @@
 🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: 4 Giai đoạn Boot Linux, vai trò PID 1 của Systemd, đọc dmesg và journalctl -b.</p>
 </blockquote>
 <hr>
-<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
-<p>Khởi động Linux như mở một nhà máy: BIOS bật nguồn kiểm tra điện -&gt; GRUB mở cửa kho -&gt; Kernel nạp máy móc -&gt; Systemd (PID 1) phân công tất cả các nhóm công nhân (services) làm việc.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Linux_Boot_Process.svg/800px-Linux_Boot_Process.svg.png" data-desc-position="bottom"><img alt="Linux Boot Sequence" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Linux_Boot_Process.svg/800px-Linux_Boot_Process.svg.png"></a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    PowerOn[1. Power On] --&gt; BIOS[2. BIOS / UEFI System Firmware]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    BIOS --&gt;|Read MBR/ESP| GRUB[3. GRUB2 Bootloader]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    GRUB --&gt;|Load vmlinuz &amp; initramfs| Kernel[4. Linux Kernel Init]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    Kernel --&gt;|Mount Temporary Root| Initramfs[5. initramfs / Drivers]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Initramfs --&gt;|Mount Real Root /| Systemd[6. Systemd PID 1 Target]
+</code></pre></div>
 <hr>
 <h2 id="2-ly-thuyet-chuyen-sau">2. 📚 Lý Thuyết Chuyên Sâu<a class="headerlink" href="#2-ly-thuyet-chuyen-sau" title="Permanent link">¶</a></h2>
-<h3 id="22-chi-tiet-tien-trinh-khoi-ong-linux-boot-sequence-internals">2.2 Chi Tiết Tiến Trình Khởi Động Linux (Boot Sequence Internals)<a class="headerlink" href="#22-chi-tiet-tien-trinh-khoi-ong-linux-boot-sequence-internals" title="Permanent link">¶</a></h3>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    BIOS[1. BIOS / UEFI] --&gt;|Load Bootloader| GRUB[2. GRUB2 Bootloader]
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    GRUB --&gt;|Load vmlinuz &amp; initramfs| Kernel[3. Linux Kernel Space]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Kernel --&gt;|Mount Temporary Root FS| Initramfs[4. initramfs / initrd]
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    Initramfs --&gt;|Load Real Disk Driver &amp; Mount /| RootFS[5. Real Root Filesystem]
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    RootFS --&gt;|Execute Systemd PID 1| Systemd[6. Systemd PID 1]
+<h3 id="22-chi-tiet-tien-trinh-khoi-ong-linux">2.2 Chi Tiết Tiến Trình Khởi Động Linux<a class="headerlink" href="#22-chi-tiet-tien-trinh-khoi-ong-linux" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/linux_boot_process.svg" data-desc-position="bottom"><img alt="Sơ đồ Tiến trình Boot Linux" src="../image/linux_boot_process.svg"></a>
+ (Boot Sequence Internals)
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>graph TD
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    BIOS[1. BIOS / UEFI] --&gt;|Load Bootloader| GRUB[2. GRUB2 Bootloader]
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    GRUB --&gt;|Load vmlinuz &amp; initramfs| Kernel[3. Linux Kernel Space]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    Kernel --&gt;|Mount Temporary Root FS| Initramfs[4. initramfs / initrd]
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    Initramfs --&gt;|Load Real Disk Driver &amp; Mount /| RootFS[5. Real Root Filesystem]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    RootFS --&gt;|Execute Systemd PID 1| Systemd[6. Systemd PID 1]
 </code></pre></div>
 - <strong>vmlinuz</strong>: File nhị phân nén của Linux Kernel.
 - <strong>initramfs (Initial RAM Filesystem)</strong>: File cdfs nén chứa cạc đĩa (RAID/NVMe/LVM driver) tạm thời được nạp vào RAM để Kernel mount ổ đĩa chính <code>/</code>.
@@ -2842,16 +2828,16 @@
 <hr>
 <h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
 <h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Phân tích thời gian khởi động của từng dịch vụ bằng systemd-analyze:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>systemd-analyze<span class="w"> </span>blame
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Xoay vết biểu đồ thời gian boot ra file SVG:</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>systemd-analyze<span class="w"> </span>plot<span class="w"> </span>&gt;<span class="w"> </span>boot.svg
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Phân tích thời gian khởi động của từng dịch vụ bằng systemd-analyze:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>systemd-analyze<span class="w"> </span>blame
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Xoay vết biểu đồ thời gian boot ra file SVG:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>systemd-analyze<span class="w"> </span>plot<span class="w"> </span>&gt;<span class="w"> </span>boot.svg
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Xem log Kernel có ngày giờ:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>dmesg<span class="w"> </span>-T<span class="w"> </span>-w
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Xem lỗi boot lượt này:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>journalctl<span class="w"> </span>-b<span class="w"> </span>-p<span class="w"> </span>err
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Xem log Kernel có ngày giờ:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dmesg<span class="w"> </span>-T<span class="w"> </span>-w
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Xem lỗi boot lượt này:</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>journalctl<span class="w"> </span>-b<span class="w"> </span>-p<span class="w"> </span>err
 </code></pre></div><p></p>
 <h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
 <p>Sự cố Server bị dừng ở màn hình GRUB / initramfs prompt không boot được vào OS:</p>
@@ -2902,7 +2888,7 @@ journalctl -b -u systemd-networkd</p>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:41:35 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
   </span>
 
     

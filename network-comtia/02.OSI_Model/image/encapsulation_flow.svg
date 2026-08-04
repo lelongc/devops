@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="800" height="400" fill="#1e1e2e" rx="12"/>
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" fill="#cba6f7" font-weight="bold" text-anchor="middle">QUÁ TRÌNH ĐÓNG GÓI DỮ LIỆU (ENCAPSULATION FLOW)</text>
+  <g font-family="Arial, sans-serif" font-size="13" font-weight="bold">
+    <!-- Step 1 Data -->
+    <rect x="250" y="60" width="300" height="40" fill="#f38ba8" rx="6"/>
+    <text x="400" y="85" fill="#11111b" text-anchor="middle">Application Data (HTTP Content)</text>
+    
+    <!-- Down Arrow -->
+    <path d="M400 105 L400 125 L395 125 L400 135 L405 125 L400 125" fill="#a6adc8"/>
+
+    <!-- Step 2 Segment -->
+    <rect x="180" y="140" width="440" height="45" fill="#a6e3a1" rx="6"/>
+    <text x="230" y="167" fill="#11111b">TCP Header (Ports)</text>
+    <rect x="310" y="145" width="300" height="35" fill="#f38ba8" rx="4"/>
+    <text x="460" y="167" fill="#11111b" text-anchor="middle">Application Data</text>
+
+    <!-- Down Arrow -->
+    <path d="M400 190 L400 210 L395 210 L400 220 L405 210 L400 210" fill="#a6adc8"/>
+
+    <!-- Step 3 Packet -->
+    <rect x="100" y="225" width="600" height="45" fill="#89dceb" rx="6"/>
+    <text x="140" y="252" fill="#11111b">IP Header (IPs)</text>
+    <rect x="200" y="230" width="490" height="35" fill="#a6e3a1" rx="4"/>
+    <text x="445" y="252" fill="#11111b" text-anchor="middle">TCP Header + Data (Segment)</text>
+
+    <!-- Down Arrow -->
+    <path d="M400 275 L400 295 L395 295 L400 305 L405 295 L400 295" fill="#a6adc8"/>
+
+    <!-- Step 4 Frame -->
+    <rect x="40" y="310" width="720" height="50" fill="#89b4fa" rx="6"/>
+    <text x="85" y="340" fill="#11111b">MAC Header</text>
+    <rect x="155" y="315" width="500" height="40" fill="#89dceb" rx="4"/>
+    <text x="405" y="340" fill="#11111b" text-anchor="middle">IP Header + TCP Header + Data (Packet)</text>
+    <rect x="660" y="315" width="90" height="40" fill="#f9e2af" rx="4"/>
+    <text x="705" y="340" fill="#11111b" text-anchor="middle">FCS CRC</text>
+  </g>
+</svg>

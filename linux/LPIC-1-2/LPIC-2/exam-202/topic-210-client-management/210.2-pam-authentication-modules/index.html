@@ -1777,17 +1777,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2518,17 +2507,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2659,8 +2637,13 @@
 🎯 <strong>Trọng tâm phỏng vấn Senior DevOps / SysAdmin</strong>: Thư mục /etc/pam.d/, PAM Management Groups (auth, account, password, session), Control Flags (required, requisite, sufficient, optional), modules (pam_unix.so, pam_faillock.so, pam_wheel.so, pam_limits.so).</p>
 </blockquote>
 <hr>
-<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
-<p>PAM như hệ thống bảo vệ nhiều lớp tại cổng sân bay: Lớp 1 soi giấy tờ (auth), lớp 2 kiểm tra vé còn hạn không (account), lớp 3 thiết lập khay đựng hành lý (session). Bạn có thể cắm thêm máy quét mống mắt (module PAM) vào cổng mà không cần đập đi xây lại toàn bộ sân bay.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    App[Application - SSHd / Su / Sudo] --&gt;|Call PAM API| PAM[PAM - Pluggable Authentication Modules]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    PAM --&gt; Auth[1. auth: Password verification / pam_faillock]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    PAM --&gt; Account[2. account: Expiry / Group checks pam_wheel]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    PAM --&gt; Password[3. password: Password strength check]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    PAM --&gt; Session[4. session: Environment setup / logging]
+</code></pre></div>
 <hr>
 <h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics - LPIC-2 Official Study Guide)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" title="Permanent link">¶</a></h2>
 <h3 id="21-ban-chat-khung-xac-thuc-pam-pluggable-authentication-modules">2.1 Bản Chất Khung Xác Thực PAM (Pluggable Authentication Modules)<a class="headerlink" href="#21-ban-chat-khung-xac-thuc-pam-pluggable-authentication-modules" title="Permanent link">¶</a></h3>
@@ -2705,12 +2688,12 @@
 <hr>
 <h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
 <h3 id="cac-lenh-thuc-hanh-cau-hinh-chuan-production">🛠 Các lệnh thực hành &amp; Cấu hình chuẩn Production:<a class="headerlink" href="#cac-lenh-thuc-hanh-cau-hinh-chuan-production" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Cấu hình cấm User không thuộc nhóm 'wheel' su lên root:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Trong /etc/pam.d/su:</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>auth<span class="w">  </span>required<span class="w">  </span>pam_wheel.so<span class="w"> </span>use_uid
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Unlock tài khoản bị faillock khóa:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>john<span class="w"> </span>--reset
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Cấu hình cấm User không thuộc nhóm 'wheel' su lên root:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Trong /etc/pam.d/su:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>auth<span class="w">  </span>required<span class="w">  </span>pam_wheel.so<span class="w"> </span>use_uid
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Unlock tài khoản bị faillock khóa:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>faillock<span class="w"> </span>--user<span class="w"> </span>john<span class="w"> </span>--reset
 </code></pre></div>
 <h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
 <p>Troubleshoot sự cố User gõ đúng pass nhưng không login SSH được do bị PAM account khóa:
@@ -2751,7 +2734,7 @@ journalctl -u sshd | grep pam</p>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:41:35 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
   </span>
 
     

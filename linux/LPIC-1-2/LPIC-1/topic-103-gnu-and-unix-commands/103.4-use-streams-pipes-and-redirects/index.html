@@ -1579,17 +1579,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2778,17 +2767,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2919,8 +2897,12 @@
 🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: STDIN 0, STDOUT 1, STDERR 2, điều hướng <code>2&gt;&amp;1</code>, lệnh tee nhân đôi đầu ra.</p>
 </blockquote>
 <hr>
-<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
-<p><code>&gt;</code> là xóa sạch ghi lại từ đầu. <code>&gt;&gt;</code> là nối tiếp vào cuối file. <code>tee</code> như vòi nước chữ T: Vừa chảy ra màn hình vừa chảy vào file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph LR
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Stdin[STDIN 0 - Keyboard / File] --&gt;|Input| Process[Command / Process]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Process --&gt;|Output| Stdout[STDOUT 1 - Screen / File &gt;]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Process --&gt;|Error| Stderr[STDERR 2 - Log / File 2&gt;]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    Process1[Cmd 1] --&gt;|Pipe \| | Process2[Cmd 2]
+</code></pre></div>
 <hr>
 <h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics" title="Permanent link">¶</a></h2>
 <h3 id="21-ban-chat-file-descriptors-fd-redirection">2.1 Bản Chất File Descriptors (FD) &amp; Redirection<a class="headerlink" href="#21-ban-chat-file-descriptors-fd-redirection" title="Permanent link">¶</a></h3>
@@ -2971,11 +2953,11 @@ Lệnh <code>pipe</code> (<code>|</code>) kết nối STDOUT của tiến trình
 <hr>
 <h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
 <h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Gom cả output lẫn error vào file log:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./deploy.sh<span class="w"> </span>&gt;<span class="w"> </span>build.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Vừa xem log trên terminal vừa lưu file:</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./run.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>run.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Gom cả output lẫn error vào file log:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./deploy.sh<span class="w"> </span>&gt;<span class="w"> </span>build.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Vừa xem log trên terminal vừa lưu file:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>./run.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>run.log
 </code></pre></div>
 <h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
 <p>Lưu log build CI/CD:
@@ -3015,7 +2997,7 @@ Lệnh <code>pipe</code> (<code>|</code>) kết nối STDOUT của tiến trình
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:41:35 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
   </span>
 
     

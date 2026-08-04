@@ -1673,17 +1673,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2587,17 +2576,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2739,8 +2717,13 @@
 🎯 <strong>Trọng tâm phỏng vấn Senior DevOps / SysAdmin</strong>: Lệnh parted (scriptable partition), mkfs.btrfs, btrfs subvolume (create, snapshot), btrfs device add, btrfs balance, mkfs.xfs, mkfs.ext4.</p>
 </blockquote>
 <hr>
-<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
-<p>Btrfs như ổ cứng thông minh có khả năng du hành thời gian: Bạn có thể chụp ảnh nhanh (Snapshot) toàn bộ đĩa cứng trong 1 giây trước khi nâng cấp app, nếu lỗi chỉ cần lùi về Snapshot cũ là xong.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Btrfs_logo.svg/640px-Btrfs_logo.svg.png" data-desc-position="bottom"><img alt="Btrfs Copy-on-Write Architecture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Btrfs_logo.svg/640px-Btrfs_logo.svg.png"></a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Subvolume[Btrfs Subvolume @] --&gt; Metadata[Btrfs Tree Metadata]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Metadata --&gt; DataOriginal[Original Data Block A]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Snapshot[Btrfs Snapshot @snapshot_1] --&gt;|Copy-on-Write CoW| Metadata
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    Snapshot --&gt;|Write New Block B| DataNew[New Modified Data Block B]
+</code></pre></div>
 <hr>
 <h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics - LPIC-2 Official Study Guide)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" title="Permanent link">¶</a></h2>
 <h3 id="21-so-sanh-cac-he-thong-tep-hien-ai-trong-linux">2.1 So Sánh Các Hệ Thống Tệp Hiện Đại Trong Linux<a class="headerlink" href="#21-so-sanh-cac-he-thong-tep-hien-ai-trong-linux" title="Permanent link">¶</a></h3>
@@ -2822,14 +2805,14 @@
 <hr>
 <h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
 <h3 id="cac-lenh-thuc-hanh-cau-hinh-chuan-production">🛠 Các lệnh thực hành &amp; Cấu hình chuẩn Production:<a class="headerlink" href="#cac-lenh-thuc-hanh-cau-hinh-chuan-production" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Phân đĩa tự động bằng parted cho Cloud Automation Script:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>parted<span class="w"> </span>-s<span class="w"> </span>/dev/sdb<span class="w"> </span>mklabel<span class="w"> </span>gpt
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>parted<span class="w"> </span>-s<span class="w"> </span>/dev/sdb<span class="w"> </span>mkpart<span class="w"> </span>primary<span class="w"> </span>ext4<span class="w"> </span>1MiB<span class="w"> </span><span class="m">100</span>%
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 2. Tạo Btrfs Filesystem và chụp Snapshot:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>mkfs.btrfs<span class="w"> </span>/dev/sdb1
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/sdb1<span class="w"> </span>/mnt/btrfs
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>sudo<span class="w"> </span>btrfs<span class="w"> </span>subvolume<span class="w"> </span>snapshot<span class="w"> </span>/mnt/btrfs<span class="w"> </span>/mnt/btrfs/@snap_<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Phân đĩa tự động bằng parted cho Cloud Automation Script:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>parted<span class="w"> </span>-s<span class="w"> </span>/dev/sdb<span class="w"> </span>mklabel<span class="w"> </span>gpt
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>parted<span class="w"> </span>-s<span class="w"> </span>/dev/sdb<span class="w"> </span>mkpart<span class="w"> </span>primary<span class="w"> </span>ext4<span class="w"> </span>1MiB<span class="w"> </span><span class="m">100</span>%
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2. Tạo Btrfs Filesystem và chụp Snapshot:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>mkfs.btrfs<span class="w"> </span>/dev/sdb1
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/sdb1<span class="w"> </span>/mnt/btrfs
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>btrfs<span class="w"> </span>subvolume<span class="w"> </span>snapshot<span class="w"> </span>/mnt/btrfs<span class="w"> </span>/mnt/btrfs/@snap_<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>
 </code></pre></div>
 <h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
 <p>Tự động tạo Snapshot Btrfs trước khi nâng cấp hệ thống:
@@ -2870,7 +2853,7 @@ sudo btrfs subvolume snapshot / /@snap_backup_before_upgrade</p>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:41:35 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
   </span>
 
     

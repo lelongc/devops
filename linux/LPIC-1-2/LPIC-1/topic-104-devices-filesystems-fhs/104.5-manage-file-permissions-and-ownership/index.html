@@ -1647,17 +1647,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2711,17 +2700,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2841,8 +2819,15 @@
 🎯 <strong>Trọng tâm phỏng vấn DevOps</strong>: chmod (755, 644, 600), chown user:group, umask (0022), SUID (4000), SGID (2000), Sticky Bit (1000).</p>
 </blockquote>
 <hr>
-<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
-<p>Quyền file theo nhóm 3 chữ số <code>Owner - Group - Others</code>: Read=4, Write=2, Execute=1. Ví dụ <code>755</code> = (4+2+1=7) - (4+1=5) - (4+1=5) -&gt; <code>rwxr-xr-x</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    FilePermission[- rwx r-x r--] --&gt; Owner[Owner Permission: rwx = 7]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    FilePermission --&gt; Group[Group Permission: r-x = 5]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    FilePermission --&gt; Others[Others Permission: r-- = 4]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    SpecialBits[Special Permission Bits] --&gt; SUID[SUID 4000: Run as Owner]
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    SpecialBits --&gt; SGID[SGID 2000: Inherit Group]
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    SpecialBits --&gt; Sticky[Sticky Bit 1000: Owner Delete Only /tmp]
+</code></pre></div>
 <hr>
 <h2 id="2-ly-thuyet-chuyen-sau">2. 📚 Lý Thuyết Chuyên Sâu<a class="headerlink" href="#2-ly-thuyet-chuyen-sau" title="Permanent link">¶</a></h2>
 <h3 id="22-quyen-han-nang-cao-suid-sgid-sticky-bit-posix-acls">2.2 Quyền Hạn Nâng Cao SUID, SGID, Sticky Bit &amp; POSIX ACLs<a class="headerlink" href="#22-quyen-han-nang-cao-suid-sgid-sticky-bit-posix-acls" title="Permanent link">¶</a></h3>
@@ -2897,16 +2882,16 @@
 <hr>
 <h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
 <h3 id="cac-lenh-thuc-hanh-go-la-an-ngay">🛠 Các lệnh thực hành gõ là ăn ngay:<a class="headerlink" href="#cac-lenh-thuc-hanh-go-la-an-ngay" title="Permanent link">¶</a></h3>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Cấp quyền Sticky Bit cho thư mục chia sẻ:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+t<span class="w"> </span>/shared_dir
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Cấp quyền ACLs cho user 'devops' có quyền đọc ghi file mà không đổi owner:</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:devops:rw<span class="w"> </span>/var/log/app.log
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Xem bảng phân quyền ACLs:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>getfacl<span class="w"> </span>/var/log/app.log
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Cấp quyền Sticky Bit cho thư mục chia sẻ:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+t<span class="w"> </span>/shared_dir
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Cấp quyền ACLs cho user 'devops' có quyền đọc ghi file mà không đổi owner:</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:devops:rw<span class="w"> </span>/var/log/app.log
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Xem bảng phân quyền ACLs:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>getfacl<span class="w"> </span>/var/log/app.log
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Phân quyền Web Server:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/html
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/var/www/html
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Phân quyền Web Server:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/html
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/var/www/html
 </code></pre></div><p></p>
 <h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
 <p>Sự cố bảo mật hacker chiếm quyền root thông qua file SUID bị hổng:</p>
@@ -2957,7 +2942,7 @@ chmod 600 ~/.ssh/id_rsa</p>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:41:35 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
   </span>
 
     

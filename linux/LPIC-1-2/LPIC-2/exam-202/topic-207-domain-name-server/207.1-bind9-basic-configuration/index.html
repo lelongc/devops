@@ -1565,17 +1565,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2507,17 +2496,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2637,8 +2615,12 @@
 🎯 <strong>Trọng tâm phỏng vấn Senior DevOps / SysAdmin</strong>: BIND 9 service (named), file /etc/bind/named.conf (/etc/named.conf), các loại bản ghi (SOA, NS, A, AAAA, CNAME, MX, PTR, TXT), named-checkconf, named-checkzone.</p>
 </blockquote>
 <hr>
-<h2 id="1-hinh-hinh-dung-nhanh-intuitive-mindset">1. 🧠 Hình Hình Dung Nhanh (Intuitive Mindset)<a class="headerlink" href="#1-hinh-hinh-dung-nhanh-intuitive-mindset" title="Permanent link">¶</a></h2>
-<p>DNS BIND 9 như tổng đài danh bạ điện thoại toàn cầu: Khi người dùng gõ <code>devops.company.com</code>, BIND 9 tra cứu trong sổ Zone File và trả về địa chỉ IP <code>10.0.0.50</code> cho trình duyệt.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/DNS_Zone_Transfer.svg/800px-DNS_Zone_Transfer.svg.png" data-desc-position="bottom"><img alt="BIND 9 Master Slave DNS Architecture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/DNS_Zone_Transfer.svg/800px-DNS_Zone_Transfer.svg.png"></a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Master[BIND 9 Primary Master DNS] --&gt;|Zone Transfer AXFR/IXFR + TSIG Key| Slave[BIND 9 Secondary Slave DNS]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Client[Client Machine] --&gt;|DNS Query UDP 53| Master
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Client --&gt;|DNS Query UDP 53| Slave
+</code></pre></div>
 <hr>
 <h2 id="2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide">2. 📚 Lý Thuyết Chuyên Sâu &amp; Bản Chất Hệ Thống (Under The Hood Mechanics - LPIC-2 Official Study Guide)<a class="headerlink" href="#2-ly-thuyet-chuyen-sau-ban-chat-he-thong-under-the-hood-mechanics-lpic-2-official-study-guide" title="Permanent link">¶</a></h2>
 <h3 id="21-cau-truc-ban-ghi-dns-file-zone-cua-bind-9">2.1 Cấu Trúc Bản Ghi DNS &amp; File Zone Của BIND 9<a class="headerlink" href="#21-cau-truc-ban-ghi-dns-file-zone-cua-bind-9" title="Permanent link">¶</a></h3>
@@ -2654,21 +2636,21 @@
 </ol>
 <hr>
 <h3 id="22-vi-du-file-zone-chuan-bind-9-dbcompanycom">2.2 Ví Dụ File Zone Chuẩn BIND 9 (<code>db.company.com</code>)<a class="headerlink" href="#22-vi-du-file-zone-chuan-bind-9-dbcompanycom" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$TTL 86400
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>@   IN  SOA ns1.company.com. admin.company.com. (
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            2026080401 ; Serial YYYYMMDDnn
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>            3600       ; Refresh
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            1800       ; Retry
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>            604800     ; Expire
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            86400 )    ; Minimum TTL
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>@   IN  NS   ns1.company.com.
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>@   IN  MX 10 mail.company.com.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>ns1 IN  A    10.0.0.10
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>mail IN A    10.0.0.20
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>app  IN A    10.0.0.50
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>www  IN CNAME app
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$TTL 86400
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@   IN  SOA ns1.company.com. admin.company.com. (
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            2026080401 ; Serial YYYYMMDDnn
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>            3600       ; Refresh
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>            1800       ; Retry
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>            604800     ; Expire
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            86400 )    ; Minimum TTL
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>@   IN  NS   ns1.company.com.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>@   IN  MX 10 mail.company.com.
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>ns1 IN  A    10.0.0.10
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>mail IN A    10.0.0.20
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>app  IN A    10.0.0.50
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>www  IN CNAME app
 </code></pre></div>
 <hr>
 <h2 id="3-bang-tra-cuu-cau-lenh-cau-hinh-thuc-hanh-cli-reference">3. ⚡ Bảng Tra Cứu Câu Lệnh &amp; Cấu Hình Thực Hành (CLI Reference)<a class="headerlink" href="#3-bang-tra-cuu-cau-lenh-cau-hinh-thuc-hanh-cli-reference" title="Permanent link">¶</a></h2>
@@ -2705,10 +2687,10 @@
 <hr>
 <h2 id="4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios">4. 🛠 Thao Tác Thực Chiến &amp; Kịch Bản DevOps (Real-World Scenarios)<a class="headerlink" href="#4-thao-tac-thuc-chien-kich-ban-devops-real-world-scenarios" title="Permanent link">¶</a></h2>
 <h3 id="cac-lenh-thuc-hanh-cau-hinh-chuan-production">🛠 Các lệnh thực hành &amp; Cấu hình chuẩn Production:<a class="headerlink" href="#cac-lenh-thuc-hanh-cau-hinh-chuan-production" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Kiểm tra cú pháp cấu hình BIND 9 trước khi reload:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>named-checkconf
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>company.com<span class="w"> </span>/etc/bind/db.company.com
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>rndc<span class="w"> </span>reload
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Kiểm tra cú pháp cấu hình BIND 9 trước khi reload:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>named-checkconf
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>company.com<span class="w"> </span>/etc/bind/db.company.com
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>rndc<span class="w"> </span>reload
 </code></pre></div>
 <h3 id="kich-ban-xu-ly-su-co-thuc-te-khi-i-lam">🚀 Kịch bản xử lý sự cố thực tế khi đi làm:<a class="headerlink" href="#kich-ban-xu-ly-su-co-thuc-te-khi-i-lam" title="Permanent link">¶</a></h3>
 <p>Sự cố sửa Zone file quên tăng số Serial Number khiến Secondary DNS không cập nhật bản ghi mới:</p>
@@ -2749,7 +2731,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:41:35 UTC">4 tháng 8, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="4 tháng 8, 2026 07:56:02 UTC">4 tháng 8, 2026</span>
   </span>
 
     
