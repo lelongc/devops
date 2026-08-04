@@ -18,7 +18,10 @@ graph TD
 
 ## 2. 📚 Lý Thuyết Chuyên Sâu & Bản Chất Hệ Thống (Under The Hood Architecture)
 
-### 2.1 Bản Ghi DNS Record Types Cốt Lõi (OBJ 3.4)
+### 2.1 Bản Ghi DNS Record Types Cốt Lõi
+
+![Sơ đồ Phân giải DNS](./image/dns_resolution_flow.svg)
+ (OBJ 3.4)
 - **A**: Trỏ Domain -> IPv4.
 - **AAAA**: Trỏ Domain -> IPv6.
 - **CNAME**: Trỏ Biệt hiệu Domain -> Domain gốc.

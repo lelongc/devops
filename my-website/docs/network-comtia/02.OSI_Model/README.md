@@ -5,6 +5,9 @@
 
 ---
 
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
+
 ## 1. 🧠 Hình Hình Dung Nhanh Cho Người Mới (Intuitive Mindset)
 
 Hãy tưởng tượng **Quá trình truyền dữ liệu qua mô hình OSI** giống như **Quy trình đóng gói gửi hàng qua dịch vụ Bưu điện Quốc tế**:
@@ -19,9 +22,15 @@ Hãy tưởng tượng **Quá trình truyền dữ liệu qua mô hình OSI** gi
 
 ---
 
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
+
 ## 2. 📚 Lý Thuyết Chuyên Sâu & Bản Chất Hệ Thống (Under The Hood Architecture)
 
-### 2.1 Chi Tiết 7 Tầng Mô Hình Tham Chiếu OSI (OBJ 1.1)
+### 2.1 Chi Tiết 7 Tầng Mô Hình Tham Chiếu OSI
+
+![Sơ đồ 7 tầng OSI](./image/osi_7_layers.svg)
+ (OBJ 1.1)
 
 ```mermaid
 graph TD
@@ -42,7 +51,22 @@ graph TD
 ```
 
 | Tầng OSI | Tên Tầng (Layer) | Đơn vị dữ liệu (PDU) | Địa chỉ định danh | Chức năng & Thiết bị tiêu biểu |
-| :--- | :--- | :--- | :--- | :--- |
+| :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ |
 | **Layer 7** | **Application** | Data | Application Protocol | Giao diện cho ứng dụng (HTTP, SSH, DNS, Nginx, Apache) |
 | **Layer 6** | **Presentation** | Data | Format / Syntax | Mã hóa/Giải mã SSL/TLS, nén dữ liệu, định dạng JSON/PNG |
 | **Layer 5** | **Session** | Data | Session ID | Thiết lập, duy trì và giải phóng phiên kết nối (Sockets, RPC) |
@@ -52,6 +76,9 @@ graph TD
 | **Layer 1** | **Physical** | **Bits** (010101) | Signal / Voltage | Truyền xung điện/quang/sóng vô tuyến (Cáp UTP, SFP, Hub) |
 
 ---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
 
 ### 2.2 Cơ Chế Đóng Gói (Encapsulation) & Giải Gói (Decapsulation)
 
@@ -70,6 +97,9 @@ graph TD
 
 ---
 
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
+
 ### 2.3 Quy Trình Troubleshooting Chuẩn Bottom-Up (L1 -> L7)
 
 ```mermaid
@@ -82,10 +112,25 @@ graph LR
 
 ---
 
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
+
 ## 3. ⚡ Bảng Tra Cứu Khái Niệm & Lệnh Thực Hành (Reference Table)
 
 | Khái niệm / Lệnh | Tầng OSI | Ý nghĩa chi tiết | Lệnh thực hành tương ứng |
-| :--- | :--- | :--- | :--- |
+| :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ | :---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+ |
 | **`Frame`** | Layer 2 | Đơn vị dữ liệu L2 chứa MAC Header & FCS Trailer | `ip neighbor show` |
 | **`Packet`** | Layer 3 | Đơn vị dữ liệu L3 chứa IP Header & TTL | `ping -c 3 8.8.8.8` |
 | **`Segment`** | Layer 4 | Đơn vị dữ liệu L4 chứa TCP Header & Port Numbers | `ss -tulpn` |
@@ -93,6 +138,9 @@ graph LR
 | **`TTL`** | Layer 3 | Time to Live - Giảm 1 mỗi qua Router để tránh loop | `traceroute -n 8.8.8.8` |
 
 ---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
 
 ## 4. 🛠 Thao Tác Thực Chiến & Kịch Bản DevOps
 
@@ -117,6 +165,9 @@ curl -Iv https://google.com
 
 ---
 
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
+
 ## 5. 🚀 Bộ Câu Hỏi Phỏng Vấn DevOps & Network Thực Tế (Interview Q&A)
 
 > **Q: Đơn vị dữ liệu (PDU) tại Layer 2, Layer 3 và Layer 4 lần lượt tên là gì?**  
@@ -126,6 +177,9 @@ curl -Iv https://google.com
 > **A**: FCS nằm ở phần đuôi (Trailer) của **Ethernet Frame ở Layer 2**. Nó sử dụng thuật toán kiểm tra mã dư thừa vòng **CRC32** để giúp cạc mạng phát hiện gói tin có bị nhiễu hỏng dữ liệu trên đường truyền hay không. Nếu hỏng, Frame sẽ bị âm thầm thả (drop).
 
 ---
+
+![Sơ đồ Đóng gói Encapsulation](./image/encapsulation_flow.svg)
+
 
 ## 6. 📝 Cheat Sheet Ghi Nhớ Nhanh (Summary)
 

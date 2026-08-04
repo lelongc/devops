@@ -20,7 +20,10 @@ Hãy tưởng tượng **Số Địa Chỉ IP** giống như **Địa chỉ củ
 
 ## 2. 📚 Lý Thuyết Chuyên Sâu & Bản Chất Hệ Thống (Under The Hood Architecture)
 
-### 2.1 Bắt Tay 3 Bước TCP (TCP 3-Way Handshake - OBJ 1.4)
+### 2.1 Bắt Tay 3 Bước TCP
+
+![Sơ đồ Bắt tay 3 bước TCP](./image/tcp_3way_handshake.svg)
+ (TCP 3-Way Handshake - OBJ 1.4)
 
 ```mermaid
 sequenceDiagram

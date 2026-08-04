@@ -19,7 +19,10 @@ graph TD
 
 ## 2. 📚 Lý Thuyết Chuyên Sâu & Bản Chất Hệ Thống (Under The Hood Architecture)
 
-### 2.1 Bản Chất VLAN & Trunking 802.1Q (OBJ 2.2)
+### 2.1 Bản Chất VLAN & Trunking 802.1Q
+
+![Sơ đồ Mạng ảo VLAN 802.1Q](./image/vlan_8021q.svg)
+ (OBJ 2.2)
 - **VLAN**: Phân chia Switch vật lý thành các mạng ảo logic riêng biệt để chia nhỏ Broadcast Domain.
 - **Access Port**: Gán cho **1 VLAN duy nhất** nối tới thiết bị cuối (Untagged).
 - **Trunk Port**: Truyền dữ liệu của **NHIỀU VLAN** giữa các Switch/Router (Đóng gói **4-byte Tag 802.1Q**).
