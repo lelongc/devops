@@ -1,0 +1,558 @@
+Welcome to the Course!
+14:37
+Download the Study Guide
+0:04
+Exam Tips
+7:20
+Checkpoint: Introduction
+Fundamentals of Security
+9:09
+Threats and Vulnerabilities
+5:33
+Confidentiality (OBJ 1.2)
+5:53
+Integrity (OBJ 1.2)
+6:09
+Availability (OBJ 1.2)
+6:27
+Non-repudiation (OBJ 1.2)
+5:10
+Authentication (OBJ 1.2)
+6:45
+Authorization (OBJ 1.2)
+3:26
+Accounting (OBJ 1.2)
+4:00
+Security Control Categories (OBJ 1.1)
+4:49
+Security Control Types (OBJ 1.1)
+5:21
+Zero Trust (OBJ 1.2)
+7:39
+Gap Analysis (OBJ 1.2)
+5:09
+Checkpoint: Fundamentals of Security
+Threat Actors (OBJ 1.2, 2.1, & 2.2)
+4:11
+Threat Actor Motivations (OBJ 2.1)
+7:48
+Threat Actor Attributes (OBJ 2.1)
+4:34
+Unskilled Attackers (OBJ 2.1)
+3:13
+Hacktivists (OBJ 2.1)
+4:07
+Organized Crime (OBJ 2.1)
+4:36
+Nation-state Actor (OBJ 2.1)
+7:04
+Insider Threats (OBJ 2.1)
+6:06
+Shadow IT (OBJ 2.1)
+5:23
+Threat Vectors and Attack Surfaces (OBJ 2.2)
+8:54
+Outsmarting Threat Actors (OBJ 1.2)
+10:48
+Checkpoint: Threat Actors
+Physical Security (OBJ 1.2 & 2.4)
+3:43
+Fencing and Bollards (OBJ 1.2)
+6:31
+Attacking with Brute Force (OBJ 2.4)
+5:45
+Surveillance Systems (OBJ 1.2)
+7:04
+Bypassing Surveillance Systems (OBJ 2.4)
+4:28
+Access Control Vestibules (OBJ 1.2)
+7:38
+Door Locks (OBJ 1.2)
+13:16
+Access Badge Cloning (OBJ 2.4)
+8:41
+Checkpoint: Physical Security
+Social Engineering (OBJ 2.2 & 5.6)
+4:12
+Motivational Triggers (OBJ 5.6)
+10:46
+Impersonation (OBJ 2.2)
+8:17
+Pretexting (OBJ 2.2)
+4:17
+Phishing Attacks (OBJ 2.2)
+8:46
+Preventing Phishing Attacks (OBJ 5.6)
+9:05
+Conducting an Anti-Phishing Campaign (OBJ 5.6)
+5:21
+Frauds and Scams (OBJ 2.2)
+6:29
+Influence Campaigns (OBJ 2.2)
+5:47
+Other Social Engineering Attacks (OBJ 2.2)
+9:31
+Checkpoint: Social Engineering
+Malware (OBJ 2.4)
+8:46
+Viruses (OBJ 2.4)
+7:50
+Worms (OBJ 2.4)
+3:22
+Trojans (OBJ 2.4)
+3:50
+Viruses and Trojans (OBJ 2.4)
+7:46
+Ransomware (OBJ 2.4)
+7:51
+Zombies and Botnets (OBJ 2.4)
+5:03
+Rootkits (OBJ 2.4)
+5:23
+Backdoors and Logic Bombs (OBJ 2.4)
+5:40
+Keylogger (OBJ 2.4)
+5:06
+Spyware and Bloatware (OBJ 2.4)
+4:58
+Malware Attack Techniques (OBJ 2.4)
+5:01
+Indications of Malware Attacks (OBJ 2.4)
+5:19
+Checkpoint: Malware
+Data Protection (OBJ 1.4, 3.3, 4.2, 4.4, & 5.1)
+3:16
+Data Classifications (OBJ 3.3)
+8:16
+Data Ownership (OBJ 4.2 & 5.1)
+5:10
+Data States (OBJ 3.3)
+5:11
+Data Types (OBJ 3.3 & 1.4)
+4:30
+Data Sovereignty (OBJ 3.3)
+2:57
+Securing Data (OBJ 3.3)
+3:55
+Data Loss Prevention (DLP) (OBJ 4.4)
+4:01
+Configuring a DLP (OBJ 4.5)
+16:06
+Checkpoint: Data Protection
+Cryptographic Solutions (OBJ 1.4, 2.3, & 2.4)
+12:00
+Symmetric vs Asymmetric (OBJ 1.4)
+7:57
+Symmetric Algorithms (OBJ 1.4)
+6:00
+Asymmetric Algorithms (OBJ 1.4)
+7:22
+Hashing (OBJ 1.4)
+10:35
+Increasing Hash Security (OBJ 1.4)
+7:44
+Public Key Infrastructure (PKI) (OBJ 1.4)
+6:04
+Digital Certificates (OBJ 1.4)
+13:03
+Exploring Digital Certificates (OBJ 1.4)
+3:33
+Blockchain (OBJ 1.4)
+5:36
+Encryption Tools (OBJ 1.4)
+5:54
+Obfuscation (OBJ 1.4)
+8:58
+Cryptographic Attacks (OBJ 2.3 & 2.4)
+15:13
+Checkpoint: Cryptographic Solutions
+Risk Management (OBJ 5.2)
+4:43
+Risk Assessment Frequency (OBJ 5.2)
+3:25
+Risk Identification (OBJ 5.2)
+6:00
+Risk Register (OBJ 5.2)
+7:56
+Qualitative Risk Analysis (OBJ 5.2)
+3:46
+Quantitative Risk Analysis (OBJ 5.2)
+5:11
+Risk Management Strategies (OBJ 5.2)
+5:32
+Risk Monitoring and Reporting (OBJ 5.2)
+3:39
+Checkpoint: Risk Management
+Third-party Vendor Risks (OBJ 2.2, 2.3, & 5.3)
+3:05
+Supply Chain Risks (OBJ 2.3 & 5.3)
+4:10
+Supply Chain Attacks (OBJ 2.2 & 5.3)
+6:18
+Vendor Assessment (OBJ 5.3)
+5:01
+Vendor Selection and Monitoring (OBJ 5.3)
+5:12
+Contracts and Agreements (OBJ 5.3)
+5:15
+Checkpoint: Third-party Vendor Risks
+Governance and Compliance (OBJ 5.1 & 5.4)
+4:54
+Governance (OBJ 5.1)
+5:06
+Governance Structures (OBJ 5.1)
+3:36
+Policies (OBJ 5.1)
+5:16
+Standards (OBJ 5.1)
+4:28
+Procedures (OBJ 5.1)
+4:58
+Governance Considerations (OBJ 5.1)
+7:03
+Compliance (OBJ 5.4)
+5:47
+Non-compliance Consequences (OBJ 5.4)
+3:56
+Checkpoint: Governance and Compliance
+Asset and Change Management (OBJ 1.3, 4.1, & 4.2)
+4:44
+Acquisition and Procurement (OBJ 4.2)
+6:22
+Mobile Asset Deployments (OBJ 4.1)
+6:18
+Asset Management (OBJ 4.2)
+6:37
+Asset Disposal and Decommissioning (OBJ 4.2)
+9:00
+Change Management (OBJ 1.3)
+7:08
+Change Management Processes (OBJ 1.3)
+6:22
+Technical Implications of Changes (OBJ 1.3)
+4:59
+Documenting Changes (OBJ 1.3)
+4:29
+Checkpoint: Asset and Change Management
+Audits and Assessments (OBJ 5.5)
+4:51
+Internal Audits and Assessments (OBJ 5.5)
+7:44
+Performing an Internal Assessment (OBJ 5.5)
+4:26
+External Audits and Assessments (OBJ 5.5)
+7:10
+Performing an External Assessment (OBJ 5.5)
+4:39
+Penetration Testing (OBJ 5.5)
+6:02
+Reconnaissance in Pentesting (OBJ 5.5)
+6:34
+Performing a Basic PenTest (OBJ 5.5)
+19:43
+Attestation of Findings (OBJ 5.5)
+6:30
+Checkpoint: Audits and Assessments
+Cyber Resilience and Redundancy (OBJ 3.4)
+3:15
+High Availability (OBJ 3.4)
+8:51
+Data Redundancy (OBJ 3.4)
+8:50
+Configuring a RAID (OBJ 3.4)
+3:37
+Capacity Planning (OBJ 3.4)
+8:04
+Powering Data Centers (OBJ 3.4)
+10:43
+Data Backups (OBJ 3.4)
+10:42
+Continuity of Operations Plan (OBJ 3.4)
+9:15
+Redundant Site Considerations (OBJ 3.4)
+12:18
+Resilience and Recovery Testing (OBJ 3.4)
+6:57
+Checkpoint: Cyber Resilience and Redundancy
+Security Architecture (OBJ 3.1 & 4.1)
+4:03
+On-premise versus the Cloud (OBJ 3.1)
+10:23
+Cloud Security (OBJ 3.1 & 4.1)
+6:20
+Virtualization and Containerization (OBJ 2.3 & 3.1)
+10:26
+Serverless (OBJ 3.1)
+3:42
+Microservices (OBJ 3.1)
+4:12
+Network Infrastructure (OBJ 3.1)
+3:17
+Software-Defined Network (SDN) (OBJ 3.1)
+3:11
+Infrastructure as Code (IaC) (OBJ 3.1)
+4:23
+Centralized vs Decentralized Architectures (OBJ 3.1)
+4:20
+Internet of Things (IoT) (OBJ 3.1 & 4.1)
+5:05
+ICS and SCADA (OBJ 3.1 & 4.1)
+4:07
+Embedded Systems (OBJ 3.1 & 4.1)
+5:07
+Checkpoint: Security Architecture
+Security Infrastructure (OBJ 3.2 & 4.5)
+4:25
+Ports and Protocols (OBJ 4.5)
+15:23
+Firewalls (OBJ 3.2)
+12:13
+Configuring Firewalls (OBJ 4.5)
+13:58
+IDS and IPS (OBJ 3.2)
+6:28
+Network Appliances (OBJ 3.2)
+9:57
+Port Security (OBJ 3.2)
+10:49
+Securing Network Communications (OBJ 3.2)
+20:34
+SD-WAN and SASE (OBJ 3.2)
+7:41
+Infrastructure Considerations (OBJ 3.2)
+10:55
+Selecting Infrastructure Controls (OBJ 3.2)
+8:16
+Checkpoint: Security Infrastructure
+Identity and Access Management (IAM) Solutions (OBJ 2.4 & 4.6)
+4:30
+Identity and Access Management (IAM) (OBJ 4.6)
+4:58
+Multifactor Authentication (OBJ 4.6)
+15:16
+Password Security (OBJ 4.6)
+16:29
+Password Attacks (OBJ 2.4)
+10:09
+Single Sign-On (SSO) (OBJ 4.6)
+9:50
+Federation (OBJ 4.6)
+5:09
+Privileged Access Management (PAM) (OBJ 4.6)
+3:20
+Access Control Models (OBJ 4.6)
+9:07
+Assigning Permissions (OBJ 4.6)
+7:01
+Checkpoint: Identity and Access Management (IAM) Solutions
+Vulnerabilities and Attacks (OBJ 2.2, 2.3, 2.4, 2.5, & 4.1)
+6:37
+Hardware Vulnerabilities (OBJ 2.2, 2.3, & 2.5)
+6:36
+Bluetooth Vulnerabilities and Attacks (OBJ 2.3, 2.5, & 4.1)
+6:43
+Mobile Vulnerabilities and Attacks (OBJ 2.3, 2.5, & 4.1)
+5:02
+Zero-day Vulnerabilities (OBJ 2.3)
+5:03
+Operating System Vulnerabilities (OBJ 2.3 & 2.5)
+4:55
+SQL and XML Injections (OBJ 2.3 & 2.4)
+13:58
+Conducting an SQL Injection (OBJ 2.3 & 2.4)
+7:39
+XSS and XSRF (OBJ 2.3 & 2.4)
+16:08
+Buffer Overflow (OBJ 2.3 & 2.4)
+6:33
+Race Conditions (OBJ 2.3)
+6:21
+Checkpoint: Vulnerabilities and Attacks
+Malicious Activity (OBJ 2.4)
+3:25
+Distributed Denial of Service (OBJ 2.4)
+8:05
+Domain Name System (DNS) Attacks (OBJ 2.4)
+5:23
+Directory Traversal Attack (OBJ 2.4)
+8:04
+Execution and Escalation Attack (OBJ 2.4)
+6:19
+Replay Attacks (OBJ 2.4)
+2:35
+Session Hijacking (OBJ 2.4)
+4:52
+On-Path Attacks (OBJ 2.4)
+4:01
+Injection Attacks (OBJ 2.4)
+4:20
+Indicators of Compromise (IoC) (OBJ 2.4)
+6:58
+Checkpoint: Malicious Activity
+Hardening (OBJ 2.5, 4.1, & 4.5)
+4:03
+Changing Default Configurations (OBJ 2.5)
+5:03
+Restricting Applications (OBJ 2.5)
+7:01
+Unnecessary Services (OBJ 2.5)
+5:36
+Trusted Operating Systems (OBJ 2.5)
+5:33
+Updates and Patches (OBJ 2.5)
+5:02
+Patch Management (OBJ 2.5)
+8:49
+Group Policies (OBJ 2.5 & 4.5)
+8:56
+SELinux (OBJ 2.5 & 4.5)
+6:47
+Data Encryption Levels (2.5)
+4:44
+Secure Baselines (OBJ 2.5 and 4.1)
+5:01
+Checkpoint: Hardening
+Security Techniques (OBJ 4.1 & 4.5)
+3:44
+Wireless Infrastructure Security (OBJ 4.1)
+8:23
+Wireless Security Settings (OBJ 4.1)
+14:52
+Application Security (OBJ 4.1)
+12:43
+Network Access Control (NAC) (OBJ 4.5)
+6:01
+Web and DNS Filtering (OBJ 4.5)
+7:04
+Email Security (OBJ 4.5)
+7:41
+Endpoint Detection and Response (OBJ 4.5)
+7:26
+User Behavior Analytics (OBJ 4.5)
+6:06
+Selecting Secure Protocols (OBJ 4.5)
+14:43
+Checkpoint: Security Techniques
+Vulnerability Management (OBJ 4.3)
+2:52
+Identifying Vulnerabilities (OBJ 4.3)
+5:46
+Threat Intelligence Feeds (OBJ 4.3)
+7:12
+Responsible Disclosure Programs (OBJ 4.3)
+6:07
+Analyzing Vulnerabilities (OBJ 4.3)
+10:27
+Conducting Vulnerability Scans (OBJ 4.3)
+31:25
+Assessing Vulnerability Scan Results (OBJ 4.3)
+13:19
+Vulnerability Response and Remediation (OBJ 4.3)
+6:05
+Validating Vulnerability Remediation (OBJ 4.3)
+5:45
+Vulnerability Reporting (OBJ 4.3)
+9:23
+Checkpoint: Vulnerability Management
+Alerting and Monitoring (OBJ 4.4)
+5:37
+Monitoring Resources (OBJ 4.4)
+4:37
+Alerting and Monitoring Activities (OBJ 4.4)
+12:06
+Simple Network Management Protocol (SNMP) (OBJ 4.4)
+6:55
+Security Information and Event Management (SIEM) (OBJ 4.4)
+11:00
+Data from Security Tools (OBJ 4.4)
+5:04
+Security Content Automation and Protocol (SCAP) (OBJ 4.4)
+9:57
+NetFlow and Flow Analysis (OBJ 4.4)
+7:07
+Single Pane of Glass (OBJ 4.4)
+5:59
+Checkpoint: Alerting and Monitoring
+Incident Response (OBJ 4.8)
+3:05
+Incident Response Process (OBJ 4.8)
+11:06
+Threat Hunting (OBJ 4.8)
+6:47
+Root Cause Analysis (OBJ 4.8)
+7:59
+Incident Response Training and Testing (OBJ 4.8)
+8:42
+Digital Forensic Procedures (OBJ 4.8)
+13:13
+Data Collection Procedures (OBJ 4.8)
+8:48
+Disk Imaging and Analysis (OBJ 4.8)
+9:03
+Checkpoint: Incident Response
+Investigating an Incident (OBJ 4.9)
+3:21
+Investigating with Data (OBJ 4.9)
+12:17
+Dashboards (OBJ 4.9)
+4:02
+Automated Reports (OBJ 4.9)
+6:32
+Vulnerability Scans (OBJ 4.9)
+11:04
+Packet Captures (OBJ 4.9)
+8:38
+Firewall Logs (OBJ 4.9)
+6:12
+Application Logs (OBJ 4.9)
+4:02
+Endpoint Logs (OBJ 4.9)
+3:49
+OS-specific Security Logs (OBJ 4.9)
+4:00
+IPS/IDS Logs (OBJ 4.9)
+5:43
+Network Logs (OBJ 4.9)
+5:34
+Metadata (OBJ 4.9)
+4:29
+Checkpoint: Investigating an Incident
+Automation and Orchestration (OBJ 4.7)
+6:37
+When to Automate and Orchestrate (OBJ 4.7)
+10:15
+Benefits of Automation and Orchestration (OBJ 4.7)
+8:02
+Automating Support Tickets (OBJ 4.7)
+6:46
+Automating Onboarding (OBJ 4.7)
+6:56
+Automating Security (OBJ 4.7)
+4:56
+Automating Application Development (OBJ 4.7)
+9:31
+Integrations and APIs (OBJ 4.7)
+13:01
+Checkpoint: Automation and Orchestration
+Security Awareness (OBJ 5.6)
+3:48
+Recognizing Insider Threats (OBJ 5.6)
+7:29
+Password Management (OBJ 5.6)
+10:31
+Avoiding Social Engineering (OBJ 5.6)
+8:20
+Policy and Handbooks (OBJ 5.6)
+7:35
+Remote and Hybrid Work Environments (OBJ 5.6)
+7:21
+Creating a Culture of Security (OBJ 5.6)
+5:02
+Checkpoint: Security Awareness
+Access Your Readiness Assessment
+0:06
+Conclusion
+12:44
+BONUS: Where do I go from here?
+3:47
+Requirements
